@@ -1,5 +1,7 @@
 package com.example.robin.angrynerds_wip.data.models.tens;
 
+import com.example.robin.angrynerds_wip.data.models.utils.Colors;
+
 import java.util.Date;
 import java.util.Random;
 
@@ -19,6 +21,7 @@ public class TEN {
         this.dateOfCreation = System.currentTimeMillis();
     }
 
+    //TODO Implement ID in Database -> Delete ID from this class
     public TEN(String title, int color) {
         this.title = title;
         this.color = color;
@@ -26,16 +29,11 @@ public class TEN {
         this.dateOfCreation = System.currentTimeMillis();
     }
 
-    public TEN(String title, int color) {
-        this.title = title;
-        this.color = color;
-    }
-
     //Constructor for random color. Color array from colors.xml has to be handed over from activity.
     //use this: int[] bgColors = getResources().getIntArray(R.array.bgColors);
     //TODO Color Array hand over from corresponding Activity
-    public TEN(String title, int[] bgColors) {
-        this.color = bgColors[new Random().nextInt(bgColors.length)];
+    public TEN(String title) {
+        this.color = Colors.getRandomColor();
         this.title=title;
         this.dateOfCreation = System.currentTimeMillis();
     }
