@@ -9,20 +9,20 @@ public class Todo extends TEN {
     private Task[] tasks;
 
     //Constructors
-    public Todo(String title, int[] bgColors){
-        super(title, bgColors);
+    public Todo(String title){
+        super(title);
         tasks = new Task[]{new Task("",false)};
         progress = calculateProgress();
     }
 
-    public Todo(String title, int[] bgColors, String note){
-        super(title, bgColors);
+    public Todo(String title, String note){
+        super(title);
         this.note = note;
         tasks = new Task[]{new Task("",false)};
     }
 
-    public Todo(String title, int[] bgColors, String note, Task[] tasks){
-        super(title, bgColors);
+    public Todo(String title, String note, Task[] tasks){
+        super(title);
         this.note = note;
         this.tasks = tasks;
         this.progress = calculateProgress();
