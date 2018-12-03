@@ -16,6 +16,7 @@ public class Gui {
     private Button mOkButton;
 
     public Gui(Init activity) {
+        /*
         activity.setContentView(R.layout.selectrgbcolor);
 
         mView = activity.findViewById(R.id.idView);
@@ -23,6 +24,7 @@ public class Gui {
         mGreenSeekBar = activity.findViewById(R.id.idGreenSeekBar);
         mBlueSeekBar = activity.findViewById(R.id.idBlueSeekBar);
         mOkButton = activity.findViewById(R.id.idOkButton);
+        */
     }
 
 
