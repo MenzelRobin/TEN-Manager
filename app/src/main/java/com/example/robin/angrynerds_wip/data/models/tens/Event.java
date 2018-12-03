@@ -12,32 +12,32 @@ public class Event extends TEN {
     private RecurringType recurringType;
 
     //Constructor
-    public Event(String title, int[] bgColors, Date time, Date[] reminder) {
-        super(title, bgColors);
+    public Event(String title, Date time, Date[] reminder) {
+        super(title);
         this.time = time;
         this.reminder = reminder;
         this.address = null;
         this.recurringType = RecurringType.NONE;
     }
 
-    public Event(String title, int[] bgColors, Date time, Date[] reminder, Address address) {
-        super(title, bgColors);
+    public Event(String title, Date time, Date[] reminder, Address address) {
+        super(title);
         this.time = time;
         this.reminder = reminder;
         this.address = address;
         this.recurringType = RecurringType.NONE;
     }
 
-    public Event(String title, int[] bgColors, Date time, Date[] reminder, Address address, RecurringType recurringType) {
-        super(title, bgColors);
+    public Event(String title, Date time, Date[] reminder, Address address, RecurringType recurringType) {
+        super(title);
         this.time = time;
         this.reminder = reminder;
         this.address = address;
         this.recurringType = recurringType;
     }
 
-    public Event(String title, int[] bgColors, Date time, Date[] reminder, RecurringType recurringType) {
-        super(title, bgColors);
+    public Event(String title, Date time, Date[] reminder, RecurringType recurringType) {
+        super(title);
         this.time = time;
         this.reminder = reminder;
         this.address = null;
@@ -49,14 +49,6 @@ public class Event extends TEN {
         this.time = time;
         this.reminder = reminder;
         this.address = address;
-        this.recurringType = recurringType;
-    }
-
-    public Event(String title, int color, Date time, Date[] reminder, Adress adress, RecurringType recurringType) {
-        super(title, color);
-        this.time = time;
-        this.reminder = reminder;
-        this.adress = adress;
         this.recurringType = recurringType;
     }
 

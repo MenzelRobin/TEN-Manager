@@ -5,12 +5,12 @@ public class Note extends TEN{
     private String description;
 
     //Constructors
-    public Note(String title, int[] bgColors){
-        super(title, bgColors);
+    public Note(String title){
+        super(title);
     }
 
-    public Note(String title, int[] bgColors, String description){
-        super(title, bgColors);
+    public Note(String title, String description){
+        super(title);
         this.description = description;
     }
 

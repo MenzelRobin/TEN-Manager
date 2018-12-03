@@ -52,7 +52,7 @@ public class Read {
     public static Todo getTodoByID(String id) {
         //MOCKDATEN
 
-        Todo t = new Todo("TodoTest", new int[]{Color.parseColor("#8c234d")});
+        Todo t = new Todo("TodoTest");
         return t;
 
         /*
@@ -64,7 +64,7 @@ public class Read {
     public static Event getEventByID(String id) {
         //MOCKDATEN
 
-        Event e = new Event("EventTest", new int[Color.parseColor("#8c9900")], Calendar.getInstance().getTime(), new Date[1540942029]);
+        Event e = new Event("EventTest", Calendar.getInstance().getTime(), new Date[1540942029]);
         return e;
 
         /*
@@ -75,9 +75,9 @@ public class Read {
 
     public static Note getNoteByID(String id) {
         //MOCKDATEN
-
-        if (MockData.tenMockData.get(2) instanceof Note) {
-            Note n = (Note) MockData.tenMockData.get(2);
+        for(TEN ten : MockData.tenMockData)
+        if (ten instanceof Note) {
+            Note n = (Note) ten;
             return n;
         }
         return null;
