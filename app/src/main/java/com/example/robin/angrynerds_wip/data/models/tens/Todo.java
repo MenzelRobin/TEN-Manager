@@ -2,7 +2,7 @@ package com.example.robin.angrynerds_wip.data.models.tens;
 
 import com.example.robin.angrynerds_wip.data.models.utils.Task;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.ArrayList;
 
 public class Todo extends TEN {
