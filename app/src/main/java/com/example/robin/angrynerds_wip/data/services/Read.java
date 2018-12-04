@@ -24,7 +24,6 @@ public class Read {
     /*
     public static ArrayList<TEN> getAllTENs() {
 
-        //TODO Ruthild: Sortieren
         ArrayList<TEN> allTEN = new ArrayList<TEN>();
         Todo[] allTodos = Queries.getAllTodods();
         Event[] allEvents = Queries.getAllEvents();
@@ -52,8 +51,12 @@ public class Read {
     public static Todo getTodoByID(String id) {
         //MOCKDATEN
 
-        Todo t = new Todo("TodoTest");
-        return t;
+        for (TEN ten : MockData.tenMockData)
+            if (ten instanceof Event) {
+                Todo t = (Todo) ten;
+                return t;
+            }
+        return null;
 
         /*
         Todo todo = Queries.getTodoByID(id);
@@ -64,8 +67,12 @@ public class Read {
     public static Event getEventByID(String id) {
         //MOCKDATEN
 
-        Event e = new Event("EventTest", Calendar.getInstance().getTime(), new Date[1540942029]);
-        return e;
+        for (TEN ten : MockData.tenMockData)
+            if (ten instanceof Event) {
+                Event e = (Event) ten;
+                return e;
+            }
+        return null;
 
         /*
         Event event = Queries.getEventByID(id);

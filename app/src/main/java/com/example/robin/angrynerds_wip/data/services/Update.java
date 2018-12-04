@@ -9,8 +9,7 @@ public class Update {
 
     /* Ruthild Gilles (16.11.2018)
      Methode "saveTEN" kann für jede Art von TEN aufgerufen werden.
-     Werden weitere Attribute in den jeweiligen TEN Klassen hinzugefügt oder geändert,
-     müssen auch hier die Methoden angepasst werden.
+     TEN wird gespeichert.
     */
     /*--------------------------------------------------
         Methods for saving one TEN object
