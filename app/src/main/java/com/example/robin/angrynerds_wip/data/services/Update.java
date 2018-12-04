@@ -14,6 +14,9 @@ public class Update {
     /*--------------------------------------------------
         Methods for saving one TEN object
      --------------------------------------------------*/
+
+
+    //Teste lieber, ob das newTEN schon eine ID hat
     public static void saveTEN(TEN newTEN) {
         TEN oldTEN = Queries.getByID(newTEN.getID());
         if (oldTEN == null) { //new TEN (not in database)
@@ -23,6 +26,7 @@ public class Update {
         }
     }
 
+    // wo brauchen wir das? Es werden doch maximal einzelne TENs gespeichert
     public static void saveAllTEN(ArrayList<TEN> newTENs) {
         for (TEN ten : newTENs
                 ) {
