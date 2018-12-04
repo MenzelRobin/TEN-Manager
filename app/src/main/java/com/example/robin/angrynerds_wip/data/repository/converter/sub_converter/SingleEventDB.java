@@ -69,4 +69,13 @@ public class SingleEventDB {
             return false;
         }
     }
+
+    public boolean deleteTEN(String pID){
+        try{
+            DatabaseManager.getDatabase().delete(DatabaseManager.getDatabase().getDocument(pID));
+            return true;
+        } catch (CouchbaseLiteException e){
+            return false;
+        }
+    }
 }

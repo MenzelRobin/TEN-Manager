@@ -2,6 +2,8 @@ package com.example.robin.angrynerds_wip.data.models.tens;
 
 import java.util.ArrayList;
 
+import com.couchbase.lite.Blob;
+
 public class Note extends TEN{
 
     private String description;
