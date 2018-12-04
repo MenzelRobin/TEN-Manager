@@ -5,7 +5,6 @@ import com.couchbase.lite.Result;
 import com.couchbase.lite.ResultSet;
 import com.example.robin.angrynerds_wip.data.models.tens.TEN;
 import com.example.robin.angrynerds_wip.data.repository.DatabaseManager;
-import com.example.robin.angrynerds_wip.data.repository.converter.sub_converter.EventConverter;
 
 import java.util.ArrayList;
 
@@ -20,13 +19,13 @@ public class Converter {
             TEN ten = null;
             switch (resultDic.getString("type")) {
                 case "Event":
-                    ten = new EventConverter().documentToEvent(resultDic);
+                    // ten = new SingleEventDB().documentToEvent(resultDic);
                     break;
                 case "Note":
-                    ten = documentToNote(resultDic);
+                    // ten = documentToNote(resultDic);
                     break;
                 case "Todo":
-                    ten = documentToTodo(resultDic);
+                    // ten = documentToTodo(resultDic);
                     break;
             }
 

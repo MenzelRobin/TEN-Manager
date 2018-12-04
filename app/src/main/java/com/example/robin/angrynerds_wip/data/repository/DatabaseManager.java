@@ -11,7 +11,7 @@ public class DatabaseManager {
 
     public static Database database = null;
     public static Context context = null;
-    private static final String DATABASENAME = "TENDB";
+    public static final String DATABASENAME = "TENDB";
     public static final String OBJECT_KEY = "ObjectKey";
 
     public DatabaseManager(Context context) {

@@ -1,47 +1,57 @@
 package com.example.robin.angrynerds_wip.data.repository;
 
-import android.widget.Toast;
-
-import com.couchbase.lite.CouchbaseLiteException;
-import com.couchbase.lite.DataSource;
-import com.couchbase.lite.Query;
-import com.couchbase.lite.QueryBuilder;
-import com.couchbase.lite.ResultSet;
-import com.couchbase.lite.SelectResult;
+import com.example.robin.angrynerds_wip.data.models.tens.Event;
+import com.example.robin.angrynerds_wip.data.models.tens.Note;
 import com.example.robin.angrynerds_wip.data.models.tens.TEN;
+import com.example.robin.angrynerds_wip.data.models.tens.Todo;
 
 import java.util.ArrayList;
 
 public class Queries {
 
-    public ArrayList<TEN> getAll() {
-        Query query = QueryBuilder.select(SelectResult.all())
-                .from(DataSource.database(DatabaseManager.database));
-
-
-        ResultSet results = null;
-        try {
-            results = query.execute();
-
-        } catch (CouchbaseLiteException e) {
-            Toast.makeText(DatabaseManager.context, "Fehler beim Zugriff auf die Datenbank", Toast.LENGTH_LONG);
-        }
-
+    //TODO Jan: jeweiliges Objekt mit übergebener ID zurückgeben (wenn kein Objekt mit ID dann return null)
+    public static Todo getTodoByID(String id) {
         return null;
     }
 
-    public ArrayList<TEN> getEvents() {
+    public static Event getEventByID(String id) {
         return null;
+    }
+
+    public static Note getNoteByID(String id) {
+        return null;
+    }
+
+    //TODO Jan: Insert Befehl (neuen Eintrag anlegen; TEN hat noch keine ID)
+    public static void insertTEN(TEN ten) {
 
     }
 
-    public ArrayList<TEN> getNotes() {
-        return null;
-
+    //TODO Jan: vorhanden Eintrag (mit übergebener ID) mit den Werten aus dem übergebenen TEN überschreiben
+    public static void updateTEN(TEN ten) {
     }
 
-    public ArrayList<TEN> getToDos() {
+    //TODO Jan: alle vorhandenen TENs in einem Array übergeben
+    public static ArrayList<TEN> getAllTENs(){
         return null;
+    }
 
+    public static ArrayList<Todo> getAllTodos() {
+        //alle Todos sortiert nach Titel
+        return null;
+    }
+
+    public static ArrayList<Event> getAllEvents() {
+        //alle Events sortiert nach Datum
+        return null;
+    }
+
+    public static ArrayList<Note> getAllNotes() {
+        //alle Notes sortiert nach Titel
+        return null;
+    }
+
+    //TODO Jan: Eintrag mit übergebener ID aus Datenbank löschen
+    public static void deleteTEN(String id) {
     }
 }
