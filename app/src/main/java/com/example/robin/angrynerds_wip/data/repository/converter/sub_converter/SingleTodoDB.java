@@ -54,7 +54,7 @@ public class SingleTodoDB {
 
         mDocument = new MutableDocument();
         mDocument.setString("type", pTodo.getClass().getName());
-        mDocument.setLong("dateOfCreation", pTodo.getDateOfCreation());
+        mDocument.setDate("dateOfCreation", pTodo.getDateOfCreation());
         try {
             
             mDocument.setString(DatabaseManager.OBJECT_KEY, objectMapper.writeValueAsString(pTodo));

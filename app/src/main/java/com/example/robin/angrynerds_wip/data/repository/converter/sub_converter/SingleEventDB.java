@@ -54,7 +54,7 @@ public class SingleEventDB {
 
         mDocument = new MutableDocument();
         mDocument.setString("type", pEvent.getClass().getName());
-        mDocument.setLong("dateOfCreation", pEvent.getDateOfCreation());
+        mDocument.setDate("dateOfCreation", pEvent.getDateOfCreation());
         try {
 
             mDocument.setString(DatabaseManager.OBJECT_KEY, objectMapper.writeValueAsString(pEvent));

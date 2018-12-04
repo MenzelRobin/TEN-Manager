@@ -19,7 +19,7 @@ public class Update {
         if (oldTEN == null) { //new TEN (not in database)
             Queries.insertTEN(newTEN);
         } else { //existing TEN (in database)
-            Queries.updateTEN(newTEN.getID(), newTEN);
+            Queries.updateTEN(newTEN);
         }
     }
 
