@@ -9,16 +9,21 @@ public class TEN {
     private String title;
     private String ID;
     private int color;
-    private long dateOfCreation;
+    private Date dateOfCreation;
 
-    private static int nextID = 0;
+    private static int nextID = 0; //For MockData only
 
     //Constructor
+    public TEN(){
+        this.color = Colors.getRandomColor();
+        this.dateOfCreation = new Date();
+    }
+
     public TEN(String title, String ID, int color) {
         this.title = title;
         this.ID = ID;
         this.color = color;
-        this.dateOfCreation = System.currentTimeMillis();
+        this.dateOfCreation = new Date();
     }
 
     //TODO Implement ID in Database -> Delete ID from this class
@@ -26,7 +31,7 @@ public class TEN {
         this.title = title;
         this.color = color;
         this.ID = String.valueOf(nextID++); //for MockData only
-        this.dateOfCreation = System.currentTimeMillis();
+        this.dateOfCreation = new Date();
     }
 
     //Constructor for random color. Color array from colors.xml has to be handed over from activity.
@@ -35,7 +40,7 @@ public class TEN {
     public TEN(String title) {
         this.color = Colors.getRandomColor();
         this.title=title;
-        this.dateOfCreation = System.currentTimeMillis();
+        this.dateOfCreation = new Date();
     }
 
     //Getter and Setter
@@ -54,4 +59,5 @@ public class TEN {
     public void setColor(int color) {
         this.color = color;
     }
+    public Date getDateOfCreation() {return dateOfCreation;}
 }
