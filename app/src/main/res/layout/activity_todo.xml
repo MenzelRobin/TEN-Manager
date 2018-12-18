@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bgColor1"
+    android:background="@color/bgColor4"
     android:orientation="horizontal"
     android:layout_marginLeft="10dp"
     android:layout_marginTop="10dp"
@@ -11,7 +11,7 @@
 
 
     <EditText
-        android:id="@+id/edit_note_title"
+        android:id="@+id/edit_todo_title"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:inputType="text"
@@ -23,10 +23,10 @@
         android:scrollbars="horizontal"/>
 
     <EditText
-        android:id="@+id/edit_note_text"
+        android:id="@+id/edit_todo_text"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:layout_below="@+id/edit_note_title"
+        android:layout_below="@+id/edit_todo_title"
         android:inputType="text"
         android:hint="@string/default_description"
         android:textColorHint="@color/TextWhite"
@@ -35,5 +35,33 @@
         android:maxLines="10"
         android:scrollbars="vertical"
         android:layout_marginTop="5dp"/>
+
+    <Button
+        android:id="@+id/edit_todo_startDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edit_todo_text"/>
+
+    <Button
+        android:id="@+id/edit_todo_endDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edit_todo_startDate"/>
+
+    <ListView
+        android:id="@+id/edit_todo_tasks"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edit_todo_endDate"
+        android:layout_above="@+id/edit_todo_progressBar"
+        android:background="@color/TextWhite">
+
+    </ListView>
+
+    <SeekBar
+        android:id="@+id/edit_todo_progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"/>
 
 </RelativeLayout>
