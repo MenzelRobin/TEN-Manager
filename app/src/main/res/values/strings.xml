@@ -18,4 +18,6 @@
         Chilipulver nach Bedarf\n
         Pfeffer nach Bedarf\n
         Dazu einfach Reis. </string>
+    <string name="sample_overview_todo_title">Einkaufsliste</string>
+    <string name="sample_overview_todo_counter">0/12</string>
 </resources>

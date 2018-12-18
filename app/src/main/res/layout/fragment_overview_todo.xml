@@ -1,14 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    android:id="@+id/id_overview_todo"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="25dp"
+    android:background="@color/bgColor3"
     tools:context=".overview.todoFragment.OverviewTodoFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/id_overview_todo_textView_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/sample_overview_todo_title"
+        android:textSize="25dp"
+        android:textColor="@color/colorWhite"
+        />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/id_overview_todo_textView_middle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorWhite"
+        android:layout_centerHorizontal="true"
+        />
+
+
+    <View
+        android:id="@+id/id_overview_todo_view_line"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/id_overview_todo_linearLayout_container1"
+        android:layout_alignStart="@id/id_overview_todo_linearLayout_container1"
+        android:textSize="16sp"
+        android:layout_marginTop="15dp"
+        android:background="@color/colorWhite"
+        />
+
+    <TextView
+        android:id="@+id/id_overview_todo_textView_counter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/id_overview_todo_linearLayout_container1"
+        android:layout_alignParentRight="true"
+        android:text="@string/sample_overview_todo_counter"
+        android:textSize="20dp"
+        android:layout_marginTop= "40dp"
+        android:textColor="@color/colorWhite"
+        />
+
+    <LinearLayout
+        android:id="@+id/id_overview_todo_linearLayout_container1"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/id_overview_todo_textView_title"
+        android:layout_width="wrap_content"
+        android:layout_alignRight="@id/id_overview_todo_textView_middle"
+        android:layout_alignParentLeft="true"
+        android:orientation="vertical">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/id_overview_todo_linearLayout_container2"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/id_overview_todo_textView_title"
+        android:layout_alignParentRight="true"
+        android:layout_alignLeft="@id/id_overview_todo_textView_middle"
+        android:orientation="vertical"
+        >
+
+    </LinearLayout>
+
+</RelativeLayout>
