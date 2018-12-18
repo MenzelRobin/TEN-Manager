@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void onClickMain(View view) {
-        Intent intent = new Intent(this, OverviewActivity.class);
+        /*Intent intent = new Intent(this, OverviewActivity.class);
         //intent.putExtra("ID", 5); // Hier können eigene Parameter hinzugefügt werden.
         this.startActivity(intent); // Activity Starten
     }
@@ -35,6 +35,6 @@ public class MainActivity extends AppCompatActivity {
     public void onClickNote(View view) {
         Intent intent = new Intent(this, OverviewActivity.class);
         //intent.putExtra("ID", 5); // Hier können eigene Parameter hinzugefügt werden.
-        this.startActivity(intent); // Activity Starten
+        this.startActivity(intent); // Activity Starten*/
     }
 }

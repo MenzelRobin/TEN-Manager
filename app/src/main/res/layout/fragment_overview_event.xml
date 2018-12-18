@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/id_overview_event_fragment"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".overview.eventFragment.OverviewEventFragment"
+    android:padding="25dp"
+    android:background="@color/bgColor1"
+    >
+
+    <TextView
+        android:id="@+id/id_overview_event_textView_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/sample_overview_event_title"
+        android:textSize="25dp"
+        android:textColor="@color/colorWhite"
+        />
+
+
+    <TextView
+        android:id="@+id/id_overview_event_textView_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/id_overview_event_textView_title"
+        android:text="@string/sample_overview_event_time"
+        android:textSize="45dp"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/colorWhite"
+        />
+
+    <TextView
+        android:id="@+id/id_overview_event_textView_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignBottom="@id/id_overview_event_textView_time"
+        android:text="@string/sample_overview_event_date"
+        android:textSize="25dp"
+        android:layout_marginLeft= "30dp"
+        android:textColor="@color/colorWhite"
+        />
+
+    <TextView
+        android:id="@+id/id_overview_event_textView_year"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/id_overview_event_textView_date"
+        android:layout_alignRight="@id/id_overview_event_textView_date"
+        android:text="@string/sample_overview_event_year"
+        android:textSize="15dp"
+        android:layout_marginLeft= "30dp"
+        android:textColor="@color/colorWhite"
+        />
+
+    <TextView
+        android:id="@+id/id_overview_event_textView_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/id_overview_event_textView_time"
+        android:layout_alignLeft="@id/id_overview_event_textView_time"
+        android:text="@string/sample_overview_event_location"
+        android:textSize="16dp"
+        android:layout_marginTop= "40dp"
+        android:textColor="@color/colorWhite"
+        />
+
+
+
+    <ImageView
+        android:id="@+id/id_overview_event_imageView_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_place_black_24dp"
+        android:layout_alignTop="@id/id_overview_event_view_line"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
+        />
+
+    <View
+        android:id="@+id/id_overview_event_view_line"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/id_overview_event_textView_time"
+        android:layout_alignStart="@id/id_overview_event_textView_time"
+        android:textSize="16dp"
+        android:layout_marginTop="15dp"
+        android:background="@color/colorWhite"
+        />
+
+</RelativeLayout>

@@ -1,7 +1,8 @@
-package com.example.robin.angrynerds_wip;
+package com.example.robin.angrynerds_wip.overview.overviewActivity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import com.example.robin.angrynerds_wip.R;
 
 public class OverviewActivity extends AppCompatActivity {
 
