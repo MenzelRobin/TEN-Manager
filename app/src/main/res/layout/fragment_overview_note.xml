@@ -1,14 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="25dp"
+    android:background="@color/bgColor2"
     tools:context=".overview.noteFragment.OverviewNoteFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/id_overview_note_textView_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="Curry"
+        android:textSize="25dp"
+        android:textColor="@color/colorWhite"
+        />
 
-</FrameLayout>
+
+
+    <TextView
+        android:id="@+id/id_overview_note_textView_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/id_overview_note_textView_title"
+        android:layout_alignLeft="@+id/id_overview_note_textView_title"
+        android:text="@string/sample_overview_note_text"
+        android:textSize="16dp"
+        android:layout_marginTop= "15dp"
+        android:textColor="@color/colorWhite"
+        />
+
+
+    <View
+        android:id="@+id/id_overview_note_view_line"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/id_overview_note_textView_text"
+        android:layout_alignStart="@id/id_overview_note_textView_text"
+        android:textSize="16sp"
+        android:layout_marginTop="15dp"
+        android:background="@color/colorWhite"
+        />
+
+</RelativeLayout>
