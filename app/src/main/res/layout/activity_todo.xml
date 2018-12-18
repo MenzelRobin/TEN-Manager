@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bgColor1"
+    android:orientation="horizontal"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginBottom="10dp">
+
+
+    <EditText
+        android:id="@+id/edit_note_title"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:inputType="text"
+        android:hint="@string/default_title"
+        android:textColorHint="@color/TextWhite"
+        android:textColor="@color/TextWhite"
+        android:lines="1"
+        android:maxLines="1"
+        android:scrollbars="horizontal"/>
+
+    <EditText
+        android:id="@+id/edit_note_text"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/edit_note_title"
+        android:inputType="text"
+        android:hint="@string/default_description"
+        android:textColorHint="@color/TextWhite"
+        android:textColor="@color/TextWhite"
+        android:lines="10"
+        android:maxLines="10"
+        android:scrollbars="vertical"
+        android:layout_marginTop="5dp"/>
+
+</RelativeLayout>
