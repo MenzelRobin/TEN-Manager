@@ -1,5 +1,6 @@
 package com.example.robin.angrynerds_wip.todo;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,7 +9,7 @@ import com.example.robin.angrynerds_wip.data.models.tens.Todo;
 
 //import com.example.robin.angrynerds_wip.activities.Data;
 
-public class Init extends AppCompatActivity {
+public class Init extends Activity {
 
     private Gui mGui;
     private ApplicationLogic mApplicationLogic;
