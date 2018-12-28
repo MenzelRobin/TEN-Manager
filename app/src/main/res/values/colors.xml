@@ -13,6 +13,7 @@
     <color name="bgColor8">#f57f17</color>
     <color name="bgColor9">#60e10f</color>
     <color name="bgColor10">#8c234d</color>
+    <color name="note_TextWhite">#ffffff</color>
     <color name="TextWhite">#ffffff</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorGrey">#C0C0C0</color>
