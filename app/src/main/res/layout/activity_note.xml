@@ -10,29 +10,57 @@
     android:layout_marginBottom="10dp">
 
     <EditText
-        android:id="@+id/edit_note_title"
+        android:id="@+id/id_note_title"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:inputType="text"
-        android:hint="@string/default_title"
-        android:textColorHint="@color/TextWhite"
-        android:textColor="@color/TextWhite"
+        android:hint="@string/sample_note_title"
+        android:textColorHint="@color/note_TextWhite"
+        android:textColor="@color/note_TextWhite"
         android:lines="1"
         android:maxLines="1"
         android:scrollbars="horizontal"/>
 
+    <HorizontalScrollView
+        android:id="@+id/id_note_horizontalScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/id_note_title">
+
+        <LinearLayout
+            android:id="@+id/id_note_linearImageContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:orientation="horizontal" >
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
     <EditText
-        android:id="@+id/edit_note_text"
+        android:id="@+id/id_note_description"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:layout_below="@+id/edit_note_title"
+        android:layout_below="@+id/id_note_horizontalScrollView"
         android:inputType="text"
-        android:hint="@string/default_description"
-        android:textColorHint="@color/TextWhite"
-        android:textColor="@color/TextWhite"
+        android:hint="@string/sample_note_description"
+        android:textColorHint="@color/note_TextWhite"
+        android:textColor="@color/note_TextWhite"
         android:lines="10"
-        android:maxLines="10"
         android:scrollbars="vertical"
         android:layout_marginTop="5dp"/>
+        <!--android:maxLines="10"-->
+
+    <TextView
+        android:id="@+id/id_note_tags"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_below="@+id/id_note_description"
+        android:textColorHint="@color/note_TextWhite"
+        android:textColor="@color/note_TextWhite"
+        android:hint="@string/sample_note_tag"
+        />
 
 </RelativeLayout>
