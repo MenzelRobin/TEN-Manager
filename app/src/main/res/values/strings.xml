@@ -23,4 +23,6 @@
     <string name="sample_overview_image_title">Witziger Avatar</string>
     <string name="sample_overview_todo_text">Was muss ich alles erledigen?</string>
     <string name="sample_overview_note_title">Curry</string>
+    <string name="default_title">Titel</string>
+    <string name="default_description">Beschreibung</string>
 </resources>
