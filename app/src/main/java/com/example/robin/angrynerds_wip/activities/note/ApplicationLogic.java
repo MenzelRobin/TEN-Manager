@@ -2,20 +2,21 @@ package com.example.robin.angrynerds_wip.activities.note;
 
 import android.content.Intent;
 
-//import de.fhdw.bfwi316b.set.colorchooser.activities.ActivityUtilities;
-//import de.fhdw.bfwi316b.set.colorchooser.activities.Data;
+import com.example.robin.angrynerds_wip.data.models.tens.Note;
+import com.example.robin.angrynerds_wip.data.models.utils.MockData;
+
 
 public class ApplicationLogic {
 
-    //private Data mData;
+    private Note mNote;
     private Gui mGui;
-    /*
-    public ApplicationLogic(Data data, Gui gui) {
-        mData = data;
+
+    public ApplicationLogic(Note note, Gui gui) {
+        mNote = note;
         mGui = gui;
         initGui();
         initListener();
-    }*/
+    }
 
     private void initGui() {
         dataToGui();
@@ -25,10 +26,15 @@ public class ApplicationLogic {
         ClickListener clickListener;
 
         clickListener = new ClickListener(this);
-        //mGui.getOkButton().setOnClickListener(clickListener);
+        mGui.getmNoteImageContainer().setOnClickListener(clickListener);
+        mGui.getmNoteTags().setOnClickListener(clickListener);
     }
 
     public void dataToGui() {
+        mGui.setmNoteTitle(mNote.getTitle());
+        //TODO images
+        mGui.setmNoteDescription(mNote.getDescription());
+        mGui.setmNoteTags(mNote.getTags());
     }
 
     public void onActivityReturned(int requestCode, int resultCode, Intent data) {

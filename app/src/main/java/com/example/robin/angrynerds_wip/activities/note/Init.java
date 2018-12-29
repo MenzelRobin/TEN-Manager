@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import com.example.robin.angrynerds_wip.data.models.tens.Note;
+import com.example.robin.angrynerds_wip.data.models.utils.MockData;
+
 //import com.example.robin.angrynerds_wip.activities.Data;
 
 public class Init extends AppCompatActivity {
@@ -15,21 +18,21 @@ public class Init extends AppCompatActivity {
     @Override
     public void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initData(savedInstanceState);
+        //initData(savedInstanceState);
         initGUI();
         initApplicationLogic();
     }
-
+/*
     private void initData (Bundle savedInstanceState) {
         //mData = new Data(savedInstanceState, this);
     }
-
+*/
     private void initGUI () {
         mGui = new Gui(this);
     }
 
     private void initApplicationLogic () {
-        //mApplicationLogic = new ApplicationLogic(mData, mGui);
+        mApplicationLogic = new ApplicationLogic(MockData.getNoteSample(), mGui);
     }
 
     @Override
@@ -49,5 +52,4 @@ public class Init extends AppCompatActivity {
         // super.onBackPressed();   //default action
         mApplicationLogic.onBackPressed();   // customized action
     }
-
 }
