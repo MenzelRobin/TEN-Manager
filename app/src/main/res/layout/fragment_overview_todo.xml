@@ -21,6 +21,18 @@
         />
 
     <TextView
+        android:id="@+id/id_overview_todo_textView_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/id_overview_todo_textView_title"
+        android:layout_alignLeft="@+id/id_overview_todo_textView_title"
+        android:text="@string/sample_overview_todo_text"
+        android:textSize="16dp"
+        android:layout_marginTop= "15dp"
+        android:textColor="@color/colorWhite"
+        />
+
+    <TextView
         android:id="@+id/id_overview_todo_textView_middle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -28,6 +40,36 @@
         android:layout_centerHorizontal="true"
         />
 
+
+
+    <!-- Containers for Checkboxes -->
+
+    <LinearLayout
+        android:id="@+id/id_overview_todo_linearLayout_container1"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/id_overview_todo_textView_text"
+        android:layout_width="wrap_content"
+        android:layout_alignRight="@id/id_overview_todo_textView_middle"
+        android:layout_alignParentLeft="true"
+        android:orientation="vertical">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/id_overview_todo_linearLayout_container2"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/id_overview_todo_textView_text"
+        android:layout_alignParentRight="true"
+        android:layout_alignLeft="@id/id_overview_todo_textView_middle"
+        android:orientation="vertical"
+        >
+
+    </LinearLayout>
+
+    <!-- Footer -->
 
     <View
         android:id="@+id/id_overview_todo_view_line"
@@ -51,30 +93,5 @@
         android:layout_marginTop= "40dp"
         android:textColor="@color/colorWhite"
         />
-
-    <LinearLayout
-        android:id="@+id/id_overview_todo_linearLayout_container1"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/id_overview_todo_textView_title"
-        android:layout_width="wrap_content"
-        android:layout_alignRight="@id/id_overview_todo_textView_middle"
-        android:layout_alignParentLeft="true"
-        android:orientation="vertical">
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/id_overview_todo_linearLayout_container2"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:layout_below="@+id/id_overview_todo_textView_title"
-        android:layout_alignParentRight="true"
-        android:layout_alignLeft="@id/id_overview_todo_textView_middle"
-        android:orientation="vertical"
-        >
-
-    </LinearLayout>
 
 </RelativeLayout>

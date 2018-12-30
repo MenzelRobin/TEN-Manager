@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.robin.angrynerds_wip.overview.overviewActivity.OverviewActivity;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -15,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void onClickMain(View view) {
-        /*Intent intent = new Intent(this, OverviewActivity.class);
+        Intent intent = new Intent(this, OverviewActivity.class);
         //intent.putExtra("ID", 5); // Hier können eigene Parameter hinzugefügt werden.
         this.startActivity(intent); // Activity Starten
     }

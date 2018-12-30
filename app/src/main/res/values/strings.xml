@@ -20,4 +20,7 @@
         Dazu einfach Reis. </string>
     <string name="sample_overview_todo_title">Einkaufsliste</string>
     <string name="sample_overview_todo_counter">0/12</string>
+    <string name="sample_overview_image_title">Witziger Avatar</string>
+    <string name="sample_overview_todo_text">Was muss ich alles erledigen?</string>
+    <string name="sample_overview_note_title">Curry</string>
 </resources>

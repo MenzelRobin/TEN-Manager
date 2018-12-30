@@ -6,23 +6,23 @@
         android:background="@color/colorPrimaryDark"
         tools:context=".overview.imageFragment.OverviewImageFragment">
 
-        <TextView
-            android:id="@+id/id_overview_noteImage_View_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:text="Bild"
-            android:textSize="25dp"
-            android:layout_margin="25dp"
-            android:textColor="@color/colorWhite"
-            />
-
         <ImageView
             android:id="@+id/id_overview_noteImage_View_image"
             android:layout_width="match_parent"
             android:layout_height= "wrap_content"
             android:layout_centerHorizontal="true"
             tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/id_overview_noteImage_View_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/sample_overview_image_title"
+        android:textSize="25dp"
+        android:layout_margin="25dp"
+        android:textColor="@color/colorWhite"
+        />
 
     </RelativeLayout>

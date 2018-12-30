@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:text="Curry"
+        android:text="@string/sample_overview_note_title"
         android:textSize="25dp"
         android:textColor="@color/colorWhite"
         />
