@@ -14,15 +14,21 @@ public class ClickListener implements View.OnClickListener  {
 
     @Override
     public void onClick(View view) {
-        /*
         switch ( view.getId() ) {
-            case R.id.idOkButton:
-                mApplicationLogic.onOkButtonClicked();
+            case R.id.editTextDate:
+                mApplicationLogic.onDateClicked();
                 break;
+            case R.id.editTextTime:
+                mApplicationLogic.onTimeClicked();
+            case R.id.editTextNewReminder:
+                mApplicationLogic.onNewReminderClicked();
+            case R.id.iconCloseReminder1:
+                mApplicationLogic.removeReminder(R.id.iconCloseReminder1);
+            case R.id.iconCloseReminder2:
+                mApplicationLogic.removeReminder(R.id.iconCloseReminder2);
             default:
                 break;
         }
-        */
     }
 
 }

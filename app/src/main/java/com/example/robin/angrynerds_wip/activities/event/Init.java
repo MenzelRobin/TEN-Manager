@@ -9,7 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 
 public class Init extends AppCompatActivity {
 
-    //private Data mData;
     private Gui mGui;
     private ApplicationLogic mApplicationLogic;
 
@@ -30,7 +29,7 @@ public class Init extends AppCompatActivity {
     }
 
     private void initApplicationLogic () {
-        //mApplicationLogic = new ApplicationLogic(mData, mGui);
+        mApplicationLogic = new ApplicationLogic(mGui);
     }
 
     @Override
