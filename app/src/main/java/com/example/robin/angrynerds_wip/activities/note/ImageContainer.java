@@ -8,9 +8,10 @@ import android.widget.LinearLayout;
 
 import com.example.robin.angrynerds_wip.R;
 
-public class ImageContainer {
+public class ImageContainer implements IContainer{
 
     private Init mActivity;
+    private String path;
     private Bitmap image;
     private LinearLayout imageContainer;
 
@@ -22,17 +23,28 @@ public class ImageContainer {
         imageContainer.setId(id);
         initiateView();
     }
+    //TODO testing for add image button
+    public ImageContainer(Init mActivity, int id, boolean i){
+        this.mActivity = mActivity;
+        this.image = BitmapFactory.decodeResource(mActivity.getResources(), R.drawable.ic_add_a_photo_grey_24dp);
+        this.imageContainer = new LinearLayout(mActivity.getApplicationContext());
+        imageContainer.setId(id);
+        initiateView();
+    }
 
     public ImageContainer(Init mActivity, int id, String path){
         this.mActivity = mActivity;
-        this.image = decodeSampledBitmapFromUri(path, 400, 400);
+        this.path = path;
+        this.image = decodeSampledBitmapFromUri(400, 400);
         this.imageContainer = new LinearLayout(mActivity.getApplicationContext());
         imageContainer.setId(id);
     }
 
-    public LinearLayout getPicture() {
+    public LinearLayout getImageContainer() {
         return imageContainer;
     }
+    public String getPath() { return path; }
+    public Bitmap getImage() {return image;}
 
     private void initiateView(){
         imageContainer.setLayoutParams(new LinearLayout.LayoutParams(450, 450));
@@ -46,7 +58,7 @@ public class ImageContainer {
         imageContainer.addView(imageView);
     }
 
-    private Bitmap decodeSampledBitmapFromUri(String path, int reqWidth, int reqHeight) {
+    private Bitmap decodeSampledBitmapFromUri(int reqWidth, int reqHeight) {
         Bitmap bitmap;
 
         //First decode with inJustDecodeBounds=true to check dimensions
@@ -64,9 +76,7 @@ public class ImageContainer {
         return bitmap;
     }
 
-    private int calculateInSampleSize(
-
-        BitmapFactory.Options options, int reqWidth, int reqHeight) {
+    private int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
         //height and width of image
         final int height = options.outHeight;
         final int width = options.outWidth;

@@ -1,7 +1,17 @@
 package com.example.robin.angrynerds_wip.activities.note;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.Window;
 import android.widget.EditText;
 import android.widget.HorizontalScrollView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -21,40 +31,40 @@ public class Gui {
     private LinearLayout mNoteImageContainer;
     private EditText mNoteDescription;
     private TextView mNoteTags;
-    private ArrayList<LinearLayout> mNoteImages;
+    private ArrayList<IContainer> mNoteImages;
 
     //Getters
-    public EditText getmNoteTitle() {
+    EditText getmNoteTitle() {
         return mNoteTitle;
     }
-    public HorizontalScrollView getmNoteImageView() {
+    HorizontalScrollView getmNoteImageView() {
         return mNoteImageView;
     }
-    public LinearLayout getmNoteImageContainer() {
+    LinearLayout getmNoteImageContainer() {
         return mNoteImageContainer;
     }
-    public EditText getmNoteDescription() {
+    EditText getmNoteDescription() {
         return mNoteDescription;
     }
-    public TextView getmNoteTags() {
+    TextView getmNoteTags() {
         return mNoteTags;
     }
-    public ArrayList<LinearLayout> getmNoteImages() { return mNoteImages; }
+    ArrayList<IContainer> getmNoteImages() { return mNoteImages; }
     //Setters
-    public void setBackgroundColor(int bgColor) { mBackground.setBackgroundColor(bgColor);}
-    public void setmNoteTitle(String mNoteTitle) {
+    void setBackgroundColor(int bgColor) { mBackground.setBackgroundColor(bgColor);}
+    void setmNoteTitle(String mNoteTitle) {
         this.mNoteTitle.setText(mNoteTitle);
     }
-    public void setmNoteImageView(HorizontalScrollView mNoteImageView) {
+    void setmNoteImageView(HorizontalScrollView mNoteImageView) {
         this.mNoteImageView = mNoteImageView;
     }
-    public void setmNoteImageContainer(LinearLayout mNoteImageContainer) {
+    void setmNoteImageContainer(LinearLayout mNoteImageContainer) {
         this.mNoteImageContainer = mNoteImageContainer;
     }
-    public void setmNoteDescription(String mNoteDescription) {
+    void setmNoteDescription(String mNoteDescription) {
         this.mNoteDescription.setText(mNoteDescription);
     }
-    public void setmNoteTags(ArrayList<String> mNoteTags) {
+    void setmNoteTags(ArrayList<String> mNoteTags) {
         // TODO method for string insertion
         String displayText = "";
         int size = mNoteTags.size();
@@ -68,7 +78,7 @@ public class Gui {
         this.mNoteTags.setText(displayText);
     }
 
-    public Gui(Init activity) {
+    Gui(Init activity) {
 
         activity.setContentView(R.layout.activity_note);
 
@@ -82,15 +92,53 @@ public class Gui {
         mNoteImages = new ArrayList<>();
 
         for(int i = 0; i < 5; i++){
-            mNoteImages.add(new ImageContainer(mActivity,i).getPicture());
+            mNoteImages.add(new ImageContainer(mActivity,i));
         }
+        //Uri addImage = Uri.parse("android.resource://app/" + R.drawable.ic_add_a_photo_grey_24dp);
+        //mNoteImages.add(new ImageContainer(mActivity, 100, addImage.getPath()).getImageContainer());
+        Drawable drawable = ContextCompat.getDrawable(mActivity,R.drawable.ic_add_a_photo_grey_24dp);
+        mNoteImages.add(new IconContainer(mActivity, 100, drawable));
 
-        for(LinearLayout mImage : mNoteImages){
-            mNoteImageContainer.addView(mImage);
+        for(IContainer mImage : mNoteImages){
+            mNoteImageContainer.addView(mImage.getImageContainer());
         }
     }
 
-    public void displayToast(String s) {
+    void displayToast(String s) {
         Toast.makeText(mActivity, s, Toast.LENGTH_SHORT).show();
+    }
+
+    void displayImage(int id){
+        Bitmap image = mNoteImages.get(id).getImage();
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
+        AlertDialog dialog = builder.create();
+        LayoutInflater inflater = mActivity.getLayoutInflater();
+        View dialogLayout = inflater.inflate(R.layout.activity_note_image_overlay, null);
+        dialog.setView(dialogLayout);
+        ImageView imageView = dialogLayout.findViewById(R.id.imageContainer);
+        imageView.setImageBitmap(image);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.show();
+    }
+
+    void requestImageSource(){
+        DialogClickListener clickListener = new DialogClickListener(this);
+        String[] options = {"Camera", "Gallery"};
+        AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
+        builder.setTitle("Choose Image Source");
+        builder.setIcon(R.drawable.ic_add_a_photo_darkgrey_24dp);
+        builder.setItems(options, clickListener);
+        builder.show();
+    }
+
+    void importImageFromCamera(){
+        MediaImport image = new MediaImport(mActivity);
+        image.getImageFromCamera();
+    }
+
+    void importImageFromGallery(){
+        MediaImport image = new MediaImport(mActivity);
+        image.getImageFromGallery();
     }
 }
