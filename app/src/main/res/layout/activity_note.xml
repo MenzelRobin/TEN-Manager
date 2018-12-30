@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/id_note_background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bgColor3"
+    android:background="@color/bgColor10"
     android:orientation="horizontal">
 
     <RelativeLayout
@@ -15,12 +16,13 @@
 
     <EditText
         android:id="@+id/id_note_title"
+        android:cursorVisible="false"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:inputType="text"
         android:hint="@string/sample_note_title"
-        android:textColorHint="@color/note_TextWhite"
-        android:textColor="@color/note_TextWhite"
+        android:textColorHint="@color/note_hintWhite"
+        android:textColor="@color/note_textWhite"
         android:lines="1"
         android:maxLines="1"
         android:scrollbars="horizontal"/>
@@ -48,8 +50,8 @@
         android:layout_below="@+id/id_note_horizontalScrollView"
         android:layout_above="@id/id_note_tags"
         android:hint="@string/sample_note_description"
-        android:textColorHint="@color/note_TextWhite"
-        android:textColor="@color/note_TextWhite"
+        android:textColorHint="@color/note_hintWhite"
+        android:textColor="@color/note_textWhite"
         android:scrollbars="vertical"
         android:layout_weight="1.0"
         android:layout_marginTop="5dp"/>
@@ -61,10 +63,11 @@
         android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp"
         android:layout_alignParentBottom="true"
         android:lineSpacingExtra="5dp"
-        android:textColorHint="@color/note_TextWhite"
-        android:textColor="@color/note_TextWhite"
+        android:textColorHint="@color/note_hintWhite"
+        android:textColor="@color/note_textWhite"
         android:hint="@string/sample_note_tag"
         />
 
