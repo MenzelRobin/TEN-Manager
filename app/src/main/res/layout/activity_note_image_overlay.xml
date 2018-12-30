@@ -7,7 +7,7 @@
     android:background="@color/note_black">
 
     <ImageView
-        android:id="@+id/imageContainer"
+        android:id="@+id/id_note_imageContainer"
         android:adjustViewBounds="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>

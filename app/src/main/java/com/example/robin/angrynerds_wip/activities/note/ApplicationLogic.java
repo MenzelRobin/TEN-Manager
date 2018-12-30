@@ -6,7 +6,7 @@ import android.net.Uri;
 import com.example.robin.angrynerds_wip.data.models.tens.Note;
 
 
-public class ApplicationLogic {
+class ApplicationLogic {
 
     private Note mNote;
     private Gui mGui;
@@ -38,7 +38,7 @@ public class ApplicationLogic {
         }
     }
 
-    void dataToGui() {
+    private void dataToGui() {
         mGui.setmNoteTitle(mNote.getTitle());
         //TODO images
         mGui.setmNoteDescription(mNote.getDescription());
@@ -49,13 +49,13 @@ public class ApplicationLogic {
     void onActivityReturned(int requestCode, int resultCode, Intent data) {
         switch(requestCode) {
             case 0:
-                if(resultCode == RESULT_OK){
+                if(resultCode == -1){
                     Uri selectedImage = data.getData();
                     //TODO return uri somewhere
                 }
                 break;
             case 1:
-                if(resultCode == RESULT_OK){
+                if(resultCode == -1){
                     Uri selectedImage = data.getData();
                     //TODO return uri somewhere imageview.setImageURI(selectedImage);
                 }
@@ -70,12 +70,23 @@ public class ApplicationLogic {
     }
 
     void onImageClicked(int id){
-        //String id = String.valueOf(mGui.getmNoteImageContainer().getId());
-        if(id==100)
-        mGui.requestImageSource();
-            //mGui.displayToast("Add a new picture!");
-        else{
+        if(id==0)
+            mGui.importMedia();
+        else
             mGui.displayImage(id);
-        }
+    }
+
+    void onTagsClicked(){
+        //Code
+    }
+
+    boolean checkImageID(int id){
+        return mGui.checkImageID(id);
+    }
+
+    public void deleteImage(int id) {
+        mGui.displayToast(String.valueOf(id));
+        //TODO delete image from source
+        //dataToGui();
     }
 }

@@ -3,6 +3,9 @@ package com.example.robin.angrynerds_wip.activities.note;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.ContextMenu;
+import android.view.MenuItem;
+import android.view.View;
 
 import com.example.robin.angrynerds_wip.data.models.utils.MockData;
 
@@ -13,6 +16,7 @@ public class Init extends AppCompatActivity {
     //private Data mData;
     private Gui mGui;
     private ApplicationLogic mApplicationLogic;
+    private EventDispersion mEventDispersion;
 
     @Override
     public void onCreate (Bundle savedInstanceState) {
@@ -20,12 +24,9 @@ public class Init extends AppCompatActivity {
         //initData(savedInstanceState);
         initGUI();
         initApplicationLogic();
+        initEventDispersion();
     }
-/*
-    private void initData (Bundle savedInstanceState) {
-        //mData = new Data(savedInstanceState, this);
-    }
-*/
+
     private void initGUI () {
         mGui = new Gui(this);
     }
@@ -33,6 +34,10 @@ public class Init extends AppCompatActivity {
     private void initApplicationLogic () {
         //TODO Leere Notiz bzw. übergebene Notiz einfügen
         mApplicationLogic = new ApplicationLogic(MockData.getNoteSample(), mGui);
+    }
+
+    private void initEventDispersion() {
+        mEventDispersion = new EventDispersion(mApplicationLogic);
     }
 
     @Override
@@ -45,6 +50,24 @@ public class Init extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         // super.onActivityResult(requestCode, resultCode, data);
         mApplicationLogic.onActivityReturned(requestCode, resultCode, data);
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View view, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, view, menuInfo);
+        mEventDispersion.onCreateContextMenu(menu, view, menuInfo);
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        // return super.onContextItemSelected(item);
+        return mEventDispersion.onContextItemSelected(item);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        //mApplicationLogic.onPause();
     }
 
     @Override

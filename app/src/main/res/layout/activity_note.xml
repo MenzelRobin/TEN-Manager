@@ -9,10 +9,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp">
+        android:layout_margin="10dp">
 
     <EditText
         android:id="@+id/id_note_title"
@@ -27,11 +24,24 @@
         android:maxLines="1"
         android:scrollbars="horizontal"/>
 
+    <EditText
+        android:id="@+id/id_note_description"
+        android:inputType="textMultiLine"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/id_note_title"
+        android:layout_above="@id/id_note_horizontalScrollView"
+        android:hint="@string/sample_note_description"
+        android:textColorHint="@color/note_hintWhite"
+        android:textColor="@color/note_textWhite"
+        android:scrollbars="vertical"
+        android:layout_marginTop="5dp"/>
+
     <HorizontalScrollView
         android:id="@+id/id_note_horizontalScrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/id_note_title">
+        android:layout_above="@id/id_note_tags">
 
         <LinearLayout
             android:id="@+id/id_note_linearImageContainer"
@@ -41,20 +51,6 @@
         </LinearLayout>
 
     </HorizontalScrollView>
-
-    <EditText
-        android:id="@+id/id_note_description"
-        android:inputType="textMultiLine"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:layout_below="@+id/id_note_horizontalScrollView"
-        android:layout_above="@id/id_note_tags"
-        android:hint="@string/sample_note_description"
-        android:textColorHint="@color/note_hintWhite"
-        android:textColor="@color/note_textWhite"
-        android:scrollbars="vertical"
-        android:layout_weight="1.0"
-        android:layout_marginTop="5dp"/>
 
     <TextView
         android:id="@+id/id_note_tags"

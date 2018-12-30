@@ -1,7 +1,5 @@
 package com.example.robin.angrynerds_wip.activities.note;
 
-import android.app.Dialog;
-import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
@@ -21,7 +19,7 @@ import com.example.robin.angrynerds_wip.R;
 
 import java.util.ArrayList;
 
-public class Gui {
+class Gui {
 
     private Init mActivity;
 
@@ -73,8 +71,6 @@ public class Gui {
             if(i<size-1)
                 displayText += "              ";
         }
-
-        //displayText = displayText.substring(0, displayText.length() - 1);
         this.mNoteTags.setText(displayText);
     }
 
@@ -91,13 +87,11 @@ public class Gui {
         mNoteTags = activity.findViewById(R.id.id_note_tags);
         mNoteImages = new ArrayList<>();
 
-        for(int i = 0; i < 5; i++){
+        for(int i = 1; i < 3; i++){
             mNoteImages.add(new ImageContainer(mActivity,i));
         }
-        //Uri addImage = Uri.parse("android.resource://app/" + R.drawable.ic_add_a_photo_grey_24dp);
-        //mNoteImages.add(new ImageContainer(mActivity, 100, addImage.getPath()).getImageContainer());
         Drawable drawable = ContextCompat.getDrawable(mActivity,R.drawable.ic_add_a_photo_grey_24dp);
-        mNoteImages.add(new IconContainer(mActivity, 100, drawable));
+        mNoteImages.add(new IconContainer(mActivity, 0, drawable));
 
         for(IContainer mImage : mNoteImages){
             mNoteImageContainer.addView(mImage.getImageContainer());
@@ -108,7 +102,7 @@ public class Gui {
         Toast.makeText(mActivity, s, Toast.LENGTH_SHORT).show();
     }
 
-    void displayImage(int id){
+    void displayImage(int id) {
         Bitmap image = mNoteImages.get(id).getImage();
 
         AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
@@ -116,29 +110,21 @@ public class Gui {
         LayoutInflater inflater = mActivity.getLayoutInflater();
         View dialogLayout = inflater.inflate(R.layout.activity_note_image_overlay, null);
         dialog.setView(dialogLayout);
-        ImageView imageView = dialogLayout.findViewById(R.id.imageContainer);
+        ImageView imageView = dialogLayout.findViewById(R.id.id_note_imageContainer);
         imageView.setImageBitmap(image);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.show();
     }
 
-    void requestImageSource(){
-        DialogClickListener clickListener = new DialogClickListener(this);
-        String[] options = {"Camera", "Gallery"};
-        AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
-        builder.setTitle("Choose Image Source");
-        builder.setIcon(R.drawable.ic_add_a_photo_darkgrey_24dp);
-        builder.setItems(options, clickListener);
-        builder.show();
+    void importMedia(){
+        MediaImport mediaImport = new MediaImport(mActivity);
     }
 
-    void importImageFromCamera(){
-        MediaImport image = new MediaImport(mActivity);
-        image.getImageFromCamera();
-    }
-
-    void importImageFromGallery(){
-        MediaImport image = new MediaImport(mActivity);
-        image.getImageFromGallery();
+    boolean checkImageID(int id){
+        for(IContainer mImage : mNoteImages){
+            if(mImage.getImageContainer().getId()==id)
+                return true;
+        }
+        return false;
     }
 }
