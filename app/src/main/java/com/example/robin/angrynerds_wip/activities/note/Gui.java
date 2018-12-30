@@ -1,16 +1,11 @@
 package com.example.robin.angrynerds_wip.activities.note;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.view.Gravity;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.HorizontalScrollView;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.robin.angrynerds_wip.R;
 
@@ -19,11 +14,14 @@ import java.util.ArrayList;
 public class Gui {
 
     private Init mActivity;
+
+    private RelativeLayout mBackground;
     private EditText mNoteTitle;
     private HorizontalScrollView mNoteImageView;
     private LinearLayout mNoteImageContainer;
     private EditText mNoteDescription;
     private TextView mNoteTags;
+    private ArrayList<LinearLayout> mNoteImages;
 
     //Getters
     public EditText getmNoteTitle() {
@@ -41,7 +39,9 @@ public class Gui {
     public TextView getmNoteTags() {
         return mNoteTags;
     }
+    public ArrayList<LinearLayout> getmNoteImages() { return mNoteImages; }
     //Setters
+    public void setBackgroundColor(int bgColor) { mBackground.setBackgroundColor(bgColor);}
     public void setmNoteTitle(String mNoteTitle) {
         this.mNoteTitle.setText(mNoteTitle);
     }
@@ -59,7 +59,7 @@ public class Gui {
         String displayText = "";
         int size = mNoteTags.size();
         for(int i = 0; i < size; i++){
-            displayText += mNoteTags.get(i);
+            displayText += "#" + mNoteTags.get(i);
             if(i<size-1)
                 displayText += "              ";
         }
@@ -68,80 +68,29 @@ public class Gui {
         this.mNoteTags.setText(displayText);
     }
 
-
-    
     public Gui(Init activity) {
 
         activity.setContentView(R.layout.activity_note);
 
         mActivity = activity;
+        mBackground = activity.findViewById(R.id.id_note_background);
         mNoteTitle = activity.findViewById(R.id.id_note_title);
         mNoteImageView = activity.findViewById(R.id.id_note_horizontalScrollView);
         mNoteImageContainer = activity.findViewById(R.id.id_note_linearImageContainer);
         mNoteDescription = activity.findViewById(R.id.id_note_description);
         mNoteTags = activity.findViewById(R.id.id_note_tags);
+        mNoteImages = new ArrayList<>();
 
-        /*
-        String ExternalStorageDirectoryPath = Environment
-                .getExternalStorageDirectory()
-                .getAbsolutePath();
-
-        String targetPath = ExternalStorageDirectoryPath + "/test/";
-
-        Toast.makeText(getApplicationContext(), targetPath, Toast.LENGTH_LONG).show();
-        File targetDirector = new File(targetPath);
-
-        File[] files = targetDirector.listFiles();
-        for (File file : files){
-            myGallery.addView(insertPhoto(file.getAbsolutePath()));
-        }
-        */
         for(int i = 0; i < 5; i++){
-            mNoteImageContainer.addView(insertPhoto());
+            mNoteImages.add(new ImageContainer(mActivity,i).getPicture());
         }
-        /*for (int i = 0; i < 5; i++) {
-            ImageView imageView = new ImageView(activity);
-            imageView.setId(i);
-            imageView.setPadding(2, 2, 2, 2);
-            imageView.setImageBitmap(BitmapFactory.decodeResource(activity.getResources(), R.drawable.ic_launcher_foreground));
-            imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-            mNoteImageContainer.addView(imageView);
-        }*/
+
+        for(LinearLayout mImage : mNoteImages){
+            mNoteImageContainer.addView(mImage);
+        }
     }
 
-    //TODO eigene Klasse erstellen
-    private View insertPhoto(){
-        Bitmap bm = BitmapFactory.decodeResource(mActivity.getResources(), R.drawable.note_sample_image1);
-
-        LinearLayout layout = new LinearLayout(mActivity.getApplicationContext());
-        layout.setLayoutParams(new LinearLayout.LayoutParams(250, 250));
-        layout.setGravity(Gravity.CENTER);
-
-        ImageView imageView = new ImageView(mActivity.getApplicationContext());
-        imageView.setLayoutParams(new LinearLayout.LayoutParams(220, 220));
-        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        imageView.setImageBitmap(bm);
-
-        layout.addView(imageView);
-        return layout;
+    public void displayToast(String s) {
+        Toast.makeText(mActivity, s, Toast.LENGTH_SHORT).show();
     }
-/*
-    // methods to change view attributes
-
-    public void setColorInView(int color) {
-        mView.setBackground(new ColorDrawable(color));
-    }
-
-    public void setRedSeekBarProgress(int progress) {
-        mRedSeekBar.setProgress(progress);
-    }
-
-    public void setGreenSeekBarProgress(int progress) {
-        mGreenSeekBar.setProgress(progress);
-    }
-
-    public void setBlueSeekBarProgress(int progress) {
-        mBlueSeekBar.setProgress(progress);
-    }
-*/
 }

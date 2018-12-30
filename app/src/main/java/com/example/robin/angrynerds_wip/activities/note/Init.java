@@ -32,6 +32,7 @@ public class Init extends AppCompatActivity {
     }
 
     private void initApplicationLogic () {
+        //TODO Leere Notiz bzw. übergebene Notiz einfügen
         mApplicationLogic = new ApplicationLogic(MockData.getNoteSample(), mGui);
     }
 
@@ -49,7 +50,7 @@ public class Init extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        // super.onBackPressed();   //default action
-        mApplicationLogic.onBackPressed();   // customized action
+        super.onBackPressed();   //default action
+        //mApplicationLogic.onBackPressed();   // customized action
     }
 }
