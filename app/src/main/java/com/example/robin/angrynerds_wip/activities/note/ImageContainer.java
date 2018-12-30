@@ -8,7 +8,7 @@ import android.widget.LinearLayout;
 
 import com.example.robin.angrynerds_wip.R;
 
-public class ImageContainer implements IContainer{
+class ImageContainer implements IContainer{
 
     private Init mActivity;
     private String path;
@@ -18,10 +18,11 @@ public class ImageContainer implements IContainer{
     //TODO this constructor is only for testing purposes
     public ImageContainer(Init mActivity, int id){
         this.mActivity = mActivity;
-        this.image = BitmapFactory.decodeResource(mActivity.getResources(), R.drawable.note_sample_image1);
+        this.image = BitmapFactory.decodeResource(mActivity.getResources(), R.drawable.note_sample_image2);
         this.imageContainer = new LinearLayout(mActivity.getApplicationContext());
         imageContainer.setId(id);
         initiateView();
+        mActivity.registerForContextMenu(imageContainer);
     }
     //TODO testing for add image button
     public ImageContainer(Init mActivity, int id, boolean i){
@@ -35,7 +36,7 @@ public class ImageContainer implements IContainer{
     public ImageContainer(Init mActivity, int id, String path){
         this.mActivity = mActivity;
         this.path = path;
-        this.image = decodeSampledBitmapFromUri(400, 400);
+        this.image = decodeSampledBitmapFromUri(750, 750);
         this.imageContainer = new LinearLayout(mActivity.getApplicationContext());
         imageContainer.setId(id);
     }
@@ -47,14 +48,14 @@ public class ImageContainer implements IContainer{
     public Bitmap getImage() {return image;}
 
     private void initiateView(){
-        imageContainer.setLayoutParams(new LinearLayout.LayoutParams(450, 450));
+        imageContainer.setLayoutParams(new LinearLayout.LayoutParams(800, 800));
         imageContainer.setGravity(Gravity.CENTER);
 
         ImageView imageView = new ImageView(mActivity.getApplicationContext());
-        imageView.setLayoutParams(new LinearLayout.LayoutParams(400, 400));
+        imageView.setLayoutParams(new LinearLayout.LayoutParams(750, 750));
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         imageView.setImageBitmap(image);
-
+        imageView.setId(imageContainer.getId()*(-1));
         imageContainer.addView(imageView);
     }
 

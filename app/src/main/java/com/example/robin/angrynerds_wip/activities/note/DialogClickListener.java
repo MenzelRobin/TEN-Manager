@@ -2,14 +2,12 @@ package com.example.robin.angrynerds_wip.activities.note;
 
 import android.content.DialogInterface;
 
-import com.example.robin.angrynerds_wip.R;
+class DialogClickListener implements DialogInterface.OnClickListener{
 
-public class DialogClickListener implements DialogInterface.OnClickListener{
+    MediaImport mediaImport;
 
-    Gui mGui;
-
-    DialogClickListener(Gui gui) {
-        mGui = gui;
+    DialogClickListener(MediaImport mediaImport) {
+        this.mediaImport = mediaImport;
     }
 
     @Override
@@ -17,10 +15,10 @@ public class DialogClickListener implements DialogInterface.OnClickListener{
 
         switch ( option ) {
             case 0:
-                mGui.importImageFromCamera();
+                mediaImport.importImageFromCamera();
                 break;
             case 1:
-                mGui.importImageFromGallery();
+                mediaImport.importImageFromGallery();
                 break;
             default:
                 break;

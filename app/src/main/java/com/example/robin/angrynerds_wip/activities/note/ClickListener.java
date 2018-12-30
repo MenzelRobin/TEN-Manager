@@ -4,11 +4,11 @@ import android.view.View;
 
 import com.example.robin.angrynerds_wip.R;
 
-public class ClickListener implements View.OnClickListener  {
+class ClickListener implements View.OnClickListener  {
 
     ApplicationLogic mApplicationLogic;
 
-    public ClickListener(ApplicationLogic applicationLogic) {
+    ClickListener(ApplicationLogic applicationLogic) {
         mApplicationLogic = applicationLogic;
     }
 
@@ -16,11 +16,8 @@ public class ClickListener implements View.OnClickListener  {
     public void onClick(View view) {
 
         switch ( view.getId() ) {
-            /*case R.id.id_note_linearImageContainer:
-                mApplicationLogic.onImageClicked();
-                break;*/
             case R.id.id_note_tags:
-                //mApplicationLogic.onTagsClicked();
+                mApplicationLogic.onTagsClicked();
                 break;
             case R.id.id_note_title:
                 mApplicationLogic.onTitleClicked();
@@ -29,12 +26,9 @@ public class ClickListener implements View.OnClickListener  {
                 break;
         }
 
-        for(int id = 0; id<mApplicationLogic.getImageCount()-1; id++){
+        for(int id = 0; id<mApplicationLogic.getImageCount(); id++){
             if(view.getId() == id)
                 mApplicationLogic.onImageClicked(id);
         }
-
-        if(view.getId() == (int)100)
-            mApplicationLogic.onImageClicked(100);
     }
 }
