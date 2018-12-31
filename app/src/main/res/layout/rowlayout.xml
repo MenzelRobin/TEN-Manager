@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<CheckedTextView
-xmlns:android="http://schemas.android.com/apk/res/android"
-android:id="@+id/txt_lan"
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:hint="Aufgabe.."
-android:textSize="16dp"
-android:minHeight="?android:attr/listPreferredItemHeight"
-android:gravity="center_vertical"
-android:drawableLeft="?android:attr/listChoiceIndicatorMultiple"/>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+    <CheckBox
+        android:id="@+id/task_status"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:gravity="center_vertical"
+        />
+    <EditText
+        android:id="@+id/task_description"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:hint="Aufgabe.."
+        android:textSize="16dp"
+        android:gravity="center_vertical"/>
+</LinearLayout>

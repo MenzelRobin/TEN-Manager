@@ -19,6 +19,7 @@ import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.data.models.tens.Todo;
 import com.example.robin.angrynerds_wip.data.models.utils.MockData;
 import com.example.robin.angrynerds_wip.data.models.utils.Task;
+import com.example.robin.angrynerds_wip.data.models.utils.TasksAdapter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -43,22 +44,28 @@ public class Gui {
         mProgressBar = activity.findViewById(R.id.edit_todo_progressBar);
         mTasks = activity.findViewById(R.id.edit_todo_tasks);
 
-        // TEST
-        String [] aktienlisteArray = {
-                "Adidas - Kurs: 73,45 €",
-                "BASF - Kurs: 84,27 €",
-                "Bayer - Kurs: 128,60 €",
-        };
-        List<String> aktienListe = new ArrayList<>(Arrays.asList(aktienlisteArray));
+        ArrayList<String> strings = new ArrayList<String>();
+        strings.add("test");
 
-        //Todo todo = (Todo)MockData.tenMockData.get(0); // TODO: Muss an diese Klasse übergeben werden
-        //mTasks.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-        ArrayAdapter<String> adapter=
-                new ArrayAdapter<>(
+        // TODO: Muss an diese Klasse übergeben werden
+        ArrayList<Task> tasks = new ArrayList<Task>();
+        tasks.add(new Task("Erste Aufgabe", false));
+        tasks.add(new Task("Zweite Aufgabe", true));
+        tasks.add(new Task("Dritte Aufgabe", false));
+        tasks.add(new Task("Dritte Aufgabe", false));
+        tasks.add(new Task("Dritte Aufgabe", false));
+        tasks.add(new Task("Dritte Aufgabe", true));
+        tasks.add(new Task("Dritte Aufgabe", false));
+        tasks.add(new Task("Dritte Aufgabe", true));
+        tasks.add(new Task("Dritte Aufgabe", false));
+        tasks.add(new Task("Dritte Aufgabe", false));
+        tasks.add(new Task("Dritte Aufgabe", true));
+        mTasks.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+        TasksAdapter adapter=
+                new TasksAdapter(
                         activity, // Die aktuelle Activity
                         R.layout.rowlayout, // ID des Layouts für alle Listen-Elemente
-                        R.id.txt_lan, // ID des CheckedTextView-Elements, wie ein einzelnes Element angezeigt werden soll
-                        aktienListe); // Die Liste der Elemente
+                        tasks); // Die Liste der Elemente
         mTasks.setAdapter(adapter);
     }
 

@@ -55,9 +55,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/edit_todo_endDate"
         android:layout_above="@+id/edit_todo_progressBar"
-        android:background="@color/bgColor6">
+        android:background="#FFF">
     </ListView>
-
     <SeekBar
         android:id="@+id/edit_todo_progressBar"
         android:layout_width="match_parent"
