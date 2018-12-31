@@ -25,9 +25,9 @@ public class Read {
     public static ArrayList<TEN> getAllTENs() {
 
         ArrayList<TEN> allTEN = new ArrayList<TEN>();
-        Todo[] allTodos = Queries.getAllTodods();
-        Event[] allEvents = Queries.getAllEvents();
-        Note[] allNotes = Queries.getAllNotes();
+        Todo[] allTodos = Repository.getAllTodods();
+        Event[] allEvents = Repository.getAllEvents();
+        Note[] allNotes = Repository.getAllNotes();
         for (Todo t : allTodos
                 ) {
             allTEN.add(t);
@@ -59,7 +59,7 @@ public class Read {
         return null;
 
         /*
-        Todo todo = Queries.getTodoByID(id);
+        Todo todo = Repository.getTodoByID(id);
         return todo;
         */
     }
@@ -75,7 +75,7 @@ public class Read {
         return null;
 
         /*
-        Event event = Queries.getEventByID(id);
+        Event event = Repository.getEventByID(id);
         return event;
         */
     }
@@ -89,7 +89,7 @@ public class Read {
         }
         return null;
         /*
-        Note note = Queries.getNoteByID(id);
+        Note note = Repository.getNoteByID(id);
 
         return note;
         */

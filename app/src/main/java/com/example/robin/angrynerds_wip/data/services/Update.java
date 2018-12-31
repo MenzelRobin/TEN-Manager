@@ -1,9 +1,7 @@
 package com.example.robin.angrynerds_wip.data.services;
 
-import com.example.robin.angrynerds_wip.data.repository.Queries;
+import com.example.robin.angrynerds_wip.data.repository.Repository;
 import com.example.robin.angrynerds_wip.data.models.tens.TEN;
-
-import java.util.ArrayList;
 
 public class Update {
 
@@ -17,7 +15,7 @@ public class Update {
 
     public static void saveTEN(TEN newTen) {
         if (newTen.getID() == "") {
-            Queries.insertTEN(newTen);
-        } else Queries.updateTEN(newTen);
+            Repository.insertTEN(newTen);
+        } else Repository.updateTEN(newTen);
     }
 }

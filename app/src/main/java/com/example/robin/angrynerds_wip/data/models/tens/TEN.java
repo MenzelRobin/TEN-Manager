@@ -53,6 +53,7 @@ public class TEN {
     public String getID() {
         return ID;
     }
+    public void setID(String ID){ this.ID = ID; }
     public int getColor() {
         return color;
     }
