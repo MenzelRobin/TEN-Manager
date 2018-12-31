@@ -40,7 +40,7 @@ public class OverviewImageFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment OverviewImageFragment.
+     * @return A new instance of fragment OverviewNoteFragment.
      */
     // TODO: Rename and change types and number of parameters
     public static OverviewImageFragment newInstance(String param1, String param2) {

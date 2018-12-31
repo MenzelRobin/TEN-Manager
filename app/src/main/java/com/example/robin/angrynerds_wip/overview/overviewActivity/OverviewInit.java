@@ -4,11 +4,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import com.example.robin.angrynerds_wip.R;
 
-public class OverviewActivity extends AppCompatActivity {
+public class OverviewInit extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_overview);
     }
+
+    
+
 }

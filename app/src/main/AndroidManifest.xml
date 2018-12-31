@@ -16,7 +16,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".overview.overviewActivity.OverviewActivity"></activity>
+        <activity android:name=".overview.overviewActivity.OverviewInit"></activity>
     </application>
 
 </manifest>
