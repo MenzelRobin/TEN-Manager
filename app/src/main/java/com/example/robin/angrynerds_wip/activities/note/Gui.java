@@ -65,9 +65,6 @@ class Gui {
     void setmNoteImageView(HorizontalScrollView mNoteImageView) {
         this.mNoteImageView = mNoteImageView;
     }
-    /*void setmNoteImageContainer(LinearLayout mNoteImageContainer) {
-        this.mNoteImageContainer = mNoteImageContainer;
-    }*/
     void setmNoteImageContainer(ArrayList<IContainer> imageContainers) {
         for(IContainer mImage : imageContainers){
             mNoteImageContainer.addView(mImage.getImageContainer());

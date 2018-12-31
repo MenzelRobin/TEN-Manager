@@ -9,11 +9,11 @@ import android.view.View;
 
 import com.example.robin.angrynerds_wip.data.models.utils.MockData;
 
-//import com.example.robin.angrynerds_wip.activities.Data;
+//import com.example.robin.angrynerds_wip.activities.NoteData;
 
 public class Init extends AppCompatActivity {
 
-    private Data mData;
+    private NoteData mNoteData;
     private Gui mGui;
     private ApplicationLogic mApplicationLogic;
     private EventDispersion mEventDispersion;
@@ -28,7 +28,7 @@ public class Init extends AppCompatActivity {
     }
 
     private void initData(){
-        mData = new Data(this);
+        mNoteData = new NoteData(this);
     }
 
     private void initGUI () {
@@ -37,7 +37,7 @@ public class Init extends AppCompatActivity {
 
     private void initApplicationLogic () {
         //TODO Leere Notiz bzw. übergebene Notiz einfügen
-        mApplicationLogic = new ApplicationLogic(MockData.getNoteSample(), mGui, mData);
+        mApplicationLogic = new ApplicationLogic(MockData.getNoteSample(), mGui, mNoteData);
     }
 
     private void initEventDispersion() {
@@ -46,7 +46,7 @@ public class Init extends AppCompatActivity {
 
     @Override
     protected void onSaveInstanceState (Bundle outState) {
-        //Data.saveDataInBundle(outState);
+        //NoteData.saveDataInBundle(outState);
         super.onSaveInstanceState(outState);
     }
 

@@ -23,6 +23,16 @@
         android:lines="1"
         android:maxLines="1"
         android:scrollbars="horizontal"/>
+        <!--android:layout_toLeftOf="@id/id_note_deleteButton"-->
+
+    <!--<Button
+        android:id="@+id/id_note_deleteButton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@id/id_note_title"
+        android:layout_alignBottom="@id/id_note_title"
+        android:background="@drawable/ic_delete_white_24dp"/>-->
 
     <EditText
         android:id="@+id/id_note_description"

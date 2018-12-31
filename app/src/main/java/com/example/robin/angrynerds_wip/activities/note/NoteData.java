@@ -1,6 +1,5 @@
 package com.example.robin.angrynerds_wip.activities.note;
 
-import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
@@ -12,19 +11,19 @@ import com.example.robin.angrynerds_wip.data.models.tens.Note;
 
 import java.util.ArrayList;
 
-class Data {
+class NoteData {
 
     private Init mActivity;
     private Note mNote;
     private ArrayList<IContainer> mNoteImageContainers;
 
-    Data(Init activity){
+    NoteData(Init activity){
         mActivity = activity;
         mNoteImageContainers = new ArrayList<>();
 
-        for(int i = 1; i < 3; i++){
-            mNoteImageContainers.add(new ImageContainer(mActivity,i, BitmapFactory.decodeResource(mActivity.getResources(), R.drawable.note_sample_image2)));
-        }
+        mNoteImageContainers.add(new ImageContainer(mActivity,1, BitmapFactory.decodeResource(mActivity.getResources(), R.drawable.note_sample_image1)));
+        mNoteImageContainers.add(new ImageContainer(mActivity,2, BitmapFactory.decodeResource(mActivity.getResources(), R.drawable.note_sample_image2)));
+
         Drawable drawable = ContextCompat.getDrawable(mActivity,R.drawable.ic_add_a_photo_grey_24dp);
         mNoteImageContainers.add(new IconContainer(mActivity, 0, drawable));
     }
@@ -32,11 +31,15 @@ class Data {
     ArrayList<IContainer> getmNoteImageContainers() { return mNoteImageContainers; }
     IContainer getImageContainer(int id){ return mNoteImageContainers.get(id);}
     Init getActivity(){ return mActivity;}
+    Note getmNote(){return mNote;}
 
     Bitmap getImage(int id) {
         //TODO get original sized image from database
-        return BitmapFactory.decodeResource(mActivity.getResources(), R.drawable.note_sample_image2);
-        //return mNoteImageContainers.get(id).getImage();
+        if(id == 0)
+            return BitmapFactory.decodeResource(mActivity.getResources(), R.drawable.note_sample_image1);
+        else if(id == 1)
+            return BitmapFactory.decodeResource(mActivity.getResources(), R.drawable.note_sample_image2);
+        return mNoteImageContainers.get(id).getImage();
     }
 
     boolean checkImageID(int id){
