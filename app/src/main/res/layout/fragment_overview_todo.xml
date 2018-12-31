@@ -7,7 +7,7 @@
     android:layout_height="wrap_content"
     android:padding="25dp"
     android:background="@color/bgColor3"
-    tools:context=".overview.todoFragment.OverviewTodoFragment">
+    tools:context=".overview.todoFragment.OverviewTodoInit">
 
     <TextView
         android:id="@+id/id_overview_todo_textView_title"

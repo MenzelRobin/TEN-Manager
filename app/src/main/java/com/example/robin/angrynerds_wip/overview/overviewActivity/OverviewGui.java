@@ -1,10 +1,15 @@
 package com.example.robin.angrynerds_wip.overview.overviewActivity;
 
 import android.graphics.Color;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.robin.angrynerds_wip.R;
+
+import java.util.ArrayList;
 
 import static com.example.robin.angrynerds_wip.R.color.bgColor1;
 
@@ -15,8 +20,6 @@ public class OverviewGui {
     private LinearLayout mContainer1;
     private LinearLayout mContainer2;
 
-    private TextView mTextView;
-
 
     OverviewGui(OverviewInit pActivity){
         mActivity = pActivity;
@@ -24,12 +27,16 @@ public class OverviewGui {
 
         mContainer1 = mActivity.findViewById(R.id.id_overview_linearLayout_container1);
         mContainer2 = mActivity.findViewById(R.id.id_overview_linearLayout_container2);
-
-        mTextView = mActivity.findViewById(R.id.textView);
     }
 
-    //TODO: Löschen
-    public void setmTextView(String pText){
-        mTextView.setText(pText);
+    public void insertFragments(ArrayList<Fragment> pFragments){
+        FragmentManager fragmentManager = mActivity.getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        for(Fragment fragment : pFragments) {
+            //Todo: Ziellayout variable machen irgendwie
+            fragmentTransaction.add(R.id.id_overview_linearLayout_container1, fragment);
+        }
+        fragmentTransaction.commit();
+        //Todo: Auf beide Container aufteilen @Runtime
     }
 }

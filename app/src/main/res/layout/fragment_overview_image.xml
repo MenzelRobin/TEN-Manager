@@ -4,7 +4,7 @@
         android:layout_height="wrap_content"
         xmlns:tools="http://schemas.android.com/tools"
         android:background="@color/colorPrimaryDark"
-        tools:context=".overview.imageFragment.OverviewImageFragment">
+        tools:context=".overview.imageFragment.OverviewImageInit">
 
         <ImageView
             android:id="@+id/id_overview_noteImage_View_image"

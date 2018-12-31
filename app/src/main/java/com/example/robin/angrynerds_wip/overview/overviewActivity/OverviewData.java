@@ -1,7 +1,5 @@
 package com.example.robin.angrynerds_wip.overview.overviewActivity;
 
-import android.util.Log;
-
 import com.example.robin.angrynerds_wip.data.models.tens.Event;
 import com.example.robin.angrynerds_wip.data.models.tens.Note;
 import com.example.robin.angrynerds_wip.data.models.tens.TEN;
@@ -13,53 +11,59 @@ import java.util.ArrayList;
 public class OverviewData {
 
     private OverviewInit mActivity;
-    private ArrayList<TEN> mTEN = new ArrayList();
+    private ArrayList<TEN> mData = new ArrayList();
+    private ArrayList<TEN> mCurrentData = new ArrayList();
 
     OverviewData(OverviewInit pActivity) {
         mActivity = pActivity;
-        pullTENs();
+        refresh();
     }
 
     // Gets all TENs from the Database
-    public void pullTENs(){
-        mTEN = Read.getAllTENs();
+    public void refresh(){
+        mData = Read.getAllTENs();
     }
 
-    // returns all loaded TENs
-    public ArrayList<TEN> getTENs(){
-        return mTEN;
+    // returns all current TENs
+    public ArrayList<TEN> getData(){
+        return mCurrentData;
     }
 
-    // returns all Todos from the loaded TENs
-    public ArrayList getTodos(){
-        ArrayList<Todo> todo = new ArrayList();
-        for(TEN ten : mTEN){
+    // Filters for all TENs
+    public void filterAll(){
+        mCurrentData = new ArrayList();
+        for(TEN ten : mData){
+            mCurrentData.add(ten);
+        }
+    }
+
+    // Filters all Todos into CurrentData
+    public void filterTodos(){
+        mCurrentData = new ArrayList();
+        for(TEN ten : mData){
             if(ten.getClass() == Todo.class){
-                todo.add((Todo) ten);
+                mCurrentData.add(ten);
             }
         }
-        return todo;
     }
 
-    // returns all Events from the loaded TENs
-    public ArrayList getEvents(){
-        ArrayList<Event> event = new ArrayList();
-        for(TEN ten : mTEN){
+    // Filters all Events into CurrentData
+    public void filterEvents(){
+        mCurrentData = new ArrayList();
+        for(TEN ten : mData){
             if(ten.getClass() == Event.class){
-                event.add((Event) ten);
+                mCurrentData.add((Event) ten);
             }
         }
-        return event;
     }
 
-    // returns all Notes from the loaded TENs
-    public ArrayList<Note> getNotes(){
-        ArrayList<Note> note = new ArrayList();
-        for(TEN ten : mTEN){
-            if(ten.getClass() == Note.class){
-                note.add((Note) ten);
+    // Filters all Notes into CurrentData
+    public void filterNotes(){
+        mCurrentData = new ArrayList();
+        for(TEN ten : mData) {
+            if (ten.getClass() == Note.class) {
+                mCurrentData.add(ten);
             }
         }
-        return note;
     }
 }
