@@ -27,6 +27,9 @@ class IconContainer implements IContainer {
     public Bitmap getImage(){
         Bitmap bitmap = ((BitmapDrawable)drawable).getBitmap();
         return bitmap;}
+    public void setImageContainerId(int id){
+        imageContainer.setId(id);
+    }
 
     private void initiateView(){
         imageContainer.setLayoutParams(new LinearLayout.LayoutParams(400, 800));

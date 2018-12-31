@@ -5,6 +5,7 @@ import android.widget.LinearLayout;
 
 interface IContainer {
 
+    void setImageContainerId(int i);
     LinearLayout getImageContainer();
     Bitmap getImage();
 }

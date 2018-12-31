@@ -22,6 +22,7 @@ class EventDispersion {
         if ( mApplicationLogic.checkImageID(view.getId()) ) {
             menu.add(MENUGROUPTOP, MENUITEMDELETEIMAGE, Menu.NONE, "Delete Image");
             id = view.getId();
+            mApplicationLogic.displayToast(String.valueOf(id));
         }
     }
 
