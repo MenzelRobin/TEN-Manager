@@ -60,6 +60,8 @@ class ImageContainer implements IContainer{
     }
     public String getPath() { return path; }
     public Bitmap getImage() {return image;}
+    public void setImageContainerId(int id){ imageContainer.setId(id);
+    }
 
     private void initiateView(){
         imageContainer.setLayoutParams(new LinearLayout.LayoutParams(width + 50, height + 50));
@@ -69,7 +71,7 @@ class ImageContainer implements IContainer{
         imageView.setLayoutParams(new LinearLayout.LayoutParams(width, height));
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         imageView.setImageBitmap(image);
-        imageView.setId(imageContainer.getId()*(-1));
+        //imageView.setId(imageContainer.getId()*(-1));
         imageContainer.addView(imageView);
     }
 

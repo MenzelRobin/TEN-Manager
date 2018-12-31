@@ -56,7 +56,9 @@ class ApplicationLogic {
                 if(resultCode == -1){
 
                     Bundle extras = data.getExtras();
+                    mGui.displayToast(mNoteData.getActivity(), String.valueOf(mNoteData.getmNoteImageContainers().size()));
                     mNoteData.saveImage((Bitmap) extras.get("data"));
+                    refreshImages();
                     //TODO update image view
                 }
                 break;
@@ -67,6 +69,7 @@ class ApplicationLogic {
                         mGui.displayToast(mNoteData.getActivity(), "Image Path Error");
                     else {
                         mNoteData.copyImage(selectedImage);
+
                         //TODO does not work atm
                     }
                     //TODO update image view
@@ -85,7 +88,7 @@ class ApplicationLogic {
         if(id==0)
             mNoteData.importMedia();
         else{
-            ImageAlertDialog imageAlertDialog = new ImageAlertDialog(mNoteData.getImage(id-1));
+            ImageAlertDialog imageAlertDialog = new ImageAlertDialog(mNoteData.getImage(id));
             imageAlertDialog.display(mNoteData.getActivity());
         }
     }
@@ -100,8 +103,17 @@ class ApplicationLogic {
     }
 
     void deleteImage(int id) {
-        mGui.displayToast(mNoteData.getActivity(), String.valueOf(id));
-        //TODO delete image from source
-        //TODO ChangeListener
+        //mGui.displayToast(mNoteData.getActivity(), String.valueOf(id));
+        mNoteData.deleteImage(id);
+        refreshImages();
+    }
+
+    private void refreshImages(){
+        mGui.getmNoteImageContainer().removeAllViews();
+        mGui.setmNoteImageContainer(mNoteData.getmNoteImageContainers());
+    }
+
+    void displayToast(String s){
+        mGui.displayToast(mNoteData.getActivity(), s);
     }
 }
