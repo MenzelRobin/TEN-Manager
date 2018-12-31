@@ -20,6 +20,10 @@ import com.example.robin.angrynerds_wip.data.models.tens.Todo;
 import com.example.robin.angrynerds_wip.data.models.utils.MockData;
 import com.example.robin.angrynerds_wip.data.models.utils.Task;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class Gui {
 
     private EditText mTitle;
@@ -39,10 +43,22 @@ public class Gui {
         mProgressBar = activity.findViewById(R.id.edit_todo_progressBar);
         mTasks = activity.findViewById(R.id.edit_todo_tasks);
 
-        Todo todo = (Todo)MockData.tenMockData.get(0); // TODO: Muss an diese Klasse übergeben werden
-        mTasks.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-        ArrayAdapter<Task> adapter= new ArrayAdapter<Task>(activity,
-                R.layout.activity_rowlayout, R.id.txt_lan, todo.getTasks());
+        // TEST
+        String [] aktienlisteArray = {
+                "Adidas - Kurs: 73,45 €",
+                "BASF - Kurs: 84,27 €",
+                "Bayer - Kurs: 128,60 €",
+        };
+        List<String> aktienListe = new ArrayList<>(Arrays.asList(aktienlisteArray));
+
+        //Todo todo = (Todo)MockData.tenMockData.get(0); // TODO: Muss an diese Klasse übergeben werden
+        //mTasks.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+        ArrayAdapter<String> adapter=
+                new ArrayAdapter<>(
+                        activity, // Die aktuelle Activity
+                        R.layout.rowlayout, // ID des Layouts für alle Listen-Elemente
+                        R.id.txt_lan, // ID des CheckedTextView-Elements, wie ein einzelnes Element angezeigt werden soll
+                        aktienListe); // Die Liste der Elemente
         mTasks.setAdapter(adapter);
     }
 

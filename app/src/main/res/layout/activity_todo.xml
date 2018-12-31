@@ -9,7 +9,6 @@
     android:layout_marginRight="10dp"
     android:layout_marginBottom="10dp">
 
-
     <EditText
         android:id="@+id/edit_todo_title"
         android:layout_height="wrap_content"
@@ -40,13 +39,15 @@
         android:id="@+id/edit_todo_startDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/edit_todo_text"/>
+        android:layout_below="@id/edit_todo_text"
+        android:hint="Startdatum"/>
 
     <Button
         android:id="@+id/edit_todo_endDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/edit_todo_startDate"/>
+        android:layout_below="@id/edit_todo_startDate"
+        android:hint="Enddatum"/>
 
     <ListView
         android:id="@+id/edit_todo_tasks"
@@ -54,8 +55,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/edit_todo_endDate"
         android:layout_above="@+id/edit_todo_progressBar"
-        android:background="@color/TextWhite">
-
+        android:background="@color/bgColor6">
     </ListView>
 
     <SeekBar
