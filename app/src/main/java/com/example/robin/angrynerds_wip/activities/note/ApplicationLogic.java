@@ -12,18 +12,18 @@ class ApplicationLogic {
 
     private Note mNote;
     private Gui mGui;
-    private Data mData;
+    private NoteData mNoteData;
 
-    ApplicationLogic(Note note, Gui gui, Data data) {
+    ApplicationLogic(Note note, Gui gui, NoteData noteData) {
         mNote = note;
         mGui = gui;
-        mData = data;
+        mNoteData = noteData;
         initGui();
         initListener();
     }
 
     int getImageCount(){
-        return mData.getmNoteImageContainers().size();
+        return mNoteData.getmNoteImageContainers().size();
     }
 
     private void initGui() {
@@ -37,14 +37,14 @@ class ApplicationLogic {
         mGui.getmNoteTitle().setOnClickListener(clickListener);
         mGui.getmNoteImageContainer().setOnClickListener(clickListener);
         mGui.getmNoteTags().setOnClickListener(clickListener);
-        for(IContainer mImage:mData.getmNoteImageContainers()){
+        for(IContainer mImage: mNoteData.getmNoteImageContainers()){
             mImage.getImageContainer().setOnClickListener(clickListener);
         }
     }
 
     private void dataToGui() {
         mGui.setmNoteTitle(mNote.getTitle());
-        mGui.setmNoteImageContainer(mData.getmNoteImageContainers());
+        mGui.setmNoteImageContainer(mNoteData.getmNoteImageContainers());
         mGui.setmNoteDescription(mNote.getDescription());
         mGui.setmNoteTags(mNote.getTags());
         mGui.setBackgroundColor(mNote.getColor());
@@ -56,7 +56,7 @@ class ApplicationLogic {
                 if(resultCode == -1){
 
                     Bundle extras = data.getExtras();
-                    mData.saveImage((Bitmap) extras.get("data"));
+                    mNoteData.saveImage((Bitmap) extras.get("data"));
                     //TODO update image view
                 }
                 break;
@@ -64,9 +64,9 @@ class ApplicationLogic {
                 if(resultCode == -1){
                     Uri selectedImage = data.getData();
                     if(selectedImage == null)
-                        mGui.displayToast(mData.getActivity(), "Image Path Error");
+                        mGui.displayToast(mNoteData.getActivity(), "Image Path Error");
                     else {
-                        mData.copyImage(selectedImage);
+                        mNoteData.copyImage(selectedImage);
                         //TODO does not work atm
                     }
                     //TODO update image view
@@ -75,7 +75,7 @@ class ApplicationLogic {
         }
     }
 
-    public void onBackPressed() {}
+    void onBackPressed() {}
 
     void onTitleClicked() {
         mGui.getmNoteTitle().setCursorVisible(true);
@@ -83,25 +83,25 @@ class ApplicationLogic {
 
     void onImageClicked(int id){
         if(id==0)
-            mData.importMedia();
+            mNoteData.importMedia();
         else{
-            ImageAlertDialog imageAlertDialog = new ImageAlertDialog(mData.getImage(id-1));
-            imageAlertDialog.display(mData.getActivity());
+            ImageAlertDialog imageAlertDialog = new ImageAlertDialog(mNoteData.getImage(id-1));
+            imageAlertDialog.display(mNoteData.getActivity());
         }
     }
 
     void onTagsClicked(){
-        TagsAlertDialog tagsAlertDialog = new TagsAlertDialog(mNote.getTags());
-        tagsAlertDialog.display(mData.getActivity());
+        Intent intent = new Intent(mNoteData.getActivity(), com.example.robin.angrynerds_wip.activities.note.tageditor.TagActivity.class);
+        mNoteData.getActivity().startActivity(intent); // Activity Starten
     }
 
     boolean checkImageID(int id){
-        return mData.checkImageID(id);
+        return mNoteData.checkImageID(id);
     }
 
-    public void deleteImage(int id) {
-        mGui.displayToast(mData.getActivity(), String.valueOf(id));
+    void deleteImage(int id) {
+        mGui.displayToast(mNoteData.getActivity(), String.valueOf(id));
         //TODO delete image from source
-        //ChangeListener
+        //TODO ChangeListener
     }
 }

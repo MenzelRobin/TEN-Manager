@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/id_note_tagOverview_background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/note_black"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp">
+
+        <ListView
+            android:id="@+id/id_note_tagOverview_listView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@null"
+            android:dividerHeight="0dp"
+            android:textColor="@color/note_textWhite">
+        </ListView>
+
+        <Button
+            android:id="@+id/id_note_tagOverview_addButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/id_note_tagOverview_listView"
+            android:text="@string/note_tagoverview_addButton"
+            android:textColor="@color/note_textWhite"
+            android:background="@color/note_transparent"/>
+
+    </RelativeLayout>
+</RelativeLayout>
