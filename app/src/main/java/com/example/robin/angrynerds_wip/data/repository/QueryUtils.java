@@ -1,4 +1,4 @@
-package com.example.robin.angrynerds_wip.data.repository.converter.sub_converter;
+package com.example.robin.angrynerds_wip.data.repository;
 
 import com.couchbase.lite.CouchbaseLiteException;
 import com.couchbase.lite.MutableDocument;
@@ -16,11 +16,12 @@ public class QueryUtils {
     }
 
     public boolean updateCompleteDocument(TEN ten, MutableDocument mutableTENDocument){
-        mutableTENDocument.setString("type", ten.getClass().getName());
+        //TODO muss durch die Database Constants ausgetauscht werden, ansonsten crasht die app wenn man die Paketstruktur ändert
+        mutableTENDocument.setString(DatabaseConstants.TYPE_KEY, ten.getClass().getName());
         mutableTENDocument.setDate("dateOfCreation", ten.getDateOfCreation());
         try {
 
-            mutableTENDocument.setString(DatabaseManager.OBJECT_KEY, this.objectMapper.writeValueAsString(ten));
+            mutableTENDocument.setString(DatabaseConstants.OBJECT_KEY, this.objectMapper.writeValueAsString(ten));
             try {
                 DatabaseManager.getDatabase().save(mutableTENDocument);
                 return true;

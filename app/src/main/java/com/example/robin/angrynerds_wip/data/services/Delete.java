@@ -5,13 +5,8 @@ import com.example.robin.angrynerds_wip.data.models.tens.TEN;
 
 public class Delete {
 
-    private Repository repository;
-
-    public Delete(){
-        this.repository = new Repository();
-    }
-
-    public void deleteTEN(TEN ten) {
-        this.repository.deleteTEN(ten.getID());
+    public static void deleteTEN(TEN ten) {
+        Repository repository = new Repository();
+        repository.deleteTEN(ten.getID());
     }
 }

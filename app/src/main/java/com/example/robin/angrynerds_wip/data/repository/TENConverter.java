@@ -1,4 +1,4 @@
-package com.example.robin.angrynerds_wip.data.repository.converter.sub_converter;
+package com.example.robin.angrynerds_wip.data.repository;
 
 import com.couchbase.lite.Document;
 import com.example.robin.angrynerds_wip.data.models.tens.Event;
@@ -17,20 +17,18 @@ public class TENConverter {
         this.objectMapper = new ObjectMapper();
     }
 
-    public Todo documentToTodo(Document document) {
-        String TodoasJSON = document.getString(DatabaseManager.OBJECT_KEY);
+    public Todo stringToTodo(String json) {
         try {
-            Todo todo = this.objectMapper.readValue(TodoasJSON, Todo.class);
+            Todo todo = this.objectMapper.readValue(json, Todo.class);
             return todo;
         } catch (IOException e) {
             return null;
         }
     }
 
-    public Event documentToEvent(Document eventDocument) {
-        String EventasJSON = eventDocument.getString(DatabaseManager.OBJECT_KEY);
+    public Event stringToEvent(String json) {
         try {
-            Event event = this.objectMapper.readValue(EventasJSON, Event.class);
+            Event event = this.objectMapper.readValue(json, Event.class);
             return event;
         } catch (IOException e) {
             return null;
@@ -38,10 +36,9 @@ public class TENConverter {
     }
 
 
-    public Note documentToNote(Document noteDocument) {
-        String EventasJSON = noteDocument.getString(DatabaseManager.OBJECT_KEY);
+    public Note stringToNote(String json) {
         try {
-            Note note = this.objectMapper.readValue(EventasJSON, Note.class);
+            Note note = this.objectMapper.readValue(json, Note.class);
             return note;
         } catch (IOException e) {
             return null;

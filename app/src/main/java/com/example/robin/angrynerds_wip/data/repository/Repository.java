@@ -7,38 +7,40 @@ import com.example.robin.angrynerds_wip.data.models.tens.Event;
 import com.example.robin.angrynerds_wip.data.models.tens.Note;
 import com.example.robin.angrynerds_wip.data.models.tens.TEN;
 import com.example.robin.angrynerds_wip.data.models.tens.Todo;
-import com.example.robin.angrynerds_wip.data.repository.converter.sub_converter.QueryUtils;
-import com.example.robin.angrynerds_wip.data.repository.converter.sub_converter.TENConverter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Repository {
     TENConverter tenConverter;
     QueryUtils queryUtils;
+    Queries queries;
 
     public Repository() {
         this.tenConverter = new TENConverter();
         this.queryUtils = new QueryUtils();
+        this.queries = new Queries();
     }
 
     //TODO Jan: jeweiliges Objekt mit übergebener ID zurückgeben (wenn kein Objekt mit ID dann return null)
     public Todo getTodoByID(String id) {
 
         Document todoDocument = DatabaseManager.getDatabase().getDocument(id);
-        Todo finalTodo = this.tenConverter.documentToTodo(todoDocument);
+        String json = todoDocument.getString(DatabaseConstants.OBJECT_KEY);
+        Todo finalTodo = this.tenConverter.stringToTodo(json);
         return finalTodo;
     }
 
     public Event getEventByID(String id) {
         Document eventDocument = DatabaseManager.getDatabase().getDocument(id);
-        Event finalEvent = this.tenConverter.documentToEvent(eventDocument);
+        String json = eventDocument.getString(DatabaseConstants.OBJECT_KEY);
+        Event finalEvent = this.tenConverter.stringToEvent(json);
         return finalEvent;
     }
 
     public Note getNoteByID(String id) {
         Document noteDocument = DatabaseManager.getDatabase().getDocument(id);
-        Note finalNote = this.tenConverter.documentToNote(noteDocument);
+        String json = noteDocument.getString(DatabaseConstants.OBJECT_KEY);
+        Note finalNote = this.tenConverter.stringToNote(json);
         return finalNote;
     }
 
@@ -59,6 +61,7 @@ public class Repository {
 
     //TODO Jan: alle vorhandenen TENs in einem Array übergeben
     public List<TEN> getAllTENs() {
+        queries.getAllTENs();
         return null;
     }
 

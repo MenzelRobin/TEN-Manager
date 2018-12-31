@@ -11,16 +11,16 @@ public class DatabaseManager {
 
     public static Database database = null;
     public static Context context = null;
-    public static final String DATABASENAME = "TENDB";
-    public static final String OBJECT_KEY = "ObjectKey";
 
-    public DatabaseManager(Context context) {
+
+    public static void initDatabase(Context context){
         try {
             DatabaseConfiguration config = new DatabaseConfiguration(context.getApplicationContext());
-            DatabaseManager.database = new Database(DatabaseManager.DATABASENAME, config);
+            DatabaseManager.database = new Database(DatabaseConstants.DATABASENAME, config);
         } catch (CouchbaseLiteException e) {
             Toast.makeText(context, "Fehler bei der Datenbankerstellung", Toast.LENGTH_LONG);
         }
+
     }
 
     public static Database getDatabase() {

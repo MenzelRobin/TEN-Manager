@@ -13,9 +13,10 @@ public class Update {
         Methods for saving TEN object
      --------------------------------------------------*/
 
-    public static void saveTEN(TEN newTen) {
+    public void saveTEN(TEN newTen) {
+        Repository repository = new Repository();
         if (newTen.getID() == "") {
-            Repository.insertTEN(newTen);
-        } else Repository.updateTEN(newTen);
+            repository.insertTEN(newTen);
+        } else repository.updateTEN(newTen);
     }
 }

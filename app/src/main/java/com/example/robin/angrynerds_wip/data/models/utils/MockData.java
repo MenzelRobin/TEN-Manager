@@ -19,7 +19,7 @@ public class MockData {
     //Verwendung mit MockData.tenMockData
     public static ArrayList<TEN> tenMockData = new ArrayList<>();
 
-    public MockData(){
+    public MockData() {
         int[] bgColors = new int[]{
                 Color.parseColor("#DD2C00"),
                 Color.parseColor("#087f23"),
@@ -55,11 +55,11 @@ public class MockData {
                 RecurringType.YEARLY
         };
 
-        for(int i = 1; i<=10 ;i++){
-        tenMockData.add(new Todo("Todo " + i, bgColors[i-1], "This is a toDo.", tasks, new Date()));
-        tenMockData.add(new Event("Event " + i, bgColors[i-1], Calendar.getInstance().getTime(), reminder ,
-                new Address("Schlossallee", 1, "50674", "Köln"), recurringTypes[i/2 + 1]));
-        tenMockData.add(new Note("Note " + i, bgColors[i-1], "This is a note.", tags));
+        for (int i = 1; i <= 10; i++) {
+            MockData.tenMockData.add(new Todo("Todo " + i, bgColors[i - 1], "This is a toDo.", tasks, new Date()));
+            MockData.tenMockData.add(new Event("Event " + i, bgColors[i - 1], Calendar.getInstance().getTime(), reminder,
+                    new Address("Schlossallee", 1, "50674", "Köln"), recurringTypes[i % 5]));
+            MockData.tenMockData.add(new Note("Note " + i, bgColors[i - 1], "This is a note.", tags));
         }
     }
 }
