@@ -16,7 +16,6 @@ public class OverviewInit extends AppCompatActivity {
         initData();
         initGui();
         initController();
-        //setContentView(R.layout.activity_overview);
     }
 
     // Initializes the Controller

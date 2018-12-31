@@ -19,7 +19,9 @@ public class Read {
      --------------------------------------------------*/
     public static ArrayList<TEN> getAllTENs() {
         //MOCKDATA
-        return MockData.tenMockData;
+
+        MockData md = new MockData();
+        return md.tenMockData;
     }
     /*
     public static ArrayList<TEN> getAllTENs() {
@@ -73,7 +75,7 @@ public class Read {
         */
     }
 
-    public static Note getNoteByID(String id) {
+    /*public static Note getNoteByID(String id) {
         //MOCKDATEN
         for(TEN ten : MockData.tenMockData)
         if (ten instanceof Note) {
@@ -86,5 +88,5 @@ public class Read {
 
         return note;
         */
-    }
+    //}
 }

@@ -1,5 +1,7 @@
 package com.example.robin.angrynerds_wip.overview.overviewActivity;
 
+import android.util.Log;
+
 import com.example.robin.angrynerds_wip.data.models.tens.Event;
 import com.example.robin.angrynerds_wip.data.models.tens.Note;
 import com.example.robin.angrynerds_wip.data.models.tens.TEN;
@@ -10,23 +12,26 @@ import java.util.ArrayList;
 
 public class OverviewData {
 
-    OverviewInit mActivity;
-    ArrayList<TEN> mTEN = new ArrayList();
-
+    private OverviewInit mActivity;
+    private ArrayList<TEN> mTEN = new ArrayList();
 
     OverviewData(OverviewInit pActivity) {
         mActivity = pActivity;
+        pullTENs();
     }
 
-    public void pullTEN(){
+    // Gets all TENs from the Database
+    public void pullTENs(){
         mTEN = Read.getAllTENs();
     }
 
-    public ArrayList<TEN> getTEN(){
+    // returns all loaded TENs
+    public ArrayList<TEN> getTENs(){
         return mTEN;
     }
 
-    public ArrayList getTodo(){
+    // returns all Todos from the loaded TENs
+    public ArrayList getTodos(){
         ArrayList<Todo> todo = new ArrayList();
         for(TEN ten : mTEN){
             if(ten.getClass() == Todo.class){
@@ -36,7 +41,8 @@ public class OverviewData {
         return todo;
     }
 
-    public ArrayList getEvent(){
+    // returns all Events from the loaded TENs
+    public ArrayList getEvents(){
         ArrayList<Event> event = new ArrayList();
         for(TEN ten : mTEN){
             if(ten.getClass() == Event.class){
@@ -46,7 +52,8 @@ public class OverviewData {
         return event;
     }
 
-    public ArrayList getNote(){
+    // returns all Notes from the loaded TENs
+    public ArrayList<Note> getNotes(){
         ArrayList<Note> note = new ArrayList();
         for(TEN ten : mTEN){
             if(ten.getClass() == Note.class){
