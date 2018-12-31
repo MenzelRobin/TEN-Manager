@@ -13,7 +13,7 @@ import com.example.robin.angrynerds_wip.data.models.utils.MockData;
 
 public class Init extends AppCompatActivity {
 
-    //private Data mData;
+    private Data mData;
     private Gui mGui;
     private ApplicationLogic mApplicationLogic;
     private EventDispersion mEventDispersion;
@@ -21,10 +21,14 @@ public class Init extends AppCompatActivity {
     @Override
     public void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //initData(savedInstanceState);
+        initData();
         initGUI();
         initApplicationLogic();
         initEventDispersion();
+    }
+
+    private void initData(){
+        mData = new Data(this);
     }
 
     private void initGUI () {
@@ -33,7 +37,7 @@ public class Init extends AppCompatActivity {
 
     private void initApplicationLogic () {
         //TODO Leere Notiz bzw. übergebene Notiz einfügen
-        mApplicationLogic = new ApplicationLogic(MockData.getNoteSample(), mGui);
+        mApplicationLogic = new ApplicationLogic(MockData.getNoteSample(), mGui, mData);
     }
 
     private void initEventDispersion() {
@@ -48,7 +52,7 @@ public class Init extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        // super.onActivityResult(requestCode, resultCode, data);
+        super.onActivityResult(requestCode, resultCode, data);
         mApplicationLogic.onActivityReturned(requestCode, resultCode, data);
     }
 

@@ -29,11 +29,11 @@ class IconContainer implements IContainer {
         return bitmap;}
 
     private void initiateView(){
-        imageContainer.setLayoutParams(new LinearLayout.LayoutParams(800, 800));
+        imageContainer.setLayoutParams(new LinearLayout.LayoutParams(400, 800));
         imageContainer.setGravity(Gravity.CENTER);
 
         ImageView imageView = new ImageView(mActivity.getApplicationContext());
-        imageView.setLayoutParams(new LinearLayout.LayoutParams(400, 400));
+        imageView.setLayoutParams(new LinearLayout.LayoutParams(300, 300));
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         imageView.setImageDrawable(drawable);
 

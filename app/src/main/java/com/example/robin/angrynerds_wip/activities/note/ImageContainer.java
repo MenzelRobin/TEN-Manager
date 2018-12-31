@@ -2,6 +2,7 @@ package com.example.robin.angrynerds_wip.activities.note;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.view.Gravity;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -14,29 +15,42 @@ class ImageContainer implements IContainer{
     private String path;
     private Bitmap image;
     private LinearLayout imageContainer;
+    private int width = 750;
+    private int height = 750;
 
     //TODO this constructor is only for testing purposes
-    public ImageContainer(Init mActivity, int id){
+    ImageContainer(Init mActivity, int id, Bitmap image){
         this.mActivity = mActivity;
-        this.image = BitmapFactory.decodeResource(mActivity.getResources(), R.drawable.note_sample_image2);
+
+        if (image.getWidth() >= image.getHeight()){
+            image = Bitmap.createBitmap(
+                    image,
+                    image.getWidth()/2 - image.getHeight()/2,
+                    0,
+                    image.getHeight(),
+                    image.getHeight()
+            );
+
+        }else{
+            image = Bitmap.createBitmap(
+                    image,
+                    0,
+                    image.getHeight()/2 - image.getWidth()/2,
+                    image.getWidth(),
+                    image.getWidth()
+            );
+        }
+        this.image=Bitmap.createScaledBitmap(image, 400, 400 ,false);
         this.imageContainer = new LinearLayout(mActivity.getApplicationContext());
         imageContainer.setId(id);
         initiateView();
         mActivity.registerForContextMenu(imageContainer);
     }
-    //TODO testing for add image button
-    public ImageContainer(Init mActivity, int id, boolean i){
-        this.mActivity = mActivity;
-        this.image = BitmapFactory.decodeResource(mActivity.getResources(), R.drawable.ic_add_a_photo_grey_24dp);
-        this.imageContainer = new LinearLayout(mActivity.getApplicationContext());
-        imageContainer.setId(id);
-        initiateView();
-    }
 
-    public ImageContainer(Init mActivity, int id, String path){
+    ImageContainer(Init mActivity, int id, String path){
         this.mActivity = mActivity;
         this.path = path;
-        this.image = decodeSampledBitmapFromUri(750, 750);
+        this.image = decodeSampledBitmapFromUri(width, height);
         this.imageContainer = new LinearLayout(mActivity.getApplicationContext());
         imageContainer.setId(id);
     }
@@ -48,11 +62,11 @@ class ImageContainer implements IContainer{
     public Bitmap getImage() {return image;}
 
     private void initiateView(){
-        imageContainer.setLayoutParams(new LinearLayout.LayoutParams(800, 800));
+        imageContainer.setLayoutParams(new LinearLayout.LayoutParams(width + 50, height + 50));
         imageContainer.setGravity(Gravity.CENTER);
 
         ImageView imageView = new ImageView(mActivity.getApplicationContext());
-        imageView.setLayoutParams(new LinearLayout.LayoutParams(750, 750));
+        imageView.setLayoutParams(new LinearLayout.LayoutParams(width, height));
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         imageView.setImageBitmap(image);
         imageView.setId(imageContainer.getId()*(-1));

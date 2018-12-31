@@ -10,8 +10,8 @@ class MediaImport {
 
     private Init mActivity;
 
-    MediaImport(Init mActivity) {
-        this.mActivity = mActivity;
+    MediaImport(Init activity) {
+        this.mActivity = activity;
         requestImageSource();
     }
 
@@ -35,8 +35,4 @@ class MediaImport {
                 android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         mActivity.startActivityForResult(pickPhoto , 1);
     }
-
-
-
-
 }
