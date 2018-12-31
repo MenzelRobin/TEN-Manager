@@ -26,7 +26,7 @@ class ClickListener implements View.OnClickListener  {
                 break;
         }
 
-        for(int id = 0; id<mApplicationLogic.getImageCount(); id++){
+        for(int id = 0; id<=mApplicationLogic.getImageCount(); id++){
             if(view.getId() == id)
                 mApplicationLogic.onImageClicked(id);
         }

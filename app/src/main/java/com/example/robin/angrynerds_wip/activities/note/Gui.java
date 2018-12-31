@@ -1,5 +1,6 @@
 package com.example.robin.angrynerds_wip.activities.note;
 
+import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
@@ -21,15 +22,24 @@ import java.util.ArrayList;
 
 class Gui {
 
-    private Init mActivity;
-
     private RelativeLayout mBackground;
     private EditText mNoteTitle;
     private HorizontalScrollView mNoteImageView;
     private LinearLayout mNoteImageContainer;
     private EditText mNoteDescription;
     private TextView mNoteTags;
-    private ArrayList<IContainer> mNoteImages;
+
+    Gui(Init activity) {
+
+        activity.setContentView(R.layout.activity_note);
+
+        mBackground = activity.findViewById(R.id.id_note_background);
+        mNoteTitle = activity.findViewById(R.id.id_note_title);
+        mNoteImageView = activity.findViewById(R.id.id_note_horizontalScrollView);
+        mNoteImageContainer = activity.findViewById(R.id.id_note_linearImageContainer);
+        mNoteDescription = activity.findViewById(R.id.id_note_description);
+        mNoteTags = activity.findViewById(R.id.id_note_tags);
+    }
 
     //Getters
     EditText getmNoteTitle() {
@@ -47,7 +57,6 @@ class Gui {
     TextView getmNoteTags() {
         return mNoteTags;
     }
-    ArrayList<IContainer> getmNoteImages() { return mNoteImages; }
     //Setters
     void setBackgroundColor(int bgColor) { mBackground.setBackgroundColor(bgColor);}
     void setmNoteTitle(String mNoteTitle) {
@@ -56,75 +65,33 @@ class Gui {
     void setmNoteImageView(HorizontalScrollView mNoteImageView) {
         this.mNoteImageView = mNoteImageView;
     }
-    void setmNoteImageContainer(LinearLayout mNoteImageContainer) {
+    /*void setmNoteImageContainer(LinearLayout mNoteImageContainer) {
         this.mNoteImageContainer = mNoteImageContainer;
+    }*/
+    void setmNoteImageContainer(ArrayList<IContainer> imageContainers) {
+        for(IContainer mImage : imageContainers){
+            mNoteImageContainer.addView(mImage.getImageContainer());
+        }
     }
     void setmNoteDescription(String mNoteDescription) {
         this.mNoteDescription.setText(mNoteDescription);
     }
     void setmNoteTags(ArrayList<String> mNoteTags) {
-        // TODO method for string insertion
-        String displayText = "";
+        this.mNoteTags.setText(formatTags(mNoteTags));
+    }
+
+    private String formatTags(ArrayList<String> mNoteTags) {
+        String concatString = "";
         int size = mNoteTags.size();
         for(int i = 0; i < size; i++){
-            displayText += "#" + mNoteTags.get(i);
+            concatString += "#" + mNoteTags.get(i);
             if(i<size-1)
-                displayText += "              ";
+                concatString += "              ";
         }
-        this.mNoteTags.setText(displayText);
+        return concatString;
     }
 
-    Gui(Init activity) {
-
-        activity.setContentView(R.layout.activity_note);
-
-        mActivity = activity;
-        mBackground = activity.findViewById(R.id.id_note_background);
-        mNoteTitle = activity.findViewById(R.id.id_note_title);
-        mNoteImageView = activity.findViewById(R.id.id_note_horizontalScrollView);
-        mNoteImageContainer = activity.findViewById(R.id.id_note_linearImageContainer);
-        mNoteDescription = activity.findViewById(R.id.id_note_description);
-        mNoteTags = activity.findViewById(R.id.id_note_tags);
-        mNoteImages = new ArrayList<>();
-
-        for(int i = 1; i < 3; i++){
-            mNoteImages.add(new ImageContainer(mActivity,i));
-        }
-        Drawable drawable = ContextCompat.getDrawable(mActivity,R.drawable.ic_add_a_photo_grey_24dp);
-        mNoteImages.add(new IconContainer(mActivity, 0, drawable));
-
-        for(IContainer mImage : mNoteImages){
-            mNoteImageContainer.addView(mImage.getImageContainer());
-        }
-    }
-
-    void displayToast(String s) {
-        Toast.makeText(mActivity, s, Toast.LENGTH_SHORT).show();
-    }
-
-    void displayImage(int id) {
-        Bitmap image = mNoteImages.get(id).getImage();
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
-        AlertDialog dialog = builder.create();
-        LayoutInflater inflater = mActivity.getLayoutInflater();
-        View dialogLayout = inflater.inflate(R.layout.activity_note_image_overlay, null);
-        dialog.setView(dialogLayout);
-        ImageView imageView = dialogLayout.findViewById(R.id.id_note_imageContainer);
-        imageView.setImageBitmap(image);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.show();
-    }
-
-    void importMedia(){
-        MediaImport mediaImport = new MediaImport(mActivity);
-    }
-
-    boolean checkImageID(int id){
-        for(IContainer mImage : mNoteImages){
-            if(mImage.getImageContainer().getId()==id)
-                return true;
-        }
-        return false;
+    void displayToast(Activity activity, String s) {
+        Toast.makeText(activity, s, Toast.LENGTH_SHORT).show();
     }
 }
