@@ -1,13 +1,9 @@
 package com.example.robin.angrynerds_wip.activities.note;
 
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.view.Gravity;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-
-import com.example.robin.angrynerds_wip.R;
 
 class ImageContainer implements IContainer{
 
@@ -19,40 +15,34 @@ class ImageContainer implements IContainer{
     private int height = 750;
 
     //TODO this constructor is only for testing purposes
-    ImageContainer(Init mActivity, int id, Bitmap image){
+    ImageContainer(Init mActivity, int id, Bitmap originalImage){
         this.mActivity = mActivity;
+        this.image = originalImage;
+        Bitmap scaledImage;
 
-        if (image.getWidth() >= image.getHeight()){
-            image = Bitmap.createBitmap(
-                    image,
-                    image.getWidth()/2 - image.getHeight()/2,
+        if (originalImage.getWidth() >= originalImage.getHeight()){
+            originalImage = Bitmap.createBitmap(
+                    originalImage,
+                    originalImage.getWidth()/2 - originalImage.getHeight()/2,
                     0,
-                    image.getHeight(),
-                    image.getHeight()
+                    originalImage.getHeight(),
+                    originalImage.getHeight()
             );
 
         }else{
-            image = Bitmap.createBitmap(
-                    image,
+            originalImage = Bitmap.createBitmap(
+                    originalImage,
                     0,
-                    image.getHeight()/2 - image.getWidth()/2,
-                    image.getWidth(),
-                    image.getWidth()
+                    originalImage.getHeight()/2 - originalImage.getWidth()/2,
+                    originalImage.getWidth(),
+                    originalImage.getWidth()
             );
         }
-        this.image=Bitmap.createScaledBitmap(image, 400, 400 ,false);
+        scaledImage=Bitmap.createScaledBitmap(originalImage, width, height ,true);
         this.imageContainer = new LinearLayout(mActivity.getApplicationContext());
         imageContainer.setId(id);
-        initiateView();
+        initiateView(scaledImage);
         mActivity.registerForContextMenu(imageContainer);
-    }
-
-    ImageContainer(Init mActivity, int id, String path){
-        this.mActivity = mActivity;
-        this.path = path;
-        this.image = decodeSampledBitmapFromUri(width, height);
-        this.imageContainer = new LinearLayout(mActivity.getApplicationContext());
-        imageContainer.setId(id);
     }
 
     public LinearLayout getImageContainer() {
@@ -63,16 +53,23 @@ class ImageContainer implements IContainer{
     public void setImageContainerId(int id){ imageContainer.setId(id);
     }
 
-    private void initiateView(){
+    private void initiateView(Bitmap scaledImage){
         imageContainer.setLayoutParams(new LinearLayout.LayoutParams(width + 50, height + 50));
         imageContainer.setGravity(Gravity.CENTER);
 
         ImageView imageView = new ImageView(mActivity.getApplicationContext());
         imageView.setLayoutParams(new LinearLayout.LayoutParams(width, height));
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        imageView.setImageBitmap(image);
-        //imageView.setId(imageContainer.getId()*(-1));
+        imageView.setImageBitmap(scaledImage);
         imageContainer.addView(imageView);
+    }
+    /*
+    ImageContainer(Init mActivity, int id, String path){
+        this.mActivity = mActivity;
+        this.path = path;
+        this.image = decodeSampledBitmapFromUri(width, height);
+        this.imageContainer = new LinearLayout(mActivity.getApplicationContext());
+        imageContainer.setId(id);
     }
 
     private Bitmap decodeSampledBitmapFromUri(int reqWidth, int reqHeight) {
@@ -108,4 +105,5 @@ class ImageContainer implements IContainer{
         }
         return inSampleSize;
     }
+    */
 }

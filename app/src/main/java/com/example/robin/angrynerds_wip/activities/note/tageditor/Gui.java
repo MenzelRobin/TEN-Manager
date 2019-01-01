@@ -45,8 +45,6 @@ class Gui {
     }
 
     void initiateListView(RowViewAdapter adapter){
-        //String[] tagArray = mNote.getTags().toArray(new String[0]);
-        //RowViewAdapter adapter = new RowViewAdapter(activity, tagArray);
         mListView.setAdapter(adapter);
     }
 

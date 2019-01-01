@@ -62,6 +62,12 @@
 
     </HorizontalScrollView>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/id_note_horizontalScrollView"
+        android:background="@color/note_darkBar"/>
+
     <TextView
         android:id="@+id/id_note_tags"
         android:layout_width="match_parent"

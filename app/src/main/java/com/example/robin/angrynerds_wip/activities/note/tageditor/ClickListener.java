@@ -6,7 +6,7 @@ import com.example.robin.angrynerds_wip.R;
 
 class ClickListener implements View.OnClickListener  {
 
-    ApplicationLogic mApplicationLogic;
+    private ApplicationLogic mApplicationLogic;
 
     ClickListener(ApplicationLogic applicationLogic) {
         mApplicationLogic = applicationLogic;

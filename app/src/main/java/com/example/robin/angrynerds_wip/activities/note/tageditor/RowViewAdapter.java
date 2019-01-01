@@ -18,7 +18,7 @@ public class RowViewAdapter extends ArrayAdapter<String>{
     private ApplicationLogic applicationLogic;
     private final ArrayList<String> values;
 
-    public RowViewAdapter(Context context, ArrayList<String> values, ApplicationLogic applicationLogic) {
+    RowViewAdapter(Context context, ArrayList<String> values, ApplicationLogic applicationLogic) {
         super(context, -1, values);
         this.context = context;
         this.values = values;

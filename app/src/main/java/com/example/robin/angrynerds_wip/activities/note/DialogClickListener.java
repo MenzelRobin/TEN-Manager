@@ -4,7 +4,7 @@ import android.content.DialogInterface;
 
 class DialogClickListener implements DialogInterface.OnClickListener{
 
-    MediaImport mediaImport;
+    private MediaImport mediaImport;
 
     DialogClickListener(MediaImport mediaImport) {
         this.mediaImport = mediaImport;

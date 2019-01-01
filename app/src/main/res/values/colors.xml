@@ -21,6 +21,7 @@
     <color name="colorGrey">#C0C0C0</color>
     <color name="note_black">#000000</color>
     <color name="note_transparent">#00000000</color>
+    <color name="note_darkBar">#3d3d3d</color>
 
     <integer-array name="bgColors">
         <item>@color/bgColor1</item>

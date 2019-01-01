@@ -18,11 +18,9 @@ class EventDispersion {
     }
 
     void onCreateContextMenu(ContextMenu menu, View view, ContextMenu.ContextMenuInfo menuInfo) {
-        // menu.setHeaderTitle("my context menu");
         if ( mApplicationLogic.checkImageID(view.getId()) ) {
             menu.add(MENUGROUPTOP, MENUITEMDELETEIMAGE, Menu.NONE, "Delete Image");
             id = view.getId();
-            mApplicationLogic.displayToast(String.valueOf(id));
         }
     }
 

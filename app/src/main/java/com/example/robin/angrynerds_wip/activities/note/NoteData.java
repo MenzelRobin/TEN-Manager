@@ -8,6 +8,7 @@ import android.support.v4.content.ContextCompat;
 
 import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.data.models.tens.Note;
+import com.example.robin.angrynerds_wip.data.models.utils.MockData;
 
 import java.util.ArrayList;
 
@@ -17,12 +18,15 @@ class NoteData {
     private Note mNote;
     private ArrayList<IContainer> mNoteImageContainers;
 
+    //TODO gegen Note und Images aus Database austauschen
     NoteData(Init activity){
         mActivity = activity;
+        mNote = MockData.getNoteSample();
         mNoteImageContainers = new ArrayList<>();
 
         mNoteImageContainers.add(new ImageContainer(mActivity,1, BitmapFactory.decodeResource(mActivity.getResources(), R.drawable.note_sample_image1)));
         mNoteImageContainers.add(new ImageContainer(mActivity,2, BitmapFactory.decodeResource(mActivity.getResources(), R.drawable.note_sample_image2)));
+        mNoteImageContainers.add(new ImageContainer(mActivity,3, BitmapFactory.decodeResource(mActivity.getResources(), R.drawable.note_sample_image3)));
 
         Drawable drawable = ContextCompat.getDrawable(mActivity,R.drawable.ic_add_a_photo_grey_24dp);
         mNoteImageContainers.add(new IconContainer(mActivity, 0, drawable));
@@ -35,11 +39,7 @@ class NoteData {
 
     Bitmap getImage(int id) {
         //TODO get original sized image from database
-        if(id == 1)
-            return BitmapFactory.decodeResource(mActivity.getResources(), R.drawable.note_sample_image1);
-        else if(id == 2)
-            return BitmapFactory.decodeResource(mActivity.getResources(), R.drawable.note_sample_image2);
-        return mNoteImageContainers.get(id).getImage();
+        return mNoteImageContainers.get(id-1).getImage();
     }
 
     boolean checkImageID(int id){
@@ -56,9 +56,12 @@ class NoteData {
 
     void copyImage(Uri selectedImage) {
         //copy image to path with uri
+        /*
         String path = "";
+
         ImageContainer imageContainer = new ImageContainer(mActivity, mNoteImageContainers.size(), path);
-        mNoteImageContainers.add(mNoteImageContainers.size()-2, imageContainer);
+        mNoteImageContainers.add(mNoteImageContainers.size()-1, imageContainer);
+        */
     }
 
     void saveImage(Bitmap image) {
@@ -69,7 +72,7 @@ class NoteData {
    void deleteImage(int id) {
         mNoteImageContainers.remove(id-1);
         for(int i = 1; i<mNoteImageContainers.size(); i++){
-            mNoteImageContainers.get(i-1).setImageContainerId(i++);
+            mNoteImageContainers.get(i-1).setImageContainerId(i);
         }
     }
 }

@@ -4,18 +4,18 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 
-import com.example.robin.angrynerds_wip.data.models.tens.Note;
+import java.io.IOException;
 
 
 class ApplicationLogic {
 
-    private Note mNote;
     private Gui mGui;
     private NoteData mNoteData;
+    private ClickListener mClickListener;
 
-    ApplicationLogic(Note note, Gui gui, NoteData noteData) {
-        mNote = note;
+    ApplicationLogic(Gui gui, NoteData noteData) {
         mGui = gui;
         mNoteData = noteData;
         initGui();
@@ -31,23 +31,26 @@ class ApplicationLogic {
     }
 
     private void initListener() {
-        ClickListener clickListener;
+        mClickListener = new ClickListener(this);
 
-        clickListener = new ClickListener(this);
-        mGui.getmNoteTitle().setOnClickListener(clickListener);
-        mGui.getmNoteImageContainer().setOnClickListener(clickListener);
-        mGui.getmNoteTags().setOnClickListener(clickListener);
+        mGui.getmNoteTitle().setOnClickListener(mClickListener);
+        mGui.getmNoteImageContainer().setOnClickListener(mClickListener);
+        mGui.getmNoteTags().setOnClickListener(mClickListener);
         for(IContainer mImage: mNoteData.getmNoteImageContainers()){
-            mImage.getImageContainer().setOnClickListener(clickListener);
+            setImageClickListener(mImage);
         }
     }
 
+    private void setImageClickListener(IContainer imageContainer){
+        imageContainer.getImageContainer().setOnClickListener(mClickListener);
+    }
+
     private void dataToGui() {
-        mGui.setmNoteTitle(mNote.getTitle());
+        mGui.setmNoteTitle(mNoteData.getmNote().getTitle());
         mGui.setmNoteImageContainer(mNoteData.getmNoteImageContainers());
-        mGui.setmNoteDescription(mNote.getDescription());
-        mGui.setmNoteTags(mNote.getTags());
-        mGui.setBackgroundColor(mNote.getColor());
+        mGui.setmNoteDescription(mNoteData.getmNote().getDescription());
+        mGui.setmNoteTags(mNoteData.getmNote().getTags());
+        mGui.setBackgroundColor(mNoteData.getmNote().getColor());
     }
 
     void onActivityReturned(int requestCode, int resultCode, Intent data) {
@@ -56,23 +59,22 @@ class ApplicationLogic {
                 if(resultCode == -1){
 
                     Bundle extras = data.getExtras();
-                    mGui.displayToast(mNoteData.getActivity(), String.valueOf(mNoteData.getmNoteImageContainers().size()));
                     mNoteData.saveImage((Bitmap) extras.get("data"));
+                    setImageClickListener(mNoteData.getImageContainer(mNoteData.getmNoteImageContainers().size()-2));
                     refreshImages();
-                    //TODO update image view
                 }
                 break;
             case 1:
                 if(resultCode == -1){
                     Uri selectedImage = data.getData();
-                    if(selectedImage == null)
-                        mGui.displayToast(mNoteData.getActivity(), "Image Path Error");
-                    else {
-                        mNoteData.copyImage(selectedImage);
-
-                        //TODO does not work atm
+                    try {
+                        Bitmap bitmap = MediaStore.Images.Media.getBitmap(mNoteData.getActivity().getContentResolver(), selectedImage);
+                        mNoteData.saveImage(bitmap);
+                        setImageClickListener(mNoteData.getImageContainer(mNoteData.getmNoteImageContainers().size()-2));
+                        refreshImages();
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
-                    //TODO update image view
                 }
                 break;
         }
@@ -103,7 +105,6 @@ class ApplicationLogic {
     }
 
     void deleteImage(int id) {
-        //mGui.displayToast(mNoteData.getActivity(), String.valueOf(id));
         mNoteData.deleteImage(id);
         refreshImages();
     }

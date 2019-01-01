@@ -6,7 +6,7 @@ import com.example.robin.angrynerds_wip.R;
 
 class ClickListener implements View.OnClickListener  {
 
-    ApplicationLogic mApplicationLogic;
+    private ApplicationLogic mApplicationLogic;
 
     ClickListener(ApplicationLogic applicationLogic) {
         mApplicationLogic = applicationLogic;
@@ -27,8 +27,10 @@ class ClickListener implements View.OnClickListener  {
         }
 
         for(int id = 0; id<=mApplicationLogic.getImageCount(); id++){
-            if(view.getId() == id)
+            if(view.getId() == id){
                 mApplicationLogic.onImageClicked(id);
+                return;
+            }
         }
     }
 }
