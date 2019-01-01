@@ -7,10 +7,6 @@ import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.example.robin.angrynerds_wip.data.models.utils.MockData;
-
-//import com.example.robin.angrynerds_wip.activities.NoteData;
-
 public class Init extends AppCompatActivity {
 
     private NoteData mNoteData;
@@ -37,7 +33,7 @@ public class Init extends AppCompatActivity {
 
     private void initApplicationLogic () {
         //TODO Leere Notiz bzw. übergebene Notiz einfügen
-        mApplicationLogic = new ApplicationLogic(MockData.getNoteSample(), mGui, mNoteData);
+        mApplicationLogic = new ApplicationLogic(mGui, mNoteData);
     }
 
     private void initEventDispersion() {
