@@ -7,6 +7,8 @@ import com.example.robin.angrynerds_wip.data.repository.DatabaseManager;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.awt.font.TextAttribute;
+
 public class QueryUtils {
 
     ObjectMapper objectMapper;
@@ -16,9 +18,8 @@ public class QueryUtils {
     }
 
     public boolean updateCompleteDocument(TEN ten, MutableDocument mutableTENDocument){
-        //TODO muss durch die Database Constants ausgetauscht werden, ansonsten crasht die app wenn man die Paketstruktur ändert
-        mutableTENDocument.setString(DatabaseConstants.TYPE_KEY, ten.getClass().getName());
-        mutableTENDocument.setDate("dateOfCreation", ten.getDateOfCreation());
+        mutableTENDocument = getTypeOfTEN(mutableTENDocument, ten);
+        mutableTENDocument.setDate(DatabaseConstants.CREATION_DATE_KEY, ten.getDateOfCreation());
         try {
 
             mutableTENDocument.setString(DatabaseConstants.OBJECT_KEY, this.objectMapper.writeValueAsString(ten));
@@ -31,5 +32,18 @@ public class QueryUtils {
         } catch (JsonProcessingException e) {
             return false;
         }
+    }
+
+    private MutableDocument getTypeOfTEN(MutableDocument mutableDocument, TEN ten){
+        if(ten.getClass().getName().contains("Event")){
+            mutableDocument.setString(DatabaseConstants.TYPE_KEY, DatabaseConstants.EVENT_TYPE);
+        }
+        else if (ten.getClass().getName().contains("Note")){
+            mutableDocument.setString(DatabaseConstants.TYPE_KEY, DatabaseConstants.NOTE_TYPE);
+        }
+        else if (ten.getClass().getName().contains("Todo")){
+            mutableDocument.setString(DatabaseConstants.TYPE_KEY, DatabaseConstants.TODO_TYPE);
+        }
+        return mutableDocument;
     }
 }
