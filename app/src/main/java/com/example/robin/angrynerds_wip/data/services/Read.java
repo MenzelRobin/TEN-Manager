@@ -13,6 +13,9 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class Read {
+     /* Ruthild Gilles (30.11.2018)
+     Class Read contains methods to get all or one specific TEN object.
+    */
 
     /*--------------------------------------------------
         Method to get all TEN objects in an arraylist
@@ -52,7 +55,7 @@ public class Read {
         //MOCKDATEN
 
         for (TEN ten : MockData.tenMockData)
-            if (ten instanceof Event) {
+            if (ten instanceof Todo) {
                 Todo t = (Todo) ten;
                 return t;
             }
