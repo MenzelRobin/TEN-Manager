@@ -1,5 +1,7 @@
 package com.example.robin.angrynerds_wip.data.models.tens;
 
+import android.os.Bundle;
+
 public class Note extends TEN{
 
     private String description;
@@ -17,6 +19,12 @@ public class Note extends TEN{
     public Note(String title, int color, String description){
         super(title, color);
         this.description = description;
+    }
+
+    public Bundle getBundle(){
+        Bundle bundle = super.getBundle();
+        bundle.putString("Description", description);
+        return bundle;
     }
 
     //Getter and Setter

@@ -1,5 +1,7 @@
 package com.example.robin.angrynerds_wip.data.models.tens;
 
+import android.os.Bundle;
+
 import com.example.robin.angrynerds_wip.data.models.utils.Task;
 
 public class Todo extends TEN {
@@ -33,6 +35,21 @@ public class Todo extends TEN {
         this.note = note;
         this.tasks = tasks;
         this.progress = calculateProgress();
+    }
+
+    public Bundle getBundle(){
+        Bundle bundle = super.getBundle();
+        bundle.putString("Note", note);
+        boolean[] status = new boolean[tasks.length];
+        String[] description = new String[tasks.length];
+        int index = 0;
+        for(Task task : tasks){
+            description[index] = task.getDescription();
+            status[index] = task.getStatus();
+        }
+        bundle.putBooleanArray("Status", status);
+        bundle.putStringArray("Description", description);
+        return bundle;
     }
 
     //Getters and Setters

@@ -24,7 +24,7 @@
 
 
     <TextView
-        android:id="@+id/id_overview_note_textView_text"
+        android:id="@+id/id_overview_note_textView_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/id_overview_note_textView_title"
@@ -40,8 +40,8 @@
         android:id="@+id/id_overview_note_view_line"
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:layout_below="@id/id_overview_note_textView_text"
-        android:layout_alignStart="@id/id_overview_note_textView_text"
+        android:layout_below="@id/id_overview_note_textView_description"
+        android:layout_alignStart="@id/id_overview_note_textView_description"
         android:textSize="16sp"
         android:layout_marginTop="15dp"
         android:background="@color/colorWhite"

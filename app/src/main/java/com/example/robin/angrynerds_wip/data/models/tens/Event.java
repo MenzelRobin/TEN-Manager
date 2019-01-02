@@ -1,5 +1,7 @@
 package com.example.robin.angrynerds_wip.data.models.tens;
 
+import android.os.Bundle;
+
 import com.example.robin.angrynerds_wip.data.models.utils.Address;
 import com.example.robin.angrynerds_wip.data.models.utils.RecurringType;
 
@@ -50,6 +52,13 @@ public class Event extends TEN {
         this.reminder = reminder;
         this.address = address;
         this.recurringType = recurringType;
+    }
+
+    public Bundle getBundle(){
+        Bundle bundle = super.getBundle();
+        bundle.putString("time", time.toString());
+        bundle.putAll(address.getBundle());
+        return bundle;
     }
 
     //Getter and Setter

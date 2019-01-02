@@ -7,15 +7,41 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.robin.angrynerds_wip.R;
-import com.example.robin.angrynerds_wip.data.models.tens.Note;
 
 public class OverviewNoteInit extends Fragment {
 
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_overview_note, container, false);
+    private OverviewNoteData mData;
+    private OverviewNoteGui mGui;
+    private OverviewNoteController mController;
+
+    public OverviewNoteInit(){
+        initData();
+        initGui();
+        initController();
     }
 
-    public void addData(Note pData){
+    public void initData(){
+        mData = new OverviewNoteData();
+    }
 
+    public void initGui(){
+        mGui = new OverviewNoteGui();
+    }
+
+    public void initController(){
+        mController = new OverviewNoteController(this, mData, mGui);
+    }
+
+    /* Replaced by Bundle Todo: Delete
+    public void addData(Note pData){
+        mController.addData(pData);
+    }*/
+
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_overview_note, container, false);
+        mController.addData(getArguments());
+        mController.addView(view);
+        mController.addOnClickListener();
+        return view;
     }
 }

@@ -1,5 +1,6 @@
 package com.example.robin.angrynerds_wip.overview.overviewActivity;
 
+import android.content.res.Configuration;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import com.example.robin.angrynerds_wip.R;
@@ -18,6 +19,18 @@ public class OverviewInit extends AppCompatActivity {
         initController();
     }
 
+    @Override
+    public void onConfigurationChanged(Configuration config){
+        initData();
+        initGui();
+        initController();
+    }
+
+    // Todo: Implement
+    protected void onResume(Bundle savedInstanceState) {
+        mController.onResume();
+    }
+
     // Initializes the Controller
     private void initData() {
         mData = new OverviewData(this);
@@ -30,7 +43,7 @@ public class OverviewInit extends AppCompatActivity {
 
     // Initializes the Controller
     private void initController() {
-        mController = new OverviewController(mData, mGui);
+        mController = new OverviewController(this, mData, mGui);
     }
 
 }
