@@ -5,9 +5,9 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.robin.angrynerds_wip.MainActivity;
-import com.example.robin.angrynerds_wip.data.models.tens.Note;
+import com.example.robin.angrynerds_wip.overview.superClasses.OverviewFragmentController;
 
-public class OverviewNoteController {
+public class OverviewNoteController extends OverviewFragmentController {
 
     OverviewNoteInit mFragment;
     OverviewNoteData mData;

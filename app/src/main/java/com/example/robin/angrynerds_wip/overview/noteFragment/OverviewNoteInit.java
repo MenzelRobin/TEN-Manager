@@ -1,14 +1,14 @@
 package com.example.robin.angrynerds_wip.overview.noteFragment;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.robin.angrynerds_wip.R;
+import com.example.robin.angrynerds_wip.overview.superClasses.OverviewFragmentInit;
 
-public class OverviewNoteInit extends Fragment {
+public class OverviewNoteInit extends OverviewFragmentInit {
 
     private OverviewNoteData mData;
     private OverviewNoteGui mGui;
