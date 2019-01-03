@@ -10,9 +10,6 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.Toast;
 
-import com.example.robin.angrynerds_wip.MainActivity;
-import com.example.robin.angrynerds_wip.data.Queries;
-
 import java.util.Date;
 
 public class ApplicationLogic extends AppCompatActivity {
@@ -48,7 +45,6 @@ public class ApplicationLogic extends AppCompatActivity {
         mGui.getmIconCloseReminder1().setOnClickListener(clickListener);
         mGui.getmIconCloseReminder2().setOnClickListener(clickListener);
         mGui.getmEditTextNewReminder().setOnClickListener(clickListener);
-        mGui.getmTestButton().setOnClickListener(clickListener);
     }
 
     public void dataToGui() {

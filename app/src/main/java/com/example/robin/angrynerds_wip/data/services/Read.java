@@ -4,6 +4,7 @@ import com.example.robin.angrynerds_wip.data.models.tens.Event;
 import com.example.robin.angrynerds_wip.data.models.tens.Note;
 import com.example.robin.angrynerds_wip.data.models.tens.TEN;
 import com.example.robin.angrynerds_wip.data.models.tens.Todo;
+import com.example.robin.angrynerds_wip.data.models.utils.MockData;
 import com.example.robin.angrynerds_wip.data.repository.Repository;
 
 import java.util.ArrayList;
@@ -18,10 +19,11 @@ public class Read {
         Method to get all TEN objects in an arraylist
      --------------------------------------------------*/
     public static ArrayList<TEN> getAllTENs() {
-        Repository repository = new Repository();
-        ArrayList<TEN> allTEN = new ArrayList<>();
-        for (TEN ten : repository.getAllTENs())
-            allTEN.add(ten);
+        //Repository repository = new Repository();
+        //ArrayList<TEN> allTEN = new ArrayList<>();
+        //for (TEN ten : repository.getAllTENs())
+        //    allTEN.add(ten);
+
         //MOCKDATA
 
         MockData md = new MockData();

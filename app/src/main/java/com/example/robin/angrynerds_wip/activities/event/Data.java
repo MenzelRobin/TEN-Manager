@@ -14,7 +14,7 @@ public class Data {
 
     Data(Init pActivity){
         mActivity = pActivity;
-        mEvent = new Event("Aufräumen", new Date(1546514305), new Date[]{}, new Address("Feldstr.",64, "40764", "Langenfeld (Rheinland)"));
+        mEvent = new Event();
     }
 
     public Event getmEvent(){
