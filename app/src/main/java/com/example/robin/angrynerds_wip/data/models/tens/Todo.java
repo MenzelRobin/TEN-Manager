@@ -63,8 +63,8 @@ public class Todo extends TEN {
     public Bundle getBundle(){
         Bundle bundle = super.getBundle();
         bundle.putString("Note", note);
-        boolean[] status = new boolean[tasks.length];
-        String[] description = new String[tasks.length];
+        boolean[] status = new boolean[tasks.size()];
+        String[] description = new String[tasks.size()];
         int index = 0;
         for(Task task : tasks){
             description[index] = task.getDescription();
