@@ -13,10 +13,6 @@ public class OverviewNoteGui extends OverviewFragmentGui {
     TextView mTitle;
     TextView mDescription;
 
-    // Constructor
-    public OverviewNoteGui(){
-    }
-
     // Adds the Fragment view to this Object
     public void addView(View pView){
         super.addView(pView);

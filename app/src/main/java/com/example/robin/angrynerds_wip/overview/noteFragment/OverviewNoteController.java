@@ -16,12 +16,6 @@ public class OverviewNoteController extends OverviewFragmentController {
         super(pFragment, pData, pGui);
     }
 
-    // Passes the View to the Guiobject and calls applyData()
-    public void addView(View pView){
-        super.addView(pView);
-        applyData();
-    }
-
     // Applies saved Data to the Gui
     public void applyData(){
         ((OverviewNoteGui)mGui).setTitle(mData.getTitle());

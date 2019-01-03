@@ -23,7 +23,14 @@ public abstract class OverviewFragmentController {
         mData.addData(pData);
     }
 
+    // Adds View to GUI Object and applies Data
     public void addView(View pView){
         mGui.addView(pView);
+        applyData();
     }
+    public void applyData(){}
+
+    public void addOnClickListener(){}
+
+    public void clicked(){}
 }
