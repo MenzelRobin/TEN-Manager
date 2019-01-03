@@ -1,4 +1,16 @@
 package com.example.robin.angrynerds_wip.overview.superClasses;
 
-public abstract class OverviewFragmentClickListener {
+import android.view.View;
+
+public class OverviewFragmentClickListener implements View.OnClickListener{
+    OverviewFragmentController mController;
+
+    public OverviewFragmentClickListener(OverviewFragmentController pController){
+        mController = pController;
+    }
+
+    @Override
+    public void onClick(View view){
+        mController.clicked();
+    }
 }

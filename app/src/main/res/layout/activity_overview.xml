@@ -115,8 +115,7 @@
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/footer"
-        android:background="@color/colorGrey">
+        android:id="@+id/footer">
 
 
         <Button
@@ -125,8 +124,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_alignParentLeft="true"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
+            android:paddingTop="5dp"
             android:background="@color/colorGrey"
             android:drawableTop="@drawable/ic_apps_black_24dp"
             android:text="Show All"
@@ -138,8 +136,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_toRightOf="@id/button3"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
+            android:paddingTop="5dp"
             android:background="@color/colorGrey"
             android:drawableTop="@drawable/ic_check_box_black_24dp"
             android:text="Todo's"
@@ -151,8 +148,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_toRightOf="@id/button4"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
+            android:paddingTop="5dp"
             android:background="@color/colorGrey"
             android:drawableTop="@drawable/ic_event_note_black_24dp"
             android:text="Events"
@@ -164,8 +160,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_toRightOf="@id/button5"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
+            android:paddingTop="5dp"
             android:background="@color/colorGrey"
             android:drawableTop="@drawable/ic_format_align_left_black_24dp"
             android:text="Notes"

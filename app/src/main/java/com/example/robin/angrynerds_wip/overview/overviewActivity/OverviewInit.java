@@ -21,9 +21,13 @@ public class OverviewInit extends AppCompatActivity {
 
     @Override
     public void onConfigurationChanged(Configuration config){
-        initData();
-        initGui();
-        initController();
+        //initData();
+        //initGui();
+        //initController();
+    }
+
+    public void longClick(){
+        mController.longClick();
     }
 
     // Todo: Implement

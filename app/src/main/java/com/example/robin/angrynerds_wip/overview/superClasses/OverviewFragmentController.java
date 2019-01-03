@@ -1,13 +1,15 @@
 package com.example.robin.angrynerds_wip.overview.superClasses;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
-import com.example.robin.angrynerds_wip.overview.noteFragment.OverviewNoteData;
-import com.example.robin.angrynerds_wip.overview.noteFragment.OverviewNoteGui;
-import com.example.robin.angrynerds_wip.overview.noteFragment.OverviewNoteInit;
+import com.example.robin.angrynerds_wip.overview.overviewActivity.OverviewInit;
 
 public abstract class OverviewFragmentController {
+
+    protected boolean mDeleteState;
+    protected boolean mMarked;
     protected OverviewFragmentInit mFragment;
     protected OverviewFragmentData mData;
     protected OverviewFragmentGui mGui;
@@ -16,6 +18,7 @@ public abstract class OverviewFragmentController {
         mFragment = pFragment;
         mData = pData;
         mGui = pGui;
+        mDeleteState = false;
     }
 
     // Passes Data to Dataobject
@@ -28,9 +31,38 @@ public abstract class OverviewFragmentController {
         mGui.addView(pView);
         applyData();
     }
+
     public void applyData(){}
 
     public void addOnClickListener(){}
 
+    public OverviewFragmentClickListener getOnClickListener(){
+        return new OverviewFragmentClickListener(this);
+    }
+
+    public void addOnLongClickListener(){}
+
+    public OverviewFragmentLongClickListener getOnLongClickListener(){
+        return new OverviewFragmentLongClickListener(this);
+    }
+
     public void clicked(){}
+
+    public void longClicked(){
+        if(mDeleteState) {
+            toggleMark();
+        } else {
+            ((OverviewInit) mFragment.getActivity()).longClick();
+            toggleMark();
+        }
+    }
+
+    public void toggleMark(){
+        mMarked = !mMarked;
+        Log.d("LOGTAG", "toggleMark() called.");
+    }
+
+    public void setDeleteState(boolean pDeleteState){
+        mDeleteState = pDeleteState;
+    }
 }

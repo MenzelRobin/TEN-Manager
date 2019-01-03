@@ -1,7 +1,6 @@
 package com.example.robin.angrynerds_wip.overview.noteFragment;
 
 import android.content.Intent;
-import android.view.View;
 
 import com.example.robin.angrynerds_wip.MainActivity;
 import com.example.robin.angrynerds_wip.overview.superClasses.OverviewFragmentController;
@@ -25,15 +24,23 @@ public class OverviewNoteController extends OverviewFragmentController {
 
     // Adds an OnClickListener to the Fragment
     public void addOnClickListener(){
-        OverviewNoteClickListener clickListener = new OverviewNoteClickListener(this);
-        ((OverviewNoteGui)mGui).getOverviewNote().setOnClickListener(clickListener);
+        ((OverviewNoteGui)mGui).getOverviewNote().setOnClickListener(super.getOnClickListener());
+    }
+
+    // Adds an OnLongClickListener to the Fragment
+    public void addOnLongClickListener(){
+        ((OverviewNoteGui)mGui).getOverviewNote().setOnLongClickListener(super.getOnLongClickListener());
     }
 
     // Called by the OnClickListener, starts a new Activity
     public void clicked(){
-        //Todo: Add Note Activity
-        Intent intent = new Intent(mFragment.getActivity(), MainActivity.class);
-        intent.putExtra("ID", mData.getID());
-        mFragment.startActivity(intent);
+        if(mDeleteState) {
+            toggleMark();
+        } else {
+            //Todo: Add Note Activity
+            Intent intent = new Intent(mFragment.getActivity(), MainActivity.class);
+            intent.putExtra("ID", mData.getID());
+            mFragment.startActivity(intent);
+        }
     }
 }

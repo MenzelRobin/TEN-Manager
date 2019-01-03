@@ -27,5 +27,10 @@ public abstract class OverviewFragmentInit extends Fragment {
         mController.addData(pArguments);
         mController.addView(pView);
         mController.addOnClickListener();
+        mController.addOnLongClickListener();
+    }
+
+    public void setDeleteState(boolean pDeleteState) {
+        mController.setDeleteState(pDeleteState);
     }
 }

@@ -3,6 +3,7 @@ package com.example.robin.angrynerds_wip.overview.overviewActivity;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 
 import com.example.robin.angrynerds_wip.data.models.tens.Event;
 import com.example.robin.angrynerds_wip.data.models.tens.Note;
@@ -10,10 +11,12 @@ import com.example.robin.angrynerds_wip.data.models.tens.TEN;
 import com.example.robin.angrynerds_wip.data.models.tens.Todo;
 import com.example.robin.angrynerds_wip.overview.eventFragment.OverviewEventInit;
 import com.example.robin.angrynerds_wip.overview.noteFragment.OverviewNoteInit;
+import com.example.robin.angrynerds_wip.overview.superClasses.OverviewFragmentInit;
 import com.example.robin.angrynerds_wip.overview.todoFragment.OverviewTodoInit;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 public class OverviewController {
 
@@ -71,5 +74,14 @@ public class OverviewController {
             counter++;
         }
         fragmentTransaction.commit();
+    }
+
+    public void longClick(){
+        List<Fragment> fragments = mActivity.getSupportFragmentManager().getFragments();
+        Log.d("LOGTAG", "Setting Delete State");
+        for(Fragment fragment : fragments){
+            ((OverviewFragmentInit)fragment).setDeleteState(true);
+        }
+        //Todo: Switch Header Fragment
     }
 }
