@@ -6,6 +6,24 @@
         android:background="@color/colorPrimaryDark"
         tools:context=".overview.imageFragment.OverviewImageInit">
 
+    <ImageView
+        android:id="@+id/id_overview_image_imageView_unchecked"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:marginRight="-5"
+        android:marginTop="-5"
+        android:src="@drawable/ic_circle_white_30dp" />
+
+    <ImageView
+        android:id="@+id/id_overview_image_imageView_checked"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:marginRight="-5"
+        android:marginTop="-5"
+        android:src="@drawable/ic_check_circle_white_30dp" />
+
         <ImageView
             android:id="@+id/id_overview_noteImage_View_image"
             android:layout_width="match_parent"

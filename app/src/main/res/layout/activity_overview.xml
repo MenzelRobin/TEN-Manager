@@ -11,7 +11,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/header"
+        android:id="@+id/id_overview_relativeLayout_header"
         android:padding="5dp"
         android:background="@color/colorGrey">
 
@@ -59,8 +59,8 @@
         android:id="@+id/id_overview_scrollView_center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/header"
-        android:layout_above="@id/footer"
+        android:layout_below="@id/id_overview_relativeLayout_header"
+        android:layout_above="@id/id_overview_linearLayout_footer"
         android:layout_marginTop="0dp"
         android:layout_marginBottom="0dp">
 
@@ -109,17 +109,17 @@
 
     </ScrollView>
 
+    <!-- Footer -->
 
     <LinearLayout
-
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/footer">
+        android:id="@+id/id_overview_linearLayout_footer">
 
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/id_overview_button_all"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -131,11 +131,11 @@
             android:textSize="10dp"/>
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/id_overview_button_todo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_toRightOf="@id/button3"
+            android:layout_toRightOf="@id/id_overview_button_all"
             android:paddingTop="5dp"
             android:background="@color/colorGrey"
             android:drawableTop="@drawable/ic_check_box_black_24dp"
@@ -143,11 +143,11 @@
             android:textSize="10dp"/>
 
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/id_overview_button_event"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_toRightOf="@id/button4"
+            android:layout_toRightOf="@id/id_overview_button_todo"
             android:paddingTop="5dp"
             android:background="@color/colorGrey"
             android:drawableTop="@drawable/ic_event_note_black_24dp"
@@ -155,11 +155,11 @@
             android:textSize="10dp"/>
 
         <Button
-            android:id="@+id/button6"
+            android:id="@+id/id_overview_button_note"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_toRightOf="@id/button5"
+            android:layout_toRightOf="@id/id_overview_button_event"
             android:paddingTop="5dp"
             android:background="@color/colorGrey"
             android:drawableTop="@drawable/ic_format_align_left_black_24dp"
