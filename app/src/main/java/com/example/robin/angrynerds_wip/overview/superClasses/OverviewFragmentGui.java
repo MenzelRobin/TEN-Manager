@@ -1,4 +1,10 @@
 package com.example.robin.angrynerds_wip.overview.superClasses;
 
-public class OverviewFragmentGui {
+import android.view.View;
+
+public abstract class OverviewFragmentGui {
+    protected View mView;
+    public void addView(View pView){
+        mView = pView;
+    }
 }

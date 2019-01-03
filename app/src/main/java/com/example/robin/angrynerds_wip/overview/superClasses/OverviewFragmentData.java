@@ -2,7 +2,7 @@ package com.example.robin.angrynerds_wip.overview.superClasses;
 
 import android.os.Bundle;
 
-public class OverviewFragmentData {
+public abstract class OverviewFragmentData {
     String mID;
     String mTitle;
     int mColor;

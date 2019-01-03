@@ -10,9 +10,10 @@ import com.example.robin.angrynerds_wip.overview.superClasses.OverviewFragmentIn
 
 public class OverviewNoteInit extends OverviewFragmentInit {
 
+    /* Replaced by superclass
     private OverviewNoteData mData;
     private OverviewNoteGui mGui;
-    private OverviewNoteController mController;
+    private OverviewNoteController mController;*/
 
     public OverviewNoteInit(){
         initData();
@@ -32,16 +33,11 @@ public class OverviewNoteInit extends OverviewFragmentInit {
         mController = new OverviewNoteController(this, mData, mGui);
     }
 
-    /* Replaced by Bundle Todo: Delete
-    public void addData(Note pData){
-        mController.addData(pData);
-    }*/
-
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_overview_note, container, false);
         mController.addData(getArguments());
         mController.addView(view);
-        mController.addOnClickListener();
+        ((OverviewNoteController)mController).addOnClickListener();
         return view;
     }
 }

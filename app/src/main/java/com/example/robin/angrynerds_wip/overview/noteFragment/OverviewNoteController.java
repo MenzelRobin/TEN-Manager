@@ -1,53 +1,45 @@
 package com.example.robin.angrynerds_wip.overview.noteFragment;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.View;
 
 import com.example.robin.angrynerds_wip.MainActivity;
 import com.example.robin.angrynerds_wip.overview.superClasses.OverviewFragmentController;
+import com.example.robin.angrynerds_wip.overview.superClasses.OverviewFragmentData;
+import com.example.robin.angrynerds_wip.overview.superClasses.OverviewFragmentGui;
+import com.example.robin.angrynerds_wip.overview.superClasses.OverviewFragmentInit;
 
 public class OverviewNoteController extends OverviewFragmentController {
 
-    OverviewNoteInit mFragment;
-    OverviewNoteData mData;
-    OverviewNoteGui mGui;
-
-    // Constructor
-    public OverviewNoteController(OverviewNoteInit pFragment, OverviewNoteData pData, OverviewNoteGui pGui){
-        mFragment = pFragment;
-        mData = pData;
-        mGui = pGui;
+    // Calls the superconstructor
+    public OverviewNoteController(OverviewFragmentInit pFragment, OverviewFragmentData pData, OverviewFragmentGui pGui){
+        super(pFragment, pData, pGui);
     }
 
-    // Passes Data to Dataobject
-    public void addData(Bundle pData){
-        mData.addData(pData);
-    }
-
-    // Passes the View to the Guiobject and applies the Data
+    // Passes the View to the Guiobject and calls applyData()
     public void addView(View pView){
-        mGui.addView(pView);
+        super.addView(pView);
         applyData();
+    }
+
+    // Applies saved Data to the Gui
+    public void applyData(){
+        ((OverviewNoteGui)mGui).setTitle(mData.getTitle());
+        ((OverviewNoteGui)mGui).setColor(mData.getColor());
+        ((OverviewNoteGui)mGui).setDescription(((OverviewNoteData)mData).getDescription());
     }
 
     // Adds an OnClickListener to the Fragment
     public void addOnClickListener(){
         OverviewNoteClickListener clickListener = new OverviewNoteClickListener(this);
-        mGui.getOverviewNote().setOnClickListener(clickListener);
+        ((OverviewNoteGui)mGui).getOverviewNote().setOnClickListener(clickListener);
     }
 
     // Called by the OnClickListener, starts a new Activity
     public void clicked(){
+        //Todo: Add Note Activity
         Intent intent = new Intent(mFragment.getActivity(), MainActivity.class);
-        intent.putExtra("ID", mData.getID()); // Hier können eigene Parameter hinzugefügt werden.
-        mFragment.startActivity(intent); // Activity Starten
-    }
-
-    // Applies saved Data to the Gui
-    public void applyData(){
-        mGui.setTitle(mData.getTitle());
-        mGui.setColor(mData.getColor());
-        mGui.setDescription(mData.getDescription());
+        intent.putExtra("ID", mData.getID());
+        mFragment.startActivity(intent);
     }
 }
