@@ -17,7 +17,7 @@ public class MockData {
 
     //Statische Liste mit 10 todos, 10 Events und 10 Notes
     //Verwendung mit MockData.tenMockData
-    public static ArrayList<TEN> tenMockData = new ArrayList<>();
+    public ArrayList<TEN> tenMockData = new ArrayList<>();
 
     public MockData() {
         int[] bgColors = new int[]{

@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".OverviewActivity"></activity>
+        <activity android:name=".activities.event.Init"></activity>
     </application>
 
 </manifest>
