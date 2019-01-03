@@ -3,16 +3,21 @@ package com.example.robin.angrynerds_wip.data.models.tens;
 import com.example.robin.angrynerds_wip.data.models.utils.Address;
 import com.example.robin.angrynerds_wip.data.models.utils.RecurringType;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Event extends TEN {
     private Date time;
-    private Date [] reminder;
+    private ArrayList<Date> reminder;
     private Address address;
     private RecurringType recurringType;
 
     //Constructor
-    public Event(String title, Date time, Date[] reminder) {
+    public Event(){
+        super();
+    }
+
+    public Event(String title, Date time, ArrayList<Date> reminder) {
         super(title);
         this.time = time;
         this.reminder = reminder;
@@ -20,7 +25,7 @@ public class Event extends TEN {
         this.recurringType = RecurringType.NONE;
     }
 
-    public Event(String title, Date time, Date[] reminder, Address address) {
+    public Event(String title, Date time, ArrayList<Date> reminder, Address address) {
         super(title);
         this.time = time;
         this.reminder = reminder;
@@ -28,7 +33,7 @@ public class Event extends TEN {
         this.recurringType = RecurringType.NONE;
     }
 
-    public Event(String title, Date time, Date[] reminder, Address address, RecurringType recurringType) {
+    public Event(String title, Date time, ArrayList<Date> reminder, Address address, RecurringType recurringType) {
         super(title);
         this.time = time;
         this.reminder = reminder;
@@ -36,7 +41,7 @@ public class Event extends TEN {
         this.recurringType = recurringType;
     }
 
-    public Event(String title, Date time, Date[] reminder, RecurringType recurringType) {
+    public Event(String title, Date time, ArrayList<Date> reminder, RecurringType recurringType) {
         super(title);
         this.time = time;
         this.reminder = reminder;
@@ -44,7 +49,7 @@ public class Event extends TEN {
         this.recurringType = recurringType;
     }
 
-    public Event(String title, int color, Date time, Date[] reminder, Address address, RecurringType recurringType) {
+    public Event(String title, int color, Date time, ArrayList<Date> reminder, Address address, RecurringType recurringType) {
         super(title, color);
         this.time = time;
         this.reminder = reminder;
@@ -59,10 +64,10 @@ public class Event extends TEN {
     public void setTime(Date time) {
         this.time = time;
     }
-    public Date[] getReminder() {
+    public ArrayList<Date> getReminder() {
         return reminder;
     }
-    public void setReminder(Date[] reminder) {
+    public void setReminder(ArrayList<Date> reminder) {
         this.reminder = reminder;
     }
     public Address getAddress() {
