@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import java.util.Date;
 
-public class ApplicationLogic extends AppCompatActivity {
+public class ApplicationLogic {
 
     //private Data mData;
     private Gui mGui;
@@ -48,9 +48,6 @@ public class ApplicationLogic extends AppCompatActivity {
     }
 
     public void dataToGui() {
-        mGui.setTitle(mData.getmEvent().getTitle());
-        mGui.setTime(mData.getmEvent().getTime().toString());
-        mGui.setDate(mData.getmEvent().getTime().toString());
     }
 
     public void onActivityReturned(int requestCode, int resultCode, Intent data) {
@@ -69,13 +66,6 @@ public class ApplicationLogic extends AppCompatActivity {
     }
 
     public void showDatePickerDialog(View v){
-        DatePickerDialog.OnDateSetListener callback = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-                mGui.setTitle("Tag" + Integer.toString(datePicker.getDayOfMonth()));
-                Toast.makeText(getApplicationContext(), Integer.toString(datePicker.getDayOfMonth()), Toast.LENGTH_SHORT).show();
-            }
-        };
         datePicker = new DatePickerFragment();
         datePicker.show(mActivity.getFragmentManager(), "DatePicker");
     }
@@ -89,9 +79,5 @@ public class ApplicationLogic extends AppCompatActivity {
     }
 
     public void onNewReminderClicked() {
-    }
-
-    public void Testbutton() {
-        mGui.setTitle("Test1");
     }
 }

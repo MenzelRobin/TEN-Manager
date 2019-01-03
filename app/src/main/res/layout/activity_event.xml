@@ -170,13 +170,7 @@
                         android:layout_marginTop="0dp"
                         android:text="Weitere Benachrichtigungen hinzufügen"
                         android:textColor="#FFFF" />
-
                 </RelativeLayout>
             </RelativeLayout>
-            <Button
-                android:id="@+id/TestButton"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:text="Test"/>
         </RelativeLayout>
 </RelativeLayout>

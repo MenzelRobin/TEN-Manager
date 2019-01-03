@@ -17,10 +17,6 @@ public class Data {
         mEvent = new Event();
     }
 
-    public Event getmEvent(){
-        return mEvent;
-    }
-
     public void addData(Bundle pData){
 
     }
