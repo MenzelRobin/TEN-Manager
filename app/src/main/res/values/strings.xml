@@ -1,3 +1,26 @@
 <resources>
     <string name="app_name">AngryNerds</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="sample_overview_event_title">Team Event im Päffgen</string>
+    <string name="sample_overview_event_time">17:30</string>
+    <string name="sample_overview_event_date">Di, 13. Apr.</string>
+    <string name="sample_overview_event_year">2018</string>
+    <string name="sample_overview_event_location">Friesenplatz, 44, Köln</string>
+    <string name="sample_overview_note_text">Zwiebeln 1-2\n
+        Knoblauch 1 Zehe\n
+        Gemüse: Möhren, Zucchini, Paprika, und auf was man sonst noch Bock hat. (Broccoli, Bohnen, Blumenkohl, ...)\n
+        Gemüsebrühe (1-2 Teelöffel Pulver)\n
+        1 Dose Kokosmilch\n
+        Curry 2 Teelöffel\n
+        Paprika Pulver 1 Teelöffel\n
+        Chilipulver nach Bedarf\n
+        Pfeffer nach Bedarf\n
+        Dazu einfach Reis. </string>
+    <string name="sample_overview_todo_title">Einkaufsliste</string>
+    <string name="sample_overview_todo_counter">0/12</string>
+    <string name="sample_overview_image_title">Witziger Avatar</string>
+    <string name="sample_overview_todo_text">Was muss ich alles erledigen?</string>
+    <string name="sample_overview_note_title">Curry</string>
 </resources>

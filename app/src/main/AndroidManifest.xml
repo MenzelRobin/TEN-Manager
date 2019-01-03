@@ -18,6 +18,7 @@
         </activity>
         <activity android:name=".OverviewActivity"></activity>
         <activity android:name=".activities.event.Init"></activity>
+        <activity android:name=".overview.overviewActivity.OverviewInit"></activity>
     </application>
 
 </manifest>

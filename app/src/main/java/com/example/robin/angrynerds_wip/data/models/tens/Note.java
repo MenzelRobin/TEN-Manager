@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import com.couchbase.lite.Blob;
 
+import android.os.Bundle;
+
 public class Note extends TEN{
 
     private String description;
@@ -39,6 +41,12 @@ public class Note extends TEN{
         this.description = description;
         this.tags = tags;
         this.pictures = pictures;
+    }
+  
+    public Bundle getBundle(){
+        Bundle bundle = super.getBundle();
+        bundle.putString("Description", description);
+        return bundle;
     }
 
     //Getter and Setter

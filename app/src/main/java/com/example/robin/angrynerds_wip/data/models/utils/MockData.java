@@ -54,7 +54,7 @@ public class MockData {
                 RecurringType.MONTHLY,
                 RecurringType.YEARLY
         };
-
+      
         for (int i = 1; i <= 10; i++) {
             MockData.tenMockData.add(new Todo("Todo " + i, bgColors[i - 1], "This is a toDo.", tasks, new Date()));
             MockData.tenMockData.add(new Event("Event " + i, bgColors[i - 1], Calendar.getInstance().getTime(), reminder,

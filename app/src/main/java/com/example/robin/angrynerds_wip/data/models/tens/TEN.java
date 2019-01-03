@@ -1,5 +1,7 @@
 package com.example.robin.angrynerds_wip.data.models.tens;
 
+import android.os.Bundle;
+
 import com.example.robin.angrynerds_wip.data.models.utils.Colors;
 
 import java.util.Date;
@@ -41,6 +43,14 @@ public class TEN {
         this.color = Colors.getRandomColor();
         this.title=title;
         this.dateOfCreation = new Date();
+    }
+
+    public Bundle getBundle(){
+        Bundle bundle = new Bundle();
+        bundle.putString("ID", ID);
+        bundle.putString("Title", title);
+        bundle.putInt("Color", color);
+        return bundle;
     }
 
     //Getter and Setter

@@ -1,5 +1,7 @@
 package com.example.robin.angrynerds_wip.data.models.utils;
 
+import android.os.Bundle;
+
 public class Address {
     private String street;
     private int houseNumber;
@@ -24,6 +26,15 @@ public class Address {
         this.houseNumber = houseNumber;
         this.plz = plz;
         this.city = city;
+    }
+
+    public Bundle getBundle() {
+        Bundle bundle = new Bundle();
+        bundle.putString("Street", street);
+        bundle.putInt("HouseNumber", houseNumber);
+        bundle.putString("Plz", plz);
+        bundle.putString("City", city);
+        return bundle;
     }
 
     //getter and setter
@@ -59,4 +70,6 @@ public class Address {
     public void setCity(String city) {
         this.city = city;
     }
+
+
 }
