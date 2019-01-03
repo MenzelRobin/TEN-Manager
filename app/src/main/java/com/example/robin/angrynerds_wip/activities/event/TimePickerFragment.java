@@ -1,11 +1,12 @@
 package com.example.robin.angrynerds_wip.activities.event;
 
+import android.app.TimePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
-import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
-import android.text.format.DateFormat;
 import android.widget.TimePicker;
+import android.text.format.DateFormat;
 
 import java.util.Calendar;
 
@@ -24,7 +25,8 @@ public class TimePickerFragment extends DialogFragment
                 DateFormat.is24HourFormat(getActivity()));
     }
 
-    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-        // Do something with the time chosen by the user
+    public void onTimeSet(TimePicker view, int hour, int minute) {
+        //Send Time to Activity
+        ((Init)getActivity()).receiveTime(hour, minute);
     }
 }

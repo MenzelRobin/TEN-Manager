@@ -18,8 +18,8 @@ public class Gui {
     private EditText mEditTextDate;
     private EditText mEditTextTime;
     private EditText mEditTextLocation;
-    private LinearLayout mLinearLayoutReminder;
-    private RelativeLayout mRelativeLayoutReminder;
+    private RelativeLayout mRelativeLayoutReminder1;
+    private RelativeLayout mRelativeLayoutReminder2;
     private EditText mEditTextReminder1;
     private EditText mEditTextReminder2;
     private ImageView mIconCloseReminder1;
@@ -34,8 +34,8 @@ public class Gui {
         mEditTextDate = activity.findViewById(R.id.editTextDate);
         mEditTextTime = activity.findViewById(R.id.editTextTime);
         mEditTextLocation = activity.findViewById(R.id.editTextLocation);
-        mLinearLayoutReminder = activity.findViewById(R.id.linearLayoutReminder);
-        mRelativeLayoutReminder = activity.findViewById(R.id.relativeLayoutReminder);
+        mRelativeLayoutReminder1 = activity.findViewById(R.id.relativeLayoutReminder1);
+        mRelativeLayoutReminder2 = activity.findViewById(R.id.relativeLayoutReminder2);
         mEditTextReminder1 = activity.findViewById(R.id.editTextReminder1);
         mEditTextReminder2 = activity.findViewById(R.id.editTextReminder2);
         mIconCloseReminder1 = activity.findViewById(R.id.iconCloseReminder1);
@@ -49,8 +49,8 @@ public class Gui {
     public EditText getmEditTextDate() {return mEditTextDate;}
     public EditText getmEditTextTime() {return mEditTextTime;}
     public EditText getmEditTextLocation() {return mEditTextLocation; }
-    public LinearLayout getmLinearLayoutReminder() {return mLinearLayoutReminder; }
-    public RelativeLayout getmRelativeLayoutReminder() {return mRelativeLayoutReminder; }
+    public RelativeLayout getmRelativeLayoutReminder1() {return mRelativeLayoutReminder1; }
+    public RelativeLayout getmRelativeLayoutReminder2() {return mRelativeLayoutReminder2; }
     public EditText getmEditTextReminder1() {return mEditTextReminder1; }
     public ImageView getmIconCloseReminder1() {return mIconCloseReminder1; }
     public EditText getmEditTextReminder2() {return mEditTextReminder2; }
@@ -60,7 +60,7 @@ public class Gui {
     // methods to change view attributes
     public void setColorInBG(int color) { mRelativeLayoutBG.setBackground(new ColorDrawable(color));}
     public void setTitle(String text) { mEditTextTitle.setText(text);}
-    public void setDate(String text) {mEditTextTitle.setText(text);}
+    public void setDate(String text) {mEditTextDate.setText(text);}
     public void setTime(String text) {mEditTextTime.setText(text);}
     public void setReminder1(String text) {mEditTextReminder1.setText(text);}
     public void setReminder2(String text) {mEditTextReminder2.setText(text);}

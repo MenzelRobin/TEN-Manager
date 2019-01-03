@@ -1,10 +1,11 @@
 package com.example.robin.angrynerds_wip.activities.event;
 
+import android.util.Log;
 import android.view.View;
 
 import com.example.robin.angrynerds_wip.R;
 
-public class ClickListener implements View.OnClickListener  {
+public class ClickListener implements View.OnClickListener {
 
     ApplicationLogic mApplicationLogic;
 
@@ -14,12 +15,14 @@ public class ClickListener implements View.OnClickListener  {
 
     @Override
     public void onClick(View view) {
+        Log.d("LOGTAG","onClick");
         switch ( view.getId() ) {
             case R.id.editTextDate:
-                mApplicationLogic.onDateClicked();
+                mApplicationLogic.showDatePickerDialog(view);
+                Log.d("LOGTAG", "on editTextDate clicked");
                 break;
             case R.id.editTextTime:
-                mApplicationLogic.onTimeClicked();
+                mApplicationLogic.showTimePickerDialog(view);
             case R.id.editTextNewReminder:
                 mApplicationLogic.onNewReminderClicked();
             case R.id.iconCloseReminder1:

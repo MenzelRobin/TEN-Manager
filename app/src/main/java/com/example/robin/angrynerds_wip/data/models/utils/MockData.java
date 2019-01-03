@@ -17,7 +17,7 @@ public class MockData {
 
     //Statische Liste mit 10 todos, 10 Events und 10 Notes
     //Verwendung mit MockData.tenMockData
-    public static ArrayList<TEN> tenMockData = new ArrayList<>();
+    public ArrayList<TEN> tenMockData = new ArrayList<>();
 
     public MockData(){
         int[] bgColors = new int[]{
@@ -53,10 +53,10 @@ public class MockData {
         };
 
         for(int i = 1; i<=10 ;i++){
-        tenMockData.add(new Todo("Todo " + i, bgColors[i-1], "This is a toDo.", tasks ));
-        tenMockData.add(new Event("Event " + i, bgColors[i-1], Calendar.getInstance().getTime(), reminder ,
-                new Address("Schlossallee", 1, "50674", "Köln"), recurringTypes[i/2 + 1]));
-        tenMockData.add(new Note("Note " + i, bgColors[i-1], "This is a note."));
+            tenMockData.add(new Todo("Todo " + i, bgColors[i-1], "This is a toDo.", tasks ));
+            tenMockData.add(new Event("Event " + i, bgColors[i-1], Calendar.getInstance().getTime(), reminder ,
+                    new Address("Schlossallee", 1, "50674", "Köln"), recurringTypes[i%5]));
+            tenMockData.add(new Note("Note " + i, bgColors[i-1], "This is a note."));
         }
     }
 }

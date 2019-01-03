@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/relativeLayoutBG"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    android:orientation="horizontal"
-    tools:context=".MainActivity">
+    android:orientation="horizontal">
 
         <EditText
             android:id="@+id/editTextTitle"
@@ -16,7 +13,6 @@
             android:layout_margin="16dp"
             android:layout_marginStart="72dp"
             android:inputType="text"
-            android:autofillHints="Titel"
             android:textColor="#FFFF"
             android:textSize="24sp" />
 
@@ -28,7 +24,7 @@
             android:background="@color/colorPrimaryDark" />
 
         <RelativeLayout
-            android:id="@+id/linearLayoutDate"
+            android:id="@+id/relativeLayoutDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/viewSeperate1"
@@ -47,30 +43,34 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_toEndOf="@id/iconDate"
-                android:inputType="date"
                 android:text="Donnerstag, 13. Dezember 2019"
-                android:textColor="#FFFF" />
+                android:textColor="#FFFF"
+                android:clickable="true"
+                android:focusable="false"
+                android:inputType="none"/>
 
             <EditText
                 android:id="@+id/editTextTime"
                 android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:inputType="date"
                 android:text="17:30"
                 android:textAlignment="center"
-                android:textColor="#FFFF" />
+                android:textColor="#FFFF"
+                android:clickable="true"
+                android:focusable="false"
+                android:inputType="none" />
         </RelativeLayout>
 
         <View
             android:id="@+id/viewSeperate2"
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:layout_below="@id/linearLayoutDate"
+            android:layout_below="@id/relativeLayoutDate"
             android:background="@color/colorPrimaryDark" />
 
         <RelativeLayout
-            android:id="@+id/linearLayoutLocation"
+            android:id="@+id/relativeLayoutLocation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/viewSeperate2"
@@ -98,11 +98,11 @@
             android:id="@+id/viewSeperate3"
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:layout_below="@id/linearLayoutLocation"
+            android:layout_below="@id/relativeLayoutLocation"
             android:background="@color/colorPrimaryDark" />
 
         <RelativeLayout
-            android:id="@+id/linearLayoutReminder"
+            android:id="@+id/relativeLayoutReminder1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/viewSeperate3"
@@ -116,7 +116,7 @@
                 android:src="@drawable/ic_notifications_black_24dp" />
 
             <RelativeLayout
-                android:id="@+id/relativeLayoutReminder"
+                android:id="@+id/relativeLayoutReminder2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/iconBell">
@@ -173,5 +173,10 @@
 
                 </RelativeLayout>
             </RelativeLayout>
+            <Button
+                android:id="@+id/TestButton"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:text="Test"/>
         </RelativeLayout>
 </RelativeLayout>
