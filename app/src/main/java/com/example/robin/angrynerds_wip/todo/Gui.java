@@ -28,7 +28,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Gui extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
+public class Gui extends AppCompatActivity{
 
     private EditText mTitle;
     private EditText mText;
