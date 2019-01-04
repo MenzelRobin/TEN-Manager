@@ -1,8 +1,11 @@
 package com.example.robin.angrynerds_wip.overview.overviewActivity;
 
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+
 import com.example.robin.angrynerds_wip.R;
 
 public class OverviewInit extends AppCompatActivity {
@@ -11,6 +14,7 @@ public class OverviewInit extends AppCompatActivity {
     private OverviewGui mGui;
     private OverviewController mController;
 
+    // Called on Create / Recreate
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,21 +23,24 @@ public class OverviewInit extends AppCompatActivity {
         initController();
     }
 
+    // Called when the Orientation of the App is changed
     @Override
-    public void onConfigurationChanged(Configuration config){
-        initData();
+    public void onConfigurationChanged(Configuration newConfig){
+        super.onConfigurationChanged(newConfig);
         initGui();
         initController();
     }
 
-    // Todo: Implement
-    protected void onResume(Bundle savedInstanceState) {
+    // Called when the Activity comes back into the foreground
+    @Override
+    public void onResume(){
+        super.onResume();
         mController.onResume();
     }
 
     // Initializes the Controller
     private void initData() {
-        mData = new OverviewData(this);
+        mData = new OverviewData();
     }
 
     // Initializes the Graphical User Interface
@@ -46,4 +53,8 @@ public class OverviewInit extends AppCompatActivity {
         mController = new OverviewController(this, mData, mGui);
     }
 
+    // Used to trigger controllermethods from fragments
+    public OverviewController getController(){
+        return mController;
+    }
 }

@@ -5,9 +5,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginBottom="5dp"
     android:padding="25dp"
     android:background="@color/bgColor3"
     tools:context=".overview.todoFragment.OverviewTodoInit">
+
+    <ImageView
+        android:id="@+id/id_overview_todo_imageView_unchecked"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:visibility="invisible"
+        android:src="@drawable/ic_circle_white_30dp" />
+
+    <ImageView
+        android:id="@+id/id_overview_todo_imageView_checked"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:visibility="invisible"
+        android:src="@drawable/ic_check_circle_white_30dp" />
 
     <TextView
         android:id="@+id/id_overview_todo_textView_title"
@@ -21,7 +38,7 @@
         />
 
     <TextView
-        android:id="@+id/id_overview_todo_textView_text"
+        android:id="@+id/id_overview_todo_textView_note"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/id_overview_todo_textView_title"
@@ -29,6 +46,7 @@
         android:text="@string/sample_overview_todo_text"
         android:textSize="16dp"
         android:layout_marginTop= "15dp"
+        android:layout_marginBottom="5dp"
         android:textColor="@color/colorWhite"
         />
 
@@ -48,7 +66,7 @@
         android:id="@+id/id_overview_todo_linearLayout_container1"
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/id_overview_todo_textView_text"
+        android:layout_below="@+id/id_overview_todo_textView_note"
         android:layout_width="wrap_content"
         android:layout_alignRight="@id/id_overview_todo_textView_middle"
         android:layout_alignParentLeft="true"
@@ -61,7 +79,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:layout_below="@+id/id_overview_todo_textView_text"
+        android:layout_below="@+id/id_overview_todo_textView_note"
         android:layout_alignParentRight="true"
         android:layout_alignLeft="@id/id_overview_todo_textView_middle"
         android:orientation="vertical"

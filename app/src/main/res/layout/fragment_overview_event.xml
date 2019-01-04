@@ -5,10 +5,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginBottom="5dp"
     tools:context=".overview.eventFragment.OverviewEventInit"
     android:padding="25dp"
     android:background="@color/bgColor1"
     >
+
+    <ImageView
+        android:id="@+id/id_overview_event_imageView_unchecked"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:visibility="invisible"
+        android:src="@drawable/ic_circle_white_30dp" />
+
+    <ImageView
+        android:id="@+id/id_overview_event_imageView_checked"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:visibility="invisible"
+        android:src="@drawable/ic_check_circle_white_30dp" />
 
     <TextView
         android:id="@+id/id_overview_event_textView_title"

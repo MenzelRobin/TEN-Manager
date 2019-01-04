@@ -9,17 +9,15 @@ import com.example.robin.angrynerds_wip.overview.superClasses.OverviewFragmentGu
 
 public class OverviewNoteGui extends OverviewFragmentGui {
 
-    RelativeLayout mOverviewNote;
-    TextView mTitle;
-    TextView mDescription;
-
-    // Constructor
-    public OverviewNoteGui(){
-    }
+    private RelativeLayout mOverviewNote;
+    private TextView mTitle;
+    private TextView mDescription;
 
     // Adds the Fragment view to this Object
     public void addView(View pView){
         super.addView(pView);
+        mChecked = mView.findViewById(R.id.id_overview_note_imageView_checked);
+        mUnchecked = mView.findViewById(R.id.id_overview_note_imageView_unchecked);
         mOverviewNote = mView.findViewById(R.id.id_overview_note);
         mTitle = mView.findViewById(R.id.id_overview_note_textView_title);
         mDescription = mView.findViewById(R.id.id_overview_note_textView_description);

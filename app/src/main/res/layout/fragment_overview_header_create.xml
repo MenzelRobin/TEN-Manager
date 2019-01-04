@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="overview.overviewActivity.OverviewInit">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorGrey"
+        android:padding="5dp"
+        android:id="@+id/id_overview_header_create_relativeLayout_header">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@color/colorWhite"
+            android:id="@+id/id_overview_header_create_textView_note"
+            android:text="Write note..."
+            android:paddingLeft="10dp"
+            android:gravity="center_vertical"
+            android:layout_toStartOf="@id/id_overview_header_create_button_event"
+            android:layout_alignParentLeft="true"
+            android:layout_alignBottom="@id/id_overview_header_create_button_event"
+            android:layout_alignTop="@id/id_overview_header_create_button_event"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhite"
+            android:padding="5dp"
+            android:id="@+id/id_overview_header_create_button_event"
+            android:text="new Event"
+            android:layout_toStartOf="@id/id_overview_header_create_button_todo"
+            android:textSize="10dp"
+            android:drawableTop="@drawable/ic_event_note_black_24dp"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhite"
+            android:padding="5dp"
+            android:id="@+id/id_overview_header_create_button_todo"
+            android:text="new Todo"
+            android:textSize="10dp"
+            android:drawableTop="@drawable/ic_check_box_black_24dp"
+            android:layout_alignParentRight="true"/>
+
+    </RelativeLayout>
+</RelativeLayout>

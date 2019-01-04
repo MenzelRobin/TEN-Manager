@@ -69,6 +69,7 @@ public class Todo extends TEN {
         for(Task task : tasks){
             description[index] = task.getDescription();
             status[index] = task.getStatus();
+            index++;
         }
         bundle.putBooleanArray("Status", status);
         bundle.putStringArray("Description", description);

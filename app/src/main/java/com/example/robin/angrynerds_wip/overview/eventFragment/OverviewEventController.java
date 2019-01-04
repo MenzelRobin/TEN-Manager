@@ -1,35 +1,40 @@
-package com.example.robin.angrynerds_wip.overview.noteFragment;
+package com.example.robin.angrynerds_wip.overview.eventFragment;
 
 import android.content.Intent;
 
 import com.example.robin.angrynerds_wip.MainActivity;
+import com.example.robin.angrynerds_wip.overview.noteFragment.OverviewNoteData;
+import com.example.robin.angrynerds_wip.overview.noteFragment.OverviewNoteGui;
 import com.example.robin.angrynerds_wip.overview.superClasses.OverviewFragmentController;
 import com.example.robin.angrynerds_wip.overview.superClasses.OverviewFragmentData;
 import com.example.robin.angrynerds_wip.overview.superClasses.OverviewFragmentGui;
 import com.example.robin.angrynerds_wip.overview.superClasses.OverviewFragmentInit;
 
-public class OverviewNoteController extends OverviewFragmentController {
+public class OverviewEventController extends OverviewFragmentController {
 
     // Calls the superconstructor
-    public OverviewNoteController(OverviewFragmentInit pFragment, OverviewFragmentData pData, OverviewFragmentGui pGui){
+    public OverviewEventController(OverviewFragmentInit pFragment, OverviewFragmentData pData, OverviewFragmentGui pGui){
         super(pFragment, pData, pGui);
     }
 
     // Applies saved Data to the Gui
     public void applyData(){
-        ((OverviewNoteGui)mGui).setTitle(mData.getTitle());
-        ((OverviewNoteGui)mGui).setColor(mData.getColor());
-        ((OverviewNoteGui)mGui).setDescription(((OverviewNoteData)mData).getDescription());
+        ((OverviewEventGui)mGui).setTitle(mData.getTitle());
+        ((OverviewEventGui)mGui).setColor(mData.getColor());
+        ((OverviewEventGui)mGui).setTime(((OverviewEventData)mData).getTime());
+        ((OverviewEventGui)mGui).setDate(((OverviewEventData)mData).getDate());
+        ((OverviewEventGui)mGui).setYear(((OverviewEventData)mData).getYear());
+        ((OverviewEventGui)mGui).setLocation(((OverviewEventData)mData).getLocation());
     }
 
     // Adds an OnClickListener to the Fragment
     public void addOnClickListener(){
-        ((OverviewNoteGui)mGui).getOverviewNote().setOnClickListener(super.getOnClickListener());
+        ((OverviewEventGui)mGui).getOverviewEvent().setOnClickListener(super.getOnClickListener());
     }
 
     // Adds an OnLongClickListener to the Fragment
     public void addOnLongClickListener(){
-        ((OverviewNoteGui)mGui).getOverviewNote().setOnLongClickListener(super.getOnLongClickListener());
+        ((OverviewEventGui)mGui).getOverviewEvent().setOnLongClickListener(super.getOnLongClickListener());
     }
 
     // Called by the OnClickListener, starts a new Activity
@@ -37,7 +42,7 @@ public class OverviewNoteController extends OverviewFragmentController {
         if(mDeleteState) {
             toggleMark();
         } else {
-            //Todo: Add Create Note Activity
+            //Todo: Add Create Event Activity
             Intent intent = new Intent(mFragment.getActivity(), MainActivity.class);
             intent.putExtra("ID", mData.getID());
             mFragment.startActivity(intent);
