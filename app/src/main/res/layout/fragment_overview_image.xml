@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+    android:layout_marginBottom="5dp"
         xmlns:tools="http://schemas.android.com/tools"
         android:background="@color/colorPrimaryDark"
         tools:context=".overview.imageFragment.OverviewImageInit">
@@ -11,8 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:marginRight="-5"
-        android:marginTop="-5"
+        android:visibility="invisible"
         android:src="@drawable/ic_circle_white_30dp" />
 
     <ImageView
@@ -20,8 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:marginRight="-5"
-        android:marginTop="-5"
+        android:visibility="invisible"
         android:src="@drawable/ic_check_circle_white_30dp" />
 
         <ImageView

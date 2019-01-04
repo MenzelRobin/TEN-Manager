@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:background="@color/colorGrey"
         android:padding="5dp"
-        android:id="@+id/header">
+        android:id="@+id/id_overview_header_create_relativeLayout_header">
 
 
         <Button
@@ -21,19 +21,19 @@
             android:layout_height="wrap_content"
             android:background="@color/colorWhite"
             android:padding="5dp"
-            android:id="@+id/button"
+            android:id="@+id/id_overview_header_delete_button_back"
             android:text="Back"
             android:layout_alignParentLeft="true"
             android:textSize="10dp"
             android:drawableTop="@drawable/ic_arrow_back_black_24dp"/>
 
         <View
-            android:id="@+id/view"
+            android:id="@+id/id_overview_header_delete_view_spacer"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:layout_toStartOf="@id/button2"
-            android:layout_toEndOf="@id/button"
-            android:layout_alignBottom= "@id/button"
+            android:layout_toStartOf="@id/id_overview_header_delete_button_delete"
+            android:layout_toEndOf="@id/id_overview_header_delete_button_back"
+            android:layout_alignBottom= "@id/id_overview_header_delete_button_back"
             android:background="@color/colorWhite"
             />
 
@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:background="@color/colorWhite"
             android:padding="5dp"
-            android:id="@+id/button2"
+            android:id="@+id/id_overview_header_delete_button_delete"
             android:text="Delete"
             android:textSize="10dp"
             android:drawableTop="@drawable/ic_delete_forever_black_24dp"

@@ -26,14 +26,10 @@ public class OverviewInit extends AppCompatActivity {
         //initController();
     }
 
-    public void longClick(){
-        mController.longClick();
-    }
-
-    // Todo: Implement
+    /* Todo: Implement
     protected void onResume(Bundle savedInstanceState) {
         mController.onResume();
-    }
+    }*/
 
     // Initializes the Controller
     private void initData() {
@@ -50,4 +46,8 @@ public class OverviewInit extends AppCompatActivity {
         mController = new OverviewController(this, mData, mGui);
     }
 
+    // Used to trigger controllermethods from activities
+    public OverviewController getController(){
+        return mController;
+    }
 }

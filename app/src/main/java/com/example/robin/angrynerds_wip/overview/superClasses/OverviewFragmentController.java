@@ -52,17 +52,23 @@ public abstract class OverviewFragmentController {
         if(mDeleteState) {
             toggleMark();
         } else {
-            ((OverviewInit) mFragment.getActivity()).longClick();
+            ((OverviewInit) mFragment.getActivity()).getController().longClick();
             toggleMark();
         }
     }
 
     public void toggleMark(){
         mMarked = !mMarked;
-        Log.d("LOGTAG", "toggleMark() called.");
+        mGui.applyMarked(mMarked);
     }
 
     public void setDeleteState(boolean pDeleteState){
         mDeleteState = pDeleteState;
+        if(mDeleteState){
+            mGui.applyMarked(mMarked);
+        } else {
+            mMarked = false;
+            mGui.hideCheckbox();
+        }
     }
 }

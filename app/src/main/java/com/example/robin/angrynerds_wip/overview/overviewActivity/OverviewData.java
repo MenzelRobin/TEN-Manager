@@ -29,6 +29,22 @@ public class OverviewData {
         return mCurrentData;
     }
 
+    // Filters for the selected Class
+    public void filter(Class pClass){
+        mCurrentData = new ArrayList();
+        if(pClass == TEN.class){
+            for(TEN ten : mData){
+                mCurrentData.add(ten);
+            }
+        } else {
+            for(TEN ten : mData){
+                if(ten.getClass() == pClass){
+                    mCurrentData.add(ten);
+                }
+            }
+        }
+    }
+
     // Filters for all TENs
     public void filterAll(){
         mCurrentData = new ArrayList();

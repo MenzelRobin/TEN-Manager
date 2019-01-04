@@ -3,7 +3,7 @@ package com.example.robin.angrynerds_wip.overview.superClasses;
 import android.view.View;
 
 public class OverviewFragmentClickListener implements View.OnClickListener{
-    OverviewFragmentController mController;
+    private OverviewFragmentController mController;
 
     public OverviewFragmentClickListener(OverviewFragmentController pController){
         mController = pController;
