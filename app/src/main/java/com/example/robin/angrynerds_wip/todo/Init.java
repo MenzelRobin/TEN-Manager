@@ -32,7 +32,7 @@ public class Init extends AppCompatActivity {
     }
 
     private void initApplicationLogic () {
-        mApplicationLogic = new ApplicationLogic(mGui);
+        mApplicationLogic = new ApplicationLogic(mGui,this);
     }
 
     @Override

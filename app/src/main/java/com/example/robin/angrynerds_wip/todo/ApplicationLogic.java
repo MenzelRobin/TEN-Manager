@@ -36,7 +36,8 @@ public class ApplicationLogic {
 
 
     //Hier muss noch Data rein
-    public ApplicationLogic(Gui gui) {
+    public ApplicationLogic(Gui gui, Activity pActivity) {
+        mActivity = pActivity;
         mGui = gui;
         initGui();
         initListener();
