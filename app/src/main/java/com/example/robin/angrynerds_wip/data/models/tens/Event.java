@@ -61,7 +61,7 @@ public class Event extends TEN {
 
     public Bundle getBundle(){
         Bundle bundle = super.getBundle();
-        bundle.putString("time", time.toString());
+        bundle.putString("time", Long.toString(time.getTime()));
         bundle.putAll(address.getBundle());
         return bundle;
     }

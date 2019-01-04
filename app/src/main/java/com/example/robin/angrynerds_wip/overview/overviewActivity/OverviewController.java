@@ -1,6 +1,8 @@
 package com.example.robin.angrynerds_wip.overview.overviewActivity;
 
 import android.support.v4.app.Fragment;
+import android.util.Log;
+
 import com.example.robin.angrynerds_wip.data.models.tens.TEN;
 import com.example.robin.angrynerds_wip.data.services.Delete;
 import com.example.robin.angrynerds_wip.overview.superClasses.OverviewFragmentInit;

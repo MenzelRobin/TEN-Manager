@@ -9,9 +9,9 @@ import com.example.robin.angrynerds_wip.overview.superClasses.OverviewFragmentGu
 
 public class OverviewNoteGui extends OverviewFragmentGui {
 
-    RelativeLayout mOverviewNote;
-    TextView mTitle;
-    TextView mDescription;
+    private RelativeLayout mOverviewNote;
+    private TextView mTitle;
+    private TextView mDescription;
 
     // Adds the Fragment view to this Object
     public void addView(View pView){
