@@ -92,24 +92,7 @@ public class Gui extends AppCompatActivity implements DatePickerDialog.OnDateSet
         };
         */
     }
-
-    @Override
-    public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
-        java.util.Calendar c = java.util.Calendar.getInstance();
-        c.set(java.util.Calendar.YEAR, year);
-        c.set(java.util.Calendar.MONTH, month);
-        c.set(java.util.Calendar.DAY_OF_MONTH, dayOfMonth);
-
-        String currentDateString = DateFormat.getDateInstance().format(c.getTime());
-
-        //mGui.getmStartDate().set
-    }
-
-    public void openDate(){
-        android.support.v4.app.DialogFragment datePicker = new DatePickerFragment();
-
-        datePicker.show(getSupportFragmentManager(), "date picker");
-        }
+    
 
     // getter to access views
     public EditText getmTitle() {
