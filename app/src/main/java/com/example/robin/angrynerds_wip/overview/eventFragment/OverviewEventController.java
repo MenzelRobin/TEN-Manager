@@ -3,8 +3,6 @@ package com.example.robin.angrynerds_wip.overview.eventFragment;
 import android.content.Intent;
 
 import com.example.robin.angrynerds_wip.MainActivity;
-import com.example.robin.angrynerds_wip.overview.noteFragment.OverviewNoteData;
-import com.example.robin.angrynerds_wip.overview.noteFragment.OverviewNoteGui;
 import com.example.robin.angrynerds_wip.overview.superClasses.OverviewFragmentController;
 import com.example.robin.angrynerds_wip.overview.superClasses.OverviewFragmentData;
 import com.example.robin.angrynerds_wip.overview.superClasses.OverviewFragmentGui;

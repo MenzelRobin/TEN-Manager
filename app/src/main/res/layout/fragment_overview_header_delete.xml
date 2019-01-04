@@ -19,7 +19,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/colorWhite"
+            android:background="@drawable/container_rounded_edges_left"
             android:padding="5dp"
             android:id="@+id/id_overview_header_delete_button_back"
             android:text="Back"
@@ -40,7 +40,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/colorWhite"
+            android:background="@drawable/container_rounded_edges_right"
             android:padding="5dp"
             android:id="@+id/id_overview_header_delete_button_delete"
             android:text="Delete"

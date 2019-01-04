@@ -1,6 +1,5 @@
 package com.example.robin.angrynerds_wip.overview.header;
 
-import android.util.Log;
 import android.view.View;
 
 import com.example.robin.angrynerds_wip.R;
@@ -18,6 +17,7 @@ public class OverviewHeaderClickListener implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         switch(view.getId()){
+            // HeaderCreate
             case R.id.id_overview_header_create_button_todo:
                 mController.newTodo();
                 break;
@@ -27,6 +27,7 @@ public class OverviewHeaderClickListener implements View.OnClickListener {
             case R.id.id_overview_header_create_textView_note:
                 mController.newNote();
                 break;
+            // HeaderDelete
             case R.id.id_overview_header_delete_button_back:
                 mController.back();
                 break;
