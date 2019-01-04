@@ -17,6 +17,7 @@ public class OverviewController {
     private OverviewData mData;
     private OverviewGui mGui;
     private OverviewFragmentFactory mFragmentFactory;
+    private OverviewFragmentInserter mFragmentInserter;
     private FragmentManager mFragmentManager;
 
     OverviewController(OverviewInit pActivity, OverviewData pData, OverviewGui pGui) {
@@ -24,8 +25,8 @@ public class OverviewController {
         mData = pData;
         mGui = pGui;
         mFragmentFactory = new OverviewFragmentFactory();
+        mFragmentInserter = new OverviewFragmentInserter(mActivity.getSupportFragmentManager());
         mFragmentManager = mActivity.getSupportFragmentManager();
-
         initHeader();
         initOnClickListener();
         //Todo: Implement natural way to load fragments (When buttons are pressed) -> New Method
@@ -36,9 +37,7 @@ public class OverviewController {
     }
 
     public void initHeader(){
-        FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-        fragmentTransaction.add(mGui.getHeaderId(), mFragmentFactory.createHeaderCreateFragment(), "HEADER_FRAGMENT");
-        fragmentTransaction.commit();
+        mFragmentInserter.insertFragment(mGui.getHeaderId(), mFragmentFactory.createHeaderCreateFragment(), "HEADER_FRAGMENT");
     }
 
     public void initOnClickListener(){
