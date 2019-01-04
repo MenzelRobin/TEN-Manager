@@ -18,6 +18,7 @@ import android.widget.DatePicker;
 import com.example.robin.angrynerds_wip.MainActivity;
 import com.example.robin.angrynerds_wip.OverviewActivity;
 import com.example.robin.angrynerds_wip.data.models.tens.Event;
+import com.example.robin.angrynerds_wip.todo.DatePickerFragment;
 
 import java.text.DateFormat;
 import java.util.Calendar;
@@ -55,9 +56,6 @@ public class ApplicationLogic {
         mGui.getmEndDate().setOnClickListener(clickListener);
     }
 
-    public void onStartDateClicked(){
-        mGui.openDate();
-    }
 
     public void dataToGui() {
     }
