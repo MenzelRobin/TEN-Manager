@@ -31,7 +31,7 @@ public class Init extends Activity {
     }
 
     private void initApplicationLogic () {
-        //mApplicationLogic = new ApplicationLogic(mData, mGui);
+        mApplicationLogic = new ApplicationLogic(mGui);
     }
 
     @Override

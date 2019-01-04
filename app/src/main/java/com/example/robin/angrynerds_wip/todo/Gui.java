@@ -2,10 +2,12 @@ package com.example.robin.angrynerds_wip.todo;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -21,11 +23,12 @@ import com.example.robin.angrynerds_wip.data.models.utils.MockData;
 import com.example.robin.angrynerds_wip.data.models.utils.Task;
 import com.example.robin.angrynerds_wip.data.models.utils.TasksAdapter;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Gui {
+public class Gui extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
     private EditText mTitle;
     private EditText mText;
@@ -61,14 +64,52 @@ public class Gui {
         tasks.add(new Task("Dritte Aufgabe", false));
         tasks.add(new Task("Dritte Aufgabe", true));
         mTasks.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-        TasksAdapter adapter=
+        TasksAdapter adapter =
                 new TasksAdapter(
                         activity, // Die aktuelle Activity
                         R.layout.rowlayout, // ID des Layouts für alle Listen-Elemente
                         tasks); // Die Liste der Elemente
         mTasks.setAdapter(adapter);
+
+        /*
+        java.util.Calendar cal = java.util.Calendar.getInstance();
+        int year = cal.get(java.util.Calendar.YEAR);
+        int month = cal.get(java.util.Calendar.MONTH);
+        int day = cal.get(java.util.Calendar.DAY_OF_MONTH);
+
+        DatePickerDialog dialog = new DatePickerDialog(getActivity(),
+                android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                mDateSetListener,
+                year,month,day);
+
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        mDateSetListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+
+            }
+        };
+        */
     }
 
+    @Override
+    public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
+        java.util.Calendar c = java.util.Calendar.getInstance();
+        c.set(java.util.Calendar.YEAR, year);
+        c.set(java.util.Calendar.MONTH, month);
+        c.set(java.util.Calendar.DAY_OF_MONTH, dayOfMonth);
+
+        String currentDateString = DateFormat.getDateInstance().format(c.getTime());
+
+        //mGui.getmStartDate().set
+    }
+
+    public void openDate(){
+        android.support.v4.app.DialogFragment datePicker = new DatePickerFragment();
+
+        datePicker.show(getSupportFragmentManager(), "date picker");
+        }
 
     // getter to access views
     public EditText getmTitle() {
