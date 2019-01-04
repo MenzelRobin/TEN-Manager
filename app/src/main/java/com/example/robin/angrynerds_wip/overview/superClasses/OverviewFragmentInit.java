@@ -30,7 +30,7 @@ public abstract class OverviewFragmentInit extends Fragment {
         mController.addOnLongClickListener();
     }
 
-    public void setDeleteState(boolean pDeleteState) {
-        mController.setDeleteState(pDeleteState);
+    public OverviewFragmentController getController(){
+        return mController;
     }
 }

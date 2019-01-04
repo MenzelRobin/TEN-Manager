@@ -37,7 +37,7 @@ public class OverviewNoteController extends OverviewFragmentController {
         if(mDeleteState) {
             toggleMark();
         } else {
-            //Todo: Add Note Activity
+            //Todo: Add Create Note Activity
             Intent intent = new Intent(mFragment.getActivity(), MainActivity.class);
             intent.putExtra("ID", mData.getID());
             mFragment.startActivity(intent);

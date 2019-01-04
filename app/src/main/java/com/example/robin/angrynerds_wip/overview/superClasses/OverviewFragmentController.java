@@ -71,4 +71,12 @@ public abstract class OverviewFragmentController {
             mGui.hideCheckbox();
         }
     }
+
+    public boolean getMarked(){
+        return mMarked;
+    }
+
+    public String getTENID(){
+        return mData.getID();
+    }
 }

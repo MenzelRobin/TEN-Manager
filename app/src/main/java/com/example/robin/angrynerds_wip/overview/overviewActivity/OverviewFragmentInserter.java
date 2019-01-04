@@ -4,6 +4,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
+import java.util.ArrayList;
+
 public class OverviewFragmentInserter {
 
     private FragmentManager mFragmentManager;
@@ -18,7 +20,22 @@ public class OverviewFragmentInserter {
         fragmentTransaction.commit();
     }
 
-    //TODO: Create Insert Multiple Fragments method that removes all active Fragments except Headerfragments
+    public void replaceFragment(int pContainerID, Fragment pFragment, String pTag) {
+        FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
+        fragmentTransaction.replace(pContainerID, pFragment, pTag);
+        fragmentTransaction.commit();
+    }
 
-    //Todo: Replace a single Fragment
+    public void insertFragments(int[] pContainerIDs, ArrayList<Fragment> pFragments){
+        FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
+        for(Fragment fragment : mFragmentManager.getFragments()){
+            if(fragment.getTag() != "HEADER_FRAGMENT") fragmentTransaction.remove(fragment);
+        }
+        int counter = 0;
+        for(Fragment fragment : pFragments) {
+            fragmentTransaction.add(pContainerIDs[counter%pContainerIDs.length], fragment);
+            counter++;
+        }
+        fragmentTransaction.commit();
+    }
 }

@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">AngryNerds</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
+    <!-- Fragment Example Strings -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="sample_overview_event_title">Team Event im Päffgen</string>
     <string name="sample_overview_event_time">17:30</string>

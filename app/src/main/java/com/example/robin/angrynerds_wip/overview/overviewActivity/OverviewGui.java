@@ -1,5 +1,6 @@
 package com.example.robin.angrynerds_wip.overview.overviewActivity;
 
+import android.content.res.Configuration;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -10,12 +11,9 @@ public class OverviewGui {
 
     private OverviewInit mActivity;
 
-    private int mContainer1Id;
-    private int mContainer2Id;
     private int mHeaderId;
+    private int[] mContainerIDs;
 
-    private LinearLayout mContainer1;
-    private LinearLayout mContainer2;
     private LinearLayout mFooter;
     private Button mShowAll;
     private Button mShowTodo;
@@ -24,28 +22,33 @@ public class OverviewGui {
 
     OverviewGui(OverviewInit pActivity){
         mActivity = pActivity;
-        mActivity.setContentView(R.layout.activity_overview);
-        // IDs for Fragment Input
-        mHeaderId = R.id.id_overview_relativeLayout_header;
-        mContainer1Id = R.id.id_overview_linearLayout_container1;
-        mContainer2Id = R.id.id_overview_linearLayout_container2;
+
+        // Sets Layout and Containerids depending on orientation
+        if(pActivity.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
+            mActivity.setContentView(R.layout.activity_overview);
+            mContainerIDs = new int[]{R.id.id_overview_linearLayout_container};
+        } else {
+            mActivity.setContentView(R.layout.activity_overview_landscape);
+            mContainerIDs = new int[]{R.id.id_overview_linearLayout_container1, R.id.id_overview_linearLayout_container2};
+        }
+
+
         // Container
-        mContainer1 = mActivity.findViewById(mContainer1Id);
-        mContainer2 = mActivity.findViewById(mContainer2Id);
+        mHeaderId = R.id.id_overview_relativeLayout_header;
         mFooter = mActivity.findViewById(R.id.id_overview_linearLayout_footer);
         // Footer Buttons
         mShowAll = mActivity.findViewById(R.id.id_overview_button_all);
         mShowTodo = mActivity.findViewById(R.id.id_overview_button_todo);
         mShowEvent = mActivity.findViewById(R.id.id_overview_button_event);
         mShowNote = mActivity.findViewById(R.id.id_overview_button_note);
-
-        //clearContainer();
     }
 
+    /*
     public void clearContainer(){
-        mContainer1.removeAllViewsInLayout();
-        mContainer2.removeAllViewsInLayout();
-    }
+        for(int containerID : mContainerIDs){
+            ((LinearLayout)mActivity.findViewById(containerID)).removeAllViewsInLayout();
+        }
+    }*/
 
     public void hideFooter(){
         mFooter.setVisibility(View.GONE);
@@ -55,12 +58,8 @@ public class OverviewGui {
         mFooter.setVisibility(View.VISIBLE);
     }
 
-    public int getContainer1Id(){
-        return mContainer1Id;
-    }
-
-    public int getContainer2Id(){
-        return mContainer2Id;
+    public int[] getContainerIDs(){
+        return mContainerIDs;
     }
 
     public int getHeaderId() { return mHeaderId; }

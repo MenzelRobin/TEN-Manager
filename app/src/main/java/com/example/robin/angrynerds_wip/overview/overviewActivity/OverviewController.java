@@ -1,11 +1,8 @@
 package com.example.robin.angrynerds_wip.overview.overviewActivity;
 
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
-
-import com.example.robin.angrynerds_wip.data.models.tens.Note;
+import com.example.robin.angrynerds_wip.data.models.tens.TEN;
+import com.example.robin.angrynerds_wip.data.services.Delete;
 import com.example.robin.angrynerds_wip.overview.superClasses.OverviewFragmentInit;
 
 import java.util.ArrayList;
@@ -18,7 +15,6 @@ public class OverviewController {
     private OverviewGui mGui;
     private OverviewFragmentFactory mFragmentFactory;
     private OverviewFragmentInserter mFragmentInserter;
-    private FragmentManager mFragmentManager;
 
     OverviewController(OverviewInit pActivity, OverviewData pData, OverviewGui pGui) {
         mActivity = pActivity;
@@ -26,14 +22,9 @@ public class OverviewController {
         mGui = pGui;
         mFragmentFactory = new OverviewFragmentFactory();
         mFragmentInserter = new OverviewFragmentInserter(mActivity.getSupportFragmentManager());
-        mFragmentManager = mActivity.getSupportFragmentManager();
         initHeader();
         initOnClickListener();
-        //Todo: Implement natural way to load fragments (When buttons are pressed) -> New Method
-        show(Note.class);
-        //mData.filter(Note.class);
-        // mData.filterNotes();
-        //insertFragments(mFragmentFactory.createTENFragments(mData.getData()));
+        refreshFragments();
     }
 
     public void initHeader(){
@@ -48,61 +39,71 @@ public class OverviewController {
         mGui.getShowNote().setOnClickListener(clickListener);
     }
 
-    /* Todo: Check in Data wether Objects have changed? Refresh if so, add Remove Contents Method to GUI
-    public void onResume(){}*/
 
-    public void insertFragments(ArrayList<Fragment> pFragments){
-        FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-        int counter = 0;
-        for(Fragment fragment : pFragments) {
-            fragmentTransaction.add(counter%2==0?mGui.getContainer1Id():mGui.getContainer2Id(), fragment);
-            counter++;
-        }
-        fragmentTransaction.commit();
+    public void onResume(){
+        mData.refresh();
+        refreshFragments();
     }
 
     //Clickhandler:
     public void newTodo(){
-        Log.d("LOGTAG", "Create new Todo"); //TODO: newTodo
+        //Todo: Add Create Todo Activity
     }
 
     public void newEvent(){
-        Log.d("LOGTAG", "Create new Event"); //TODO: newEvent
+        //Todo: Add Create Event Activity
     }
 
     public void newNote(){
-        Log.d("LOGTAG", "Create new Note"); //TODO: newNote
+         //Todo: Add Create Note Activity
     }
 
+    // Activates the Deletionmode
     public void longClick(){
         List<Fragment> fragments = mActivity.getSupportFragmentManager().getFragments();
         for(Fragment fragment : fragments){
-            if(fragment.getTag() != "HEADER_FRAGMENT") ((OverviewFragmentInit)fragment).setDeleteState(true);
+            if(fragment.getTag() != "HEADER_FRAGMENT") ((OverviewFragmentInit)fragment).getController().setDeleteState(true);
         }
-        FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-        fragmentTransaction.replace(mGui.getHeaderId(), mFragmentFactory.createHeaderDeleteFragment(), "HEADER_FRAGMENT");
-        fragmentTransaction.commit();
+        mFragmentInserter.replaceFragment(mGui.getHeaderId(), mFragmentFactory.createHeaderDeleteFragment(), "HEADER_FRAGMENT");
         mGui.hideFooter();
     }
 
+    // Goes back to normal State
     public void back(){
         List<Fragment> fragments = mActivity.getSupportFragmentManager().getFragments();
         for(Fragment fragment : fragments){
-            if(fragment.getTag() != "HEADER_FRAGMENT") ((OverviewFragmentInit)fragment).setDeleteState(false);
+            if(fragment.getTag() != "HEADER_FRAGMENT") ((OverviewFragmentInit)fragment).getController().setDeleteState(false);
         }
-        FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-        fragmentTransaction.replace(mGui.getHeaderId(), mFragmentFactory.createHeaderCreateFragment(), "HEADER_FRAGMENT");
-        fragmentTransaction.commit();
+        mFragmentInserter.replaceFragment(mGui.getHeaderId(), mFragmentFactory.createHeaderCreateFragment(), "HEADER_FRAGMENT");
         mGui.showFooter();
     }
 
+    // Deletes selected Items and goes back to normal State
     public void delete(){
-
+        ArrayList<String> toDelete = new ArrayList();
+        List<Fragment> fragments = mActivity.getSupportFragmentManager().getFragments();
+        for(Fragment fragment : fragments){
+            if(fragment.getTag() != "HEADER_FRAGMENT") {
+                if(((OverviewFragmentInit)fragment).getController().getMarked()){
+                    toDelete.add(((OverviewFragmentInit) fragment).getController().getTENID());
+                }
+                ((OverviewFragmentInit)fragment).getController().setDeleteState(false);
+            }
+        }
+        Delete.deleteMultipleTEN(toDelete);
+        refreshFragments();
+        mFragmentInserter.replaceFragment(mGui.getHeaderId(), mFragmentFactory.createHeaderCreateFragment(), "HEADER_FRAGMENT");
+        mGui.showFooter();
     }
 
+    // Shows TENs depending on selection
     public void show(Class pClass){
-        mGui.clearContainer();
+        mData.refresh();
         mData.filter(pClass);
-        insertFragments(mFragmentFactory.createTENFragments(mData.getData()));
+        refreshFragments();
+    }
+
+    public void refreshFragments(){
+        mFragmentInserter.insertFragments(mGui.getContainerIDs(), mFragmentFactory.createTENFragments(mData.getData()));
     }
 }

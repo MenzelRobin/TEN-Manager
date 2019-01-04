@@ -37,7 +37,7 @@ public class OverviewFragmentFactory {
                 fragments.add(fragment);
             }
             if(ten.getClass() == Note.class) {
-                //Todo: If the Note only contains an Image, create an OverviewImage Fragment instead.
+                //Todo: If the Note only contains an Image, create an OverviewImage Fragment instead. Implement when Datateam implemented Images in Notes
                 OverviewNoteInit fragment = new OverviewNoteInit();
                 fragment.setArguments(ten.getBundle());
                 fragments.add(fragment);

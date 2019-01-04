@@ -41,11 +41,22 @@
 
 
                 <LinearLayout
-                    android:id="@+id/id_overview_linearLayout_container"
+                    android:id="@+id/id_overview_linearLayout_container1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:paddingRight="2.5dp">
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/id_overview_linearLayout_container2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:paddingLeft="2.5dp">
 
                 </LinearLayout>
 
