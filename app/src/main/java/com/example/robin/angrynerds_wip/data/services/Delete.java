@@ -15,11 +15,11 @@ public class Delete {
         repository.deleteTEN(ten.getID());
     }
 
-    public static void deleteMultipleTENs(ArrayList<TEN> ListTENs) {
+    public static void deleteMultipleTENs(ArrayList<String> ListIDs) {
         Repository repository = new Repository();
-        for (TEN ten : ListTENs
+        for (String id : ListIDs
                 ) {
-            repository.deleteTEN(ten.getID());
+            repository.deleteTEN(id);
         }
     }
 }
