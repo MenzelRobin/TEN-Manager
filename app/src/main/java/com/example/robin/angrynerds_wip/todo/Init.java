@@ -48,8 +48,8 @@ public class Init extends Activity {
 
     @Override
     public void onBackPressed() {
-        // super.onBackPressed();   //default action
-        mApplicationLogic.onBackPressed();   // customized action
+        super.onBackPressed();   //default action
+        //mApplicationLogic.onBackPressed();   // customized action
     }
 
 }
