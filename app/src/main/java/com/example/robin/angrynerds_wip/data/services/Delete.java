@@ -1,7 +1,5 @@
 package com.example.robin.angrynerds_wip.data.services;
 
-import android.util.Log;
-
 import com.example.robin.angrynerds_wip.data.repository.Repository;
 import com.example.robin.angrynerds_wip.data.models.tens.TEN;
 
@@ -17,11 +15,11 @@ public class Delete {
         repository.deleteTEN(ten.getID());
     }
 
-    public static void deleteMultipleTEN(ArrayList<String> pToDelete){
-        //Repository repository = new Repository();
-        for(String id : pToDelete){
-            //repository.deleteTEN(id);
-            Log.d("DELETING", "TEN with id " + id);
+    public static void deleteManyTENs(ArrayList<TEN> ListTENs) {
+        Repository repository = new Repository();
+        for (TEN ten : ListTENs
+                ) {
+            repository.deleteTEN(ten.getID());
         }
     }
 }
