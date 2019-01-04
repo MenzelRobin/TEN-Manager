@@ -1,5 +1,7 @@
 package com.example.robin.angrynerds_wip.overview.todoFragment;
 
+import android.content.Context;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -16,9 +18,8 @@ public class OverviewTodoGui extends OverviewFragmentGui {
     private TextView mCounter;
     private LinearLayout mContainer1;
     private LinearLayout mContainer2;
-
-
-
+    private int mCountChecked;
+    private int mCountAll;
 
     // Adds the Fragment view to this Object
     public void addView(View pView){
@@ -27,8 +28,12 @@ public class OverviewTodoGui extends OverviewFragmentGui {
         mUnchecked = mView.findViewById(R.id.id_overview_todo_imageView_unchecked);
         mOverviewTodo = mView.findViewById(R.id.id_overview_todo);
         mTitle = mView.findViewById(R.id.id_overview_todo_textView_title);
-        mNote = mView.findViewById(R.id.id_overview_todo_textView_text);
+        mNote = mView.findViewById(R.id.id_overview_todo_textView_note);
         mCounter = mView.findViewById(R.id.id_overview_todo_textView_counter);
+        mContainer1 = mView.findViewById(R.id.id_overview_todo_linearLayout_container1);
+        mContainer2 = mView.findViewById(R.id.id_overview_todo_linearLayout_container2);
+        mCountChecked = 0;
+        mCountAll = 0;
     }
 
     // Returns mOverviewNote
@@ -54,5 +59,34 @@ public class OverviewTodoGui extends OverviewFragmentGui {
     // Sets Color
     public void setColor(int pColor){
         mOverviewTodo.setBackgroundColor(pColor);
+    }
+
+    public void addCheckbox(boolean pStatus, String pDescription){
+        // Todo: Fehler wegen mView.getContext()?
+        // Set Layout
+        Context context = mView.getContext();
+        TextView checkbox = new TextView(context);
+        checkbox.setTextColor(context.getResources().getColor(R.color.colorWhite));
+        checkbox.setGravity(Gravity.CENTER_VERTICAL);
+        // Set Status
+        if(pStatus) {
+            checkbox.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_check_box_white_24dp, 0, 0, 0);
+        } else {
+            checkbox.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_check_box_outline_blank_white_24dp, 0, 0, 0);
+        }
+        //Set Description
+        checkbox.setText(pDescription);
+        // Add Checkbox to alternating container
+        if(mCountAll%2==0){
+            mContainer1.addView(checkbox);
+        } else {
+            mContainer2.addView(checkbox);
+        }
+        mCountAll++;
+        if(pStatus) mCountChecked++;
+    }
+
+    public void setCounter(){
+        mCounter.setText(mCountChecked + "/" + mCountAll);
     }
 }
