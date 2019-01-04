@@ -120,4 +120,8 @@ public class Gui extends AppCompatActivity{
     public void setmProgressBar(int progress) {
         mProgressBar.setProgress(progress);
     }
+
+    public void setDate(String s) {
+        mStartDate.setText(s);
+    }
 }
