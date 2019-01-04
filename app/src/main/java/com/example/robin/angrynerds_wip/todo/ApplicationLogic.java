@@ -31,7 +31,7 @@ public class ApplicationLogic {
     //private Data mData;
 
     private Gui mGui;
-    private DatePicker datePicker;
+    private DialogFragment datePicker;
     private Activity mActivity;
 
 
