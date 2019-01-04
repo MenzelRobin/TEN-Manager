@@ -10,7 +10,7 @@ import com.example.robin.angrynerds_wip.data.models.tens.Todo;
 
 //import com.example.robin.angrynerds_wip.activities.Data;
 
-public class Init extends Activity {
+public class Init extends AppCompatActivity {
 
     private Gui mGui;
     private ApplicationLogic mApplicationLogic;
