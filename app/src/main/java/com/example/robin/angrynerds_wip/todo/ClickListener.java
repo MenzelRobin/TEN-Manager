@@ -24,7 +24,7 @@ public class ClickListener implements View.OnClickListener  {
             case R.id.edit_todo_startDate:
                 //mApplicationLogic.showDatePickerDialogue();
                 //Button funktioniert jetzt
-                mApplicationLogic.onStartDateClicked();
+                mApplicationLogic.showDatePickerDialog(view);
                 break;
             default:
                 break;

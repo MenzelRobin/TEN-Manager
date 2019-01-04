@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.DatePicker;
 
 import com.example.robin.angrynerds_wip.data.models.tens.Todo;
 
@@ -50,6 +51,10 @@ public class Init extends Activity {
     public void onBackPressed() {
         super.onBackPressed();   //default action
         //mApplicationLogic.onBackPressed();   // customized action
+    }
+
+    public void receiveDate(DatePicker dp){
+        mApplicationLogic.receiveDate(dp);
     }
 
 }

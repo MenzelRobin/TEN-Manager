@@ -11,6 +11,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.nfc.Tag;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.DatePicker;
 
 import com.example.robin.angrynerds_wip.MainActivity;
@@ -28,6 +29,7 @@ public class ApplicationLogic {
     //private Data mData;
 
     private Gui mGui;
+    private DatePicker datePicker;
 
 
     //Hier muss noch Data rein
@@ -56,6 +58,11 @@ public class ApplicationLogic {
     }
 
     public void dataToGui() {
+    }
+
+    public void showDatePickerDialog(View v){
+        datePicker = new DatePickerFragment();
+        datePicker.show(mActivity.getFragmentManager(), "DatePicker");
     }
 
     public void onActivityReturned(int requestCode, int resultCode, Intent data) {
