@@ -15,7 +15,7 @@ public class Delete {
         repository.deleteTEN(ten.getID());
     }
 
-    public static void deleteManyTENs(ArrayList<TEN> ListTENs) {
+    public static void deleteMultipleTENs(ArrayList<TEN> ListTENs) {
         Repository repository = new Repository();
         for (TEN ten : ListTENs
                 ) {
