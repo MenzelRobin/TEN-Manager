@@ -1,5 +1,6 @@
 package com.example.robin.angrynerds_wip.todo;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
@@ -30,6 +31,7 @@ public class ApplicationLogic {
 
     private Gui mGui;
     private DatePicker datePicker;
+    private Activity mActivity;
 
 
     //Hier muss noch Data rein
@@ -58,6 +60,11 @@ public class ApplicationLogic {
     }
 
     public void dataToGui() {
+    }
+
+    //to receive Date from DatePicker Fragment
+    public void receiveDate(DatePicker datePicker) {
+        mGui.setDate(datePicker.getDayOfMonth() + "." + (datePicker.getMonth() + 1) + "." + datePicker.getYear());
     }
 
     public void showDatePickerDialog(View v){
