@@ -65,13 +65,12 @@
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
         android:layout_below="@id/edit_todo_endDate"
-        android:layout_above="@+id/edit_todo_progressBar">
+        android:layout_above="@+id/edit_todo_progressText">
     </ListView>
-    <SeekBar
-        android:id="@+id/edit_todo_progressBar"
+    <TextView
+        android:id="@+id/edit_todo_progressText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:/>
+        android:layout_alignParentBottom="true"/>
 
 </RelativeLayout>

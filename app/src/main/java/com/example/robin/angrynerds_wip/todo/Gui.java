@@ -34,7 +34,7 @@ public class Gui extends AppCompatActivity{
     private EditText mText;
     private Button mStartDate;
     private Button mEndDate;
-    private SeekBar mProgressBar;
+    private TextView mProgressText;
     private ListView mTasks;
 
     public Gui(Init activity) {
@@ -44,7 +44,7 @@ public class Gui extends AppCompatActivity{
         mText = activity.findViewById(R.id.edit_todo_text);
         mStartDate = activity.findViewById(R.id.edit_todo_startDate);
         mEndDate = activity.findViewById(R.id.edit_todo_endDate);
-        mProgressBar = activity.findViewById(R.id.edit_todo_progressBar);
+        mProgressText = activity.findViewById(R.id.edit_todo_progressText);
         mTasks = activity.findViewById(R.id.edit_todo_tasks);
 
         ArrayList<String> strings = new ArrayList<String>();
@@ -58,11 +58,6 @@ public class Gui extends AppCompatActivity{
         tasks.add(new Task("Dritte Aufgabe", false));
         tasks.add(new Task("Dritte Aufgabe", false));
         tasks.add(new Task("Dritte Aufgabe", true));
-        tasks.add(new Task("Dritte Aufgabe", false));
-        tasks.add(new Task("Dritte Aufgabe", true));
-        tasks.add(new Task("Dritte Aufgabe", false));
-        tasks.add(new Task("Dritte Aufgabe", false));
-        tasks.add(new Task("Dritte Aufgabe", true));
         mTasks.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         TasksAdapter adapter =
                 new TasksAdapter(
@@ -70,27 +65,6 @@ public class Gui extends AppCompatActivity{
                         R.layout.rowlayout, // ID des Layouts für alle Listen-Elemente
                         tasks); // Die Liste der Elemente
         mTasks.setAdapter(adapter);
-
-        /*
-        java.util.Calendar cal = java.util.Calendar.getInstance();
-        int year = cal.get(java.util.Calendar.YEAR);
-        int month = cal.get(java.util.Calendar.MONTH);
-        int day = cal.get(java.util.Calendar.DAY_OF_MONTH);
-
-        DatePickerDialog dialog = new DatePickerDialog(getActivity(),
-                android.R.style.Theme_Holo_Light_Dialog_MinWidth,
-                mDateSetListener,
-                year,month,day);
-
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-        mDateSetListener = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-
-            }
-        };
-        */
     }
     
 
@@ -109,19 +83,20 @@ public class Gui extends AppCompatActivity{
 
     public Button getmEndDate() { return mEndDate; }
 
-    public SeekBar getmProgressBar() {
-        return mProgressBar;
+    public TextView getmProgressText() {
+        return mProgressText;
     }
 
     public ListView getmTasks() { return mTasks; }
 
 
     // methods to change view attributes
-    public void setmProgressBar(int progress) {
-        mProgressBar.setProgress(progress);
+    public void setmProgressText(String text) {
+        mProgressText.setText(text);
     }
 
     public void setDate(String s, View v) {
         ((Button)v).setText(s);
     }
+
 }
