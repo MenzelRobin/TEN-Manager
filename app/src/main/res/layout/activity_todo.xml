@@ -71,6 +71,7 @@
         android:id="@+id/edit_todo_progressBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"/>
+        android:layout_alignParentBottom="true"
+        android:/>
 
 </RelativeLayout>

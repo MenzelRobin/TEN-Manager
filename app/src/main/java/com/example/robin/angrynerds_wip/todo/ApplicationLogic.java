@@ -34,6 +34,8 @@ public class ApplicationLogic {
     private DialogFragment datePicker;
     private Activity mActivity;
 
+    private View mActiveDatePickerButton; // der Button, mit dem der DatePicker geöffnet wurde
+
 
     //Hier muss noch Data rein
     public ApplicationLogic(Gui gui, Activity pActivity) {
@@ -63,12 +65,13 @@ public class ApplicationLogic {
 
     //to receive Date from DatePicker Fragment
     public void receiveDate(DatePicker datePicker) {
-        mGui.setDate(datePicker.getDayOfMonth() + "." + (datePicker.getMonth() + 1) + "." + datePicker.getYear());
+        mGui.setDate(datePicker.getDayOfMonth() + "." + (datePicker.getMonth() + 1) + "." + datePicker.getYear(), mActiveDatePickerButton);
     }
 
     public void showDatePickerDialog(View v){
         datePicker = new DatePickerFragment();
         datePicker.show(mActivity.getFragmentManager(), "DatePicker");
+        mActiveDatePickerButton = v;
     }
 
     public void onActivityReturned(int requestCode, int resultCode, Intent data) {
