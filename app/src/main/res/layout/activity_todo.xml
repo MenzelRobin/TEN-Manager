@@ -4,22 +4,21 @@
     android:layout_height="match_parent"
     android:background="@color/bgColor4"
     android:orientation="horizontal"
-    android:layout_marginLeft="10dp"
-    android:layout_marginTop="10dp"
-    android:layout_marginRight="10dp"
-    android:layout_marginBottom="10dp">
+    android:padding="10dp"
+    android:layout_alignParentLeft="true">
 
     <EditText
         android:id="@+id/edit_todo_title"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:inputType="text"
-        android:hint="@string/default_title"
+        android:hint="@string/sample_activity_todo_title"
         android:textColorHint="@color/TextWhite"
         android:textColor="@color/TextWhite"
         android:lines="1"
         android:maxLines="1"
-        android:scrollbars="horizontal"/>
+        android:scrollbars="horizontal"
+        android:textSize="25dp"/>
 
     <EditText
         android:id="@+id/edit_todo_text"
@@ -27,35 +26,46 @@
         android:layout_width="match_parent"
         android:layout_below="@+id/edit_todo_title"
         android:inputType="text"
-        android:hint="@string/default_description"
+        android:hint="@string/sample_activity_todo_description"
         android:textColorHint="@color/TextWhite"
         android:textColor="@color/TextWhite"
         android:lines="10"
         android:maxLines="10"
         android:scrollbars="vertical"
-        android:layout_marginTop="5dp"/>
+        android:layout_marginTop="5dp"
+        android:textSize="20dp"/>
 
     <Button
         android:id="@+id/edit_todo_startDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColorHint="@color/TextWhite"
+        android:textColor="@color/TextWhite"
+        android:textSize="25dp"
+        android:backgroundTint="@color/bgColor4"
         android:layout_below="@id/edit_todo_text"
-        android:hint="Startdatum" />
+        android:hint="@string/sample_activity_todo_startDate"/>
 
     <Button
         android:id="@+id/edit_todo_endDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColorHint="@color/TextWhite"
+        android:textColor="@color/TextWhite"
+        android:textSize="25dp"
+        android:backgroundTint="@color/bgColor4"
         android:layout_below="@id/edit_todo_startDate"
-        android:hint="Enddatum"/>
+        android:hint="@string/sample_activity_todo_endDate"/>
 
     <ListView
         android:id="@+id/edit_todo_tasks"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/bgColor4"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
         android:layout_below="@id/edit_todo_endDate"
-        android:layout_above="@+id/edit_todo_progressBar"
-        android:background="#FFF">
+        android:layout_above="@+id/edit_todo_progressBar">
     </ListView>
     <SeekBar
         android:id="@+id/edit_todo_progressBar"

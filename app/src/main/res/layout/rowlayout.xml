@@ -8,12 +8,15 @@
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:gravity="center_vertical"
+        android:buttonTint="@color/TextWhite"
         />
     <EditText
         android:id="@+id/task_description"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:hint="Aufgabe.."
-        android:textSize="16dp"
-        android:gravity="center_vertical"/>
+        android:hint="@string/sample_activity_todo_task"
+        android:textSize="15dp"
+        android:textColor="@color/TextWhite"
+        android:gravity="center_vertical"
+        android:backgroundTint="@color/bgColor4"/>
 </LinearLayout>
