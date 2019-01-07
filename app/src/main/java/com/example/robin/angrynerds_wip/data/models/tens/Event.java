@@ -14,10 +14,13 @@ public class Event extends TEN {
     private RecurringType recurringType;
 
     //Constructor
-    public Event(){
+
+    //empty default
+    public Event() {
         super();
     }
 
+    //simple for usage
     public Event(String title, Date time, ArrayList<Date> reminder) {
         super(title);
         this.time = time;
@@ -26,6 +29,7 @@ public class Event extends TEN {
         this.recurringType = RecurringType.NONE;
     }
 
+    //simple for usage
     public Event(String title, Date time, ArrayList<Date> reminder, String address) {
         super(title);
         this.time = time;
@@ -34,6 +38,7 @@ public class Event extends TEN {
         this.recurringType = RecurringType.NONE;
     }
 
+    //simple for usage
     public Event(String title, Date time, ArrayList<Date> reminder, String address, RecurringType recurringType) {
         super(title);
         this.time = time;
@@ -42,6 +47,7 @@ public class Event extends TEN {
         this.recurringType = recurringType;
     }
 
+    //simple for usage
     public Event(String title, Date time, ArrayList<Date> reminder, RecurringType recurringType) {
         super(title);
         this.time = time;
@@ -50,8 +56,9 @@ public class Event extends TEN {
         this.recurringType = recurringType;
     }
 
-    public Event(String title, int color, Date time, ArrayList<Date> reminder, String address, RecurringType recurringType) {
-        super(title, color);
+    //all Attributes for reconstruction of complete Object
+    public Event(String title, String ID, int color, int accentColor, Date dateOfCreation, Date time, ArrayList<Date> reminder, String address, RecurringType recurringType) {
+        super(title, ID, color, accentColor, dateOfCreation);
         this.time = time;
         this.reminder = reminder;
         this.address = address;
@@ -62,32 +69,40 @@ public class Event extends TEN {
     public Date getTime() {
         return time;
     }
+
     public void setTime(Date time) {
         this.time = time;
     }
+
     public ArrayList<Date> getReminder() {
         return reminder;
     }
+
     public void setReminder(ArrayList<Date> reminder) {
         this.reminder = reminder;
     }
+
     public String getAddress() {
         return address;
     }
+
     public void setAddress(String address) {
         this.address = address;
     }
+
     public RecurringType getRecurringType() {
         return recurringType;
     }
+
     public void setRecurringType(RecurringType recurringType) {
         this.recurringType = recurringType;
     }
 
-    public Bundle getBundle(){
+    public Bundle getBundle() {
         Bundle bundle = super.getBundle();
         bundle.putString("time", time.toString());
         bundle.putString("adress", address);
+        //TODO Dateliste, Reccurring Type => Lösung eventuell nur ID im Bundle abspeichern und Objekt in Datenbank speichern (mit Activities absprechen)
         return bundle;
     }
 }

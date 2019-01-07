@@ -36,23 +36,26 @@ public class Todo extends TEN {
         this.progress = calculateProgress();
     }
 
-    public Todo(String title, int color, String note, ArrayList<Task> tasks){
-        super(title, color);
-        this.note = note;
-        this.tasks = tasks;
-        this.progress = calculateProgress();
-    }
-
-    public Todo(String title, int color, String note, ArrayList<Task> tasks, Date endDate){
-        super(title, color);
+    public Todo(String title, String note, ArrayList<Task> tasks, Date endDate){
+        super(title);
         this.note = note;
         this.tasks = tasks;
         this.progress = calculateProgress();
         this.endDate = endDate;
     }
 
-    public Todo(String title, int color, String note, ArrayList<Task> tasks, Date startDate, Date endDate){
-        super(title, color);
+    public Todo(String title, String note, ArrayList<Task> tasks, Date startDate, Date endDate){
+        super(title);
+        this.note = note;
+        this.tasks = tasks;
+        this.progress = calculateProgress();
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
+
+    //all Attributes for complete reconstruction
+    public Todo(String title, String ID, int color, int accentColor, Date dateOfCreation, String note, ArrayList<Task> tasks, Date startDate, Date endDate){
+        super(title, ID, color, accentColor, dateOfCreation);
         this.note = note;
         this.tasks = tasks;
         this.progress = calculateProgress();

@@ -13,9 +13,9 @@ public class TEN {
     private int accentColor;
     private Date dateOfCreation;
 
-    private static int nextID = 0; //For MockData only
-
     //Constructor
+
+    //empty default
     public TEN(){
         int colorIndex = Colors.getRandomColorIndex();
         this.color = Colors.COLORS[colorIndex];
@@ -24,30 +24,7 @@ public class TEN {
         this.dateOfCreation = new Date();
     }
 
-    public TEN(String title, String ID, int color) {
-        int colorIndex = Colors.getRandomColorIndex();
-        this.color = Colors.COLORS[colorIndex];
-        this.accentColor = Colors.DARKER_ACCENT_COLORS[colorIndex];
-
-        this.title = title;
-        this.ID = ID;
-        this.dateOfCreation = new Date();
-    }
-
-    //TODO Implement ID in Database -> Delete ID from this class
-    public TEN(String title, int color) {
-        int colorIndex = Colors.getRandomColorIndex();
-        this.color = Colors.COLORS[colorIndex];
-        this.accentColor = Colors.DARKER_ACCENT_COLORS[colorIndex];
-
-        this.title = title;
-        this.ID = String.valueOf(nextID++); //for MockData only
-        this.dateOfCreation = new Date();
-    }
-
-    //Constructor for random color. Color array from colors.xml has to be handed over from activity.
-    //use this: int[] bgColors = getResources().getIntArray(R.array.bgColors);
-    //TODO Color Array hand over from corresponding Activity
+    //simple for usage
     public TEN(String title) {
         int colorIndex = Colors.getRandomColorIndex();
         this.color = Colors.COLORS[colorIndex];
@@ -57,12 +34,22 @@ public class TEN {
         this.dateOfCreation = new Date();
     }
 
+    //complete Object must be reconstructed
+    public TEN(String title, String ID, int color, int accentColor, Date dateOfCreation) {
+        this.color = color;
+        this.accentColor = accentColor;
+        this.title = title;
+        this.ID = ID;
+        this.dateOfCreation = dateOfCreation;
+    }
+
     public Bundle getBundle(){
         Bundle bundle = new Bundle();
         bundle.putString("ID", ID);
         bundle.putString("Title", title);
         bundle.putInt("Color", color);
         bundle.putInt("AccentColor", color);
+        bundle.putLong("DateOfCreation", this.dateOfCreation.getTime());
         return bundle;
     }
 

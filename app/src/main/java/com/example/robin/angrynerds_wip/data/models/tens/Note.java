@@ -3,6 +3,7 @@ package com.example.robin.angrynerds_wip.data.models.tens;
 import android.os.Bundle;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import android.os.Bundle;
 
@@ -20,24 +21,22 @@ public class Note extends TEN{
         super(title);
     }
 
+    //simple for usage
     public Note(String title, String description){
         super(title);
         this.description = description;
     }
 
-    public Note(String title, int color, String description){
-        super(title, color);
-        this.description = description;
-    }
-
-    public Note(String title, int color, String description, ArrayList<String> tags){
-        super(title, color);
+    //simple for usage
+    public Note(String title, String description, ArrayList<String> tags){
+        super(title);
         this.description = description;
         this.tags = tags;
     }
 
-    public Note(String title, int color, String description, ArrayList<String> tags, ArrayList<String> pictures){
-        super(title, color);
+    //all Attributes for complete Reconstruction
+    public Note(String title, String ID, int color, int accentColor, Date dateOfCreation, String description, ArrayList<String> tags, ArrayList<String> pictures){
+        super(title, ID, color, accentColor, dateOfCreation);
         this.description = description;
         this.tags = tags;
         this.pictures = pictures;
