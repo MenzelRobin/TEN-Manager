@@ -56,10 +56,10 @@ public class MockData {
         };
 
         for (int i = 1; i <= 10; i++) {
-            MockData.tenMockData.add(new Todo("Todo " + i, bgColors[i - 1], "This is a toDo.", tasks, new Date()));
-            MockData.tenMockData.add(new Event("Event " + i, bgColors[i - 1], Calendar.getInstance().getTime(), reminder,
+            this.tenMockData.add(new Todo("Todo " + i, bgColors[i - 1], "This is a toDo.", tasks, new Date()));
+            this.tenMockData.add(new Event("Event " + i, bgColors[i - 1], Calendar.getInstance().getTime(), reminder,
                     "Schlossallee 1, 50764 Köln", recurringTypes[i % 5]));
-            MockData.tenMockData.add(new Note("Note " + i, bgColors[i - 1], "This is a note.", tags));
+            this.tenMockData.add(new Note("Note " + i, bgColors[i - 1], "This is a note.", tags));
         }
     }
 }
