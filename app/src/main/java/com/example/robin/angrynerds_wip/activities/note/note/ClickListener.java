@@ -1,4 +1,4 @@
-package com.example.robin.angrynerds_wip.activities.note;
+package com.example.robin.angrynerds_wip.activities.note.note;
 
 import android.view.View;
 

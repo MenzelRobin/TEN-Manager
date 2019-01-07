@@ -17,6 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:inputType="text"
+        android:textStyle="bold"
         android:hint="@string/sample_note_title"
         android:textColorHint="@color/note_hintWhite"
         android:textColor="@color/note_textWhite"
