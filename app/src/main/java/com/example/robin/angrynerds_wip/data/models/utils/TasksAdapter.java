@@ -28,8 +28,8 @@ public class TasksAdapter extends ArrayAdapter {
         View rowView = inflater.inflate(R.layout.rowlayout, parent, false);
 
         // Lookup view for data population
-        EditText description = (EditText) rowView.findViewById(R.id.task_description);
-        CheckBox status = (CheckBox) rowView.findViewById(R.id.task_status);
+        EditText description = (EditText) rowView.findViewById(R.id.edit_todo_task_description);
+        CheckBox status = (CheckBox) rowView.findViewById(R.id.edit_todo_task_status);
 
         // Get the data item for this position
         Task task = (Task)mTasks.get(position);
