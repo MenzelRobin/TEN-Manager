@@ -1,11 +1,11 @@
-package com.example.robin.angrynerds_wip.activities.note;
+package com.example.robin.angrynerds_wip.activities.note.note;
 
 import android.graphics.Bitmap;
 import android.view.Gravity;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-class ImageContainer implements IContainer{
+class ImageContainer extends IContainer{
 
     private Init mActivity;
     private String path;

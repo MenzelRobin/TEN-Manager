@@ -1,4 +1,4 @@
-package com.example.robin.angrynerds_wip.activities.note;
+package com.example.robin.angrynerds_wip.activities.note.note;
 
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -7,7 +7,7 @@ import android.view.Gravity;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-class IconContainer implements IContainer {
+class IconContainer extends IContainer {
 
     private Init mActivity;
     private Drawable drawable;
@@ -25,8 +25,7 @@ class IconContainer implements IContainer {
         return imageContainer;
     }
     public Bitmap getImage(){
-        Bitmap bitmap = ((BitmapDrawable)drawable).getBitmap();
-        return bitmap;}
+        return ((BitmapDrawable)drawable).getBitmap();}
     public void setImageContainerId(int id){
         imageContainer.setId(id);
     }

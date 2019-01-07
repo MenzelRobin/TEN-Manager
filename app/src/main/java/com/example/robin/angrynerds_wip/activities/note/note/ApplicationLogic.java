@@ -1,4 +1,4 @@
-package com.example.robin.angrynerds_wip.activities.note;
+package com.example.robin.angrynerds_wip.activities.note.note;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -90,8 +90,8 @@ class ApplicationLogic {
         if(id==0)
             mNoteData.importMedia();
         else{
-            ImageAlertDialog imageAlertDialog = new ImageAlertDialog(mNoteData.getImage(id));
-            imageAlertDialog.display(mNoteData.getActivity());
+            ImageOverlay imageOverlay = new ImageOverlay(mNoteData.getImage(id));
+            imageOverlay.display(mNoteData.getActivity());
         }
     }
 
