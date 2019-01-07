@@ -2,7 +2,6 @@ package com.example.robin.angrynerds_wip.data.models.tens;
 
 import android.os.Bundle;
 
-import com.example.robin.angrynerds_wip.data.models.utils.Address;
 import com.example.robin.angrynerds_wip.data.models.utils.RecurringType;
 
 import java.util.ArrayList;
@@ -11,7 +10,7 @@ import java.util.Date;
 public class Event extends TEN {
     private Date time;
     private ArrayList<Date> reminder;
-    private Address address;
+    private String address;
     private RecurringType recurringType;
 
     //Constructor
@@ -27,7 +26,7 @@ public class Event extends TEN {
         this.recurringType = RecurringType.NONE;
     }
 
-    public Event(String title, Date time, ArrayList<Date> reminder, Address address) {
+    public Event(String title, Date time, ArrayList<Date> reminder, String address) {
         super(title);
         this.time = time;
         this.reminder = reminder;
@@ -35,7 +34,7 @@ public class Event extends TEN {
         this.recurringType = RecurringType.NONE;
     }
 
-    public Event(String title, Date time, ArrayList<Date> reminder, Address address, RecurringType recurringType) {
+    public Event(String title, Date time, ArrayList<Date> reminder, String address, RecurringType recurringType) {
         super(title);
         this.time = time;
         this.reminder = reminder;
@@ -51,19 +50,12 @@ public class Event extends TEN {
         this.recurringType = recurringType;
     }
 
-    public Event(String title, int color, Date time, ArrayList<Date> reminder, Address address, RecurringType recurringType) {
+    public Event(String title, int color, Date time, ArrayList<Date> reminder, String address, RecurringType recurringType) {
         super(title, color);
         this.time = time;
         this.reminder = reminder;
         this.address = address;
         this.recurringType = recurringType;
-    }
-
-    public Bundle getBundle(){
-        Bundle bundle = super.getBundle();
-        bundle.putString("time", Long.toString(time.getTime()));
-        bundle.putAll(address.getBundle());
-        return bundle;
     }
 
     //Getter and Setter
@@ -79,10 +71,10 @@ public class Event extends TEN {
     public void setReminder(ArrayList<Date> reminder) {
         this.reminder = reminder;
     }
-    public Address getAddress() {
+    public String getAddress() {
         return address;
     }
-    public void setAddress(Address address) {
+    public void setAddress(String address) {
         this.address = address;
     }
     public RecurringType getRecurringType() {
@@ -90,5 +82,12 @@ public class Event extends TEN {
     }
     public void setRecurringType(RecurringType recurringType) {
         this.recurringType = recurringType;
+    }
+
+    public Bundle getBundle(){
+        Bundle bundle = super.getBundle();
+        bundle.putString("time", time.toString());
+        bundle.putString("adress", address);
+        return bundle;
     }
 }
