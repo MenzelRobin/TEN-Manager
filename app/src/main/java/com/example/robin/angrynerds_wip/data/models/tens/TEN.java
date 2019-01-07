@@ -5,33 +5,42 @@ import android.os.Bundle;
 import com.example.robin.angrynerds_wip.data.models.utils.Colors;
 
 import java.util.Date;
-import java.util.Random;
 
 public class TEN {
     private String title;
     private String ID;
     private int color;
+    private int accentColor;
     private Date dateOfCreation;
 
     private static int nextID = 0; //For MockData only
 
     //Constructor
     public TEN(){
-        this.color = Colors.getRandomColor();
+        int colorIndex = Colors.getRandomColorIndex();
+        this.color = Colors.COLORS[colorIndex];
+        this.accentColor = Colors.DARKER_ACCENT_COLORS[colorIndex];
+
         this.dateOfCreation = new Date();
     }
 
     public TEN(String title, String ID, int color) {
+        int colorIndex = Colors.getRandomColorIndex();
+        this.color = Colors.COLORS[colorIndex];
+        this.accentColor = Colors.DARKER_ACCENT_COLORS[colorIndex];
+
         this.title = title;
         this.ID = ID;
-        this.color = color;
         this.dateOfCreation = new Date();
     }
 
     //TODO Implement ID in Database -> Delete ID from this class
     public TEN(String title, int color) {
+        int colorIndex = Colors.getRandomColorIndex();
+        this.color = Colors.COLORS[colorIndex];
+        this.accentColor = Colors.DARKER_ACCENT_COLORS[colorIndex];
+
         this.title = title;
-        this.color = color;
         this.ID = String.valueOf(nextID++); //for MockData only
         this.dateOfCreation = new Date();
     }
@@ -40,7 +49,10 @@ public class TEN {
     //use this: int[] bgColors = getResources().getIntArray(R.array.bgColors);
     //TODO Color Array hand over from corresponding Activity
     public TEN(String title) {
-        this.color = Colors.getRandomColor();
+        int colorIndex = Colors.getRandomColorIndex();
+        this.color = Colors.COLORS[colorIndex];
+        this.accentColor = Colors.DARKER_ACCENT_COLORS[colorIndex];
+
         this.title=title;
         this.dateOfCreation = new Date();
     }
@@ -50,6 +62,7 @@ public class TEN {
         bundle.putString("ID", ID);
         bundle.putString("Title", title);
         bundle.putInt("Color", color);
+        bundle.putInt("AccentColor", color);
         return bundle;
     }
 
@@ -67,6 +80,7 @@ public class TEN {
     public int getColor() {
         return color;
     }
+    public int getAccentColor() { return accentColor; }
     public void setColor(int color) {
         this.color = color;
     }
