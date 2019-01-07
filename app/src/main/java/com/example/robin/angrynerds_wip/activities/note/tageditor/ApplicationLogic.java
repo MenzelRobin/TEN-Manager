@@ -64,6 +64,8 @@ class ApplicationLogic {
     void onAddButtonClicked() {
         mNote.getTags().add("");
         mAdapter.notifyDataSetChanged();
+
+        mGui.getmListView().post(new ListViewBottomSelector(mGui.getmListView(), mAdapter));
     }
 
     void onDeleteButtonClicked(int id){

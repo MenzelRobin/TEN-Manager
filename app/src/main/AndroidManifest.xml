@@ -20,7 +20,8 @@
         <activity android:name=".OverviewActivity"></activity>
 
         <activity android:name=".activities.note.note.Init"
-            android:windowSoftInputMode="adjustPan">
+            android:windowSoftInputMode="adjustPan"
+            android:configChanges="orientation">
         </activity>
         <activity android:name=".activities.note.tageditor.TagActivity"
             android:windowSoftInputMode="adjustPan">

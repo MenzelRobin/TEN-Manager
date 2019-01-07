@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 
 import com.example.robin.angrynerds_wip.R;
@@ -30,6 +31,14 @@ class NoteData {
 
         Drawable drawable = ContextCompat.getDrawable(mActivity,R.drawable.ic_add_a_photo_grey_24dp);
         mNoteImageContainers.add(new IconContainer(mActivity, 0, drawable));
+    }
+
+    void saveDataInBundle(Bundle outState) {
+        //outState = mNote.getBundle();
+    }
+
+    void restoreDataFromBundle(Bundle savedInstanceState) {
+        mNote.setTitle(savedInstanceState.getString("title"));
     }
 
     ArrayList<IContainer> getmNoteImageContainers() { return mNoteImageContainers; }

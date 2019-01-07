@@ -1,5 +1,6 @@
 package com.example.robin.angrynerds_wip.activities.note.note;
 
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -7,7 +8,9 @@ import android.view.Gravity;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-class IconContainer extends IContainer {
+import com.example.robin.angrynerds_wip.R;
+
+class IconContainer implements IContainer {
 
     private Init mActivity;
     private Drawable drawable;
@@ -31,13 +34,21 @@ class IconContainer extends IContainer {
     }
 
     private void initiateView(){
-        imageContainer.setLayoutParams(new LinearLayout.LayoutParams(400, 800));
+
+        if(mActivity.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
+            //Portrait Mode
+            imageContainer.setLayoutParams(new LinearLayout.LayoutParams(400, 800));
+        }
+        else{
+            //Landscape Mode
+            imageContainer.setLayoutParams(new LinearLayout.LayoutParams(800, 400));
+        }
         imageContainer.setGravity(Gravity.CENTER);
 
         ImageView imageView = new ImageView(mActivity.getApplicationContext());
-        imageView.setLayoutParams(new LinearLayout.LayoutParams(300, 300));
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         imageView.setImageDrawable(drawable);
+        imageView.setLayoutParams(new LinearLayout.LayoutParams(300, 300));
 
         imageContainer.addView(imageView);
     }

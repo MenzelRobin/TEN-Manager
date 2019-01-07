@@ -23,24 +23,24 @@ class Gui {
     }
 
     //Getter
-    public RelativeLayout getmBackground() {
+    RelativeLayout getmBackground() {
         return mBackground;
     }
-    public ListView getmListView() {
+    ListView getmListView() {
         return mListView;
     }
-    public Button getmAddButton() {
+    Button getmAddButton() {
         return mAddButton;
     }
 
     //Setter
-    public void setmBackground(RelativeLayout mBackground) {
+    void setmBackground(RelativeLayout mBackground) {
         this.mBackground = mBackground;
     }
-    public void setmListView(ListView mListView) {
+    void setmListView(ListView mListView) {
         this.mListView = mListView;
     }
-    public void setmAddButton(Button mAddButton) {
+    void setmAddButton(Button mAddButton) {
         this.mAddButton = mAddButton;
     }
 
