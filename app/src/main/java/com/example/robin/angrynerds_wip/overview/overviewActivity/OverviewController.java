@@ -92,7 +92,7 @@ public class OverviewController {
                 ((OverviewFragmentInit)fragment).getController().setDeleteState(false);
             }
         }
-        Delete.deleteMultipleTEN(toDelete);
+        Delete.deleteMultipleTENs(toDelete);
         refreshFragments();
         mFragmentInserter.replaceFragment(mGui.getHeaderId(), mFragmentFactory.createHeaderCreateFragment(), "HEADER_FRAGMENT");
         mGui.showFooter();

@@ -4,7 +4,6 @@ import android.os.Bundle;
 
 import java.util.Date;
 import com.example.robin.angrynerds_wip.data.models.tens.Event;
-import com.example.robin.angrynerds_wip.data.models.utils.Address;
 
 import static java.util.UUID.fromString;
 
