@@ -11,6 +11,7 @@
         android:layout_height="match_parent"
         android:layout_margin="10dp">
 
+
     <EditText
         android:id="@+id/id_note_title"
         android:cursorVisible="false"
@@ -48,20 +49,7 @@
         android:scrollbars="vertical"
         android:layout_marginTop="5dp"/>
 
-    <HorizontalScrollView
-        android:id="@+id/id_note_ImageScrollView_Horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/id_note_tags">
 
-        <LinearLayout
-            android:id="@+id/id_note_linearImageContainer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" >
-        </LinearLayout>
-
-    </HorizontalScrollView>
 
     <View
         android:layout_width="match_parent"
@@ -83,6 +71,21 @@
         android:textColor="@color/note_textWhite"
         android:hint="@string/sample_note_tag"
         />
+
+    <HorizontalScrollView
+        android:id="@+id/id_note_ImageScrollView_Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/id_note_tags">
+
+        <LinearLayout
+            android:id="@+id/id_note_linearImageContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+        </LinearLayout>
+
+    </HorizontalScrollView>
 
     </RelativeLayout>
 </RelativeLayout>
