@@ -4,22 +4,20 @@ public class Colors {
 
     private static int[] colors = {
 
-            0xDD2C00,
-            0x087f23,
-            0x00766c,
-            0x3d5afe,
-            0x1a237e,
-            0xb7008a,
-            0xffab00,
-            0xf57f17,
-            0x60e10f,
-            0x8c234d
+            0x0077c2, //blue
+            0x087f23, //green
+            0x00227b, //dark blue
+            0x005005, //dark green
+            0x6a0080, //purple
+            0x870000, //red
+            0xc2185b, //pink
+            0x5d4037 //brown
     };
 
     public static int getRandomColor() {
-        int index = 10;
-        while (index == 10) {
-            index = (int) Math.random() * 10;
+        int index = 8;
+        while (index == 8) {
+            index = (int) Math.random() * 8;
         }
         return Colors.colors[index];
     }
