@@ -1,10 +1,12 @@
 package com.example.robin.angrynerds_wip.activities.note.note;
 
 import android.app.Activity;
+import android.content.res.Configuration;
 import android.widget.EditText;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,7 +18,8 @@ class Gui {
 
     private RelativeLayout mBackground;
     private EditText mNoteTitle;
-    private HorizontalScrollView mNoteImageView;
+    private HorizontalScrollView mNoteImageViewPortrait;
+    private ScrollView mNoteImageViewLandscape;
     private LinearLayout mNoteImageContainer;
     private EditText mNoteDescription;
     private TextView mNoteTags;
@@ -27,7 +30,14 @@ class Gui {
 
         mBackground = activity.findViewById(R.id.id_note_background);
         mNoteTitle = activity.findViewById(R.id.id_note_title);
-        mNoteImageView = activity.findViewById(R.id.id_note_horizontalScrollView);
+        if(activity.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
+            //Horizontally scrollable Image Gallery in Portrait Mode
+            mNoteImageViewPortrait = activity.findViewById(R.id.id_note_ImageScrollView_Horizontal);
+        }
+        else{
+            //Vertically scrollable Image Gallery in Landscape Mode
+            mNoteImageViewLandscape = activity.findViewById(R.id.id_note_ImageScrollView_Vertical);
+        }
         mNoteImageContainer = activity.findViewById(R.id.id_note_linearImageContainer);
         mNoteDescription = activity.findViewById(R.id.id_note_description);
         mNoteTags = activity.findViewById(R.id.id_note_tags);
@@ -36,9 +46,6 @@ class Gui {
     //Getters
     EditText getmNoteTitle() {
         return mNoteTitle;
-    }
-    HorizontalScrollView getmNoteImageView() {
-        return mNoteImageView;
     }
     LinearLayout getmNoteImageContainer() {
         return mNoteImageContainer;
@@ -53,9 +60,6 @@ class Gui {
     void setBackgroundColor(int bgColor) { mBackground.setBackgroundColor(bgColor);}
     void setmNoteTitle(String mNoteTitle) {
         this.mNoteTitle.setText(mNoteTitle);
-    }
-    void setmNoteImageView(HorizontalScrollView mNoteImageView) {
-        this.mNoteImageView = mNoteImageView;
     }
     void setmNoteImageContainer(ArrayList<IContainer> imageContainers) {
         for(IContainer mImage : imageContainers){

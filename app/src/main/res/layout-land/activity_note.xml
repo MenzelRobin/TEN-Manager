@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/id_note_background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/note_black"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@id/id_note_ImageScrollView_Vertical">
+
+    <EditText
+        android:id="@+id/id_note_title"
+        android:cursorVisible="false"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:inputType="text"
+        android:textStyle="bold"
+        android:hint="@string/sample_note_title"
+        android:textColorHint="@color/note_hintWhite"
+        android:textColor="@color/note_textWhite"
+        android:lines="1"
+        android:maxLines="1"
+        android:scrollbars="horizontal"/>
+        <!--android:layout_toLeftOf="@id/id_note_deleteButton"-->
+
+    <!--<Button
+        android:id="@+id/id_note_deleteButton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@id/id_note_title"
+        android:layout_alignBottom="@id/id_note_title"
+        android:background="@drawable/ic_delete_white_24dp"/>-->
+
+    <EditText
+        android:id="@+id/id_note_description"
+        android:inputType="textMultiLine"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/id_note_title"
+        android:layout_above="@id/id_note_tags"
+        android:hint="@string/sample_note_description"
+        android:textColorHint="@color/note_hintWhite"
+        android:textColor="@color/note_textWhite"
+        android:scrollbars="vertical"
+        android:layout_marginTop="5dp"/>
+
+    <TextView
+        android:id="@+id/id_note_tags"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentBottom="true"
+        android:lineSpacingExtra="5dp"
+        android:textColorHint="@color/note_hintWhite"
+        android:textColor="@color/note_textWhite"
+        android:hint="@string/sample_note_tag"
+        />
+
+        </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/id_note_ImageScrollView_Vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true">
+
+        <LinearLayout
+            android:id="@+id/id_note_linearImageContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+        </LinearLayout>
+
+    </ScrollView>
+
+    </RelativeLayout>
+</RelativeLayout>

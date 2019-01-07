@@ -1,6 +1,7 @@
 package com.example.robin.angrynerds_wip.activities.note.note;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.ContextMenu;
@@ -42,8 +43,14 @@ public class Init extends AppCompatActivity {
 
     @Override
     protected void onSaveInstanceState (Bundle outState) {
-        //NoteData.saveDataInBundle(outState);
+        mNoteData.saveDataInBundle(outState);
         super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState){
+        mNoteData.restoreDataFromBundle(savedInstanceState);
+        super.onRestoreInstanceState(savedInstanceState);
     }
 
     @Override
@@ -56,6 +63,13 @@ public class Init extends AppCompatActivity {
     public void onCreateContextMenu(ContextMenu menu, View view, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, view, menuInfo);
         mEventDispersion.onCreateContextMenu(menu, view, menuInfo);
+    }
+
+    // Called when the Orientation of the App is changed
+    @Override
+    public void onConfigurationChanged(Configuration newConfig){
+        super.onConfigurationChanged(newConfig);
+        initGUI();
     }
 
     @Override

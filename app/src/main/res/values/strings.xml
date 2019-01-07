@@ -2,8 +2,10 @@
     <string name="app_name">AngryNerds</string>
     <string name="sample_note_title">Titel</string>
     <string name="sample_note_description">Beschreibung</string>
-    <string name="sample_note_tag">#hashtag</string>
+    <string name="sample_note_tag">#Stichwort</string>
     <string name="sample_note_hashtag">#</string>
+    <string name="sample_note_listtag">Stichwort</string>
+    <string name="note_tagoverview_addButton">Stichwort hinzufügen</string>
     <string name="sample_note_listtag">tag</string>
     <string name="note_tagoverview_addButton">Add Tag</string>
     <string name="sample_note_tag">Stichwort</string>

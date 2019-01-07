@@ -5,7 +5,7 @@ import android.view.Gravity;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-class ImageContainer extends IContainer{
+class ImageContainer implements IContainer{
 
     private Init mActivity;
     private String path;
@@ -14,7 +14,6 @@ class ImageContainer extends IContainer{
     private int width = 750;
     private int height = 750;
 
-    //TODO this constructor is only for testing purposes
     ImageContainer(Init mActivity, int id, Bitmap originalImage){
         this.mActivity = mActivity;
         this.image = originalImage;

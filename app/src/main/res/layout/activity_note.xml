@@ -41,7 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:layout_below="@+id/id_note_title"
-        android:layout_above="@id/id_note_horizontalScrollView"
+        android:layout_above="@id/id_note_ImageScrollView_Horizontal"
         android:hint="@string/sample_note_description"
         android:textColorHint="@color/note_hintWhite"
         android:textColor="@color/note_textWhite"
@@ -49,7 +49,7 @@
         android:layout_marginTop="5dp"/>
 
     <HorizontalScrollView
-        android:id="@+id/id_note_horizontalScrollView"
+        android:id="@+id/id_note_ImageScrollView_Horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/id_note_tags">
@@ -66,7 +66,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_below="@id/id_note_horizontalScrollView"
+        android:layout_below="@id/id_note_ImageScrollView_Horizontal"
         android:background="@color/note_darkBar"/>
 
     <TextView
