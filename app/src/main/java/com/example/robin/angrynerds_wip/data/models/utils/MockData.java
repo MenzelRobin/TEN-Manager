@@ -54,12 +54,12 @@ public class MockData {
                 RecurringType.MONTHLY,
                 RecurringType.YEARLY
         };
-      
+
         for (int i = 1; i <= 10; i++) {
-            tenMockData.add(new Todo("Todo " + i, bgColors[i - 1], "This is a toDo.", tasks, new Date()));
-            tenMockData.add(new Event("Event " + i, bgColors[i - 1], Calendar.getInstance().getTime(), reminder,
-                    new Address("Schlossallee", 1, "50674", "Köln"), recurringTypes[i % 5]));
-            tenMockData.add(new Note("Note " + i, bgColors[i - 1], "This is a note.", tags));
+            MockData.tenMockData.add(new Todo("Todo " + i, bgColors[i - 1], "This is a toDo.", tasks, new Date()));
+            MockData.tenMockData.add(new Event("Event " + i, bgColors[i - 1], Calendar.getInstance().getTime(), reminder,
+                    "Schlossallee 1, 50764 Köln", recurringTypes[i % 5]));
+            MockData.tenMockData.add(new Note("Note " + i, bgColors[i - 1], "This is a note.", tags));
         }
     }
 }

@@ -71,4 +71,12 @@ public class TEN {
         this.color = color;
     }
     public Date getDateOfCreation() {return dateOfCreation;}
+
+    public Bundle getBundle(){
+        Bundle bundle = new Bundle();
+        bundle.putString("ID", ID);
+        bundle.putString("Title", title);
+        bundle.putInt("Color", color);
+        return  bundle;
+    }
 }

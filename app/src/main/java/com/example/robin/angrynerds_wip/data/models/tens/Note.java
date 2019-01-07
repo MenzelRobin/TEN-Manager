@@ -1,8 +1,8 @@
 package com.example.robin.angrynerds_wip.data.models.tens;
 
-import java.util.ArrayList;
+import android.os.Bundle;
 
-import com.couchbase.lite.Blob;
+import java.util.ArrayList;
 
 import android.os.Bundle;
 
@@ -59,5 +59,13 @@ public class Note extends TEN{
     public ArrayList<String> getTags() {return tags;}
     public void setTags(ArrayList<String> tags) {this.tags = tags;}
     public ArrayList<String> getPictures() {return pictures;}
-    public void setPictures(ArrayList<String> pictures) {this.pictures = pictures;}
+    public void setPictures(ArrayList<String> pictures) {this.pictures = pictures; }
+
+    public Bundle getBundle(){
+        Bundle bundle = super.getBundle();
+        bundle.putString("Description", description);
+        bundle.putStringArrayList("Tags", tags);
+        bundle.putStringArrayList("Pictures", pictures);
+        return bundle;
+    }
 }
