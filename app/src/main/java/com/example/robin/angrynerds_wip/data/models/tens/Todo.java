@@ -85,6 +85,7 @@ public class Todo extends TEN {
     public Date getEndDate(){return endDate;}
     public void setEndDate(Date endDate){this.endDate = endDate;}
     public ArrayList<Task> getTasks() {return tasks;}
+
     public void setTasks(ArrayList<Task> tasks) {
         this.tasks = tasks;
         progress = calculateProgress();
@@ -100,20 +101,5 @@ public class Todo extends TEN {
                 completed++;
         }
         return (double)completed/tasks.size();
-    }
-
-    public Bundle getBundle(){
-        Bundle bundle = super.getBundle();
-        bundle.putString("Note", note);
-        boolean[] status = new boolean[tasks.size()];
-        String[] description = new String[tasks.size()];
-        int index = 0;
-        for(Task task : tasks){
-            description[index] = task.getDescription();
-            status[index++] = task.getStatus();
-        }
-        bundle.putBooleanArray("Status", status);
-        bundle.putStringArray("Description", description);
-        return bundle;
     }
 }

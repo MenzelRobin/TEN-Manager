@@ -42,12 +42,7 @@ public class Note extends TEN{
         this.tags = tags;
         this.pictures = pictures;
     }
-  
-    public Bundle getBundle(){
-        Bundle bundle = super.getBundle();
-        bundle.putString("Description", description);
-        return bundle;
-    }
+
 
     //Getter and Setter
     public String getDescription() {
