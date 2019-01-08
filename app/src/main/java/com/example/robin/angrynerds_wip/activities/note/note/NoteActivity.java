@@ -72,6 +72,17 @@ public class NoteActivity extends AppCompatActivity {
     }
 
     @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
+        // Checks the orientation of the screen
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            mGui.displayToast(this, "Landscape");
+        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
+            mGui.displayToast(this, "Portrait");        }
+    }
+
+    @Override
     protected void onPause() {
         super.onPause();
         //mApplicationLogic.onPause();
