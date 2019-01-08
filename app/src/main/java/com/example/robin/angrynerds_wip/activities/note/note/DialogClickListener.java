@@ -4,10 +4,10 @@ import android.content.DialogInterface;
 
 class DialogClickListener implements DialogInterface.OnClickListener{
 
-    private MediaImport mediaImport;
+    private ImageImport imageImport;
 
-    DialogClickListener(MediaImport mediaImport) {
-        this.mediaImport = mediaImport;
+    DialogClickListener(ImageImport imageImport) {
+        this.imageImport = imageImport;
     }
 
     @Override
@@ -15,10 +15,10 @@ class DialogClickListener implements DialogInterface.OnClickListener{
 
         switch ( option ) {
             case 0:
-                mediaImport.importImageFromCamera();
+                imageImport.importImageFromGallery();
                 break;
             case 1:
-                mediaImport.importImageFromGallery();
+                imageImport.importImageFromCamera();
                 break;
             default:
                 break;

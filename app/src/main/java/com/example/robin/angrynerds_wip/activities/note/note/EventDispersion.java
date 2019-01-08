@@ -19,7 +19,7 @@ class EventDispersion {
 
     void onCreateContextMenu(ContextMenu menu, View view, ContextMenu.ContextMenuInfo menuInfo) {
         if ( mApplicationLogic.checkImageID(view.getId()) ) {
-            menu.add(MENUGROUPTOP, MENUITEMDELETEIMAGE, Menu.NONE, "Delete Image");
+            menu.add(MENUGROUPTOP, MENUITEMDELETEIMAGE, Menu.NONE, "Bild löschen");
             id = view.getId();
         }
     }
