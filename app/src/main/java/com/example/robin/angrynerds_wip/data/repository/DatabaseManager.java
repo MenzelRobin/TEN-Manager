@@ -17,6 +17,7 @@ public class DatabaseManager {
         try {
             DatabaseConfiguration config = new DatabaseConfiguration(context.getApplicationContext());
             DatabaseManager.database = new Database(DatabaseConstants.DATABASENAME, config);
+
         } catch (CouchbaseLiteException e) {
             Toast.makeText(context, "Fehler bei der Datenbankerstellung", Toast.LENGTH_LONG);
         }

@@ -24,6 +24,7 @@ public class QueryConverter {
                 return event;
             case DatabaseConstants.NOTE_TYPE:
                 Note note = tenConverter.stringToNote(object);
+                note = tenConverter.convertImages(note, result);
                 return note;
             case DatabaseConstants.TODO_TYPE:
                 Todo todo = tenConverter.stringToTodo(object);

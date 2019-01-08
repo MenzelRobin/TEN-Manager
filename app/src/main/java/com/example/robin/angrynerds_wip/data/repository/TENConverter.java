@@ -1,20 +1,24 @@
 package com.example.robin.angrynerds_wip.data.repository;
 
-import com.couchbase.lite.Document;
+import android.graphics.Bitmap;
+
+import com.couchbase.lite.Result;
 import com.example.robin.angrynerds_wip.data.models.tens.Event;
 import com.example.robin.angrynerds_wip.data.models.tens.Note;
 import com.example.robin.angrynerds_wip.data.models.tens.Todo;
-import com.example.robin.angrynerds_wip.data.repository.DatabaseManager;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class TENConverter {
 
     private ObjectMapper objectMapper;
+    private ImageConverter imageConverter;
 
     public TENConverter() {
         this.objectMapper = new ObjectMapper();
+        this.imageConverter = new ImageConverter();
     }
 
     public Todo stringToTodo(String json) {
@@ -39,9 +43,27 @@ public class TENConverter {
     public Note stringToNote(String json) {
         try {
             Note note = this.objectMapper.readValue(json, Note.class);
+
+
+            //TODO Bilder aus den Blobs hinzufügen
             return note;
         } catch (IOException e) {
             return null;
         }
+    }
+
+    public Note convertImages(Note note, Result result) {
+        int numberOfPictures = result.getInt(DatabaseConstants.IMAGE_COUNTER);
+        ArrayList<Bitmap> images = new ArrayList<Bitmap>();
+
+        for (int i = 1; i <= numberOfPictures; i++) {
+
+            Bitmap image = this.imageConverter
+                    .BlobToBitmap(result.getBlob(DatabaseConstants.IMAGE_CORE_ID + i));
+            images.add(image);
+        }
+
+        note.setPictures(images);
+        return note;
     }
 }

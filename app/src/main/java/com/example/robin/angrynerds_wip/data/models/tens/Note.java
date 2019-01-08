@@ -1,8 +1,7 @@
 package com.example.robin.angrynerds_wip.data.models.tens;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
-
-import com.example.robin.angrynerds_wip.data.models.utils.Image;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -11,7 +10,7 @@ public class Note extends TEN {
 
     private String description;
     private ArrayList<String> tags;
-    private ArrayList<Image> pictures;
+    private ArrayList<Bitmap> pictures;
 
     //Constructors
     public Note() {
@@ -36,7 +35,7 @@ public class Note extends TEN {
     }
 
     //all Attributes for complete Reconstruction
-    public Note(String title, String ID, int color, int accentColor, Date dateOfCreation, String description, ArrayList<String> tags, ArrayList<Image> pictures) {
+    public Note(String title, String ID, int color, int accentColor, Date dateOfCreation, String description, ArrayList<String> tags, ArrayList<Bitmap> pictures) {
         super(title, ID, color, accentColor, dateOfCreation);
         this.description = description;
         this.tags = tags;
@@ -65,11 +64,11 @@ public class Note extends TEN {
         this.tags.add(tag);
     }
 
-    public ArrayList<Image> getPictures() {
+    public ArrayList<Bitmap> getPictures() {
         return pictures;
     }
 
-    public void setPictures(ArrayList<Image> pictures) {
+    public void setPictures(ArrayList<Bitmap> pictures) {
         this.pictures = pictures;
     }
 
@@ -78,9 +77,6 @@ public class Note extends TEN {
         bundle.putString("Description", description);
         bundle.putStringArrayList("Tags", tags);
         ArrayList<String> imageIDs = new ArrayList<String>();
-        for (Image picture : this.pictures) {
-            imageIDs.add(picture.getImageID());
-        }
         bundle.putStringArrayList("Pictures", imageIDs);
         return bundle;
     }
