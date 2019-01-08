@@ -17,6 +17,7 @@ class ApplicationLogic {
     private NoteData mNoteData;
     private ClickListener mClickListener;
     private ImageImport mImageImport;
+    private TextListe
 
     ApplicationLogic(Gui gui, NoteData noteData) {
         mGui = gui;
@@ -129,5 +130,10 @@ class ApplicationLogic {
         mNoteData.addImageButton();
         setImageClickListener(mNoteData.getmNoteImageContainers().get(mNoteData.getmNoteImageContainers().size()-1));
         dataToGui();
+    }
+
+    void saveState() {
+        mNoteData.getmNote().setTitle(String.valueOf(mGui.getmNoteTitle()));
+        mNoteData.getmNote().setDescription(String.valueOf(mGui.getmNoteDescription()));
     }
 }
