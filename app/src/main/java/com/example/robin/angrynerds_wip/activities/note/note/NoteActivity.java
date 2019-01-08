@@ -74,12 +74,15 @@ public class NoteActivity extends AppCompatActivity {
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
+        mGui.getmNoteImageContainer().removeAllViews();
 
-        // Checks the orientation of the screen
-        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            mGui.displayToast(this, "Landscape");
-        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
-            mGui.displayToast(this, "Portrait");        }
+        initGUI();
+        //mApplicationLogic.setmGui(mGui);
+        mApplicationLogic.onConfigurationChanged(mGui);
+        /*initGUI();
+        mNoteData.addImageButton();
+        mApplicationLogic.setmGui(mGui);
+        mApplicationLogic.dataToGui();*/
     }
 
     @Override

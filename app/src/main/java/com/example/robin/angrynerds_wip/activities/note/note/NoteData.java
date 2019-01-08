@@ -28,6 +28,13 @@ class NoteData {
         mNoteImageContainers.add(new ImageContainer(mActivity,2, BitmapFactory.decodeResource(mActivity.getResources(), R.drawable.note_sample_image2)));
         mNoteImageContainers.add(new ImageContainer(mActivity,3, BitmapFactory.decodeResource(mActivity.getResources(), R.drawable.note_sample_image3)));
 
+        addImageButton();
+    }
+
+    void addImageButton() {
+        if(mNoteImageContainers.get(mNoteImageContainers.size()-1) instanceof IconContainer){
+            mNoteImageContainers.remove(mNoteImageContainers.size()-1);
+        }
         Drawable drawable = ContextCompat.getDrawable(mActivity,R.drawable.ic_add_a_photo_grey_24dp);
         mNoteImageContainers.add(new IconContainer(mActivity, 0, drawable));
     }

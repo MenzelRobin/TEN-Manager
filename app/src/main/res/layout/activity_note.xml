@@ -79,7 +79,7 @@
         android:layout_above="@id/id_note_tags">
 
         <LinearLayout
-            android:id="@+id/id_note_linearImageContainer"
+            android:id="@+id/id_note_linearImageContainer_Horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal" >

@@ -48,12 +48,14 @@ class ApplicationLogic {
         imageContainer.getImageContainer().setOnClickListener(mClickListener);
     }
 
-    private void dataToGui() {
+    void setmGui(Gui mGui){ this.mGui = mGui;}
+
+    void dataToGui() {
         mGui.setmNoteTitle(mNoteData.getmNote().getTitle());
-        mGui.setmNoteImageContainer(mNoteData.getmNoteImageContainers());
         mGui.setmNoteDescription(mNoteData.getmNote().getDescription());
         mGui.setmNoteTags(mNoteData.getmNote().getTags());
         mGui.setBackgroundColor(mNoteData.getmNote().getColor());
+        refreshImages();
     }
 
     void onActivityReturned(int requestCode, int resultCode, Intent data) {
@@ -65,11 +67,6 @@ class ApplicationLogic {
                     mNoteData.saveImage(bm);
                     setImageClickListener(mNoteData.getImageContainer(mNoteData.getmNoteImageContainers().size()-2));
                     refreshImages();
-
-                    /*Bundle extras = data.getExtras();
-                    mNoteData.saveImage((Bitmap) extras.get("data"));
-                    setImageClickListener(mNoteData.getImageContainer(mNoteData.getmNoteImageContainers().size()-2));
-                    refreshImages();*/
                 }
                 break;
             case 1:
@@ -125,5 +122,12 @@ class ApplicationLogic {
 
     void displayToast(String s){
         mGui.displayToast(mNoteData.getActivity(), s);
+    }
+
+    void onConfigurationChanged(Gui gui) {
+        setmGui(gui);
+        mNoteData.addImageButton();
+        setImageClickListener(mNoteData.getmNoteImageContainers().get(mNoteData.getmNoteImageContainers().size()-1));
+        dataToGui();
     }
 }
