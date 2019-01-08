@@ -8,15 +8,13 @@ import android.view.Gravity;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.example.robin.angrynerds_wip.R;
-
 class IconContainer implements IContainer {
 
-    private Init mActivity;
+    private NoteActivity mActivity;
     private Drawable drawable;
     private LinearLayout imageContainer;
 
-    IconContainer(Init mActivity, int id, Drawable drawable){
+    IconContainer(NoteActivity mActivity, int id, Drawable drawable){
         this.mActivity = mActivity;
         this.imageContainer = new LinearLayout(mActivity.getApplicationContext());
         imageContainer.setId(id);

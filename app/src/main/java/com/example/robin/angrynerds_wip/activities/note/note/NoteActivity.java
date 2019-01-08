@@ -8,7 +8,7 @@ import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
 
-public class Init extends AppCompatActivity {
+public class NoteActivity extends AppCompatActivity {
 
     private NoteData mNoteData;
     private Gui mGui;

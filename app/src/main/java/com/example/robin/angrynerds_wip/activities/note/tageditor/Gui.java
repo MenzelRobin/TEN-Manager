@@ -14,7 +14,7 @@ class Gui {
     private ListView mListView;
     private Button mAddButton;
 
-    Gui(TagActivity activity) {
+    Gui(NoteTagActivity activity) {
         activity.setContentView(R.layout.activity_note_tagoverview);
 
         mBackground = activity.findViewById(R.id.id_note_tagOverview_background);

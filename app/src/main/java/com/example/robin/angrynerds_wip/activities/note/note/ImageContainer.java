@@ -7,14 +7,14 @@ import android.widget.LinearLayout;
 
 class ImageContainer implements IContainer{
 
-    private Init mActivity;
+    private NoteActivity mActivity;
     private String path;
     private Bitmap image;
     private LinearLayout imageContainer;
     private int width = 750;
     private int height = 750;
 
-    ImageContainer(Init mActivity, int id, Bitmap originalImage){
+    ImageContainer(NoteActivity mActivity, int id, Bitmap originalImage){
         this.mActivity = mActivity;
         this.image = originalImage;
         Bitmap scaledImage;
@@ -63,7 +63,7 @@ class ImageContainer implements IContainer{
         imageContainer.addView(imageView);
     }
     /*
-    ImageContainer(Init mActivity, int id, String path){
+    ImageContainer(NoteActivity mActivity, int id, String path){
         this.mActivity = mActivity;
         this.path = path;
         this.image = decodeSampledBitmapFromUri(width, height);

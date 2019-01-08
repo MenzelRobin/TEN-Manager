@@ -1,12 +1,13 @@
 package com.example.robin.angrynerds_wip.activities.note.tageditor;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.example.robin.angrynerds_wip.data.models.utils.MockData;
 
-public class TagActivity extends AppCompatActivity {
+public class NoteTagActivity extends AppCompatActivity {
 
     private Gui mGui;
     private ApplicationLogic mApplicationLogic;
@@ -37,6 +38,13 @@ public class TagActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         mApplicationLogic.onActivityReturned(requestCode, resultCode, data);
+    }
+
+    // Called when the Orientation of the App is changed
+    @Override
+    public void onConfigurationChanged(Configuration newConfig){
+        super.onConfigurationChanged(newConfig);
+        initGUI();
     }
 
     @Override

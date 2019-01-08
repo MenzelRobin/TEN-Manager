@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import com.example.robin.angrynerds_wip.activities.note.note.NoteActivity;
 import com.example.robin.angrynerds_wip.data.models.tens.TEN;
 import com.example.robin.angrynerds_wip.data.models.utils.MockData;
 import com.example.robin.angrynerds_wip.data.repository.DatabaseManager;
@@ -47,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickNote(View view) {
-        Intent intent = new Intent(this, OverviewInit.class);
+        Intent intent = new Intent(this, NoteActivity.class);
         //intent.putExtra("ID", 5); // Hier können eigene Parameter hinzugefügt werden.
         this.startActivity(intent); // Activity Starten*/
     }

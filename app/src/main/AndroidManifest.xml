@@ -22,12 +22,13 @@
         </activity>
         <activity android:name=".OverviewActivity"></activity>
 
-        <activity android:name=".activities.note.note.Init"
+        <activity android:name=".activities.note.note.NoteActivity"
             android:windowSoftInputMode="adjustPan"
             android:configChanges="orientation">
         </activity>
-        <activity android:name=".activities.note.tageditor.TagActivity"
-            android:windowSoftInputMode="adjustPan">
+        <activity android:name=".activities.note.tageditor.NoteTagActivity"
+            android:windowSoftInputMode="adjustPan"
+            android:configChanges="orientation">
         </activity>
         <activity android:name=".activities.event.Init"></activity>
         <activity android:name=".overview.overviewActivity.OverviewInit"
@@ -35,7 +36,7 @@
 
         <provider
             android:name="android.support.v4.content.FileProvider"
-            android:authorities="com.example.android.fileprovider"
+            android:authorities="com.example.robin.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data

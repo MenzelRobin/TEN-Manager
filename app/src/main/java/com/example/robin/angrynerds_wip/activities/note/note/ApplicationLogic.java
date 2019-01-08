@@ -2,9 +2,11 @@ package com.example.robin.angrynerds_wip.activities.note.note;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.os.Bundle;
 import android.provider.MediaStore;
+
+import com.example.robin.angrynerds_wip.activities.note.tageditor.NoteTagActivity;
 
 import java.io.IOException;
 
@@ -14,6 +16,7 @@ class ApplicationLogic {
     private Gui mGui;
     private NoteData mNoteData;
     private ClickListener mClickListener;
+    private ImageImport mImageImport;
 
     ApplicationLogic(Gui gui, NoteData noteData) {
         mGui = gui;
@@ -57,11 +60,16 @@ class ApplicationLogic {
         switch(requestCode) {
             case 0:
                 if(resultCode == -1){
-
-                    Bundle extras = data.getExtras();
-                    mNoteData.saveImage((Bitmap) extras.get("data"));
+                    //TODO
+                    Bitmap bm = BitmapFactory.decodeFile(mImageImport.getmCurrentPhotoPath());
+                    mNoteData.saveImage(bm);
                     setImageClickListener(mNoteData.getImageContainer(mNoteData.getmNoteImageContainers().size()-2));
                     refreshImages();
+
+                    /*Bundle extras = data.getExtras();
+                    mNoteData.saveImage((Bitmap) extras.get("data"));
+                    setImageClickListener(mNoteData.getImageContainer(mNoteData.getmNoteImageContainers().size()-2));
+                    refreshImages();*/
                 }
                 break;
             case 1:
@@ -87,8 +95,9 @@ class ApplicationLogic {
     }
 
     void onImageClicked(int id){
-        if(id==0)
-            mNoteData.importMedia();
+        if(id==0){
+            mImageImport = new ImageImport(mNoteData.getActivity());
+        }
         else{
             ImageOverlay imageOverlay = new ImageOverlay(mNoteData.getImage(id));
             imageOverlay.display(mNoteData.getActivity());
@@ -96,7 +105,7 @@ class ApplicationLogic {
     }
 
     void onTagsClicked(){
-        Intent intent = new Intent(mNoteData.getActivity(), com.example.robin.angrynerds_wip.activities.note.tageditor.TagActivity.class);
+        Intent intent = new Intent(mNoteData.getActivity(), NoteTagActivity.class);
         mNoteData.getActivity().startActivity(intent); // Activity Starten
     }
 
