@@ -24,7 +24,7 @@ class Gui {
     private EditText mNoteDescription;
     private TextView mNoteTags;
 
-    Gui(Init activity) {
+    Gui(NoteActivity activity) {
 
         activity.setContentView(R.layout.activity_note);
 

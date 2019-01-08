@@ -3,7 +3,6 @@ package com.example.robin.angrynerds_wip.activities.note.note;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 
@@ -15,12 +14,12 @@ import java.util.ArrayList;
 
 class NoteData {
 
-    private Init mActivity;
+    private NoteActivity mActivity;
     private Note mNote;
     private ArrayList<IContainer> mNoteImageContainers;
 
     //TODO gegen Note und Images aus Database austauschen
-    NoteData(Init activity){
+    NoteData(NoteActivity activity){
         mActivity = activity;
         mNote = MockData.getNoteSample();
         mNoteImageContainers = new ArrayList<>();
@@ -38,12 +37,12 @@ class NoteData {
     }
 
     void restoreDataFromBundle(Bundle savedInstanceState) {
-        mNote.setTitle(savedInstanceState.getString("title"));
+        //mNote.setTitle(savedInstanceState.getString("title"));
     }
 
     ArrayList<IContainer> getmNoteImageContainers() { return mNoteImageContainers; }
     IContainer getImageContainer(int id){ return mNoteImageContainers.get(id);}
-    Init getActivity(){ return mActivity;}
+    NoteActivity getActivity(){ return mActivity;}
     Note getmNote(){return mNote;}
 
     Bitmap getImage(int id) {
@@ -57,20 +56,6 @@ class NoteData {
                 return true;
         }
         return false;
-    }
-
-    void importMedia(){
-        MediaImport mediaImport = new MediaImport(mActivity);
-    }
-
-    void copyImage(Uri selectedImage) {
-        //copy image to path with uri
-        /*
-        String path = "";
-
-        ImageContainer imageContainer = new ImageContainer(mActivity, mNoteImageContainers.size(), path);
-        mNoteImageContainers.add(mNoteImageContainers.size()-1, imageContainer);
-        */
     }
 
     void saveImage(Bitmap image) {

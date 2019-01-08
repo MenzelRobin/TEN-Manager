@@ -15,15 +15,20 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 class ImageImport {
 
-    private Init mActivity;
+    private NoteActivity mActivity;
     private String mCurrentPhotoPath;
 
-    ImageImport(Init activity) {
+    ImageImport(NoteActivity activity) {
         this.mActivity = activity;
         requestImageSource();
+    }
+
+    public String getmCurrentPhotoPath() {
+        return mCurrentPhotoPath;
     }
 
     private void requestImageSource(){
@@ -44,9 +49,8 @@ class ImageImport {
         builder.show();
     }
 
-    String importImageFromCamera() {
+    void importImageFromCamera() {
         dispatchTakePictureIntent();
-        return mCurrentPhotoPath;
     }
 
     void importImageFromGallery(){
@@ -68,7 +72,7 @@ class ImageImport {
             // Continue only if the File was successfully created
             if (photoFile != null) {
                 Uri photoURI = FileProvider.getUriForFile(mActivity,
-                        "com.example.android.fileprovider",
+                        "com.example.robin.fileprovider",
                         photoFile);
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                 mActivity.startActivityForResult(takePictureIntent, 0);
@@ -78,7 +82,7 @@ class ImageImport {
 
     private File createImageFile() throws IOException {
         // Create an image file name
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.GERMANY).format(new Date());
         String imageFileName = "JPEG_" + timeStamp + "_";
         File storageDir = mActivity.getExternalFilesDir(Environment.DIRECTORY_PICTURES);
         File image = File.createTempFile(
