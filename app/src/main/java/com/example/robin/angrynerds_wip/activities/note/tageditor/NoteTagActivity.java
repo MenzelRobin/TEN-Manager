@@ -40,13 +40,6 @@ public class NoteTagActivity extends AppCompatActivity {
         mApplicationLogic.onActivityReturned(requestCode, resultCode, data);
     }
 
-    // Called when the Orientation of the App is changed
-    @Override
-    public void onConfigurationChanged(Configuration newConfig){
-        super.onConfigurationChanged(newConfig);
-        initGUI();
-    }
-
     @Override
     protected void onPause() {
         super.onPause();

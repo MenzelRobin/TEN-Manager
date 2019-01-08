@@ -53,13 +53,8 @@ class ApplicationLogic {
 
     void onActivityReturned(int requestCode, int resultCode, Intent data) { }
 
-    void onBackPressed() {
+    void onBackPressed() { }
 
-    }
-
-    void onTagsClicked(){
-        //TODO hier neue Activity aufrufen
-    }
 
     void onAddButtonClicked() {
         mNote.getTags().add("");
