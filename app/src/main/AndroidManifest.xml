@@ -24,11 +24,11 @@
 
         <activity android:name=".activities.note.note.NoteActivity"
             android:windowSoftInputMode="adjustPan"
-            android:configChanges="orientation">
+            android:configChanges="orientation|keyboardHidden|screenSize">
         </activity>
         <activity android:name=".activities.note.tageditor.NoteTagActivity"
             android:windowSoftInputMode="adjustPan"
-            android:configChanges="orientation">
+            android:configChanges="orientation|keyboardHidden|screenSize">
         </activity>
         <activity android:name=".activities.event.Init"></activity>
         <activity android:name=".overview.overviewActivity.OverviewInit"
