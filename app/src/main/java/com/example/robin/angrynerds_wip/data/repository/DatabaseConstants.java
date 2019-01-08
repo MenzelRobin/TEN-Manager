@@ -10,4 +10,7 @@ public class DatabaseConstants {
     public static final String EVENT_TYPE = "Event";
     public static final String NOTE_TYPE = "Note";
     public static final String TODO_TYPE = "Todo";
+
+    public static final String IMAGE_CORE_ID = "imageID";
+    public static final String IMAGE_COUNTER = "numberOfImages";
 }
