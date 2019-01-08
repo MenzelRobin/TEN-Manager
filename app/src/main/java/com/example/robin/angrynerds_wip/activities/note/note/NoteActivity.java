@@ -65,13 +65,6 @@ public class NoteActivity extends AppCompatActivity {
         mEventDispersion.onCreateContextMenu(menu, view, menuInfo);
     }
 
-    // Called when the Orientation of the App is changed
-    @Override
-    public void onConfigurationChanged(Configuration newConfig){
-        super.onConfigurationChanged(newConfig);
-        initGUI();
-    }
-
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         // return super.onContextItemSelected(item);
