@@ -60,7 +60,7 @@
                 android:layout_marginBottom="10dp"
                 android:hint="@string/sample_note_tag"
                 android:lineSpacingExtra="5dp"
-                android:maxLines="3"
+                android:maxLines="2"
                 android:scrollbars="vertical"
                 android:textColor="@color/note_textWhite"
                 android:textColorHint="@color/note_hintWhite" />

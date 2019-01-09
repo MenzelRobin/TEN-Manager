@@ -48,6 +48,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
+            android:layout_marginTop="5dp"
             android:layout_below="@id/id_note_ImageScrollView_Horizontal"
             android:background="@color/note_darkBar" />
 
