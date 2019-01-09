@@ -26,17 +26,17 @@ class ApplicationLogic {
         initListener();
     }
     //Getter
-    public RowViewAdapter getmAdapter() {
+    RowViewAdapter getmAdapter() {
         return mAdapter;
     }
-    public ClickListener getClickListener() {
+    ClickListener getClickListener() {
         return clickListener;
     }
     //Setter
-    public void setmAdapter(RowViewAdapter mAdapter) {
+    void setmAdapter(RowViewAdapter mAdapter) {
         this.mAdapter = mAdapter;
     }
-    public void setClickListener(ClickListener clickListener) {
+    void setClickListener(ClickListener clickListener) {
         this.clickListener = clickListener;
     }
 
