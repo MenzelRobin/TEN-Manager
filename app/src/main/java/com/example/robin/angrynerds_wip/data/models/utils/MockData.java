@@ -1,8 +1,11 @@
 package com.example.robin.angrynerds_wip.data.models.utils;
 
+import android.app.Activity;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 //import android.support.annotation.NonNull;
 
+import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.data.models.tens.Event;
 import com.example.robin.angrynerds_wip.data.models.tens.Note;
 import com.example.robin.angrynerds_wip.data.models.tens.TEN;
@@ -20,7 +23,7 @@ public class MockData {
     //Verwendung mit MockData.tenMockData -> Bitte Nicht
     public ArrayList<TEN> tenMockData = new ArrayList<>();
 
-    public MockData() {
+    public MockData(Activity activity) {
 
         Note koalaNote = new Note("Interessantes über Koalabären", "Der Koala ist ein " +
                 "baumbewohnender Beutelsäuger in Australien. Er wurde von dem Zoologen Georg " +
@@ -32,8 +35,11 @@ public class MockData {
         koalaTags.add("Baum");
         koalaTags.add("Eukalyptus");
         koalaTags.add("Australien");
-        //TODO Bilder
         koalaNote.setTags(koalaTags);
+
+        BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_koala1);
+        BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_koala2);
+
         tenMockData.add(koalaNote);
 
         Date visitKoalaDate = new Date(1588590000);
@@ -55,6 +61,10 @@ public class MockData {
         koalaTags.add("intelligent");
         koalaTags.add("Meer");
         delfinNote.setTags(delfinTags);
+
+        BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_delfin1);
+        BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_delfin2);
+
         tenMockData.add(delfinNote);
 
 
@@ -132,8 +142,11 @@ public class MockData {
         kaenguruTags.add("Sprung");
         kaenguruTags.add("DownUnder");
         kaenguruTags.add("Australien");
-        //TODO Bilder
         kaenguruNote.setTags(kaenguruTags);
+
+        BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_kaenguru1);
+        BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_kaenguru2);
+
         tenMockData.add(kaenguruNote);
 
         Note melbourneNote = new Note("Melbourne", "Melbourne ist die an der " +
@@ -148,8 +161,12 @@ public class MockData {
         melbourneTags.add("Nightlife");
         melbourneTags.add("River");
         melbourneTags.add("Skyline");
-        //TODO Bilder
         melbourneNote.setTags(melbourneTags);
+
+        BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_melbourne1);
+        BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_melbourne2);
+        BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_melbourne3);
+
         tenMockData.add(melbourneNote);
 
         Note bambusNote = new Note("Bambus", "ambus ist eine der zwölf" +
@@ -161,8 +178,10 @@ public class MockData {
         bambusTags.add("Baum");
         bambusTags.add("Eukalyptus");
         bambusTags.add("Australien");
-        //TODO Bilder
         bambusNote.setTags(bambusTags);
+
+        BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_bambus1);
+
         tenMockData.add(bambusNote);
 
         Date delfinDate = new Date(1588831200);
