@@ -52,7 +52,7 @@ public class TENConverter {
         }
     }
 
-    public Note convertImages(Note note, Result result) {
+    public Note addImagesFromResultToNote(Note note, Result result) {
         int numberOfPictures = result.getInt(DatabaseConstants.IMAGE_COUNTER);
         ArrayList<Bitmap> images = new ArrayList<Bitmap>();
 
