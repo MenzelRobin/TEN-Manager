@@ -2,6 +2,7 @@ package com.example.robin.angrynerds_wip.activities.note.note;
 
 import android.app.Activity;
 import android.content.res.Configuration;
+import android.support.v7.widget.Toolbar;
 import android.text.method.ScrollingMovementMethod;
 import android.widget.EditText;
 import android.widget.HorizontalScrollView;
@@ -24,6 +25,7 @@ class Gui {
     private LinearLayout mNoteImageContainer;
     private EditText mNoteDescription;
     private TextView mNoteTags;
+    private Toolbar mToolbar;
 
     Gui(NoteActivity activity) {
 
@@ -43,22 +45,30 @@ class Gui {
         }
         mNoteDescription = activity.findViewById(R.id.id_note_description);
         mNoteTags = activity.findViewById(R.id.id_note_tags);
+        mToolbar = activity.findViewById(R.id.id_note_toolbar);
+
         mNoteTags.setMovementMethod(new ScrollingMovementMethod());
+
+        activity.setSupportActionBar(mToolbar);
+        activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        activity.getSupportActionBar().setDisplayShowHomeEnabled(true);
+        activity.getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 
     //Getters
-    EditText getmNoteTitle() {
+    EditText getNoteTitle() {
         return mNoteTitle;
     }
-    LinearLayout getmNoteImageContainer() {
+    LinearLayout getNoteImageContainer() {
         return mNoteImageContainer;
     }
-    EditText getmNoteDescription() {
+    EditText getNoteDescription() {
         return mNoteDescription;
     }
-    TextView getmNoteTags() {
+    TextView getNoteTags() {
         return mNoteTags;
     }
+    Toolbar getToolbar() {return mToolbar;}
     //Setters
     void setBackgroundColor(int bgColor) { mBackground.setBackgroundColor(bgColor);}
     void setmNoteTitle(String mNoteTitle) {

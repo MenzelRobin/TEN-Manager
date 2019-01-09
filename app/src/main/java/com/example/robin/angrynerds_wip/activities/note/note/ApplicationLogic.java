@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 
@@ -41,15 +42,18 @@ class ApplicationLogic {
 
     private void initListener() {
         mClickListener = new ClickListener(this);
+        MenuItemClickListener menuItemClickListener = new MenuItemClickListener(this);
 
-        mGui.getmNoteTitle().setOnClickListener(mClickListener);
-        mGui.getmNoteImageContainer().setOnClickListener(mClickListener);
-        mGui.getmNoteTags().setOnClickListener(mClickListener);
+        mGui.getNoteTitle().setOnClickListener(mClickListener);
+        mGui.getNoteImageContainer().setOnClickListener(mClickListener);
+        mGui.getNoteTags().setOnClickListener(mClickListener);
         for(IContainer mImage: mNoteData.getmNoteImageContainers()){
             setImageClickListener(mImage);
         }
-        mGui.getmNoteTitle().addTextChangedListener(new TextWatcher(this, mGui.getmNoteTitle()));
-        mGui.getmNoteDescription().addTextChangedListener(new TextWatcher(this, mGui.getmNoteDescription()));
+        mGui.getNoteTitle().addTextChangedListener(new TextWatcher(this, mGui.getNoteTitle()));
+        mGui.getNoteDescription().addTextChangedListener(new TextWatcher(this, mGui.getNoteDescription()));
+        mGui.getToolbar().setNavigationOnClickListener(mClickListener);
+        mGui.getToolbar().setOnMenuItemClickListener(menuItemClickListener);
     }
 
     private void setImageClickListener(IContainer imageContainer){
@@ -106,7 +110,7 @@ class ApplicationLogic {
     void onBackPressed() {}
 
     void onTitleClicked() {
-        mGui.getmNoteTitle().setCursorVisible(true);
+        mGui.getNoteTitle().setCursorVisible(true);
     }
 
     void onImageClicked(int id){
@@ -137,7 +141,7 @@ class ApplicationLogic {
     }
 
     private void refreshImages(){
-        mGui.getmNoteImageContainer().removeAllViews();
+        mGui.getNoteImageContainer().removeAllViews();
         mGui.setmNoteImageContainer(mNoteData.getmNoteImageContainers());
     }
 
@@ -160,5 +164,19 @@ class ApplicationLogic {
         if(view.getId() == R.id.id_note_title){ mNoteData.setTitle(text);} //R.id.id_event_editText_title
         else if(view.getId() == R.id.id_note_description){
             mNoteData.setDescription(text);} //R.id.id_event_editText_title
+    }
+
+    //Toolbar menu is clicked
+    void onMenuItemClick(MenuItem item) {
+        if(item.getItemId() == R.id.note_action_settings){
+            //TODO delete note;
+            returnToOverview();}
+    }
+
+    void returnToOverview() {
+        //Intent intent = new Intent(mNoteData.getActivity(), OverviewInit.class);
+        //intent.putExtra("ID", 5);
+        //mActivity.startActivity(intent); // Activity Starten
+        //mActivity.overridePendingTransition(android.R.anim.fade_in, android.R.anim.slide_out_right);
     }
 }
