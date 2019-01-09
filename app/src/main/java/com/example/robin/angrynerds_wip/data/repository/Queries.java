@@ -1,6 +1,5 @@
 package com.example.robin.angrynerds_wip.data.repository;
 
-import android.nfc.Tag;
 import android.util.Log;
 
 import com.couchbase.lite.CouchbaseLiteException;
@@ -11,20 +10,17 @@ import com.couchbase.lite.QueryBuilder;
 import com.couchbase.lite.Result;
 import com.couchbase.lite.ResultSet;
 import com.couchbase.lite.SelectResult;
-import com.example.robin.angrynerds_wip.data.models.tens.Event;
-import com.example.robin.angrynerds_wip.data.models.tens.Note;
 import com.example.robin.angrynerds_wip.data.models.tens.TEN;
-import com.example.robin.angrynerds_wip.data.models.tens.Todo;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Queries {
 
-    QueryConverter queryConverter;
+    QueryResultConverter queryResultConverter;
 
     public Queries() {
-        this.queryConverter = new QueryConverter();
+        this.queryResultConverter = new QueryResultConverter();
     }
 
     public List<TEN> getAllTENs() {
@@ -39,7 +35,7 @@ public class Queries {
             for (Result result : rs) {
 
                 Log.i("Testdata", result.getString(DatabaseConstants.OBJECT_KEY));
-                TEN tenObject = this.queryConverter.createTENFromResult(result);
+                TEN tenObject = this.queryResultConverter.createTENFromResult(result);
                 resultList.add(tenObject);
             }
             return resultList;
@@ -47,17 +43,4 @@ public class Queries {
             return null;
         }
     }
-
-    public List<Event> getAllEvents() {
-        return null;
-    }
-
-    public List<Note> getAllNotes() {
-        return null;
-    }
-
-    public List<Todo> getAllTodos() {
-        return null;
-    }
-
 }

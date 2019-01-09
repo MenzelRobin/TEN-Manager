@@ -12,12 +12,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.ArrayList;
 
-public class QueryUtils {
+public class DocumentSaver {
 
     ObjectMapper objectMapper;
     ImageConverter imageConverter;
 
-    public QueryUtils(){
+    public DocumentSaver(){
         this.objectMapper = new ObjectMapper();
         this.imageConverter = new ImageConverter();
     }
