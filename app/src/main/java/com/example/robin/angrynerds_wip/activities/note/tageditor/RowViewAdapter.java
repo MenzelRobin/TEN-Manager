@@ -33,6 +33,8 @@ public class RowViewAdapter extends ArrayAdapter<String>{
         EditText textView = (EditText) rowView.findViewById(R.id.id_note_tagOverview_listItemText);
         ImageButton deleteButton = (ImageButton) rowView.findViewById(R.id.id_note_tagOverview_deleteButton);
         textView.setText(values.get(position));
+        textView.setId(position);
+        textView.addTextChangedListener(new TextWatcher(applicationLogic, textView));
         deleteButton.setId(position);
         deleteButton.setOnClickListener(applicationLogic.getClickListener());
 

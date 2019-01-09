@@ -4,8 +4,12 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.View;
+import android.view.Window;
 
+import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.activities.note.tageditor.NoteTagActivity;
 
 import java.io.IOException;
@@ -17,7 +21,7 @@ class ApplicationLogic {
     private NoteData mNoteData;
     private ClickListener mClickListener;
     private ImageImport mImageImport;
-    private TextListe
+    private ImageOverlay mImageOverlay;
 
     ApplicationLogic(Gui gui, NoteData noteData) {
         mGui = gui;
@@ -43,15 +47,15 @@ class ApplicationLogic {
         for(IContainer mImage: mNoteData.getmNoteImageContainers()){
             setImageClickListener(mImage);
         }
+        mGui.getmNoteTitle().addTextChangedListener(new TextWatcher(this, mGui.getmNoteTitle()));
+        mGui.getmNoteDescription().addTextChangedListener(new TextWatcher(this, mGui.getmNoteDescription()));
     }
 
     private void setImageClickListener(IContainer imageContainer){
         imageContainer.getImageContainer().setOnClickListener(mClickListener);
     }
 
-    void setmGui(Gui mGui){ this.mGui = mGui;}
-
-    void dataToGui() {
+    private void dataToGui() {
         mGui.setmNoteTitle(mNoteData.getmNote().getTitle());
         mGui.setmNoteDescription(mNoteData.getmNote().getDescription());
         mGui.setmNoteTags(mNoteData.getmNote().getTags());
@@ -83,6 +87,12 @@ class ApplicationLogic {
                     }
                 }
                 break;
+            case 2:
+                if(resultCode == -1){
+                    Bundle extras = data.getExtras();
+                    mNoteData.getmNote().setTags(extras.getStringArrayList("taglist"));
+                    mGui.setmNoteTags(mNoteData.getmNote().getTags());
+                }
         }
     }
 
@@ -97,14 +107,17 @@ class ApplicationLogic {
             mImageImport = new ImageImport(mNoteData.getActivity());
         }
         else{
-            ImageOverlay imageOverlay = new ImageOverlay(mNoteData.getImage(id));
-            imageOverlay.display(mNoteData.getActivity());
+            View displayMetrics = mNoteData.getActivity().getWindow().findViewById(Window.ID_ANDROID_CONTENT);
+            mImageOverlay = new ImageOverlay(mNoteData.getImage(id), displayMetrics.getWidth(), displayMetrics.getHeight());
+            mImageOverlay.display(mNoteData.getActivity());
         }
     }
 
     void onTagsClicked(){
         Intent intent = new Intent(mNoteData.getActivity(), NoteTagActivity.class);
-        mNoteData.getActivity().startActivity(intent); // Activity Starten
+        intent.putExtra("taglist", mNoteData.getmNote().getTags());
+        intent.putExtra("color", mNoteData.getmNote().getColor());
+        mNoteData.getActivity().startActivityForResult(intent, 2); // Activity Starten
     }
 
     boolean checkImageID(int id){
@@ -126,14 +139,19 @@ class ApplicationLogic {
     }
 
     void onConfigurationChanged(Gui gui) {
-        setmGui(gui);
+        this.mGui = gui;
         mNoteData.addImageButton();
-        setImageClickListener(mNoteData.getmNoteImageContainers().get(mNoteData.getmNoteImageContainers().size()-1));
+        initListener();
         dataToGui();
+        //setImageClickListener(mNoteData.getmNoteImageContainers().get(mNoteData.getmNoteImageContainers().size()-1));
+        if(mImageOverlay != null && mImageOverlay.isDisplayed()){
+            mImageOverlay.changeOrientation((mNoteData.getActivity()));
+        }
     }
 
-    void saveState() {
-        mNoteData.getmNote().setTitle(String.valueOf(mGui.getmNoteTitle()));
-        mNoteData.getmNote().setDescription(String.valueOf(mGui.getmNoteDescription()));
+    void onTextChanged(String text, View view) {
+        if(view.getId() == R.id.id_note_title){ mNoteData.setTitle(text);} //R.id.id_event_editText_title
+        else if(view.getId() == R.id.id_note_description){
+            mNoteData.setDescription(text);} //R.id.id_event_editText_title
     }
 }

@@ -2,6 +2,7 @@ package com.example.robin.angrynerds_wip.activities.note.note;
 
 import android.app.Activity;
 import android.content.res.Configuration;
+import android.text.method.ScrollingMovementMethod;
 import android.widget.EditText;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
@@ -42,6 +43,7 @@ class Gui {
         }
         mNoteDescription = activity.findViewById(R.id.id_note_description);
         mNoteTags = activity.findViewById(R.id.id_note_tags);
+        mNoteTags.setMovementMethod(new ScrollingMovementMethod());
     }
 
     //Getters
