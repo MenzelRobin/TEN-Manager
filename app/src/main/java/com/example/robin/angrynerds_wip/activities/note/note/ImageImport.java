@@ -39,14 +39,14 @@ class ImageImport {
 
         //Checks if device has a camera
         if (mActivity.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA)) {
-            options = new String[]{"Gallery", "Camera"};
+            options = new String[]{"Galerie", "Kamera"};
         }
         else{
-            options = new String[]{"Gallery"};
+            options = new String[]{"Galerie"};
         }
 
         AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
-        builder.setTitle("Choose Image Source");
+        builder.setTitle("Bildquelle auswählen");
         builder.setIcon(R.drawable.ic_add_a_photo_darkgrey_24dp);
         builder.setItems(options, clickListener);
         builder.show();
