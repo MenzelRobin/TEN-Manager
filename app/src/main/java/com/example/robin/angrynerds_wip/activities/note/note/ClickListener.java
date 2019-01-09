@@ -22,6 +22,9 @@ class ClickListener implements View.OnClickListener  {
             case R.id.id_note_title:
                 mApplicationLogic.onTitleClicked();
                 break;
+            case -1:
+                mApplicationLogic.returnToOverview();
+                break;
             default:
                 break;
         }

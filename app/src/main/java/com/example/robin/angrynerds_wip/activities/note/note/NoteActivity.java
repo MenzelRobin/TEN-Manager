@@ -5,8 +5,12 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+
+import com.example.robin.angrynerds_wip.R;
 
 public class NoteActivity extends AppCompatActivity {
 
@@ -65,6 +69,14 @@ public class NoteActivity extends AppCompatActivity {
         mEventDispersion.onCreateContextMenu(menu, view, menuInfo);
     }
 
+    //Toolbar
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.note_menu, menu);
+        return true;
+    }
+
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         // return super.onContextItemSelected(item);
@@ -74,7 +86,7 @@ public class NoteActivity extends AppCompatActivity {
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        mGui.getmNoteImageContainer().removeAllViews();
+        mGui.getNoteImageContainer().removeAllViews();
 
         initGUI();
         //mApplicationLogic.setmGui(mGui);
