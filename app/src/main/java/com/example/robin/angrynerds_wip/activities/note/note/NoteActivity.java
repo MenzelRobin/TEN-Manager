@@ -79,7 +79,6 @@ public class NoteActivity extends AppCompatActivity {
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {
-        // return super.onContextItemSelected(item);
         return mEventDispersion.onContextItemSelected(item);
     }
 
@@ -87,14 +86,8 @@ public class NoteActivity extends AppCompatActivity {
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         mGui.getNoteImageContainer().removeAllViews();
-
         initGUI();
-        //mApplicationLogic.setmGui(mGui);
         mApplicationLogic.onConfigurationChanged(mGui);
-        /*initGUI();
-        mNoteData.addImageButton();
-        mApplicationLogic.setmGui(mGui);
-        mApplicationLogic.dataToGui();*/
     }
 
     @Override
@@ -105,7 +98,7 @@ public class NoteActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();   //default action
-        //mApplicationLogic.onBackPressed();   // customized action
+        super.onBackPressed();
+        //mApplicationLogic.onBackPressed();
     }
 }

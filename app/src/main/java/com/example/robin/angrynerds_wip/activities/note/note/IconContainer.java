@@ -25,14 +25,13 @@ class IconContainer implements IContainer {
     public LinearLayout getImageContainer() {
         return imageContainer;
     }
-    public Bitmap getImage(){
-        return ((BitmapDrawable)drawable).getBitmap();}
+    public Bitmap getImage(){ return ((BitmapDrawable)drawable).getBitmap();}
     public void setImageContainerId(int id){
         imageContainer.setId(id);
     }
 
+    //Initiates Icon in ImageView
     private void initiateView(){
-
         if(mActivity.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
             //Portrait Mode
             imageContainer.setLayoutParams(new LinearLayout.LayoutParams(400, 800));
@@ -47,7 +46,6 @@ class IconContainer implements IContainer {
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         imageView.setImageDrawable(drawable);
         imageView.setLayoutParams(new LinearLayout.LayoutParams(300, 300));
-
         imageContainer.addView(imageView);
     }
 }

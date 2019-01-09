@@ -26,6 +26,7 @@ class ImageOverlay {
         this.displayHeight = displayHeight;
     }
 
+    //Displays the image in an AlertDialog
     void display(Activity activity) {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity, R.style.CustomDialog);
         dialog = builder.create();
@@ -33,7 +34,6 @@ class ImageOverlay {
         View dialogLayout = inflater.inflate(R.layout.activity_note_imageoverlay, null);
         ImageView imageView = dialogLayout.findViewById(R.id.id_note_imageContainer);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        View displayMetrics = activity.getWindow().findViewById(Window.ID_ANDROID_CONTENT);
         if(calculateSize())
             imageView.setImageBitmap(Bitmap.createScaledBitmap(mImage, (int)(frameWidth*edgeFactor), (int)(frameHeight*edgeFactor) ,true));
         else
@@ -42,15 +42,18 @@ class ImageOverlay {
         dialog.show();
     }
 
+    //Calculates size of frame according to display metrics
     private boolean calculateSize() {
         int imageWidth = mImage.getWidth();
         int imageHeight = mImage.getHeight();
         double imageAspectRatio = (double) imageWidth / imageHeight;
         double displayAspectRatio = (double) displayWidth / displayHeight;
 
+        //Checks if image is smaller than display * edgeFactor
         if(imageWidth <= displayWidth*edgeFactor && imageHeight <= displayHeight*edgeFactor){
             return false;
         }
+        //Checks if image is a square
         else if (imageWidth == imageHeight) {
             if (displayHeight > displayWidth) {
                 frameWidth = displayWidth;
@@ -59,20 +62,26 @@ class ImageOverlay {
                 frameWidth = displayHeight;
                 frameHeight = displayHeight;
             }
-        } else if (imageAspectRatio > displayAspectRatio) {
+        }
+        //Checks if image exceeds display in width
+        else if (imageAspectRatio > displayAspectRatio) {
             frameWidth = displayWidth;
             frameHeight = (int) ((double) frameWidth / imageAspectRatio);
-        } else {
+        }
+        //Checks if image exceeds display in height
+        else {
             frameHeight = displayHeight;
             frameWidth = (int) ((double) frameHeight * imageAspectRatio);
         }
         return true;
     }
 
+    //returns whether AlertDialog is displayed or not
     boolean  isDisplayed() {
         return dialog.isShowing();
     }
 
+    //Rescales AlertDialog on Orientation change
     void changeOrientation(Activity activity) {
         dialog.dismiss();
         int saveValue = displayWidth;

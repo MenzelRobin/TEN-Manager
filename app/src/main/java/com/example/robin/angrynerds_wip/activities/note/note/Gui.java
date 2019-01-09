@@ -33,6 +33,8 @@ class Gui {
 
         mBackground = activity.findViewById(R.id.id_note_background);
         mNoteTitle = activity.findViewById(R.id.id_note_title);
+
+        //Initiates according to screen orientation
         if(activity.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
             //Horizontally scrollable Image Gallery in Portrait Mode
             mNoteImageViewPortrait = activity.findViewById(R.id.id_note_ImageScrollView_Horizontal);
@@ -43,12 +45,14 @@ class Gui {
             mNoteImageViewLandscape = activity.findViewById(R.id.id_note_ImageScrollView_Vertical);
             mNoteImageContainer = activity.findViewById(R.id.id_note_linearImageContainer_Vertical);
         }
+
         mNoteDescription = activity.findViewById(R.id.id_note_description);
         mNoteTags = activity.findViewById(R.id.id_note_tags);
         mToolbar = activity.findViewById(R.id.id_note_toolbar);
 
         mNoteTags.setMovementMethod(new ScrollingMovementMethod());
 
+        //Set toolbar
         activity.setSupportActionBar(mToolbar);
         activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         activity.getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -71,21 +75,19 @@ class Gui {
     Toolbar getToolbar() {return mToolbar;}
     //Setters
     void setBackgroundColor(int bgColor) { mBackground.setBackgroundColor(bgColor);}
-    void setmNoteTitle(String mNoteTitle) {
+    void setNoteTitle(String mNoteTitle) {
         this.mNoteTitle.setText(mNoteTitle);
     }
-    void setmNoteImageContainer(ArrayList<IContainer> imageContainers) {
+    void setNoteImageContainer(ArrayList<IContainer> imageContainers) {
+        //Adds ImageViews to NoteData
         for(IContainer mImage : imageContainers){
             mNoteImageContainer.addView(mImage.getImageContainer());
         }
     }
-    void setmNoteDescription(String mNoteDescription) {
-        this.mNoteDescription.setText(mNoteDescription);
-    }
-    void setmNoteTags(ArrayList<String> mNoteTags) {
-        this.mNoteTags.setText(formatTags(mNoteTags));
-    }
+    void setNoteDescription(String mNoteDescription) { this.mNoteDescription.setText(mNoteDescription); }
+    void setNoteTags(ArrayList<String> mNoteTags) { this.mNoteTags.setText(formatTags(mNoteTags)); }
 
+    //Formats tags to display in TextView
     private String formatTags(ArrayList<String> mNoteTags) {
         String concatString = "";
         int size = mNoteTags.size();
@@ -97,6 +99,7 @@ class Gui {
         return concatString;
     }
 
+    //Displays a message on screen
     void displayToast(Activity activity, String s) {
         Toast.makeText(activity, s, Toast.LENGTH_SHORT).show();
     }
