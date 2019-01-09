@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
+import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.data.models.utils.MockData;
 
 import java.util.ArrayList;
@@ -19,7 +21,16 @@ public class NoteTagActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Bundle extras = getIntent().getExtras();
         initGUI();
+        try{
         initApplicationLogic(extras.getStringArrayList("taglist"), extras.getInt("color"));
+        }
+        catch(NullPointerException e){
+            Log.e("Error",e.getMessage());
+            ArrayList<String> taglist = new ArrayList<>();
+            taglist.add("");
+            initApplicationLogic(taglist, this.getResources().getColor(R.color.bgColor1));
+            mGui.displayToast(this, "Error getting TagList from NoteActivity.");
+        }
     }
 
 
@@ -56,7 +67,7 @@ public class NoteTagActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        mApplicationLogic.onBackPressed();   // customized action
-        super.onBackPressed();   //default action
+        mApplicationLogic.onBackPressed();
+        super.onBackPressed();
     }
 }

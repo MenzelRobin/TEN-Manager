@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 
@@ -90,8 +91,14 @@ class ApplicationLogic {
             case 2:
                 if(resultCode == -1){
                     Bundle extras = data.getExtras();
-                    mNoteData.getmNote().setTags(extras.getStringArrayList("taglist"));
-                    mGui.setmNoteTags(mNoteData.getmNote().getTags());
+                    try{
+                        mNoteData.getmNote().setTags(extras.getStringArrayList("taglist"));
+                        mGui.setmNoteTags(mNoteData.getmNote().getTags());
+                    }
+                    catch(NullPointerException e){
+                        Log.e("Error", e.getMessage());
+                        displayToast("Error getting TagList from NoteTagActivity.");
+                    }
                 }
         }
     }
