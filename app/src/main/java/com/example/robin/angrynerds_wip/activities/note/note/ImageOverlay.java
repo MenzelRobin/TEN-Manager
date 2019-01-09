@@ -13,23 +13,28 @@ import com.example.robin.angrynerds_wip.R;
 class ImageOverlay {
 
     private Bitmap mImage;
+    private AlertDialog dialog;
+    private int displayWidth;
+    private int displayHeight;
     private int frameWidth;
     private int frameHeight;
     private double edgeFactor = 0.95;
 
-    ImageOverlay(Bitmap image) {
+    ImageOverlay(Bitmap image, int displayWidth, int displayHeight) {
         mImage = image;
+        this.displayWidth = displayWidth;
+        this.displayHeight = displayHeight;
     }
 
     void display(Activity activity) {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity, R.style.CustomDialog);
-        AlertDialog dialog = builder.create();
+        dialog = builder.create();
         LayoutInflater inflater = activity.getLayoutInflater();
         View dialogLayout = inflater.inflate(R.layout.activity_note_imageoverlay, null);
         ImageView imageView = dialogLayout.findViewById(R.id.id_note_imageContainer);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         View displayMetrics = activity.getWindow().findViewById(Window.ID_ANDROID_CONTENT);
-        if(calculateSize(displayMetrics.getWidth(), displayMetrics.getHeight()))
+        if(calculateSize())
             imageView.setImageBitmap(Bitmap.createScaledBitmap(mImage, (int)(frameWidth*edgeFactor), (int)(frameHeight*edgeFactor) ,true));
         else
             imageView.setImageBitmap(mImage);
@@ -37,7 +42,7 @@ class ImageOverlay {
         dialog.show();
     }
 
-    private boolean calculateSize(int displayWidth, int displayHeight) {
+    private boolean calculateSize() {
         int imageWidth = mImage.getWidth();
         int imageHeight = mImage.getHeight();
         double imageAspectRatio = (double) imageWidth / imageHeight;
@@ -62,5 +67,17 @@ class ImageOverlay {
             frameWidth = (int) ((double) frameHeight * imageAspectRatio);
         }
         return true;
+    }
+
+    boolean  isDisplayed() {
+        return dialog.isShowing();
+    }
+
+    void changeOrientation(Activity activity) {
+        dialog.dismiss();
+        int saveValue = displayWidth;
+        displayWidth = displayHeight;
+        displayHeight = saveValue;
+        display(activity);
     }
 }

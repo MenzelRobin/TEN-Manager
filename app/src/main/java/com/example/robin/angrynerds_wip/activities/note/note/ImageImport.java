@@ -27,7 +27,7 @@ class ImageImport {
         requestImageSource();
     }
 
-    public String getmCurrentPhotoPath() {
+    String getmCurrentPhotoPath() {
         return mCurrentPhotoPath;
     }
 
@@ -50,26 +50,14 @@ class ImageImport {
     }
 
     void importImageFromCamera() {
-        dispatchTakePictureIntent();
-    }
-
-    void importImageFromGallery(){
-        Intent pickPhoto = new Intent(Intent.ACTION_PICK,
-                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        mActivity.startActivityForResult(pickPhoto , 1);
-    }
-
-    private void dispatchTakePictureIntent() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (takePictureIntent.resolveActivity(mActivity.getPackageManager()) != null) {
-            // Create the File where the photo should go
             File photoFile = null;
             try {
                 photoFile = createImageFile();
             } catch (IOException e) {
                 Log.e("Error", e.getMessage());
             }
-            // Continue only if the File was successfully created
             if (photoFile != null) {
                 Uri photoURI = FileProvider.getUriForFile(mActivity,
                         "com.example.robin.fileprovider",
@@ -80,18 +68,22 @@ class ImageImport {
         }
     }
 
+    void importImageFromGallery(){
+        Intent pickPhoto = new Intent(Intent.ACTION_PICK,
+                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        mActivity.startActivityForResult(pickPhoto , 1);
+    }
+
     private File createImageFile() throws IOException {
         // Create an image file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.GERMANY).format(new Date());
         String imageFileName = "JPEG_" + timeStamp + "_";
         File storageDir = mActivity.getExternalFilesDir(Environment.DIRECTORY_PICTURES);
         File image = File.createTempFile(
-                imageFileName,  /* prefix */
-                ".jpg",         /* suffix */
-                storageDir      /* directory */
+                imageFileName,
+                ".jpg",
+                storageDir
         );
-
-        // Save a file: path for use with ACTION_VIEW intents
         mCurrentPhotoPath = image.getAbsolutePath();
         return image;
     }

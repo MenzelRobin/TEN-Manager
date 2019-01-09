@@ -67,6 +67,8 @@
         android:layout_marginBottom="10dp"
         android:layout_alignParentBottom="true"
         android:lineSpacingExtra="5dp"
+        android:maxLines="3"
+        android:scrollbars="vertical"
         android:textColorHint="@color/note_hintWhite"
         android:textColor="@color/note_textWhite"
         android:hint="@string/sample_note_tag"

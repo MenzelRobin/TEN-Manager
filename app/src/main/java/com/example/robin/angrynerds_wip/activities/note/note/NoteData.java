@@ -52,6 +52,9 @@ class NoteData {
     NoteActivity getActivity(){ return mActivity;}
     Note getmNote(){return mNote;}
 
+    void setTitle(String title){ mNote.setTitle(title);}
+    void setDescription(String title){ mNote.setDescription(title);}
+
     Bitmap getImage(int id) {
         //TODO get original sized image from database
         return mNoteImageContainers.get(id-1).getImage();

@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.example.robin.angrynerds_wip.data.models.utils.MockData;
 
+import java.util.ArrayList;
+
 public class NoteTagActivity extends AppCompatActivity {
 
     private Gui mGui;
@@ -15,8 +17,9 @@ public class NoteTagActivity extends AppCompatActivity {
     @Override
     public void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Bundle extras = getIntent().getExtras();
         initGUI();
-        initApplicationLogic();
+        initApplicationLogic(extras.getStringArrayList("taglist"), extras.getInt("color"));
     }
 
 
@@ -24,8 +27,8 @@ public class NoteTagActivity extends AppCompatActivity {
         mGui = new Gui(this);
     }
 
-    private void initApplicationLogic () {
-        mApplicationLogic = new ApplicationLogic(MockData.getNoteSample(), mGui, this);
+    private void initApplicationLogic (ArrayList<String> tagList, int color) {
+        mApplicationLogic = new ApplicationLogic(tagList, mGui, this, color);
     }
 
     @Override
@@ -37,14 +40,6 @@ public class NoteTagActivity extends AppCompatActivity {
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        initGUI();
-        initApplicationLogic();
-
-        // Checks the orientation of the screen
-        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            mGui.displayToast(this, "Landscape");
-        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
-            mGui.displayToast(this, "Portrait");        }
     }
 
     @Override
@@ -61,7 +56,7 @@ public class NoteTagActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();   //default action
         mApplicationLogic.onBackPressed();   // customized action
+        super.onBackPressed();   //default action
     }
 }

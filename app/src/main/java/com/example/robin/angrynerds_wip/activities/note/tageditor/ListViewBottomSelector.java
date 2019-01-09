@@ -15,6 +15,7 @@ class ListViewBottomSelector implements Runnable {
     @Override
     public void run() {
         // Select the last row to make it visible
-        mListView.setSelection(mAdapter.getCount() - 1);
+        mListView.clearFocus();
+        mListView.setSelection(mAdapter.getCount());
     }
 }
