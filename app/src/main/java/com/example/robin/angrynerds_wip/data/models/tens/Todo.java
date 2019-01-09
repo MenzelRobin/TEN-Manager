@@ -3,10 +3,12 @@ package com.example.robin.angrynerds_wip.data.models.tens;
 import android.os.Bundle;
 
 import com.example.robin.angrynerds_wip.data.models.utils.Task;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.util.Date;
 import java.util.ArrayList;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Todo extends TEN {
 
     private double progress;

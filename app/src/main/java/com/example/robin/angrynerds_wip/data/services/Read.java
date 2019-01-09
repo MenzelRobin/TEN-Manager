@@ -20,14 +20,15 @@ public class Read {
      --------------------------------------------------*/
     public static ArrayList<TEN> getAllTENs() {
         //Repository repository = new Repository();
-        //ArrayList<TEN> allTEN = new ArrayList<>();
+        //ArrayList<TEN> allTEN = new ArrayList<TEN>();
         //for (TEN ten : repository.getAllTENs())
         //    allTEN.add(ten);
 
         //MOCKDATA
 
-        MockData md = new MockData();
-        return md.tenMockData;
+        //MockData md = new MockData();
+        //return md.tenMockData;
+        return null;
     }
     /*
     public static ArrayList<TEN> getAllTENs() {

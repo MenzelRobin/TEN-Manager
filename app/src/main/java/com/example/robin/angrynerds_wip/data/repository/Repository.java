@@ -41,6 +41,7 @@ public class Repository {
         Document noteDocument = DatabaseManager.getDatabase().getDocument(id);
         String json = noteDocument.getString(DatabaseConstants.OBJECT_KEY);
         Note finalNote = this.tenConverter.stringToNote(json);
+        finalNote = this.tenConverter.addImagesFromDocumentToNote(finalNote, noteDocument);
         return finalNote;
     }
 

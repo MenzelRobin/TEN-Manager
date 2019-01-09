@@ -38,6 +38,18 @@
             android:text="Open View Note"
             android:onClick="onClickNote"/>
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Test Data To Database"
+            android:onClick="onAddTestDataToDatabase"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reset Database Content"
+            android:onClick="onClickResetDatabase"/>
+
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
