@@ -23,35 +23,27 @@ class Gui {
     }
 
     //Getter
-    RelativeLayout getmBackground() {
+    RelativeLayout getBackground() {
         return mBackground;
     }
-    ListView getmListView() {
+    ListView getListView() {
         return mListView;
     }
-    Button getmAddButton() {
+    Button getAddButton() {
         return mAddButton;
     }
 
-    //Setter
-    void setmBackground(RelativeLayout mBackground) {
-        this.mBackground = mBackground;
-    }
-    void setmListView(ListView mListView) {
-        this.mListView = mListView;
-    }
-    void setmAddButton(Button mAddButton) {
-        this.mAddButton = mAddButton;
-    }
-
+    //Sets adapter to ListView
     void initiateListView(RowViewAdapter adapter){
         mListView.setAdapter(adapter);
     }
 
+    //Displays a message on screen
     void displayToast(Activity activity, String s) {
         Toast.makeText(activity, s, Toast.LENGTH_SHORT).show();
     }
 
+    //Return number of Strings in TagList
     int getListViewItemCount(){
         return mListView.getChildCount();
     }

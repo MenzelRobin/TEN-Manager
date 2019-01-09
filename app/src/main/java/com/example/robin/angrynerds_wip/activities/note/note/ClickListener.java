@@ -14,7 +14,7 @@ class ClickListener implements View.OnClickListener  {
 
     @Override
     public void onClick(View view) {
-
+        
         switch ( view.getId() ) {
             case R.id.id_note_tags:
                 mApplicationLogic.onTagsClicked();
@@ -29,6 +29,7 @@ class ClickListener implements View.OnClickListener  {
                 break;
         }
 
+        //Checks if image was clicked
         for(int id = 0; id<=mApplicationLogic.getImageCount(); id++){
             if(view.getId() == id){
                 mApplicationLogic.onImageClicked(id);

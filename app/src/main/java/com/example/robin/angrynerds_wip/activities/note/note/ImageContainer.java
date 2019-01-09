@@ -8,7 +8,7 @@ import android.widget.LinearLayout;
 class ImageContainer implements IContainer{
 
     private NoteActivity mActivity;
-    private String path;
+    private String path; //TODO check usage, delete if not needed
     private Bitmap image;
     private LinearLayout imageContainer;
     private int width = 750;
@@ -19,6 +19,7 @@ class ImageContainer implements IContainer{
         this.image = originalImage;
         Bitmap scaledImage;
 
+        //Crop image to square
         if (originalImage.getWidth() >= originalImage.getHeight()){
             originalImage = Bitmap.createBitmap(
                     originalImage,
@@ -37,7 +38,10 @@ class ImageContainer implements IContainer{
                     originalImage.getWidth()
             );
         }
+
+        //scale image to preset
         scaledImage=Bitmap.createScaledBitmap(originalImage, width, height ,true);
+
         this.imageContainer = new LinearLayout(mActivity.getApplicationContext());
         imageContainer.setId(id);
         initiateView(scaledImage);
@@ -52,6 +56,7 @@ class ImageContainer implements IContainer{
     public void setImageContainerId(int id){ imageContainer.setId(id);
     }
 
+    //Initiates Image in ImageView
     private void initiateView(Bitmap scaledImage){
         imageContainer.setLayoutParams(new LinearLayout.LayoutParams(width + 50, height + 50));
         imageContainer.setGravity(Gravity.CENTER);

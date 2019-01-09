@@ -32,14 +32,11 @@ class ApplicationLogic {
         initListener();
     }
 
-    int getImageCount(){
-        return mNoteData.getmNoteImageContainers().size();
-    }
-
     private void initGui() {
         dataToGui();
     }
 
+    //Initialise Click- and Text-Listeners
     private void initListener() {
         mClickListener = new ClickListener(this);
         MenuItemClickListener menuItemClickListener = new MenuItemClickListener(this);
@@ -47,7 +44,7 @@ class ApplicationLogic {
         mGui.getNoteTitle().setOnClickListener(mClickListener);
         mGui.getNoteImageContainer().setOnClickListener(mClickListener);
         mGui.getNoteTags().setOnClickListener(mClickListener);
-        for(IContainer mImage: mNoteData.getmNoteImageContainers()){
+        for(IContainer mImage: mNoteData.getNoteImageContainers()){
             setImageClickListener(mImage);
         }
         mGui.getNoteTitle().addTextChangedListener(new TextWatcher(this, mGui.getNoteTitle()));
@@ -56,26 +53,64 @@ class ApplicationLogic {
         mGui.getToolbar().setOnMenuItemClickListener(menuItemClickListener);
     }
 
+    //Return Number of ImageContainers in NoteData
+    int getImageCount(){
+        return mNoteData.getNoteImageContainers().size();
+    }
+
+    //Checks ImageContainer for specific ID
+    boolean checkImageID(int id){
+        return mNoteData.checkImageID(id);
+    }
+
+    //Deletes Image from NoteData
+    void deleteImage(int id) {
+        mNoteData.deleteImage(id);
+        refreshImages();
+    }
+
+    //Refreshes ScrollView with Images
+    private void refreshImages(){
+        mGui.getNoteImageContainer().removeAllViews();
+        mGui.setNoteImageContainer(mNoteData.getNoteImageContainers());
+    }
+
+    //Displays a message on screen
+    void displayToast(String s){
+        mGui.displayToast(mNoteData.getActivity(), s);
+    }
+
+    //Sets ClickListener on imageContainer
     private void setImageClickListener(IContainer imageContainer){
         imageContainer.getImageContainer().setOnClickListener(mClickListener);
     }
 
+    //sends data to gui elements
     private void dataToGui() {
-        mGui.setmNoteTitle(mNoteData.getmNote().getTitle());
-        mGui.setmNoteDescription(mNoteData.getmNote().getDescription());
-        mGui.setmNoteTags(mNoteData.getmNote().getTags());
-        mGui.setBackgroundColor(mNoteData.getmNote().getColor());
+        mGui.setNoteTitle(mNoteData.getNote().getTitle());
+        mGui.setNoteDescription(mNoteData.getNote().getDescription());
+        mGui.setNoteTags(mNoteData.getNote().getTags());
+        mGui.setBackgroundColor(mNoteData.getNote().getColor());
         refreshImages();
     }
 
+    //Returns to OverViewActivity
+    void returnToOverview() {
+        //Intent intent = new Intent(mNoteData.getActivity(), OverviewInit.class);
+        //intent.putExtra("ID", 5);
+        //mActivity.startActivity(intent); // Activity Starten
+        //mActivity.overridePendingTransition(android.R.anim.fade_in, android.R.anim.slide_out_right);
+    }
+
+    //Get result from external Activity (Camera, Gallery, TagEditor)
     void onActivityReturned(int requestCode, int resultCode, Intent data) {
         switch(requestCode) {
             case 0:
                 if(resultCode == -1){
                     //TODO
-                    Bitmap bm = BitmapFactory.decodeFile(mImageImport.getmCurrentPhotoPath());
+                    Bitmap bm = BitmapFactory.decodeFile(mImageImport.getCurrentPhotoPath());
                     mNoteData.saveImage(bm);
-                    setImageClickListener(mNoteData.getImageContainer(mNoteData.getmNoteImageContainers().size()-2));
+                    setImageClickListener(mNoteData.getImageContainer(mNoteData.getNoteImageContainers().size()-2));
                     refreshImages();
                 }
                 break;
@@ -85,7 +120,7 @@ class ApplicationLogic {
                     try {
                         Bitmap bitmap = MediaStore.Images.Media.getBitmap(mNoteData.getActivity().getContentResolver(), selectedImage);
                         mNoteData.saveImage(bitmap);
-                        setImageClickListener(mNoteData.getImageContainer(mNoteData.getmNoteImageContainers().size()-2));
+                        setImageClickListener(mNoteData.getImageContainer(mNoteData.getNoteImageContainers().size()-2));
                         refreshImages();
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -96,8 +131,8 @@ class ApplicationLogic {
                 if(resultCode == -1){
                     Bundle extras = data.getExtras();
                     try{
-                        mNoteData.getmNote().setTags(extras.getStringArrayList("taglist"));
-                        mGui.setmNoteTags(mNoteData.getmNote().getTags());
+                        mNoteData.getNote().setTags(extras.getStringArrayList("taglist"));
+                        mGui.setNoteTags(mNoteData.getNote().getTags());
                     }
                     catch(NullPointerException e){
                         Log.e("Error", e.getMessage());
@@ -109,10 +144,12 @@ class ApplicationLogic {
 
     void onBackPressed() {}
 
+    //Set cursor of Title visible (invisible when Activity is started)
     void onTitleClicked() {
         mGui.getNoteTitle().setCursorVisible(true);
     }
 
+    //Displays image if ImageContainer is clicked, starts ImageImport functionality if IconContainer is clicked
     void onImageClicked(int id){
         if(id==0){
             mImageImport = new ImageImport(mNoteData.getActivity());
@@ -124,59 +161,37 @@ class ApplicationLogic {
         }
     }
 
+    //Starts TagEditor Activity
     void onTagsClicked(){
         Intent intent = new Intent(mNoteData.getActivity(), NoteTagActivity.class);
-        intent.putExtra("taglist", mNoteData.getmNote().getTags());
-        intent.putExtra("color", mNoteData.getmNote().getColor());
-        mNoteData.getActivity().startActivityForResult(intent, 2); // Activity Starten
+        intent.putExtra("taglist", mNoteData.getNote().getTags());
+        intent.putExtra("color", mNoteData.getNote().getColor());
+        mNoteData.getActivity().startActivityForResult(intent, 2);
     }
 
-    boolean checkImageID(int id){
-        return mNoteData.checkImageID(id);
-    }
-
-    void deleteImage(int id) {
-        mNoteData.deleteImage(id);
-        refreshImages();
-    }
-
-    private void refreshImages(){
-        mGui.getNoteImageContainer().removeAllViews();
-        mGui.setmNoteImageContainer(mNoteData.getmNoteImageContainers());
-    }
-
-    void displayToast(String s){
-        mGui.displayToast(mNoteData.getActivity(), s);
-    }
-
+    //Initialises Landscape or Portrait Activity with NoteData, rescales ImageOverlay if displayed
     void onConfigurationChanged(Gui gui) {
         this.mGui = gui;
         mNoteData.addImageButton();
         initListener();
         dataToGui();
-        //setImageClickListener(mNoteData.getmNoteImageContainers().get(mNoteData.getmNoteImageContainers().size()-1));
+        //setImageClickListener(mNoteData.getNoteImageContainers().get(mNoteData.getNoteImageContainers().size()-1));
         if(mImageOverlay != null && mImageOverlay.isDisplayed()){
             mImageOverlay.changeOrientation((mNoteData.getActivity()));
         }
     }
 
+    //Inserts User Input into NoteData
     void onTextChanged(String text, View view) {
         if(view.getId() == R.id.id_note_title){ mNoteData.setTitle(text);} //R.id.id_event_editText_title
         else if(view.getId() == R.id.id_note_description){
             mNoteData.setDescription(text);} //R.id.id_event_editText_title
     }
 
-    //Toolbar menu is clicked
-    void onMenuItemClick(MenuItem item) {
+    //Handles Toolbar Selection
+    void onMenuItemClicked(MenuItem item) {
         if(item.getItemId() == R.id.note_action_settings){
             //TODO delete note;
             returnToOverview();}
-    }
-
-    void returnToOverview() {
-        //Intent intent = new Intent(mNoteData.getActivity(), OverviewInit.class);
-        //intent.putExtra("ID", 5);
-        //mActivity.startActivity(intent); // Activity Starten
-        //mActivity.overridePendingTransition(android.R.anim.fade_in, android.R.anim.slide_out_right);
     }
 }

@@ -25,37 +25,26 @@ class ApplicationLogic {
         initGui();
         initListener();
     }
-    //Getter
-    RowViewAdapter getmAdapter() {
-        return mAdapter;
-    }
+
     ClickListener getClickListener() {
         return clickListener;
     }
-    //Setter
-    void setmAdapter(RowViewAdapter mAdapter) {
-        this.mAdapter = mAdapter;
-    }
-    void setClickListener(ClickListener clickListener) {
-        this.clickListener = clickListener;
-    }
 
     private void initGui(){
-        mGui.getmBackground().setBackgroundColor(mColor);
+        mGui.getBackground().setBackgroundColor(mColor);
         mGui.initiateListView(mAdapter);
     }
 
     private void initListener() {
         clickListener = new ClickListener(this);
-
-        mGui.getmAddButton().setOnClickListener(clickListener);
+        mGui.getAddButton().setOnClickListener(clickListener);
     }
 
     void onActivityReturned(int requestCode, int resultCode, Intent data) { }
 
+    //Return TagList to NoteActivity
     void onBackPressed() {
         Intent resultIntent = new Intent();
-        // TODO Add extras or a data URI to this intent as appropriate.
         for(int i = 0; i<mTagList.size();i++){
             if(mTagList.get(i).equals("")){
                 mTagList.remove(i--);
@@ -66,22 +55,25 @@ class ApplicationLogic {
         mActivity.finish();
     }
 
-
+    //Add String to TagList, notify adapter and set selection to new element
     void onAddButtonClicked() {
         mTagList.add("");
         mAdapter.notifyDataSetChanged();
-        mGui.getmListView().post(new ListViewBottomSelector(mGui.getmListView(), mAdapter));
+        mGui.getListView().post(new ListViewBottomSelector(mGui.getListView(), mAdapter));
     }
 
+    //Remove String from TagList and notify adapter
     void onDeleteButtonClicked(int id){
         mTagList.remove(id);
         mAdapter.notifyDataSetChanged();
     }
 
+    //Return number of Strings in TagList
     int getListViewItemCount(){
         return mGui.getListViewItemCount();
     }
 
+    //Insert user input into TagList
     void onTextChanged(String s, View mView) {
         mTagList.set(mView.getId(),s);
     }

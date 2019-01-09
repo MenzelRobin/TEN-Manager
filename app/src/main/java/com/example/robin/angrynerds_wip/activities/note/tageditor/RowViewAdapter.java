@@ -18,6 +18,7 @@ public class RowViewAdapter extends ArrayAdapter<String>{
     private ApplicationLogic applicationLogic;
     private final ArrayList<String> values;
 
+    //Custom Adapter for tagoverview_rowlayout
     RowViewAdapter(Context context, ArrayList<String> values, ApplicationLogic applicationLogic) {
         super(context, -1, values);
         this.context = context;
@@ -25,13 +26,14 @@ public class RowViewAdapter extends ArrayAdapter<String>{
         this.applicationLogic = applicationLogic;
     }
 
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rowView = inflater.inflate(R.layout.activity_note_tagoverview_rowlayout, parent, false);
-        EditText textView = (EditText) rowView.findViewById(R.id.id_note_tagOverview_listItemText);
-        ImageButton deleteButton = (ImageButton) rowView.findViewById(R.id.id_note_tagOverview_deleteButton);
+        EditText textView = rowView.findViewById(R.id.id_note_tagOverview_listItemText);
+        ImageButton deleteButton = rowView.findViewById(R.id.id_note_tagOverview_deleteButton);
         textView.setText(values.get(position));
         textView.setId(position);
         textView.addTextChangedListener(new TextWatcher(applicationLogic, textView));

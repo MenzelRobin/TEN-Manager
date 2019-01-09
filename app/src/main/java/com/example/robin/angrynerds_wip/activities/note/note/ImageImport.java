@@ -27,14 +27,17 @@ class ImageImport {
         requestImageSource();
     }
 
-    String getmCurrentPhotoPath() {
+    //Returns Path of Image
+    String getCurrentPhotoPath() {
         return mCurrentPhotoPath;
     }
 
+    //Shows AlertDialog to request image source
     private void requestImageSource(){
         DialogClickListener clickListener = new DialogClickListener(this);
         String[] options;
 
+        //Checks if device has a camera
         if (mActivity.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA)) {
             options = new String[]{"Gallery", "Camera"};
         }
@@ -49,6 +52,7 @@ class ImageImport {
         builder.show();
     }
 
+    //Starts Camera activity
     void importImageFromCamera() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (takePictureIntent.resolveActivity(mActivity.getPackageManager()) != null) {
@@ -68,22 +72,19 @@ class ImageImport {
         }
     }
 
+    //Starts Gallery activity to pick an image
     void importImageFromGallery(){
         Intent pickPhoto = new Intent(Intent.ACTION_PICK,
                 android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         mActivity.startActivityForResult(pickPhoto , 1);
     }
 
+    //Creates the image file to pass into the camera activity
     private File createImageFile() throws IOException {
-        // Create an image file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.GERMANY).format(new Date());
         String imageFileName = "JPEG_" + timeStamp + "_";
         File storageDir = mActivity.getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-        File image = File.createTempFile(
-                imageFileName,
-                ".jpg",
-                storageDir
-        );
+        File image = File.createTempFile(imageFileName, ".jpg", storageDir);
         mCurrentPhotoPath = image.getAbsolutePath();
         return image;
     }

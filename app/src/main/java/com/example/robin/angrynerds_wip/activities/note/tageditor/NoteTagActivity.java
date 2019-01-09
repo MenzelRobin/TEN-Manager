@@ -21,6 +21,8 @@ public class NoteTagActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Bundle extras = getIntent().getExtras();
         initGUI();
+
+        //Get TagList from Intent
         try{
         initApplicationLogic(extras.getStringArrayList("taglist"), extras.getInt("color"));
         }

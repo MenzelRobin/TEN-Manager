@@ -16,13 +16,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:layout_weight="0.1"
-            android:text="@string/sample_note_hashtag"
-            android:textColor="@color/note_textWhite"
             android:layout_marginStart="10dp"
-            android:background="@color/note_transparent"/>
+            android:layout_weight="0.1"
+            android:background="@color/note_transparent"
+            android:text="@string/sample_note_hashtag"
+            android:textColor="@color/note_textWhite" />
 
     </LinearLayout>
+
     <EditText
         android:id="@+id/id_note_tagOverview_listItemText"
         android:layout_width="0dp"
@@ -32,22 +33,23 @@
         android:inputType="text"
         android:lines="1"
         android:maxLines="1"
-        android:textColorHint="@color/note_hintWhite"
-        android:textColor="@color/note_textWhite"/>
+        android:textColor="@color/note_textWhite"
+        android:textColorHint="@color/note_hintWhite" />
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical">
 
         <ImageButton
-        android:id="@+id/id_note_tagOverview_deleteButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:layout_weight="0.1"
-        android:src="@drawable/ic_delete_white_24dp"
-        android:layout_marginStart="10dp"
-        android:background="@color/note_transparent"/>
+            android:id="@+id/id_note_tagOverview_deleteButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginStart="10dp"
+            android:layout_weight="0.1"
+            android:background="@color/note_transparent"
+            android:src="@drawable/ic_delete_white_24dp" />
 
     </LinearLayout>
 </LinearLayout>

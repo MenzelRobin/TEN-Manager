@@ -31,10 +31,10 @@ class NoteData {
         addImageButton();
     }
 
+    //Adds the addImageButton to mNoteContainers
     void addImageButton() {
-        if(mNoteImageContainers.get(mNoteImageContainers.size()-1) instanceof IconContainer){
+        if(mNoteImageContainers.get(mNoteImageContainers.size()-1) instanceof IconContainer)
             mNoteImageContainers.remove(mNoteImageContainers.size()-1);
-        }
         Drawable drawable = ContextCompat.getDrawable(mActivity,R.drawable.ic_add_a_photo_grey_24dp);
         mNoteImageContainers.add(new IconContainer(mActivity, 0, drawable));
     }
@@ -44,22 +44,23 @@ class NoteData {
     }
 
     void restoreDataFromBundle(Bundle savedInstanceState) {
-        //mNote.setTitle(savedInstanceState.getString("title"));
     }
 
-    ArrayList<IContainer> getmNoteImageContainers() { return mNoteImageContainers; }
+    ArrayList<IContainer> getNoteImageContainers() { return mNoteImageContainers; }
     IContainer getImageContainer(int id){ return mNoteImageContainers.get(id);}
     NoteActivity getActivity(){ return mActivity;}
-    Note getmNote(){return mNote;}
+    Note getNote(){return mNote;}
 
     void setTitle(String title){ mNote.setTitle(title);}
     void setDescription(String title){ mNote.setDescription(title);}
 
+    //returns image from mNoteImageContainers
     Bitmap getImage(int id) {
         //TODO get original sized image from database
         return mNoteImageContainers.get(id-1).getImage();
     }
 
+    //Checks ImageContainer for specific ID
     boolean checkImageID(int id){
         for(IContainer mImage : mNoteImageContainers){
             if(mImage.getImageContainer().getId()==id)
@@ -68,11 +69,13 @@ class NoteData {
         return false;
     }
 
+    //Adds image as ImageContainer to mNoteImageContainers
     void saveImage(Bitmap image) {
         ImageContainer imageContainer = new ImageContainer(mActivity, mNoteImageContainers.size(), image);
         mNoteImageContainers.add(mNoteImageContainers.size()-1, imageContainer);
     }
 
+   //Deletes specific ImageContainer from mNoteImageContainers
    void deleteImage(int id) {
         mNoteImageContainers.remove(id-1);
         for(int i = 1; i<mNoteImageContainers.size(); i++){
