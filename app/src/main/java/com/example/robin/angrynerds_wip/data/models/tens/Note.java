@@ -3,9 +3,12 @@ package com.example.robin.angrynerds_wip.data.models.tens;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.ArrayList;
 import java.util.Date;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Note extends TEN {
 
     private String description;
@@ -15,16 +18,22 @@ public class Note extends TEN {
     //Constructors
     public Note() {
         super();
+        this.tags = new ArrayList<String>();
+        this.pictures = new ArrayList<Bitmap>();
     }
 
     public Note(String title) {
         super(title);
+        this.tags = new ArrayList<String>();
+        this.pictures = new ArrayList<Bitmap>();
     }
 
     //simple for usage
     public Note(String title, String description) {
         super(title);
-        this.description = description;
+        this.description = description;        tags = new ArrayList<String>();
+        this.pictures = new ArrayList<Bitmap>();
+
     }
 
     //simple for usage
@@ -32,6 +41,7 @@ public class Note extends TEN {
         super(title);
         this.description = description;
         this.tags = tags;
+        this.pictures = new ArrayList<Bitmap>();
     }
 
     //all Attributes for complete Reconstruction

@@ -3,10 +3,12 @@ package com.example.robin.angrynerds_wip.data.models.tens;
 import android.os.Bundle;
 
 import com.example.robin.angrynerds_wip.data.models.utils.RecurringType;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.util.ArrayList;
 import java.util.Date;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Event extends TEN {
     private Date time;
     private ArrayList<Date> reminder;

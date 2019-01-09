@@ -1,7 +1,10 @@
 package com.example.robin.angrynerds_wip.data.repository;
 
 import android.graphics.Bitmap;
+import android.util.Log;
 
+import com.couchbase.lite.Dictionary;
+import com.couchbase.lite.Document;
 import com.couchbase.lite.Result;
 import com.example.robin.angrynerds_wip.data.models.tens.Event;
 import com.example.robin.angrynerds_wip.data.models.tens.Note;
@@ -43,23 +46,36 @@ public class TENConverter {
     public Note stringToNote(String json) {
         try {
             Note note = this.objectMapper.readValue(json, Note.class);
-
-
-            //TODO Bilder aus den Blobs hinzufügen
             return note;
         } catch (IOException e) {
+            Log.i("Testdata", e.getMessage());
             return null;
         }
     }
 
-    public Note addImagesFromResultToNote(Note note, Result result) {
-        int numberOfPictures = result.getInt(DatabaseConstants.IMAGE_COUNTER);
+    public Note addImagesFromResultToNote(Note note, Dictionary dictionary) {
+        int numberOfPictures = dictionary.getInt(DatabaseConstants.IMAGE_COUNTER);
         ArrayList<Bitmap> images = new ArrayList<Bitmap>();
 
         for (int i = 1; i <= numberOfPictures; i++) {
 
             Bitmap image = this.imageConverter
-                    .BlobToBitmap(result.getBlob(DatabaseConstants.IMAGE_CORE_ID + i));
+                    .BlobToBitmap(dictionary.getBlob(DatabaseConstants.IMAGE_CORE_ID + i));
+            images.add(image);
+        }
+
+        note.setPictures(images);
+        return note;
+    }
+
+    public Note addImagesFromDocumentToNote(Note note, Document document) {
+        int numberOfPictures = document.getInt(DatabaseConstants.IMAGE_COUNTER);
+        ArrayList<Bitmap> images = new ArrayList<Bitmap>();
+
+        for (int i = 1; i <= numberOfPictures; i++) {
+
+            Bitmap image = this.imageConverter
+                    .BlobToBitmap(document.getBlob(DatabaseConstants.IMAGE_CORE_ID + i));
             images.add(image);
         }
 

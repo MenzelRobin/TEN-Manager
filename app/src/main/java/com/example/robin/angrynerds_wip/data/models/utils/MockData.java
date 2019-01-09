@@ -21,7 +21,7 @@ public class MockData {
 
     //Nicht-Statische Liste mit 10 todos, 10 Events und 10 Notes
     //Verwendung mit MockData.tenMockData -> Bitte Nicht
-    public ArrayList<TEN> tenMockData = new ArrayList<>();
+    private ArrayList<TEN> tenMockData = new ArrayList<>();
 
     public MockData(Activity activity) {
 
@@ -37,8 +37,8 @@ public class MockData {
         koalaTags.add("Australien");
         koalaNote.setTags(koalaTags);
 
-        BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_koala1);
-        BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_koala2);
+        koalaNote.getPictures().add(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_koala1));
+        koalaNote.getPictures().add(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_koala2));
 
         tenMockData.add(koalaNote);
 
@@ -62,8 +62,8 @@ public class MockData {
         koalaTags.add("Meer");
         delfinNote.setTags(delfinTags);
 
-        BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_delfin1);
-        BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_delfin2);
+        delfinNote.getPictures().add(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_delfin1));
+        delfinNote.getPictures().add(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_delfin2));
 
         tenMockData.add(delfinNote);
 
@@ -144,8 +144,8 @@ public class MockData {
         kaenguruTags.add("Australien");
         kaenguruNote.setTags(kaenguruTags);
 
-        BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_kaenguru1);
-        BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_kaenguru2);
+        kaenguruNote.getPictures().add(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_kaenguru1));
+        kaenguruNote.getPictures().add(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_kaenguru2));
 
         tenMockData.add(kaenguruNote);
 
@@ -163,13 +163,13 @@ public class MockData {
         melbourneTags.add("Skyline");
         melbourneNote.setTags(melbourneTags);
 
-        BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_melbourne1);
-        BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_melbourne2);
-        BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_melbourne3);
+        melbourneNote.getPictures().add(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_melbourne1));
+        melbourneNote.getPictures().add(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_melbourne2));
+        melbourneNote.getPictures().add(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_melbourne3));
 
         tenMockData.add(melbourneNote);
 
-        Note bambusNote = new Note("Bambus", "ambus ist eine der zwölf" +
+        Note bambusNote = new Note("Bambus", "Bambus ist eine der zwölf" +
                 " Unterfamilien aus der Familie der Süßgräser, der etwa 116 Gattungen zugerechnet" +
                 " werden. Die Unterfamilie wird in drei Tribus geteilt, wobei Arundinarieae und" +
                 " Bambuseae verholzende Arten beinhalten und Olyreae krautig wachsende Pflanzen.");
@@ -180,7 +180,7 @@ public class MockData {
         bambusTags.add("Australien");
         bambusNote.setTags(bambusTags);
 
-        BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_bambus1);
+        bambusNote.getPictures().add(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_bambus1));
 
         tenMockData.add(bambusNote);
 

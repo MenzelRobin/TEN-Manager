@@ -1,6 +1,7 @@
 package com.example.robin.angrynerds_wip.data.repository;
 
 import android.graphics.Bitmap;
+import android.util.Log;
 
 import com.couchbase.lite.Blob;
 import com.couchbase.lite.CouchbaseLiteException;
@@ -41,14 +42,17 @@ public class DocumentSaver {
 
     private MutableDocument prepareDocument(MutableDocument mutableDocument, TEN ten){
         if(ten.getClass().getName().contains("Event")){
+            Log.i("Testdata", "Es ist ein Event");
             mutableDocument.setString(DatabaseConstants.TYPE_KEY, DatabaseConstants.EVENT_TYPE);
         }
         else if (ten.getClass().getName().contains("Note")){
+            Log.i("Testdata", "Es ist ein Note");
             mutableDocument.setString(DatabaseConstants.TYPE_KEY, DatabaseConstants.NOTE_TYPE);
             mutableDocument = saveNoteImages(mutableDocument, (Note) ten);
             ((Note) ten).setPictures(null);
         }
         else if (ten.getClass().getName().contains("Todo")){
+            Log.i("Testdata", "Es ist ein Todo");
             mutableDocument.setString(DatabaseConstants.TYPE_KEY, DatabaseConstants.TODO_TYPE);
         }
         return mutableDocument;
@@ -56,12 +60,15 @@ public class DocumentSaver {
 
     private MutableDocument saveNoteImages(MutableDocument mutableDocument, Note note){
 
-        int numberOfImages = note.getPictures().size();
-        mutableDocument.setInt(DatabaseConstants.IMAGE_COUNTER, numberOfImages);
-        ArrayList<Bitmap> imageBitmaps = note.getPictures();
-        for(int i=0; i<numberOfImages; i++){
-            Blob imageBlob = this.imageConverter.BitmapToBlob(imageBitmaps.get(i));
-            mutableDocument.setBlob(DatabaseConstants.IMAGE_CORE_ID + (i+1), imageBlob);
+        if(note.getPictures() != null){
+            int numberOfImages = note.getPictures().size();
+            mutableDocument.setInt(DatabaseConstants.IMAGE_COUNTER, numberOfImages);
+            ArrayList<Bitmap> imageBitmaps = note.getPictures();
+            for(int i=0; i<numberOfImages; i++){
+                Blob imageBlob = this.imageConverter.BitmapToBlob(imageBitmaps.get(i));
+                mutableDocument.setBlob(DatabaseConstants.IMAGE_CORE_ID + (i+1), imageBlob);
+            }
+
         }
 
 
