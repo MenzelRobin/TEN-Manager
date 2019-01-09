@@ -76,7 +76,7 @@ public class MockData {
         klausurTags.add("wichtig");
         klausurTags.add("FH");
         klausureingrenzung.setTags(klausurTags);
-        tenMockData.add(delfinNote);
+        tenMockData.add(klausureingrenzung);
 
 
         Date konzertBringsDate = new Date(1563879600);
@@ -126,15 +126,15 @@ public class MockData {
                 reiseVorbereitungTasks);
         tenMockData.add(reiseVorbereitung);
 
-        Note spinnenNote = new Note("Giftige Spinnen","Funnel-Web Spider,\n Wolf Spider,\n Huntsman");
-        ArrayList<String> spinnenTags = new ArrayList<String>();
-        spinnenTags.add("giftig");
-        spinnenTags.add("gefährlich");
-        spinnenTags.add("Eukalyptus");
-        spinnenTags.add("Australien");
+        Note kaenguruNote = new Note("Kängurus","Kängurus gelten als typischer Vertreter der Fauna Australiens.");
+        ArrayList<String> kaenguruTags = new ArrayList<String>();
+        kaenguruTags.add("Beutel");
+        kaenguruTags.add("Sprung");
+        kaenguruTags.add("DownUnder");
+        kaenguruTags.add("Australien");
         //TODO Bilder
-        spinnenNote.setTags(spinnenTags);
-        tenMockData.add(spinnenNote);
+        kaenguruNote.setTags(kaenguruTags);
+        tenMockData.add(kaenguruNote);
 
         Note melbourneNote = new Note("Melbourne", "Melbourne ist die an der " +
                 "Südostküste Australiens gelegene Hauptstadt des australischen Bundesstaats " +
