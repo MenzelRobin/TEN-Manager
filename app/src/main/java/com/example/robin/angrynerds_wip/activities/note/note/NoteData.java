@@ -9,6 +9,7 @@ import android.support.v4.content.ContextCompat;
 import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.data.models.tens.Note;
 import com.example.robin.angrynerds_wip.data.models.utils.MockData;
+import com.example.robin.angrynerds_wip.data.repository.Repository;
 
 import java.util.ArrayList;
 
@@ -21,7 +22,12 @@ class NoteData {
     //TODO gegen Note und Images aus Database austauschen
     NoteData(NoteActivity activity){
         mActivity = activity;
-        mNote = MockData.getNoteSample();
+
+        //Testcode Jan
+        Repository repository = new Repository();
+        this. mNote = repository.getNoteByID("");
+        //Ende Testcode Jan
+
         mNoteImageContainers = new ArrayList<>();
 
         int i = 1;
