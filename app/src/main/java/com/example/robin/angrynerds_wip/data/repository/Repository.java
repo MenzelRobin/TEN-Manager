@@ -1,5 +1,8 @@
 package com.example.robin.angrynerds_wip.data.repository;
 
+import android.graphics.Bitmap;
+
+import com.couchbase.lite.Blob;
 import com.couchbase.lite.CouchbaseLiteException;
 import com.couchbase.lite.Document;
 import com.couchbase.lite.MutableDocument;
@@ -14,6 +17,7 @@ public class Repository {
     TENConverter tenConverter;
     DocumentSaver documentSaver;
     Queries queries;
+    ImageConverter imageConverter;
 
     public Repository() {
         this.tenConverter = new TENConverter();
@@ -72,5 +76,18 @@ public class Repository {
         } catch (CouchbaseLiteException e) {
             return false;
         }
+    }
+
+    public int getNumberOfImages(String noteId) {
+        Document noteDocument = DatabaseManager.getDatabase().getDocument(noteId);
+        int numberOfImages = noteDocument.getInt(DatabaseConstants.IMAGE_COUNTER);
+        return numberOfImages;
+    }
+
+    public Bitmap getImage(String noteId, int imageId) {
+        Document noteDocument = DatabaseManager.getDatabase().getDocument(noteId);
+        Blob imageBlob = noteDocument.getBlob(DatabaseConstants.IMAGE_CORE_ID + imageId);
+        Bitmap imageBitmap = imageConverter.BlobToBitmap(imageBlob);
+        return imageBitmap;
     }
 }

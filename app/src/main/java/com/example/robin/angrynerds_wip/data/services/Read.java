@@ -1,5 +1,7 @@
 package com.example.robin.angrynerds_wip.data.services;
 
+import android.graphics.Bitmap;
+
 import com.example.robin.angrynerds_wip.data.models.tens.Event;
 import com.example.robin.angrynerds_wip.data.models.tens.Note;
 import com.example.robin.angrynerds_wip.data.models.tens.TEN;
@@ -72,6 +74,18 @@ public class Read {
         Repository repository = new Repository();
         Note note = repository.getNoteByID(id);
         return note;
+    }
+
+    public static int getNumberOfImages(String noteId){
+        Repository repository = new Repository();
+        int result = repository.getNumberOfImages(noteId);
+        return result;
+    }
+
+    public static Bitmap getImageOfNote(String noteId, int imageNumber){
+        Repository repository = new Repository();
+        Bitmap imageBitmap = repository.getImage(noteId, imageNumber);
+        return imageBitmap;
     }
     /*public static Note getNoteByID(String id) {
         //MOCKDATEN
