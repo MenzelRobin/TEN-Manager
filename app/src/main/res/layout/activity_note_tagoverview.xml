@@ -25,7 +25,7 @@
                 android:layout_height="wrap_content"
                 android:divider="@null"
                 android:dividerHeight="0dp"
-                android:textColor="@color/note_textWhite"/>
+                android:textColor="@color/TextWhite"/>
 
         </RelativeLayout>
 
@@ -36,7 +36,7 @@
             android:layout_alignParentBottom="true"
             android:background="@color/note_transparent"
             android:text="@string/note_tagoverview_addButton"
-            android:textColor="@color/note_textWhite" />
+            android:textColor="@color/TextWhite" />
 
     </RelativeLayout>
 </RelativeLayout>

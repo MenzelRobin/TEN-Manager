@@ -20,7 +20,7 @@
             android:layout_weight="0.1"
             android:background="@color/note_transparent"
             android:text="@string/sample_note_hashtag"
-            android:textColor="@color/note_textWhite" />
+            android:textColor="@color/TextWhite" />
 
     </LinearLayout>
 
@@ -33,7 +33,7 @@
         android:inputType="text"
         android:lines="1"
         android:maxLines="1"
-        android:textColor="@color/note_textWhite"
+        android:textColor="@color/TextWhite"
         android:textColorHint="@color/note_hintWhite" />
 
     <LinearLayout

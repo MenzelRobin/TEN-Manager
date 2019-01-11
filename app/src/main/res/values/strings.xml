@@ -7,9 +7,6 @@
     <string name="sample_note_listtag">Stichwort</string>
     <string name="note_tagoverview_addButton">Stichwort hinzufügen</string>
     <string name="note_menu_toolbarDelete">Notiz löschen</string>
-    <string name="sample_note_listtag">tag</string>
-    <string name="note_tagoverview_addButton">Add Tag</string>
-    <string name="sample_note_tag">Stichwort</string>
 
     <!-- Fragment Example Strings -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
