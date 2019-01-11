@@ -25,7 +25,7 @@ class NoteData {
 
         //Testcode Jan
         Repository repository = new Repository();
-        this. mNote = repository.getNoteByID("");
+        this. mNote = repository.getNoteByID("25afcdf9-812a-4f66-a87f-72ee73ffe468");
         //Ende Testcode Jan
 
         mNoteImageContainers = new ArrayList<>();
