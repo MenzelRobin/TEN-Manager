@@ -1,6 +1,8 @@
 package com.example.robin.angrynerds_wip.data.models.tens;
 
 import android.os.Bundle;
+import android.support.annotation.ColorInt;
+import android.support.annotation.ColorLong;
 
 import com.example.robin.angrynerds_wip.data.models.utils.Colors;
 
@@ -9,7 +11,9 @@ import java.util.Date;
 public class TEN {
     private String title;
     private String ID;
+    @ColorInt
     private int color;
+    @ColorInt
     private int accentColor;
     private Date dateOfCreation;
 
@@ -47,8 +51,8 @@ public class TEN {
         Bundle bundle = new Bundle();
         bundle.putString("ID", ID);
         bundle.putString("Title", title);
-        bundle.putInt("Color", color);
-        bundle.putInt("AccentColor", color);
+        bundle.putLong("Color", color);
+        bundle.putLong("AccentColor", color);
         bundle.putLong("DateOfCreation", this.dateOfCreation.getTime());
         return bundle;
     }
