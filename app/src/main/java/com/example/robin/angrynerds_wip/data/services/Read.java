@@ -82,9 +82,9 @@ public class Read {
         return result;
     }
 
-    public static Bitmap getImageOfNote(String noteId, int imageNumber){
+    public static Bitmap getImageOfNote(String noteId, String imageId){
         Repository repository = new Repository();
-        Bitmap imageBitmap = repository.getImage(noteId, imageNumber);
+        Bitmap imageBitmap = repository.getImage(noteId, imageId);
         return imageBitmap;
     }
     /*public static Note getNoteByID(String id) {

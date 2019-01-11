@@ -1,6 +1,8 @@
 package com.example.robin.angrynerds_wip.data.repository;
 
 import android.graphics.Bitmap;
+import android.media.Image;
+import android.util.Log;
 
 import com.couchbase.lite.Blob;
 import com.couchbase.lite.CouchbaseLiteException;
@@ -11,6 +13,7 @@ import com.example.robin.angrynerds_wip.data.models.tens.Note;
 import com.example.robin.angrynerds_wip.data.models.tens.TEN;
 import com.example.robin.angrynerds_wip.data.models.tens.Todo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Repository {
@@ -45,7 +48,8 @@ public class Repository {
         Document noteDocument = DatabaseManager.getDatabase().getDocument(id);
         String json = noteDocument.getString(DatabaseConstants.OBJECT_KEY);
         Note finalNote = this.tenConverter.stringToNote(json);
-        finalNote = this.tenConverter.addImagesFromDocumentToNote(finalNote, noteDocument);
+        //finalNote = this.tenConverter.addImagesFromDocumentToNote(finalNote, noteDocument);
+        finalNote.setPictures(new ArrayList<Bitmap>());
         return finalNote;
     }
 
@@ -84,10 +88,14 @@ public class Repository {
         return numberOfImages;
     }
 
-    public Bitmap getImage(String noteId, int imageId) {
+    public Bitmap getImage(String noteId, String imageId) {
+        ImageConverter asyncImageConverter = new ImageConverter();
         Document noteDocument = DatabaseManager.getDatabase().getDocument(noteId);
-        Blob imageBlob = noteDocument.getBlob(DatabaseConstants.IMAGE_CORE_ID + imageId);
-        Bitmap imageBitmap = imageConverter.BlobToBitmap(imageBlob);
+        Log.i("Testdata", "NoteID: " + noteId + " imageID " + imageId);
+        Blob imageBlob = noteDocument.getBlob(imageId);
+        Log.i("Testdata", "Blob: " + imageBlob);
+        Log.i("Testdata", "ImageConverter: " + asyncImageConverter);
+        Bitmap imageBitmap = asyncImageConverter.BlobToBitmap(imageBlob);
         return imageBitmap;
     }
 }
