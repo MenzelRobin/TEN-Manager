@@ -8,6 +8,8 @@ import android.widget.DatePicker;
 
 import com.example.robin.angrynerds_wip.data.models.tens.Todo;
 
+import java.util.Date;
+
 //import com.example.robin.angrynerds_wip.activities.Data;
 
 public class Init extends AppCompatActivity {
@@ -53,7 +55,7 @@ public class Init extends AppCompatActivity {
         //mApplicationLogic.onBackPressed();   // customized action
     }
 
-    public void receiveDate(DatePicker dp){
+    public void receiveDate(Date dp){
         mApplicationLogic.receiveDate(dp);
     }
 

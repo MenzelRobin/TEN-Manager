@@ -21,7 +21,10 @@ import com.example.robin.angrynerds_wip.data.models.tens.Event;
 import com.example.robin.angrynerds_wip.todo.DatePickerFragment;
 
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 //import de.fhdw.bfwi316b.set.colorchooser.activities.ActivityUtilities;
 //import de.fhdw.bfwi316b.set.colorchooser.activities.Data;
@@ -48,6 +51,7 @@ public class ApplicationLogic {
 
 
     private void initGui() {
+
         dataToGui();
     }
 
@@ -61,11 +65,21 @@ public class ApplicationLogic {
 
 
     public void dataToGui() {
+        Date date = Calendar.getInstance().getTime();
+
+        mGui.setDate(formatDate(date), mGui.getmStartDate());
+        mGui.setDate(formatDate(date), mGui.getmEndDate());
     }
 
     //to receive Date from DatePicker Fragment
-    public void receiveDate(DatePicker datePicker) {
-        mGui.setDate(datePicker.getDayOfMonth() + "." + (datePicker.getMonth() + 1) + "." + datePicker.getYear(), mActiveDatePickerButton);
+    public void receiveDate(Date date) {
+        //mGui.setDate(datePicker.getDayOfMonth() + "." + (datePicker.getMonth() + 1) + "." + datePicker.getYear(), mActiveDatePickerButton);
+        mGui.setDate(formatDate(date), mActiveDatePickerButton);
+    }
+
+    public String formatDate(Date date){
+        DateFormat displayFormat = new SimpleDateFormat("EEEE', ' dd. MMMM yyyy", Locale.GERMAN);
+        return displayFormat.format(date);
     }
 
     public void showDatePickerDialog(View v){
