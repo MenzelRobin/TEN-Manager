@@ -91,6 +91,7 @@ class ApplicationLogic {
         mGui.setNoteDescription(mNoteData.getNote().getDescription());
         mGui.setNoteTags(mNoteData.getNote().getTags());
         mGui.setBackgroundColor(mNoteData.getNote().getColor());
+        mGui.getToolbar().setBackgroundColor((mNoteData.getNote().getAccentColor()));
         refreshImages();
     }
 
