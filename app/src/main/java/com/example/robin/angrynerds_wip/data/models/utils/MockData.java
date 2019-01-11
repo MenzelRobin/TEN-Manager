@@ -164,7 +164,7 @@ public class MockData {
         melbourneNote.setTags(melbourneTags);
 
         melbourneNote.getPictures().add(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_melbourne1));
-        melbourneNote.getPictures().add(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_melbourne2));
+        //melbourneNote.getPictures().add(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_melbourne2));
         melbourneNote.getPictures().add(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_melbourne3));
 
         tenMockData.add(melbourneNote);

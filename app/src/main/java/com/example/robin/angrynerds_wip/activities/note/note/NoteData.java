@@ -25,7 +25,7 @@ class NoteData {
 
         //Testcode Jan
         Repository repository = new Repository();
-        this. mNote = repository.getNoteByID("9732b42e-320b-45dc-a755-e0fe86925b9c");
+        this. mNote = repository.getNoteByID("4fd9c146-1fa5-48b6-bb5f-792c296aeef9");
         //Ende Testcode Jan
 
         mNoteImageContainers = new ArrayList<>();
@@ -66,8 +66,7 @@ class NoteData {
     //returns image from mNoteImageContainers
     Bitmap getImage(int id) {
         //TODO get original sized image from database
-        //return mNoteImageContainers.get(id-1).getImage();
-        return mNote.getPictures().get(id-1);
+        return mNoteImageContainers.get(id-1).getImage();
     }
 
     //Checks ImageContainer for specific ID
@@ -87,7 +86,6 @@ class NoteData {
 
    //Deletes specific ImageContainer from mNoteImageContainers
    void deleteImage(int id) {
-        mNote.getPictures().remove(id-1);
         mNoteImageContainers.remove(id-1);
         for(int i = 1; i<mNoteImageContainers.size(); i++){
             mNoteImageContainers.get(i-1).setImageContainerId(i);
