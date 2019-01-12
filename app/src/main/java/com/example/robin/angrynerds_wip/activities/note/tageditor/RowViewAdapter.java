@@ -35,6 +35,9 @@ public class RowViewAdapter extends ArrayAdapter<String>{
         EditText textView = rowView.findViewById(R.id.id_note_tagOverview_listItemText);
         ImageButton deleteButton = rowView.findViewById(R.id.id_note_tagOverview_deleteButton);
         textView.setText(values.get(position));
+        if(values.get(position).equals("")){
+            deleteButton.setVisibility(View.INVISIBLE);
+        }
         textView.setId(position);
         textView.addTextChangedListener(new TextWatcher(applicationLogic, textView));
         deleteButton.setId(position);

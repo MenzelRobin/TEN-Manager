@@ -74,7 +74,7 @@ class ApplicationLogic {
         mGui.displayToast(mNoteData.getActivity(), s);
     }
 
-    //Sets ClickListener on imageContainer
+    //Sets ClickListener on mImageContainer
     private void setImageClickListener(IContainer imageContainer){
         imageContainer.getImageContainer().setOnClickListener(mClickListener);
     }

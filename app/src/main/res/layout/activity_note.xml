@@ -26,12 +26,12 @@
         android:textColorHint="@color/note_hintWhite"
         android:textStyle="bold" />
 
-    <View
+    <!--View
         android:id="@+id/id_note_separate1"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@id/id_note_title"
-        android:background="@color/colorPrimaryDark" />
+        android:background="@color/colorPrimaryDark" /-->
 
     <EditText
         android:id="@+id/id_note_description"
@@ -46,12 +46,12 @@
         android:textColor="@color/TextWhite"
         android:textColorHint="@color/note_hintWhite" />
 
-    <View
+    <!--View
         android:id="@+id/id_note_separate2"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@id/id_note_description"
-        android:background="@color/colorPrimaryDark" />
+        android:background="@color/colorPrimaryDark" /-->
 
     <HorizontalScrollView
         android:id="@+id/id_note_ImageScrollView_Horizontal"
@@ -69,12 +69,12 @@
 
     </HorizontalScrollView>
 
-    <View
+    <!--View
         android:id="@+id/id_note_separate3"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@id/id_note_ImageScrollView_Horizontal"
-        android:background="@color/colorPrimaryDark" />
+        android:background="@color/colorPrimaryDark" /-->
 
     <TextView
         android:id="@+id/id_note_tags"
