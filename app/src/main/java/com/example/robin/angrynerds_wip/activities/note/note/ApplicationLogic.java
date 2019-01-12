@@ -4,15 +4,20 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
+import android.widget.Toast;
 
 import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.activities.note.tageditor.NoteTagActivity;
+import com.example.robin.angrynerds_wip.data.models.tens.Note;
+import com.example.robin.angrynerds_wip.data.repository.DatabaseConstants;
+import com.example.robin.angrynerds_wip.data.services.Read;
 
 import java.io.IOException;
 
@@ -28,8 +33,14 @@ class ApplicationLogic {
     ApplicationLogic(Gui gui, NoteData noteData) {
         mGui = gui;
         mNoteData = noteData;
-        initGui();
+        initData();
         initListener();
+    }
+
+    private void initData(){
+        String noteId = "56f5b3bb-d2b5-4059-a7da-34d776d5cff5";
+        NoteLoader noteLoader = new NoteLoader(this, mNoteData);
+        noteLoader.loadNote(noteId);
     }
 
     private void initGui() {
@@ -200,4 +211,12 @@ class ApplicationLogic {
             //TODO delete note;
             returnToOverview();}
     }
+
+    public NoteData getNoteData() {
+        return mNoteData;
+    }
+
+
+    //Async task that loads the Note
+
 }
