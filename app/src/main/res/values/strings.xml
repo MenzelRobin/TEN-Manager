@@ -5,6 +5,7 @@
     <string name="sample_activity_todo_startDate">Startdatum</string>
     <string name="sample_activity_todo_endDate">Enddatum</string>
     <string name="sample_activity_todo_task">Aufgabe...</string>
+    <string name="sample_activity_todo_progressText">0 / 0</string>
 
     <!-- Note Layout Strings -->
     <string name="sample_note_title">Titel</string>

@@ -8,6 +8,8 @@ import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.CheckBox;
+import android.widget.LinearLayout;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -36,6 +38,9 @@ public class Gui extends AppCompatActivity{
     private Button mEndDate;
     private TextView mProgressText;
     private ListView mTasks;
+    private LinearLayout mRowLayout;
+    private CheckBox mCheckBox;
+
 
     public Gui(Init activity) {
         activity.setContentView(R.layout.activity_todo);
@@ -46,10 +51,11 @@ public class Gui extends AppCompatActivity{
         mEndDate = activity.findViewById(R.id.edit_todo_endDate);
         mProgressText = activity.findViewById(R.id.edit_todo_progressText);
         mTasks = activity.findViewById(R.id.edit_todo_tasks);
+        mRowLayout = activity.findViewById(R.id.edit_todo_rowLayout);
+        mCheckBox = activity.findViewById(R.id.edit_todo_task_status);
 
-        ArrayList<String> strings = new ArrayList<String>();
-        strings.add("test");
-
+        //Arraylist in ApplicationLogic umgezogen, funktioniert
+        /*
         // TODO: Muss an diese Klasse übergeben werden
         ArrayList<Task> tasks = new ArrayList<Task>();
         tasks.add(new Task("Erste Aufgabe", false));
@@ -65,6 +71,7 @@ public class Gui extends AppCompatActivity{
                         R.layout.rowlayout, // ID des Layouts für alle Listen-Elemente
                         tasks); // Die Liste der Elemente
         mTasks.setAdapter(adapter);
+        */
     }
     
 
@@ -89,8 +96,22 @@ public class Gui extends AppCompatActivity{
 
     public ListView getmTasks() { return mTasks; }
 
+    public LinearLayout getmRowLayout() {
+        return mRowLayout;
+    }
+
+    public CheckBox getmCheckBox() {
+        return mCheckBox;
+    }
 
     // methods to change view attributes
+    public void setmTasks(TasksAdapter adapter){mTasks.setAdapter(adapter);}
+
+    public void setmAdapter(TasksAdapter adapter){
+        mTasks.setAdapter(adapter);}
+
+    public void setmChoiceMode(){mTasks.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);}
+
     public void setmProgressText(String text) {
         mProgressText.setText(text);
     }
@@ -98,5 +119,7 @@ public class Gui extends AppCompatActivity{
     public void setDate(String s, View v) {
         ((Button)v).setText(s);
     }
+
+
 
 }

@@ -71,6 +71,11 @@
         android:id="@+id/edit_todo_progressText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="@string/sample_activity_todo_progressText"
+        android:textColor="@color/TextWhite"
+        android:textColorHint="@color/TextWhite"
+        android:textAlignment="center"
+        android:textSize="25dp"
         android:layout_alignParentBottom="true"/>
 
 </RelativeLayout>
