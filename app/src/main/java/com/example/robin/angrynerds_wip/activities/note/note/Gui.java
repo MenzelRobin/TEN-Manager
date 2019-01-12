@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.content.res.Configuration;
 import android.support.v7.widget.Toolbar;
 import android.text.method.ScrollingMovementMethod;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.ScaleAnimation;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.HorizontalScrollView;
@@ -125,5 +128,16 @@ class Gui {
     //Displays a message on screen
     void displayToast(Activity activity, String s) {
         Toast.makeText(activity, s, Toast.LENGTH_SHORT).show();
+    }
+
+    public void addSingleAnimatedImage(ImageContainer imageContainer) {
+
+         AlphaAnimation anim = new AlphaAnimation(0,  1);
+        anim.setDuration(500);
+        anim.setRepeatMode(Animation.REVERSE);
+        int position = mNoteImageContainer.getChildCount()-1;
+        mNoteImageContainer.addView(imageContainer.getImageContainer(), position);
+        imageContainer.getImageView().startAnimation(anim);
+
     }
 }
