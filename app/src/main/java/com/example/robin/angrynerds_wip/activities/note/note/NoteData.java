@@ -38,7 +38,7 @@ class NoteData {
     }
 
     public void setNote(Note note) {
-        this.mNote = note;
+        mNote = note;
     }
 
     public void imagesToImageContainer(){
@@ -52,6 +52,13 @@ class NoteData {
              mNoteImageContainers.add(new ImageContainer(mActivity, i++, bm));
          }
          addImageButton();
+    }
+
+    public void addImageContainer(Bitmap bitmap){
+        ImageContainer imageContainer = new ImageContainer(getActivity(), mNoteImageContainers.size(), bitmap);
+        mNoteImageContainers.remove(mNoteImageContainers.size()-1);
+        mNoteImageContainers.add(imageContainer);
+        addImageButton();
     }
 
 

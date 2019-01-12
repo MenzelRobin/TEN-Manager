@@ -11,6 +11,9 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.robin.angrynerds_wip.R;
@@ -34,11 +37,12 @@ class ApplicationLogic {
         mGui = gui;
         mNoteData = noteData;
         initData();
+        //initGui();
         initListener();
     }
 
     private void initData(){
-        String noteId = "d454e045-48bd-45d2-a3b6-229079c27c67";
+        String noteId = "029682c2-cf76-4db0-b52e-c21be9f4b41e";
         mNoteData.setColors(noteId);
         NoteLoader noteLoader = new NoteLoader(this, mNoteData);
         noteLoader.loadNote(noteId);
@@ -69,6 +73,14 @@ class ApplicationLogic {
         mGui.getNoteDescription().addTextChangedListener(new TextWatcher(this, mGui.getNoteDescription()));
         mGui.getToolbar().setNavigationOnClickListener(mClickListener);
         mGui.getToolbar().setOnMenuItemClickListener(menuItemClickListener);
+    }
+
+    void addSingleImage(Bitmap bitmap){
+
+        mNoteData.addImageContainer(bitmap);
+        ImageContainer imageContainer = (ImageContainer) mNoteData.getNoteImageContainers().get(mNoteData.getNoteImageContainers().size()-2);
+        mGui.addSingleAnimatedImage(imageContainer);
+        initListener();
     }
 
     //Return Number of ImageContainers in NoteData

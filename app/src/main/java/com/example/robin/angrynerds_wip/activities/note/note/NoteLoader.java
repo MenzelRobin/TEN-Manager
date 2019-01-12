@@ -52,6 +52,7 @@ public class NoteLoader {
         protected void onPostExecute(Note note) {
             Log.i(LOG_TAG, "Note: " + note + " NoteData: " + mNoteData);
             mNoteData.setNote(note);
+            mNoteData.addImageButton();
             mApplicationLogic.dataToGui();
             mNoteData.loadImages(mNoteData.getNote().getID(), mNoteLoader);
         }
@@ -75,8 +76,7 @@ public class NoteLoader {
         protected void onPostExecute(Bitmap bitmap) {
 
             mNoteData.getNote().getPictures().add(bitmap);
-            mNoteData.imagesToImageContainer();
-            mApplicationLogic.dataToGui();
+            mApplicationLogic.addSingleImage(bitmap);
             mApplicationLogic.initListener();
             Log.i("Testdata", "Bild hinzugefügt!");
 
