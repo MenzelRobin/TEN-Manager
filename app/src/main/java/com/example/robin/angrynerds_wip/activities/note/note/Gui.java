@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.res.Configuration;
 import android.support.v7.widget.Toolbar;
 import android.text.method.ScrollingMovementMethod;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
@@ -26,6 +27,9 @@ class Gui {
     private EditText mNoteDescription;
     private TextView mNoteTags;
     private Toolbar mToolbar;
+    private View mViewSeparator1;
+    private View mViewSeparator2;
+    private View mViewSeparator3;
 
     Gui(NoteActivity activity) {
 
@@ -49,6 +53,9 @@ class Gui {
         mNoteDescription = activity.findViewById(R.id.id_note_description);
         mNoteTags = activity.findViewById(R.id.id_note_tags);
         mToolbar = activity.findViewById(R.id.id_note_toolbar);
+        mViewSeparator1 = activity.findViewById(R.id.id_note_separate1);
+        mViewSeparator2 = activity.findViewById(R.id.id_note_separate2);
+        mViewSeparator3 = activity.findViewById(R.id.id_note_separate3);
 
         mNoteTags.setMovementMethod(new ScrollingMovementMethod());
 
@@ -74,7 +81,6 @@ class Gui {
     }
     Toolbar getToolbar() {return mToolbar;}
     //Setters
-    void setBackgroundColor(int bgColor) { mBackground.setBackgroundColor(bgColor);}
     void setNoteTitle(String mNoteTitle) {
         this.mNoteTitle.setText(mNoteTitle);
     }
@@ -86,6 +92,18 @@ class Gui {
     }
     void setNoteDescription(String mNoteDescription) { this.mNoteDescription.setText(mNoteDescription); }
     void setNoteTags(ArrayList<String> mNoteTags) { this.mNoteTags.setText(formatTags(mNoteTags)); }
+    void setColors(int color, int accentColor){
+        mBackground.setBackgroundColor(color);
+        mToolbar.setBackgroundColor(accentColor);
+
+        mViewSeparator1.setBackgroundColor(accentColor);
+        mViewSeparator2.setBackgroundColor(accentColor);
+        mViewSeparator3.setBackgroundColor(accentColor);
+
+        //TODO does not work
+        //mNoteTitle.setHighlightColor(accentColor);
+        //mNoteDescription.setHighlightColor(accentColor);
+    }
 
     //Formats tags to display in TextView
     private String formatTags(ArrayList<String> mNoteTags) {

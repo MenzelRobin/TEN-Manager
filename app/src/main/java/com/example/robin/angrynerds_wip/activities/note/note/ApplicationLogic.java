@@ -69,12 +69,6 @@ class ApplicationLogic {
         refreshImages();
     }
 
-    //Refreshes ScrollView with Images
-    private void refreshImages(){
-        mGui.getNoteImageContainer().removeAllViews();
-        mGui.setNoteImageContainer(mNoteData.getNoteImageContainers());
-    }
-
     //Displays a message on screen
     void displayToast(String s){
         mGui.displayToast(mNoteData.getActivity(), s);
@@ -87,12 +81,23 @@ class ApplicationLogic {
 
     //sends data to gui elements
     private void dataToGui() {
+
+        //Set colors
+        mGui.setColors(mNoteData.getNote().getColor(), mNoteData.getNote().getAccentColor());
+
+        //Set content
         mGui.setNoteTitle(mNoteData.getNote().getTitle());
         mGui.setNoteDescription(mNoteData.getNote().getDescription());
         mGui.setNoteTags(mNoteData.getNote().getTags());
-        mGui.setBackgroundColor(mNoteData.getNote().getColor());
-        mGui.getToolbar().setBackgroundColor((mNoteData.getNote().getAccentColor()));
+
+        //set images
         refreshImages();
+    }
+
+    //Refreshes ScrollView with Images
+    private void refreshImages(){
+        mGui.getNoteImageContainer().removeAllViews();
+        mGui.setNoteImageContainer(mNoteData.getNoteImageContainers());
     }
 
     //Returns to OverViewActivity

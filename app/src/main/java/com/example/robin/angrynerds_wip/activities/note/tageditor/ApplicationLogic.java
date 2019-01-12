@@ -56,6 +56,7 @@ class ApplicationLogic {
     }
 
     //Add String to TagList, notify adapter and set selection to new element
+
     void onAddButtonClicked() {
         mTagList.add("");
         mAdapter.notifyDataSetChanged();
