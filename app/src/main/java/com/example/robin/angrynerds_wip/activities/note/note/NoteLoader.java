@@ -13,11 +13,9 @@ public class NoteLoader {
     private NoteData mNoteData;
     private NoteLoader mNoteLoader;
 
-
     public NoteLoader(){
         mNoteLoader = this;
     }
-
 
     public NoteLoader(ApplicationLogic applicationLogic, NoteData noteData){
         mApplicationLogic = applicationLogic;
@@ -42,9 +40,7 @@ public class NoteLoader {
 
         @Override
         protected Note doInBackground(String... strings) {
-
             Note note = Read.getNoteByID(strings[0]);
-
             return note;
         }
 
@@ -61,17 +57,13 @@ public class NoteLoader {
         }
     }
 
-
     //Async Task that loads the Images
     private class LoadImageTask extends AsyncTask<String, Integer, Bitmap> {
-
         private final String LOG_TAG = LoadImageTask.class.getSimpleName();
 
         @Override
         protected Bitmap doInBackground(String... strings) {
-
             Bitmap bitmap = Read.getImageOfNote(strings[0], strings[1]);
-
             return bitmap;
         }
 
@@ -85,6 +77,7 @@ public class NoteLoader {
             mNoteData.getNote().getPictures().add(bitmap);
             mNoteData.imagesToImageContainer();
             mApplicationLogic.dataToGui();
+            mApplicationLogic.initListener();
             Log.i("Testdata", "Bild hinzugefügt!");
 
             // Hintergrundberechnungen sind jetzt beendet, darüber informieren wir den Benutzer

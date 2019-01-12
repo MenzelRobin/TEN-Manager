@@ -48,7 +48,7 @@ class ApplicationLogic {
     }
 
     //Initialise Click- and Text-Listeners
-    private void initListener() {
+    public void initListener() {
         mClickListener = new ClickListener(this);
         MenuItemClickListener menuItemClickListener = new MenuItemClickListener(this);
 
