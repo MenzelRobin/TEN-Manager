@@ -9,7 +9,6 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@id/id_note_tagOverview_separate"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_margin="10dp">
@@ -23,22 +22,5 @@
             android:textColor="@color/TextWhite"/>
 
     </RelativeLayout>
-
-    <View
-        android:id="@+id/id_note_tagOverview_separate"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_above="@id/id_note_tagOverview_addButton"
-        android:background="@color/colorPrimaryDark" />
-
-    <Button
-        android:id="@+id/id_note_tagOverview_addButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:layout_alignParentBottom="true"
-        android:background="@color/note_transparent"
-        android:text="@string/note_tagoverview_addButton"
-        android:textColor="@color/TextWhite" />
 
 </RelativeLayout>

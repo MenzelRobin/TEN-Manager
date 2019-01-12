@@ -16,14 +16,10 @@ class ClickListener implements View.OnClickListener  {
     public void onClick(View view) {
 
         int id = view.getId();
-        if(id == R.id.id_note_tagOverview_addButton){
-            mApplicationLogic.onAddButtonClicked();
-        }
-        else{
-            for(int tagId = 0; tagId<=mApplicationLogic.getListViewItemCount(); tagId++){
-                if(id == tagId){
-                    mApplicationLogic.onDeleteButtonClicked(id);
-                }
+
+        for(int tagId = 0; tagId<=mApplicationLogic.getListViewItemCount(); tagId++){
+            if(id == tagId){
+                mApplicationLogic.onDeleteButtonClicked(id);
             }
         }
     }
