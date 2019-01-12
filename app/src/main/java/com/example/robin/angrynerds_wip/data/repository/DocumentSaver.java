@@ -26,6 +26,9 @@ public class DocumentSaver {
     public boolean updateCompleteDocument(TEN ten, MutableDocument mutableTENDocument){
         mutableTENDocument = prepareDocument(mutableTENDocument, ten);
         mutableTENDocument.setLong(DatabaseConstants.CREATION_DATE_KEY, ten.getDateOfCreation().getTime());
+        mutableTENDocument.setInt(DatabaseConstants.COLOR_KEY, ten.getColor());
+        mutableTENDocument.setInt(DatabaseConstants.ACCENT_COLOR_KEY, ten.getAccentColor());
+
         try {
 
             mutableTENDocument.setString(DatabaseConstants.OBJECT_KEY, this.objectMapper.writeValueAsString(ten));
@@ -41,6 +44,7 @@ public class DocumentSaver {
     }
 
     private MutableDocument prepareDocument(MutableDocument mutableDocument, TEN ten){
+
         if(ten.getClass().getName().contains("Event")){
             Log.i("Testdata", "Es ist ein Event");
             mutableDocument.setString(DatabaseConstants.TYPE_KEY, DatabaseConstants.EVENT_TYPE);

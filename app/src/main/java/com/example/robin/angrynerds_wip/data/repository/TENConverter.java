@@ -8,11 +8,13 @@ import com.couchbase.lite.Document;
 import com.couchbase.lite.Result;
 import com.example.robin.angrynerds_wip.data.models.tens.Event;
 import com.example.robin.angrynerds_wip.data.models.tens.Note;
+import com.example.robin.angrynerds_wip.data.models.tens.TEN;
 import com.example.robin.angrynerds_wip.data.models.tens.Todo;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class TENConverter {
 
@@ -22,6 +24,20 @@ public class TENConverter {
     public TENConverter() {
         this.objectMapper = new ObjectMapper();
         this.imageConverter = new ImageConverter();
+    }
+
+    public TEN addTENPropertiesFromDocument(TEN ten, Document document){
+        String documentID = document.getId();
+        int color = document.getInt(DatabaseConstants.COLOR_KEY);
+        int accentColor = document.getInt(DatabaseConstants.ACCENT_COLOR_KEY);
+        Date dateOfCreation = new Date(document.getInt(DatabaseConstants.CREATION_DATE_KEY));
+
+        ten.setID(documentID);
+        ten.setColor(color);
+        ten.setAccentColor(accentColor);
+        ten.setDateOfCreation(dateOfCreation);
+
+        return ten;
     }
 
     public Todo stringToTodo(String json) {

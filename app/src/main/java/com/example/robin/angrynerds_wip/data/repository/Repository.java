@@ -34,6 +34,7 @@ public class Repository {
         Document todoDocument = DatabaseManager.getDatabase().getDocument(id);
         String json = todoDocument.getString(DatabaseConstants.OBJECT_KEY);
         Todo finalTodo = this.tenConverter.stringToTodo(json);
+        finalTodo = (Todo) this.tenConverter.addTENPropertiesFromDocument(finalTodo, todoDocument);
         return finalTodo;
     }
 
@@ -41,6 +42,7 @@ public class Repository {
         Document eventDocument = DatabaseManager.getDatabase().getDocument(id);
         String json = eventDocument.getString(DatabaseConstants.OBJECT_KEY);
         Event finalEvent = this.tenConverter.stringToEvent(json);
+        finalEvent = (Event) this.tenConverter.addTENPropertiesFromDocument(finalEvent, eventDocument);
         return finalEvent;
     }
 
@@ -48,6 +50,7 @@ public class Repository {
         Document noteDocument = DatabaseManager.getDatabase().getDocument(id);
         String json = noteDocument.getString(DatabaseConstants.OBJECT_KEY);
         Note finalNote = this.tenConverter.stringToNote(json);
+        finalNote = (Note) this.tenConverter.addTENPropertiesFromDocument(finalNote, noteDocument);
         finalNote.setPictures(new ArrayList<Bitmap>());
         return finalNote;
     }
@@ -96,5 +99,13 @@ public class Repository {
         Log.i("Testdata", "ImageConverter: " + asyncImageConverter);
         Bitmap imageBitmap = asyncImageConverter.BlobToBitmap(imageBlob);
         return imageBitmap;
+    }
+
+    public int[] getTENColors(String tenID) {
+        Document document = DatabaseManager.getDatabase().getDocument(tenID);
+        int[] colors = new int [2];
+        colors[0] = document.getInt(DatabaseConstants.COLOR_KEY);
+        colors[1] = document.getInt(DatabaseConstants.ACCENT_COLOR_KEY);
+        return colors;
     }
 }

@@ -23,7 +23,10 @@ class NoteData {
     public NoteData(NoteActivity activity) {
         mActivity = activity;
         mNoteImageContainers = new ArrayList<>();
+        mNote = new Note();
+
         //
+
         // int i = 1;
         // for (Bitmap bm : mNote.getPictures()) {
         //     mNoteImageContainers.add(new ImageContainer(mActivity, i++, bm));
@@ -136,4 +139,12 @@ class NoteData {
         }
     }
 
+    public void setColors(String noteId) {
+        int[] colors = Read.getColors(noteId);
+        if(mNote == null){
+            mNote = new Note();
+        }
+        mNote.setColor(colors[0]);
+        mNote.setAccentColor(colors[1]);
+    }
 }

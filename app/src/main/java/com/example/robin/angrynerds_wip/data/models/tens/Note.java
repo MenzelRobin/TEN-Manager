@@ -3,6 +3,7 @@ package com.example.robin.angrynerds_wip.data.models.tens;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ public class Note extends TEN {
 
     private String description;
     private ArrayList<String> tags;
+    @JsonIgnore
     private ArrayList<Bitmap> pictures;
 
     //Constructors
