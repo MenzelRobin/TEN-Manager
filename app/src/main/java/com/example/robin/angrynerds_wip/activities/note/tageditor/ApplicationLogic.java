@@ -2,7 +2,12 @@ package com.example.robin.angrynerds_wip.activities.note.tageditor;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+
+import com.example.robin.angrynerds_wip.R;
 
 import java.util.ArrayList;
 
@@ -60,7 +65,7 @@ class ApplicationLogic {
     void onDeleteButtonClicked(int id){
         mTagList.remove(id);
         mAdapter.notifyDataSetChanged();
-        addTagForInput();
+        //addTagForInput();
     }
 
     //Return number of Strings in TagList
@@ -71,11 +76,18 @@ class ApplicationLogic {
     //Insert user input into TagList
     void onTextChanged(String s, View mView) {
         mTagList.set(mView.getId(),s);
-        addTagForInput();
+
+        if(s.equals("") && mTagList.get(mTagList.size()-1).equals("")){
+            mTagList.remove(mTagList.size()-1);
+            mAdapter.notifyDataSetChanged();
+        }
+        else{
+            addTagForInput(s);
+        }
     }
 
-    //Check if tag for new user input is present and add an empty string if it is not
-    private void addTagForInput(){
+    //Checks if tag for new user input is present and add an empty string if it is not
+    private void addTagForInput(String s){
         boolean emptyLine = false;
         for(String tag : mTagList){
             if(tag.equals(""))
@@ -84,6 +96,16 @@ class ApplicationLogic {
         if(!emptyLine) {
             mTagList.add("");
             mAdapter.notifyDataSetChanged();
+            //TODO does not work atm
+            try{
+                LinearLayout view = (LinearLayout) mGui.getListView().getFocusedChild();
+                EditText editText = (EditText)view.getFocusedChild();
+                editText.setText("Hallo warum setzt du den Cursor falsch amk");
+                new EditTextEndSelector(mGui.getListView(), editText);
+            }
+            catch(Exception e){
+                Log.e("Error", e.getMessage());
+            }
         }
     }
 }

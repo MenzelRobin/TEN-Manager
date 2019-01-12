@@ -27,9 +27,11 @@ class Gui {
     private EditText mNoteDescription;
     private TextView mNoteTags;
     private Toolbar mToolbar;
-    private View mViewSeparator1;
-    private View mViewSeparator2;
-    private View mViewSeparator3;
+
+    //TODO implement separators?
+    //private View mViewSeparator1;
+    //private View mViewSeparator2;
+    //private View mViewSeparator3;
 
     Gui(NoteActivity activity) {
 
@@ -53,9 +55,11 @@ class Gui {
         mNoteDescription = activity.findViewById(R.id.id_note_description);
         mNoteTags = activity.findViewById(R.id.id_note_tags);
         mToolbar = activity.findViewById(R.id.id_note_toolbar);
-        mViewSeparator1 = activity.findViewById(R.id.id_note_separate1);
-        mViewSeparator2 = activity.findViewById(R.id.id_note_separate2);
-        mViewSeparator3 = activity.findViewById(R.id.id_note_separate3);
+
+        //TODO implement separators?
+        //mViewSeparator1 = activity.findViewById(R.id.id_note_separate1);
+        //mViewSeparator2 = activity.findViewById(R.id.id_note_separate2);
+        //mViewSeparator3 = activity.findViewById(R.id.id_note_separate3);
 
         mNoteTags.setMovementMethod(new ScrollingMovementMethod());
 
@@ -96,9 +100,10 @@ class Gui {
         mBackground.setBackgroundColor(color);
         mToolbar.setBackgroundColor(accentColor);
 
-        mViewSeparator1.setBackgroundColor(accentColor);
-        mViewSeparator2.setBackgroundColor(accentColor);
-        mViewSeparator3.setBackgroundColor(accentColor);
+        //TODO implement separators?
+        //mViewSeparator1.setBackgroundColor(accentColor);
+        //mViewSeparator2.setBackgroundColor(accentColor);
+        //mViewSeparator3.setBackgroundColor(accentColor);
 
         //TODO does not work
         //mNoteTitle.setHighlightColor(accentColor);
