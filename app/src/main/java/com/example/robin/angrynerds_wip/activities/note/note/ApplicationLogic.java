@@ -38,9 +38,16 @@ class ApplicationLogic {
     }
 
     private void initData(){
-        String noteId = "1ebf053f-1db8-4958-b6f2-85f11300c90c";
+        String noteId = "d454e045-48bd-45d2-a3b6-229079c27c67";
+        mNoteData.setColors(noteId);
         NoteLoader noteLoader = new NoteLoader(this, mNoteData);
         noteLoader.loadNote(noteId);
+        // try{
+        //     Thread.sleep(200);
+        // } catch (InterruptedException e){
+        //     Log.e("Sleep", "Sleep error");
+        // }
+
     }
 
     private void initGui() {

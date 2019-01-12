@@ -5,16 +5,19 @@ import android.support.annotation.ColorInt;
 import android.support.annotation.ColorLong;
 
 import com.example.robin.angrynerds_wip.data.models.utils.Colors;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.Date;
 
 public class TEN {
     private String title;
+    @JsonIgnore
     private String ID;
-    @ColorInt
+    @ColorInt @JsonIgnore
     private int color;
-    @ColorInt
+    @ColorInt @JsonIgnore
     private int accentColor;
+    @JsonIgnore
     private Date dateOfCreation;
 
     //Constructor
@@ -75,6 +78,8 @@ public class TEN {
     public void setColor(int color) {
         this.color = color;
     }
+    public void setAccentColor(int accentColor) { this.accentColor = accentColor; }
+    public void setDateOfCreation(Date dateOfCreation) { this.dateOfCreation = dateOfCreation; }
     public Date getDateOfCreation() {return dateOfCreation;}
 
 }

@@ -87,6 +87,12 @@ public class Read {
         Bitmap imageBitmap = repository.getImage(noteId, imageId);
         return imageBitmap;
     }
+
+    public static int[] getColors(String tenID){
+        Repository repository = new Repository();
+        int [] colors = repository.getTENColors(tenID);
+        return  colors;
+    }
     /*public static Note getNoteByID(String id) {
         //MOCKDATEN
         for(TEN ten : MockData.tenMockData)
