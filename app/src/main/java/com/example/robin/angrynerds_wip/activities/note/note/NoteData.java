@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 
 import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.data.models.tens.Note;
@@ -39,10 +40,9 @@ class NoteData {
 
     public void imagesToImageContainer(){
 
-        for(int i = 0; i<mNoteImageContainers.size(); i++){
-            mNoteImageContainers.remove(i);
-        }
+        mNoteImageContainers = new ArrayList<IContainer>();
 
+        Log.i("ImageButton", "" + mNoteImageContainers.size());
         int i = 1;
 
          for (Bitmap bm : mNote.getPictures()) {
