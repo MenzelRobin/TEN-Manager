@@ -12,14 +12,12 @@ class Gui {
 
     private RelativeLayout mBackground;
     private ListView mListView;
-    private Button mAddButton;
 
     Gui(NoteTagActivity activity) {
         activity.setContentView(R.layout.activity_note_tagoverview);
 
         mBackground = activity.findViewById(R.id.id_note_tagOverview_background);
         mListView = activity.findViewById(R.id.id_note_tagOverview_listView);
-        mAddButton = activity.findViewById(R.id.id_note_tagOverview_addButton);
     }
 
     //Getter
@@ -28,9 +26,6 @@ class Gui {
     }
     ListView getListView() {
         return mListView;
-    }
-    Button getAddButton() {
-        return mAddButton;
     }
 
     //Sets adapter to ListView
