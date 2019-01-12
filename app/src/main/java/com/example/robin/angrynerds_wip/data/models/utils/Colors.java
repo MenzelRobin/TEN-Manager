@@ -14,7 +14,7 @@ public class Colors {
     //900er Material Colors
     public static final int[] DARKER_ACCENT_COLORS = {
             0xFF01579B, //light blue
-            0xFFD32F2F, //red
+            0xFFB71C1C, //red
             0xFF212121, //gray
             0xFF1B5E20, //green
     };

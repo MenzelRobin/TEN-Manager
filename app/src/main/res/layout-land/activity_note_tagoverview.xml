@@ -8,36 +8,37 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/id_note_tagOverview_separate"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:layout_margin="10dp">
 
-        <RelativeLayout
+        <ListView
+            android:id="@+id/id_note_tagOverview_listView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_above="@id/id_note_tagOverview_addButton"
-            android:layout_alignParentTop="true"
-            android:layout_marginEnd="10dp">
-
-            <ListView
-                android:id="@+id/id_note_tagOverview_listView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:divider="@null"
-                android:dividerHeight="0dp"
-                android:textColor="@color/TextWhite">
-            </ListView>
-
-        </RelativeLayout>
-
-        <Button
-            android:id="@+id/id_note_tagOverview_addButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:text="@string/note_tagoverview_addButton"
-            android:textColor="@color/TextWhite"
-            android:background="@color/note_transparent"/>
+            android:divider="@null"
+            android:dividerHeight="0dp"
+            android:textColor="@color/TextWhite"/>
 
     </RelativeLayout>
+
+    <View
+        android:id="@+id/id_note_tagOverview_separate"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_above="@id/id_note_tagOverview_addButton"
+        android:background="@color/colorPrimaryDark" />
+
+    <Button
+        android:id="@+id/id_note_tagOverview_addButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/note_transparent"
+        android:text="@string/note_tagoverview_addButton"
+        android:textColor="@color/TextWhite" />
+
 </RelativeLayout>
