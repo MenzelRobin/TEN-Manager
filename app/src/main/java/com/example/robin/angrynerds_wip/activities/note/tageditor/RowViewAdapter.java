@@ -1,12 +1,14 @@
 package com.example.robin.angrynerds_wip.activities.note.tageditor;
 
 import android.content.Context;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.example.robin.angrynerds_wip.R;
 
@@ -35,12 +37,12 @@ public class RowViewAdapter extends ArrayAdapter<String>{
         EditText textView = rowView.findViewById(R.id.id_note_tagOverview_listItemText);
         ImageButton deleteButton = rowView.findViewById(R.id.id_note_tagOverview_deleteButton);
         textView.setText(values.get(position));
+
         if(position == values.size()-1){
             deleteButton.setVisibility(View.INVISIBLE);
             textView.setOnTouchListener(applicationLogic.getTouchListener());
         }
         textView.setId(position);
-        //textView.setOnTouchListener(applicationLogic.getTouchListener());
         textView.addTextChangedListener(new TextWatcher(applicationLogic, textView));
         deleteButton.setId(position);
         deleteButton.setOnClickListener(applicationLogic.getClickListener());
