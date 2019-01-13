@@ -36,7 +36,7 @@ class ApplicationLogic {
     }
 
     private void initData(){
-        String noteId = "c7d874bb-aaca-448e-95e2-c183aa4cbf54";
+        String noteId = "bf5bf09b-e5f3-44ec-82eb-a78606e92b3e";
         mNoteData.setColors(noteId);
         NoteLoader noteLoader = new NoteLoader(this, mNoteData);
         noteLoader.loadNote(noteId);
@@ -100,7 +100,7 @@ class ApplicationLogic {
     }
 
     //sends data to gui elements
-    private void dataToGui() {
+    public void dataToGui() {
 
         //Set colors
         mGui.setColors(mNoteData.getNote().getColor(), mNoteData.getNote().getAccentColor());

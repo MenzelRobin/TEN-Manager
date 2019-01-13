@@ -29,7 +29,7 @@ public class TEN {
         int colorIndex = Colors.getRandomColorIndex();
         this.color = Colors.COLORS[colorIndex];
         this.accentColor = Colors.DARKER_ACCENT_COLORS[colorIndex];
-        this.ID = "";
+        this.ID = null;
         this.dateOfCreation = new Date();
     }
 
@@ -38,7 +38,7 @@ public class TEN {
         int colorIndex = Colors.getRandomColorIndex();
         this.color = Colors.COLORS[colorIndex];
         this.accentColor = Colors.DARKER_ACCENT_COLORS[colorIndex];
-        this.ID = "";
+        this.ID = null;
         this.title = title;
         this.dateOfCreation = new Date();
     }

@@ -63,12 +63,12 @@ class ImageOverlay {
                 frameHeight = displayHeight;
             }
         }
-        //Checks if image exceeds display in width
+        //Checks if image exceeds display in WIDTH
         else if (imageAspectRatio > displayAspectRatio) {
             frameWidth = displayWidth;
             frameHeight = (int) ((double) frameWidth / imageAspectRatio);
         }
-        //Checks if image exceeds display in height
+        //Checks if image exceeds display in HEIGHT
         else {
             frameHeight = displayHeight;
             frameWidth = (int) ((double) frameHeight * imageAspectRatio);

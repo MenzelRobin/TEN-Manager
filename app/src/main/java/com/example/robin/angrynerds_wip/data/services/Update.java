@@ -16,7 +16,7 @@ public class Update {
 
     public static void saveTEN(TEN newTen) {
         Repository repository = new Repository();
-        if (newTen.getID().equals("")) {
+        if (newTen.getID() == null) {
             repository.insertTEN(newTen);
         } else repository.updateTEN(newTen);
     }

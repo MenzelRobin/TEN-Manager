@@ -20,11 +20,11 @@ class IconContainer extends IContainer {
     private void initiateView(){
         if(mActivity.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
             //Portrait Mode
-            mImageContainer.setLayoutParams(new LinearLayout.LayoutParams(width/2, height));
+            mImageContainer.setLayoutParams(new LinearLayout.LayoutParams(WIDTH /2, HEIGHT));
         }
         else{
             //Landscape Mode
-            mImageContainer.setLayoutParams(new LinearLayout.LayoutParams(width, height/2));
+            mImageContainer.setLayoutParams(new LinearLayout.LayoutParams(WIDTH, HEIGHT /2));
         }
         mImageContainer.setGravity(Gravity.CENTER);
 
