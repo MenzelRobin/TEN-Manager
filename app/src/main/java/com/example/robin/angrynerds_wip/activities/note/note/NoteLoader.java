@@ -50,11 +50,11 @@ public class NoteLoader {
 
         @Override
         protected void onPostExecute(Note note) {
-            Log.i(LOG_TAG, "Note: " + note + " NoteData: " + mNoteData);
             mNoteData.setNote(note);
             mNoteData.addImageButton();
             mApplicationLogic.dataToGui();
             mNoteData.loadImages(mNoteData.getNote().getID(), mNoteLoader);
+            mNoteData.incrementLoadingProgess();
         }
     }
 
@@ -78,7 +78,8 @@ public class NoteLoader {
             mNoteData.getNote().getPictures().add(bitmap);
             mApplicationLogic.addSingleImage(bitmap);
             mApplicationLogic.initListener();
-            Log.i("Testdata", "Bild hinzugefügt!");
+            mNoteData.incrementLoadingProgess();
+            // Log.i("Testdata", "Bild hinzugefügt!");
 
             // Hintergrundberechnungen sind jetzt beendet, darüber informieren wir den Benutzer
         }
