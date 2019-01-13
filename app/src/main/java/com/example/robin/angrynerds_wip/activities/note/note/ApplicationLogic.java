@@ -16,6 +16,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.example.robin.angrynerds_wip.MainActivity;
 import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.activities.note.tageditor.NoteTagActivity;
 import com.example.robin.angrynerds_wip.data.models.tens.Note;
@@ -37,21 +38,15 @@ class ApplicationLogic {
         mGui = gui;
         mNoteData = noteData;
         initData();
-        //initGui();
+        initGui();
         initListener();
     }
 
     private void initData(){
-        String noteId = "029682c2-cf76-4db0-b52e-c21be9f4b41e";
+        String noteId = "1b24ea20-26b4-4a26-9fa9-974f7d633810";
         mNoteData.setColors(noteId);
         NoteLoader noteLoader = new NoteLoader(this, mNoteData);
         noteLoader.loadNote(noteId);
-        // try{
-        //     Thread.sleep(200);
-        // } catch (InterruptedException e){
-        //     Log.e("Sleep", "Sleep error");
-        // }
-
     }
 
     private void initGui() {
@@ -96,6 +91,7 @@ class ApplicationLogic {
     //Deletes Image from NoteData
     void deleteImage(int id) {
         mNoteData.deleteImage(id);
+        initListener();
         refreshImages();
     }
 
@@ -132,6 +128,11 @@ class ApplicationLogic {
 
     //Returns to OverViewActivity
     void returnToOverview() {
+        mNoteData.saveNoteToDatabase();
+        Intent intent = new Intent(this.mNoteData.getActivity().getApplicationContext(), MainActivity.class);
+        this.mNoteData.getActivity().getApplicationContext().startActivity(intent); // Activity Starten*/
+
+        //intent.putExtra("ID", 5); // Hier können eigene Parameter hinzugefügt werden.
         //Intent intent = new Intent(mNoteData.getActivity(), OverviewInit.class);
         //intent.putExtra("ID", 5);
         //mActivity.startActivity(intent); // Activity Starten

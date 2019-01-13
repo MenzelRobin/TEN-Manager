@@ -18,12 +18,12 @@ public class DocumentSaver {
     ObjectMapper objectMapper;
     ImageConverter imageConverter;
 
-    public DocumentSaver(){
+    public DocumentSaver() {
         this.objectMapper = new ObjectMapper();
         this.imageConverter = new ImageConverter();
     }
 
-    public boolean updateCompleteDocument(TEN ten, MutableDocument mutableTENDocument){
+    public boolean updateCompleteDocument(TEN ten, MutableDocument mutableTENDocument) {
         mutableTENDocument = prepareDocument(mutableTENDocument, ten);
         mutableTENDocument.setLong(DatabaseConstants.CREATION_DATE_KEY, ten.getDateOfCreation().getTime());
         mutableTENDocument.setInt(DatabaseConstants.COLOR_KEY, ten.getColor());
@@ -43,40 +43,55 @@ public class DocumentSaver {
         }
     }
 
-    private MutableDocument prepareDocument(MutableDocument mutableDocument, TEN ten){
+    private MutableDocument prepareDocument(MutableDocument mutableDocument, TEN ten) {
 
-        if(ten.getClass().getName().contains("Event")){
+        if (ten.getClass().getName().contains("Event")) {
             Log.i("Testdata", "Es ist ein Event");
             mutableDocument.setString(DatabaseConstants.TYPE_KEY, DatabaseConstants.EVENT_TYPE);
-        }
-        else if (ten.getClass().getName().contains("Note")){
+        } else if (ten.getClass().getName().contains("Note")) {
             Log.i("Testdata", "Es ist ein Note");
             mutableDocument.setString(DatabaseConstants.TYPE_KEY, DatabaseConstants.NOTE_TYPE);
             mutableDocument = saveNoteImages(mutableDocument, (Note) ten);
             ((Note) ten).setPictures(null);
-        }
-        else if (ten.getClass().getName().contains("Todo")){
+        } else if (ten.getClass().getName().contains("Todo")) {
             Log.i("Testdata", "Es ist ein Todo");
             mutableDocument.setString(DatabaseConstants.TYPE_KEY, DatabaseConstants.TODO_TYPE);
         }
         return mutableDocument;
     }
 
-    private MutableDocument saveNoteImages(MutableDocument mutableDocument, Note note){
+    private MutableDocument saveNoteImages(MutableDocument mutableDocument, Note note) {
 
-        if(note.getPictures() != null){
+        removeImages(mutableDocument);
+        if (note.getPictures() != null) {
             int numberOfImages = note.getPictures().size();
             mutableDocument.setInt(DatabaseConstants.IMAGE_COUNTER, numberOfImages);
             ArrayList<Bitmap> imageBitmaps = note.getPictures();
-            for(int i=0; i<numberOfImages; i++){
+            for (int i = 0; i < numberOfImages; i++) {
                 Blob imageBlob = this.imageConverter.BitmapToBlob(imageBitmaps.get(i));
-                mutableDocument.setBlob(DatabaseConstants.IMAGE_CORE_ID + (i+1), imageBlob);
+                mutableDocument.setBlob(DatabaseConstants.IMAGE_CORE_ID + (i + 1), imageBlob);
+            }
+        }
+        return mutableDocument;
+    }
+
+    private void removeImages(MutableDocument mutableDocument){
+        int numberOfImages = mutableDocument.getInt(DatabaseConstants.IMAGE_COUNTER);
+        if(numberOfImages > 0){
+                Log.i("DatabaseTest", "Key: " + mutableDocument.getBlob(DatabaseConstants.IMAGE_CORE_ID + 1).getProperties().get("digest"));
+            for(String key: mutableDocument.getBlob(DatabaseConstants.IMAGE_CORE_ID + "1").getProperties().keySet()){
+                Log.i("DatabaseTest", "Key: " + key);
+            }
+            try{
+            DatabaseManager.getDatabase().compact();
+            } catch (CouchbaseLiteException e){
+                Log.e("Couchbase", "Could not be compacted");
             }
 
+            Log.i("DatabaseTest", "Keymapping done!");
         }
-
-
-        //TODO for-schleife, die die Bilder abspeichert Beginnend bei 1
-        return mutableDocument;
+        for(int i = 1; i<=numberOfImages; i++){
+            mutableDocument.setBlob(DatabaseConstants.IMAGE_CORE_ID + i, null);
+        }
     }
 }
