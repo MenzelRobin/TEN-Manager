@@ -36,7 +36,7 @@ class ApplicationLogic {
     }
 
     private void initData(){
-        String noteId = "a71d7054-8d26-4044-b388-137517baa1f5";
+        String noteId = "c7d874bb-aaca-448e-95e2-c183aa4cbf54";
         mNoteData.setColors(noteId);
         NoteLoader noteLoader = new NoteLoader(this, mNoteData);
         noteLoader.loadNote(noteId);
@@ -123,6 +123,7 @@ class ApplicationLogic {
     //Returns to OverViewActivity
     void returnToOverview() {
         mNoteData.saveNoteToDatabase();
+        mNoteData.finallyDeleteImages();
         Intent intent = new Intent(this.mNoteData.getActivity().getApplicationContext(), MainActivity.class);
         this.mNoteData.getActivity().getApplicationContext().startActivity(intent); // Activity Starten*/
 
@@ -139,8 +140,9 @@ class ApplicationLogic {
             case 0:
                 if(resultCode == -1){
                     //TODO
-                    Bitmap bm = BitmapFactory.decodeFile(mImageImport.getCurrentPhotoPath());
-                    mNoteData.saveImage(bm);
+                    String path = mImageImport.getCurrentPhotoPath();
+                    Bitmap cameraImage = BitmapFactory.decodeFile(path);
+                    mNoteData.addImageFromCamera(cameraImage, path);
                     setImageClickListener(mNoteData.getImageContainer(mNoteData.getNoteImageContainers().size()-2));
                     refreshImages();
                 }
@@ -150,7 +152,7 @@ class ApplicationLogic {
                     Uri selectedImage = data.getData();
                     try {
                         Bitmap bitmap = MediaStore.Images.Media.getBitmap(mNoteData.getActivity().getContentResolver(), selectedImage);
-                        mNoteData.saveImage(bitmap);
+                        mNoteData.addImageFromGallery(bitmap);
                         setImageClickListener(mNoteData.getImageContainer(mNoteData.getNoteImageContainers().size()-2));
                         refreshImages();
                     } catch (IOException e) {
@@ -173,7 +175,10 @@ class ApplicationLogic {
         }
     }
 
-    void onBackPressed() {}
+    void onBackPressed() {
+
+        returnToOverview();
+    }
 
     //Set cursor of Title visible (invisible when Activity is started)
     void onTitleClicked() {

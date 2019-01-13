@@ -18,8 +18,17 @@ public class ImageService {
         return result;
     }
 
-    public static void deleteImage(String imageID){
+    public static void deleteImage(Image image){
         FileManager fileManager = new FileManager();
-        fileManager.deleteImageFromDirectory(imageID);
+        fileManager.deleteImageFromDirectory(image);
+    }
+    public static void deleteImage(String path){
+        FileManager fileManager = new FileManager();
+        fileManager.deleteImageFromDirectory(path);
+    }
+
+    public static void renameImage(String currentPhotoPath, String futureID) {
+        FileManager fileManager = new FileManager();
+        fileManager.renameImage(currentPhotoPath, futureID);
     }
 }

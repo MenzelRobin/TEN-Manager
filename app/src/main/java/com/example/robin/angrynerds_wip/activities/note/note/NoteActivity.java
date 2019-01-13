@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -98,7 +99,7 @@ public class NoteActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        mApplicationLogic.onBackPressed();
         super.onBackPressed();
-        //mApplicationLogic.onBackPressed();
     }
 }
