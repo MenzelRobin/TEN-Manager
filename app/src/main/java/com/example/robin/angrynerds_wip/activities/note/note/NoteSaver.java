@@ -32,7 +32,7 @@ public class NoteSaver {
 
         @Override
         protected void onPostExecute(Boolean bool) {
-            Log.i("Testdata", "Successfully saved");
+            Log.i("NoteRemake", "Successfully saved");
         }
     }
 }

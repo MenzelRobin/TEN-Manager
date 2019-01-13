@@ -4,24 +4,17 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.example.robin.angrynerds_wip.MainActivity;
 import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.activities.note.tageditor.NoteTagActivity;
-import com.example.robin.angrynerds_wip.data.models.tens.Note;
-import com.example.robin.angrynerds_wip.data.repository.DatabaseConstants;
-import com.example.robin.angrynerds_wip.data.services.Read;
+import com.example.robin.angrynerds_wip.data.models.utils.Image;
 
 import java.io.IOException;
 
@@ -43,7 +36,7 @@ class ApplicationLogic {
     }
 
     private void initData(){
-        String noteId = "1b24ea20-26b4-4a26-9fa9-974f7d633810";
+        String noteId = "e9cceeb9-8403-4275-abc8-3a9c39262392";
         mNoteData.setColors(noteId);
         NoteLoader noteLoader = new NoteLoader(this, mNoteData);
         noteLoader.loadNote(noteId);
@@ -55,6 +48,7 @@ class ApplicationLogic {
 
     //Initialise Click- and Text-Listeners
     public void initListener() {
+        Log.i("Clicklistener1", "initListener was called");
         mClickListener = new ClickListener(this);
         MenuItemClickListener menuItemClickListener = new MenuItemClickListener(this);
 
@@ -70,9 +64,9 @@ class ApplicationLogic {
         mGui.getToolbar().setOnMenuItemClickListener(menuItemClickListener);
     }
 
-    void addSingleImage(Bitmap bitmap){
-
-        mNoteData.addImageContainer(bitmap);
+    void addSingleImage(Image image){
+        Log.i("Clicklistener1", "addSingleImage was called");
+        mNoteData.addImageContainer(image.getBitmap());
         ImageContainer imageContainer = (ImageContainer) mNoteData.getNoteImageContainers().get(mNoteData.getNoteImageContainers().size()-2);
         mGui.addSingleAnimatedImage(imageContainer);
         initListener();

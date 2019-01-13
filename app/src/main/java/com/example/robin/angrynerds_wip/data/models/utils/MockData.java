@@ -37,8 +37,8 @@ public class MockData {
         koalaTags.add("Australien");
         koalaNote.setTags(koalaTags);
 
-        koalaNote.getPictures().add(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_koala1));
-        koalaNote.getPictures().add(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_koala2));
+        koalaNote.addImage(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_koala1));
+        koalaNote.addImage(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_koala2));
 
         tenMockData.add(koalaNote);
 
@@ -62,8 +62,8 @@ public class MockData {
         koalaTags.add("Meer");
         delfinNote.setTags(delfinTags);
 
-        delfinNote.getPictures().add(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_delfin1));
-        delfinNote.getPictures().add(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_delfin2));
+        delfinNote.addImage(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_delfin1));
+        delfinNote.addImage(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_delfin2));
 
         tenMockData.add(delfinNote);
 
@@ -144,8 +144,8 @@ public class MockData {
         kaenguruTags.add("Australien");
         kaenguruNote.setTags(kaenguruTags);
 
-        kaenguruNote.getPictures().add(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_kaenguru1));
-        kaenguruNote.getPictures().add(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_kaenguru2));
+        kaenguruNote.addImage(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_kaenguru1));
+        kaenguruNote.addImage(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_kaenguru2));
 
         tenMockData.add(kaenguruNote);
 
@@ -163,9 +163,9 @@ public class MockData {
         melbourneTags.add("Skyline");
         melbourneNote.setTags(melbourneTags);
 
-        melbourneNote.getPictures().add(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_melbourne1));
-        melbourneNote.getPictures().add(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_melbourne2));
-        melbourneNote.getPictures().add(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_melbourne3));
+        melbourneNote.addImage(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_melbourne1));
+        melbourneNote.addImage(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_melbourne2));
+        melbourneNote.addImage(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_melbourne3));
 
         tenMockData.add(melbourneNote);
 
@@ -180,7 +180,7 @@ public class MockData {
         bambusTags.add("Australien");
         bambusNote.setTags(bambusTags);
 
-        bambusNote.getPictures().add(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_bambus1));
+        bambusNote.addImage(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_bambus1));
 
         tenMockData.add(bambusNote);
 

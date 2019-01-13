@@ -1,6 +1,6 @@
 package com.example.robin.angrynerds_wip.data.repository;
 
-public class DatabaseConstants {
+public class RepositoryConstants {
     public static final String DATABASENAME = "TENDB";
 
     public static final String OBJECT_KEY = "ObjectKey";
@@ -15,4 +15,5 @@ public class DatabaseConstants {
 
     public static final String IMAGE_CORE_ID = "imageID";
     public static final String IMAGE_COUNTER = "numberOfImages";
+    public static final String IMAGE_FOLDER = "noteImages";
 }

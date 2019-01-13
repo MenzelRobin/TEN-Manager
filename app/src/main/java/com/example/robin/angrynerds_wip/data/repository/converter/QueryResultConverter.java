@@ -1,13 +1,11 @@
-package com.example.robin.angrynerds_wip.data.repository;
-
-import android.util.Log;
+package com.example.robin.angrynerds_wip.data.repository.converter;
 
 import com.couchbase.lite.Dictionary;
-import com.couchbase.lite.Result;
 import com.example.robin.angrynerds_wip.data.models.tens.Event;
 import com.example.robin.angrynerds_wip.data.models.tens.Note;
 import com.example.robin.angrynerds_wip.data.models.tens.TEN;
 import com.example.robin.angrynerds_wip.data.models.tens.Todo;
+import com.example.robin.angrynerds_wip.data.repository.RepositoryConstants;
 
 public class QueryResultConverter {
 
@@ -18,20 +16,20 @@ public class QueryResultConverter {
     }
 
     public TEN createTENFromResult(Dictionary dictionary) {
-        String type = dictionary.getString(DatabaseConstants.TYPE_KEY);
-        String objectJSON = dictionary.getString(DatabaseConstants.OBJECT_KEY);
+        String type = dictionary.getString(RepositoryConstants.TYPE_KEY);
+        String objectJSON = dictionary.getString(RepositoryConstants.OBJECT_KEY);
 
         switch (type) {
-            case DatabaseConstants.EVENT_TYPE:
+            case RepositoryConstants.EVENT_TYPE:
                 Event event = tenConverter.stringToEvent(objectJSON);
                 return event;
-            case DatabaseConstants.NOTE_TYPE:
+            case RepositoryConstants.NOTE_TYPE:
                 Note note = tenConverter.stringToNote(objectJSON);
 
                 note = tenConverter.addImagesFromResultToNote(note, dictionary);
 
                 return note;
-            case DatabaseConstants.TODO_TYPE:
+            case RepositoryConstants.TODO_TYPE:
                 Todo todo = tenConverter.stringToTodo(objectJSON);
 
             default:

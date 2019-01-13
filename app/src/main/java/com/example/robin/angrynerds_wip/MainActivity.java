@@ -1,7 +1,6 @@
 package com.example.robin.angrynerds_wip;
 
 import android.content.Intent;
-import android.nfc.Tag;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,11 +9,9 @@ import android.view.View;
 import com.example.robin.angrynerds_wip.activities.note.note.NoteActivity;
 import com.example.robin.angrynerds_wip.data.models.tens.TEN;
 import com.example.robin.angrynerds_wip.data.models.utils.MockData;
-import com.example.robin.angrynerds_wip.data.repository.DatabaseManager;
+import com.example.robin.angrynerds_wip.data.repository.database.DatabaseManager;
 import com.example.robin.angrynerds_wip.data.repository.Repository;
 import com.example.robin.angrynerds_wip.overview.overviewActivity.OverviewInit;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.ArrayList;
 

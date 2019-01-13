@@ -1,15 +1,17 @@
-package com.example.robin.angrynerds_wip.data.repository;
+package com.example.robin.angrynerds_wip.data.repository.converter;
 
 import android.graphics.Bitmap;
 import android.util.Log;
 
 import com.couchbase.lite.Dictionary;
 import com.couchbase.lite.Document;
-import com.couchbase.lite.Result;
 import com.example.robin.angrynerds_wip.data.models.tens.Event;
 import com.example.robin.angrynerds_wip.data.models.tens.Note;
 import com.example.robin.angrynerds_wip.data.models.tens.TEN;
 import com.example.robin.angrynerds_wip.data.models.tens.Todo;
+import com.example.robin.angrynerds_wip.data.models.utils.Image;
+import com.example.robin.angrynerds_wip.data.repository.RepositoryConstants;
+import com.example.robin.angrynerds_wip.data.repository.converter.ImageConverter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
@@ -28,9 +30,9 @@ public class TENConverter {
 
     public TEN addTENPropertiesFromDocument(TEN ten, Document document){
         String documentID = document.getId();
-        int color = document.getInt(DatabaseConstants.COLOR_KEY);
-        int accentColor = document.getInt(DatabaseConstants.ACCENT_COLOR_KEY);
-        Date dateOfCreation = new Date(document.getInt(DatabaseConstants.CREATION_DATE_KEY));
+        int color = document.getInt(RepositoryConstants.COLOR_KEY);
+        int accentColor = document.getInt(RepositoryConstants.ACCENT_COLOR_KEY);
+        Date dateOfCreation = new Date(document.getInt(RepositoryConstants.CREATION_DATE_KEY));
 
         ten.setID(documentID);
         ten.setColor(color);
@@ -70,14 +72,14 @@ public class TENConverter {
     }
 
     public Note addImagesFromResultToNote(Note note, Dictionary dictionary) {
-        int numberOfPictures = dictionary.getInt(DatabaseConstants.IMAGE_COUNTER);
-        ArrayList<Bitmap> images = new ArrayList<Bitmap>();
+        int numberOfPictures = dictionary.getInt(RepositoryConstants.IMAGE_COUNTER);
+        ArrayList<Image> images = new ArrayList<Image>();
 
         for (int i = 1; i <= numberOfPictures; i++) {
 
             Bitmap image = this.imageConverter
-                    .BlobToBitmap(dictionary.getBlob(DatabaseConstants.IMAGE_CORE_ID + i));
-            images.add(image);
+                    .BlobToBitmap(dictionary.getBlob(RepositoryConstants.IMAGE_CORE_ID + i));
+            images.get(i).setBitmap(image);
         }
 
         note.setPictures(images);
@@ -85,14 +87,14 @@ public class TENConverter {
     }
 
     public Note addImagesFromDocumentToNote(Note note, Document document) {
-        int numberOfPictures = document.getInt(DatabaseConstants.IMAGE_COUNTER);
-        ArrayList<Bitmap> images = new ArrayList<Bitmap>();
+        int numberOfPictures = document.getInt(RepositoryConstants.IMAGE_COUNTER);
+        ArrayList<Image> images = new ArrayList<Image>();
 
         for (int i = 1; i <= numberOfPictures; i++) {
 
             Bitmap image = this.imageConverter
-                    .BlobToBitmap(document.getBlob(DatabaseConstants.IMAGE_CORE_ID + i));
-            images.add(image);
+                    .BlobToBitmap(document.getBlob(RepositoryConstants.IMAGE_CORE_ID + i));
+            images.get(i).setBitmap(image);
         }
 
         note.setPictures(images);
