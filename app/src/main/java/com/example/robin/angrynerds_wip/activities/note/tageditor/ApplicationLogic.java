@@ -64,13 +64,18 @@ class ApplicationLogic {
 
     //Remove String from TagList and notify adapter, add new empty string if it was the last one
     void onDeleteButtonClicked(int id){
-        mTagList.remove(id);
 
-        if(id==mTagList.size()-1){
-            mTagList.add("");
+        if(mTagList.get(id).equals("") && mTagList.size()-2 == id)
             mGui.displayToast(mActivity, "Die letzte Zeile kann nicht gelöscht werden");
+        else if (mTagList.size()-2 == id){
+            mTagList.remove(id);
+            mTagList.add("");
+            mAdapter.notifyDataSetChanged();
         }
-        mAdapter.notifyDataSetChanged();
+        else{
+            mTagList.remove(id);
+            mAdapter.notifyDataSetChanged();
+        }
     }
 
     void onTagTextClicked() {
