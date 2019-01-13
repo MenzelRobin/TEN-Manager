@@ -2,13 +2,21 @@ package com.example.robin.angrynerds_wip.data.models.utils;
 
 import android.graphics.Bitmap;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class Image {
     private String id;
+    @JsonIgnore
     private Bitmap bitmap;
 
     //Constructor
-    public Image(){
+    public Image() {
         this.id = "";
+        this.bitmap = null;
+    }
+
+    public Image(String id) {
+        this.id = id;
         this.bitmap = null;
     }
 

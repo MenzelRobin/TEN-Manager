@@ -1,9 +1,11 @@
 package com.example.robin.angrynerds_wip.data.models.tens;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.robin.angrynerds_wip.data.models.utils.Image;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.example.robin.angrynerds_wip.data.repository.RepositoryConstants;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.util.ArrayList;
@@ -14,14 +16,15 @@ public class Note extends TEN {
 
     private String description;
     private ArrayList<String> tags;
-    @JsonIgnore
     private ArrayList<Image> pictures;
+    private int imageIDCounter;
 
     //Constructors
     public Note() {
         super();
         this.tags = new ArrayList<String>();
         this.pictures = new ArrayList<Image>();
+        this.imageIDCounter = 0;
     }
 
     public Note(String title) {
@@ -29,29 +32,20 @@ public class Note extends TEN {
         this.tags = new ArrayList<String>();
         this.pictures = new ArrayList<Image>();
     }
-
-    //simple for usage
     public Note(String title, String description) {
         super(title);
-        this.description = description;        tags = new ArrayList<String>();
-        this.pictures = new ArrayList<Image>();
-
-    }
-
-    //simple for usage
-    public Note(String title, String description, ArrayList<String> tags) {
-        super(title);
         this.description = description;
-        this.tags = tags;
+        this.tags = new ArrayList<String>();
         this.pictures = new ArrayList<Image>();
     }
 
     //all Attributes for complete Reconstruction
-    public Note(String title, String ID, int color, int accentColor, Date dateOfCreation, String description, ArrayList<String> tags, ArrayList<Image> pictures) {
+    public Note(String title, String ID, int color, int accentColor, Date dateOfCreation, String description, ArrayList<String> tags, ArrayList<Image> pictures, int imageIDCounter) {
         super(title, ID, color, accentColor, dateOfCreation);
         this.description = description;
         this.tags = tags;
         this.pictures = pictures;
+        this.imageIDCounter = imageIDCounter;
     }
 
 
@@ -72,8 +66,16 @@ public class Note extends TEN {
         this.tags = tags;
     }
 
-    public void addTag(String tag){
-        this.tags.add(tag);
+    public void addImage(Bitmap bitmap) {
+        this.imageIDCounter++;
+        String imageID = this.getID()+RepositoryConstants.IMAGE_CORE_ID+this.imageIDCounter;
+        Log.i("NoteRemake", "ImageID: " + imageID);
+        Image image = new Image(imageID, bitmap);
+        this.pictures.add(image);
+    }
+
+    public void addImage(Image image) {
+        this.pictures.add(image);
     }
 
     public ArrayList<Image> getPictures() {
@@ -82,6 +84,14 @@ public class Note extends TEN {
 
     public void setPictures(ArrayList<Image> pictures) {
         this.pictures = pictures;
+    }
+
+    public int getImageIDCounter() {
+        return imageIDCounter;
+    }
+
+    public void setImageIDCounter(int imageIDCounter) {
+        this.imageIDCounter = imageIDCounter;
     }
 
     public Bundle getBundle() {

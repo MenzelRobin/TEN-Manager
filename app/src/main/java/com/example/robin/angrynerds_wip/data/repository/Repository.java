@@ -1,7 +1,6 @@
 package com.example.robin.angrynerds_wip.data.repository;
 
 import android.graphics.Bitmap;
-import android.media.Image;
 import android.util.Log;
 
 import com.couchbase.lite.Blob;
@@ -12,6 +11,12 @@ import com.example.robin.angrynerds_wip.data.models.tens.Event;
 import com.example.robin.angrynerds_wip.data.models.tens.Note;
 import com.example.robin.angrynerds_wip.data.models.tens.TEN;
 import com.example.robin.angrynerds_wip.data.models.tens.Todo;
+import com.example.robin.angrynerds_wip.data.models.utils.Image;
+import com.example.robin.angrynerds_wip.data.repository.converter.ImageConverter;
+import com.example.robin.angrynerds_wip.data.repository.converter.TENConverter;
+import com.example.robin.angrynerds_wip.data.repository.database.DatabaseManager;
+import com.example.robin.angrynerds_wip.data.repository.database.DocumentSaver;
+import com.example.robin.angrynerds_wip.data.repository.database.Queries;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +37,7 @@ public class Repository {
     public Todo getTodoByID(String id) {
 
         Document todoDocument = DatabaseManager.getDatabase().getDocument(id);
-        String json = todoDocument.getString(DatabaseConstants.OBJECT_KEY);
+        String json = todoDocument.getString(RepositoryConstants.OBJECT_KEY);
         Todo finalTodo = this.tenConverter.stringToTodo(json);
         finalTodo = (Todo) this.tenConverter.addTENPropertiesFromDocument(finalTodo, todoDocument);
         return finalTodo;
@@ -40,7 +45,7 @@ public class Repository {
 
     public Event getEventByID(String id) {
         Document eventDocument = DatabaseManager.getDatabase().getDocument(id);
-        String json = eventDocument.getString(DatabaseConstants.OBJECT_KEY);
+        String json = eventDocument.getString(RepositoryConstants.OBJECT_KEY);
         Event finalEvent = this.tenConverter.stringToEvent(json);
         finalEvent = (Event) this.tenConverter.addTENPropertiesFromDocument(finalEvent, eventDocument);
         return finalEvent;
@@ -48,10 +53,10 @@ public class Repository {
 
     public Note getNoteByID(String id) {
         Document noteDocument = DatabaseManager.getDatabase().getDocument(id);
-        String json = noteDocument.getString(DatabaseConstants.OBJECT_KEY);
+        String json = noteDocument.getString(RepositoryConstants.OBJECT_KEY);
+        Log.i("NoteRemake", json);
         Note finalNote = this.tenConverter.stringToNote(json);
         finalNote = (Note) this.tenConverter.addTENPropertiesFromDocument(finalNote, noteDocument);
-        finalNote.setPictures(new ArrayList<Bitmap>());
         return finalNote;
     }
 
@@ -65,8 +70,8 @@ public class Repository {
 
 
     public void updateTEN(TEN ten) {
-        MutableDocument mutableTENDOcument = DatabaseManager.getDatabase().getDocument(ten.getID()).toMutable();
-        this.documentSaver.updateCompleteDocument(ten, mutableTENDOcument);
+        MutableDocument mutableTENDocument = DatabaseManager.getDatabase().getDocument(ten.getID()).toMutable();
+        this.documentSaver.updateCompleteDocument(ten, mutableTENDocument);
 
     }
 
@@ -86,7 +91,7 @@ public class Repository {
 
     public int getNumberOfImages(String noteId) {
         Document noteDocument = DatabaseManager.getDatabase().getDocument(noteId);
-        int numberOfImages = noteDocument.getInt(DatabaseConstants.IMAGE_COUNTER);
+        int numberOfImages = noteDocument.getInt(RepositoryConstants.IMAGE_COUNTER);
         return numberOfImages;
     }
 
@@ -104,8 +109,8 @@ public class Repository {
     public int[] getTENColors(String tenID) {
         Document document = DatabaseManager.getDatabase().getDocument(tenID);
         int[] colors = new int [2];
-        colors[0] = document.getInt(DatabaseConstants.COLOR_KEY);
-        colors[1] = document.getInt(DatabaseConstants.ACCENT_COLOR_KEY);
+        colors[0] = document.getInt(RepositoryConstants.COLOR_KEY);
+        colors[1] = document.getInt(RepositoryConstants.ACCENT_COLOR_KEY);
         return colors;
     }
 }

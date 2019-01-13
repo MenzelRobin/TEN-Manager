@@ -1,4 +1,4 @@
-package com.example.robin.angrynerds_wip.data.repository;
+package com.example.robin.angrynerds_wip.data.repository.database;
 
 import android.content.Context;
 import android.util.Log;
@@ -14,6 +14,7 @@ import com.couchbase.lite.QueryBuilder;
 import com.couchbase.lite.Result;
 import com.couchbase.lite.ResultSet;
 import com.couchbase.lite.SelectResult;
+import com.example.robin.angrynerds_wip.data.repository.RepositoryConstants;
 
 public class DatabaseManager {
 
@@ -22,10 +23,11 @@ public class DatabaseManager {
 
 
     public static void initDatabase(Context context) {
+        DatabaseManager.context = context;
         try {
             if(DatabaseManager.getDatabase() == null){
             DatabaseConfiguration config = new DatabaseConfiguration(context.getApplicationContext());
-            DatabaseManager.database = new Database(DatabaseConstants.DATABASENAME, config);
+            DatabaseManager.database = new Database(RepositoryConstants.DATABASENAME, config);
             }
 
         } catch (CouchbaseLiteException e) {

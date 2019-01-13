@@ -1,4 +1,4 @@
-package com.example.robin.angrynerds_wip.data.repository;
+package com.example.robin.angrynerds_wip.data.repository.converter;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

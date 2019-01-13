@@ -1,13 +1,15 @@
 package com.example.robin.angrynerds_wip.data.services;
 
 import android.graphics.Bitmap;
+import android.util.Log;
 
 import com.example.robin.angrynerds_wip.data.models.tens.Event;
 import com.example.robin.angrynerds_wip.data.models.tens.Note;
 import com.example.robin.angrynerds_wip.data.models.tens.TEN;
 import com.example.robin.angrynerds_wip.data.models.tens.Todo;
-import com.example.robin.angrynerds_wip.data.models.utils.MockData;
+import com.example.robin.angrynerds_wip.data.models.utils.Image;
 import com.example.robin.angrynerds_wip.data.repository.Repository;
+import com.example.robin.angrynerds_wip.data.repository.filesystem.FileManager;
 
 import java.util.ArrayList;
 
@@ -76,17 +78,7 @@ public class Read {
         return note;
     }
 
-    public static int getNumberOfImages(String noteId){
-        Repository repository = new Repository();
-        int result = repository.getNumberOfImages(noteId);
-        return result;
-    }
 
-    public static Bitmap getImageOfNote(String noteId, String imageId){
-        Repository repository = new Repository();
-        Bitmap imageBitmap = repository.getImage(noteId, imageId);
-        return imageBitmap;
-    }
 
     public static int[] getColors(String tenID){
         Repository repository = new Repository();
