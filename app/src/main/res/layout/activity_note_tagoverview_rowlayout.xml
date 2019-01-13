@@ -50,7 +50,7 @@
             android:layout_marginStart="10dp"
             android:layout_weight="0.1"
             android:background="@color/note_transparent"
-            android:src="@drawable/ic_delete_white_24dp" />
+            android:src="@drawable/ic_clear_white_24dp" />
 
     </LinearLayout>
 </LinearLayout>

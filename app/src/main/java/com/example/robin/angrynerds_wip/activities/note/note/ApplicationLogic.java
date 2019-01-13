@@ -36,7 +36,7 @@ class ApplicationLogic {
     }
 
     private void initData(){
-        String noteId = "bf5bf09b-e5f3-44ec-82eb-a78606e92b3e";
+        String noteId = "582a23ab-f56b-4965-aafe-45db705d0fa7";
         mNoteData.setColors(noteId);
         NoteLoader noteLoader = new NoteLoader(this, mNoteData);
         noteLoader.loadNote(noteId);
