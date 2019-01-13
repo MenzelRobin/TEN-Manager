@@ -1,12 +1,14 @@
 <resources>
     <string name="app_name">AngryNerds</string>
+
+    <!-- Note Layout Strings -->
     <string name="sample_note_title">Titel</string>
     <string name="sample_note_description">Beschreibung</string>
     <string name="sample_note_tag">#Stichwort</string>
     <string name="sample_note_hashtag">#</string>
     <string name="sample_note_listtag">Stichwort</string>
-    <string name="note_tagoverview_addButton">Stichwort hinzufügen</string>
     <string name="note_menu_toolbarDelete">Notiz löschen</string>
+    <string name="note_tagoverview_addButton">Stichwort hinzufügen</string>
 
     <!-- Fragment Example Strings -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

@@ -2,12 +2,11 @@ package com.example.robin.angrynerds_wip.activities.note.tageditor;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.text.method.Touch;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-
-import com.example.robin.angrynerds_wip.R;
 
 import java.util.ArrayList;
 
@@ -18,7 +17,8 @@ class ApplicationLogic {
     private int mColor;
     private Gui mGui;
     private RowViewAdapter mAdapter;
-    private ClickListener clickListener;
+    private ClickListener mClickListener;
+    private TouchListener mTouchListener;
     private Activity mActivity;
 
     ApplicationLogic(ArrayList<String> tagList, Gui gui, Activity activity, int color) {
@@ -33,8 +33,9 @@ class ApplicationLogic {
     }
 
     ClickListener getClickListener() {
-        return clickListener;
+        return mClickListener;
     }
+    TouchListener getTouchListener() { return mTouchListener; }
 
     private void initGui(){
         mGui.getBackground().setBackgroundColor(mColor);
@@ -42,8 +43,8 @@ class ApplicationLogic {
     }
 
     private void initListener() {
-        clickListener = new ClickListener(this);
-        //mGui.getAddButton().setOnClickListener(clickListener);
+        mClickListener = new ClickListener(this);
+        mTouchListener = new TouchListener(this);
     }
 
     void onActivityReturned(int requestCode, int resultCode, Intent data) { }
@@ -64,8 +65,14 @@ class ApplicationLogic {
     //Remove String from TagList and notify adapter
     void onDeleteButtonClicked(int id){
         mTagList.remove(id);
+
+        if(id==mTagList.size()-1)
+            mTagList.add("");
         mAdapter.notifyDataSetChanged();
-        //addTagForInput();
+    }
+
+    void onTagTextClicked() {
+        addInputTagField();
     }
 
     //Return number of Strings in TagList
@@ -76,36 +83,10 @@ class ApplicationLogic {
     //Insert user input into TagList
     void onTextChanged(String s, View mView) {
         mTagList.set(mView.getId(),s);
-
-        if(s.equals("") && mTagList.get(mTagList.size()-1).equals("")){
-            mTagList.remove(mTagList.size()-1);
-            mAdapter.notifyDataSetChanged();
-        }
-        else{
-            addTagForInput(s);
-        }
     }
 
-    //Checks if tag for new user input is present and add an empty string if it is not
-    private void addTagForInput(String s){
-        boolean emptyLine = false;
-        for(String tag : mTagList){
-            if(tag.equals(""))
-                emptyLine = true;
-        }
-        if(!emptyLine) {
-            mTagList.add("");
-            mAdapter.notifyDataSetChanged();
-            //TODO does not work atm
-            try{
-                LinearLayout view = (LinearLayout) mGui.getListView().getFocusedChild();
-                EditText editText = (EditText)view.getFocusedChild();
-                editText.setText("Hallo warum setzt du den Cursor falsch amk");
-                new EditTextEndSelector(mGui.getListView(), editText);
-            }
-            catch(Exception e){
-                Log.e("Error", e.getMessage());
-            }
-        }
+    private void addInputTagField() {
+        mTagList.add("");
+        mAdapter.notifyDataSetChanged();
     }
 }
