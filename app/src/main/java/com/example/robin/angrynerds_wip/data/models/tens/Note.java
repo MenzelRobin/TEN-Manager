@@ -95,6 +95,11 @@ public class Note extends TEN {
     public int getImageIDCounter() {
         return imageIDCounter;
     }
+    public String getNextImageID (){
+        this.imageIDCounter++;
+        String imageID = this.getID()+RepositoryConstants.IMAGE_CORE_ID+this.imageIDCounter;
+        return  imageID;
+    }
 
     public void setImageIDCounter(int imageIDCounter) {
         this.imageIDCounter = imageIDCounter;

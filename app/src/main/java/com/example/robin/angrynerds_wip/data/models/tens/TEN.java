@@ -13,9 +13,11 @@ public class TEN {
     private String title;
     @JsonIgnore
     private String ID;
-    @ColorInt @JsonIgnore
+    @ColorInt
+    @JsonIgnore
     private int color;
-    @ColorInt @JsonIgnore
+    @ColorInt
+    @JsonIgnore
     private int accentColor;
     @JsonIgnore
     private Date dateOfCreation;
@@ -23,11 +25,11 @@ public class TEN {
     //Constructor
 
     //empty default
-    public TEN(){
+    public TEN() {
         int colorIndex = Colors.getRandomColorIndex();
         this.color = Colors.COLORS[colorIndex];
         this.accentColor = Colors.DARKER_ACCENT_COLORS[colorIndex];
-
+        this.ID = "";
         this.dateOfCreation = new Date();
     }
 
@@ -36,8 +38,8 @@ public class TEN {
         int colorIndex = Colors.getRandomColorIndex();
         this.color = Colors.COLORS[colorIndex];
         this.accentColor = Colors.DARKER_ACCENT_COLORS[colorIndex];
-
-        this.title=title;
+        this.ID = "";
+        this.title = title;
         this.dateOfCreation = new Date();
     }
 
@@ -50,7 +52,7 @@ public class TEN {
         this.dateOfCreation = dateOfCreation;
     }
 
-    public Bundle getBundle(){
+    public Bundle getBundle() {
         Bundle bundle = new Bundle();
         bundle.putString("ID", ID);
         bundle.putString("Title", title);
@@ -64,22 +66,41 @@ public class TEN {
     public String getTitle() {
         return title;
     }
+
     public void setTitle(String title) {
         this.title = title;
     }
+
     public String getID() {
         return ID;
     }
-    public void setID(String ID){ this.ID = ID; }
+
+    public void setID(String ID) {
+        this.ID = ID;
+    }
+
     public int getColor() {
         return color;
     }
-    public int getAccentColor() { return accentColor; }
+
+    public int getAccentColor() {
+        return accentColor;
+    }
+
     public void setColor(int color) {
         this.color = color;
     }
-    public void setAccentColor(int accentColor) { this.accentColor = accentColor; }
-    public void setDateOfCreation(Date dateOfCreation) { this.dateOfCreation = dateOfCreation; }
-    public Date getDateOfCreation() {return dateOfCreation;}
+
+    public void setAccentColor(int accentColor) {
+        this.accentColor = accentColor;
+    }
+
+    public void setDateOfCreation(Date dateOfCreation) {
+        this.dateOfCreation = dateOfCreation;
+    }
+
+    public Date getDateOfCreation() {
+        return dateOfCreation;
+    }
 
 }

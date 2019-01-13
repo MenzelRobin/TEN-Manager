@@ -10,15 +10,16 @@ import android.widget.Toast;
 import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.data.models.tens.Note;
 import com.example.robin.angrynerds_wip.data.models.utils.Image;
-import com.example.robin.angrynerds_wip.data.repository.RepositoryConstants;
 import com.example.robin.angrynerds_wip.data.services.ImageService;
 import com.example.robin.angrynerds_wip.data.services.Read;
+import com.example.robin.angrynerds_wip.data.services.Update;
 
 import java.util.ArrayList;
+import java.util.List;
 
 class NoteData {
     private NoteActivity mActivity;
-
+    private ArrayList<Image> mImagesToBeDeleted;
     private Note mNote;
     private ArrayList<IContainer> mNoteImageContainers;
 
@@ -29,7 +30,7 @@ class NoteData {
         mActivity = activity;
         mNoteImageContainers = new ArrayList<>();
         mNote = new Note();
-
+        mImagesToBeDeleted = new ArrayList<>();
         addImageButton();
     }
 
@@ -123,17 +124,41 @@ class NoteData {
     }
     //Adds image as ImageContainer to mNoteImageContainers
 
-    void saveImage(Bitmap image) {
+    void addImageFromCamera(Bitmap image, String formerPath) {
+        mNote.addImage(image);
+        ImageContainer imageContainer = new ImageContainer(mActivity, mNoteImageContainers.size(), image);
+        mNoteImageContainers.add(mNoteImageContainers.size() - 1, imageContainer);
+        Log.i("NoDelete", formerPath);
+        ImageService.deleteImage(formerPath);
+    }
+
+    void addImageFromGallery(Bitmap image) {
+        mNote.addImage(image);
         ImageContainer imageContainer = new ImageContainer(mActivity, mNoteImageContainers.size(), image);
         mNoteImageContainers.add(mNoteImageContainers.size() - 1, imageContainer);
     }
     //Deletes specific ImageContainer from mNoteImageContainers
 
     void deleteImage(int id) {
-        String imageID = mNote.getPictures().get(id-1).getId();
+        Image image = new Image(mNote.getPictures().get(id - 1));
         mNote.getPictures().remove(id - 1);
+        mNoteImageContainers.remove(id - 1);
+        mImagesToBeDeleted.add(image);
         imagesToImageContainer();
-        ImageService.deleteImage(imageID);
+    }
+
+    void finallyDeleteImages() {
+        for (Image image : mImagesToBeDeleted) {
+            ArrayList<Image> noteImages = mNote.getPictures();
+
+            for (int i = 0; i < noteImages.size(); i++){
+                if(noteImages.get(i).getId().equals(image.getId())){
+                    noteImages.remove(i);
+                }
+            }
+
+            ImageService.deleteImage(image);
+        }
     }
 
     public void loadImages(NoteLoader noteLoader) {
@@ -155,8 +180,8 @@ class NoteData {
     public void saveNoteToDatabase() {
         NoteSaver noteSaver = new NoteSaver();
         noteSaver.saveNote(mNote);
+
+        //Update.saveTEN(mNote);
         Toast.makeText(getActivity().getApplicationContext(), "Konnte nicht gespeichert werden!", Toast.LENGTH_LONG);
     }
-
-
 }

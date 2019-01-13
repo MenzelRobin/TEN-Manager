@@ -16,7 +16,7 @@ import java.io.IOException;
 
 public class FileManager {
 
-    Context context;
+    private Context context;
 
     public FileManager() {
         context = DatabaseManager.context;
@@ -48,11 +48,28 @@ public class FileManager {
         return result;
     }
 
-    public void deleteImageFromDirectory(String imageID) {
-        String directoryPath = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES).getAbsolutePath();
-        String filePath = directoryPath + "/" + imageID + ".jpg";
-        File file = new File(filePath);
+    public void deleteImageFromDirectory(String path) {
+        File file = new File(path);
         Log.i("NoteRemake", "Gelöschtes Bild existiert: " + file.exists());
         file.delete();
+    }
+
+    public void deleteImageFromDirectory(Image image) {
+        ImageDeleter imageDeleter = new ImageDeleter(this);
+        imageDeleter.execute(image);
+    }
+
+    public void renameImage(String currentPhotoPath, String futureID) {
+        String directoryPath = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES).getAbsolutePath();
+        String futurePath = directoryPath + "/" + futureID + ".jpg";
+
+        File oldName = new File(currentPhotoPath);
+        File newFile = new File(futurePath);
+        oldName.renameTo(newFile);
+
+    }
+
+    public Context getContext() {
+        return context;
     }
 }

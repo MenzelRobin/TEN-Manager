@@ -25,6 +25,10 @@ public class Image {
         this.bitmap = bitmap;
     }
 
+    public Image (Image image){
+        this.id = "" + image.getId();
+    }
+
     //Getter and Setter
     public String getId() {
         return id;
