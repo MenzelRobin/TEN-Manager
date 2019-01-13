@@ -1,8 +1,8 @@
 package com.example.robin.angrynerds_wip.data.models.tens;
 
-import android.graphics.Bitmap;
 import android.os.Bundle;
 
+import com.example.robin.angrynerds_wip.data.models.utils.Image;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -15,26 +15,26 @@ public class Note extends TEN {
     private String description;
     private ArrayList<String> tags;
     @JsonIgnore
-    private ArrayList<Bitmap> pictures;
+    private ArrayList<Image> pictures;
 
     //Constructors
     public Note() {
         super();
         this.tags = new ArrayList<String>();
-        this.pictures = new ArrayList<Bitmap>();
+        this.pictures = new ArrayList<Image>();
     }
 
     public Note(String title) {
         super(title);
         this.tags = new ArrayList<String>();
-        this.pictures = new ArrayList<Bitmap>();
+        this.pictures = new ArrayList<Image>();
     }
 
     //simple for usage
     public Note(String title, String description) {
         super(title);
         this.description = description;        tags = new ArrayList<String>();
-        this.pictures = new ArrayList<Bitmap>();
+        this.pictures = new ArrayList<Image>();
 
     }
 
@@ -43,11 +43,11 @@ public class Note extends TEN {
         super(title);
         this.description = description;
         this.tags = tags;
-        this.pictures = new ArrayList<Bitmap>();
+        this.pictures = new ArrayList<Image>();
     }
 
     //all Attributes for complete Reconstruction
-    public Note(String title, String ID, int color, int accentColor, Date dateOfCreation, String description, ArrayList<String> tags, ArrayList<Bitmap> pictures) {
+    public Note(String title, String ID, int color, int accentColor, Date dateOfCreation, String description, ArrayList<String> tags, ArrayList<Image> pictures) {
         super(title, ID, color, accentColor, dateOfCreation);
         this.description = description;
         this.tags = tags;
@@ -76,11 +76,11 @@ public class Note extends TEN {
         this.tags.add(tag);
     }
 
-    public ArrayList<Bitmap> getPictures() {
+    public ArrayList<Image> getPictures() {
         return pictures;
     }
 
-    public void setPictures(ArrayList<Bitmap> pictures) {
+    public void setPictures(ArrayList<Image> pictures) {
         this.pictures = pictures;
     }
 
