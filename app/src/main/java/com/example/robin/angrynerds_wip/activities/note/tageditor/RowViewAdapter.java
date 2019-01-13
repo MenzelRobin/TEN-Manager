@@ -35,10 +35,12 @@ public class RowViewAdapter extends ArrayAdapter<String>{
         EditText textView = rowView.findViewById(R.id.id_note_tagOverview_listItemText);
         ImageButton deleteButton = rowView.findViewById(R.id.id_note_tagOverview_deleteButton);
         textView.setText(values.get(position));
-        if(values.get(position).equals("")){
+        if(position == values.size()-1){
             deleteButton.setVisibility(View.INVISIBLE);
+            textView.setOnTouchListener(applicationLogic.getTouchListener());
         }
         textView.setId(position);
+        //textView.setOnTouchListener(applicationLogic.getTouchListener());
         textView.addTextChangedListener(new TextWatcher(applicationLogic, textView));
         deleteButton.setId(position);
         deleteButton.setOnClickListener(applicationLogic.getClickListener());

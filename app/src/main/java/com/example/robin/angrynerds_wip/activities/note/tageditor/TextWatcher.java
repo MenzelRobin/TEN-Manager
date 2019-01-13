@@ -2,6 +2,7 @@ package com.example.robin.angrynerds_wip.activities.note.tageditor;
 
 import android.text.Editable;
 import android.view.View;
+import android.widget.EditText;
 
 class TextWatcher implements android.text.TextWatcher {
     private ApplicationLogic mApplicationLogic;
@@ -19,6 +20,12 @@ class TextWatcher implements android.text.TextWatcher {
 
     @Override
     public void afterTextChanged(Editable s){
+        String result = s.toString().replaceAll(" ", "");
+        if (!s.toString().equals(result)) {
+            ((EditText)mView).setText(result);
+            ((EditText)mView).setSelection(result.length());
+            // alert the user
+        }
     }
 
     @Override
