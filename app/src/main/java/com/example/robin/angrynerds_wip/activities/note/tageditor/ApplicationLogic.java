@@ -83,10 +83,19 @@ class ApplicationLogic {
     //Insert user input into TagList
     void onTextChanged(String s, View mView) {
         mTagList.set(mView.getId(),s);
+        if(mView.getId() == mTagList.size()-1){
+            addInputTagField();
+        }
     }
 
     private void addInputTagField() {
         mTagList.add("");
         mAdapter.notifyDataSetChanged();
+        mGui.getListView().post(new Runnable() {
+            @Override
+            public void run() {
+                mGui.getListView().setSelection(mAdapter.getCount() - 1);
+            }
+        });
     }
 }
