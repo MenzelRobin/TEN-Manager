@@ -11,6 +11,7 @@ import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.data.models.tens.Note;
 import com.example.robin.angrynerds_wip.data.models.utils.Image;
 import com.example.robin.angrynerds_wip.data.repository.RepositoryConstants;
+import com.example.robin.angrynerds_wip.data.services.ImageService;
 import com.example.robin.angrynerds_wip.data.services.Read;
 
 import java.util.ArrayList;
@@ -129,8 +130,10 @@ class NoteData {
     //Deletes specific ImageContainer from mNoteImageContainers
 
     void deleteImage(int id) {
+        String imageID = mNote.getPictures().get(id-1).getId();
         mNote.getPictures().remove(id - 1);
         imagesToImageContainer();
+        ImageService.deleteImage(imageID);
     }
 
     public void loadImages(NoteLoader noteLoader) {
@@ -153,6 +156,7 @@ class NoteData {
         NoteSaver noteSaver = new NoteSaver();
         noteSaver.saveNote(mNote);
         Toast.makeText(getActivity().getApplicationContext(), "Konnte nicht gespeichert werden!", Toast.LENGTH_LONG);
-
     }
+
+
 }
