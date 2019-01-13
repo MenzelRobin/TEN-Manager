@@ -111,7 +111,7 @@ class NoteData {
 
     Bitmap getImage(int id) {
         //TODO get original sized image from database
-        return mNoteImageContainers.get(id - 1).getImage();
+        return mNote.getPictures().get(id - 1).getBitmap();
     }
     //Checks ImageContainer for specific ID
 

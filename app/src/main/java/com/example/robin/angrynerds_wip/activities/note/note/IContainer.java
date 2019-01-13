@@ -7,8 +7,8 @@ class IContainer {
     protected NoteActivity mActivity;
     protected LinearLayout mImageContainer;
 
-    protected final int width = 800;
-    protected final int height = 800;
+    protected final int WIDTH = 800;
+    protected final int HEIGHT = 800;
 
     IContainer(NoteActivity activity, int id){
         this.mActivity = activity;
