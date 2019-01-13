@@ -13,18 +13,15 @@ public class NoteLoader {
     private ApplicationLogic mApplicationLogic;
     private NoteData mNoteData;
     private NoteLoader mNoteLoader;
-    private ImageService imageService;
 
     public NoteLoader() {
         mNoteLoader = this;
-        imageService = new ImageService();
     }
 
     public NoteLoader(ApplicationLogic applicationLogic, NoteData noteData) {
         mApplicationLogic = applicationLogic;
         mNoteData = noteData;
         mNoteLoader = this;
-        imageService = new ImageService();
     }
 
     public void loadNote(String noteId) {
@@ -68,7 +65,7 @@ public class NoteLoader {
 
         @Override
         protected Image doInBackground(Image... images) {
-            Image image = imageService.getImage(images[0]);
+            Image image = ImageService.getImage(images[0]);
             return image;
         }
 
