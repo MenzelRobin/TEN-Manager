@@ -15,24 +15,24 @@ public class NoteLoader {
     private NoteLoader mNoteLoader;
     private ImageService imageService;
 
-    public NoteLoader(){
+    public NoteLoader() {
         mNoteLoader = this;
         imageService = new ImageService();
     }
 
-    public NoteLoader(ApplicationLogic applicationLogic, NoteData noteData){
+    public NoteLoader(ApplicationLogic applicationLogic, NoteData noteData) {
         mApplicationLogic = applicationLogic;
         mNoteData = noteData;
         mNoteLoader = this;
         imageService = new ImageService();
     }
 
-    public void loadNote(String noteId){
+    public void loadNote(String noteId) {
         LoadNoteTask loadNoteTask = new LoadNoteTask();
         loadNoteTask.execute(noteId);
     }
 
-    public void loadImage(Image image){
+    public void loadImage(Image image) {
         Log.i("NoteRemake", "Image should be loaded: " + image.getId());
         LoadImageTask loadImageTask = new LoadImageTask();
         loadImageTask.execute(image);
@@ -79,9 +79,14 @@ public class NoteLoader {
         @Override
         protected void onPostExecute(Image image) {
 
-            mNoteData.getNote().addImage(image);
-            mApplicationLogic.addSingleImage(image);
-            mApplicationLogic.initListener();
+            if (image.getBitmap() == null) {
+                mNoteData.getNote().imageNotFound(image);
+            } else {
+                mNoteData.getNote().addImage(image);
+                mApplicationLogic.addSingleImage(image);
+                mApplicationLogic.initListener();
+            }
+
             // Log.i("Testdata", "Bild hinzugefügt!");
 
             // Hintergrundberechnungen sind jetzt beendet, darüber informieren wir den Benutzer

@@ -10,16 +10,15 @@ public class Delete {
      Class Delete contains methods to delete the given TEN object.
     */
 
-    public static void deleteTEN(TEN ten) {
+    public static void deleteTEN(String tenID) {
         Repository repository = new Repository();
-        repository.deleteTEN(ten.getID());
+        repository.deleteTEN(tenID);
     }
 
-    public static void deleteMultipleTENs(ArrayList<String> ListIDs) {
+    public static void deleteMultipleTENs(ArrayList<String> tenIDs) {
         Repository repository = new Repository();
-        for (String id : ListIDs
-                ) {
-            repository.deleteTEN(id);
+        for (String tenID : tenIDs) {
+            repository.deleteTEN(tenID);
         }
     }
 }

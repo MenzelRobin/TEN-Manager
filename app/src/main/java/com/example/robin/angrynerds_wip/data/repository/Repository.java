@@ -17,6 +17,8 @@ import com.example.robin.angrynerds_wip.data.repository.converter.TENConverter;
 import com.example.robin.angrynerds_wip.data.repository.database.DatabaseManager;
 import com.example.robin.angrynerds_wip.data.repository.database.DocumentSaver;
 import com.example.robin.angrynerds_wip.data.repository.database.Queries;
+import com.example.robin.angrynerds_wip.data.repository.filesystem.FileManager;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,12 +27,13 @@ public class Repository {
     TENConverter tenConverter;
     DocumentSaver documentSaver;
     Queries queries;
-    ImageConverter imageConverter;
+    FileManager fileManager;
 
     public Repository() {
         this.tenConverter = new TENConverter();
         this.documentSaver = new DocumentSaver();
         this.queries = new Queries();
+        this.fileManager = new FileManager();
     }
 
     //TODO Jan: jeweiliges Objekt mit übergebener ID zurückgeben (wenn kein Objekt mit ID dann return null)
@@ -80,12 +83,25 @@ public class Repository {
         return null;
     }
 
-    public boolean deleteTEN(String id) {
+    public boolean deleteTEN(String tenID) {
+
+        Document document = DatabaseManager.getDatabase().getDocument(tenID);
+        deleteNoteImages(document);
         try {
-            DatabaseManager.getDatabase().delete(DatabaseManager.getDatabase().getDocument(id));
+            DatabaseManager.getDatabase().delete(document);
             return true;
         } catch (CouchbaseLiteException e) {
             return false;
+        }
+    }
+
+    private void deleteNoteImages(Document document) {
+        if (document.getString(RepositoryConstants.TYPE_KEY).equals(RepositoryConstants.NOTE_TYPE)) {
+            String json = document.getString(RepositoryConstants.OBJECT_KEY);
+            Note note = tenConverter.stringToNote(json);
+            for(Image image: note.getPictures()){
+                fileManager.deleteImageFromDirectory(image.getId());
+            }
         }
     }
 
@@ -108,7 +124,7 @@ public class Repository {
 
     public int[] getTENColors(String tenID) {
         Document document = DatabaseManager.getDatabase().getDocument(tenID);
-        int[] colors = new int [2];
+        int[] colors = new int[2];
         colors[0] = document.getInt(RepositoryConstants.COLOR_KEY);
         colors[1] = document.getInt(RepositoryConstants.ACCENT_COLOR_KEY);
         return colors;

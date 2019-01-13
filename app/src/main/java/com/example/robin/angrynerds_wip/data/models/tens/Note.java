@@ -74,8 +74,14 @@ public class Note extends TEN {
         this.pictures.add(image);
     }
 
-    public void addImage(Image image) {
-        this.pictures.add(image);
+    public void addImage(Image pImage) {
+        Log.i("NoteRemake", "Pictures Size: " + pictures.size());
+        for(int i = 0; i< pictures.size(); i++){
+            if(pImage.getId().equals(pictures.get(i).getId())){
+                pictures.set(i, pImage);
+            }
+        }
+
     }
 
     public ArrayList<Image> getPictures() {
@@ -101,5 +107,12 @@ public class Note extends TEN {
         ArrayList<String> imageIDs = new ArrayList<String>();
         bundle.putStringArrayList("Pictures", imageIDs);
         return bundle;
+    }
+    public void imageNotFound(Image image){
+        for(int i = 0; i < this.getPictures().size(); i++){
+            if(image.getId().equals(this.getPictures().get(i).getId())){
+                this.getPictures().remove(i);
+            }
+        }
     }
 }
