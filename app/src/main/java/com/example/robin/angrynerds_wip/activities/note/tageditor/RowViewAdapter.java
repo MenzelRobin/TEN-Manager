@@ -1,6 +1,7 @@
 package com.example.robin.angrynerds_wip.activities.note.tageditor;
 
 import android.content.Context;
+import android.text.InputType;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
