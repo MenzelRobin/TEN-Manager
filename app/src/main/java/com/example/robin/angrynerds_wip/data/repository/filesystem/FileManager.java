@@ -6,7 +6,9 @@ import android.graphics.BitmapFactory;
 import android.os.Environment;
 import android.util.Log;
 
+import com.example.robin.angrynerds_wip.activities.note.note.data.PreviewImageCreator;
 import com.example.robin.angrynerds_wip.data.models.utils.Image;
+import com.example.robin.angrynerds_wip.data.repository.Repository;
 import com.example.robin.angrynerds_wip.data.repository.RepositoryConstants;
 import com.example.robin.angrynerds_wip.data.repository.database.DatabaseManager;
 
@@ -22,26 +24,39 @@ public class FileManager {
         context = DatabaseManager.context;
     }
 
-    public void saveImageToDirectory(Image pImage) throws IOException {
-        File storageDir = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-        FileOutputStream fos = null;
+    public void saveImageToDirectory(Image pImage ) throws IOException {
+        PreviewImageCreator previewImageCreator = new PreviewImageCreator();
+        String[] folders = {RepositoryConstants.IMAGE_ORIGINAL_FOLDER, RepositoryConstants.IMAGE_PREVIEW_FOLDER};
+        for (String folder : folders) {
 
-        Bitmap bitmap = pImage.getBitmap();
-        File image = new File(storageDir, pImage.getId() + ".jpg");
+            String folderPath = Environment.DIRECTORY_PICTURES + "/" + folder;
+            String imageName = pImage.getId() + ".jpg";
 
-        if (!image.exists()) {
-            Log.i("NoteRemake", "Image " + pImage.getId() + " was saved!");
-            fos = new FileOutputStream(image);
+            File storageDir = context.getExternalFilesDir(folderPath);
+            FileOutputStream fos = null;
+            Bitmap bitmap = pImage.getBitmap();
+            File image = new File(storageDir, imageName);
 
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 75, fos);
-            fos.flush();
-            fos.close();
+            if (folder.equals(RepositoryConstants.IMAGE_PREVIEW_FOLDER)) {
+                bitmap = previewImageCreator.getPreviewImage(bitmap);
+            }
+
+
+            if (!image.exists()) {
+                Log.i("NoteRemake", "Image " + pImage.getId() + " was saved!");
+                fos = new FileOutputStream(image);
+
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 75, fos);
+                fos.flush();
+                fos.close();
+            }
         }
+
     }
 
-    public Image readImageFromDirectory(Image image) {
-        String directoryPath = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES).getAbsolutePath();
-        String filePath = directoryPath + "/" + image.getId() + ".jpg";
+    public Image readImageFromDirectory(Image image, String directory) {
+        String directoryPath = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES).getAbsolutePath() + "/" + directory + "/";
+        String filePath = directoryPath + image.getId() + ".jpg";
         Bitmap bitmap = BitmapFactory.decodeFile(filePath);
         Log.i("NoteRemake", "" + new File(filePath).exists());
         Image result = new Image(image.getId(), bitmap);
@@ -57,16 +72,6 @@ public class FileManager {
     public void deleteImageFromDirectory(Image image) {
         ImageDeleter imageDeleter = new ImageDeleter(this);
         imageDeleter.execute(image);
-    }
-
-    public void renameImage(String currentPhotoPath, String futureID) {
-        String directoryPath = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES).getAbsolutePath();
-        String futurePath = directoryPath + "/" + futureID + ".jpg";
-
-        File oldName = new File(currentPhotoPath);
-        File newFile = new File(futurePath);
-        oldName.renameTo(newFile);
-
     }
 
     public Context getContext() {

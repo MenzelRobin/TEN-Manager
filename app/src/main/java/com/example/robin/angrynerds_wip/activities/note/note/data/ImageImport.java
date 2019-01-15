@@ -1,4 +1,4 @@
-package com.example.robin.angrynerds_wip.activities.note.note;
+package com.example.robin.angrynerds_wip.activities.note.note.data;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -10,6 +10,8 @@ import android.support.v7.app.AlertDialog;
 import android.util.Log;
 
 import com.example.robin.angrynerds_wip.R;
+import com.example.robin.angrynerds_wip.activities.note.note.NoteActivity;
+import com.example.robin.angrynerds_wip.activities.note.note.logic.event_handler.DialogClickListener;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,18 +19,18 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-class ImageImport {
+public class ImageImport {
 
     private NoteActivity mActivity;
     private String mCurrentPhotoPath;
 
-    ImageImport(NoteActivity activity) {
+    public ImageImport(NoteActivity activity) {
         this.mActivity = activity;
         requestImageSource();
     }
 
     //Returns Path of Image
-    String getCurrentPhotoPath() {
+    public String getCurrentPhotoPath() {
         return mCurrentPhotoPath;
     }
 
@@ -53,7 +55,7 @@ class ImageImport {
     }
 
     //Starts Camera activity
-    void importImageFromCamera() {
+    public void importImageFromCamera() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (takePictureIntent.resolveActivity(mActivity.getPackageManager()) != null) {
             File photoFile = null;
@@ -73,7 +75,7 @@ class ImageImport {
     }
 
     //Starts Gallery activity to pick an image
-    void importImageFromGallery(){
+    public void importImageFromGallery(){
         Intent pickPhoto = new Intent(Intent.ACTION_PICK,
                 android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         mActivity.startActivityForResult(pickPhoto , 1);

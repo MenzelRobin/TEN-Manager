@@ -1,14 +1,15 @@
-package com.example.robin.angrynerds_wip.activities.note.note;
+package com.example.robin.angrynerds_wip.activities.note.note.data;
 
 import android.widget.LinearLayout;
 
-class IContainer {
+import com.example.robin.angrynerds_wip.activities.note.note.NoteActivity;
+
+public class IContainer {
 
     protected NoteActivity mActivity;
     protected LinearLayout mImageContainer;
 
-    protected final int WIDTH = 800;
-    protected final int HEIGHT = 800;
+
 
     IContainer(NoteActivity activity, int id){
         this.mActivity = activity;
@@ -16,10 +17,11 @@ class IContainer {
         setImageContainerId(id);
     }
 
-    void setImageContainerId(int id){
+    public void setImageContainerId(int id){
         mImageContainer.setId(id);
     }
-    LinearLayout getImageContainer(){
+
+    public LinearLayout getImageContainer(){
         return mImageContainer;
     }
 }

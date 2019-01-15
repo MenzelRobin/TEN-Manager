@@ -8,12 +8,12 @@ import android.widget.Toast;
 
 import com.example.robin.angrynerds_wip.R;
 
-class Gui {
+class NoteGui {
 
     private RelativeLayout mBackground;
     private ListView mListView;
 
-    Gui(NoteTagActivity activity) {
+    NoteGui(NoteTagActivity activity) {
         activity.setContentView(R.layout.activity_note_tagoverview);
 
         mBackground = activity.findViewById(R.id.id_note_tagOverview_background);

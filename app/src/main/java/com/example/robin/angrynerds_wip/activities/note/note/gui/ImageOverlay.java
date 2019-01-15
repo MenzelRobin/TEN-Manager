@@ -1,4 +1,4 @@
-package com.example.robin.angrynerds_wip.activities.note.note;
+package com.example.robin.angrynerds_wip.activities.note.note.gui;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
@@ -10,7 +10,7 @@ import android.widget.ImageView;
 
 import com.example.robin.angrynerds_wip.R;
 
-class ImageOverlay {
+public class ImageOverlay {
 
     private Bitmap mImage;
     private AlertDialog dialog;
@@ -20,14 +20,14 @@ class ImageOverlay {
     private int frameHeight;
     private double edgeFactor = 0.95;
 
-    ImageOverlay(Bitmap image, int displayWidth, int displayHeight) {
+    public ImageOverlay(Bitmap image, int displayWidth, int displayHeight) {
         mImage = image;
         this.displayWidth = displayWidth;
         this.displayHeight = displayHeight;
     }
 
     //Displays the image in an AlertDialog
-    void display(Activity activity) {
+    public void display(Activity activity) {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity, R.style.CustomDialog);
         dialog = builder.create();
         LayoutInflater inflater = activity.getLayoutInflater();
@@ -63,12 +63,12 @@ class ImageOverlay {
                 frameHeight = displayHeight;
             }
         }
-        //Checks if image exceeds display in WIDTH
+        //Checks if image exceeds display in IMAGE_PREVIEW_CONTAINER_WIDTH
         else if (imageAspectRatio > displayAspectRatio) {
             frameWidth = displayWidth;
             frameHeight = (int) ((double) frameWidth / imageAspectRatio);
         }
-        //Checks if image exceeds display in HEIGHT
+        //Checks if image exceeds display in IMAGE_PREVIEW_CONTAINER_HEIGHT
         else {
             frameHeight = displayHeight;
             frameWidth = (int) ((double) frameHeight * imageAspectRatio);
@@ -77,12 +77,12 @@ class ImageOverlay {
     }
 
     //returns whether AlertDialog is displayed or not
-    boolean  isDisplayed() {
+    public boolean  isDisplayed() {
         return dialog.isShowing();
     }
 
     //Rescales AlertDialog on Orientation change
-    void changeOrientation(Activity activity) {
+    public void changeOrientation(Activity activity) {
         dialog.dismiss();
         int saveValue = displayWidth;
         displayWidth = displayHeight;

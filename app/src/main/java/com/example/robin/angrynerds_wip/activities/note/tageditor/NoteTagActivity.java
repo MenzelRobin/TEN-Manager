@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class NoteTagActivity extends AppCompatActivity {
 
-    private Gui mGui;
+    private NoteGui mGui;
     private ApplicationLogic mApplicationLogic;
 
     @Override
@@ -37,7 +37,7 @@ public class NoteTagActivity extends AppCompatActivity {
 
 
     private void initGUI () {
-        mGui = new Gui(this);
+        mGui = new NoteGui(this);
     }
 
     private void initApplicationLogic (ArrayList<String> tagList, int color) {

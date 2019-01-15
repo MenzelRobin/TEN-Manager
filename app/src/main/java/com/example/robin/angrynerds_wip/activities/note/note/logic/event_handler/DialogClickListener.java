@@ -1,12 +1,14 @@
-package com.example.robin.angrynerds_wip.activities.note.note;
+package com.example.robin.angrynerds_wip.activities.note.note.logic.event_handler;
 
 import android.content.DialogInterface;
 
-class DialogClickListener implements DialogInterface.OnClickListener{
+import com.example.robin.angrynerds_wip.activities.note.note.data.ImageImport;
+
+public class DialogClickListener implements DialogInterface.OnClickListener{
 
     private ImageImport imageImport;
 
-    DialogClickListener(ImageImport imageImport) {
+    public DialogClickListener(ImageImport imageImport) {
         this.imageImport = imageImport;
     }
 
