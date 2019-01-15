@@ -15,13 +15,13 @@ class ApplicationLogic {
 
     private ArrayList<String> mTagList;
     private int mColor;
-    private Gui mGui;
+    private NoteGui mGui;
     private RowViewAdapter mAdapter;
     private ClickListener mClickListener;
     private TouchListener mTouchListener;
     private Activity mActivity;
 
-    ApplicationLogic(ArrayList<String> tagList, Gui gui, Activity activity, int color) {
+    ApplicationLogic(ArrayList<String> tagList, NoteGui gui, Activity activity, int color) {
         mTagList = tagList;
         mTagList.add("");
         mGui = gui;

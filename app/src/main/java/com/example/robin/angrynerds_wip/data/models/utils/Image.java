@@ -27,6 +27,7 @@ public class Image {
 
     public Image (Image image){
         this.id = "" + image.getId();
+        this.bitmap = null;
     }
 
     //Getter and Setter

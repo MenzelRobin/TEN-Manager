@@ -1,4 +1,4 @@
-package com.example.robin.angrynerds_wip.activities.note.note;
+package com.example.robin.angrynerds_wip.activities.note.note.gui;
 
 import android.app.Activity;
 import android.content.res.Configuration;
@@ -6,8 +6,6 @@ import android.support.v7.widget.Toolbar;
 import android.text.method.ScrollingMovementMethod;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
-import android.view.animation.ScaleAnimation;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
@@ -17,10 +15,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.robin.angrynerds_wip.R;
+import com.example.robin.angrynerds_wip.activities.note.note.data.IContainer;
+import com.example.robin.angrynerds_wip.activities.note.note.data.ImageContainer;
+import com.example.robin.angrynerds_wip.activities.note.note.NoteActivity;
 
 import java.util.ArrayList;
 
-class Gui {
+public class NoteGui {
 
     private RelativeLayout mBackground;
     private EditText mNoteTitle;
@@ -36,7 +37,7 @@ class Gui {
     //private View mViewSeparator2;
     //private View mViewSeparator3;
 
-    Gui(NoteActivity activity) {
+    public NoteGui(NoteActivity activity) {
 
         activity.setContentView(R.layout.activity_note);
 
@@ -74,32 +75,32 @@ class Gui {
     }
 
     //Getters
-    EditText getNoteTitle() {
+    public EditText getNoteTitle() {
         return mNoteTitle;
     }
-    LinearLayout getNoteImageContainer() {
+    public LinearLayout getNoteImageContainer() {
         return mNoteImageContainer;
     }
-    EditText getNoteDescription() {
+    public EditText getNoteDescription() {
         return mNoteDescription;
     }
-    TextView getNoteTags() {
+    public TextView getNoteTags() {
         return mNoteTags;
     }
-    Toolbar getToolbar() {return mToolbar;}
+    public Toolbar getToolbar() {return mToolbar;}
     //Setters
-    void setNoteTitle(String mNoteTitle) {
+    public void setNoteTitle(String mNoteTitle) {
         this.mNoteTitle.setText(mNoteTitle);
     }
-    void setNoteImageContainer(ArrayList<IContainer> imageContainers) {
+    public void setNoteImageContainer(ArrayList<IContainer> imageContainers) {
         //Adds ImageViews to NoteData
         for(IContainer mImage : imageContainers){
             mNoteImageContainer.addView(mImage.getImageContainer());
         }
     }
-    void setNoteDescription(String mNoteDescription) { this.mNoteDescription.setText(mNoteDescription); }
-    void setNoteTags(ArrayList<String> mNoteTags) { this.mNoteTags.setText(formatTags(mNoteTags)); }
-    void setColors(int color, int accentColor){
+    public void setNoteDescription(String mNoteDescription) { this.mNoteDescription.setText(mNoteDescription); }
+    public void setNoteTags(ArrayList<String> mNoteTags) { this.mNoteTags.setText(formatTags(mNoteTags)); }
+    public void setColors(int color, int accentColor){
         mBackground.setBackgroundColor(color);
         mToolbar.setBackgroundColor(accentColor);
 
@@ -126,13 +127,13 @@ class Gui {
     }
 
     //Displays a message on screen
-    void displayToast(Activity activity, String s) {
+    public void displayToast(Activity activity, String s) {
         Toast.makeText(activity, s, Toast.LENGTH_SHORT).show();
     }
 
     public void addSingleAnimatedImage(ImageContainer imageContainer) {
 
-         AlphaAnimation anim = new AlphaAnimation(0,  1);
+        AlphaAnimation anim = new AlphaAnimation(0,  1);
         anim.setDuration(500);
         anim.setRepeatMode(Animation.REVERSE);
         int position = mNoteImageContainer.getChildCount()-1;

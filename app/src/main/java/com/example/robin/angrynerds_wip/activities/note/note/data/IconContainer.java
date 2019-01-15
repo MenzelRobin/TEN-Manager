@@ -1,4 +1,4 @@
-package com.example.robin.angrynerds_wip.activities.note.note;
+package com.example.robin.angrynerds_wip.activities.note.note.data;
 
 import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
@@ -6,7 +6,9 @@ import android.view.Gravity;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-class IconContainer extends IContainer {
+import com.example.robin.angrynerds_wip.activities.note.note.NoteActivity;
+
+public class IconContainer extends IContainer {
 
     private Drawable drawable;
 
@@ -20,11 +22,11 @@ class IconContainer extends IContainer {
     private void initiateView(){
         if(mActivity.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
             //Portrait Mode
-            mImageContainer.setLayoutParams(new LinearLayout.LayoutParams(WIDTH /2, HEIGHT));
+            mImageContainer.setLayoutParams(new LinearLayout.LayoutParams(NoteConstants.IMAGE_PREVIEW_CONTAINER_WIDTH /2, NoteConstants.IMAGE_PREVIEW_CONTAINER_HEIGHT));
         }
         else{
             //Landscape Mode
-            mImageContainer.setLayoutParams(new LinearLayout.LayoutParams(WIDTH, HEIGHT /2));
+            mImageContainer.setLayoutParams(new LinearLayout.LayoutParams(NoteConstants.IMAGE_PREVIEW_CONTAINER_WIDTH, NoteConstants.IMAGE_PREVIEW_CONTAINER_HEIGHT /2));
         }
         mImageContainer.setGravity(Gravity.CENTER);
 

@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -12,12 +11,16 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.robin.angrynerds_wip.R;
+import com.example.robin.angrynerds_wip.activities.note.note.data.NoteData;
+import com.example.robin.angrynerds_wip.activities.note.note.gui.NoteGui;
+import com.example.robin.angrynerds_wip.activities.note.note.logic.NoteApplicationLogic;
+import com.example.robin.angrynerds_wip.activities.note.note.logic.event_handler.EventDispersion;
 
 public class NoteActivity extends AppCompatActivity {
 
     private NoteData mNoteData;
-    private Gui mGui;
-    private ApplicationLogic mApplicationLogic;
+    private NoteGui mNoteGui;
+    private NoteApplicationLogic mNoteApplicationLogic;
     private EventDispersion mEventDispersion;
 
     @Override
@@ -34,16 +37,16 @@ public class NoteActivity extends AppCompatActivity {
     }
 
     private void initGUI () {
-        mGui = new Gui(this);
+        mNoteGui = new NoteGui(this);
     }
 
     private void initApplicationLogic () {
         //TODO Leere Notiz bzw. übergebene Notiz einfügen
-        mApplicationLogic = new ApplicationLogic(mGui, mNoteData);
+        mNoteApplicationLogic = new NoteApplicationLogic(mNoteGui, mNoteData);
     }
 
     private void initEventDispersion() {
-        mEventDispersion = new EventDispersion(mApplicationLogic);
+        mEventDispersion = new EventDispersion(mNoteApplicationLogic);
     }
 
     @Override
@@ -61,7 +64,7 @@ public class NoteActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        mApplicationLogic.onActivityReturned(requestCode, resultCode, data);
+        mNoteApplicationLogic.onActivityReturned(requestCode, resultCode, data);
     }
 
     @Override
@@ -86,20 +89,20 @@ public class NoteActivity extends AppCompatActivity {
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        mGui.getNoteImageContainer().removeAllViews();
+        mNoteGui.getNoteImageContainer().removeAllViews();
         initGUI();
-        mApplicationLogic.onConfigurationChanged(mGui);
+        mNoteApplicationLogic.onConfigurationChanged(mNoteGui);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        //mApplicationLogic.onPause();
+        //mNoteApplicationLogic.onPause();
     }
 
     @Override
     public void onBackPressed() {
-        mApplicationLogic.onBackPressed();
+        mNoteApplicationLogic.onBackPressed();
         super.onBackPressed();
     }
 }
