@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.activities.note.note.NoteActivity;
+import com.example.robin.angrynerds_wip.activities.note.note.logic.NoteApplicationLogic;
 import com.example.robin.angrynerds_wip.data.models.tens.Note;
 import com.example.robin.angrynerds_wip.data.models.utils.Image;
 import com.example.robin.angrynerds_wip.data.services.ImageService;
@@ -18,6 +19,8 @@ import com.example.robin.angrynerds_wip.data.services.Update;
 import java.util.ArrayList;
 
 public class NoteData {
+
+    private NoteApplicationLogic mNoteApplicationLogic;
     private NoteActivity mActivity;
     private ArrayList<Image> mImagesToBeDeleted;
     private Note mNote;
@@ -51,6 +54,13 @@ public class NoteData {
         addImageButton();
     }
 
+    public void setmNoteApplicationLogic(NoteApplicationLogic mNoteApplicationLogic){
+        this.mNoteApplicationLogic = mNoteApplicationLogic;
+    }
+
+    public NoteApplicationLogic getmNoteApplicationLogic() {
+        return mNoteApplicationLogic;
+    }
     //Adds the addImageButton to mNoteContainers
 
     public void addImageButton() {
@@ -105,7 +115,7 @@ public class NoteData {
         int index = id-1;
         Bitmap bitmap = mNote.getPictures().get(index).getBitmap();
         if(bitmap == null){
-            OriginalImageLoader originalImageLoader = new OriginalImageLoader(this);
+            OriginalImageLoader originalImageLoader = new OriginalImageLoader(this, true);
             originalImageLoader.loadOriginalImage(index);
         }
 
@@ -163,7 +173,7 @@ public class NoteData {
         for (Image image : this.mNote.getPictures()) {
             noteLoader.loadPreviewImage(image);
         }
-        OriginalImageLoader originalImageLoader = new OriginalImageLoader(this);
+        OriginalImageLoader originalImageLoader = new OriginalImageLoader(this, false);
         originalImageLoader.loadOriginalImage();
     }
 

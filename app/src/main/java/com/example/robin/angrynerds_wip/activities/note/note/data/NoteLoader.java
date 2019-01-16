@@ -77,7 +77,7 @@ public class NoteLoader {
 
         @Override
         protected void onPostExecute(Image image) {
-
+            Log.i("NoteRemake", "Previewiamge loaded");
             if (image.getBitmap() == null) {
                 mNoteData.getNote().imageNotFound(image);
             } else {
