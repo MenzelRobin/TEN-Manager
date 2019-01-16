@@ -9,43 +9,43 @@ import com.example.robin.angrynerds_wip.data.services.ImageService;
 public class OriginalImageLoader {
 
     NoteData mNoteData;
-    int indexToBeLoaded;
+    int mIndexToBeLoaded;
+    boolean mIsPriority;
 
-    public OriginalImageLoader(NoteData noteData) {
+    public OriginalImageLoader(NoteData noteData, boolean isPriority) {
         this.mNoteData = noteData;
-        this.indexToBeLoaded = 0;
+        this.mIndexToBeLoaded = 0;
+        this.mIsPriority = isPriority;
     }
 
     public void loadOriginalImage() {
-
-        if (this.mNoteData.getNote().getPictures().size() > indexToBeLoaded) {
-            Image image = this.mNoteData.getNote().getPictures().get(indexToBeLoaded);
+        Log.i("NoteRemake", "NO PRIORITY OBject" + this);
+        if (this.mNoteData.getNote().getPictures().size() > mIndexToBeLoaded) {
+            Image image = this.mNoteData.getNote().getPictures().get(mIndexToBeLoaded);
             Log.i("NoteRemake", "Original Image should be loaded(1/2): " + image.getId());
             if (image.getBitmap() == null) {
                 Log.i("NoteRemake", "Original Image should be loaded(2/2): " + image.getId());
                 LoadOriginalImageTask loadOriginalImageTask = new LoadOriginalImageTask();
                 loadOriginalImageTask.execute(image);
             }
-            this.indexToBeLoaded++;
+            this.mIndexToBeLoaded++;
             loadOriginalImage();
 
         }
 
     }
 
-    public LoadOriginalImageTask loadOriginalImage(int index) {
-        if (this.mNoteData.getNote().getPictures().size() > indexToBeLoaded) {
-            Image image = this.mNoteData.getNote().getPictures().get(indexToBeLoaded);
+    public void loadOriginalImage(int index) {
+        Log.i("NoteRemake", "PRIORITY OBject" + this);
+        if (this.mNoteData.getNote().getPictures().size() > index) {
+            Image image = this.mNoteData.getNote().getPictures().get(index);
+            Log.i("NoteRemake", "Original Image should be loaded (PRIORITY) 1: " + image.getId());
             if (image.getBitmap() == null) {
-                Log.i("NoteRemake", "Original Image should be loaded: " + image.getId());
+                Log.i("NoteRemake", "Original Image should be loaded (PRIORITY) 2: " + image.getId());
                 LoadOriginalImageTask loadOriginalImageTask = new LoadOriginalImageTask();
                 loadOriginalImageTask.execute(image);
-                this.loadOriginalImage();
-                return loadOriginalImageTask;
             }
         }
-        this.loadOriginalImage();
-        return null;
     }
 
     private class LoadOriginalImageTask extends AsyncTask<Image, Integer, Image> {
@@ -53,7 +53,7 @@ public class OriginalImageLoader {
         @Override
         protected Image doInBackground(Image... images) {
             Image image = ImageService.getImage(images[0]);
-            Log.i("NoteRemake", "Originalfotobitmap: " + image.getBitmap());
+            //Log.i("NoteRemake", "Originalfotobitmap: " + image.getBitmap());
             return image;
         }
 
@@ -68,8 +68,13 @@ public class OriginalImageLoader {
                 mNoteData.getNote().imageNotFound(image);
             } else {
                 mNoteData.getNote().addImage(image);
+
+                if (mIsPriority) {
+                    mNoteData.getmNoteApplicationLogic().openImagePopup(image.getBitmap());
+                } else {
+                    loadOriginalImage();
+                }
             }
-            loadOriginalImage();
 
             // Log.i("Testdata", "Bild hinzugefügt!");
 

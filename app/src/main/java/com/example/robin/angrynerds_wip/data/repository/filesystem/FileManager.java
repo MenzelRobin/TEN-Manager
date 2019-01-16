@@ -24,7 +24,7 @@ public class FileManager {
         context = DatabaseManager.context;
     }
 
-    public void saveImageToDirectory(Image pImage ) throws IOException {
+    public void saveImageToDirectory(Image pImage) throws IOException {
         PreviewImageCreator previewImageCreator = new PreviewImageCreator();
         String[] folders = {RepositoryConstants.IMAGE_ORIGINAL_FOLDER, RepositoryConstants.IMAGE_PREVIEW_FOLDER};
         for (String folder : folders) {
@@ -37,18 +37,19 @@ public class FileManager {
             Bitmap bitmap = pImage.getBitmap();
             File image = new File(storageDir, imageName);
 
-            if (folder.equals(RepositoryConstants.IMAGE_PREVIEW_FOLDER)) {
-                bitmap = previewImageCreator.getPreviewImage(bitmap);
-            }
-
 
             if (!image.exists()) {
-                Log.i("NoteRemake", "Image " + pImage.getId() + " was saved!");
-                fos = new FileOutputStream(image);
+                if (bitmap != null) {
+                    if (folder.equals(RepositoryConstants.IMAGE_PREVIEW_FOLDER)) {
+                        bitmap = previewImageCreator.getPreviewImage(bitmap);
+                    }
+                    Log.i("NoteRemake", "Image " + pImage.getId() + " was saved!");
+                    fos = new FileOutputStream(image);
 
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 75, fos);
-                fos.flush();
-                fos.close();
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 75, fos);
+                    fos.flush();
+                    fos.close();
+                }
             }
         }
 
@@ -58,7 +59,7 @@ public class FileManager {
         String directoryPath = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES).getAbsolutePath() + "/" + directory + "/";
         String filePath = directoryPath + image.getId() + ".jpg";
         Bitmap bitmap = BitmapFactory.decodeFile(filePath);
-        Log.i("NoteRemake", "" + new File(filePath).exists());
+        //Log.i("NoteRemake", "" + new File(filePath).exists());
         Image result = new Image(image.getId(), bitmap);
         return result;
     }

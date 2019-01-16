@@ -47,6 +47,7 @@ public class NoteApplicationLogic {
     }
 
     private void initData(){
+        mNoteData.setmNoteApplicationLogic(this);
         String noteId = "c687128a-c441-4a50-ac14-a3bd01e2066b";
         mNoteData.setColors(noteId);
         NoteLoader noteLoader = new NoteLoader(this, mNoteData);
@@ -202,12 +203,9 @@ public class NoteApplicationLogic {
             mImageImport = new ImageImport(mNoteData.getActivity());
         }
         else{
-            View displayMetrics = mNoteData.getActivity().getWindow().findViewById(Window.ID_ANDROID_CONTENT);
-
             Bitmap bitmap = mNoteData.getImage(id);
             if(bitmap!=null){
-                mImageOverlay = new ImageOverlay(bitmap, displayMetrics.getWidth(), displayMetrics.getHeight());
-                mImageOverlay.display(mNoteData.getActivity());
+                openImagePopup(bitmap);
             } else{
                 Toast toast = Toast.makeText(this.mNoteData.getActivity().getBaseContext(), "Das Bild wird sofort geladen!", Toast.LENGTH_SHORT);
                 toast.show();
@@ -215,6 +213,12 @@ public class NoteApplicationLogic {
 
             //Interessant für Loading Spinner: https://stackoverflow.com/questions/18021148/display-a-loading-overlay-on-android-screen
         }
+    }
+
+    public void openImagePopup(Bitmap bitmap) {
+        View displayMetrics = mNoteData.getActivity().getWindow().findViewById(Window.ID_ANDROID_CONTENT);
+        mImageOverlay = new ImageOverlay(bitmap, displayMetrics.getWidth(), displayMetrics.getHeight());
+        mImageOverlay.display(mNoteData.getActivity());
     }
 
     //Starts TagEditor Activity
@@ -254,6 +258,8 @@ public class NoteApplicationLogic {
     public NoteData getNoteData() {
         return mNoteData;
     }
+
+
 
 
     //Async task that loads the Note
