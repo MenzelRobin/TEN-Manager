@@ -57,15 +57,15 @@
         android:id="@+id/id_note_ImageScrollView_Horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@id/id_note_tags"
         android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_above="@id/id_note_tags">
+        android:layout_marginEnd="10dp">
 
         <LinearLayout
             android:id="@+id/id_note_linearImageContainer_Horizontal"
             android:layout_width="wrap_content"
             android:layout_height="800px"
-            android:orientation="horizontal"/>
+            android:orientation="horizontal" />
 
     </HorizontalScrollView>
 
@@ -92,4 +92,20 @@
         android:textColor="@color/TextWhite"
         android:textColorHint="@color/note_hintWhite" />
 
+    <FrameLayout
+        android:id="@+id/noteProgressBarHolder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.8"
+        android:animateLayoutChanges="true"
+        android:background="#000000"
+        android:visibility="gone">
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminate="true" />
+    </FrameLayout>
 </RelativeLayout>

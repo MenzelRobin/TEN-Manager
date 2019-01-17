@@ -22,6 +22,7 @@ public class NoteActivity extends AppCompatActivity {
     private NoteGui mNoteGui;
     private NoteApplicationLogic mNoteApplicationLogic;
     private EventDispersion mEventDispersion;
+    private boolean mIsActive;
 
     @Override
     public void onCreate (Bundle savedInstanceState) {
@@ -104,5 +105,21 @@ public class NoteActivity extends AppCompatActivity {
     public void onBackPressed() {
         mNoteApplicationLogic.onBackPressed();
         super.onBackPressed();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        mIsActive = true;
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        mIsActive = false;
+    }
+
+    public boolean isActive(){
+        return  mIsActive;
     }
 }

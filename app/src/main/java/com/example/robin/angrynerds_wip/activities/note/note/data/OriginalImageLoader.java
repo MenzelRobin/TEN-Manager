@@ -51,6 +51,15 @@ public class OriginalImageLoader {
     private class LoadOriginalImageTask extends AsyncTask<Image, Integer, Image> {
 
         @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+            if (mIsPriority) {
+                mNoteData.getmNoteApplicationLogic().startLoadingSpinner();
+            }
+        }
+
+        @Override
         protected Image doInBackground(Image... images) {
             Image image = ImageService.getImage(images[0]);
             //Log.i("NoteRemake", "Originalfotobitmap: " + image.getBitmap());
@@ -71,6 +80,7 @@ public class OriginalImageLoader {
 
                 if (mIsPriority) {
                     mNoteData.getmNoteApplicationLogic().openImagePopup(image.getBitmap());
+                    mNoteData.getmNoteApplicationLogic().stopLoadingSpinner();
                 } else {
                     loadOriginalImage();
                 }
