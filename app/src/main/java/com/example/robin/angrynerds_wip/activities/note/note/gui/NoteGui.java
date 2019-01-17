@@ -4,9 +4,11 @@ import android.app.Activity;
 import android.content.res.Configuration;
 import android.support.v7.widget.Toolbar;
 import android.text.method.ScrollingMovementMethod;
+import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -31,6 +33,7 @@ public class NoteGui {
     private EditText mNoteDescription;
     private TextView mNoteTags;
     private Toolbar mToolbar;
+    private FrameLayout mProgressBarHolder;
 
     //TODO implement separators?
     //private View mViewSeparator1;
@@ -59,6 +62,7 @@ public class NoteGui {
         mNoteDescription = activity.findViewById(R.id.id_note_description);
         mNoteTags = activity.findViewById(R.id.id_note_tags);
         mToolbar = activity.findViewById(R.id.id_note_toolbar);
+        mProgressBarHolder = activity.findViewById(R.id.noteProgressBarHolder);
 
         //TODO implement separators?
         //mViewSeparator1 = activity.findViewById(R.id.id_note_separate1);
@@ -140,5 +144,32 @@ public class NoteGui {
         mNoteImageContainer.addView(imageContainer.getImageContainer(), position);
         imageContainer.getImageView().startAnimation(anim);
 
+    }
+
+    public void startLoadingSpinner(){
+        AlphaAnimation inAnimation = new AlphaAnimation(0f, 9f);
+        inAnimation.setDuration(200);
+        mProgressBarHolder.setAnimation(inAnimation);
+        mProgressBarHolder.setVisibility(View.VISIBLE);
+    }
+
+    public void stopLoadingSpinner(){
+        AlphaAnimation outAnimation = new AlphaAnimation(9f, 0f);
+        outAnimation.setDuration(200);
+        mProgressBarHolder.setAnimation(outAnimation);
+        mProgressBarHolder.setVisibility(View.GONE);
+
+    }
+
+    public void disableAll(){
+        this.mNoteDescription.setEnabled(false);
+        this.mNoteTitle.setEnabled(false);
+        this.mNoteTags.setEnabled(false);
+    }
+
+    public void enableAll(){
+        this.mNoteDescription.setEnabled(true);
+        this.mNoteTitle.setEnabled(true);
+        this.mNoteTags.setEnabled(true);
     }
 }

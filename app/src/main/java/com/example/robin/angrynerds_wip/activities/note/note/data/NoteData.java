@@ -133,17 +133,16 @@ public class NoteData {
     //Adds image as ImageContainer to mNoteImageContainers
 
     public void addImageFromCamera(Bitmap image, String formerPath) {
-        mNote.addImage(image);
-        imagesToImageContainer();
-        // ImageContainer imageContainer = new ImageContainer(mActivity, mNoteImageContainers.size(), image);
-        // mNoteImageContainers.add(mNoteImageContainers.size() - 1, imageContainer);
-        Log.i("NoDelete", formerPath);
+        this.addImageFromGallery(image);
         ImageService.deleteImage(formerPath);
     }
 
     public void addImageFromGallery(Bitmap image) {
         mNote.addImage(image);
         imagesToImageContainer();
+        Image originalImage = mNote.getPictures().get(mNote.getPictures().size()-1);
+        ImageSaver imageSaver = new ImageSaver();
+        imageSaver.saveImage(originalImage);
     }
     //Deletes specific ImageContainer from mNoteImageContainers
 
@@ -156,14 +155,6 @@ public class NoteData {
 
     public void finallyDeleteImages() {
         for (Image image : mImagesToBeDeleted) {
-            ArrayList<Image> noteImages = mNote.getPictures();
-
-            for (int i = 0; i < noteImages.size(); i++){
-                if(noteImages.get(i).getId().equals(image.getId())){
-                    noteImages.remove(i);
-                }
-            }
-
             ImageService.deleteImage(image);
         }
     }
@@ -187,15 +178,7 @@ public class NoteData {
     }
 
     public void executeSaveRoutine() {
-
         Update.saveTEN(this.mNote);
-        for(IContainer iContainer: this.mNoteImageContainers){
-
-        }
-
-
-        //Update.saveTEN(mNote);
-        Toast.makeText(getActivity().getApplicationContext(), "Konnte nicht gespeichert werden!", Toast.LENGTH_LONG);
     }
 
     public void addImageContainer(Image image) {
