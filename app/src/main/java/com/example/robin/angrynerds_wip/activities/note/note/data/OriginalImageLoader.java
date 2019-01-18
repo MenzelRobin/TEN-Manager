@@ -19,36 +19,28 @@ public class OriginalImageLoader {
     }
 
     public void loadOriginalImage() {
-        Log.i("NoteRemake", "NO PRIORITY OBject" + this);
+        Log.i("NoteRemake", "loadOriginalImage was called");
         if (this.mNoteData.getNote().getPictures().size() > mIndexToBeLoaded) {
-            Image image = this.mNoteData.getNote().getPictures().get(mIndexToBeLoaded);
-            Log.i("NoteRemake", "Original Image should be loaded(1/2): " + image.getId());
-            if (image.getBitmap() == null) {
-                Log.i("NoteRemake", "Original Image should be loaded(2/2): " + image.getId());
+            if (this.mNoteData.getNote().getPictures().get(mIndexToBeLoaded).getBitmap() == null) {
                 LoadOriginalImageTask loadOriginalImageTask = new LoadOriginalImageTask();
-                loadOriginalImageTask.execute(image);
+                loadOriginalImageTask.execute(this.mIndexToBeLoaded);
             }
             this.mIndexToBeLoaded++;
-            loadOriginalImage();
-
         }
 
+
     }
+
 
     public void loadOriginalImage(int index) {
         Log.i("NoteRemake", "PRIORITY OBject" + this);
         if (this.mNoteData.getNote().getPictures().size() > index) {
-            Image image = this.mNoteData.getNote().getPictures().get(index);
-            Log.i("NoteRemake", "Original Image should be loaded (PRIORITY) 1: " + image.getId());
-            if (image.getBitmap() == null) {
-                Log.i("NoteRemake", "Original Image should be loaded (PRIORITY) 2: " + image.getId());
-                LoadOriginalImageTask loadOriginalImageTask = new LoadOriginalImageTask();
-                loadOriginalImageTask.execute(image);
-            }
+            LoadOriginalImageTask loadOriginalImageTask = new LoadOriginalImageTask();
+            loadOriginalImageTask.execute(index);
         }
     }
 
-    private class LoadOriginalImageTask extends AsyncTask<Image, Integer, Image> {
+    private class LoadOriginalImageTask extends AsyncTask<Integer, Integer, Image> {
 
         @Override
         protected void onPreExecute() {
@@ -60,8 +52,16 @@ public class OriginalImageLoader {
         }
 
         @Override
-        protected Image doInBackground(Image... images) {
-            Image image = ImageService.getImage(images[0]);
+        protected Image doInBackground(Integer... ints) {
+
+            Log.i("NoteRemake", "Index: " + ints[0]);
+            Image image = mNoteData.getNote().getPictures().get(ints[0]);
+
+            if (image.getBitmap() == null) {
+                Log.i("NoteRemake", "Musste nicht geladen werden");
+                image = ImageService.getImage(image);
+            }
+
             //Log.i("NoteRemake", "Originalfotobitmap: " + image.getBitmap());
             return image;
         }
