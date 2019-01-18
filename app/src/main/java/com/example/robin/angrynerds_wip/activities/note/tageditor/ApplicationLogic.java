@@ -2,11 +2,8 @@ package com.example.robin.angrynerds_wip.activities.note.tageditor;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.text.method.Touch;
-import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.LinearLayout;
+import android.view.inputmethod.InputMethodManager;
 
 import java.util.ArrayList;
 
@@ -15,13 +12,13 @@ class ApplicationLogic {
 
     private ArrayList<String> mTagList;
     private int mColor;
-    private NoteGui mGui;
+    private Gui mGui;
     private RowViewAdapter mAdapter;
     private ClickListener mClickListener;
     private TouchListener mTouchListener;
     private Activity mActivity;
 
-    ApplicationLogic(ArrayList<String> tagList, NoteGui gui, Activity activity, int color) {
+    ApplicationLogic(ArrayList<String> tagList, Gui gui, Activity activity, int color) {
         mTagList = tagList;
         mTagList.add("");
         mGui = gui;
@@ -65,7 +62,7 @@ class ApplicationLogic {
     //Remove String from TagList and notify adapter, add new empty string if it was the last one
     void onDeleteButtonClicked(int id){
 
-        if(mTagList.get(id).equals("") && mTagList.size()-2 == id)
+        /*if(mTagList.get(id).equals("") && mTagList.size()-2 == id)
             mGui.displayToast(mActivity, "Die letzte Zeile kann nicht gelöscht werden");
         else if (mTagList.size()-2 == id){
             mTagList.remove(id);
@@ -75,7 +72,10 @@ class ApplicationLogic {
         else{
             mTagList.remove(id);
             mAdapter.notifyDataSetChanged();
-        }
+        }*/
+        mTagList.remove(id);
+        mAdapter.notifyDataSetChanged();
+        mGui.hideKeyboard(mActivity);
     }
 
     void onTagTextClicked() {
