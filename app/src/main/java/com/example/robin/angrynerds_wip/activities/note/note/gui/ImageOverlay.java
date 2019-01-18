@@ -9,6 +9,7 @@ import android.view.Window;
 import android.widget.ImageView;
 
 import com.example.robin.angrynerds_wip.R;
+import com.example.robin.angrynerds_wip.activities.note.note.data.NoteConstants;
 
 public class ImageOverlay {
 
@@ -18,7 +19,6 @@ public class ImageOverlay {
     private int displayHeight;
     private int frameWidth;
     private int frameHeight;
-    private double edgeFactor = 0.95;
 
     public ImageOverlay(Bitmap image, int displayWidth, int displayHeight) {
         mImage = image;
@@ -32,10 +32,12 @@ public class ImageOverlay {
         dialog = builder.create();
         LayoutInflater inflater = activity.getLayoutInflater();
         View dialogLayout = inflater.inflate(R.layout.activity_note_imageoverlay, null);
-        ImageView imageView = dialogLayout.findViewById(R.id.id_note_imageContainer);
+        ImageView imageView = dialogLayout.findViewById(R.id.id_note_imageOverlay_imageContainer);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        if(calculateSize())
-            imageView.setImageBitmap(Bitmap.createScaledBitmap(mImage, (int)(frameWidth*edgeFactor), (int)(frameHeight*edgeFactor) ,true));
+        if(calculateSize()) {
+            imageView.setImageBitmap(Bitmap.createScaledBitmap(mImage, (int) (frameWidth * NoteConstants.IMAGE_OVERLAY_DISPLAYSIZE_FACTOR),
+                    (int) (frameHeight * NoteConstants.IMAGE_OVERLAY_DISPLAYSIZE_FACTOR), true));
+        }
         else
             imageView.setImageBitmap(mImage);
         dialog.setView(dialogLayout);
@@ -50,7 +52,7 @@ public class ImageOverlay {
         double displayAspectRatio = (double) displayWidth / displayHeight;
 
         //Checks if image is smaller than display * edgeFactor
-        if(imageWidth <= displayWidth*edgeFactor && imageHeight <= displayHeight*edgeFactor){
+        if(imageWidth <= displayWidth*NoteConstants.IMAGE_OVERLAY_DISPLAYSIZE_FACTOR && imageHeight <= displayHeight*NoteConstants.IMAGE_OVERLAY_DISPLAYSIZE_FACTOR){
             return false;
         }
         //Checks if image is a square
@@ -88,5 +90,10 @@ public class ImageOverlay {
         displayWidth = displayHeight;
         displayHeight = saveValue;
         display(activity);
+    }
+
+    //Closes imageOverlay
+    public void close(){
+        dialog.dismiss();
     }
 }
