@@ -7,13 +7,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.example.robin.angrynerds_wip.R;
-import com.example.robin.angrynerds_wip.data.models.utils.MockData;
 
 import java.util.ArrayList;
 
 public class NoteTagActivity extends AppCompatActivity {
 
-    private NoteGui mGui;
+    private Gui mGui;
     private ApplicationLogic mApplicationLogic;
 
     @Override
@@ -37,7 +36,7 @@ public class NoteTagActivity extends AppCompatActivity {
 
 
     private void initGUI () {
-        mGui = new NoteGui(this);
+        mGui = new Gui(this);
     }
 
     private void initApplicationLogic (ArrayList<String> tagList, int color) {
