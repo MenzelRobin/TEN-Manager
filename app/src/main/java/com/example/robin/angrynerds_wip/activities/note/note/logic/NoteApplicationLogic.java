@@ -136,6 +136,7 @@ public class NoteApplicationLogic {
     public void returnToOverview() {
         mNoteData.executeSaveRoutine();
         mNoteData.finallyDeleteImages();
+        //TODO das ist noch falsch, dadurch werden neue Instanzen von der Overview erstellt, obwohl die Alte noch vorhanden ist
         Intent intent = new Intent(this.mNoteData.getActivity().getApplicationContext(), MainActivity.class);
         this.mNoteData.getActivity().getApplicationContext().startActivity(intent); // Activity Starten*/
 
@@ -269,6 +270,9 @@ public class NoteApplicationLogic {
         mNoteGui.enableAll();
     }
 
+    public void onImageOverlayCloseButtonClicked() {
+        mImageOverlay.close();
+    }
 
 
     //Async task that loads the Note

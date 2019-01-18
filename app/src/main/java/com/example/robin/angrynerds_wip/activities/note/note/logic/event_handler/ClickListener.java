@@ -19,13 +19,16 @@ public class ClickListener implements View.OnClickListener  {
         switch ( view.getId() ) {
             case R.id.id_note_tags:
                 mNoteApplicationLogic.onTagsClicked();
-                break;
+                return;
             case R.id.id_note_title:
                 mNoteApplicationLogic.onTitleClicked();
-                break;
+                return;
+            case R.id.id_note_imageOverlay_imageContainer:
+                mNoteApplicationLogic.onImageOverlayCloseButtonClicked();
+                return;
             case -1:
                 mNoteApplicationLogic.returnToOverview();
-                break;
+                return;
             default:
                 break;
         }
