@@ -67,13 +67,17 @@ public class NoteApplicationLogic {
         mNoteGui.getNoteTitle().setOnClickListener(mClickListener);
         mNoteGui.getNoteImageContainer().setOnClickListener(mClickListener);
         mNoteGui.getNoteTags().setOnClickListener(mClickListener);
-        for(IContainer mImage: mNoteData.getNoteImageContainers()){
-            setImageClickListener(mImage);
-        }
+        initImageListener();
         mNoteGui.getNoteTitle().addTextChangedListener(new NoteTextWatcher(this, mNoteGui.getNoteTitle()));
         mNoteGui.getNoteDescription().addTextChangedListener(new NoteTextWatcher(this, mNoteGui.getNoteDescription()));
         mNoteGui.getToolbar().setNavigationOnClickListener(mClickListener);
         mNoteGui.getToolbar().setOnMenuItemClickListener(menuItemClickListener);
+    }
+
+    public void initImageListener(){
+        for(IContainer mImage: mNoteData.getNoteImageContainers()){
+            setImageClickListener(mImage);
+        }
     }
 
     public void addAsyncPreviewImage(Image image){
@@ -130,6 +134,7 @@ public class NoteApplicationLogic {
     private void refreshImages(){
         mNoteGui.getNoteImageContainer().removeAllViews();
         mNoteGui.setNoteImageContainer(mNoteData.getNoteImageContainers());
+        initImageListener();
     }
 
     //Returns to OverViewActivity
@@ -166,7 +171,7 @@ public class NoteApplicationLogic {
                     try {
                         Bitmap bitmap = MediaStore.Images.Media.getBitmap(mNoteData.getActivity().getContentResolver(), selectedImage);
                         mNoteData.addImageFromGallery(bitmap);
-                        setImageClickListener(mNoteData.getImageContainer(mNoteData.getNoteImageContainers().size()-2));
+
                         refreshImages();
                     } catch (IOException e) {
                         e.printStackTrace();
