@@ -270,11 +270,5 @@ public class NoteApplicationLogic {
         mNoteGui.enableAll();
     }
 
-    public void onImageOverlayCloseButtonClicked() {
-        mImageOverlay.close();
-    }
-
-
     //Async task that loads the Note
-
 }

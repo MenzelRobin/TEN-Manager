@@ -91,9 +91,4 @@ public class ImageOverlay {
         displayHeight = saveValue;
         display(activity);
     }
-
-    //Closes imageOverlay
-    public void close(){
-        dialog.dismiss();
-    }
 }
