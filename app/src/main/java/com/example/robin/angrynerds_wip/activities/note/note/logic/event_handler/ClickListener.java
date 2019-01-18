@@ -23,9 +23,6 @@ public class ClickListener implements View.OnClickListener  {
             case R.id.id_note_title:
                 mNoteApplicationLogic.onTitleClicked();
                 return;
-            case R.id.id_note_imageOverlay_imageContainer:
-                mNoteApplicationLogic.onImageOverlayCloseButtonClicked();
-                return;
             case -1:
                 mNoteApplicationLogic.returnToOverview();
                 return;
