@@ -26,6 +26,7 @@ import com.example.robin.angrynerds_wip.activities.note.note.logic.event_handler
 import com.example.robin.angrynerds_wip.activities.note.note.logic.event_handler.NoteTextWatcher;
 import com.example.robin.angrynerds_wip.activities.note.tageditor.NoteTagActivity;
 import com.example.robin.angrynerds_wip.data.models.utils.Image;
+import com.example.robin.angrynerds_wip.data.services.Delete;
 
 import java.io.IOException;
 
@@ -46,9 +47,9 @@ public class NoteApplicationLogic {
         initListener();
     }
 
-    private void initData(){
+    private void initData() {
         mNoteData.setmNoteApplicationLogic(this);
-        String noteId = "784cceed-b787-4a51-8a6d-0a7c279b2944";
+        String noteId = "9020273d-bcc5-4591-8a17-f859f2542b8f";
         mNoteData.setColors(noteId);
         NoteLoader noteLoader = new NoteLoader(this, mNoteData);
         noteLoader.loadNote(noteId);
@@ -74,27 +75,27 @@ public class NoteApplicationLogic {
         mNoteGui.getToolbar().setOnMenuItemClickListener(menuItemClickListener);
     }
 
-    public void initImageListener(){
-        for(IContainer mImage: mNoteData.getNoteImageContainers()){
+    public void initImageListener() {
+        for (IContainer mImage : mNoteData.getNoteImageContainers()) {
             setImageClickListener(mImage);
         }
     }
 
-    public void addAsyncPreviewImage(Image image){
+    public void addAsyncPreviewImage(Image image) {
         Log.i("Clicklistener1", "addSingleImage was called");
         mNoteData.addImageContainer(image);
-        ImageContainer imageContainer = (ImageContainer) mNoteData.getNoteImageContainers().get(mNoteData.getNoteImageContainers().size()-2);
+        ImageContainer imageContainer = (ImageContainer) mNoteData.getNoteImageContainers().get(mNoteData.getNoteImageContainers().size() - 2);
         mNoteGui.addSingleAnimatedImage(imageContainer);
         initListener();
     }
 
     //Return Number of ImageContainers in NoteData
-    public int getImageCount(){
+    public int getImageCount() {
         return mNoteData.getNoteImageContainers().size();
     }
 
     //Checks ImageContainer for specific ID
-    public boolean checkImageID(int id){
+    public boolean checkImageID(int id) {
         return mNoteData.checkImageID(id);
     }
 
@@ -106,12 +107,12 @@ public class NoteApplicationLogic {
     }
 
     //Displays a message on screen
-    void displayToast(String s){
+    void displayToast(String s) {
         mNoteGui.displayToast(mNoteData.getActivity(), s);
     }
 
     //Sets ClickListener on mImageContainer
-    private void setImageClickListener(IContainer imageContainer){
+    private void setImageClickListener(IContainer imageContainer) {
         imageContainer.getImageContainer().setOnClickListener(mClickListener);
     }
 
@@ -131,7 +132,7 @@ public class NoteApplicationLogic {
     }
 
     //Refreshes ScrollView with Images
-    private void refreshImages(){
+    private void refreshImages() {
         mNoteGui.getNoteImageContainer().removeAllViews();
         mNoteGui.setNoteImageContainer(mNoteData.getNoteImageContainers());
         initImageListener();
@@ -139,8 +140,7 @@ public class NoteApplicationLogic {
 
     //Returns to OverViewActivity
     public void returnToOverview() {
-        mNoteData.executeSaveRoutine();
-        mNoteData.finallyDeleteImages();
+
         //TODO das ist noch falsch, dadurch werden neue Instanzen von der Overview erstellt, obwohl die Alte noch vorhanden ist
         Intent intent = new Intent(this.mNoteData.getActivity().getApplicationContext(), MainActivity.class);
         this.mNoteData.getActivity().getApplicationContext().startActivity(intent); // Activity Starten*/
@@ -154,19 +154,19 @@ public class NoteApplicationLogic {
 
     //Get result from external Activity (Camera, Gallery, TagEditor)
     public void onActivityReturned(int requestCode, int resultCode, Intent data) {
-        switch(requestCode) {
+        switch (requestCode) {
             case 0:
-                if(resultCode == -1){
+                if (resultCode == -1) {
                     //TODO
                     String path = mImageImport.getCurrentPhotoPath();
                     Bitmap cameraImage = BitmapFactory.decodeFile(path);
                     mNoteData.addImageFromCamera(cameraImage, path);
-                    setImageClickListener(mNoteData.getImageContainer(mNoteData.getNoteImageContainers().size()-2));
+                    setImageClickListener(mNoteData.getImageContainer(mNoteData.getNoteImageContainers().size() - 2));
                     refreshImages();
                 }
                 break;
             case 1:
-                if(resultCode == -1){
+                if (resultCode == -1) {
                     Uri selectedImage = data.getData();
                     try {
                         Bitmap bitmap = MediaStore.Images.Media.getBitmap(mNoteData.getActivity().getContentResolver(), selectedImage);
@@ -179,13 +179,12 @@ public class NoteApplicationLogic {
                 }
                 break;
             case 2:
-                if(resultCode == -1){
+                if (resultCode == -1) {
                     Bundle extras = data.getExtras();
-                    try{
+                    try {
                         mNoteData.getNote().setTags(extras.getStringArrayList("taglist"));
                         mNoteGui.setNoteTags(mNoteData.getNote().getTags());
-                    }
-                    catch(NullPointerException e){
+                    } catch (NullPointerException e) {
                         Log.e("Error", e.getMessage());
                         displayToast("Error getting TagList from NoteTagActivity.");
                     }
@@ -193,9 +192,15 @@ public class NoteApplicationLogic {
         }
     }
 
+    public void saveAndReturnToOverview() {
+        mNoteData.executeSaveRoutine();
+        mNoteData.finallyDeleteImages();
+        returnToOverview();
+    }
+
     public void onBackPressed() {
 
-        returnToOverview();
+        saveAndReturnToOverview();
     }
 
     //Set cursor of Title visible (invisible when Activity is started)
@@ -204,15 +209,14 @@ public class NoteApplicationLogic {
     }
 
     //Displays image if ImageContainer is clicked, starts ImageImport functionality if IconContainer is clicked
-    public void onImageClicked(int id){
-        if(id==0){
+    public void onImageClicked(int id) {
+        if (id == 0) {
             mImageImport = new ImageImport(mNoteData.getActivity());
-        }
-        else{
+        } else {
             Bitmap bitmap = mNoteData.getImage(id);
-            if(bitmap!=null){
+            if (bitmap != null) {
                 openImagePopup(bitmap);
-            } else{
+            } else {
             }
 
             //Interessant für Loading Spinner: https://stackoverflow.com/questions/18021148/display-a-loading-overlay-on-android-screen
@@ -221,7 +225,7 @@ public class NoteApplicationLogic {
 
     public void openImagePopup(Bitmap bitmap) {
         Log.i("NoteRemake", "Activity: " + mNoteData.getActivity());
-        if(mNoteData.getActivity().isActive()){
+        if (mNoteData.getActivity().isActive()) {
             View displayMetrics = mNoteData.getActivity().getWindow().findViewById(Window.ID_ANDROID_CONTENT);
             mImageOverlay = new ImageOverlay(bitmap, displayMetrics.getWidth(), displayMetrics.getHeight());
             mImageOverlay.display(mNoteData.getActivity());
@@ -229,7 +233,7 @@ public class NoteApplicationLogic {
     }
 
     //Starts TagEditor Activity
-    public void onTagsClicked(){
+    public void onTagsClicked() {
         Intent intent = new Intent(mNoteData.getActivity(), NoteTagActivity.class);
         intent.putExtra("taglist", mNoteData.getNote().getTags());
         intent.putExtra("color", mNoteData.getNote().getColor());
@@ -243,34 +247,39 @@ public class NoteApplicationLogic {
         initListener();
         dataToGui();
         //setImageClickListener(mNoteData.getNoteImageContainers().get(mNoteData.getNoteImageContainers().size()-1));
-        if(mImageOverlay != null && mImageOverlay.isDisplayed()){
+        if (mImageOverlay != null && mImageOverlay.isDisplayed()) {
             mImageOverlay.changeOrientation((mNoteData.getActivity()));
         }
     }
 
     //Inserts User Input into NoteData
     public void onTextChanged(String text, View view) {
-        if(view.getId() == R.id.id_note_title){ mNoteData.setTitle(text);} //R.id.id_event_editText_title
-        else if(view.getId() == R.id.id_note_description){
-            mNoteData.setDescription(text);} //R.id.id_event_editText_title
+        if (view.getId() == R.id.id_note_title) {
+            mNoteData.setTitle(text);
+        } //R.id.id_event_editText_title
+        else if (view.getId() == R.id.id_note_description) {
+            mNoteData.setDescription(text);
+        } //R.id.id_event_editText_title
     }
 
     //Handles Toolbar Selection
     public void onMenuItemClicked(MenuItem item) {
-        if(item.getItemId() == R.id.note_action_settings){
-            //TODO delete note;
-            returnToOverview();}
+        if (item.getItemId() == R.id.note_action_settings) {
+            mNoteData.deleteNote();
+            returnToOverview();
+        }
     }
 
     public NoteData getNoteData() {
         return mNoteData;
     }
 
-    public void startLoadingSpinner(){
+    public void startLoadingSpinner() {
         mNoteGui.disableAll();
         mNoteGui.startLoadingSpinner();
     }
-    public void stopLoadingSpinner(){
+
+    public void stopLoadingSpinner() {
         mNoteGui.stopLoadingSpinner();
         mNoteGui.enableAll();
     }

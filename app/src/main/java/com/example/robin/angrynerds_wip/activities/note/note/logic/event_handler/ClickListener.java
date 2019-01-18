@@ -1,6 +1,7 @@
 package com.example.robin.angrynerds_wip.activities.note.note.logic.event_handler;
 
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.activities.note.note.logic.NoteApplicationLogic;
@@ -24,7 +25,7 @@ public class ClickListener implements View.OnClickListener  {
                 mNoteApplicationLogic.onTitleClicked();
                 return;
             case -1:
-                mNoteApplicationLogic.returnToOverview();
+                mNoteApplicationLogic.saveAndReturnToOverview();
                 return;
             default:
                 break;

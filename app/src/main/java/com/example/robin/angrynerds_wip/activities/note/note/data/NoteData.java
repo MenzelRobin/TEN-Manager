@@ -12,6 +12,7 @@ import com.example.robin.angrynerds_wip.activities.note.note.NoteActivity;
 import com.example.robin.angrynerds_wip.activities.note.note.logic.NoteApplicationLogic;
 import com.example.robin.angrynerds_wip.data.models.tens.Note;
 import com.example.robin.angrynerds_wip.data.models.utils.Image;
+import com.example.robin.angrynerds_wip.data.services.Delete;
 import com.example.robin.angrynerds_wip.data.services.ImageService;
 import com.example.robin.angrynerds_wip.data.services.Read;
 import com.example.robin.angrynerds_wip.data.services.Update;
@@ -187,4 +188,7 @@ public class NoteData {
         mNoteImageContainers.add(mNoteImageContainers.size()-1, imageContainer);
     }
 
+    public void deleteNote() {
+        Delete.deleteTEN(mNote.getID());
+    }
 }
