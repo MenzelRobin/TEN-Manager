@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickNote(View view) {
         Intent intent = new Intent(this, NoteActivity.class);
-        intent.putExtra("ID", "");
+        intent.putExtra("ID", "bf1b91ff-70ee-4c7e-aec6-6acc8b4cb525");
         this.startActivity(intent);
     }
 

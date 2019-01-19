@@ -1,4 +1,4 @@
-package com.example.robin.angrynerds_wip.activities.note.note.data;
+package com.example.robin.angrynerds_wip.activities.note.note.data.gui_oriented;
 
 import android.widget.LinearLayout;
 

@@ -1,6 +1,8 @@
-package com.example.robin.angrynerds_wip.activities.note.note.data;
+package com.example.robin.angrynerds_wip.activities.note.note.data.gui_oriented;
 
 import android.graphics.Bitmap;
+
+import com.example.robin.angrynerds_wip.activities.note.note.data.NoteConstants;
 
 public class PreviewImageCreator {
 
