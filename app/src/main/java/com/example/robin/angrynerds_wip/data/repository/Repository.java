@@ -12,16 +12,13 @@ import com.example.robin.angrynerds_wip.data.models.tens.Note;
 import com.example.robin.angrynerds_wip.data.models.tens.TEN;
 import com.example.robin.angrynerds_wip.data.models.tens.Todo;
 import com.example.robin.angrynerds_wip.data.models.utils.Image;
-import com.example.robin.angrynerds_wip.data.repository.converter.ImageConverter;
 import com.example.robin.angrynerds_wip.data.repository.converter.TENConverter;
 import com.example.robin.angrynerds_wip.data.repository.database.DatabaseManager;
 import com.example.robin.angrynerds_wip.data.repository.database.DocumentSaver;
 import com.example.robin.angrynerds_wip.data.repository.database.Queries;
 import com.example.robin.angrynerds_wip.data.repository.filesystem.FileManager;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Repository {
     TENConverter tenConverter;
@@ -36,9 +33,7 @@ public class Repository {
         this.fileManager = new FileManager();
     }
 
-    //TODO Jan: jeweiliges Objekt mit übergebener ID zurückgeben (wenn kein Objekt mit ID dann return null)
     public Todo getTodoByID(String id) {
-
         Document todoDocument = DatabaseManager.getDatabase().getDocument(id);
         String json = todoDocument.getString(RepositoryConstants.OBJECT_KEY);
         Todo finalTodo = this.tenConverter.stringToTodo(json);
@@ -57,25 +52,20 @@ public class Repository {
     public Note getNoteByID(String id) {
         Document noteDocument = DatabaseManager.getDatabase().getDocument(id);
         String json = noteDocument.getString(RepositoryConstants.OBJECT_KEY);
-        Log.i("NoteRemake", json);
         Note finalNote = this.tenConverter.stringToNote(json);
         finalNote = (Note) this.tenConverter.addTENPropertiesFromDocument(finalNote, noteDocument);
         return finalNote;
     }
 
-    //TODO Jan: Insert Befehl (neuen Eintrag anlegen; TEN hat noch keine ID)
     public void insertTEN(TEN ten) {
         MutableDocument mutableTENDocument = new MutableDocument();
         ten.setID(mutableTENDocument.getId());
         this.documentSaver.updateCompleteDocument(ten, mutableTENDocument);
-
     }
-
 
     public void updateTEN(TEN ten) {
         MutableDocument mutableTENDocument = DatabaseManager.getDatabase().getDocument(ten.getID()).toMutable();
         this.documentSaver.updateCompleteDocument(ten, mutableTENDocument);
-
     }
 
     public ArrayList<TEN> getAllTENs() {
@@ -103,23 +93,6 @@ public class Repository {
                 fileManager.deleteImageFromDirectory(image);
             }
         }
-    }
-
-    public int getNumberOfImages(String noteId) {
-        Document noteDocument = DatabaseManager.getDatabase().getDocument(noteId);
-        int numberOfImages = noteDocument.getInt(RepositoryConstants.IMAGE_COUNTER);
-        return numberOfImages;
-    }
-
-    public Bitmap getImage(String noteId, String imageId) {
-        ImageConverter asyncImageConverter = new ImageConverter();
-        Document noteDocument = DatabaseManager.getDatabase().getDocument(noteId);
-        Log.i("Testdata", "NoteID: " + noteId + " imageID " + imageId);
-        Blob imageBlob = noteDocument.getBlob(imageId);
-        Log.i("Testdata", "Blob: " + imageBlob);
-        Log.i("Testdata", "ImageConverter: " + asyncImageConverter);
-        Bitmap imageBitmap = asyncImageConverter.BlobToBitmap(imageBlob);
-        return imageBitmap;
     }
 
     public int[] getTENColors(String tenID) {

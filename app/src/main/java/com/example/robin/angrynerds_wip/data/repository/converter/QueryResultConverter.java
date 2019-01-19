@@ -25,8 +25,6 @@ public class QueryResultConverter {
                 return event;
             case RepositoryConstants.NOTE_TYPE:
                 Note note = tenConverter.stringToNote(objectJSON);
-
-                //note = tenConverter.addImagesFromResultToNote(note, dictionary);
                 return note;
             case RepositoryConstants.TODO_TYPE:
                 Todo todo = tenConverter.stringToTodo(objectJSON);
