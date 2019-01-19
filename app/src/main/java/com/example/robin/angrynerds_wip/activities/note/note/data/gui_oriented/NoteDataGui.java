@@ -19,6 +19,7 @@ public class NoteDataGui {
     public NoteDataGui(NoteData pNoteData){
         mNoteData = pNoteData;
         mNoteImageContainers = new ArrayList<>();
+        addImageButton();
     }
 
     public ArrayList<IContainer> getNoteImageContainers() {
@@ -45,10 +46,6 @@ public class NoteDataGui {
         mNoteImageContainers.add(new IconContainer(mNoteData.getActivity(), 0, drawable));
     }
 
-    public IContainer getImageContainer(int pIndex) {
-        return mNoteImageContainers.get(pIndex);
-    }
-
     public boolean checkImageListForId(int pId) {
         for (IContainer mImage : mNoteImageContainers) {
             if (mImage.getImageContainer().getId() == pId)
@@ -58,8 +55,14 @@ public class NoteDataGui {
     }
 
     public void addImageFromGallery(Bitmap pImage) {
-        mNoteData.getNote().addImage(pImage);
+        Image originalImage = mNoteData.getNote().addImage(pImage);
         imagesToImageContainer();
+        mNoteData.getNoteDataBackend().saveImage(originalImage);
+    }
+
+    public void addImageFromCamera(Bitmap image, String pFormerPath) {
+        addImageFromGallery(image);
+        mNoteData.getNoteDataBackend().deleteImageFromDisk(pFormerPath);
     }
 
     public void addImageContainer(Image pImage) {
@@ -75,4 +78,6 @@ public class NoteDataGui {
             mNoteData.getNoteDataBackend().triggerOriginalImageLoad(index);
         return bitmap;
     }
+
+
 }
