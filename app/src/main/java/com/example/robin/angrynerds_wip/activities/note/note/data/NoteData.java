@@ -32,7 +32,6 @@ public class NoteData {
     private Note mNote;
     private ArrayList<IContainer> mNoteImageContainers;
 
-    //TODO Interaktion mit Overview Activity
     public NoteData(NoteActivity activity) {
 
         Log.i("Clicklistener1", "NoteData was called");

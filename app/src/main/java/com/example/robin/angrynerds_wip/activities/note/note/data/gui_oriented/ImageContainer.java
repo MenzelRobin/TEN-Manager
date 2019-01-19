@@ -29,7 +29,6 @@ public class ImageContainer extends IContainer {
         activity.registerForContextMenu(mImageContainer);
     }
 
-
     //Initiates Image in ImageView
     private void initiateView(Bitmap scaledImage) {
         mImageContainer.setLayoutParams(new LinearLayout.LayoutParams(NoteConstants.IMAGE_PREVIEW_CONTAINER_WIDTH, NoteConstants.IMAGE_PREVIEW_CONTAINER_HEIGHT));
