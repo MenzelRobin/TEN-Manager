@@ -35,16 +35,12 @@ public class NotePreviewImageLoader {
         @Override
         protected void onPostExecute(Image image) {
             if (image.getBitmap() == null) {
-                //TODO implement required methods
-                //mNoteDataBackend.mNoteData.getNote().imageNotFound(image);
+                mNoteDataBackend.getmNoteData().getNote().imageNotFound(image);
             } else {
-                //mNoteApplicationLogic.addAsyncPreviewImage(image);
-                //mNoteApplicationLogic.initListener();
+                mNoteDataBackend.getmNoteData().getmNoteApplicationLogic().addAsyncPreviewImage(image);
+                mNoteDataBackend.getmNoteData().getmNoteApplicationLogic().initListener();
             }
 
-            // Log.i("Testdata", "Bild hinzugefügt!");
-
-            // Hintergrundberechnungen sind jetzt beendet, darüber informieren wir den Benutzer
         }
     }
 }
