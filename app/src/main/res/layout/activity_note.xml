@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/id_note_background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/note_black"
+    android:orientation="horizontal">
+
+    <include
+        android:id="@+id/id_note_toolbar"
+        layout="@layout/toolbar_ten" />
+
+    <EditText
+        android:id="@+id/id_note_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/id_note_toolbar"
+        android:layout_margin="10dp"
+        android:cursorVisible="false"
+        android:hint="@string/sample_note_title"
+        android:inputType="text"
+        android:lines="1"
+        android:maxLines="1"
+        android:scrollbars="horizontal"
+        android:textColor="@color/TextWhite"
+        android:textColorHint="@color/note_hintWhite"
+        android:textStyle="bold" />
+
+    <!--View
+        android:id="@+id/id_note_separate1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/id_note_title"
+        android:background="@color/colorPrimaryDark" /-->
+
+    <EditText
+        android:id="@+id/id_note_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/id_note_ImageScrollView_Horizontal"
+        android:layout_below="@+id/id_note_title"
+        android:layout_margin="10dp"
+        android:hint="@string/sample_note_description"
+        android:inputType="textMultiLine"
+        android:scrollbars="vertical"
+        android:textColor="@color/TextWhite"
+        android:textColorHint="@color/note_hintWhite" />
+
+    <!--View
+        android:id="@+id/id_note_separate2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/id_note_description"
+        android:background="@color/colorPrimaryDark" /-->
+
+    <HorizontalScrollView
+        android:id="@+id/id_note_ImageScrollView_Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/id_note_tags"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp">
+
+        <LinearLayout
+            android:id="@+id/id_note_linearImageContainer_Horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="800px"
+            android:orientation="horizontal" />
+
+    </HorizontalScrollView>
+
+    <!--View
+        android:id="@+id/id_note_separate3"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/id_note_ImageScrollView_Horizontal"
+        android:background="@color/colorPrimaryDark" /-->
+
+    <TextView
+        android:id="@+id/id_note_tags"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp"
+        android:hint="@string/sample_note_tag"
+        android:lineSpacingExtra="5dp"
+        android:maxLines="3"
+        android:scrollbars="vertical"
+        android:textColor="@color/TextWhite"
+        android:textColorHint="@color/note_hintWhite" />
+
+    <FrameLayout
+        android:id="@+id/noteProgressBarHolder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.8"
+        android:animateLayoutChanges="true"
+        android:background="#000000"
+        android:visibility="gone">
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminate="true" />
+    </FrameLayout>
+</RelativeLayout>

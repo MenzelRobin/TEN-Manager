@@ -1,26 +1,35 @@
 package com.example.robin.angrynerds_wip.data.models.tens;
 
 import android.os.Bundle;
+import android.support.annotation.ColorInt;
+import android.support.annotation.ColorLong;
 
 import com.example.robin.angrynerds_wip.data.models.utils.Colors;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.Date;
 
 public class TEN {
     private String title;
+    @JsonIgnore
     private String ID;
+    @ColorInt
+    @JsonIgnore
     private int color;
+    @ColorInt
+    @JsonIgnore
     private int accentColor;
+    @JsonIgnore
     private Date dateOfCreation;
 
     //Constructor
 
     //empty default
-    public TEN(){
+    public TEN() {
         int colorIndex = Colors.getRandomColorIndex();
         this.color = Colors.COLORS[colorIndex];
         this.accentColor = Colors.DARKER_ACCENT_COLORS[colorIndex];
-
+        this.ID = null;
         this.dateOfCreation = new Date();
     }
 
@@ -29,8 +38,8 @@ public class TEN {
         int colorIndex = Colors.getRandomColorIndex();
         this.color = Colors.COLORS[colorIndex];
         this.accentColor = Colors.DARKER_ACCENT_COLORS[colorIndex];
-
-        this.title=title;
+        this.ID = null;
+        this.title = title;
         this.dateOfCreation = new Date();
     }
 
@@ -43,12 +52,12 @@ public class TEN {
         this.dateOfCreation = dateOfCreation;
     }
 
-    public Bundle getBundle(){
+    public Bundle getBundle() {
         Bundle bundle = new Bundle();
         bundle.putString("ID", ID);
         bundle.putString("Title", title);
-        bundle.putInt("Color", color);
-        bundle.putInt("AccentColor", color);
+        bundle.putLong("Color", color);
+        bundle.putLong("AccentColor", color);
         bundle.putLong("DateOfCreation", this.dateOfCreation.getTime());
         return bundle;
     }
@@ -57,20 +66,41 @@ public class TEN {
     public String getTitle() {
         return title;
     }
+
     public void setTitle(String title) {
         this.title = title;
     }
+
     public String getID() {
         return ID;
     }
-    public void setID(String ID){ this.ID = ID; }
+
+    public void setID(String ID) {
+        this.ID = ID;
+    }
+
     public int getColor() {
         return color;
     }
-    public int getAccentColor() { return accentColor; }
+
+    public int getAccentColor() {
+        return accentColor;
+    }
+
     public void setColor(int color) {
         this.color = color;
     }
-    public Date getDateOfCreation() {return dateOfCreation;}
+
+    public void setAccentColor(int accentColor) {
+        this.accentColor = accentColor;
+    }
+
+    public void setDateOfCreation(Date dateOfCreation) {
+        this.dateOfCreation = dateOfCreation;
+    }
+
+    public Date getDateOfCreation() {
+        return dateOfCreation;
+    }
 
 }

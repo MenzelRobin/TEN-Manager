@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/id_note_background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/note_black"
+    android:orientation="horizontal">
+
+    <include
+        android:id="@+id/id_note_toolbar"
+        layout="@layout/toolbar_ten" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/id_note_toolbar"
+        android:layout_margin="10dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toStartOf="@id/id_note_ImageScrollView_Vertical">
+
+            <EditText
+                android:id="@+id/id_note_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:cursorVisible="false"
+                android:hint="@string/sample_note_title"
+                android:inputType="text"
+                android:lines="1"
+                android:maxLines="1"
+                android:scrollbars="horizontal"
+                android:textColor="@color/TextWhite"
+                android:textColorHint="@color/note_hintWhite"
+                android:textStyle="bold" />
+
+
+            <EditText
+                android:id="@+id/id_note_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/id_note_tags"
+                android:layout_below="@+id/id_note_title"
+                android:layout_marginTop="5dp"
+                android:hint="@string/sample_note_description"
+                android:inputType="textMultiLine"
+                android:scrollbars="vertical"
+                android:textColor="@color/TextWhite"
+                android:textColorHint="@color/note_hintWhite" />
+
+            <TextView
+                android:id="@+id/id_note_tags"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="10dp"
+                android:hint="@string/sample_note_tag"
+                android:lineSpacingExtra="5dp"
+                android:maxLines="2"
+                android:scrollbars="vertical"
+                android:textColor="@color/TextWhite"
+                android:textColorHint="@color/note_hintWhite" />
+
+        </RelativeLayout>
+
+        <ScrollView
+            android:id="@+id/id_note_ImageScrollView_Vertical"
+            android:layout_width="800px"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true">
+
+            <LinearLayout
+                android:id="@+id/id_note_linearImageContainer_Vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"/>
+
+        </ScrollView>
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/noteProgressBarHolder"
+        android:animateLayoutChanges="true"
+        android:visibility="gone"
+        android:alpha="0.8"
+        android:background="#000000"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:layout_gravity="center" />
+    </FrameLayout>
+</RelativeLayout>

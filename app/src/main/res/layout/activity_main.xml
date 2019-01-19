@@ -38,6 +38,11 @@
             android:text="Open View Note"
             android:onClick="onClickNote"/>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="@color/note_transparent"/>
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

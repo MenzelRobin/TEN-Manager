@@ -2,7 +2,10 @@ package com.example.robin.angrynerds_wip.data.models.tens;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.util.Log;
 
+import com.example.robin.angrynerds_wip.data.models.utils.Image;
+import com.example.robin.angrynerds_wip.data.repository.RepositoryConstants;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.util.ArrayList;
@@ -13,43 +16,36 @@ public class Note extends TEN {
 
     private String description;
     private ArrayList<String> tags;
-    private ArrayList<Bitmap> pictures;
+    private ArrayList<Image> pictures;
+    private int imageIDCounter;
 
     //Constructors
     public Note() {
         super();
         this.tags = new ArrayList<String>();
-        this.pictures = new ArrayList<Bitmap>();
+        this.pictures = new ArrayList<Image>();
+        this.imageIDCounter = 0;
     }
 
     public Note(String title) {
         super(title);
         this.tags = new ArrayList<String>();
-        this.pictures = new ArrayList<Bitmap>();
+        this.pictures = new ArrayList<Image>();
     }
-
-    //simple for usage
     public Note(String title, String description) {
         super(title);
-        this.description = description;        tags = new ArrayList<String>();
-        this.pictures = new ArrayList<Bitmap>();
-
-    }
-
-    //simple for usage
-    public Note(String title, String description, ArrayList<String> tags) {
-        super(title);
         this.description = description;
-        this.tags = tags;
-        this.pictures = new ArrayList<Bitmap>();
+        this.tags = new ArrayList<String>();
+        this.pictures = new ArrayList<Image>();
     }
 
     //all Attributes for complete Reconstruction
-    public Note(String title, String ID, int color, int accentColor, Date dateOfCreation, String description, ArrayList<String> tags, ArrayList<Bitmap> pictures) {
+    public Note(String title, String ID, int color, int accentColor, Date dateOfCreation, String description, ArrayList<String> tags, ArrayList<Image> pictures, int imageIDCounter) {
         super(title, ID, color, accentColor, dateOfCreation);
         this.description = description;
         this.tags = tags;
         this.pictures = pictures;
+        this.imageIDCounter = imageIDCounter;
     }
 
 
@@ -70,16 +66,43 @@ public class Note extends TEN {
         this.tags = tags;
     }
 
-    public void addTag(String tag){
-        this.tags.add(tag);
+    public void addImage(Bitmap bitmap) {
+        this.imageIDCounter++;
+        String imageID = this.getID() + RepositoryConstants.IMAGE_CORE_ID+this.imageIDCounter;
+        Log.i("NoteRemake", "ImageID: " + imageID);
+        Image image = new Image(imageID, bitmap);
+        this.pictures.add(image);
     }
 
-    public ArrayList<Bitmap> getPictures() {
+    public void addImage(Image pImage) {
+        Log.i("NoteRemake", "Pictures Size: " + pictures.size());
+        for(int i = 0; i< pictures.size(); i++){
+            if(pImage.getId().equals(pictures.get(i).getId())){
+                pictures.set(i, pImage);
+            }
+        }
+
+    }
+
+    public ArrayList<Image> getPictures() {
         return pictures;
     }
 
-    public void setPictures(ArrayList<Bitmap> pictures) {
+    public void setPictures(ArrayList<Image> pictures) {
         this.pictures = pictures;
+    }
+
+    public int getImageIDCounter() {
+        return imageIDCounter;
+    }
+    public String getNextImageID (){
+        this.imageIDCounter++;
+        String imageID = this.getID()+RepositoryConstants.IMAGE_CORE_ID+this.imageIDCounter;
+        return  imageID;
+    }
+
+    public void setImageIDCounter(int imageIDCounter) {
+        this.imageIDCounter = imageIDCounter;
     }
 
     public Bundle getBundle() {
@@ -89,5 +112,12 @@ public class Note extends TEN {
         ArrayList<String> imageIDs = new ArrayList<String>();
         bundle.putStringArrayList("Pictures", imageIDs);
         return bundle;
+    }
+    public void imageNotFound(Image image){
+        for(int i = 0; i < this.getPictures().size(); i++){
+            if(image.getId().equals(this.getPictures().get(i).getId())){
+                this.getPictures().remove(i);
+            }
+        }
     }
 }
