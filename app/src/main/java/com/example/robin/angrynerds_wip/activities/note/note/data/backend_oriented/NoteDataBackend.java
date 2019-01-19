@@ -75,4 +75,9 @@ public class NoteDataBackend {
     }
 
 
+    public void loadNote(String pNoteId) {
+        setColors(pNoteId);
+        NoteLoader noteLoader = new NoteLoader(this);
+        noteLoader.loadNote(pNoteId);
+    }
 }
