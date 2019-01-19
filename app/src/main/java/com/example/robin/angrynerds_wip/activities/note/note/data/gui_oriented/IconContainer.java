@@ -13,9 +13,9 @@ public class IconContainer extends IContainer {
 
     private Drawable drawable;
 
-    public IconContainer(NoteActivity activity, int id, Drawable drawable){
-        super(activity, id);
-        this.drawable = drawable;
+    public IconContainer(NoteActivity pActivity, int pId, Drawable pDrawable){
+        super(pActivity, pId);
+        this.drawable = pDrawable;
         initiateView();
     }
 

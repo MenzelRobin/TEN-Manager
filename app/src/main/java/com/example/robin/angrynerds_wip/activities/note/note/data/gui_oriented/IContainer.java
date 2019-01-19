@@ -9,14 +9,14 @@ public class IContainer {
     protected Activity mActivity;
     protected LinearLayout mImageContainer;
 
-    IContainer(Activity activity, int id){
-        this.mActivity = activity;
-        this.mImageContainer = new LinearLayout(activity);
-        setImageContainerId(id);
+    IContainer(Activity pActivity, int pId){
+        this.mActivity = pActivity;
+        this.mImageContainer = new LinearLayout(pActivity);
+        setImageContainerId(pId);
     }
 
-    public void setImageContainerId(int id){
-        mImageContainer.setId(id);
+    public void setImageContainerId(int pId){
+        mImageContainer.setId(pId);
     }
 
     public LinearLayout getImageContainer(){

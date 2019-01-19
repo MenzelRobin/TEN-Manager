@@ -15,22 +15,22 @@ public class ImageContainer extends IContainer {
     private Image image;
     private PreviewImageCreator previewImageCreator;
 
-    public ImageContainer(NoteActivity activity, int id, Image originalImage) {
-        super(activity, id);
-        this.image = originalImage;
+    public ImageContainer(NoteActivity pActivity, int pId, Image pOriginalImage) {
+        super(pActivity, pId);
+        this.image = pOriginalImage;
         previewImageCreator = new PreviewImageCreator();
 
-        Bitmap originalBitmap = originalImage.getBitmap();
+        Bitmap originalBitmap = pOriginalImage.getBitmap();
         Bitmap scaledBitmap;
 
         scaledBitmap = previewImageCreator.getPreviewImage(originalBitmap);
 
         initiateView(scaledBitmap);
-        activity.registerForContextMenu(mImageContainer);
+        pActivity.registerForContextMenu(mImageContainer);
     }
 
     //Initiates Image in ImageView
-    private void initiateView(Bitmap scaledImage) {
+    private void initiateView(Bitmap pScaledImage) {
         mImageContainer.setLayoutParams(new LinearLayout.LayoutParams(NoteConstants.IMAGE_PREVIEW_CONTAINER_WIDTH, NoteConstants.IMAGE_PREVIEW_CONTAINER_HEIGHT));
         mImageContainer.setGravity(Gravity.CENTER);
 
@@ -38,7 +38,7 @@ public class ImageContainer extends IContainer {
         imageView.setLayoutParams(new LinearLayout.LayoutParams(NoteConstants.IMAGE_PREVIEW_CONTAINER_WIDTH - 50, NoteConstants.IMAGE_PREVIEW_CONTAINER_HEIGHT - 50));
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         mImageView = imageView;
-        imageView.setImageBitmap(scaledImage);
+        imageView.setImageBitmap(pScaledImage);
 
         mImageContainer.addView(imageView);
     }
