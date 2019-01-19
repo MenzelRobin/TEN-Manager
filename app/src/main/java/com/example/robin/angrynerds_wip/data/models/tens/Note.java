@@ -67,12 +67,13 @@ public class Note extends TEN {
         this.tags = tags;
     }
 
-    public void addImage(Bitmap bitmap) {
+    public Image addImage(Bitmap bitmap) {
         this.imageIDCounter++;
         String imageID = this.getID() + RepositoryConstants.IMAGE_CORE_ID+this.imageIDCounter;
         Log.i("NoteRemake", "ImageID: " + imageID);
         Image image = new Image(imageID, bitmap);
         this.pictures.add(image);
+        return  image;
     }
 
     public void addImage(Image pImage) {
