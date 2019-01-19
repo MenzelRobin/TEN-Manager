@@ -29,6 +29,7 @@
             android:windowSoftInputMode="adjustResize"
             android:configChanges="orientation|keyboardHidden|screenSize">
         </activity>
+        <activity android:name=".activities.event.Init"></activity>
         <activity android:name=".overview.overviewActivity.OverviewInit"
             android:configChanges="orientation"></activity>
 
