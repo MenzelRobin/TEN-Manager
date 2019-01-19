@@ -31,17 +31,15 @@ public class NoteDataGui {
         Log.i("ImageButton", "" + mNoteImageContainers.size());
         int i = 1;
 
-        for (Image image : mNoteData.getNote().getPictures()) {
+        for (Image image : mNoteData.getNote().getPictures())
             mNoteImageContainers.add(new ImageContainer(mNoteData.getActivity(), i++, image));
-        }
         addImageButton();
     }
 
     public void addImageButton() {
         if (mNoteImageContainers.size() > 0) {
-            if (mNoteImageContainers.get(mNoteImageContainers.size() - 1) instanceof IconContainer) {
+            if (mNoteImageContainers.get(mNoteImageContainers.size() - 1) instanceof IconContainer)
                 mNoteImageContainers.remove(mNoteImageContainers.size() - 1);
-            }
         }
         Drawable drawable = ContextCompat.getDrawable(mNoteData.getActivity(), R.drawable.ic_add_a_photo_grey_24dp);
         mNoteImageContainers.add(new IconContainer(mNoteData.getActivity(), 0, drawable));
@@ -71,13 +69,10 @@ public class NoteDataGui {
     }
 
     public Bitmap getOriginalImage(int pId) {
-        //Ansonsten komplett in GUI
-
         int index = pId - 1;
         Bitmap bitmap = mNoteData.getNote().getPictures().get(index).getBitmap();
-        if (bitmap == null) {
-            mNoteData.getmNoteDataBackend().triggerOriginalImageLoad();
-        }
+        if (bitmap == null)
+            mNoteData.getmNoteDataBackend().triggerOriginalImageLoad(index);
         return bitmap;
     }
 }
