@@ -12,18 +12,18 @@ import com.example.robin.angrynerds_wip.data.models.utils.Image;
 public class ImageContainer extends IContainer {
 
     private ImageView mImageView;
-    private Image image;
-    private PreviewImageCreator previewImageCreator;
+    private Image mImage;
+    private PreviewImageCreator mPreviewImageCreator;
 
     public ImageContainer(NoteActivity pActivity, int pId, Image pOriginalImage) {
         super(pActivity, pId);
-        this.image = pOriginalImage;
-        previewImageCreator = new PreviewImageCreator();
+        this.mImage = pOriginalImage;
+        mPreviewImageCreator = new PreviewImageCreator();
 
         Bitmap originalBitmap = pOriginalImage.getBitmap();
         Bitmap scaledBitmap;
 
-        scaledBitmap = previewImageCreator.getPreviewImage(originalBitmap);
+        scaledBitmap = mPreviewImageCreator.getPreviewImage(originalBitmap);
 
         initiateView(scaledBitmap);
         pActivity.registerForContextMenu(mImageContainer);

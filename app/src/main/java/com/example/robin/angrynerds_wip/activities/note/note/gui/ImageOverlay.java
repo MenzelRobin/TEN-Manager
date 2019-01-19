@@ -27,10 +27,10 @@ public class ImageOverlay {
     }
 
     //Displays the image in an AlertDialog
-    public void display(Activity activity) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(activity, R.style.CustomDialog);
+    public void display(Activity pActivity) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(pActivity, R.style.CustomDialog);
         dialog = builder.create();
-        LayoutInflater inflater = activity.getLayoutInflater();
+        LayoutInflater inflater = pActivity.getLayoutInflater();
         View dialogLayout = inflater.inflate(R.layout.activity_note_imageoverlay, null);
         ImageView imageView = dialogLayout.findViewById(R.id.id_note_imageOverlay_imageContainer);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -84,11 +84,11 @@ public class ImageOverlay {
     }
 
     //Rescales AlertDialog on Orientation change
-    public void changeOrientation(Activity activity) {
+    public void changeOrientation(Activity pActivity) {
         dialog.dismiss();
         int saveValue = displayWidth;
         displayWidth = displayHeight;
         displayHeight = saveValue;
-        display(activity);
+        display(pActivity);
     }
 }

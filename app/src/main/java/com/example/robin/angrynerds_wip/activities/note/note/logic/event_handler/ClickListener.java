@@ -10,14 +10,14 @@ public class ClickListener implements View.OnClickListener  {
 
     private NoteApplicationLogic mNoteApplicationLogic;
 
-    public ClickListener(NoteApplicationLogic noteApplicationLogic) {
-        mNoteApplicationLogic = noteApplicationLogic;
+    public ClickListener(NoteApplicationLogic pNoteApplicationLogic) {
+        mNoteApplicationLogic = pNoteApplicationLogic;
     }
 
     @Override
-    public void onClick(View view) {
-        
-        switch ( view.getId() ) {
+    public void onClick(View pView) {
+
+        switch ( pView.getId() ) {
             case R.id.id_note_tags:
                 mNoteApplicationLogic.onTagsClicked();
                 return;
@@ -33,7 +33,7 @@ public class ClickListener implements View.OnClickListener  {
 
         //Checks if image was clicked
         for(int id = 0; id<= mNoteApplicationLogic.getImageCount(); id++){
-            if(view.getId() == id){
+            if(pView.getId() == id){
                 mNoteApplicationLogic.onImageClicked(id);
                 return;
             }

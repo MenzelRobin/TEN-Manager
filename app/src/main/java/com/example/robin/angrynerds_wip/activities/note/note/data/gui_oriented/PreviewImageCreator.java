@@ -6,8 +6,6 @@ import com.example.robin.angrynerds_wip.activities.note.note.data.NoteConstants;
 
 public class PreviewImageCreator {
 
-
-
     public PreviewImageCreator(){}
 
     public Bitmap getPreviewImage(Bitmap pOriginalBitmap){
