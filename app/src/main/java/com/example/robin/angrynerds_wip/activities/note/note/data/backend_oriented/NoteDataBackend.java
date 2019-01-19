@@ -23,10 +23,22 @@ public class NoteDataBackend {
         this.mNoteData = pNoteData;
     }
 
+    public NoteData getmNoteData() {
+        return mNoteData;
+    }
+
     public void finallyDeleteImages() {
         for (Image image : mImagesToBeDeleted) {
             ImageService.deleteImage(image);
         }
+    }
+
+    public void deleteImage(int id){
+        Image image = new Image(mNoteData.getNote().getPictures().get(id - 1));
+        mNoteData.getNote().getPictures().remove(id - 1);
+        mImagesToBeDeleted.add(image);
+        mNoteData.getmNoteDataGui().imagesToImageContainer();
+
     }
 
     //Repository
@@ -59,7 +71,7 @@ public class NoteDataBackend {
         Delete.deleteTEN(mNoteData.getNote().getID());
     }
 
-    public void triggerOriginalImageLoad() {
+    public void triggerOriginalImageLoad(int index) {
         OriginalImageLoader originalImageLoader = new OriginalImageLoader(this, true);
         originalImageLoader.loadOriginalImage(index);
     }
