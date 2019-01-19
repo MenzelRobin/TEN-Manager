@@ -72,7 +72,7 @@ public class NoteDataGui {
         int index = pId - 1;
         Bitmap bitmap = mNoteData.getNote().getPictures().get(index).getBitmap();
         if (bitmap == null)
-            mNoteData.getmNoteDataBackend().triggerOriginalImageLoad(index);
+            mNoteData.getNoteDataBackend().triggerOriginalImageLoad(index);
         return bitmap;
     }
 }
