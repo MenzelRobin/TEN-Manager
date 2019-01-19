@@ -78,7 +78,7 @@ public class Repository {
 
     }
 
-    public List<TEN> getAllTENs() {
+    public ArrayList<TEN> getAllTENs() {
         queries.getAllTENs();
         return null;
     }

@@ -12,6 +12,7 @@ import com.example.robin.angrynerds_wip.data.repository.Repository;
 import com.example.robin.angrynerds_wip.data.repository.filesystem.FileManager;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class Read {
@@ -23,16 +24,10 @@ public class Read {
         Method to get all TEN objects in an arraylist
      --------------------------------------------------*/
     public static ArrayList<TEN> getAllTENs() {
-        //Repository repository = new Repository();
-        //ArrayList<TEN> allTEN = new ArrayList<TEN>();
-        //for (TEN ten : repository.getAllTENs())
-        //    allTEN.add(ten);
-
-        //MOCKDATA
-
-        //MockData md = new MockData();
-        //return md.tenMockData;
-        return null;
+        Repository repository = new Repository();
+        ArrayList<TEN> allTEN = new ArrayList<TEN>();
+        allTEN = repository.getAllTENs();
+        return allTEN;
     }
     /*
     public static ArrayList<TEN> getAllTENs() {
