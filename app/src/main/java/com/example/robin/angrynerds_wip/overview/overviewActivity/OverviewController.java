@@ -1,9 +1,7 @@
 package com.example.robin.angrynerds_wip.overview.overviewActivity;
 
 import android.support.v4.app.Fragment;
-import android.util.Log;
 
-import com.example.robin.angrynerds_wip.data.models.tens.TEN;
 import com.example.robin.angrynerds_wip.data.services.Delete;
 import com.example.robin.angrynerds_wip.overview.superClasses.OverviewFragmentInit;
 
@@ -29,10 +27,12 @@ public class OverviewController {
         refreshFragments();
     }
 
+    // Inserts the Headerfragment
     public void initHeader(){
         mFragmentInserter.insertFragment(mGui.getHeaderId(), mFragmentFactory.createHeaderCreateFragment(), "HEADER_FRAGMENT");
     }
 
+    // Sets on ClickListeners for Filterbuttons
     public void initOnClickListener(){
         OverviewClickListener clickListener = new OverviewClickListener(this);
         mGui.getShowAll().setOnClickListener(clickListener);
@@ -105,6 +105,7 @@ public class OverviewController {
         refreshFragments();
     }
 
+    // Populates the Containers with the existing Data
     public void refreshFragments(){
         mFragmentInserter.insertFragments(mGui.getContainerIDs(), mFragmentFactory.createTENFragments(mData.getData()));
     }

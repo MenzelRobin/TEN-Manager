@@ -9,12 +9,14 @@ import com.example.robin.angrynerds_wip.data.models.tens.TEN;
 import com.example.robin.angrynerds_wip.data.models.tens.Todo;
 
 public class OverviewClickListener implements View.OnClickListener {
+
     private OverviewController mController;
 
     public OverviewClickListener(OverviewController pController){
         mController = pController;
     }
 
+    // Calls the controllers show Method with different Classes
     @Override
     public void onClick(View view) {
         switch(view.getId()){

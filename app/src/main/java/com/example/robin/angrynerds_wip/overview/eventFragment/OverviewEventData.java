@@ -5,7 +5,6 @@ import android.os.Bundle;
 import com.example.robin.angrynerds_wip.overview.superClasses.OverviewFragmentData;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 public class OverviewEventData extends OverviewFragmentData {
