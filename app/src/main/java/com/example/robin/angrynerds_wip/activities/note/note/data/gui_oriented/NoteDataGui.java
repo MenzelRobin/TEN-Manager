@@ -7,7 +7,6 @@ import android.util.Log;
 
 import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.activities.note.note.data.NoteData;
-import com.example.robin.angrynerds_wip.activities.note.note.data.backend_oriented.ImageSaver;
 import com.example.robin.angrynerds_wip.data.models.utils.Image;
 
 import java.util.ArrayList;
@@ -28,7 +27,7 @@ public class NoteDataGui {
 
     public void imagesToImageContainer() {
         Log.i("Clicklistener1", "imagesToImageContainer was called ");
-        mNoteImageContainers = new ArrayList<IContainer>();
+        mNoteImageContainers = new ArrayList<>();
 
         Log.i("ImageButton", "" + mNoteImageContainers.size());
         int i = 1;
@@ -50,13 +49,13 @@ public class NoteDataGui {
         mNoteImageContainers.add(new IconContainer(mNoteData.getActivity(), 0, drawable));
     }
 
-    public IContainer getImageContainer(int index) {
-        return mNoteImageContainers.get(index);
+    public IContainer getImageContainer(int pIndex) {
+        return mNoteImageContainers.get(pIndex);
     }
 
-    public boolean checkImageListForId(int id) {
+    public boolean checkImageListForId(int pId) {
         for (IContainer mImage : mNoteImageContainers) {
-            if (mImage.getImageContainer().getId() == id)
+            if (mImage.getImageContainer().getId() == pId)
                 return true;
         }
         return false;
