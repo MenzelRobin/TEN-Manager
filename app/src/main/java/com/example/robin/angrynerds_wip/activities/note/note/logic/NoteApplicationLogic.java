@@ -49,7 +49,7 @@ public class NoteApplicationLogic {
 
     private void initData() {
         mNoteData.setmNoteApplicationLogic(this);
-        String noteId = "3df94791-dd34-4408-8628-9fae1e466414";
+        String noteId="a3e8a0ac-aa96-4847-acb1-9a2aa7a23b51";
         mNoteData.setColors(noteId);
         NoteLoader noteLoader = new NoteLoader(this, mNoteData);
         noteLoader.loadNote(noteId);

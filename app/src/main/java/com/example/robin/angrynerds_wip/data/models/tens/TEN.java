@@ -56,8 +56,8 @@ public class TEN {
         Bundle bundle = new Bundle();
         bundle.putString("ID", ID);
         bundle.putString("Title", title);
-        bundle.putLong("Color", color);
-        bundle.putLong("AccentColor", color);
+        bundle.putInt("Color", color);
+        bundle.putInt("AccentColor", accentColor);
         bundle.putLong("DateOfCreation", this.dateOfCreation.getTime());
         return bundle;
     }

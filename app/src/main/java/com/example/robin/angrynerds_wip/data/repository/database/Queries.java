@@ -2,9 +2,11 @@ package com.example.robin.angrynerds_wip.data.repository.database;
 
 import android.util.Log;
 
+import com.couchbase.lite.Array;
 import com.couchbase.lite.CouchbaseLiteException;
 import com.couchbase.lite.DataSource;
 import com.couchbase.lite.Dictionary;
+import com.couchbase.lite.Meta;
 import com.couchbase.lite.Ordering;
 import com.couchbase.lite.Query;
 import com.couchbase.lite.QueryBuilder;
@@ -12,6 +14,7 @@ import com.couchbase.lite.Result;
 import com.couchbase.lite.ResultSet;
 import com.couchbase.lite.SelectResult;
 import com.example.robin.angrynerds_wip.data.models.tens.TEN;
+import com.example.robin.angrynerds_wip.data.repository.Repository;
 import com.example.robin.angrynerds_wip.data.repository.converter.QueryResultConverter;
 import com.example.robin.angrynerds_wip.data.repository.RepositoryConstants;
 
@@ -26,12 +29,13 @@ public class Queries {
         this.queryResultConverter = new QueryResultConverter();
     }
 
-    public List<TEN> getAllTENs() {
+    public ArrayList<TEN> getAllTENs() {
         Query query = QueryBuilder.select(
-                SelectResult.all())
+                SelectResult.all(),
+                SelectResult.expression(Meta.id))
                 .from(DataSource.database(DatabaseManager.getDatabase()))
                 .orderBy(Ordering.property(RepositoryConstants.CREATION_DATE_KEY).ascending());
-        List<TEN> resultList = new ArrayList<TEN>();
+        ArrayList<TEN> resultList = new ArrayList<TEN>();
 
         try {
             ResultSet rs = query.execute();
@@ -41,9 +45,12 @@ public class Queries {
 
                 Dictionary dictionary = result.getDictionary(RepositoryConstants.DATABASENAME);
                 Log.i("Testdata", "Query " + dictionary.getString(RepositoryConstants.TYPE_KEY));
-                Log.i("Testdata", "Query " + dictionary.getString(RepositoryConstants.OBJECT_KEY));
+                Log.i("Testdata", "Query " + dictionary.getInt(RepositoryConstants.COLOR_KEY));
                 TEN tenObject = this.queryResultConverter.createTENFromResult(dictionary);
-                //resultList.add(tenObject);
+                tenObject.setID(result.getString("id"));
+                tenObject.setColor(dictionary.getInt(RepositoryConstants.COLOR_KEY));
+                tenObject.setColor(dictionary.getInt(RepositoryConstants.ACCENT_COLOR_KEY));
+                resultList.add(tenObject);
             }
             return resultList;
 

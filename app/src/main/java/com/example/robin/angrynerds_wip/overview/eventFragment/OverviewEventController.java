@@ -1,6 +1,7 @@
 package com.example.robin.angrynerds_wip.overview.eventFragment;
 
 import android.content.Intent;
+import android.util.Log;
 
 import com.example.robin.angrynerds_wip.MainActivity;
 import com.example.robin.angrynerds_wip.overview.superClasses.OverviewFragmentController;

@@ -25,8 +25,12 @@ public class Read {
      --------------------------------------------------*/
     public static ArrayList<TEN> getAllTENs() {
         Repository repository = new Repository();
-        ArrayList<TEN> allTEN = new ArrayList<TEN>();
+        ArrayList<TEN> allTEN;
         allTEN = repository.getAllTENs();
+        Log.i("Mainfix", "Number Of TENs: " + allTEN.size());
+        for (TEN ten: allTEN){
+            Log.i("Mainfix", "ID: " + ten.getID() + ", Titel: " + ten.getTitle());
+        }
         return allTEN;
     }
     /*

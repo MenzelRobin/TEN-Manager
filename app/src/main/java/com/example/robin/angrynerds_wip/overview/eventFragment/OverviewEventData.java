@@ -17,7 +17,7 @@ public class OverviewEventData extends OverviewFragmentData {
     // Adds the Note data to this Object
     public void addData(Bundle pData){
         super.addData(pData);
-        Date pDate = new Date(Long.parseLong(pData.getString("time")));
+        Date pDate = new Date(pData.getLong("time"));
         SimpleDateFormat time = new SimpleDateFormat("hh:mm");
         SimpleDateFormat date = new SimpleDateFormat("E, dd. MMM");
         SimpleDateFormat year = new SimpleDateFormat("YYYY");

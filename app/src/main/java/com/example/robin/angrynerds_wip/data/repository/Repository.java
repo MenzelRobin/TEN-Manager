@@ -79,8 +79,8 @@ public class Repository {
     }
 
     public ArrayList<TEN> getAllTENs() {
-        queries.getAllTENs();
-        return null;
+        ArrayList<TEN> allTENs = queries.getAllTENs();
+        return allTENs;
     }
 
     public boolean deleteTEN(String tenID) {

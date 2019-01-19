@@ -27,11 +27,10 @@ public class QueryResultConverter {
                 Note note = tenConverter.stringToNote(objectJSON);
 
                 note = tenConverter.addImagesFromResultToNote(note, dictionary);
-
                 return note;
             case RepositoryConstants.TODO_TYPE:
                 Todo todo = tenConverter.stringToTodo(objectJSON);
-
+                return todo;
             default:
                 return null;
         }
