@@ -49,7 +49,7 @@ public class NoteApplicationLogic {
 
     private void initData() {
         mNoteData.setmNoteApplicationLogic(this);
-        String noteId = "9020273d-bcc5-4591-8a17-f859f2542b8f";
+        String noteId = "3df94791-dd34-4408-8628-9fae1e466414";
         mNoteData.setColors(noteId);
         NoteLoader noteLoader = new NoteLoader(this, mNoteData);
         noteLoader.loadNote(noteId);
@@ -142,8 +142,10 @@ public class NoteApplicationLogic {
     public void returnToOverview() {
 
         //TODO das ist noch falsch, dadurch werden neue Instanzen von der Overview erstellt, obwohl die Alte noch vorhanden ist
-        Intent intent = new Intent(this.mNoteData.getActivity().getApplicationContext(), MainActivity.class);
-        this.mNoteData.getActivity().getApplicationContext().startActivity(intent); // Activity Starten*/
+        //Intent intent = new Intent(this.mNoteData.getActivity().getApplicationContext(), MainActivity.class);
+        //this.mNoteData.getActivity().getApplicationContext().startActivity(intent); // Activity Starten*/
+
+        mNoteData.getActivity().finish();
 
         //intent.putExtra("ID", 5); // Hier können eigene Parameter hinzugefügt werden.
         //Intent intent = new Intent(mNoteData.getActivity(), OverviewInit.class);
