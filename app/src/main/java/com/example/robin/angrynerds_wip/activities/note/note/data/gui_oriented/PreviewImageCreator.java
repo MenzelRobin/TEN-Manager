@@ -10,30 +10,30 @@ public class PreviewImageCreator {
 
     public PreviewImageCreator(){}
 
-    public Bitmap getPreviewImage(Bitmap originalBitmap){
+    public Bitmap getPreviewImage(Bitmap pOriginalBitmap){
         //Crop image to square
-        if (originalBitmap.getWidth() > originalBitmap.getHeight()) {
-            originalBitmap = Bitmap.createBitmap(
-                    originalBitmap,
-                    originalBitmap.getWidth() / 2 - originalBitmap.getHeight() / 2,
+        if (pOriginalBitmap.getWidth() > pOriginalBitmap.getHeight()) {
+            pOriginalBitmap = Bitmap.createBitmap(
+                    pOriginalBitmap,
+                    pOriginalBitmap.getWidth() / 2 - pOriginalBitmap.getHeight() / 2,
                     0,
-                    originalBitmap.getHeight(),
-                    originalBitmap.getHeight()
+                    pOriginalBitmap.getHeight(),
+                    pOriginalBitmap.getHeight()
             );
 
-        } else if (originalBitmap.getWidth() < originalBitmap.getHeight()) {
-            originalBitmap = Bitmap.createBitmap(
-                    originalBitmap,
+        } else if (pOriginalBitmap.getWidth() < pOriginalBitmap.getHeight()) {
+            pOriginalBitmap = Bitmap.createBitmap(
+                    pOriginalBitmap,
                     0,
-                    originalBitmap.getHeight() / 2 - originalBitmap.getWidth() / 2,
-                    originalBitmap.getWidth(),
-                    originalBitmap.getWidth()
+                    pOriginalBitmap.getHeight() / 2 - pOriginalBitmap.getWidth() / 2,
+                    pOriginalBitmap.getWidth(),
+                    pOriginalBitmap.getWidth()
             );
         }
 
         //scale image to preset
-        Bitmap scaledBitmap = Bitmap.createScaledBitmap(originalBitmap, NoteConstants.IMAGE_PREVIEW_CONTAINER_WIDTH - 50, NoteConstants.IMAGE_PREVIEW_CONTAINER_HEIGHT - 50, true);
-        return scaledBitmap;
+        return Bitmap.createScaledBitmap(pOriginalBitmap, NoteConstants.IMAGE_PREVIEW_CONTAINER_WIDTH - 50,
+                NoteConstants.IMAGE_PREVIEW_CONTAINER_HEIGHT - 50, true);
     }
 
 }

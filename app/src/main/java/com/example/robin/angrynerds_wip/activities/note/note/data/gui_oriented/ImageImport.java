@@ -24,8 +24,8 @@ public class ImageImport {
     private NoteActivity mActivity;
     private String mCurrentPhotoPath;
 
-    public ImageImport(NoteActivity activity) {
-        this.mActivity = activity;
+    public ImageImport(NoteActivity pActivity) {
+        this.mActivity = pActivity;
         requestImageSource();
     }
 
