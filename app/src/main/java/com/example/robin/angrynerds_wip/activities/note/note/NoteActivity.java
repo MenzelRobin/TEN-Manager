@@ -64,18 +64,6 @@ public class NoteActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onSaveInstanceState (Bundle outState) {
-        mNoteData.saveDataInBundle(outState);
-        super.onSaveInstanceState(outState);
-    }
-
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState){
-        mNoteData.restoreDataFromBundle(savedInstanceState);
-        super.onRestoreInstanceState(savedInstanceState);
-    }
-
-    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         mNoteApplicationLogic.onActivityReturned(requestCode, resultCode, data);

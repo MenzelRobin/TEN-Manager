@@ -261,10 +261,10 @@ public class NoteApplicationLogic {
     //Inserts User Input into NoteData
     public void onTextChanged(String text, View view) {
         if (view.getId() == R.id.id_note_title) {
-            mNoteData.setTitle(text);
+            mNoteData.getNote().setTitle(text);
         } //R.id.id_event_editText_title
         else if (view.getId() == R.id.id_note_description) {
-            mNoteData.setDescription(text);
+            mNoteData.getNote().setDescription(text);
         } //R.id.id_event_editText_title
     }
 
