@@ -18,31 +18,22 @@ public class NoteLoader {
         mNoteDataBackend = pNoteDataBackend;
     }
 
-    public NoteLoader(NoteApplicationLogic noteApplicationLogic, NoteData noteData) {
-    }
-
-    public void loadNote(String noteId) {
+    public void loadNote(String pNoteId) {
         LoadNoteTask loadNoteTask = new LoadNoteTask();
-        loadNoteTask.execute(noteId);
+        loadNoteTask.execute(pNoteId);
     }
 
     private class LoadNoteTask extends AsyncTask<String, Integer, Note> {
 
-        private final String LOG_TAG = LoadNoteTask.class.getSimpleName();
-
         @Override
-        protected Note doInBackground(String... strings) {
-            Note note = Read.getNoteByID(strings[0]);
+        protected Note doInBackground(String... pStrings) {
+            Note note = Read.getNoteByID(pStrings[0]);
             return note;
         }
 
         @Override
-        protected void onProgressUpdate(Integer... values) {
-        }
-
-        @Override
-        protected void onPostExecute(Note note) {
-            mNoteDataBackend.getmNoteData().setNote(note);
+        protected void onPostExecute(Note pNote) {
+            mNoteDataBackend.getmNoteData().setNote(pNote);
             mNoteDataBackend.getmNoteData().getmNoteApplicationLogic().dataToGui();
             mNoteDataBackend.loadImages();
         }
