@@ -40,14 +40,18 @@ public class NoteDataBackend {
 
     }
 
-    //Repository
-    public void loadImages(NoteLoader noteLoader) {
-        Log.i("NoteRemake", "" + mNoteData.getNote().getPictures().size());
+    public void loadImages() {
+        NotePreviewImageLoader notePreviewImageLoader = new NotePreviewImageLoader(this);
         for (Image image : this.mNoteData.getNote().getPictures()) {
-            //noteLoader.loadPreviewImage(image);
+            notePreviewImageLoader.loadPreviewImage(image);
         }
-        //OriginalImageLoader originalImageLoader = new OriginalImageLoader(this, false);
-        //originalImageLoader.loadOriginalImage();
+        OriginalImageLoader originalImageLoader = new OriginalImageLoader(this, false);
+        originalImageLoader.loadOriginalImage();
+    }
+
+    public void triggerOriginalImageLoad(int index) {
+        OriginalImageLoader originalImageLoader = new OriginalImageLoader(this, true);
+        originalImageLoader.loadOriginalImage(index);
     }
 
     //Repository
@@ -70,8 +74,5 @@ public class NoteDataBackend {
         Delete.deleteTEN(mNoteData.getNote().getID());
     }
 
-    public void triggerOriginalImageLoad(int index) {
-        OriginalImageLoader originalImageLoader = new OriginalImageLoader(this, true);
-        originalImageLoader.loadOriginalImage(index);
-    }
+
 }

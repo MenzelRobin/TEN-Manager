@@ -25,7 +25,6 @@ public class NotePreviewImageLoader {
         protected Image doInBackground(Image... images) {
             Image copy = new Image(images[0]);
             copy = ImageService.getPreviewImage(copy);
-            Log.i("NoteRemake", "Previewfotobitmap: " + copy.getBitmap());
             return copy;
         }
 
@@ -35,7 +34,6 @@ public class NotePreviewImageLoader {
 
         @Override
         protected void onPostExecute(Image image) {
-            Log.i("NoteRemake", "Previewiamge loaded");
             if (image.getBitmap() == null) {
                 //TODO implement required methods
                 //mNoteDataBackend.mNoteData.getNote().imageNotFound(image);

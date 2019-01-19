@@ -12,18 +12,13 @@ import com.example.robin.angrynerds_wip.data.services.Read;
 
 public class NoteLoader {
 
-    private NoteApplicationLogic mNoteApplicationLogic;
-    private NoteData mNoteData;
-    private NoteLoader mNoteLoader;
+    NoteDataBackend mNoteDataBackend;
 
-    public NoteLoader() {
-        mNoteLoader = this;
+    public NoteLoader(NoteDataBackend pNoteDataBackend) {
+        mNoteDataBackend = pNoteDataBackend;
     }
 
     public NoteLoader(NoteApplicationLogic noteApplicationLogic, NoteData noteData) {
-        mNoteApplicationLogic = noteApplicationLogic;
-        mNoteData = noteData;
-        mNoteLoader = this;
     }
 
     public void loadNote(String noteId) {
@@ -47,9 +42,9 @@ public class NoteLoader {
 
         @Override
         protected void onPostExecute(Note note) {
-            mNoteData.setNote(note);
-            mNoteApplicationLogic.dataToGui();
-            mNoteData.loadImages(mNoteLoader);
+            mNoteDataBackend.getmNoteData().setNote(note);
+            mNoteDataBackend.getmNoteData().getmNoteApplicationLogic().dataToGui();
+            mNoteDataBackend.loadImages();
         }
     }
 }
