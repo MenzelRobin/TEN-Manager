@@ -58,4 +58,9 @@ public class NoteDataBackend {
     public void deleteNote() {
         Delete.deleteTEN(mNoteData.getNote().getID());
     }
+
+    public void triggerOriginalImageLoad() {
+        OriginalImageLoader originalImageLoader = new OriginalImageLoader(this, true);
+        originalImageLoader.loadOriginalImage(index);
+    }
 }
