@@ -27,8 +27,8 @@ public class NoteGui {
 
     private RelativeLayout mBackground;
     private EditText mNoteTitle;
-    private HorizontalScrollView mNoteImageViewPortrait;
-    private ScrollView mNoteImageViewLandscape;
+    //private HorizontalScrollView mNoteImageViewPortrait;
+    //private ScrollView mNoteImageViewLandscape;
     private LinearLayout mNoteImageContainer;
     private EditText mNoteDescription;
     private TextView mNoteTags;
@@ -50,12 +50,12 @@ public class NoteGui {
         //Initiates according to screen orientation
         if(activity.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
             //Horizontally scrollable Image Gallery in Portrait Mode
-            mNoteImageViewPortrait = activity.findViewById(R.id.id_note_ImageScrollView_Horizontal);
+            //mNoteImageViewPortrait = activity.findViewById(R.id.id_note_ImageScrollView_Horizontal);
             mNoteImageContainer = activity.findViewById(R.id.id_note_linearImageContainer_Horizontal);
         }
         else{
             //Vertically scrollable Image Gallery in Landscape Mode
-            mNoteImageViewLandscape = activity.findViewById(R.id.id_note_ImageScrollView_Vertical);
+            //mNoteImageViewLandscape = activity.findViewById(R.id.id_note_ImageScrollView_Vertical);
             mNoteImageContainer = activity.findViewById(R.id.id_note_linearImageContainer_Vertical);
         }
 

@@ -35,8 +35,8 @@ public class ImageOverlay {
         ImageView imageView = dialogLayout.findViewById(R.id.id_note_imageOverlay_imageContainer);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         if(calculateSize()) {
-            imageView.setImageBitmap(Bitmap.createScaledBitmap(mImage, (int) (frameWidth * NoteConstants.IMAGE_OVERLAY_DISPLAYSIZE_FACTOR),
-                    (int) (frameHeight * NoteConstants.IMAGE_OVERLAY_DISPLAYSIZE_FACTOR), true));
+            imageView.setImageBitmap(Bitmap.createScaledBitmap(mImage, (int) (frameWidth * NoteConstants.IMAGE_OVERLAY_FILL_FACTOR),
+                    (int) (frameHeight * NoteConstants.IMAGE_OVERLAY_FILL_FACTOR), true));
         }
         else
             imageView.setImageBitmap(mImage);
@@ -52,7 +52,7 @@ public class ImageOverlay {
         double displayAspectRatio = (double) displayWidth / displayHeight;
 
         //Checks if image is smaller than display * edgeFactor
-        if(imageWidth <= displayWidth*NoteConstants.IMAGE_OVERLAY_DISPLAYSIZE_FACTOR && imageHeight <= displayHeight*NoteConstants.IMAGE_OVERLAY_DISPLAYSIZE_FACTOR){
+        if(imageWidth <= displayWidth*NoteConstants.IMAGE_OVERLAY_FILL_FACTOR && imageHeight <= displayHeight*NoteConstants.IMAGE_OVERLAY_FILL_FACTOR){
             return false;
         }
         //Checks if image is a square

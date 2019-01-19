@@ -1,17 +1,15 @@
 package com.example.robin.angrynerds_wip.activities.note.note.data.gui_oriented;
 
+import android.app.Activity;
 import android.widget.LinearLayout;
 
-import com.example.robin.angrynerds_wip.activities.note.note.NoteActivity;
 
 public class IContainer {
 
-    protected NoteActivity mActivity;
+    protected Activity mActivity;
     protected LinearLayout mImageContainer;
 
-
-
-    IContainer(NoteActivity activity, int id){
+    IContainer(Activity activity, int id){
         this.mActivity = activity;
         this.mImageContainer = new LinearLayout(activity);
         setImageContainerId(id);
