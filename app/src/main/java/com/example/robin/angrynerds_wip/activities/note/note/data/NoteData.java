@@ -14,6 +14,7 @@ import com.example.robin.angrynerds_wip.activities.note.note.data.backend_orient
 import com.example.robin.angrynerds_wip.activities.note.note.data.gui_oriented.IContainer;
 import com.example.robin.angrynerds_wip.activities.note.note.data.gui_oriented.IconContainer;
 import com.example.robin.angrynerds_wip.activities.note.note.data.gui_oriented.ImageContainer;
+import com.example.robin.angrynerds_wip.activities.note.note.data.gui_oriented.NoteDataGui;
 import com.example.robin.angrynerds_wip.activities.note.note.logic.NoteApplicationLogic;
 import com.example.robin.angrynerds_wip.data.models.tens.Note;
 import com.example.robin.angrynerds_wip.data.models.utils.Image;
@@ -26,19 +27,19 @@ import java.util.ArrayList;
 
 public class NoteData {
 
+    private NoteDataGui mNoteDataGui;
     private NoteApplicationLogic mNoteApplicationLogic;
     private NoteActivity mActivity;
     private ArrayList<Image> mImagesToBeDeleted;
     private Note mNote;
-    private ArrayList<IContainer> mNoteImageContainers;
 
     public NoteData(NoteActivity activity) {
 
         Log.i("Clicklistener1", "NoteData was called");
         mActivity = activity;
-        mNoteImageContainers = new ArrayList<>();
         mNote = new Note();
         mImagesToBeDeleted = new ArrayList<>();
+        mNoteDataGui = new NoteDataGui(this);
         addImageButton();
     }
 
@@ -46,19 +47,9 @@ public class NoteData {
         mNote = note;
     }
 
-
     //TODO to NoteDATAGUI
     public void imagesToImageContainer() {
-        Log.i("Clicklistener1", "imagesToImageContainer was called ");
-        mNoteImageContainers = new ArrayList<IContainer>();
-
-        Log.i("ImageButton", "" + mNoteImageContainers.size());
-        int i = 1;
-
-        for (Image image : mNote.getPictures()) {
-            mNoteImageContainers.add(new ImageContainer(mActivity, i++, image));
-        }
-        addImageButton();
+        mNoteDataGui.imagesToImageContainer();
     }
 
     //stay
@@ -74,14 +65,7 @@ public class NoteData {
 
     //GUI
     public void addImageButton() {
-        Log.i("Clicklistener1", "AddImageButton was called " + mNoteImageContainers.size());
-        if (mNoteImageContainers.size() > 0) {
-            if (mNoteImageContainers.get(mNoteImageContainers.size() - 1) instanceof IconContainer) {
-                mNoteImageContainers.remove(mNoteImageContainers.size() - 1);
-            }
-        }
-        Drawable drawable = ContextCompat.getDrawable(mActivity, R.drawable.ic_add_a_photo_grey_24dp);
-        mNoteImageContainers.add(new IconContainer(mActivity, 0, drawable));
+        mNoteDataGui.addImageButton();
     }
 
     //delete
@@ -92,13 +76,14 @@ public class NoteData {
     //delete
     public void restoreDataFromBundle(Bundle savedInstanceState) {
     }
+
     //keep until setDescription
     public ArrayList<IContainer> getNoteImageContainers() {
-        return mNoteImageContainers;
+        return mNoteDataGui.getNoteImageContainers();
     }
 
-    public IContainer getImageContainer(int id) {
-        return mNoteImageContainers.get(id);
+    public IContainer getImageContainer(int index) {
+        return mNoteDataGui.getImageContainer(index);
     }
 
     public NoteActivity getActivity() {
@@ -136,29 +121,24 @@ public class NoteData {
 
     //Checks ImageContainer for specific ID, GUI
     public boolean checkImageID(int id) {
-        for (IContainer mImage : mNoteImageContainers) {
-            if (mImage.getImageContainer().getId() == id)
-                return true;
-        }
-        return false;
+        return mNoteDataGui.checkImageListForId(id);
     }
+
     //Adds image as ImageContainer to mNoteImageContainers
     //GUI
     public void addImageFromCamera(Bitmap image, String formerPath) {
-        this.addImageFromGallery(image);
-        ImageService.deleteImage(formerPath);
-    }
+        mNoteDataGui.addImageFromGallery(image);
 
-    //GUI
-    public void addImageFromGallery(Bitmap image) {
-        mNote.addImage(image);
-        imagesToImageContainer();
+        //TODO NoteDataRep or NoteDataGui?
         Image originalImage = mNote.getPictures().get(mNote.getPictures().size() - 1);
         ImageSaver imageSaver = new ImageSaver();
         imageSaver.saveImage(originalImage);
+
+        ImageService.deleteImage(formerPath);
     }
+
     //Deletes specific ImageContainer from mNoteImageContainers
-    //GUI
+    //TODO NoteDataGui or Rep?
     public void deleteImage(int id) {
         Image image = new Image(mNote.getPictures().get(id - 1));
         mNote.getPictures().remove(id - 1);
@@ -171,6 +151,14 @@ public class NoteData {
         for (Image image : mImagesToBeDeleted) {
             ImageService.deleteImage(image);
         }
+    }
+
+    public void addImageContainer(Image image) {
+        mNoteDataGui.addImageContainer(image);
+    }
+
+    public void addImageFromGallery(Bitmap image) {
+        mNoteDataGui.addImageFromGallery(image);
     }
 
     //Repository
@@ -198,12 +186,6 @@ public class NoteData {
         Update.saveTEN(this.mNote);
     }
 
-    //GUI
-    public void addImageContainer(Image image) {
-        int newImageContainerID = mNoteImageContainers.size();
-        ImageContainer imageContainer = new ImageContainer(getActivity(), newImageContainerID, image);
-        mNoteImageContainers.add(mNoteImageContainers.size() - 1, imageContainer);
-    }
     //Repository
     public void deleteNote() {
         Delete.deleteTEN(mNote.getID());
