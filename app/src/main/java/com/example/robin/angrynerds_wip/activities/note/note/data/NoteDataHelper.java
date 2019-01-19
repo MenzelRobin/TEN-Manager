@@ -1,6 +1,7 @@
 package com.example.robin.angrynerds_wip.activities.note.note.data;
 
 public class NoteDataHelper {
+
     public NoteDataHelper(){
 
     }

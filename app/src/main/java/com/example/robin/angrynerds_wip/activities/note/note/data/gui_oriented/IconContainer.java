@@ -11,11 +11,11 @@ import com.example.robin.angrynerds_wip.activities.note.note.data.NoteConstants;
 
 public class IconContainer extends IContainer {
 
-    private Drawable drawable;
+    private Drawable mDrawable;
 
     public IconContainer(NoteActivity pActivity, int pId, Drawable pDrawable){
         super(pActivity, pId);
-        this.drawable = pDrawable;
+        this.mDrawable = pDrawable;
         initiateView();
     }
 
@@ -33,7 +33,7 @@ public class IconContainer extends IContainer {
 
         ImageView imageView = new ImageView(mActivity.getApplicationContext());
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        imageView.setImageDrawable(drawable);
+        imageView.setImageDrawable(mDrawable);
         imageView.setLayoutParams(new LinearLayout.LayoutParams(300, 300));
         mImageContainer.addView(imageView);
     }

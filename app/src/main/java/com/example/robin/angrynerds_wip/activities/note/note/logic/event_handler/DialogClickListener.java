@@ -6,10 +6,10 @@ import com.example.robin.angrynerds_wip.activities.note.note.data.gui_oriented.I
 
 public class DialogClickListener implements DialogInterface.OnClickListener{
 
-    private ImageImport imageImport;
+    private ImageImport mImageImport;
 
-    public DialogClickListener(ImageImport imageImport) {
-        this.imageImport = imageImport;
+    public DialogClickListener(ImageImport pImageImport) {
+        this.mImageImport = pImageImport;
     }
 
     @Override
@@ -17,10 +17,10 @@ public class DialogClickListener implements DialogInterface.OnClickListener{
 
         switch ( option ) {
             case 0:
-                imageImport.importImageFromGallery();
+                mImageImport.importImageFromGallery();
                 break;
             case 1:
-                imageImport.importImageFromCamera();
+                mImageImport.importImageFromCamera();
                 break;
             default:
                 break;

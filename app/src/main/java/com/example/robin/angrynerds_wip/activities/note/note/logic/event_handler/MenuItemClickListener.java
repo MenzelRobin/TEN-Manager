@@ -6,15 +6,16 @@ import android.view.MenuItem;
 import com.example.robin.angrynerds_wip.activities.note.note.logic.NoteApplicationLogic;
 
 public class MenuItemClickListener implements Toolbar.OnMenuItemClickListener {
+
     private NoteApplicationLogic mNoteApplicationLogic;
 
-    public MenuItemClickListener(NoteApplicationLogic noteApplicationLogic){
-        mNoteApplicationLogic = noteApplicationLogic;
+    public MenuItemClickListener(NoteApplicationLogic pNoteApplicationLogic){
+        mNoteApplicationLogic = pNoteApplicationLogic;
     }
 
     @Override
-    public boolean onMenuItemClick(MenuItem item) {
-        mNoteApplicationLogic.onMenuItemClicked(item);
+    public boolean onMenuItemClick(MenuItem pItem) {
+        mNoteApplicationLogic.onMenuItemClicked(pItem);
         return false;
     }
 }

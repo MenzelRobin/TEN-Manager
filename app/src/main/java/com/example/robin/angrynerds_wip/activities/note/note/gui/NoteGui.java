@@ -40,42 +40,42 @@ public class NoteGui {
     //private View mViewSeparator2;
     //private View mViewSeparator3;
 
-    public NoteGui(NoteActivity activity) {
+    public NoteGui(NoteActivity pActivity) {
 
-        activity.setContentView(R.layout.activity_note);
+        pActivity.setContentView(R.layout.activity_note);
 
-        mBackground = activity.findViewById(R.id.id_note_background);
-        mNoteTitle = activity.findViewById(R.id.id_note_title);
+        mBackground = pActivity.findViewById(R.id.id_note_background);
+        mNoteTitle = pActivity.findViewById(R.id.id_note_title);
 
         //Initiates according to screen orientation
-        if(activity.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
+        if(pActivity.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
             //Horizontally scrollable Image Gallery in Portrait Mode
-            //mNoteImageViewPortrait = activity.findViewById(R.id.id_note_ImageScrollView_Horizontal);
-            mNoteImageContainer = activity.findViewById(R.id.id_note_linearImageContainer_Horizontal);
+            //mNoteImageViewPortrait = pActivity.findViewById(R.id.id_note_ImageScrollView_Horizontal);
+            mNoteImageContainer = pActivity.findViewById(R.id.id_note_linearImageContainer_Horizontal);
         }
         else{
             //Vertically scrollable Image Gallery in Landscape Mode
-            //mNoteImageViewLandscape = activity.findViewById(R.id.id_note_ImageScrollView_Vertical);
-            mNoteImageContainer = activity.findViewById(R.id.id_note_linearImageContainer_Vertical);
+            //mNoteImageViewLandscape = pActivity.findViewById(R.id.id_note_ImageScrollView_Vertical);
+            mNoteImageContainer = pActivity.findViewById(R.id.id_note_linearImageContainer_Vertical);
         }
 
-        mNoteDescription = activity.findViewById(R.id.id_note_description);
-        mNoteTags = activity.findViewById(R.id.id_note_tags);
-        mToolbar = activity.findViewById(R.id.id_note_toolbar);
-        mProgressBarHolder = activity.findViewById(R.id.noteProgressBarHolder);
+        mNoteDescription = pActivity.findViewById(R.id.id_note_description);
+        mNoteTags = pActivity.findViewById(R.id.id_note_tags);
+        mToolbar = pActivity.findViewById(R.id.id_note_toolbar);
+        mProgressBarHolder = pActivity.findViewById(R.id.noteProgressBarHolder);
 
         //TODO implement separators?
-        //mViewSeparator1 = activity.findViewById(R.id.id_note_separate1);
-        //mViewSeparator2 = activity.findViewById(R.id.id_note_separate2);
-        //mViewSeparator3 = activity.findViewById(R.id.id_note_separate3);
+        //mViewSeparator1 = pActivity.findViewById(R.id.id_note_separate1);
+        //mViewSeparator2 = pActivity.findViewById(R.id.id_note_separate2);
+        //mViewSeparator3 = pActivity.findViewById(R.id.id_note_separate3);
 
         mNoteTags.setMovementMethod(new ScrollingMovementMethod());
 
         //Set toolbar
-        activity.setSupportActionBar(mToolbar);
-        activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        activity.getSupportActionBar().setDisplayShowHomeEnabled(true);
-        activity.getSupportActionBar().setDisplayShowTitleEnabled(false);
+        pActivity.setSupportActionBar(mToolbar);
+        pActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        pActivity.getSupportActionBar().setDisplayShowHomeEnabled(true);
+        pActivity.getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 
     //Getters
@@ -93,37 +93,37 @@ public class NoteGui {
     }
     public Toolbar getToolbar() {return mToolbar;}
     //Setters
-    public void setNoteTitle(String mNoteTitle) {
-        this.mNoteTitle.setText(mNoteTitle);
+    public void setNoteTitle(String pNoteTitle) {
+        this.mNoteTitle.setText(pNoteTitle);
     }
-    public void setNoteImageContainer(ArrayList<IContainer> imageContainers) {
+    public void setNoteImageContainer(ArrayList<IContainer> pImageContainers) {
         //Adds ImageViews to NoteData
-        for(IContainer mImage : imageContainers){
+        for(IContainer mImage : pImageContainers){
             mNoteImageContainer.addView(mImage.getImageContainer());
         }
     }
-    public void setNoteDescription(String mNoteDescription) { this.mNoteDescription.setText(mNoteDescription); }
-    public void setNoteTags(ArrayList<String> mNoteTags) { this.mNoteTags.setText(formatTags(mNoteTags)); }
-    public void setColors(int color, int accentColor){
-        mBackground.setBackgroundColor(color);
-        mToolbar.setBackgroundColor(accentColor);
+    public void setNoteDescription(String pNoteDescription) { this.mNoteDescription.setText(pNoteDescription); }
+    public void setNoteTags(ArrayList<String> pNoteTags) { this.mNoteTags.setText(formatTags(pNoteTags)); }
+    public void setColors(int pColor, int pAccentColor){
+        mBackground.setBackgroundColor(pColor);
+        mToolbar.setBackgroundColor(pAccentColor);
 
         //TODO implement separators?
-        //mViewSeparator1.setBackgroundColor(accentColor);
-        //mViewSeparator2.setBackgroundColor(accentColor);
-        //mViewSeparator3.setBackgroundColor(accentColor);
+        //mViewSeparator1.setBackgroundColor(pAccentColor);
+        //mViewSeparator2.setBackgroundColor(pAccentColor);
+        //mViewSeparator3.setBackgroundColor(pAccentColor);
 
         //TODO does not work
-        //mNoteTitle.setHighlightColor(accentColor);
-        //mNoteDescription.setHighlightColor(accentColor);
+        //mNoteTitle.setHighlightColor(pAccentColor);
+        //mNoteDescription.setHighlightColor(pAccentColor);
     }
 
     //Formats tags to display in TextView
-    private String formatTags(ArrayList<String> mNoteTags) {
+    private String formatTags(ArrayList<String> pNoteTags) {
         String concatString = "";
-        int size = mNoteTags.size();
+        int size = pNoteTags.size();
         for(int i = 0; i < size; i++){
-            concatString += "#" + mNoteTags.get(i);
+            concatString += "#" + pNoteTags.get(i);
             if(i<size-1)
                 concatString += "              ";
         }
@@ -131,18 +131,18 @@ public class NoteGui {
     }
 
     //Displays a message on screen
-    public void displayToast(Activity activity, String s) {
-        Toast.makeText(activity, s, Toast.LENGTH_SHORT).show();
+    public void displayToast(Activity pActivity, String pText) {
+        Toast.makeText(pActivity, pText, Toast.LENGTH_SHORT).show();
     }
 
-    public void addSingleAnimatedImage(ImageContainer imageContainer) {
+    public void addSingleAnimatedImage(ImageContainer pImageContainer) {
 
         AlphaAnimation anim = new AlphaAnimation(0,  1);
         anim.setDuration(500);
         anim.setRepeatMode(Animation.REVERSE);
         int position = mNoteImageContainer.getChildCount()-1;
-        mNoteImageContainer.addView(imageContainer.getImageContainer(), position);
-        imageContainer.getImageView().startAnimation(anim);
+        mNoteImageContainer.addView(pImageContainer.getImageContainer(), position);
+        pImageContainer.getImageView().startAnimation(anim);
 
     }
 
