@@ -1,7 +1,5 @@
 package com.example.robin.angrynerds_wip.activities.note.note.data.backend_oriented;
 
-import android.util.Log;
-
 import com.example.robin.angrynerds_wip.activities.note.note.data.NoteData;
 import com.example.robin.angrynerds_wip.data.models.tens.Note;
 import com.example.robin.angrynerds_wip.data.models.utils.Image;
@@ -45,18 +43,18 @@ public class NoteDataBackend {
         for (Image image : this.mNoteData.getNote().getPictures()) {
             notePreviewImageLoader.loadPreviewImage(image);
         }
-        OriginalImageLoader originalImageLoader = new OriginalImageLoader(this, false);
-        originalImageLoader.loadOriginalImage();
+        RegularOriginalImageLoader regularOriginalImageLoader = new RegularOriginalImageLoader(this);
+        regularOriginalImageLoader.loadOriginalImage();
     }
 
-    public void triggerOriginalImageLoad(int index) {
-        OriginalImageLoader originalImageLoader = new OriginalImageLoader(this, true);
-        originalImageLoader.loadOriginalImage(index);
+    public void triggerOriginalImageLoad(int pIndex) {
+        PriorityOriginalImageLoader priorityOriginalImageLoader = new PriorityOriginalImageLoader(this);
+        priorityOriginalImageLoader.loadOriginalImage(pIndex);
     }
 
     //Repository
-    public void setColors(String noteId) {
-        int[] colors = Read.getColors(noteId);
+    public void setColors(String pNoteId) {
+        int[] colors = Read.getColors(pNoteId);
         if (mNoteData.getNote() == null) {
             mNoteData.setNote(new Note());
         }

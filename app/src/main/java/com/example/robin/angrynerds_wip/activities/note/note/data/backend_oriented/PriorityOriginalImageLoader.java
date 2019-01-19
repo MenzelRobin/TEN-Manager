@@ -5,26 +5,14 @@ import android.os.AsyncTask;
 import com.example.robin.angrynerds_wip.data.models.utils.Image;
 import com.example.robin.angrynerds_wip.data.services.ImageService;
 
-public class OriginalImageLoader {
+public class PriorityOriginalImageLoader {
 
     NoteDataBackend mNoteDataBackend;
     int mIndexToBeLoaded;
-    boolean mIsPriority;
 
-    public OriginalImageLoader(NoteDataBackend pNoteDataBackend, boolean pIsPriority) {
+    public PriorityOriginalImageLoader(NoteDataBackend pNoteDataBackend) {
         this.mNoteDataBackend = pNoteDataBackend;
         this.mIndexToBeLoaded = 0;
-        this.mIsPriority = pIsPriority;
-    }
-
-    public void loadOriginalImage() {
-        if (this.mNoteDataBackend.getmNoteData().getNote().getPictures().size() > mIndexToBeLoaded) {
-            if (this.mNoteDataBackend.getmNoteData().getNote().getPictures().get(mIndexToBeLoaded).getBitmap() == null) {
-                LoadOriginalImageTask loadOriginalImageTask = new LoadOriginalImageTask();
-                loadOriginalImageTask.execute(this.mIndexToBeLoaded);
-            }
-            this.mIndexToBeLoaded++;
-        }
     }
 
     public void loadOriginalImage(int pIndex) {
@@ -39,10 +27,9 @@ public class OriginalImageLoader {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            if (mIsPriority) {
-                mNoteDataBackend.getmNoteData().getmNoteApplicationLogic().startLoadingSpinner();
-            }
+            mNoteDataBackend.getmNoteData().getmNoteApplicationLogic().startLoadingSpinner();
         }
+
         @Override
         protected Image doInBackground(Integer... pInts) {
             Image image = mNoteDataBackend.getmNoteData().getNote().getPictures().get(pInts[0]);
@@ -60,13 +47,8 @@ public class OriginalImageLoader {
                 mNoteDataBackend.getmNoteData().getNote().imageNotFound(pImage);
             } else {
                 mNoteDataBackend.getmNoteData().getNote().addImage(pImage);
-
-                if (mIsPriority) {
-                    mNoteDataBackend.getmNoteData().getmNoteApplicationLogic().openImagePopup(pImage.getBitmap());
-                    mNoteDataBackend.getmNoteData().getmNoteApplicationLogic().stopLoadingSpinner();
-                } else {
-                    loadOriginalImage();
-                }
+                mNoteDataBackend.getmNoteData().getmNoteApplicationLogic().openImagePopup(pImage.getBitmap());
+                mNoteDataBackend.getmNoteData().getmNoteApplicationLogic().stopLoadingSpinner();
             }
         }
     }
