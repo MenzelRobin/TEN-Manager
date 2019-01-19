@@ -3,26 +3,25 @@ package com.example.robin.angrynerds_wip.activities.note.note.data.backend_orien
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.example.robin.angrynerds_wip.activities.note.note.data.NoteData;
 import com.example.robin.angrynerds_wip.data.models.utils.Image;
 import com.example.robin.angrynerds_wip.data.services.ImageService;
 
 public class OriginalImageLoader {
 
-    NoteData mNoteData;
+    NoteDataBackend mNoteDataBackend;
     int mIndexToBeLoaded;
     boolean mIsPriority;
 
-    public OriginalImageLoader(NoteData noteData, boolean isPriority) {
-        this.mNoteData = noteData;
+    public OriginalImageLoader(NoteDataBackend pNoteDataBackend, boolean pIsPriority) {
+        this.mNoteDataBackend = pNoteDataBackend;
         this.mIndexToBeLoaded = 0;
-        this.mIsPriority = isPriority;
+        this.mIsPriority = pIsPriority;
     }
 
     public void loadOriginalImage() {
         Log.i("NoteRemake", "loadOriginalImage was called");
-        if (this.mNoteData.getNote().getPictures().size() > mIndexToBeLoaded) {
-            if (this.mNoteData.getNote().getPictures().get(mIndexToBeLoaded).getBitmap() == null) {
+        if (this.mNoteDataBackend.getmNoteData().getNote().getPictures().size() > mIndexToBeLoaded) {
+            if (this.mNoteDataBackend.getmNoteData().getNote().getPictures().get(mIndexToBeLoaded).getBitmap() == null) {
                 LoadOriginalImageTask loadOriginalImageTask = new LoadOriginalImageTask();
                 loadOriginalImageTask.execute(this.mIndexToBeLoaded);
             }
@@ -35,7 +34,7 @@ public class OriginalImageLoader {
 
     public void loadOriginalImage(int index) {
         Log.i("NoteRemake", "PRIORITY OBject" + this);
-        if (this.mNoteData.getNote().getPictures().size() > index) {
+        if (this.mNoteDataBackend.getmNoteData().getNote().getPictures().size() > index) {
             LoadOriginalImageTask loadOriginalImageTask = new LoadOriginalImageTask();
             loadOriginalImageTask.execute(index);
         }
@@ -48,7 +47,7 @@ public class OriginalImageLoader {
             super.onPreExecute();
 
             if (mIsPriority) {
-                mNoteData.getmNoteApplicationLogic().startLoadingSpinner();
+                mNoteDataBackend.getmNoteData().getmNoteApplicationLogic().startLoadingSpinner();
             }
         }
 
@@ -56,7 +55,7 @@ public class OriginalImageLoader {
         protected Image doInBackground(Integer... ints) {
 
             Log.i("NoteRemake", "Index: " + ints[0]);
-            Image image = mNoteData.getNote().getPictures().get(ints[0]);
+            Image image = mNoteDataBackend.getmNoteData().getNote().getPictures().get(ints[0]);
 
             if (image.getBitmap() == null) {
                 Log.i("NoteRemake", "Musste nicht geladen werden");
@@ -75,13 +74,13 @@ public class OriginalImageLoader {
         protected void onPostExecute(Image image) {
 
             if (image.getBitmap() == null) {
-                mNoteData.getNote().imageNotFound(image);
+                mNoteDataBackend.getmNoteData().getNote().imageNotFound(image);
             } else {
-                mNoteData.getNote().addImage(image);
+                mNoteDataBackend.getmNoteData().getNote().addImage(image);
 
                 if (mIsPriority) {
-                    mNoteData.getmNoteApplicationLogic().openImagePopup(image.getBitmap());
-                    mNoteData.getmNoteApplicationLogic().stopLoadingSpinner();
+                    mNoteDataBackend.getmNoteData().getmNoteApplicationLogic().openImagePopup(image.getBitmap());
+                    mNoteDataBackend.getmNoteData().getmNoteApplicationLogic().stopLoadingSpinner();
                 } else {
                     loadOriginalImage();
                 }
