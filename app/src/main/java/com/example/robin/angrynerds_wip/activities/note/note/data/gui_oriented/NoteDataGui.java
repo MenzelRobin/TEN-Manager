@@ -26,7 +26,6 @@ public class NoteDataGui {
     }
 
     public void imagesToImageContainer() {
-        Log.i("Clicklistener1", "imagesToImageContainer was called ");
         mNoteImageContainers = new ArrayList<>();
 
         Log.i("ImageButton", "" + mNoteImageContainers.size());
@@ -39,7 +38,6 @@ public class NoteDataGui {
     }
 
     public void addImageButton() {
-        Log.i("Clicklistener1", "AddImageButton was called " + mNoteImageContainers.size());
         if (mNoteImageContainers.size() > 0) {
             if (mNoteImageContainers.get(mNoteImageContainers.size() - 1) instanceof IconContainer) {
                 mNoteImageContainers.remove(mNoteImageContainers.size() - 1);
@@ -61,14 +59,14 @@ public class NoteDataGui {
         return false;
     }
 
-    public void addImageFromGallery(Bitmap image) {
-        mNoteData.getNote().addImage(image);
+    public void addImageFromGallery(Bitmap pImage) {
+        mNoteData.getNote().addImage(pImage);
         imagesToImageContainer();
     }
 
-    public void addImageContainer(Image image) {
+    public void addImageContainer(Image pImage) {
         int newImageContainerID = mNoteImageContainers.size();
-        ImageContainer imageContainer = new ImageContainer(mNoteData.getActivity(), newImageContainerID, image);
+        ImageContainer imageContainer = new ImageContainer(mNoteData.getActivity(), newImageContainerID, pImage);
         mNoteImageContainers.add(mNoteImageContainers.size() - 1, imageContainer);
     }
 }
