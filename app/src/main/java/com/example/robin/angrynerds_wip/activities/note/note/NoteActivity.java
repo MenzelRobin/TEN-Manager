@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -27,9 +28,21 @@ public class NoteActivity extends AppCompatActivity {
     @Override
     public void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        String noteID = "";
+        Bundle extras = getIntent().getExtras();
+
+        //Get ID from Intent
+        try{
+            noteID = extras.getString("ID");
+        }
+        catch(NullPointerException e){
+            Log.e("Error",e.getMessage());
+        }
+
         initData();
         initGUI();
-        initApplicationLogic();
+        initApplicationLogic(noteID);
         initEventDispersion();
     }
 
@@ -41,9 +54,9 @@ public class NoteActivity extends AppCompatActivity {
         mNoteGui = new NoteGui(this);
     }
 
-    private void initApplicationLogic () {
+    private void initApplicationLogic (String id) {
         //TODO Leere Notiz bzw. übergebene Notiz einfügen
-        mNoteApplicationLogic = new NoteApplicationLogic(mNoteGui, mNoteData);
+        mNoteApplicationLogic = new NoteApplicationLogic(mNoteGui, mNoteData, id);
     }
 
     private void initEventDispersion() {

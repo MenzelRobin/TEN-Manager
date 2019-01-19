@@ -46,8 +46,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickNote(View view) {
         Intent intent = new Intent(this, NoteActivity.class);
-        //intent.putExtra("ID", 5); // Hier können eigene Parameter hinzugefügt werden.
-        this.startActivity(intent); // Activity Starten*/
+        intent.putExtra("ID", "");
+        this.startActivity(intent);
     }
 
     public void onAddTestDataToDatabase(View view) {

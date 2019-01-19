@@ -25,6 +25,7 @@ import com.example.robin.angrynerds_wip.activities.note.note.logic.event_handler
 import com.example.robin.angrynerds_wip.activities.note.note.logic.event_handler.MenuItemClickListener;
 import com.example.robin.angrynerds_wip.activities.note.note.logic.event_handler.NoteTextWatcher;
 import com.example.robin.angrynerds_wip.activities.note.tageditor.NoteTagActivity;
+import com.example.robin.angrynerds_wip.data.models.tens.Note;
 import com.example.robin.angrynerds_wip.data.models.utils.Image;
 import com.example.robin.angrynerds_wip.data.services.Delete;
 
@@ -39,20 +40,27 @@ public class NoteApplicationLogic {
     private ImageImport mImageImport;
     private ImageOverlay mImageOverlay;
 
-    public NoteApplicationLogic(NoteGui gui, NoteData noteData) {
+    public NoteApplicationLogic(NoteGui gui, NoteData noteData, String id) {
         mNoteGui = gui;
         mNoteData = noteData;
-        initData();
+        initData(id);
         initGui();
         initListener();
     }
 
-    private void initData() {
+    private void initData(String noteID) {
         mNoteData.setmNoteApplicationLogic(this);
-        String noteId="a3e8a0ac-aa96-4847-acb1-9a2aa7a23b51";
-        mNoteData.setColors(noteId);
-        NoteLoader noteLoader = new NoteLoader(this, mNoteData);
-        noteLoader.loadNote(noteId);
+        //String noteId="a3e8a0ac-aa96-4847-acb1-9a2aa7a23b51";
+        try{
+            mNoteData.setColors(noteID);
+            NoteLoader noteLoader = new NoteLoader(this, mNoteData);
+            noteLoader.loadNote(noteID);
+        }
+        catch(Exception e){
+            Log.e("Error loading Note", e.getMessage());
+            displayToast("Die Notiz konnte nicht geladen werden");
+            mNoteData.setNote(new Note());
+        }
     }
 
     private void initGui() {
