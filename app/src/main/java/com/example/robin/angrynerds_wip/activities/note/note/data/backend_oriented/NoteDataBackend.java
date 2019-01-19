@@ -3,7 +3,6 @@ package com.example.robin.angrynerds_wip.activities.note.note.data.backend_orien
 import android.util.Log;
 
 import com.example.robin.angrynerds_wip.activities.note.note.data.NoteData;
-import com.example.robin.angrynerds_wip.activities.note.note.data.gui_oriented.ImageContainer;
 import com.example.robin.angrynerds_wip.data.models.tens.Note;
 import com.example.robin.angrynerds_wip.data.models.utils.Image;
 import com.example.robin.angrynerds_wip.data.services.Delete;
@@ -37,7 +36,7 @@ public class NoteDataBackend {
         Image image = new Image(mNoteData.getNote().getPictures().get(id - 1));
         mNoteData.getNote().getPictures().remove(id - 1);
         mImagesToBeDeleted.add(image);
-        mNoteData.getmNoteDataGui().imagesToImageContainer();
+        mNoteData.getNoteDataGui().imagesToImageContainer();
 
     }
 
