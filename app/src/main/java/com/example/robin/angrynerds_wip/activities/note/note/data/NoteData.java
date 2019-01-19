@@ -8,6 +8,12 @@ import android.util.Log;
 
 import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.activities.note.note.NoteActivity;
+import com.example.robin.angrynerds_wip.activities.note.note.data.backend_oriented.ImageSaver;
+import com.example.robin.angrynerds_wip.activities.note.note.data.backend_oriented.NoteLoader;
+import com.example.robin.angrynerds_wip.activities.note.note.data.backend_oriented.OriginalImageLoader;
+import com.example.robin.angrynerds_wip.activities.note.note.data.gui_oriented.IContainer;
+import com.example.robin.angrynerds_wip.activities.note.note.data.gui_oriented.IconContainer;
+import com.example.robin.angrynerds_wip.activities.note.note.data.gui_oriented.ImageContainer;
 import com.example.robin.angrynerds_wip.activities.note.note.logic.NoteApplicationLogic;
 import com.example.robin.angrynerds_wip.data.models.tens.Note;
 import com.example.robin.angrynerds_wip.data.models.utils.Image;
@@ -41,6 +47,8 @@ public class NoteData {
         mNote = note;
     }
 
+
+    //TODO to NoteDATAGUI
     public void imagesToImageContainer() {
         Log.i("Clicklistener1", "imagesToImageContainer was called ");
         mNoteImageContainers = new ArrayList<IContainer>();
@@ -54,15 +62,18 @@ public class NoteData {
         addImageButton();
     }
 
-    public void setmNoteApplicationLogic(NoteApplicationLogic mNoteApplicationLogic){
+    //stay
+    public void setmNoteApplicationLogic(NoteApplicationLogic mNoteApplicationLogic) {
         this.mNoteApplicationLogic = mNoteApplicationLogic;
     }
 
+    //stay
     public NoteApplicationLogic getmNoteApplicationLogic() {
         return mNoteApplicationLogic;
     }
     //Adds the addImageButton to mNoteContainers
 
+    //GUI
     public void addImageButton() {
         Log.i("Clicklistener1", "AddImageButton was called " + mNoteImageContainers.size());
         if (mNoteImageContainers.size() > 0) {
@@ -74,17 +85,15 @@ public class NoteData {
         mNoteImageContainers.add(new IconContainer(mActivity, 0, drawable));
     }
 
-    private void updateImageContainer() {
-
-    }
-
+    //delete
     public void saveDataInBundle(Bundle outState) {
         //outState = mNote.getBundle();
     }
 
+    //delete
     public void restoreDataFromBundle(Bundle savedInstanceState) {
     }
-
+    //keep until setDescription
     public ArrayList<IContainer> getNoteImageContainers() {
         return mNoteImageContainers;
     }
@@ -101,28 +110,32 @@ public class NoteData {
         return mNote;
     }
 
+    // evaluate delete
     public void setTitle(String title) {
         mNote.setTitle(title);
     }
-
+    //evaluate delete
     public void setDescription(String title) {
         mNote.setDescription(title);
     }
     //returns image from mNoteImageContainers
 
+    //rename, GUI | gibt Originales Bild zurück
     public Bitmap getImage(int id) {
         //TODO get original sized image from database
-        int index = id-1;
+
+        int index = id - 1;
         Bitmap bitmap = mNote.getPictures().get(index).getBitmap();
-        if(bitmap == null){
+        if (bitmap == null) {
+            //in NoteRep
             OriginalImageLoader originalImageLoader = new OriginalImageLoader(this, true);
             originalImageLoader.loadOriginalImage(index);
         }
 
         return bitmap;
     }
-    //Checks ImageContainer for specific ID
 
+    //Checks ImageContainer for specific ID, GUI
     public boolean checkImageID(int id) {
         for (IContainer mImage : mNoteImageContainers) {
             if (mImage.getImageContainer().getId() == id)
@@ -131,21 +144,22 @@ public class NoteData {
         return false;
     }
     //Adds image as ImageContainer to mNoteImageContainers
-
+    //GUI
     public void addImageFromCamera(Bitmap image, String formerPath) {
         this.addImageFromGallery(image);
         ImageService.deleteImage(formerPath);
     }
 
+    //GUI
     public void addImageFromGallery(Bitmap image) {
         mNote.addImage(image);
         imagesToImageContainer();
-        Image originalImage = mNote.getPictures().get(mNote.getPictures().size()-1);
+        Image originalImage = mNote.getPictures().get(mNote.getPictures().size() - 1);
         ImageSaver imageSaver = new ImageSaver();
         imageSaver.saveImage(originalImage);
     }
     //Deletes specific ImageContainer from mNoteImageContainers
-
+    //GUI
     public void deleteImage(int id) {
         Image image = new Image(mNote.getPictures().get(id - 1));
         mNote.getPictures().remove(id - 1);
@@ -153,12 +167,14 @@ public class NoteData {
         imagesToImageContainer();
     }
 
+    //Repository
     public void finallyDeleteImages() {
         for (Image image : mImagesToBeDeleted) {
             ImageService.deleteImage(image);
         }
     }
 
+    //Repository
     public void loadImages(NoteLoader noteLoader) {
         Log.i("NoteRemake", "" + mNote.getPictures().size());
         for (Image image : this.mNote.getPictures()) {
@@ -168,6 +184,7 @@ public class NoteData {
         originalImageLoader.loadOriginalImage();
     }
 
+    //Repository
     public void setColors(String noteId) {
         int[] colors = Read.getColors(noteId);
         if (mNote == null) {
@@ -177,16 +194,18 @@ public class NoteData {
         mNote.setAccentColor(colors[1]);
     }
 
+    //Repository
     public void executeSaveRoutine() {
         Update.saveTEN(this.mNote);
     }
 
+    //GUI
     public void addImageContainer(Image image) {
         int newImageContainerID = mNoteImageContainers.size();
         ImageContainer imageContainer = new ImageContainer(getActivity(), newImageContainerID, image);
-        mNoteImageContainers.add(mNoteImageContainers.size()-1, imageContainer);
+        mNoteImageContainers.add(mNoteImageContainers.size() - 1, imageContainer);
     }
-
+    //Repository
     public void deleteNote() {
         Delete.deleteTEN(mNote.getID());
     }

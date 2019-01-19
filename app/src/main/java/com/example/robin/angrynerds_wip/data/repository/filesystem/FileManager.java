@@ -5,7 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Environment;
 
-import com.example.robin.angrynerds_wip.activities.note.note.data.PreviewImageCreator;
+import com.example.robin.angrynerds_wip.activities.note.note.data.gui_oriented.PreviewImageCreator;
 import com.example.robin.angrynerds_wip.data.models.utils.Image;
 import com.example.robin.angrynerds_wip.data.repository.RepositoryConstants;
 import com.example.robin.angrynerds_wip.data.repository.database.DataContextManager;

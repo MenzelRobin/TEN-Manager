@@ -10,15 +10,13 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
-import android.widget.Toast;
 
-import com.example.robin.angrynerds_wip.MainActivity;
 import com.example.robin.angrynerds_wip.R;
-import com.example.robin.angrynerds_wip.activities.note.note.data.IContainer;
-import com.example.robin.angrynerds_wip.activities.note.note.data.ImageContainer;
-import com.example.robin.angrynerds_wip.activities.note.note.data.ImageImport;
+import com.example.robin.angrynerds_wip.activities.note.note.data.gui_oriented.IContainer;
+import com.example.robin.angrynerds_wip.activities.note.note.data.gui_oriented.ImageContainer;
+import com.example.robin.angrynerds_wip.activities.note.note.data.gui_oriented.ImageImport;
 import com.example.robin.angrynerds_wip.activities.note.note.data.NoteData;
-import com.example.robin.angrynerds_wip.activities.note.note.data.NoteLoader;
+import com.example.robin.angrynerds_wip.activities.note.note.data.backend_oriented.NoteLoader;
 import com.example.robin.angrynerds_wip.activities.note.note.gui.ImageOverlay;
 import com.example.robin.angrynerds_wip.activities.note.note.gui.NoteGui;
 import com.example.robin.angrynerds_wip.activities.note.note.logic.event_handler.ClickListener;
@@ -27,7 +25,6 @@ import com.example.robin.angrynerds_wip.activities.note.note.logic.event_handler
 import com.example.robin.angrynerds_wip.activities.note.tageditor.NoteTagActivity;
 import com.example.robin.angrynerds_wip.data.models.tens.Note;
 import com.example.robin.angrynerds_wip.data.models.utils.Image;
-import com.example.robin.angrynerds_wip.data.services.Delete;
 
 import java.io.IOException;
 
@@ -50,7 +47,6 @@ public class NoteApplicationLogic {
 
     private void initData(String noteID) {
         mNoteData.setmNoteApplicationLogic(this);
-        //String noteId="a3e8a0ac-aa96-4847-acb1-9a2aa7a23b51";
         try{
             mNoteData.setColors(noteID);
             NoteLoader noteLoader = new NoteLoader(this, mNoteData);

@@ -17,8 +17,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.robin.angrynerds_wip.R;
-import com.example.robin.angrynerds_wip.activities.note.note.data.IContainer;
-import com.example.robin.angrynerds_wip.activities.note.note.data.ImageContainer;
+import com.example.robin.angrynerds_wip.activities.note.note.data.gui_oriented.IContainer;
+import com.example.robin.angrynerds_wip.activities.note.note.data.gui_oriented.ImageContainer;
 import com.example.robin.angrynerds_wip.activities.note.note.NoteActivity;
 
 import java.util.ArrayList;

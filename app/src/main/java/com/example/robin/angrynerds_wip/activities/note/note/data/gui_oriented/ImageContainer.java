@@ -1,4 +1,4 @@
-package com.example.robin.angrynerds_wip.activities.note.note.data;
+package com.example.robin.angrynerds_wip.activities.note.note.data.gui_oriented;
 
 import android.graphics.Bitmap;
 import android.view.Gravity;
@@ -6,6 +6,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.example.robin.angrynerds_wip.activities.note.note.NoteActivity;
+import com.example.robin.angrynerds_wip.activities.note.note.data.NoteConstants;
 import com.example.robin.angrynerds_wip.data.models.utils.Image;
 
 public class ImageContainer extends IContainer {
