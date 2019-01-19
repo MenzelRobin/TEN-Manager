@@ -1,33 +1,41 @@
 package com.example.robin.angrynerds_wip.activities.event;
 
-import android.app.Activity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.DatePicker;
-
+import android.view.Menu;
+import android.view.MenuInflater;
 import com.example.robin.angrynerds_wip.R;
 
-//import com.example.robin.angrynerds_wip.activities.Data;
+import java.util.Date;
+
 
 public class Init extends AppCompatActivity {
 
     private Gui mGui;
-    private ApplicationLogic mApplicationLogic;
+    private EventApplicationLogic mEventApplicationLogic;
     private Data mData;
 
     @Override
     public void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        initData();
+        initData(getIntent().getStringExtra("ID"));
         initGUI();
         initApplicationLogic();
     }
 
-    private void initData () {
-        mData = new Data(this);
+    //Toolbar
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.event_menu, menu);
+        return true;
+    }
+
+    private void initData (String eventId) {
+        mData = new Data(this, eventId);
     }
 
     private void initGUI () {
@@ -35,7 +43,7 @@ public class Init extends AppCompatActivity {
     }
 
     private void initApplicationLogic () {
-        mApplicationLogic = new ApplicationLogic(mGui, this, mData);
+        mEventApplicationLogic = new EventApplicationLogic(mGui, this, mData);
     }
 
     @Override
@@ -46,22 +54,19 @@ public class Init extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        // super.onActivityResult(requestCode, resultCode, Data);
-        mApplicationLogic.onActivityReturned(requestCode, resultCode, data);
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();   //default action
-        //mApplicationLogic.onBackPressed();   // customized action
+        //super.returnToOverview();   //default action
+        mEventApplicationLogic.returnToOverview();   // customized action
     }
 
-    public void receiveDate(DatePicker dp){
-        mApplicationLogic.receiveDate(dp);
+    public void receiveDate(Date date){
+        mEventApplicationLogic.receiveDate(date);
     }
 
-    public void receiveTime(int h, int m){
-        mApplicationLogic.receiveTime(h, m);
-    }
+    public void receiveTime(Date date){ mEventApplicationLogic.receiveTime(date); }
 
 }
