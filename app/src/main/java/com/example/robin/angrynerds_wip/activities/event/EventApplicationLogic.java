@@ -126,10 +126,12 @@ public class EventApplicationLogic {
 
     //Return to overview if back pressed / Event deleted / toolbar navigation
     public void returnToOverview() {
-        Intent intent = new Intent(mActivity, OverviewInit.class);
+        //TL
+        mData.getActivity().finish();
+        //Intent intent = new Intent(mActivity, OverviewInit.class);
         //intent.putExtra("ID", 5);
-        mActivity.startActivity(intent); // Activity Starten
-        mActivity.overridePendingTransition(android.R.anim.fade_in, android.R.anim.slide_out_right);
+        //mActivity.startActivity(intent); // Activity Starten
+        //mActivity.overridePendingTransition(android.R.anim.fade_in, android.R.anim.slide_out_right);
     }
 
     //Receive Date from DatePicker and save it
