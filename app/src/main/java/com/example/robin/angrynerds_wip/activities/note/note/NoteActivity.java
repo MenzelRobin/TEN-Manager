@@ -26,8 +26,8 @@ public class NoteActivity extends AppCompatActivity {
     private boolean mIsActive;
 
     @Override
-    public void onCreate (Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void onCreate (Bundle pSavedInstanceState) {
+        super.onCreate(pSavedInstanceState);
 
         String noteID = "";
         Bundle extras = getIntent().getExtras();
@@ -54,9 +54,9 @@ public class NoteActivity extends AppCompatActivity {
         mNoteGui = new NoteGui(this);
     }
 
-    private void initApplicationLogic (String id) {
+    private void initApplicationLogic (String pId) {
         //TODO Leere Notiz bzw. übergebene Notiz einfügen
-        mNoteApplicationLogic = new NoteApplicationLogic(mNoteGui, mNoteData, id);
+        mNoteApplicationLogic = new NoteApplicationLogic(mNoteGui, mNoteData, pId);
     }
 
     private void initEventDispersion() {
@@ -64,33 +64,33 @@ public class NoteActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        mNoteApplicationLogic.onActivityReturned(requestCode, resultCode, data);
+    protected void onActivityResult(int pRequestCode, int pResultCode, Intent pData) {
+        super.onActivityResult(pRequestCode, pResultCode, pData);
+        mNoteApplicationLogic.onActivityReturned(pRequestCode, pResultCode, pData);
     }
 
     @Override
-    public void onCreateContextMenu(ContextMenu menu, View view, ContextMenu.ContextMenuInfo menuInfo) {
-        super.onCreateContextMenu(menu, view, menuInfo);
-        mEventDispersion.onCreateContextMenu(menu, view, menuInfo);
+    public void onCreateContextMenu(ContextMenu pMenu, View pView, ContextMenu.ContextMenuInfo pMenuInfo) {
+        super.onCreateContextMenu(pMenu, pView, pMenuInfo);
+        mEventDispersion.onCreateContextMenu(pMenu, pView, pMenuInfo);
     }
 
     //Toolbar
     @Override
-    public boolean onCreateOptionsMenu(Menu menu){
+    public boolean onCreateOptionsMenu(Menu pMenu){
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.note_menu, menu);
+        inflater.inflate(R.menu.note_menu, pMenu);
         return true;
     }
 
     @Override
-    public boolean onContextItemSelected(MenuItem item) {
-        return mEventDispersion.onContextItemSelected(item);
+    public boolean onContextItemSelected(MenuItem pItem) {
+        return mEventDispersion.onContextItemSelected(pItem);
     }
 
     @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
+    public void onConfigurationChanged(Configuration pNewConfig) {
+        super.onConfigurationChanged(pNewConfig);
         mNoteGui.getNoteImageContainer().removeAllViews();
         initGUI();
         mNoteApplicationLogic.onConfigurationChanged(mNoteGui);

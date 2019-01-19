@@ -37,20 +37,20 @@ public class NoteApplicationLogic {
     private ImageImport mImageImport;
     private ImageOverlay mImageOverlay;
 
-    public NoteApplicationLogic(NoteGui gui, NoteData noteData, String id) {
-        mNoteGui = gui;
-        mNoteData = noteData;
-        initData(id);
+    public NoteApplicationLogic(NoteGui pGui, NoteData pNoteData, String pId) {
+        mNoteGui = pGui;
+        mNoteData = pNoteData;
+        initData(pId);
         initGui();
         initListener();
     }
 
-    private void initData(String noteID) {
+    private void initData(String pNoteID) {
         mNoteData.setmNoteApplicationLogic(this);
         try{
-            mNoteData.setColors(noteID);
+            mNoteData.setColors(pNoteID);
             NoteLoader noteLoader = new NoteLoader(this, mNoteData);
-            noteLoader.loadNote(noteID);
+            noteLoader.loadNote(pNoteID);
         }
         catch(Exception e){
             Log.e("Error loading Note", e.getMessage());
@@ -85,9 +85,9 @@ public class NoteApplicationLogic {
         }
     }
 
-    public void addAsyncPreviewImage(Image image) {
+    public void addAsyncPreviewImage(Image pImage) {
         Log.i("Clicklistener1", "addSingleImage was called");
-        mNoteData.addImageContainer(image);
+        mNoteData.addImageContainer(pImage);
         ImageContainer imageContainer = (ImageContainer) mNoteData.getNoteImageContainers().get(mNoteData.getNoteImageContainers().size() - 2);
         mNoteGui.addSingleAnimatedImage(imageContainer);
         initListener();
@@ -99,25 +99,25 @@ public class NoteApplicationLogic {
     }
 
     //Checks ImageContainer for specific ID
-    public boolean checkImageID(int id) {
-        return mNoteData.checkImageID(id);
+    public boolean checkImageID(int pId) {
+        return mNoteData.checkImageID(pId);
     }
 
     //Deletes Image from NoteData
-    public void deleteImage(int id) {
-        mNoteData.deleteImage(id);
+    public void deleteImage(int pId) {
+        mNoteData.deleteImage(pId);
         initListener();
         refreshImages();
     }
 
     //Displays a message on screen
-    void displayToast(String s) {
-        mNoteGui.displayToast(mNoteData.getActivity(), s);
+    void displayToast(String pText) {
+        mNoteGui.displayToast(mNoteData.getActivity(), pText);
     }
 
     //Sets ClickListener on mImageContainer
-    private void setImageClickListener(IContainer imageContainer) {
-        imageContainer.getImageContainer().setOnClickListener(mClickListener);
+    private void setImageClickListener(IContainer pImageContainer) {
+        pImageContainer.getImageContainer().setOnClickListener(mClickListener);
     }
 
     //sends data to gui elements
@@ -159,10 +159,10 @@ public class NoteApplicationLogic {
     }
 
     //Get result from external Activity (Camera, Gallery, TagEditor)
-    public void onActivityReturned(int requestCode, int resultCode, Intent data) {
-        switch (requestCode) {
+    public void onActivityReturned(int pRequestCode, int pResultCode, Intent pData) {
+        switch (pRequestCode) {
             case 0:
-                if (resultCode == -1) {
+                if (pResultCode == -1) {
                     //TODO
                     String path = mImageImport.getCurrentPhotoPath();
                     Bitmap cameraImage = BitmapFactory.decodeFile(path);
@@ -172,8 +172,8 @@ public class NoteApplicationLogic {
                 }
                 break;
             case 1:
-                if (resultCode == -1) {
-                    Uri selectedImage = data.getData();
+                if (pResultCode == -1) {
+                    Uri selectedImage = pData.getData();
                     try {
                         Bitmap bitmap = MediaStore.Images.Media.getBitmap(mNoteData.getActivity().getContentResolver(), selectedImage);
                         mNoteData.addImageFromGallery(bitmap);
@@ -185,8 +185,8 @@ public class NoteApplicationLogic {
                 }
                 break;
             case 2:
-                if (resultCode == -1) {
-                    Bundle extras = data.getExtras();
+                if (pResultCode == -1) {
+                    Bundle extras = pData.getExtras();
                     try {
                         mNoteData.getNote().setTags(extras.getStringArrayList("taglist"));
                         mNoteGui.setNoteTags(mNoteData.getNote().getTags());
@@ -215,11 +215,11 @@ public class NoteApplicationLogic {
     }
 
     //Displays image if ImageContainer is clicked, starts ImageImport functionality if IconContainer is clicked
-    public void onImageClicked(int id) {
-        if (id == 0) {
+    public void onImageClicked(int pId) {
+        if (pId == 0) {
             mImageImport = new ImageImport(mNoteData.getActivity());
         } else {
-            Bitmap bitmap = mNoteData.getImage(id);
+            Bitmap bitmap = mNoteData.getImage(pId);
             if (bitmap != null) {
                 openImagePopup(bitmap);
             } else {
@@ -229,11 +229,11 @@ public class NoteApplicationLogic {
         }
     }
 
-    public void openImagePopup(Bitmap bitmap) {
+    public void openImagePopup(Bitmap pBitmap) {
         Log.i("NoteRemake", "Activity: " + mNoteData.getActivity());
         if (mNoteData.getActivity().isActive()) {
             View displayMetrics = mNoteData.getActivity().getWindow().findViewById(Window.ID_ANDROID_CONTENT);
-            mImageOverlay = new ImageOverlay(bitmap, displayMetrics.getWidth(), displayMetrics.getHeight());
+            mImageOverlay = new ImageOverlay(pBitmap, displayMetrics.getWidth(), displayMetrics.getHeight());
             mImageOverlay.display(mNoteData.getActivity());
         }
     }
@@ -247,8 +247,8 @@ public class NoteApplicationLogic {
     }
 
     //Initialises Landscape or Portrait Activity with NoteData, rescales ImageOverlay if displayed
-    public void onConfigurationChanged(NoteGui gui) {
-        this.mNoteGui = gui;
+    public void onConfigurationChanged(NoteGui pGui) {
+        this.mNoteGui = pGui;
         mNoteData.addImageButton();
         initListener();
         dataToGui();
@@ -259,18 +259,18 @@ public class NoteApplicationLogic {
     }
 
     //Inserts User Input into NoteData
-    public void onTextChanged(String text, View view) {
-        if (view.getId() == R.id.id_note_title) {
-            mNoteData.getNote().setTitle(text);
+    public void onTextChanged(String pText, View pView) {
+        if (pView.getId() == R.id.id_note_title) {
+            mNoteData.getNote().setTitle(pText);
         } //R.id.id_event_editText_title
-        else if (view.getId() == R.id.id_note_description) {
-            mNoteData.getNote().setDescription(text);
+        else if (pView.getId() == R.id.id_note_description) {
+            mNoteData.getNote().setDescription(pText);
         } //R.id.id_event_editText_title
     }
 
     //Handles Toolbar Selection
-    public void onMenuItemClicked(MenuItem item) {
-        if (item.getItemId() == R.id.note_action_settings) {
+    public void onMenuItemClicked(MenuItem pItem) {
+        if (pItem.getItemId() == R.id.note_action_settings) {
             mNoteData.deleteNote();
             returnToOverview();
         }
@@ -289,6 +289,4 @@ public class NoteApplicationLogic {
         mNoteGui.stopLoadingSpinner();
         mNoteGui.enableAll();
     }
-
-    //Async task that loads the Note
 }
