@@ -68,6 +68,7 @@ public class ApplicationLogic {
         mGui.getmStartDate().setOnClickListener(clickListener);
         mGui.getmEndDate().setOnClickListener(clickListener);
 
+        //mGui.getmCheckBox().setOnClickListener(clickListener);
         //mGui.getmRowLayout().setOnClickListener(clickListener);
     }
 
