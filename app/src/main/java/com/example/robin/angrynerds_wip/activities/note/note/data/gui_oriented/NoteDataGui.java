@@ -69,4 +69,15 @@ public class NoteDataGui {
         ImageContainer imageContainer = new ImageContainer(mNoteData.getActivity(), newImageContainerID, pImage);
         mNoteImageContainers.add(mNoteImageContainers.size() - 1, imageContainer);
     }
+
+    public Bitmap getOriginalImage(int pId) {
+        //Ansonsten komplett in GUI
+
+        int index = pId - 1;
+        Bitmap bitmap = mNoteData.getNote().getPictures().get(index).getBitmap();
+        if (bitmap == null) {
+            mNoteData.getmNoteDataBackend().triggerOriginalImageLoad();
+        }
+        return bitmap;
+    }
 }
