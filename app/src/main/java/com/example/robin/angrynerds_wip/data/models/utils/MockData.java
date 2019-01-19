@@ -42,10 +42,9 @@ public class MockData {
 
         tenMockData.add(koalaNote);
 
-        Date visitKoalaDate = new Date(1588590000);
-        Date reminder2 = new Date(1588590000 - (1000 * 60 * 60 * 24 * 7));
+        Date visitKoalaDate = new Date(1588590000000L);
+        Date reminder2 = new Date(1588590000000L - (1000 * 60 * 60 * 24 * 7));
         ArrayList<Date> visitKoalaReminder = new ArrayList<Date>();
-        visitKoalaReminder.add(visitKoalaDate);
         visitKoalaReminder.add(reminder2);
         String address = "Australien, Outback";
         Event koalaEvent = new Event("Koalas besuchen", visitKoalaDate, visitKoalaReminder, address);
@@ -89,17 +88,16 @@ public class MockData {
         tenMockData.add(klausureingrenzung);
 
 
-        Date konzertBringsDate = new Date(1563879600);
-        Date reminder2Brings = new Date(1563879600 - (1000 * 60 * 60 * 24 * 7));
+        Date konzertBringsDate = new Date(1638314460000L);
+        Date reminder2Brings = new Date(1638314460000L - (1000 * 60 * 60 * 24 * 7));
         ArrayList<Date> konzertBringsReminder = new ArrayList<Date>();
-        konzertBringsReminder.add(konzertBringsDate);
         konzertBringsReminder.add(reminder2Brings);
         String addressBrings = "Köln, Tanzbrunnen";
         Event konzertBrings = new Event("Konzert Brings", konzertBringsDate, konzertBringsReminder, addressBrings);
         tenMockData.add(konzertBrings);
 
-        Date elternBesuchDate = new Date(1550826000);
-        Date reminder2elternBesuch = new Date(1550826000 - (1000 * 60 * 60 * 24 * 7));
+        Date elternBesuchDate = new Date(1550826000000L);
+        Date reminder2elternBesuch = new Date(1550826000000L - (1000 * 60 * 60 * 24 * 7));
         ArrayList<Date> elternBesuchReminder = new ArrayList<Date>();
         elternBesuchReminder.add(elternBesuchDate);
         elternBesuchReminder.add(reminder2elternBesuch);
@@ -184,10 +182,9 @@ public class MockData {
 
         tenMockData.add(bambusNote);
 
-        Date delfinDate = new Date(1588831200);
-        Date reminder2delfin = new Date(1588831200 - (1000 * 60 * 60 * 24 * 7));
+        Date delfinDate = new Date(1588831200000L);
+        Date reminder2delfin = new Date(1588831200000L - (1000 * 60 * 60 * 24 * 7));
         ArrayList<Date> delfinReminder = new ArrayList<Date>();
-        delfinReminder.add(delfinDate);
         delfinReminder.add(reminder2delfin);
         String delfinAdresse = "Tin Can Bay";
         Event delfinSchwimmen = new Event("Schwimmen mit Delfinen", delfinDate, delfinReminder, delfinAdresse);
