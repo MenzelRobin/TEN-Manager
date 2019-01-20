@@ -1,67 +1,101 @@
 package com.example.robin.angrynerds_wip.activities.event;
 
 import android.graphics.drawable.ColorDrawable;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.SeekBar;
 
 import com.example.robin.angrynerds_wip.R;
 
 public class Gui {
 
     private EditText mEditTextTitle;
-    private RelativeLayout mRelativeLayoutBG;
+    private RelativeLayout mRelativeLayoutMain;
     private EditText mEditTextDate;
     private EditText mEditTextTime;
     private EditText mEditTextLocation;
-    private RelativeLayout mRelativeLayoutReminder1;
-    private RelativeLayout mRelativeLayoutReminder2;
-    private EditText mEditTextReminder1;
-    private EditText mEditTextReminder2;
     private ImageView mIconCloseReminder1;
     private ImageView mIconCloseReminder2;
+    private ImageView mIconCloseReminder3;
+    private ImageView mIconCloseReminder4;
     private EditText mEditTextNewReminder;
+    private EditText mEditTextReminder1;
+    private EditText mEditTextReminder2;
+    private EditText mEditTextReminder3;
+    private EditText mEditTextReminder4;
+    private Toolbar mToolbar;
+    private View mSeperateView1;
+    private View mSeperateView2;
+    private View mSeperateView3;
 
     public Gui(Init activity) {
         activity.setContentView(R.layout.activity_event);
-
-        mEditTextTitle = activity.findViewById(R.id.editTextTitle);
-        mRelativeLayoutBG = activity.findViewById(R.id.relativeLayoutBG);
-        mEditTextDate = activity.findViewById(R.id.editTextDate);
-        mEditTextTime = activity.findViewById(R.id.editTextTime);
-        mEditTextLocation = activity.findViewById(R.id.editTextLocation);
-        mRelativeLayoutReminder1 = activity.findViewById(R.id.relativeLayoutReminder1);
-        mRelativeLayoutReminder2 = activity.findViewById(R.id.relativeLayoutReminder2);
-        mEditTextReminder1 = activity.findViewById(R.id.editTextReminder1);
-        mEditTextReminder2 = activity.findViewById(R.id.editTextReminder2);
-        mIconCloseReminder1 = activity.findViewById(R.id.iconCloseReminder1);
-        mIconCloseReminder2 = activity.findViewById(R.id.iconCloseReminder2);
-        mEditTextNewReminder = activity.findViewById(R.id.editTextNewReminder);
+        mToolbar = activity.findViewById(R.id.id_event_toolbar);
+        mEditTextTitle = activity.findViewById(R.id.id_event_editText_title);
+        mRelativeLayoutMain = activity.findViewById(R.id.id_relativeLayout_main);
+        mEditTextDate = activity.findViewById(R.id.id_event_editText_date);
+        mEditTextTime = activity.findViewById(R.id.id_event_editText_time);
+        mEditTextLocation = activity.findViewById(R.id.id_event_editText_location);
+        mEditTextNewReminder = activity.findViewById(R.id.id_event_editText_newReminder);
+        mIconCloseReminder1 = activity.findViewById(R.id.id_event_imageView_iconCloseReminder1);
+        mIconCloseReminder2 = activity.findViewById(R.id.id_event_imageView_iconCloseReminder2);
+        mIconCloseReminder3 = activity.findViewById(R.id.id_event_imageView_iconCloseReminder3);
+        mIconCloseReminder4 = activity.findViewById(R.id.id_event_imageView_iconCloseReminder4);
+        mEditTextReminder1 = activity.findViewById(R.id.id_event_editText_reminder1);
+        mEditTextReminder2 = activity.findViewById(R.id.id_event_editText_reminder2);
+        mEditTextReminder3 = activity.findViewById(R.id.id_event_editText_reminder3);
+        mEditTextReminder4 = activity.findViewById(R.id.id_event_editText_reminder4);
+        mSeperateView1 = activity.findViewById(R.id.id_event_view_seperate1);
+        mSeperateView2 = activity.findViewById(R.id.id_event_view_seperate2);
+        mSeperateView3 = activity.findViewById(R.id.id_event_view_seperate3);
     }
 
     // getter to access views
-    public EditText getmEditTextTitle() {return mEditTextTitle;}
-    public RelativeLayout getmRelativeLayoutBG() { return mRelativeLayoutBG; }
-    public EditText getmEditTextDate() {return mEditTextDate;}
-    public EditText getmEditTextTime() {return mEditTextTime;}
-    public EditText getmEditTextLocation() {return mEditTextLocation; }
-    public RelativeLayout getmRelativeLayoutReminder1() {return mRelativeLayoutReminder1; }
-    public RelativeLayout getmRelativeLayoutReminder2() {return mRelativeLayoutReminder2; }
-    public EditText getmEditTextReminder1() {return mEditTextReminder1; }
-    public ImageView getmIconCloseReminder1() {return mIconCloseReminder1; }
-    public EditText getmEditTextReminder2() {return mEditTextReminder2; }
-    public ImageView getmIconCloseReminder2() {return mIconCloseReminder2; }
-    public EditText getmEditTextNewReminder() {return mEditTextNewReminder; }
+    public Toolbar getToolbar() {return mToolbar; }
+    public EditText getEditTextTitle() {return mEditTextTitle;}
+    public EditText getEditTextDate() {return mEditTextDate;}
+    public EditText getEditTextTime() {return mEditTextTime;}
+    public EditText getEditTextLocation() {return mEditTextLocation; }
+    public EditText getEditTextNewReminder() { return mEditTextNewReminder; }
+    public EditText getEditTextReminder1() { return mEditTextReminder1; }
+    public EditText getEditTextReminder2() { return mEditTextReminder2; }
+    public EditText getEditTextReminder3() { return mEditTextReminder3; }
+    public EditText getEditTextReminder4() { return mEditTextReminder4; }
+    public ImageView getIconCloseReminder1() { return mIconCloseReminder1; }
+    public ImageView getIconCloseReminder2() { return mIconCloseReminder2; }
+    public ImageView getIconCloseReminder3() { return mIconCloseReminder3; }
+    public ImageView getIconCloseReminder4() { return mIconCloseReminder4; }
 
     // methods to change view attributes
-    public void setColorInBG(int color) { mRelativeLayoutBG.setBackground(new ColorDrawable(color));}
+    public void setColor(int color, int darkColor) {
+        mRelativeLayoutMain.setBackground(new ColorDrawable(color));
+        mToolbar.setBackground(new ColorDrawable(darkColor));
+        mSeperateView1.setBackground(new ColorDrawable(darkColor));
+        mSeperateView2.setBackground(new ColorDrawable(darkColor));
+        mSeperateView3.setBackground(new ColorDrawable(darkColor));
+        mSeperateView1.setAlpha((float) 0.5);
+        mSeperateView2.setAlpha((float) 0.5);
+        mSeperateView3.setAlpha((float) 0.5);
+    }
+
     public void setTitle(String text) { mEditTextTitle.setText(text);}
     public void setDate(String text) {mEditTextDate.setText(text);}
     public void setTime(String text) {mEditTextTime.setText(text);}
-    public void setReminder1(String text) {mEditTextReminder1.setText(text);}
-    public void setReminder2(String text) {mEditTextReminder2.setText(text);}
+    public void setLocation(String text){mEditTextLocation.setText(text);}
+    public void setReminder1(String text) {mEditTextReminder1.setText(text); mIconCloseReminder1.setAlpha((float)0.5);}
+    public void setReminder2(String text) {mEditTextReminder2.setText(text); mIconCloseReminder2.setAlpha((float)0.5);}
+    public void setReminder3(String text) {mEditTextReminder3.setText(text); mIconCloseReminder3.setAlpha((float)0.5);}
+    public void setReminder4(String text) {mEditTextReminder4.setText(text); mIconCloseReminder4.setAlpha((float)0.5);}
+    public void resetReminder(){
+        mEditTextReminder1.setText("");
+        mEditTextReminder2.setText("");
+        mEditTextReminder3.setText("");
+        mEditTextReminder4.setText("");
+        mIconCloseReminder1.setAlpha((float)0.0);
+        mIconCloseReminder2.setAlpha((float)0.0);
+        mIconCloseReminder3.setAlpha((float)0.0);
+        mIconCloseReminder4.setAlpha((float)0.0);
+    }
 }

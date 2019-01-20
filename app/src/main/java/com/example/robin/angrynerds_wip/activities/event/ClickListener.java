@@ -7,31 +7,42 @@ import com.example.robin.angrynerds_wip.R;
 
 public class ClickListener implements View.OnClickListener {
 
-    ApplicationLogic mApplicationLogic;
+    EventApplicationLogic mEventApplicationLogic;
 
-    public ClickListener(ApplicationLogic applicationLogic) {
-        mApplicationLogic = applicationLogic;
+    public ClickListener(EventApplicationLogic eventApplicationLogic) {
+        mEventApplicationLogic = eventApplicationLogic;
     }
 
     @Override
     public void onClick(View view) {
         Log.d("LOGTAG","onClick");
         switch ( view.getId() ) {
-            case R.id.editTextDate:
-                mApplicationLogic.showDatePickerDialog(view);
-                Log.d("LOGTAG", "on editTextDate clicked");
+            case R.id.id_event_editText_date:
+                mEventApplicationLogic.showDatePickerDialog(view);
                 break;
-            case R.id.editTextTime:
-                mApplicationLogic.showTimePickerDialog(view);
-            case R.id.editTextNewReminder:
-                mApplicationLogic.onNewReminderClicked();
-            case R.id.iconCloseReminder1:
-                mApplicationLogic.removeReminder(R.id.iconCloseReminder1);
-            case R.id.iconCloseReminder2:
-                mApplicationLogic.removeReminder(R.id.iconCloseReminder2);
+            case R.id.id_event_editText_time:
+                mEventApplicationLogic.showTimePickerDialog(view);
+                break;
+            case R.id.id_event_editText_newReminder:
+                mEventApplicationLogic.onNewReminderClicked();
+                break;
+            case R.id.id_event_imageView_iconCloseReminder1:
+                mEventApplicationLogic.onCloseReminderClicked(1);
+                break;
+            case R.id.id_event_imageView_iconCloseReminder2:
+                mEventApplicationLogic.onCloseReminderClicked(2);
+                break;
+            case R.id.id_event_imageView_iconCloseReminder3:
+                mEventApplicationLogic.onCloseReminderClicked(3);
+                break;
+            case R.id.id_event_imageView_iconCloseReminder4:
+                mEventApplicationLogic.onCloseReminderClicked(4);
+                break;
+            case -1:
+                mEventApplicationLogic.returnToOverview();
+                break;
             default:
                 break;
         }
     }
-
 }

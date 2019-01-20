@@ -11,6 +11,8 @@ import com.example.robin.angrynerds_wip.data.models.tens.TEN;
 import com.example.robin.angrynerds_wip.data.models.utils.MockData;
 import com.example.robin.angrynerds_wip.data.repository.database.DatabaseManager;
 import com.example.robin.angrynerds_wip.data.repository.Repository;
+import com.example.robin.angrynerds_wip.data.repository.database.Queries;
+import com.example.robin.angrynerds_wip.data.services.Delete;
 import com.example.robin.angrynerds_wip.overview.overviewActivity.OverviewInit;
 
 import java.util.ArrayList;
@@ -34,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     public void onClickEvent(View view) {
         Intent intent = new Intent(this, com.example.robin.angrynerds_wip.activities.event.Init.class);
 
-        //intent.putExtra("ID", 5); // Hier können eigene Parameter hinzugefügt werden.
+        intent.putExtra("ID", "2e0afd05-d249-45d1-8a5e-177c0d241b79"); // Hier können eigene Parameter hinzugefügt werden.
         this.startActivity(intent); // Activity Starten
     }
 
@@ -55,11 +57,11 @@ public class MainActivity extends AppCompatActivity {
         Repository repository = new Repository();
 
 
-        if(DatabaseManager.getNumberOfDocuments()<15){
+        if (DatabaseManager.getNumberOfDocuments() < 15) {
 
             MockData md = new MockData(this);
             ArrayList<TEN> tens = md.getMockData();
-            for(TEN ten: tens) {
+            for (TEN ten : tens) {
                 repository.insertTEN(ten);
             }
         }
@@ -71,9 +73,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void onClickResetDatabase (View view){
+    public void onClickResetDatabase(View view) {
         Log.i("Testdata", "All Documents will be removed from the Database (clicked)");
-        DatabaseManager.resetDatabase();
+        Queries queries = new Queries();
+        for(TEN ten : queries.getAllTENs()){
+            Delete.deleteTEN(ten.getID());
+        }
         Log.i("Testdata", "Removal finished.");
     }
 }

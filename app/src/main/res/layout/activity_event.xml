@@ -1,176 +1,260 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/relativeLayoutBG"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/id_relativeLayout_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
     android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/editTextTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:layout_marginStart="72dp"
-            android:inputType="text"
-            android:textColor="#FFFF"
-            android:textSize="24sp" />
+    <include
+        android:id="@+id/id_event_toolbar"
+        layout="@layout/toolbar_ten" />
 
-        <View
-            android:id="@+id/viewSeperate1"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_below="@id/editTextTitle"
-            android:background="@color/colorPrimaryDark" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/id_event_toolbar">
 
         <RelativeLayout
-            android:id="@+id/relativeLayoutDate"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/viewSeperate1"
-            android:layout_margin="16dp">
-
-            <ImageView
-                android:id="@+id/iconDate"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:alpha=".5"
-                android:src="@drawable/ic_access_time_black_24dp" />
+            android:layout_height="match_parent">
 
             <EditText
-                android:id="@+id/editTextDate"
-                android:layout_width="270dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_toEndOf="@id/iconDate"
-                android:text="Donnerstag, 13. Dezember 2019"
-                android:textColor="#FFFF"
-                android:clickable="true"
-                android:focusable="false"
-                android:inputType="none"/>
-
-            <EditText
-                android:id="@+id/editTextTime"
-                android:layout_width="70dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:text="17:30"
-                android:textAlignment="center"
-                android:textColor="#FFFF"
-                android:clickable="true"
-                android:focusable="false"
-                android:inputType="none" />
-        </RelativeLayout>
-
-        <View
-            android:id="@+id/viewSeperate2"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_below="@id/relativeLayoutDate"
-            android:background="@color/colorPrimaryDark" />
-
-        <RelativeLayout
-            android:id="@+id/relativeLayoutLocation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/viewSeperate2"
-            android:layout_margin="16dp">
-
-            <ImageView
-                android:id="@+id/iconLocation"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:alpha=".5"
-                android:src="@drawable/ic_location_on_black_24dp" />
-
-            <EditText
-                android:id="@+id/editTextLocation"
+                android:id="@+id/id_event_editText_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_toRightOf="@id/iconLocation"
-                android:inputType="textPostalAddress"
-                android:text="Friesenplatz 4, 50672 Köln, Deutschland"
-                android:textColor="#FFFF" />
-        </RelativeLayout>
+                android:layout_margin="16dp"
+                android:layout_marginStart="72dp"
+                android:backgroundTint="#00000000"
+                android:hint="Titel eingeben"
+                android:inputType="text"
+                android:textColor="#FFFF"
+                android:textColorHint="#80FFFFFF"
+                android:textSize="16dp" />
 
-        <View
-            android:id="@+id/viewSeperate3"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_below="@id/relativeLayoutLocation"
-            android:background="@color/colorPrimaryDark" />
-
-        <RelativeLayout
-            android:id="@+id/relativeLayoutReminder1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/viewSeperate3"
-            android:layout_margin="16dp">
-
-            <ImageView
-                android:id="@+id/iconBell"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:alpha=".5"
-                android:src="@drawable/ic_notifications_black_24dp" />
+            <View
+                android:id="@+id/id_event_view_seperate1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/id_event_editText_title"
+                android:background="@color/colorPrimaryDark" />
 
             <RelativeLayout
-                android:id="@+id/relativeLayoutReminder2"
+                android:id="@+id/id_event_relativeLayout_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/iconBell">
+                android:layout_below="@id/id_event_view_seperate1"
+                android:layout_margin="16dp">
 
-                <RelativeLayout
+                <ImageView
+                    android:id="@+id/id_event_imageView_iconDate"
+                    android:layout_width="@dimen/icon"
+                    android:layout_height="@dimen/icon"
+                    android:layout_centerVertical="true"
+                    android:alpha=".5"
+                    android:src="@drawable/ic_access_time_black_24dp" />
+
+                <EditText
+                    android:id="@+id/id_event_editText_date"
+                    android:layout_width="270dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_toEndOf="@id/id_event_imageView_iconDate"
+                    android:backgroundTint="#00000000"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:inputType="none"
+                    android:text="Donnerstag, 13. Dezember 2019"
+                    android:textColor="#FFFF" />
+
+                <EditText
+                    android:id="@+id/id_event_editText_time"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:backgroundTint="#00000000"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:inputType="none"
+                    android:text="17:30"
+                    android:textAlignment="center"
+                    android:textColor="#FFFF" />
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/id_event_view_seperate2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/id_event_relativeLayout_date"
+                android:background="@color/colorPrimaryDark"/>
+
+            <RelativeLayout
+                android:id="@+id/id_event_relativeLayout_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/id_event_view_seperate2"
+                android:layout_margin="16dp">
+
+                <ImageView
+                    android:id="@+id/id_event_imageView_iconLocation"
+                    android:layout_width="@dimen/icon"
+                    android:layout_height="@dimen/icon"
+                    android:layout_centerVertical="true"
+                    android:alpha=".5"
+                    android:src="@drawable/ic_location_on_black_24dp" />
+
+                <EditText
+                    android:id="@+id/id_event_editText_location"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp">
+                    android:layout_marginLeft="16dp"
+                    android:layout_toRightOf="@id/id_event_imageView_iconLocation"
+                    android:backgroundTint="#00000000"
+                    android:hint="Ort hinzufügen"
+                    android:text=""
+                    android:textColor="#FFFF"
+                    android:textColorHint="#80FFFFFF" />
+            </RelativeLayout>
 
-                    <ImageView
-                        android:id="@+id/iconCloseReminder1"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_alignParentEnd="true"
-                        android:layout_margin="12dp"
-                        android:alpha="0.5"
-                        android:src="@drawable/ic_clear_black_24dp" />
+            <View
+                android:id="@+id/id_event_view_seperate3"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/id_event_relativeLayout_location"
+                android:background="@color/colorPrimaryDark" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/id_event_view_seperate3"
+                android:layout_margin="16dp">
+
+                <ImageView
+                    android:id="@+id/id_event_imageView_iconBell"
+                    android:layout_width="@dimen/icon"
+                    android:layout_height="@dimen/icon"
+                    android:layout_marginTop="12dp"
+                    android:alpha=".5"
+                    android:src="@drawable/ic_notifications_black_24dp" />
+
+                <LinearLayout
+                    android:id="@+id/id_event_linearLayout_reminder"
+                    android:layout_width="450dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_toRightOf="@id/id_event_imageView_iconBell"
+                    android:orientation="vertical">
 
                     <EditText
-                        android:id="@+id/editTextReminder1"
-                        android:layout_width="300dp"
-                        android:layout_height="wrap_content"
-                        android:inputType="textPostalAddress"
-                        android:text="30 Minuten vorher"
-                        android:textColor="#FFFF" />
-
-                    <EditText
-                        android:id="@+id/editTextReminder2"
-                        android:layout_width="300dp"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/editTextReminder1"
-                        android:inputType="textPostalAddress"
-                        android:text="1 Tag vorher"
-                        android:textColor="#FFFF" />
-
-                    <ImageView
-                        android:id="@+id/iconCloseReminder2"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_below="@id/iconCloseReminder1"
-                        android:layout_alignParentEnd="true"
-                        android:layout_margin="12dp"
-                        android:alpha="0.5"
-                        android:src="@drawable/ic_clear_black_24dp" />
-
-                    <EditText
-                        android:id="@+id/editTextNewReminder"
+                        android:id="@+id/id_event_editText_newReminder"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/editTextReminder2"
-                        android:layout_marginTop="0dp"
-                        android:text="Weitere Benachrichtigungen hinzufügen"
+                        android:alpha="0.5"
+                        android:backgroundTint="#00000000"
+                        android:clickable="true"
+                        android:focusable="false"
+                        android:inputType="none"
+                        android:text="Benachrichtigungen hinzufügen"
                         android:textColor="#FFFF" />
-                </RelativeLayout>
+
+                    <EditText
+                        android:id="@+id/id_event_editText_reminder1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="#00000000"
+                        android:clickable="true"
+                        android:focusable="false"
+                        android:inputType="none"
+                        android:text=""
+                        android:textColor="#FFFF" />
+
+                    <EditText
+                        android:id="@+id/id_event_editText_reminder2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="#00000000"
+                        android:clickable="true"
+                        android:focusable="false"
+                        android:inputType="none"
+                        android:text=""
+                        android:textColor="#FFFF" />
+
+                    <EditText
+                        android:id="@+id/id_event_editText_reminder3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="#00000000"
+                        android:clickable="true"
+                        android:focusable="false"
+                        android:inputType="none"
+                        android:text=""
+                        android:textColor="#FFFF" />
+
+                    <EditText
+                        android:id="@+id/id_event_editText_reminder4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="#00000000"
+                        android:clickable="true"
+                        android:focusable="false"
+                        android:inputType="none"
+                        android:text=""
+                        android:textColor="#FFFF" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/id_event_linearLayout_closeReminderIcons"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/id_event_imageView_iconCloseReminder"
+                        android:layout_width="@dimen/icon"
+                        android:layout_height="@dimen/icon"
+                        android:layout_alignParentEnd="true"
+                        android:layout_margin="12dp"
+                        android:alpha="0.5" />
+
+                    <ImageView
+                        android:id="@+id/id_event_imageView_iconCloseReminder1"
+                        android:layout_width="@dimen/icon"
+                        android:layout_height="@dimen/icon"
+                        android:layout_alignParentEnd="true"
+                        android:layout_margin="12dp"
+                        android:alpha="0.0"
+                        android:src="@drawable/ic_clear_black_24dp" />
+
+                    <ImageView
+                        android:id="@+id/id_event_imageView_iconCloseReminder2"
+                        android:layout_width="@dimen/icon"
+                        android:layout_height="@dimen/icon"
+                        android:layout_alignParentEnd="true"
+                        android:layout_margin="12dp"
+                        android:alpha="0.0"
+                        android:src="@drawable/ic_clear_black_24dp" />
+
+                    <ImageView
+                        android:id="@+id/id_event_imageView_iconCloseReminder3"
+                        android:layout_width="@dimen/icon"
+                        android:layout_height="@dimen/icon"
+                        android:layout_alignParentEnd="true"
+                        android:layout_margin="12dp"
+                        android:alpha="0.0"
+                        android:src="@drawable/ic_clear_black_24dp" />
+
+                    <ImageView
+                        android:id="@+id/id_event_imageView_iconCloseReminder4"
+                        android:layout_width="@dimen/icon"
+                        android:layout_height="@dimen/icon"
+                        android:layout_alignParentEnd="true"
+                        android:layout_margin="12dp"
+                        android:alpha="0.0"
+                        android:src="@drawable/ic_clear_black_24dp" />
+                </LinearLayout>
             </RelativeLayout>
         </RelativeLayout>
+    </ScrollView>
 </RelativeLayout>
