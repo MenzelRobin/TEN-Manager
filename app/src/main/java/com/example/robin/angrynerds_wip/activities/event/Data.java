@@ -1,6 +1,7 @@
 package com.example.robin.angrynerds_wip.activities.event;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 import com.example.robin.angrynerds_wip.data.models.tens.Event;
@@ -67,6 +68,11 @@ public class Data {
     //Getter
     public Event getmEvent() {
         return mEvent;
+    }
+    public Calendar getLatestReminder(){
+        Calendar c = Calendar.getInstance();
+        c.setTimeInMillis(mEvent.getReminder().get(mEvent.getReminder().size() - 1).getTime());
+        return c;
     }
 
 }

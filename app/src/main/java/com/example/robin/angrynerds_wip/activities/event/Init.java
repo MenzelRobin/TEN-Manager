@@ -69,4 +69,8 @@ public class Init extends AppCompatActivity {
 
     public void receiveTime(Date date){ mEventApplicationLogic.receiveTime(date); }
 
+    public EventApplicationLogic getEventApplicationLogic(){
+        return mEventApplicationLogic;
+    }
+
 }

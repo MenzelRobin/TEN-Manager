@@ -13,6 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,11 +26,14 @@
             android:windowSoftInputMode="adjustPan"
             android:configChanges="orientation|keyboardHidden|screenSize">
         </activity>
+
         <activity android:name=".activities.note.tageditor.NoteTagActivity"
             android:windowSoftInputMode="adjustResize"
             android:configChanges="orientation|keyboardHidden|screenSize">
         </activity>
+
         <activity android:name=".activities.event.Init"></activity>
+
         <activity android:name=".overview.overviewActivity.OverviewInit"
             android:configChanges="orientation"></activity>
 
@@ -42,6 +46,8 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths"></meta-data>
         </provider>
+
+        <receiver android:name=".activities.event.AlertReceiver"/>
     </application>
 
 </manifest>
