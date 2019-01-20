@@ -11,6 +11,7 @@ import android.util.Log;
 
 import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.activities.note.note.NoteActivity;
+import com.example.robin.angrynerds_wip.activities.note.note.data.NoteConstants;
 import com.example.robin.angrynerds_wip.activities.note.note.logic.event_handler.DialogClickListener;
 
 import java.io.File;
@@ -69,7 +70,7 @@ public class ImageImport {
                         "com.example.robin.fileprovider",
                         photoFile);
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
-                mActivity.startActivityForResult(takePictureIntent, 0);
+                mActivity.startActivityForResult(takePictureIntent, NoteConstants.CAMERA_IMPORT_ACTIVITY_REQUESTCODE);
             }
         }
     }
@@ -78,7 +79,7 @@ public class ImageImport {
     public void importImageFromGallery(){
         Intent pickPhoto = new Intent(Intent.ACTION_PICK,
                 android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        mActivity.startActivityForResult(pickPhoto , 1);
+        mActivity.startActivityForResult(pickPhoto , NoteConstants.GALLERY_IMPORT_ACTIVITY_REQUESTCODE);
     }
 
     //Creates the image file to pass into the camera activity

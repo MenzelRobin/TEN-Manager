@@ -22,7 +22,7 @@ public class NoteDataHelper {
         if(title == null || description == null){
             return false;
         }
-        else if(title.equals("") || description.equals("")){
+        else if(title.equals("") && description.equals("")){
             return  false;
         }
         return  true;
