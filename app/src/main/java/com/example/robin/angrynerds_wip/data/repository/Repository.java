@@ -100,7 +100,7 @@ public class Repository {
             String json = document.getString(RepositoryConstants.OBJECT_KEY);
             Note note = tenConverter.stringToNote(json);
             for(Image image: note.getPictures()){
-                fileManager.deleteImageFromDirectory(image.getId());
+                fileManager.deleteImageFromDirectory(image);
             }
         }
     }

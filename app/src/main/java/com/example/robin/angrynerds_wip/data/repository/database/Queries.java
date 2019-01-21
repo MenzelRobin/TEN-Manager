@@ -44,11 +44,12 @@ public class Queries {
             for (Result result : allResults) {
 
                 Dictionary dictionary = result.getDictionary(RepositoryConstants.DATABASENAME);
-                Log.i("Testdata", "Query " + dictionary.getString(RepositoryConstants.TYPE_KEY + ": " + result.getString("id")));
+                Log.i("Testdata", "Query " + dictionary.getString(RepositoryConstants.TYPE_KEY) + ": " + result.getString("id"));
                 TEN tenObject = this.queryResultConverter.createTENFromResult(dictionary);
                 tenObject.setID(result.getString("id"));
                 tenObject.setColor(dictionary.getInt(RepositoryConstants.COLOR_KEY));
                 tenObject.setAccentColor(dictionary.getInt(RepositoryConstants.ACCENT_COLOR_KEY));
+                tenObject.setDateOfCreation(dictionary.getDate(RepositoryConstants.CREATION_DATE_KEY));
                 resultList.add(tenObject);
             }
             return resultList;

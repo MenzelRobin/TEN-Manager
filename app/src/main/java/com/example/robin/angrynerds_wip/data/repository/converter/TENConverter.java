@@ -32,7 +32,7 @@ public class TENConverter {
         String documentID = document.getId();
         int color = document.getInt(RepositoryConstants.COLOR_KEY);
         int accentColor = document.getInt(RepositoryConstants.ACCENT_COLOR_KEY);
-        Date dateOfCreation = new Date(document.getInt(RepositoryConstants.CREATION_DATE_KEY));
+        Date dateOfCreation = document.getDate(RepositoryConstants.CREATION_DATE_KEY);
 
         ten.setID(documentID);
         ten.setColor(color);

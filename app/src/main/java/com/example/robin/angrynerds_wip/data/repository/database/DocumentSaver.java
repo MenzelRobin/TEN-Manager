@@ -30,7 +30,7 @@ public class DocumentSaver {
     public boolean updateCompleteDocument(TEN ten, MutableDocument mutableTENDocument) {
         mutableTENDocument = prepareDocument(mutableTENDocument, ten);
 
-        mutableTENDocument.setLong(RepositoryConstants.CREATION_DATE_KEY, ten.getDateOfCreation().getTime());
+        mutableTENDocument.setDate(RepositoryConstants.CREATION_DATE_KEY, ten.getDateOfCreation());
         mutableTENDocument.setInt(RepositoryConstants.COLOR_KEY, ten.getColor());
         mutableTENDocument.setInt(RepositoryConstants.ACCENT_COLOR_KEY, ten.getAccentColor());
 
@@ -51,17 +51,13 @@ public class DocumentSaver {
     private MutableDocument prepareDocument(MutableDocument mutableDocument, TEN ten) {
 
         if (ten.getClass().getName().contains("Event")) {
-            Log.i("Testdata", "Es ist ein Event ( " + ten.getID() + " ) ");
             mutableDocument.setString(RepositoryConstants.TYPE_KEY, RepositoryConstants.EVENT_TYPE);
 
         } else if (ten.getClass().getName().contains("Note")) {
-            Log.i("NoteRemake", "Es ist ein Note ( " + ten.getID() + " ) ");
-
             mutableDocument.setString(RepositoryConstants.TYPE_KEY, RepositoryConstants.NOTE_TYPE);
             mutableDocument = saveNoteImages(mutableDocument, (Note) ten);
 
         } else if (ten.getClass().getName().contains("Todo")) {
-            Log.i("Testdata", "Es ist ein Todo ( " + ten.getID() + " ) ");
             mutableDocument.setString(RepositoryConstants.TYPE_KEY, RepositoryConstants.TODO_TYPE);
         }
         return mutableDocument;
