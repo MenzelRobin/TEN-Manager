@@ -2,9 +2,10 @@ package com.example.robin.angrynerds_wip.activities.note.note.data;
 
 public class NoteDataHelper {
 
-    NoteData mNoteData;
-    public NoteDataHelper(NoteData pNoteDate){
-        mNoteData = pNoteDate;
+    private NoteData mNoteData;
+
+    public NoteDataHelper(NoteData pNoteData){
+        mNoteData = pNoteData;
     }
 
     public NoteDataHelper(){
@@ -15,7 +16,7 @@ public class NoteDataHelper {
     }
 
     //TODO define ifs
-    public boolean isNoteSaveable(){
+    public boolean isNoteSavable(){
         String title = mNoteData.getNote().getTitle();
         String description = mNoteData.getNote().getDescription();
 
@@ -23,7 +24,7 @@ public class NoteDataHelper {
             return false;
         }
         else if(title.equals("") && description.equals("")){
-            return  false;
+            return false;
         }
         return  true;
     }

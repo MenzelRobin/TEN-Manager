@@ -10,8 +10,8 @@ import java.util.ArrayList;
 
 class ApplicationLogic {
 
-    private ArrayList<String> mTagList;
     private int mColor;
+    private ArrayList<String> mTagList;
     private Gui mGui;
     private RowViewAdapter mAdapter;
     private ClickListener mClickListener;
@@ -61,18 +61,6 @@ class ApplicationLogic {
 
     //Remove String from TagList and notify adapter, add new empty string if it was the last one
     void onDeleteButtonClicked(int id){
-
-        /*if(mTagList.get(id).equals("") && mTagList.size()-2 == id)
-            mGui.displayToast(mActivity, "Die letzte Zeile kann nicht gelöscht werden");
-        else if (mTagList.size()-2 == id){
-            mTagList.remove(id);
-            mTagList.add("");
-            mAdapter.notifyDataSetChanged();
-        }
-        else{
-            mTagList.remove(id);
-            mAdapter.notifyDataSetChanged();
-        }*/
         mTagList.remove(id);
         mAdapter.notifyDataSetChanged();
         mGui.hideKeyboard(mActivity);
