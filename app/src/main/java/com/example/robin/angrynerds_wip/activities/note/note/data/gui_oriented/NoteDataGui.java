@@ -78,6 +78,4 @@ public class NoteDataGui {
             mNoteData.getNoteDataBackend().triggerOriginalImageLoad(index);
         return bitmap;
     }
-
-
 }
