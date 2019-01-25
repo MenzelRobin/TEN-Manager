@@ -9,15 +9,17 @@ public class OverviewData {
 
     private ArrayList<TEN> mData = new ArrayList();
     private ArrayList<TEN> mCurrentData = new ArrayList();
+    private Class mCurrentClass;
 
     OverviewData() {
+        setCurrentClass(TEN.class);
         refresh();
-        filter(TEN.class);
     }
 
     // Gets all TENs from the Database
     public void refresh(){
         mData = Read.getAllTENs();
+        filter();
     }
 
     // returns all current TENs
@@ -25,16 +27,21 @@ public class OverviewData {
         return mCurrentData;
     }
 
+    // Sets current Class and filters
+    public void setCurrentClass(Class pClass){
+        mCurrentClass = pClass;
+    }
+
     // Filters for the selected Class
-    public void filter(Class pClass){
+    public void filter(){
         mCurrentData = new ArrayList();
-        if(pClass == TEN.class){
+        if(mCurrentClass == TEN.class){
             for(TEN ten : mData){
                 mCurrentData.add(ten);
             }
         } else {
             for(TEN ten : mData){
-                if(ten.getClass() == pClass){
+                if(ten.getClass() == mCurrentClass){
                     mCurrentData.add(ten);
                 }
             }

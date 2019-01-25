@@ -43,6 +43,7 @@ public class OverviewController {
 
 
     public void onResume(){
+        // Todo: Implement correctly
         mData.refresh();
         refreshFragments();
     }
@@ -93,6 +94,8 @@ public class OverviewController {
             }
         }
         Delete.deleteMultipleTENs(toDelete);
+        mData.refresh();
+        mData.filter();
         refreshFragments();
         mFragmentInserter.replaceFragment(mGui.getHeaderId(), mFragmentFactory.createHeaderCreateFragment(), "HEADER_FRAGMENT");
         mGui.showFooter();
@@ -100,8 +103,9 @@ public class OverviewController {
 
     // Shows TENs depending on selection
     public void show(Class pClass){
+        mData.setCurrentClass(pClass);
         mData.refresh();
-        mData.filter(pClass);
+        mData.filter();
         refreshFragments();
     }
 
