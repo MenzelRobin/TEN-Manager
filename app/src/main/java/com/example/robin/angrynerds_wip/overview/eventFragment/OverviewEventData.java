@@ -17,14 +17,14 @@ public class OverviewEventData extends OverviewFragmentData {
     // Adds the Note data to this Object
     public void addData(Bundle pData){
         super.addData(pData);
-        Date pDate = new Date(pData.getLong("time"));
+        Date pDate = new Date(pData.getLong("Time"));
         SimpleDateFormat time = new SimpleDateFormat("hh:mm");
         SimpleDateFormat date = new SimpleDateFormat("E, dd. MMM");
         SimpleDateFormat year = new SimpleDateFormat("YYYY");
         mTime = time.format(pDate);
         mDate = date.format(pDate);
         mYear = year.format(pDate);
-        mLocation = pData.getString("Street") + ", " + pData.getInt("HouseNumber") + ", " + pData.getString("Plz") + " " + pData.getString("City");
+        mLocation = pData.getString("Address");
     }
 
     // Returns the Time
