@@ -1,6 +1,7 @@
 package com.example.robin.angrynerds_wip.overview.overviewActivity;
 
 import android.support.v4.app.Fragment;
+import android.util.Log;
 
 import com.example.robin.angrynerds_wip.data.models.tens.Event;
 import com.example.robin.angrynerds_wip.data.models.tens.Note;
@@ -9,6 +10,7 @@ import com.example.robin.angrynerds_wip.data.models.tens.Todo;
 import com.example.robin.angrynerds_wip.overview.eventFragment.OverviewEventInit;
 import com.example.robin.angrynerds_wip.overview.header.createFragment.OverviewHeaderCreateFragment;
 import com.example.robin.angrynerds_wip.overview.header.deleteFragment.OverviewHeaderDeleteFragment;
+import com.example.robin.angrynerds_wip.overview.imageFragment.OverviewImageInit;
 import com.example.robin.angrynerds_wip.overview.noteFragment.OverviewNoteInit;
 import com.example.robin.angrynerds_wip.overview.todoFragment.OverviewTodoInit;
 
@@ -37,10 +39,16 @@ public class OverviewFragmentFactory {
                 fragments.add(fragment);
             }
             if(ten.getClass() == Note.class) {
-                //Todo: If the Note only contains an Image, create an OverviewImage Fragment instead. Implement when Datateam implemented Images in Notes
-                OverviewNoteInit fragment = new OverviewNoteInit();
-                fragment.setArguments(ten.getBundle());
-                fragments.add(fragment);
+                Log.d("LOGTAG",((Note)ten).getPictures().size() + "");
+                if(((Note)ten).getPictures().isEmpty()) {
+                    OverviewNoteInit fragment = new OverviewNoteInit();
+                    fragment.setArguments(ten.getBundle());
+                    fragments.add(fragment);
+                } else {
+                    OverviewImageInit fragment = new OverviewImageInit();
+                    fragment.setArguments(ten.getBundle());
+                    fragments.add(fragment);
+                }
             }
         }
         return fragments;

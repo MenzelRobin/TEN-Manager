@@ -1,7 +1,11 @@
 package com.example.robin.angrynerds_wip.overview.imageFragment;
 
+import android.graphics.Bitmap;
+import android.support.v4.graphics.ColorUtils;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.overview.superClasses.OverviewFragmentGui;
@@ -9,17 +13,17 @@ import com.example.robin.angrynerds_wip.overview.superClasses.OverviewFragmentGu
 public class OverviewImageGui extends OverviewFragmentGui {
 
     private RelativeLayout mOverviewImage;
-    //private TextView mTitle;
-    //private TextView mDescription;
+    private TextView mTitle;
+    private ImageView mImage;
 
     // Adds the Fragment view to this Object
     public void addView(View pView){
         super.addView(pView);
-        mChecked = mView.findViewById(R.id.id_overview_note_imageView_checked);
-        mUnchecked = mView.findViewById(R.id.id_overview_note_imageView_unchecked);
+        mChecked = mView.findViewById(R.id.id_overview_image_imageView_checked);
+        mUnchecked = mView.findViewById(R.id.id_overview_image_imageView_unchecked);
         mOverviewImage = mView.findViewById(R.id.id_overview_image);
-        //mTitle = mView.findViewById(R.id.id_overview_note_textView_title);
-        //mDescription = mView.findViewById(R.id.id_overview_note_textView_description);
+        mTitle = mView.findViewById(R.id.id_overview_noteImage_textView_title);
+        mImage = mView.findViewById(R.id.id_overview_noteImage_imageView_image);
     }
 
     // Returns mOverviewImage
@@ -27,18 +31,20 @@ public class OverviewImageGui extends OverviewFragmentGui {
         return mOverviewImage;
     }
 
-    // Sets Title
-    //public void setTitle(String pTitle){
-    //    mTitle.setText(pTitle);
-    //}
+    //Sets Title
+    public void setTitle(String pTitle){
+        mTitle.setText(pTitle);
+    }
 
     // Sets Color
     public void setColor(int pColor){
         mOverviewImage.setBackgroundColor(pColor);
+
+        mTitle.setBackgroundColor(ColorUtils.setAlphaComponent(pColor, 150));
     }
 
-    // Sets Description
-    //public void setDescription(String pDescription){
-    //    mDescription.setText(pDescription);
-    //}
+    // Sets Image
+    public void setImage(Bitmap pImage){
+        mImage.setImageBitmap(pImage);
+    }
 }

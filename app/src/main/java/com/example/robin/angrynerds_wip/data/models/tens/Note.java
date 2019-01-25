@@ -109,8 +109,7 @@ public class Note extends TEN {
         Bundle bundle = super.getBundle();
         bundle.putString("Description", description);
         bundle.putStringArrayList("Tags", tags);
-        ArrayList<String> imageIDs = new ArrayList<String>();
-        bundle.putStringArrayList("Pictures", imageIDs);
+        if(!pictures.isEmpty()) bundle.putString("Image", pictures.get(0).getId());
         return bundle;
     }
     public void imageNotFound(Image image){

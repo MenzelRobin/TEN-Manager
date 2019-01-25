@@ -17,9 +17,9 @@ public class OverviewImageController extends OverviewFragmentController {
 
     // Applies saved Data to the Gui
     public void applyData(){
-        //((OverviewNoteGui)mGui).setTitle(mData.getTitle());
+        ((OverviewImageGui)mGui).setTitle(mData.getTitle());
         ((OverviewImageGui)mGui).setColor(mData.getColor());
-        //((OverviewNoteGui)mGui).setDescription(((OverviewNoteData)mData).getDescription());
+        ((OverviewImageGui)mGui).setImage(((OverviewImageData)mData).getImage());
     }
 
     // Adds an OnClickListener to the Fragment

@@ -1,21 +1,25 @@
 package com.example.robin.angrynerds_wip.overview.imageFragment;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 
+import com.example.robin.angrynerds_wip.data.models.utils.Image;
 import com.example.robin.angrynerds_wip.overview.superClasses.OverviewFragmentData;
+
+import static com.example.robin.angrynerds_wip.data.services.ImageService.getPreviewImage;
 
 public class OverviewImageData extends OverviewFragmentData {
 
-    String mDescription;
+    Bitmap mPreviewImage;
 
     // Adds the Note data to this Object
     public void addData(Bundle pData){
         super.addData(pData);
-        mDescription = pData.getString("Description");
+        mPreviewImage = getPreviewImage(new Image(pData.getString("Image"))).getBitmap();
     }
 
-    // Returns the Description
-    public String getDescription(){
-        return mDescription;
+    // Returns the Image
+    public Bitmap getImage(){
+        return mPreviewImage;
     }
 }
