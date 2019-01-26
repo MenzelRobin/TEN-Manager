@@ -17,7 +17,6 @@ public class OverviewTodoData extends OverviewFragmentData {
         mNote = pData.getString("Note");
         mDescription = pData.getStringArray("Description");
         mStatus = pData.getBooleanArray("Status");
-        Log.d("LOGTAG", mDescription[0] + mDescription[1] + mDescription[2]);
     }
 
     // Returns the Description

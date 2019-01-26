@@ -32,10 +32,6 @@ public abstract class OverviewFragmentController {
         applyData();
     }
 
-    public void applyData(){}
-
-    public void addOnClickListener(){}
-
     public OverviewFragmentClickListener getOnClickListener(){
         return new OverviewFragmentClickListener(this);
     }
@@ -45,8 +41,6 @@ public abstract class OverviewFragmentController {
     public OverviewFragmentLongClickListener getOnLongClickListener(){
         return new OverviewFragmentLongClickListener(this);
     }
-
-    public void clicked(){}
 
     public void longClicked(){
         if(mDeleteState) {
@@ -71,6 +65,12 @@ public abstract class OverviewFragmentController {
             mGui.hideCheckbox();
         }
     }
+
+    public void applyData(){}
+
+    public void addOnClickListener(){}
+
+    public void clicked(){}
 
     public boolean getMarked(){
         return mMarked;

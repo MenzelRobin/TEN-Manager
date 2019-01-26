@@ -1,11 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    android:id="@+id/id_overview_image"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="5dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/colorPrimaryDark"
+    tools:context=".overview.imageFragment.OverviewImageInit">
+
+        <ImageView
+            android:id="@+id/id_overview_noteImage_imageView_image"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/id_overview_noteImage_textView_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-    android:layout_marginBottom="5dp"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:background="@color/colorPrimaryDark"
-        tools:context=".overview.imageFragment.OverviewImageInit">
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/sample_overview_image_title"
+        android:textSize="25dp"
+        android:layout_marginTop="25dp"
+        android:paddingRight="25dp"
+        android:paddingLeft="25dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:textColor="@color/colorWhite"
+        android:background="@color/bgColor1"
+        />
 
     <ImageView
         android:id="@+id/id_overview_image_imageView_unchecked"
@@ -13,7 +40,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:visibility="invisible"
-        android:src="@drawable/ic_circle_white_30dp" />
+        android:src="@drawable/ic_circle_white_30dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="25dp"/>
 
     <ImageView
         android:id="@+id/id_overview_image_imageView_checked"
@@ -21,25 +50,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:visibility="invisible"
-        android:src="@drawable/ic_check_circle_white_30dp" />
-
-        <ImageView
-            android:id="@+id/id_overview_noteImage_View_image"
-            android:layout_width="match_parent"
-            android:layout_height= "wrap_content"
-            android:layout_centerHorizontal="true"
-            tools:srcCompat="@tools:sample/avatars" />
-
-    <TextView
-        android:id="@+id/id_overview_noteImage_View_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:text="@string/sample_overview_image_title"
-        android:textSize="25dp"
-        android:layout_margin="25dp"
-        android:textColor="@color/colorWhite"
-        />
+        android:src="@drawable/ic_check_circle_white_30dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="25dp"/>
 
     </RelativeLayout>

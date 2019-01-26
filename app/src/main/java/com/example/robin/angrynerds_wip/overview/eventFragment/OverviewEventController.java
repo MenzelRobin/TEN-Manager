@@ -41,8 +41,7 @@ public class OverviewEventController extends OverviewFragmentController {
         if(mDeleteState) {
             toggleMark();
         } else {
-            //Todo: Add Create Event Activity
-            Intent intent = new Intent(mFragment.getActivity(), MainActivity.class);
+            Intent intent = new Intent(mFragment.getActivity(), com.example.robin.angrynerds_wip.activities.event.Init.class);
             intent.putExtra("ID", mData.getID());
             mFragment.startActivity(intent);
         }

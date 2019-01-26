@@ -110,8 +110,7 @@ public class Note extends TEN {
         Bundle bundle = super.getBundle();
         bundle.putString(BundleKeys.keyNoteDescription, description);
         bundle.putStringArrayList(BundleKeys.keyNoteTags, tags);
-        ArrayList<String> imageIDs = new ArrayList<String>();
-        bundle.putStringArrayList(BundleKeys.keyNotePictures, imageIDs);
+        if(!pictures.isEmpty()) bundle.putString(BundleKeys.keyNotePictures, pictures.get(0).getId());
         return bundle;
     }
     public void imageNotFound(Image image){

@@ -4,8 +4,13 @@ import android.content.res.Configuration;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 
 import com.example.robin.angrynerds_wip.R;
+import com.example.robin.angrynerds_wip.data.models.tens.Event;
+import com.example.robin.angrynerds_wip.data.models.tens.Note;
+import com.example.robin.angrynerds_wip.data.models.tens.TEN;
+import com.example.robin.angrynerds_wip.data.models.tens.Todo;
 
 public class OverviewGui {
 
@@ -15,6 +20,7 @@ public class OverviewGui {
     private int[] mContainerIDs;
 
     private LinearLayout mFooter;
+    private ScrollView mScrollView;
     private Button mShowAll;
     private Button mShowTodo;
     private Button mShowEvent;
@@ -31,11 +37,10 @@ public class OverviewGui {
             mActivity.setContentView(R.layout.activity_overview_landscape);
             mContainerIDs = new int[]{R.id.id_overview_linearLayout_container1, R.id.id_overview_linearLayout_container2};
         }
-
-
         // Container
         mHeaderId = R.id.id_overview_relativeLayout_header;
         mFooter = mActivity.findViewById(R.id.id_overview_linearLayout_footer);
+        mScrollView = mActivity.findViewById(R.id.id_overview_scrollView_center);
         // Footer Buttons
         mShowAll = mActivity.findViewById(R.id.id_overview_button_all);
         mShowTodo = mActivity.findViewById(R.id.id_overview_button_todo);
@@ -43,12 +48,25 @@ public class OverviewGui {
         mShowNote = mActivity.findViewById(R.id.id_overview_button_note);
     }
 
-    /*
-    public void clearContainer(){
-        for(int containerID : mContainerIDs){
-            ((LinearLayout)mActivity.findViewById(containerID)).removeAllViewsInLayout();
+    public void markButton(Class pClass){
+        mShowAll.setBackgroundColor(mActivity.getResources().getColor(R.color.colorGrey));
+        mShowTodo.setBackgroundColor(mActivity.getResources().getColor(R.color.colorGrey));
+        mShowEvent.setBackgroundColor(mActivity.getResources().getColor(R.color.colorGrey));
+        mShowNote.setBackgroundColor(mActivity.getResources().getColor(R.color.colorGrey));
+        if(pClass == TEN.class){
+            mShowAll.setBackgroundColor(mActivity.getResources().getColor(R.color.colorWhite));
         }
-    }*/
+        if(pClass == Todo.class){
+            mShowTodo.setBackgroundColor(mActivity.getResources().getColor(R.color.colorWhite));
+        }
+        if(pClass == Event.class){
+            mShowEvent.setBackgroundColor(mActivity.getResources().getColor(R.color.colorWhite));
+        }
+        if(pClass == Note.class){
+            mShowNote.setBackgroundColor(mActivity.getResources().getColor(R.color.colorWhite));
+        }
+        mScrollView.smoothScrollTo(0,0);
+    }
 
     public void hideFooter(){
         mFooter.setVisibility(View.GONE);
