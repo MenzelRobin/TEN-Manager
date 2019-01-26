@@ -21,17 +21,16 @@
             android:layout_height="match_parent">
 
             <EditText
+                android:theme="@style/editTextStyle"
                 android:id="@+id/id_event_editText_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
                 android:layout_marginStart="72dp"
-                android:backgroundTint="#00000000"
                 android:hint="Titel eingeben"
                 android:inputType="text"
                 android:textColor="#FFFF"
-                android:textColorHint="#80FFFFFF"
-                android:textSize="16dp" />
+                android:textColorHint="#80FFFFFF"/>
 
             <View
                 android:id="@+id/id_event_view_seperate1"
@@ -56,28 +55,25 @@
                     android:src="@drawable/ic_access_time_black_24dp" />
 
                 <EditText
+                    android:theme="@style/editTextStyle"
                     android:id="@+id/id_event_editText_date"
                     android:layout_width="270dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_toEndOf="@id/id_event_imageView_iconDate"
-                    android:backgroundTint="#00000000"
                     android:clickable="true"
                     android:focusable="false"
-                    android:inputType="none"
-                    android:text="Donnerstag, 13. Dezember 2019"
                     android:textColor="#FFFF" />
 
                 <EditText
+                    android:theme="@style/editTextStyle"
                     android:id="@+id/id_event_editText_time"
                     android:layout_width="70dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:backgroundTint="#00000000"
                     android:clickable="true"
                     android:focusable="false"
                     android:inputType="none"
-                    android:text="17:30"
                     android:textAlignment="center"
                     android:textColor="#FFFF" />
             </RelativeLayout>
@@ -105,6 +101,7 @@
                     android:src="@drawable/ic_location_on_black_24dp" />
 
                 <EditText
+                    android:theme="@style/editTextStyle"
                     android:id="@+id/id_event_editText_location"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -147,6 +144,7 @@
                     android:orientation="vertical">
 
                     <EditText
+                        android:theme="@style/editTextStyle"
                         android:id="@+id/id_event_editText_newReminder"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -159,6 +157,7 @@
                         android:textColor="#FFFF" />
 
                     <EditText
+                        android:theme="@style/editTextStyle"
                         android:id="@+id/id_event_editText_reminder1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -170,6 +169,7 @@
                         android:textColor="#FFFF" />
 
                     <EditText
+                        android:theme="@style/editTextStyle"
                         android:id="@+id/id_event_editText_reminder2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -181,6 +181,7 @@
                         android:textColor="#FFFF" />
 
                     <EditText
+                        android:theme="@style/editTextStyle"
                         android:id="@+id/id_event_editText_reminder3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -192,6 +193,7 @@
                         android:textColor="#FFFF" />
 
                     <EditText
+                        android:theme="@style/editTextStyle"
                         android:id="@+id/id_event_editText_reminder4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
