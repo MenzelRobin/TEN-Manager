@@ -10,7 +10,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.robin.angrynerds_wip.R;
-import com.example.robin.angrynerds_wip.data.models.utils.TasksAdapter;
 
 public class Gui extends AppCompatActivity{
 

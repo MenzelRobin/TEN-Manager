@@ -7,7 +7,6 @@ import android.view.View;
 
 import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.data.models.utils.Task;
-import com.example.robin.angrynerds_wip.data.models.utils.TasksAdapter;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
