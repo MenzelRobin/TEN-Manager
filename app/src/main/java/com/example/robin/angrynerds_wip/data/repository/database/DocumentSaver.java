@@ -1,7 +1,5 @@
 package com.example.robin.angrynerds_wip.data.repository.database;
 
-import android.util.Log;
-
 import com.couchbase.lite.CouchbaseLiteException;
 import com.couchbase.lite.MutableDocument;
 import com.example.robin.angrynerds_wip.data.models.tens.Note;
@@ -16,28 +14,26 @@ import java.io.IOException;
 
 public class DocumentSaver {
 
-    ObjectMapper objectMapper;
-    ImageConverter imageConverter;
-    FileManager fileManager;
+    ObjectMapper mObjectMapper;
+    FileManager mFileManager;
 
     public DocumentSaver() {
-        this.objectMapper = new ObjectMapper();
-        this.imageConverter = new ImageConverter();
-        this.fileManager = new FileManager();
+        this.mObjectMapper = new ObjectMapper();
+        this.mFileManager = new FileManager();
     }
 
-    public boolean updateCompleteDocument(TEN ten, MutableDocument mutableTENDocument) {
-        mutableTENDocument = prepareDocument(mutableTENDocument, ten);
+    public boolean updateCompleteDocument(TEN pTen, MutableDocument pMutableTENDocument) {
+        pMutableTENDocument = prepareDocument(pMutableTENDocument, pTen);
 
-        mutableTENDocument.setDate(RepositoryConstants.CREATION_DATE_KEY, ten.getDateOfCreation());
-        mutableTENDocument.setInt(RepositoryConstants.COLOR_KEY, ten.getColor());
-        mutableTENDocument.setInt(RepositoryConstants.ACCENT_COLOR_KEY, ten.getAccentColor());
+        pMutableTENDocument.setDate(RepositoryConstants.CREATION_DATE_KEY, pTen.getDateOfCreation());
+        pMutableTENDocument.setInt(RepositoryConstants.COLOR_KEY, pTen.getColor());
+        pMutableTENDocument.setInt(RepositoryConstants.ACCENT_COLOR_KEY, pTen.getAccentColor());
 
         try {
 
-            mutableTENDocument.setString(RepositoryConstants.OBJECT_KEY, this.objectMapper.writeValueAsString(ten));
+            pMutableTENDocument.setString(RepositoryConstants.OBJECT_KEY, this.mObjectMapper.writeValueAsString(pTen));
             try {
-                DatabaseManager.getDatabase().save(mutableTENDocument);
+                DataContextManager.getDatabase().save(pMutableTENDocument);
                 return true;
             } catch (CouchbaseLiteException e) {
                 return false;
@@ -47,63 +43,30 @@ public class DocumentSaver {
         }
     }
 
-    private MutableDocument prepareDocument(MutableDocument mutableDocument, TEN ten) {
+    private MutableDocument prepareDocument(MutableDocument pMutableDocument, TEN pTen) {
 
-        if (ten.getClass().getName().contains("Event")) {
-            mutableDocument.setString(RepositoryConstants.TYPE_KEY, RepositoryConstants.EVENT_TYPE);
+        if (pTen.getClass().getName().contains("Event")) {
+            pMutableDocument.setString(RepositoryConstants.TYPE_KEY, RepositoryConstants.EVENT_TYPE);
 
-        } else if (ten.getClass().getName().contains("Note")) {
-            mutableDocument.setString(RepositoryConstants.TYPE_KEY, RepositoryConstants.NOTE_TYPE);
-            mutableDocument = saveNoteImages(mutableDocument, (Note) ten);
+        } else if (pTen.getClass().getName().contains("Note")) {
+            pMutableDocument.setString(RepositoryConstants.TYPE_KEY, RepositoryConstants.NOTE_TYPE);
+            saveNoteImages((Note) pTen);
 
-        } else if (ten.getClass().getName().contains("Todo")) {
-            mutableDocument.setString(RepositoryConstants.TYPE_KEY, RepositoryConstants.TODO_TYPE);
+        } else if (pTen.getClass().getName().contains("Todo")) {
+            pMutableDocument.setString(RepositoryConstants.TYPE_KEY, RepositoryConstants.TODO_TYPE);
         }
-        return mutableDocument;
+        return pMutableDocument;
     }
 
-    private MutableDocument saveNoteImages(MutableDocument mutableDocument, Note note) {
+    private void saveNoteImages(Note pNote) {
 
-
-        for(Image image: note.getPictures()){
-            image.setId(image.getId().replaceAll("null", note.getID()));
+        for(Image image: pNote.getPictures()){
+            image.setId(image.getId().replaceAll("null", pNote.getID()));
             try{
-                fileManager.saveImageToDirectory(image);
+                mFileManager.saveImageToDirectory(image);
             } catch (IOException e){
 
             }
         }
-
-        //removeImages(mutableDocument);
-        //if (note.getPictures() != null) {
-        //    int numberOfImages = note.getPictures().size();
-        //    mutableDocument.setInt(RepositoryConstants.IMAGE_COUNTER, numberOfImages);
-        //    ArrayList<Bitmap> imageBitmaps = note.getPictures();
-        //    for (int i = 0; i < numberOfImages; i++) {
-        //        Blob imageBlob = this.imageConverter.BitmapToBlob(imageBitmaps.get(i));
-        //        mutableDocument.setBlob(RepositoryConstants.IMAGE_CORE_ID + (i + 1), imageBlob);
-        //    }
-        //}
-        return mutableDocument;
     }
-
-    private void removeImages(MutableDocument mutableDocument){
-        //int numberOfImages = mutableDocument.getInt(RepositoryConstants.IMAGE_COUNTER);
-        //if(numberOfImages > 0){
-        //        Log.i("DatabaseTest", "Key: " + mutableDocument.getBlob(RepositoryConstants.IMAGE_CORE_ID + 1).getProperties().get("digest"));
-        //    for(String key: mutableDocument.getBlob(RepositoryConstants.IMAGE_CORE_ID + "1").getProperties().keySet()){
-        //        Log.i("DatabaseTest", "Key: " + key);
-        //    }
-        //    try{
-        //    DatabaseManager.getDatabase().compact();
-        //    } catch (CouchbaseLiteException e){
-        //        Log.e("Couchbase", "Could not be compacted");
-        //    }
-//
-        //    Log.i("DatabaseTest", "Keymapping done!");
-        //}
-        //for(int i = 1; i<=numberOfImages; i++){
-        //    mutableDocument.setBlob(RepositoryConstants.IMAGE_CORE_ID + i, null);
-        //}
-    }//
 }

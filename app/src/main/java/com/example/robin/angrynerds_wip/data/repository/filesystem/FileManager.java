@@ -8,7 +8,7 @@ import android.os.Environment;
 import com.example.robin.angrynerds_wip.activities.note.note.data.PreviewImageCreator;
 import com.example.robin.angrynerds_wip.data.models.utils.Image;
 import com.example.robin.angrynerds_wip.data.repository.RepositoryConstants;
-import com.example.robin.angrynerds_wip.data.repository.database.DatabaseManager;
+import com.example.robin.angrynerds_wip.data.repository.database.DataContextManager;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -19,7 +19,7 @@ public class FileManager {
     private Context mContext;
 
     public FileManager() {
-        mContext = DatabaseManager.context;
+        mContext = DataContextManager.context;
     }
 
     public Context getContext() {

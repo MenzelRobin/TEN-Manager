@@ -2,7 +2,6 @@ package com.example.robin.angrynerds_wip.data.repository.database;
 
 import android.util.Log;
 
-import com.couchbase.lite.Array;
 import com.couchbase.lite.CouchbaseLiteException;
 import com.couchbase.lite.DataSource;
 import com.couchbase.lite.Dictionary;
@@ -14,8 +13,7 @@ import com.couchbase.lite.Result;
 import com.couchbase.lite.ResultSet;
 import com.couchbase.lite.SelectResult;
 import com.example.robin.angrynerds_wip.data.models.tens.TEN;
-import com.example.robin.angrynerds_wip.data.repository.Repository;
-import com.example.robin.angrynerds_wip.data.repository.converter.QueryResultConverter;
+import com.example.robin.angrynerds_wip.data.repository.converter.GenericTENConverter;
 import com.example.robin.angrynerds_wip.data.repository.RepositoryConstants;
 
 import java.util.ArrayList;
@@ -23,17 +21,17 @@ import java.util.List;
 
 public class Queries {
 
-    QueryResultConverter queryResultConverter;
+    private GenericTENConverter mGenericTENConverter;
 
     public Queries() {
-        this.queryResultConverter = new QueryResultConverter();
+        this.mGenericTENConverter = new GenericTENConverter();
     }
 
     public ArrayList<TEN> getAllTENs() {
         Query query = QueryBuilder.select(
                 SelectResult.all(),
                 SelectResult.expression(Meta.id))
-                .from(DataSource.database(DatabaseManager.getDatabase()))
+                .from(DataSource.database(DataContextManager.getDatabase()))
                 .orderBy(Ordering.property(RepositoryConstants.CREATION_DATE_KEY).ascending());
         ArrayList<TEN> resultList = new ArrayList<TEN>();
 
@@ -44,17 +42,18 @@ public class Queries {
             for (Result result : allResults) {
 
                 Dictionary dictionary = result.getDictionary(RepositoryConstants.DATABASENAME);
-                TEN tenObject = this.queryResultConverter.createTENFromResult(dictionary);
+                TEN tenObject = this.mGenericTENConverter.createTENFromResult(dictionary);
+
                 tenObject.setID(result.getString("id"));
                 tenObject.setColor(dictionary.getInt(RepositoryConstants.COLOR_KEY));
                 tenObject.setAccentColor(dictionary.getInt(RepositoryConstants.ACCENT_COLOR_KEY));
                 tenObject.setDateOfCreation(dictionary.getDate(RepositoryConstants.CREATION_DATE_KEY));
+
                 resultList.add(tenObject);
             }
             return resultList;
 
         } catch (CouchbaseLiteException e) {
-            Log.i("Testdata", "datenbankfehler");
             return null;
         }
     }

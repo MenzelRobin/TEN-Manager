@@ -14,7 +14,6 @@ public class RepositoryConstants {
     public static final String TODO_TYPE = "Todo";
 
     public static final String IMAGE_CORE_ID = "imageID";
-    public static final String IMAGE_COUNTER = "numberOfImages";
 
     public static final String IMAGE_ORIGINAL_FOLDER = "original";
     public static final String IMAGE_PREVIEW_FOLDER = "preview";

@@ -7,27 +7,27 @@ import com.example.robin.angrynerds_wip.data.models.tens.TEN;
 import com.example.robin.angrynerds_wip.data.models.tens.Todo;
 import com.example.robin.angrynerds_wip.data.repository.RepositoryConstants;
 
-public class QueryResultConverter {
+public class GenericTENConverter {
 
-    private TENConverter tenConverter;
+    private SpecificTENConverter mSpecificTenConverter;
 
-    public QueryResultConverter() {
-        this.tenConverter = new TENConverter();
+    public GenericTENConverter() {
+        this.mSpecificTenConverter = new SpecificTENConverter();
     }
 
-    public TEN createTENFromResult(Dictionary dictionary) {
-        String type = dictionary.getString(RepositoryConstants.TYPE_KEY);
-        String objectJSON = dictionary.getString(RepositoryConstants.OBJECT_KEY);
+    public TEN createTENFromResult(Dictionary pDictionary) {
+        String type = pDictionary.getString(RepositoryConstants.TYPE_KEY);
+        String objectJSON = pDictionary.getString(RepositoryConstants.OBJECT_KEY);
 
         switch (type) {
             case RepositoryConstants.EVENT_TYPE:
-                Event event = tenConverter.stringToEvent(objectJSON);
+                Event event = mSpecificTenConverter.stringToEvent(objectJSON);
                 return event;
             case RepositoryConstants.NOTE_TYPE:
-                Note note = tenConverter.stringToNote(objectJSON);
+                Note note = mSpecificTenConverter.stringToNote(objectJSON);
                 return note;
             case RepositoryConstants.TODO_TYPE:
-                Todo todo = tenConverter.stringToTodo(objectJSON);
+                Todo todo = mSpecificTenConverter.stringToTodo(objectJSON);
                 return todo;
             default:
                 return null;
