@@ -11,10 +11,10 @@ import java.io.IOException;
 public class ImageService {
 
     public static void saveImage(Image image) {
-        try{
+        try {
             FileManager fileManager = new FileManager();
             fileManager.saveImageToDirectory(image);
-        } catch (IOException e){
+        } catch (IOException e) {
             Log.e("ImageService", e.getMessage());
         }
     }
@@ -25,17 +25,18 @@ public class ImageService {
         return result;
     }
 
-    public static Image getPreviewImage(Image image){
+    public static Image getPreviewImage(Image image) {
         FileManager fileManager = new FileManager();
         Image result = fileManager.readImageFromDirectory(image, RepositoryConstants.IMAGE_PREVIEW_FOLDER);
         return result;
     }
 
-    public static void deleteImage(Image image){
+    public static void deleteImage(Image image) {
         FileManager fileManager = new FileManager();
         fileManager.deleteImageFromDirectory(image);
     }
-    public static void deleteImage(String path){
+
+    public static void deleteImage(String path) {
         FileManager fileManager = new FileManager();
         fileManager.deleteImageFromDirectory(path);
     }
