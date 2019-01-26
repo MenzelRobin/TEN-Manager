@@ -62,7 +62,6 @@ public class NoteGui {
             mNoteImageContainer = pActivity.findViewById(R.id.id_note_linearImageContainer_Vertical);
             mViewSeparator1 = pActivity.findViewById(R.id.id_note_separate_landscape_1);
             mViewSeparator2 = pActivity.findViewById(R.id.id_note_separate_landscape_2);
-            mViewSeparator3 = pActivity.findViewById(R.id.id_note_separate_landscape_3);
         }
     }
 
@@ -98,11 +97,14 @@ public class NoteGui {
         mToolbar.setBackgroundColor(pAccentColor);
 
         mViewSeparator1.setBackground(new ColorDrawable(pAccentColor));
-        mViewSeparator2.setBackground(new ColorDrawable(pAccentColor));
-        mViewSeparator3.setBackground(new ColorDrawable(pAccentColor));
         mViewSeparator1.setAlpha((float)0.5);
+        mViewSeparator2.setBackground(new ColorDrawable(pAccentColor));
         mViewSeparator2.setAlpha((float)0.5);
-        mViewSeparator3.setAlpha((float)0.5);
+
+        if(mViewSeparator3!=null){
+            mViewSeparator3.setBackground(new ColorDrawable(pAccentColor));
+            mViewSeparator3.setAlpha((float)0.5);
+        }
     }
 
     //Formats tags to display in TextView
