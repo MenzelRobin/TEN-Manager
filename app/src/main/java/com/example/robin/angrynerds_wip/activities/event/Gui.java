@@ -6,8 +6,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-
 import com.example.robin.angrynerds_wip.R;
+import java.util.ArrayList;
+import java.util.Date;
 
 public class Gui {
 
@@ -84,18 +85,30 @@ public class Gui {
     public void setDate(String text) {mEditTextDate.setText(text);}
     public void setTime(String text) {mEditTextTime.setText(text);}
     public void setLocation(String text){mEditTextLocation.setText(text);}
-    public void setReminder1(String text) {mEditTextReminder1.setText(text); mIconCloseReminder1.setAlpha((float)0.5);}
-    public void setReminder2(String text) {mEditTextReminder2.setText(text); mIconCloseReminder2.setAlpha((float)0.5);}
-    public void setReminder3(String text) {mEditTextReminder3.setText(text); mIconCloseReminder3.setAlpha((float)0.5);}
-    public void setReminder4(String text) {mEditTextReminder4.setText(text); mIconCloseReminder4.setAlpha((float)0.5);}
-    public void resetReminder(){
-        mEditTextReminder1.setText("");
-        mEditTextReminder2.setText("");
-        mEditTextReminder3.setText("");
-        mEditTextReminder4.setText("");
-        mIconCloseReminder1.setAlpha((float)0.0);
-        mIconCloseReminder2.setAlpha((float)0.0);
-        mIconCloseReminder3.setAlpha((float)0.0);
-        mIconCloseReminder4.setAlpha((float)0.0);
+
+    public void setReminder(Reminder reminder, Date eventDate) {
+        //Reset reminder
+        mEditTextReminder1.setText(""); mEditTextReminder2.setText(""); mEditTextReminder3.setText(""); mEditTextReminder4.setText("");
+        mIconCloseReminder1.setAlpha((float)0.0); mIconCloseReminder2.setAlpha((float)0.0); mIconCloseReminder3.setAlpha((float)0.0); mIconCloseReminder4.setAlpha((float)0.0);
+
+        //Set reminder
+        for(int i = 0; i<reminder.getReminder().size();i++){
+            String label = reminder.getLabelFromReminder(i, eventDate);
+            reminder.removeReminderLable(label);
+            switch (i) {
+                case 0:
+                    mEditTextReminder1.setText(label); mIconCloseReminder1.setAlpha((float)0.5);
+                    break;
+                case 1:
+                    mEditTextReminder2.setText(label); mIconCloseReminder2.setAlpha((float)0.5);
+                    break;
+                case 2:
+                    mEditTextReminder3.setText(label); mIconCloseReminder3.setAlpha((float)0.5);
+                    break;
+                case 3:
+                    mEditTextReminder4.setText(label); mIconCloseReminder4.setAlpha((float)0.5);
+                    break;
+            }
+        }
     }
 }
