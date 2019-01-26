@@ -86,17 +86,15 @@ public class Gui {
     public void setTime(String text) {mEditTextTime.setText(text);}
     public void setLocation(String text){mEditTextLocation.setText(text);}
 
-    public void setReminder(ArrayList<Date> reminder, Date eventDate) {
+    public void setReminder(Reminder reminder, Date eventDate) {
         //Reset reminder
         mEditTextReminder1.setText(""); mEditTextReminder2.setText(""); mEditTextReminder3.setText(""); mEditTextReminder4.setText("");
         mIconCloseReminder1.setAlpha((float)0.0); mIconCloseReminder2.setAlpha((float)0.0); mIconCloseReminder3.setAlpha((float)0.0); mIconCloseReminder4.setAlpha((float)0.0);
 
         //Set reminder
-        Reminder mReminder = new Reminder();
-        mReminder.setReminder(reminder);
-        for(int i = 0; i<reminder.size();i++){
-            String label = mReminder.getLabelFromReminder(i, eventDate);
-            mReminder.removeReminderLable(label);
+        for(int i = 0; i<reminder.getReminder().size();i++){
+            String label = reminder.getLabelFromReminder(i, eventDate);
+            reminder.removeReminderLable(label);
             switch (i) {
                 case 0:
                     mEditTextReminder1.setText(label); mIconCloseReminder1.setAlpha((float)0.5);
@@ -105,10 +103,10 @@ public class Gui {
                     mEditTextReminder2.setText(label); mIconCloseReminder2.setAlpha((float)0.5);
                     break;
                 case 2:
-                    mEditTextReminder3.setText(label); mIconCloseReminder2.setAlpha((float)0.5);
+                    mEditTextReminder3.setText(label); mIconCloseReminder3.setAlpha((float)0.5);
                     break;
                 case 3:
-                    mEditTextReminder4.setText(label); mIconCloseReminder2.setAlpha((float)0.5);
+                    mEditTextReminder4.setText(label); mIconCloseReminder4.setAlpha((float)0.5);
                     break;
             }
         }

@@ -83,7 +83,8 @@ public class EventApplicationLogic {
         mGui.setDate(formatDate(mData.getmEvent().getTime()));
         mGui.setLocation(mData.getmEvent().getAddress());
         mGui.setColor(mData.getmEvent().getColor(), mData.getmEvent().getAccentColor());
-        mGui.setReminder(mData.getmEvent().getReminder(), mData.getmEvent().getTime());
+        mReminder.setReminder(mData.getmEvent().getReminder());
+        mGui.setReminder(mReminder, mData.getmEvent().getTime());
         setAlarm();
     }
 
