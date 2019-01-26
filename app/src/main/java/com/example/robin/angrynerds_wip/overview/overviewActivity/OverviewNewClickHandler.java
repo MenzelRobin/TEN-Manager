@@ -1,7 +1,9 @@
 package com.example.robin.angrynerds_wip.overview.overviewActivity;
 
+import android.content.Intent;
 import android.util.Log;
 
+import com.example.robin.angrynerds_wip.activities.note.note.NoteActivity;
 import com.example.robin.angrynerds_wip.data.models.tens.Event;
 import com.example.robin.angrynerds_wip.data.models.tens.Note;
 import com.example.robin.angrynerds_wip.data.models.tens.Todo;
@@ -15,13 +17,16 @@ public class OverviewNewClickHandler {
 
     public void newTEN(Class pClass){
         if(pClass == Todo.class){
-            // Todo: New TO Do
+            Intent intent = new Intent(mActivity, com.example.robin.angrynerds_wip.activities.todo.Init.class);
+            mActivity.startActivity(intent);
         }
         if(pClass == Event.class){
-            // Todo: New TO Do
+            Intent intent = new Intent(mActivity, com.example.robin.angrynerds_wip.activities.event.Init.class);
+            mActivity.startActivity(intent);
         }
         if(pClass == Note.class){
-            // Todo: New TO Do
+            Intent intent = new Intent(mActivity, NoteActivity.class);
+            mActivity.startActivity(intent);
         }
     }
 }
