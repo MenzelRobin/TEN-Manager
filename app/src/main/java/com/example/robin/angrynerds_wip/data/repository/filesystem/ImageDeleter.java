@@ -23,11 +23,11 @@ public class ImageDeleter {
 
     }
 
-    private class DeleteImageTask extends AsyncTask<Image, Integer, Boolean> {
+    private class DeleteImageTask extends AsyncTask<Image, Integer, Void> {
 
 
         @Override
-        protected Boolean doInBackground(Image... images) {
+        protected Void doInBackground(Image... images) {
             String[] folders = {RepositoryConstants.IMAGE_ORIGINAL_FOLDER, RepositoryConstants.IMAGE_PREVIEW_FOLDER};
 
             for (String folder : folders) {
@@ -39,8 +39,7 @@ public class ImageDeleter {
                     file.delete();
                 }
             }
-            return true;
-
+            return null;
         }
 
     }

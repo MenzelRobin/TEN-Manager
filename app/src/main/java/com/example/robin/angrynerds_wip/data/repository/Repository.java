@@ -21,85 +21,43 @@ import com.example.robin.angrynerds_wip.data.repository.filesystem.FileManager;
 import java.util.ArrayList;
 
 public class Repository {
-    TENConverter tenConverter;
-    DocumentSaver documentSaver;
-    Queries queries;
-    FileManager fileManager;
+    ReadRepository mReadRepository;
+    WriteRepository mWriteRepository;
 
     public Repository() {
-        this.tenConverter = new TENConverter();
-        this.documentSaver = new DocumentSaver();
-        this.queries = new Queries();
-        this.fileManager = new FileManager();
+        this.mReadRepository = new ReadRepository();
+        this.mWriteRepository = new WriteRepository();
     }
 
     public Todo getTodoByID(String id) {
-        Document todoDocument = DatabaseManager.getDatabase().getDocument(id);
-        String json = todoDocument.getString(RepositoryConstants.OBJECT_KEY);
-        Todo finalTodo = this.tenConverter.stringToTodo(json);
-        finalTodo = (Todo) this.tenConverter.addTENPropertiesFromDocument(finalTodo, todoDocument);
-        return finalTodo;
+        return mReadRepository.getTodoByID(id);
     }
 
     public Event getEventByID(String id) {
-        Document eventDocument = DatabaseManager.getDatabase().getDocument(id);
-        String json = eventDocument.getString(RepositoryConstants.OBJECT_KEY);
-        Event finalEvent = this.tenConverter.stringToEvent(json);
-        finalEvent = (Event) this.tenConverter.addTENPropertiesFromDocument(finalEvent, eventDocument);
-        return finalEvent;
+        return mReadRepository.getEventByID(id);
     }
 
     public Note getNoteByID(String id) {
-        Document noteDocument = DatabaseManager.getDatabase().getDocument(id);
-        String json = noteDocument.getString(RepositoryConstants.OBJECT_KEY);
-        Note finalNote = this.tenConverter.stringToNote(json);
-        finalNote = (Note) this.tenConverter.addTENPropertiesFromDocument(finalNote, noteDocument);
-        return finalNote;
+        return mReadRepository.getNoteByID(id);
     }
 
     public void insertTEN(TEN ten) {
-        MutableDocument mutableTENDocument = new MutableDocument();
-        ten.setID(mutableTENDocument.getId());
-        this.documentSaver.updateCompleteDocument(ten, mutableTENDocument);
+        mWriteRepository.insertTEN(ten);
     }
 
     public void updateTEN(TEN ten) {
-        MutableDocument mutableTENDocument = DatabaseManager.getDatabase().getDocument(ten.getID()).toMutable();
-        this.documentSaver.updateCompleteDocument(ten, mutableTENDocument);
+        mWriteRepository.updateTEN(ten);
     }
 
     public ArrayList<TEN> getAllTENs() {
-        ArrayList<TEN> allTENs = queries.getAllTENs();
-        return allTENs;
+       return mReadRepository.getAllTENs();
     }
 
     public boolean deleteTEN(String tenID) {
-
-        Document document = DatabaseManager.getDatabase().getDocument(tenID);
-        deleteNoteImages(document);
-        try {
-            DatabaseManager.getDatabase().delete(document);
-            return true;
-        } catch (CouchbaseLiteException e) {
-            return false;
-        }
-    }
-
-    private void deleteNoteImages(Document document) {
-        if (document.getString(RepositoryConstants.TYPE_KEY).equals(RepositoryConstants.NOTE_TYPE)) {
-            String json = document.getString(RepositoryConstants.OBJECT_KEY);
-            Note note = tenConverter.stringToNote(json);
-            for(Image image: note.getPictures()){
-                fileManager.deleteImageFromDirectory(image);
-            }
-        }
+        return mWriteRepository.deleteTEN(tenID);
     }
 
     public int[] getTENColors(String tenID) {
-        Document document = DatabaseManager.getDatabase().getDocument(tenID);
-        int[] colors = new int[2];
-        colors[0] = document.getInt(RepositoryConstants.COLOR_KEY);
-        colors[1] = document.getInt(RepositoryConstants.ACCENT_COLOR_KEY);
-        return colors;
+        return mReadRepository.getTENColors(tenID);
     }
 }
