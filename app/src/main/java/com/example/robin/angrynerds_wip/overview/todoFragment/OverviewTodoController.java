@@ -51,8 +51,7 @@ public class OverviewTodoController extends OverviewFragmentController {
         if (mDeleteState) {
             toggleMark();
         } else {
-            //Todo: Add Create Todo Activity
-            Intent intent = new Intent(mFragment.getActivity(), MainActivity.class);
+            Intent intent = new Intent(mFragment.getActivity(), com.example.robin.angrynerds_wip.activities.todo.Init.class);
             intent.putExtra("ID", mData.getID());
             mFragment.startActivity(intent);
         }
