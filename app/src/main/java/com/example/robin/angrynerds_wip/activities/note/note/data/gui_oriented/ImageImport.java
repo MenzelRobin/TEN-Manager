@@ -31,9 +31,7 @@ public class ImageImport {
     }
 
     //Returns Path of Image
-    public String getCurrentPhotoPath() {
-        return mCurrentPhotoPath;
-    }
+    public String getCurrentPhotoPath() { return mCurrentPhotoPath; }
 
     //Shows AlertDialog to request image source
     private void requestImageSource(){
@@ -41,12 +39,10 @@ public class ImageImport {
         String[] options;
 
         //Checks if device has a camera
-        if (mActivity.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA)) {
+        if (mActivity.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA))
             options = new String[]{"Galerie", "Kamera"};
-        }
-        else{
+        else
             options = new String[]{"Galerie"};
-        }
 
         AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
         builder.setTitle("Bildquelle auswählen");

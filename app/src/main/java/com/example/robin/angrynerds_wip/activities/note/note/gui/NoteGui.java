@@ -9,16 +9,12 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.EditText;
 import android.widget.FrameLayout;
-import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.robin.angrynerds_wip.R;
-import com.example.robin.angrynerds_wip.activities.note.note.data.gui_oriented.IContainer;
-import com.example.robin.angrynerds_wip.activities.note.note.data.gui_oriented.ImageContainer;
 import com.example.robin.angrynerds_wip.activities.note.note.NoteActivity;
 
 import java.util.ArrayList;
@@ -96,9 +92,9 @@ public class NoteGui {
     public void setNoteTitle(String pNoteTitle) {
         this.mNoteTitle.setText(pNoteTitle);
     }
-    public void setNoteImageContainer(ArrayList<IContainer> pImageContainers) {
+    public void setNoteImageContainer(ArrayList<GraphicsContainer> pImageContainers) {
         //Adds ImageViews to NoteData
-        for(IContainer mImage : pImageContainers){
+        for(GraphicsContainer mImage : pImageContainers){
             mNoteImageContainer.addView(mImage.getImageContainer());
         }
     }

@@ -1,4 +1,4 @@
-package com.example.robin.angrynerds_wip.activities.note.note.data.gui_oriented;
+package com.example.robin.angrynerds_wip.activities.note.note.gui;
 
 import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
@@ -9,7 +9,7 @@ import android.widget.LinearLayout;
 import com.example.robin.angrynerds_wip.activities.note.note.NoteActivity;
 import com.example.robin.angrynerds_wip.activities.note.note.data.NoteConstants;
 
-public class IconContainer extends IContainer {
+public class IconContainer extends GraphicsContainer {
 
     private Drawable mDrawable;
 

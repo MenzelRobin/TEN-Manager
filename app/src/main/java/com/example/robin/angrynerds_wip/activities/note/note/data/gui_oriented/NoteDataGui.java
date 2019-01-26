@@ -7,6 +7,9 @@ import android.util.Log;
 
 import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.activities.note.note.data.NoteData;
+import com.example.robin.angrynerds_wip.activities.note.note.gui.GraphicsContainer;
+import com.example.robin.angrynerds_wip.activities.note.note.gui.IconContainer;
+import com.example.robin.angrynerds_wip.activities.note.note.gui.ImageContainer;
 import com.example.robin.angrynerds_wip.data.models.utils.Image;
 
 import java.util.ArrayList;
@@ -14,7 +17,7 @@ import java.util.ArrayList;
 public class NoteDataGui {
 
     private NoteData mNoteData;
-    private ArrayList<IContainer> mNoteImageContainers;
+    private ArrayList<GraphicsContainer> mNoteImageContainers;
 
     public NoteDataGui(NoteData pNoteData){
         mNoteData = pNoteData;
@@ -22,7 +25,7 @@ public class NoteDataGui {
         addImageButton();
     }
 
-    public ArrayList<IContainer> getNoteImageContainers() {
+    public ArrayList<GraphicsContainer> getNoteImageContainers() {
         return mNoteImageContainers;
     }
 
@@ -47,7 +50,7 @@ public class NoteDataGui {
     }
 
     public boolean checkImageListForId(int pId) {
-        for (IContainer mImage : mNoteImageContainers) {
+        for (GraphicsContainer mImage : mNoteImageContainers) {
             if (mImage.getImageContainer().getId() == pId)
                 return true;
         }
