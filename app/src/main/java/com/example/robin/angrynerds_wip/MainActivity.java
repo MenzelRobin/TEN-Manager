@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickTodo(View view) {
-        Intent intent = new Intent(this, com.example.robin.angrynerds_wip.todo.Init.class);
+        Intent intent = new Intent(this, com.example.robin.angrynerds_wip.activities.todo.Init.class);
                 //intent.putExtra("ID", 5); // Hier können eigene Parameter hinzugefügt werden.
         this.startActivity(intent); // Activity Starten
     }

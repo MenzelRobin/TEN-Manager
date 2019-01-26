@@ -1,10 +1,8 @@
-package com.example.robin.angrynerds_wip.todo;
+package com.example.robin.angrynerds_wip.activities.todo;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.app.DialogFragment;
 import android.widget.DatePicker;
 

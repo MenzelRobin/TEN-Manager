@@ -1,34 +1,16 @@
-package com.example.robin.angrynerds_wip.todo;
+package com.example.robin.angrynerds_wip.activities.todo;
 
-import android.app.DatePickerDialog;
-import android.app.Dialog;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.icu.util.Calendar;
-import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.CheckBox;
-import android.widget.LinearLayout;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.DatePicker;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.example.robin.angrynerds_wip.R;
-import com.example.robin.angrynerds_wip.data.models.tens.Todo;
-import com.example.robin.angrynerds_wip.data.models.utils.MockData;
-import com.example.robin.angrynerds_wip.data.models.utils.Task;
 import com.example.robin.angrynerds_wip.data.models.utils.TasksAdapter;
-
-import java.text.DateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class Gui extends AppCompatActivity{
 

@@ -1,28 +1,13 @@
-package com.example.robin.angrynerds_wip.todo;
+package com.example.robin.angrynerds_wip.activities.todo;
 
 import android.app.Activity;
-import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.app.DialogFragment;
-import android.app.TimePickerDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.nfc.Tag;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
-import android.widget.DatePicker;
-import android.widget.ListView;
 
-import com.example.robin.angrynerds_wip.MainActivity;
-import com.example.robin.angrynerds_wip.OverviewActivity;
 import com.example.robin.angrynerds_wip.R;
-import com.example.robin.angrynerds_wip.data.models.tens.Event;
 import com.example.robin.angrynerds_wip.data.models.utils.Task;
 import com.example.robin.angrynerds_wip.data.models.utils.TasksAdapter;
-import com.example.robin.angrynerds_wip.todo.DatePickerFragment;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

@@ -1,12 +1,8 @@
-package com.example.robin.angrynerds_wip.todo;
+package com.example.robin.angrynerds_wip.activities.todo;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.DatePicker;
-
-import com.example.robin.angrynerds_wip.data.models.tens.Todo;
 
 import java.util.Date;
 

@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".OverviewActivity"></activity>
-        <activity android:name=".todo.Init"
+        <activity android:name=".activities.todo.Init"
             android:windowSoftInputMode="adjustPan">
         </activity>
 

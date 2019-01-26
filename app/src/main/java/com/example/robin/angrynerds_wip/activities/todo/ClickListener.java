@@ -1,13 +1,8 @@
-package com.example.robin.angrynerds_wip.todo;
+package com.example.robin.angrynerds_wip.activities.todo;
 
-import android.content.Context;
 import android.view.View;
-import android.widget.DatePicker;
 
 import com.example.robin.angrynerds_wip.R;
-
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 
 public class ClickListener implements View.OnClickListener  {
 
