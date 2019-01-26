@@ -26,19 +26,19 @@
         android:textColorHint="@color/note_hintWhite"
         android:textStyle="bold" />
 
-    <!--View
-        android:id="@+id/id_note_separate1"
+    <View
+        android:id="@+id/id_note_separate_portrait_1"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@id/id_note_title"
-        android:background="@color/colorPrimaryDark" /-->
+        android:background="@color/colorPrimaryDark" />
 
     <EditText
         android:id="@+id/id_note_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@id/id_note_ImageScrollView_Horizontal"
-        android:layout_below="@+id/id_note_title"
+        android:layout_above="@id/id_note_separate_portrait_2"
+        android:layout_below="@+id/id_note_separate_portrait_1"
         android:layout_margin="10dp"
         android:hint="@string/sample_note_description"
         android:inputType="textMultiLine"
@@ -46,18 +46,18 @@
         android:textColor="@color/TextWhite"
         android:textColorHint="@color/note_hintWhite" />
 
-    <!--View
-        android:id="@+id/id_note_separate2"
+    <View
+        android:id="@+id/id_note_separate_portrait_2"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_below="@id/id_note_description"
-        android:background="@color/colorPrimaryDark" /-->
+        android:layout_above="@id/id_note_ImageScrollView_Horizontal"
+        android:background="@color/colorPrimaryDark" />
 
     <HorizontalScrollView
         android:id="@+id/id_note_ImageScrollView_Horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@id/id_note_tags"
+        android:layout_above="@id/id_note_separate_portrait_3"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp">
 
@@ -69,12 +69,12 @@
 
     </HorizontalScrollView>
 
-    <!--View
-        android:id="@+id/id_note_separate3"
+    <View
+        android:id="@+id/id_note_separate_portrait_3"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_below="@id/id_note_ImageScrollView_Horizontal"
-        android:background="@color/colorPrimaryDark" /-->
+        android:layout_above="@id/id_note_tags"
+        android:background="@color/colorPrimaryDark" />
 
     <TextView
         android:id="@+id/id_note_tags"
