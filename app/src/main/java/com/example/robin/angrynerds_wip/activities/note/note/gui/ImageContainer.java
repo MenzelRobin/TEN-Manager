@@ -1,4 +1,4 @@
-package com.example.robin.angrynerds_wip.activities.note.note.data.gui_oriented;
+package com.example.robin.angrynerds_wip.activities.note.note.gui;
 
 import android.graphics.Bitmap;
 import android.view.Gravity;
@@ -7,17 +7,16 @@ import android.widget.LinearLayout;
 
 import com.example.robin.angrynerds_wip.activities.note.note.NoteActivity;
 import com.example.robin.angrynerds_wip.activities.note.note.data.NoteConstants;
+import com.example.robin.angrynerds_wip.activities.note.note.data.gui_oriented.PreviewImageCreator;
 import com.example.robin.angrynerds_wip.data.models.utils.Image;
 
-public class ImageContainer extends IContainer {
+public class ImageContainer extends GraphicsContainer {
 
     private ImageView mImageView;
-    private Image mImage;
     private PreviewImageCreator mPreviewImageCreator;
 
     public ImageContainer(NoteActivity pActivity, int pId, Image pOriginalImage) {
         super(pActivity, pId);
-        this.mImage = pOriginalImage;
         mPreviewImageCreator = new PreviewImageCreator();
 
         Bitmap originalBitmap = pOriginalImage.getBitmap();
