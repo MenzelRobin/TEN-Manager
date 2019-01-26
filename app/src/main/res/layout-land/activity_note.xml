@@ -18,6 +18,7 @@
 
         <EditText
             android:id="@+id/id_note_title"
+            android:theme="@style/editTextStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -40,6 +41,7 @@
 
         <EditText
             android:id="@+id/id_note_description"
+            android:theme="@style/editTextStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_above="@id/id_note_separate_landscape_2"
