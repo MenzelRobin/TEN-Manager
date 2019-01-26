@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 import com.example.robin.angrynerds_wip.data.models.tens.Event;
+import com.example.robin.angrynerds_wip.data.services.Create;
 import com.example.robin.angrynerds_wip.data.services.Delete;
 import com.example.robin.angrynerds_wip.data.services.Read;
 import com.example.robin.angrynerds_wip.data.services.Update;
@@ -15,7 +16,11 @@ public class Data {
 
     Data(Init pActivity, String eventId) {
         mActivity = pActivity;
-        mEvent = Read.getEventByID(eventId);
+        if(eventId == null){
+            mEvent = Create.newEvent();
+        }else{
+            mEvent = Read.getEventByID(eventId);
+        }
     }
     public void deleteEvent() {
         Delete.deleteTEN(mEvent.getID());

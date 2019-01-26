@@ -212,6 +212,13 @@ public class EventApplicationLogic {
         } else {
             new AlertDialog.Builder(mActivity)
                     .setMessage("Es ist nicht möglich, mehr als 4 Erinnerungen einzustellen.")
+                    .setOnCancelListener(
+                            new DialogInterface.OnCancelListener() {
+                                @Override
+                                public void onCancel(DialogInterface dialog) {
+                                    dialog.cancel();
+                                }
+                            })
                     .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             dialog.cancel();
