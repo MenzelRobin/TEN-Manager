@@ -51,18 +51,12 @@ public class OverviewTodoGui extends OverviewFragmentGui {
         mNote.setText(pNote);
     }
 
-    // Sets Counter
-    public void setCounter(String pCounter) {
-        mNote.setText(pCounter);
-    }
-
     // Sets Color
     public void setColor(int pColor){
         mOverviewTodo.setBackgroundColor(pColor);
     }
 
     public void addCheckbox(boolean pStatus, String pDescription){
-        // Todo: Fehler wegen mView.getContext()?
         // Set Layout
         Context context = mView.getContext();
         TextView checkbox = new TextView(context);

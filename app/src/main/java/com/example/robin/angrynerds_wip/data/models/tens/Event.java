@@ -104,7 +104,6 @@ public class Event extends TEN {
         Bundle bundle = super.getBundle();
         bundle.putLong("Time", time.getTime());
         bundle.putString("Address", address);
-        //TODO Dateliste, Reccurring Type => Lösung eventuell nur ID im Bundle abspeichern und Objekt in Datenbank speichern (mit Activities absprechen)
         return bundle;
     }
 }

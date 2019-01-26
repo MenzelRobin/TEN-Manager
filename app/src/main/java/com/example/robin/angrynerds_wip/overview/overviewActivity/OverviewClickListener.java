@@ -12,8 +12,12 @@ public class OverviewClickListener implements View.OnClickListener {
 
     private OverviewController mController;
 
-    public OverviewClickListener(OverviewController pController){
+    public OverviewClickListener(OverviewController pController, OverviewGui pGui){
         mController = pController;
+        pGui.getShowAll().setOnClickListener(this);
+        pGui.getShowTodo().setOnClickListener(this);
+        pGui.getShowEvent().setOnClickListener(this);
+        pGui.getShowNote().setOnClickListener(this);
     }
 
     // Calls the controllers show Method with different Classes

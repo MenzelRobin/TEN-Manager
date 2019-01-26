@@ -3,6 +3,9 @@ package com.example.robin.angrynerds_wip.overview.header;
 import android.view.View;
 
 import com.example.robin.angrynerds_wip.R;
+import com.example.robin.angrynerds_wip.data.models.tens.Event;
+import com.example.robin.angrynerds_wip.data.models.tens.Note;
+import com.example.robin.angrynerds_wip.data.models.tens.Todo;
 import com.example.robin.angrynerds_wip.overview.overviewActivity.OverviewController;
 
 public class OverviewHeaderClickListener implements View.OnClickListener {
@@ -19,13 +22,13 @@ public class OverviewHeaderClickListener implements View.OnClickListener {
         switch(view.getId()){
             // HeaderCreate
             case R.id.id_overview_header_create_button_todo:
-                mController.newTodo();
+                mController.newTEN(Todo.class);
                 break;
             case R.id.id_overview_header_create_button_event:
-                mController.newEvent();
+                mController.newTEN(Event.class);
                 break;
             case R.id.id_overview_header_create_textView_note:
-                mController.newNote();
+                mController.newTEN(Note.class);
                 break;
             // HeaderDelete
             case R.id.id_overview_header_delete_button_back:

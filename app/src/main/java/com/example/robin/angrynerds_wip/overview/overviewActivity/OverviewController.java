@@ -2,6 +2,7 @@ package com.example.robin.angrynerds_wip.overview.overviewActivity;
 
 import android.support.v4.app.Fragment;
 
+import com.example.robin.angrynerds_wip.data.models.tens.TEN;
 import com.example.robin.angrynerds_wip.data.services.Delete;
 import com.example.robin.angrynerds_wip.overview.superClasses.OverviewFragmentInit;
 
@@ -15,6 +16,8 @@ public class OverviewController {
     private OverviewGui mGui;
     private OverviewFragmentFactory mFragmentFactory;
     private OverviewFragmentInserter mFragmentInserter;
+    private OverviewNewClickHandler mNewClickHandler;
+    private OverviewDeleteHandler mDeleteHandler;
 
     OverviewController(OverviewInit pActivity, OverviewData pData, OverviewGui pGui) {
         mActivity = pActivity;
@@ -22,9 +25,12 @@ public class OverviewController {
         mGui = pGui;
         mFragmentFactory = new OverviewFragmentFactory();
         mFragmentInserter = new OverviewFragmentInserter(mActivity.getSupportFragmentManager());
+        mNewClickHandler = new OverviewNewClickHandler(mActivity);
+        mDeleteHandler = new OverviewDeleteHandler(mActivity);
         initHeader();
-        initOnClickListener();
+        new OverviewClickListener(this, mGui);
         refreshFragments();
+        mGui.markButton(TEN.class);
     }
 
     // Inserts the Headerfragment
@@ -32,68 +38,32 @@ public class OverviewController {
         mFragmentInserter.insertFragment(mGui.getHeaderId(), mFragmentFactory.createHeaderCreateFragment(), "HEADER_FRAGMENT");
     }
 
-    // Sets on ClickListeners for Filterbuttons
-    public void initOnClickListener(){
-        OverviewClickListener clickListener = new OverviewClickListener(this);
-        mGui.getShowAll().setOnClickListener(clickListener);
-        mGui.getShowTodo().setOnClickListener(clickListener);
-        mGui.getShowEvent().setOnClickListener(clickListener);
-        mGui.getShowNote().setOnClickListener(clickListener);
-    }
-
-
     public void onResume(){
-        // Todo: Implement correctly
         mData.refresh();
         refreshFragments();
     }
 
-    //Clickhandler:
-    public void newTodo(){
-        //Todo: Add Create Todo Activity
-    }
-
-    public void newEvent(){
-        //Todo: Add Create Event Activity
-    }
-
-    public void newNote(){
-         //Todo: Add Create Note Activity
+    public void newTEN(Class pClass){
+        mNewClickHandler.newTEN(pClass);
     }
 
     // Activates the Deletionmode
     public void longClick(){
-        List<Fragment> fragments = mActivity.getSupportFragmentManager().getFragments();
-        for(Fragment fragment : fragments){
-            if(fragment.getTag() != "HEADER_FRAGMENT") ((OverviewFragmentInit)fragment).getController().setDeleteState(true);
-        }
+        mDeleteHandler.longClick();
         mFragmentInserter.replaceFragment(mGui.getHeaderId(), mFragmentFactory.createHeaderDeleteFragment(), "HEADER_FRAGMENT");
         mGui.hideFooter();
     }
 
     // Goes back to normal State
     public void back(){
-        List<Fragment> fragments = mActivity.getSupportFragmentManager().getFragments();
-        for(Fragment fragment : fragments){
-            if(fragment.getTag() != "HEADER_FRAGMENT") ((OverviewFragmentInit)fragment).getController().setDeleteState(false);
-        }
+        mDeleteHandler.back();
         mFragmentInserter.replaceFragment(mGui.getHeaderId(), mFragmentFactory.createHeaderCreateFragment(), "HEADER_FRAGMENT");
         mGui.showFooter();
     }
 
     // Deletes selected Items and goes back to normal State
     public void delete(){
-        ArrayList<String> toDelete = new ArrayList();
-        List<Fragment> fragments = mActivity.getSupportFragmentManager().getFragments();
-        for(Fragment fragment : fragments){
-            if(fragment.getTag() != "HEADER_FRAGMENT") {
-                if(((OverviewFragmentInit)fragment).getController().getMarked()){
-                    toDelete.add(((OverviewFragmentInit) fragment).getController().getTENID());
-                }
-                ((OverviewFragmentInit)fragment).getController().setDeleteState(false);
-            }
-        }
-        Delete.deleteMultipleTENs(toDelete);
+        mDeleteHandler.delete();
         mData.refresh();
         refreshFragments();
         mFragmentInserter.replaceFragment(mGui.getHeaderId(), mFragmentFactory.createHeaderCreateFragment(), "HEADER_FRAGMENT");
@@ -105,6 +75,7 @@ public class OverviewController {
         mData.setCurrentClass(pClass);
         mData.refresh();
         refreshFragments();
+        mGui.markButton(pClass);
     }
 
     // Populates the Containers with the existing Data
