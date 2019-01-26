@@ -78,8 +78,8 @@
 
     <View
         android:id="@+id/id_note_separate_landscape_3"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
         android:layout_toStartOf="@id/id_note_ImageScrollView_Vertical"
         android:background="@color/colorPrimaryDark" />
 
