@@ -2,6 +2,7 @@ package com.example.robin.angrynerds_wip.activities.note.note.gui;
 
 import android.app.Activity;
 import android.content.res.Configuration;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.widget.Toolbar;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
@@ -23,18 +24,15 @@ public class NoteGui {
 
     private RelativeLayout mBackground;
     private EditText mNoteTitle;
-    //private HorizontalScrollView mNoteImageViewPortrait;
-    //private ScrollView mNoteImageViewLandscape;
     private LinearLayout mNoteImageContainer;
     private EditText mNoteDescription;
     private TextView mNoteTags;
     private Toolbar mToolbar;
     private FrameLayout mProgressBarHolder;
 
-    //TODO implement separators?
-    //private View mViewSeparator1;
-    //private View mViewSeparator2;
-    //private View mViewSeparator3;
+    private View mViewSeparator1;
+    private View mViewSeparator2;
+    private View mViewSeparator3;
 
     public NoteGui(NoteActivity pActivity) {
 
@@ -42,32 +40,34 @@ public class NoteGui {
 
         mBackground = pActivity.findViewById(R.id.id_note_background);
         mNoteTitle = pActivity.findViewById(R.id.id_note_title);
+        mNoteDescription = pActivity.findViewById(R.id.id_note_description);
+        mNoteTags = pActivity.findViewById(R.id.id_note_tags);
+        mNoteTags.setMovementMethod(new ScrollingMovementMethod());
+        mProgressBarHolder = pActivity.findViewById(R.id.noteProgressBarHolder);
 
-        //Initiates according to screen orientation
+        initiateToolbar(pActivity);
+        initiateOrientationDependentViews(pActivity);
+    }
+
+    private void initiateOrientationDependentViews(NoteActivity pActivity) {
         if(pActivity.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
             //Horizontally scrollable Image Gallery in Portrait Mode
-            //mNoteImageViewPortrait = pActivity.findViewById(R.id.id_note_ImageScrollView_Horizontal);
             mNoteImageContainer = pActivity.findViewById(R.id.id_note_linearImageContainer_Horizontal);
+            mViewSeparator1 = pActivity.findViewById(R.id.id_note_separate_portrait_1);
+            mViewSeparator2 = pActivity.findViewById(R.id.id_note_separate_portrait_2);
+            mViewSeparator3 = pActivity.findViewById(R.id.id_note_separate_portrait_3);
         }
         else{
             //Vertically scrollable Image Gallery in Landscape Mode
-            //mNoteImageViewLandscape = pActivity.findViewById(R.id.id_note_ImageScrollView_Vertical);
             mNoteImageContainer = pActivity.findViewById(R.id.id_note_linearImageContainer_Vertical);
+            mViewSeparator1 = pActivity.findViewById(R.id.id_note_separate_landscape_1);
+            mViewSeparator2 = pActivity.findViewById(R.id.id_note_separate_landscape_2);
+            mViewSeparator3 = pActivity.findViewById(R.id.id_note_separate_landscape_3);
         }
+    }
 
-        mNoteDescription = pActivity.findViewById(R.id.id_note_description);
-        mNoteTags = pActivity.findViewById(R.id.id_note_tags);
+    private void initiateToolbar(NoteActivity pActivity){
         mToolbar = pActivity.findViewById(R.id.id_note_toolbar);
-        mProgressBarHolder = pActivity.findViewById(R.id.noteProgressBarHolder);
-
-        //TODO implement separators?
-        //mViewSeparator1 = pActivity.findViewById(R.id.id_note_separate1);
-        //mViewSeparator2 = pActivity.findViewById(R.id.id_note_separate2);
-        //mViewSeparator3 = pActivity.findViewById(R.id.id_note_separate3);
-
-        mNoteTags.setMovementMethod(new ScrollingMovementMethod());
-
-        //Set toolbar
         pActivity.setSupportActionBar(mToolbar);
         pActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         pActivity.getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -75,43 +75,34 @@ public class NoteGui {
     }
 
     //Getters
-    public EditText getNoteTitle() {
-        return mNoteTitle;
-    }
-    public LinearLayout getNoteImageContainer() {
-        return mNoteImageContainer;
-    }
-    public EditText getNoteDescription() {
-        return mNoteDescription;
-    }
-    public TextView getNoteTags() {
-        return mNoteTags;
-    }
+    public EditText getNoteTitle() { return mNoteTitle; }
+    public LinearLayout getNoteImageContainer() { return mNoteImageContainer; }
+    public EditText getNoteDescription() { return mNoteDescription; }
+    public TextView getNoteTags() { return mNoteTags; }
     public Toolbar getToolbar() {return mToolbar;}
+
     //Setters
-    public void setNoteTitle(String pNoteTitle) {
-        this.mNoteTitle.setText(pNoteTitle);
-    }
+    public void setNoteTitle(String pNoteTitle) { this.mNoteTitle.setText(pNoteTitle); }
+    public void setNoteDescription(String pNoteDescription) { this.mNoteDescription.setText(pNoteDescription); }
+    public void setNoteTags(ArrayList<String> pNoteTags) { this.mNoteTags.setText(formatTags(pNoteTags)); }
+
     public void setNoteImageContainer(ArrayList<GraphicsContainer> pImageContainers) {
         //Adds ImageViews to NoteData
         for(GraphicsContainer mImage : pImageContainers){
             mNoteImageContainer.addView(mImage.getImageContainer());
         }
     }
-    public void setNoteDescription(String pNoteDescription) { this.mNoteDescription.setText(pNoteDescription); }
-    public void setNoteTags(ArrayList<String> pNoteTags) { this.mNoteTags.setText(formatTags(pNoteTags)); }
+
     public void setColors(int pColor, int pAccentColor){
         mBackground.setBackgroundColor(pColor);
         mToolbar.setBackgroundColor(pAccentColor);
 
-        //TODO implement separators?
-        //mViewSeparator1.setBackgroundColor(pAccentColor);
-        //mViewSeparator2.setBackgroundColor(pAccentColor);
-        //mViewSeparator3.setBackgroundColor(pAccentColor);
-
-        //TODO does not work
-        //mNoteTitle.setHighlightColor(pAccentColor);
-        //mNoteDescription.setHighlightColor(pAccentColor);
+        mViewSeparator1.setBackground(new ColorDrawable(pAccentColor));
+        mViewSeparator2.setBackground(new ColorDrawable(pAccentColor));
+        mViewSeparator3.setBackground(new ColorDrawable(pAccentColor));
+        mViewSeparator1.setAlpha((float)0.5);
+        mViewSeparator2.setAlpha((float)0.5);
+        mViewSeparator3.setAlpha((float)0.5);
     }
 
     //Formats tags to display in TextView
@@ -132,14 +123,12 @@ public class NoteGui {
     }
 
     public void addSingleAnimatedImage(ImageContainer pImageContainer) {
-
         AlphaAnimation anim = new AlphaAnimation(0,  1);
         anim.setDuration(500);
         anim.setRepeatMode(Animation.REVERSE);
         int position = mNoteImageContainer.getChildCount()-1;
         mNoteImageContainer.addView(pImageContainer.getImageContainer(), position);
         pImageContainer.getImageView().startAnimation(anim);
-
     }
 
     public void startLoadingSpinner(){
