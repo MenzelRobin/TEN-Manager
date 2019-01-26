@@ -17,11 +17,6 @@ public class Data {
         mActivity = pActivity;
         mEvent = Read.getEventByID(eventId);
     }
-
-    public Init getActivity() {
-        return mActivity;
-    }
-
     public void deleteEvent() {
         Delete.deleteTEN(mEvent.getID());
     }

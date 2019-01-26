@@ -47,7 +47,6 @@ public class EventApplicationLogic {
     }
 
     private void initGui() {
-        //Toolbar
         //initialize Toolbar including menu and back button
         mActivity.setSupportActionBar(mGui.getToolbar());
         mActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -83,7 +82,7 @@ public class EventApplicationLogic {
     }
 
     public void dataToGui() {
-
+        //Fill Gui Elements with Data
         mGui.setTitle(mData.getmEvent().getTitle());
         mGui.setTime(formatTime(mData.getmEvent().getTime()));
         mGui.setDate(formatDate(mData.getmEvent().getTime()));
@@ -138,12 +137,8 @@ public class EventApplicationLogic {
 
     //Return to overview if back pressed / Event deleted / toolbar navigation
     public void returnToOverview() {
-        //TL
-        mData.getActivity().finish();
-        //Intent intent = new Intent(mActivity, OverviewInit.class);
-        //intent.putExtra("ID", 5);
-        //mActivity.startActivity(intent); // Activity Starten
-        //mActivity.overridePendingTransition(android.R.anim.fade_in, android.R.anim.slide_out_right);
+        mActivity.overridePendingTransition(android.R.anim.fade_in, android.R.anim.slide_out_right);
+        mActivity.finish();
     }
 
     //Receive Date from DatePicker and save it
