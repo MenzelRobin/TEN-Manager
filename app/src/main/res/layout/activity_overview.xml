@@ -68,13 +68,13 @@
             android:id="@+id/id_overview_button_all"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:layout_alignParentLeft="true"
-            android:paddingTop="5dp"
+            android:layout_weight="1"
             android:background="@color/colorGrey"
             android:drawableTop="@drawable/ic_apps_black_24dp"
-            android:text="Show All"
-            android:textSize="10dp"/>
+            android:paddingTop="5dp"
+            android:text="Alle"
+            android:textSize="10dp" />
 
         <Button
             android:id="@+id/id_overview_button_todo"
@@ -92,25 +92,25 @@
             android:id="@+id/id_overview_button_event"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:layout_toRightOf="@id/id_overview_button_todo"
-            android:paddingTop="5dp"
+            android:layout_weight="1"
             android:background="@color/colorGrey"
             android:drawableTop="@drawable/ic_event_note_black_24dp"
-            android:text="Events"
-            android:textSize="10dp"/>
+            android:paddingTop="5dp"
+            android:text="Event's"
+            android:textSize="10dp" />
 
         <Button
             android:id="@+id/id_overview_button_note"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:layout_toRightOf="@id/id_overview_button_event"
-            android:paddingTop="5dp"
+            android:layout_weight="1"
             android:background="@color/colorGrey"
             android:drawableTop="@drawable/ic_format_align_left_black_24dp"
-            android:text="Notes"
-            android:textSize="10dp"/>
+            android:paddingTop="5dp"
+            android:text="Notizen"
+            android:textSize="10dp" />
 
     </LinearLayout>
 
