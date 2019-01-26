@@ -3,6 +3,7 @@ package com.example.robin.angrynerds_wip.overview.imageFragment;
 import android.content.Intent;
 
 import com.example.robin.angrynerds_wip.MainActivity;
+import com.example.robin.angrynerds_wip.activities.note.note.NoteActivity;
 import com.example.robin.angrynerds_wip.overview.superClasses.OverviewFragmentController;
 import com.example.robin.angrynerds_wip.overview.superClasses.OverviewFragmentData;
 import com.example.robin.angrynerds_wip.overview.superClasses.OverviewFragmentGui;
@@ -37,8 +38,7 @@ public class OverviewImageController extends OverviewFragmentController {
         if(mDeleteState) {
             toggleMark();
         } else {
-            //Todo: Add Create Note Activity
-            Intent intent = new Intent(mFragment.getActivity(), MainActivity.class);
+            Intent intent = new Intent(mFragment.getActivity(), NoteActivity.class);
             intent.putExtra("ID", mData.getID());
             mFragment.startActivity(intent);
         }
