@@ -13,4 +13,9 @@
         <item name="android:windowBackground">@android:color/transparent</item>
     </style>
 
+    <style name="editTextStyle" parent="Widget.AppCompat.EditText">
+        <item name="colorControlNormal">#00000000</item>
+        <item name="colorControlActivated">#00000000</item>
+    </style>
+
 </resources>

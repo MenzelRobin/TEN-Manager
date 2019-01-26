@@ -62,9 +62,8 @@ public class EventApplicationLogic {
         clickListener = new ClickListener(this);
         MenuItemClickListener menuItemClickListener;
         menuItemClickListener = new MenuItemClickListener(this);
-
-        //Toolbar
         mGui.getToolbar().setNavigationOnClickListener(clickListener);
+        mGui.getToolbar().setOnMenuItemClickListener(menuItemClickListener);
         mGui.getEditTextDate().setOnClickListener(clickListener);
         mGui.getEditTextTime().setOnClickListener(clickListener);
         mGui.getEditTextNewReminder().setOnClickListener(clickListener);
@@ -72,11 +71,7 @@ public class EventApplicationLogic {
         mGui.getIconCloseReminder2().setOnClickListener(clickListener);
         mGui.getIconCloseReminder3().setOnClickListener(clickListener);
         mGui.getIconCloseReminder4().setOnClickListener(clickListener);
-
-        //Toolbar Menu
-        mGui.getToolbar().setOnMenuItemClickListener(menuItemClickListener);
-
-        //Textwatcher used in GUI
+        //Textwatcher
         mGui.getEditTextTitle().addTextChangedListener(new TextWatcher(this, mGui.getEditTextTitle()));
         mGui.getEditTextLocation().addTextChangedListener(new TextWatcher(this, mGui.getEditTextLocation()));
     }
@@ -88,14 +83,10 @@ public class EventApplicationLogic {
         mGui.setDate(formatDate(mData.getmEvent().getTime()));
         mGui.setLocation(mData.getmEvent().getAddress());
         mGui.setColor(mData.getmEvent().getColor(), mData.getmEvent().getAccentColor());
-
-        //Reset Reminder
+        //Reset and set Reminder in GUI
         mGui.resetReminder();
-
-        //Present Reminder
         mReminder = new Reminder();
         mReminder.setReminder(mData.getmEvent().getReminder());
-
         for (int i = 0; i < mReminder.getReminderSize(); i++) {
             String label = "";
             switch (i) {
@@ -159,7 +150,6 @@ public class EventApplicationLogic {
 
     //Receive Time from TimePicker and save it
     public void receiveTime(Date date) {
-        //Safe Date
         Calendar mDate = Calendar.getInstance();
         Calendar recDate = Calendar.getInstance();
         recDate.setTime(date);
@@ -173,6 +163,7 @@ public class EventApplicationLogic {
         dataToGui();
     }
 
+    //If Event Time is changed, reminder have to be updated
     public void updateReminder() {
         ArrayList<Date> eventReminder = new ArrayList<Date>();
         mReminder.setReminder(mData.getmEvent().getReminder());
@@ -288,6 +279,7 @@ public class EventApplicationLogic {
         alarmManager.setExact(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), pendingIntent);
     }
 
+    //Remove Alarm from AlarmMangager
     public void cancelAlarm(int requestCode) {
         Log.d("ALARM","Stopped Alarm!");
         AlarmManager alarmManager = (AlarmManager) mActivity.getSystemService(Context.ALARM_SERVICE);
