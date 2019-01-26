@@ -21,7 +21,7 @@ public class OverviewEventData extends OverviewFragmentData {
         Date pDate = new Date(pData.getLong(BundleKeys.keyEventTime));
         SimpleDateFormat time = new SimpleDateFormat("hh:mm");
         SimpleDateFormat date = new SimpleDateFormat("E, dd. MMM");
-        SimpleDateFormat year = new SimpleDateFormat("YYYY");
+        SimpleDateFormat year = new SimpleDateFormat("yyyy");
         mTime = time.format(pDate);
         mDate = date.format(pDate);
         mYear = year.format(pDate);
