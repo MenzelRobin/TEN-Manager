@@ -33,28 +33,6 @@ public class Read {
         }
         return allTEN;
     }
-    /*
-    public static ArrayList<TEN> getAllTENs() {
-
-        //TODO Ruthild: Sortieren
-        ArrayList<TEN> allTEN = new ArrayList<TEN>();
-        Todo[] allTodos = Queries.getAllTodods();
-        Event[] allEvents = Queries.getAllEvents();
-        Note[] allNotes = Queries.getAllNotes();
-        for (Todo t : allTodos
-                ) {
-            allTEN.add(t);
-        }
-        for (Event e : allEvents
-                ) {
-            allTEN.add(e);
-        }
-        for (Note n : allNotes
-                ) {
-            allTEN.add(n);
-        }
-        return allTEN;
-    }
 
     /*--------------------------------------------------
         Methods to get one TEN object by ID
@@ -77,25 +55,9 @@ public class Read {
         return note;
     }
 
-
-
     public static int[] getColors(String tenID){
         Repository repository = new Repository();
         int [] colors = repository.getTENColors(tenID);
         return  colors;
     }
-    /*public static Note getNoteByID(String id) {
-        //MOCKDATEN
-        for(TEN ten : MockData.tenMockData)
-        if (ten instanceof Note) {
-            Note n = (Note) ten;
-            return n;
-        }
-        return null;
-        /*
-        Note note = Queries.getNoteByID(id);
-
-        return note;
-        */
-    //}
 }
