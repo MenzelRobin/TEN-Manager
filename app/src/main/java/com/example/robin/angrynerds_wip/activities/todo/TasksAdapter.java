@@ -1,4 +1,4 @@
-package com.example.robin.angrynerds_wip.data.models.utils;
+package com.example.robin.angrynerds_wip.activities.todo;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 
 import com.example.robin.angrynerds_wip.R;
+import com.example.robin.angrynerds_wip.data.models.utils.Task;
 
 import java.util.ArrayList;
 
