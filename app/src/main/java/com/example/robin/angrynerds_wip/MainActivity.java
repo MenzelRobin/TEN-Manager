@@ -35,7 +35,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickEvent(View view) {
         Intent intent = new Intent(this, com.example.robin.angrynerds_wip.activities.event.Init.class);
-        intent.putExtra("ID", "f7260326-b621-4694-af22-60fda5aeb45b"); // Hier können eigene Parameter hinzugefügt werden.
+
+        intent.putExtra("ID", "7e08f7b4-1afc-4562-9b70-21c1c6ccbb01"); // Hier können eigene Parameter hinzugefügt werden.
         this.startActivity(intent); // Activity Starten
     }
 

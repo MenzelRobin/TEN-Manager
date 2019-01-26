@@ -92,12 +92,4 @@ public class Reminder {
     public void removeReminderLable(String lable){
         mReminderLable.remove(lable);
     }
-
-    public ArrayList<String> getReminderLabel(){
-        return mReminderLable;
-    }
-
-    public ArrayList<Date> calcReminderFromLable(){
-        return mReminder;
-    }
 }

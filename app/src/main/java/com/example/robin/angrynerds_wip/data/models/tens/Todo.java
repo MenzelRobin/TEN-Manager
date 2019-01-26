@@ -2,6 +2,7 @@ package com.example.robin.angrynerds_wip.data.models.tens;
 
 import android.os.Bundle;
 
+import com.example.robin.angrynerds_wip.data.models.utils.BundleKeys;
 import com.example.robin.angrynerds_wip.data.models.utils.Task;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -67,7 +68,7 @@ public class Todo extends TEN {
 
     public Bundle getBundle(){
         Bundle bundle = super.getBundle();
-        bundle.putString("Note", note);
+        bundle.putString(BundleKeys.keyTodoNote, note);
         boolean[] status = new boolean[tasks.size()];
         String[] description = new String[tasks.size()];
         int index = 0;
@@ -76,8 +77,8 @@ public class Todo extends TEN {
             status[index] = task.getStatus();
             index++;
         }
-        bundle.putBooleanArray("Status", status);
-        bundle.putStringArray("Description", description);
+        bundle.putBooleanArray(BundleKeys.keyTodoStatus, status);
+        bundle.putStringArray(BundleKeys.keyTodoDescription, description);
         return bundle;
     }
 

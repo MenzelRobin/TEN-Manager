@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.example.robin.angrynerds_wip.data.models.utils.BundleKeys;
 import com.example.robin.angrynerds_wip.data.models.utils.Image;
 import com.example.robin.angrynerds_wip.data.repository.RepositoryConstants;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -107,9 +108,9 @@ public class Note extends TEN {
 
     public Bundle getBundle() {
         Bundle bundle = super.getBundle();
-        bundle.putString("Description", description);
-        bundle.putStringArrayList("Tags", tags);
-        if(!pictures.isEmpty()) bundle.putString("Image", pictures.get(0).getId());
+        bundle.putString(BundleKeys.keyNoteDescription, description);
+        bundle.putStringArrayList(BundleKeys.keyNoteTags, tags);
+        if(!pictures.isEmpty()) bundle.putString(BundleKeys.keyNotePictures, pictures.get(0).getId());
         return bundle;
     }
     public void imageNotFound(Image image){

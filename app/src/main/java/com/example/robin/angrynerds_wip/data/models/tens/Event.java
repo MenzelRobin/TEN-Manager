@@ -2,6 +2,7 @@ package com.example.robin.angrynerds_wip.data.models.tens;
 
 import android.os.Bundle;
 
+import com.example.robin.angrynerds_wip.data.models.utils.BundleKeys;
 import com.example.robin.angrynerds_wip.data.models.utils.RecurringType;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -102,8 +103,8 @@ public class Event extends TEN {
 
     public Bundle getBundle() {
         Bundle bundle = super.getBundle();
-        bundle.putLong("Time", time.getTime());
-        bundle.putString("Address", address);
+        bundle.putLong(BundleKeys.keyEventTime, time.getTime());
+        bundle.putString(BundleKeys.keyEventAddress, address);
         return bundle;
     }
 }

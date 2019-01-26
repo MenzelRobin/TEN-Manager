@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.ColorInt;
 import android.support.annotation.ColorLong;
 
+import com.example.robin.angrynerds_wip.data.models.utils.BundleKeys;
 import com.example.robin.angrynerds_wip.data.models.utils.Colors;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -54,11 +55,11 @@ public class TEN {
 
     public Bundle getBundle() {
         Bundle bundle = new Bundle();
-        bundle.putString("ID", ID);
-        bundle.putString("Title", title);
-        bundle.putInt("Color", color);
-        bundle.putInt("AccentColor", accentColor);
-        bundle.putLong("DateOfCreation", this.dateOfCreation.getTime());
+        bundle.putString(BundleKeys.keyTENID, ID);
+        bundle.putString(BundleKeys.keyTENTitle, title);
+        bundle.putInt(BundleKeys.keyTENColor, color);
+        bundle.putInt(BundleKeys.keyTENAccentColor, accentColor);
+        bundle.putLong(BundleKeys.keyTENDateOfCreation, this.dateOfCreation.getTime());
         return bundle;
     }
 
