@@ -1,18 +1,14 @@
 package com.example.robin.angrynerds_wip.data.services;
 
-import android.graphics.Bitmap;
 import android.util.Log;
 
 import com.example.robin.angrynerds_wip.data.models.tens.Event;
 import com.example.robin.angrynerds_wip.data.models.tens.Note;
 import com.example.robin.angrynerds_wip.data.models.tens.TEN;
 import com.example.robin.angrynerds_wip.data.models.tens.Todo;
-import com.example.robin.angrynerds_wip.data.models.utils.Image;
 import com.example.robin.angrynerds_wip.data.repository.Repository;
-import com.example.robin.angrynerds_wip.data.repository.filesystem.FileManager;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class Read {
@@ -28,7 +24,7 @@ public class Read {
         ArrayList<TEN> allTEN;
         allTEN = repository.getAllTENs();
         Log.i("Mainfix", "Number Of TENs: " + allTEN.size());
-        for (TEN ten: allTEN){
+        for (TEN ten : allTEN) {
             Log.i("Mainfix", "ID: " + ten.getID() + ", Titel: " + ten.getTitle());
         }
         return allTEN;
@@ -55,9 +51,9 @@ public class Read {
         return note;
     }
 
-    public static int[] getColors(String tenID){
+    public static int[] getColors(String tenID) {
         Repository repository = new Repository();
-        int [] colors = repository.getTENColors(tenID);
-        return  colors;
+        int[] colors = repository.getTENColors(tenID);
+        return colors;
     }
 }
