@@ -65,7 +65,7 @@ public class OverviewGui {
         if(pClass == Note.class){
             mShowNote.setBackgroundColor(mActivity.getResources().getColor(R.color.colorWhite));
         }
-        mScrollView.smoothScrollTo(0,0);
+        mScrollView.fullScroll(View.FOCUS_UP);
     }
 
     public void hideFooter(){
