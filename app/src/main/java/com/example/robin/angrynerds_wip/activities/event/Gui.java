@@ -95,22 +95,19 @@ public class Gui {
         Reminder mReminder = new Reminder();
         mReminder.setReminder(reminder);
         for(int i = 0; i<reminder.size();i++){
-            String label = "";
+            String label = mReminder.getLabelFromReminder(i, eventDate);
+            mReminder.removeReminderLable(label);
             switch (i) {
                 case 0:
-                    label = mReminder.getLabelFromReminder(i, eventDate);
                     mEditTextReminder1.setText(label); mIconCloseReminder1.setAlpha((float)0.5);
                     break;
                 case 1:
-                    label = mReminder.getLabelFromReminder(i, eventDate);
                     mEditTextReminder2.setText(label); mIconCloseReminder2.setAlpha((float)0.5);
                     break;
                 case 2:
-                    label = mReminder.getLabelFromReminder(i, eventDate);
                     mEditTextReminder3.setText(label); mIconCloseReminder2.setAlpha((float)0.5);
                     break;
                 case 3:
-                    label = mReminder.getLabelFromReminder(i, eventDate);
                     mEditTextReminder4.setText(label); mIconCloseReminder2.setAlpha((float)0.5);
                     break;
             }
