@@ -29,34 +29,24 @@ public class NoteActivity extends AppCompatActivity {
     public void onCreate (Bundle pSavedInstanceState) {
         super.onCreate(pSavedInstanceState);
 
-        String noteID = "";
-        Bundle extras = getIntent().getExtras();
+        String id = getIntent().getStringExtra("ID");
 
-        //Get ID from Intent
-        try{
-            noteID = extras.getString("ID");
+        if(id==null)
+            mNoteData = new NoteData(this);
+        else{
+            mNoteData = new NoteData(this, getIntent().getStringExtra("ID"));
         }
-        catch(NullPointerException e){
-            Log.e("Error",e.getMessage());
-        }
-
-        initData();
         initGUI();
-        initApplicationLogic(noteID);
+        initApplicationLogic();
         initEventDispersion();
-    }
-
-    private void initData(){
-        mNoteData = new NoteData(this);
     }
 
     private void initGUI () {
         mNoteGui = new NoteGui(this);
     }
 
-    private void initApplicationLogic (String pId) {
-        //TODO Leere Notiz bzw. übergebene Notiz einfügen
-        mNoteApplicationLogic = new NoteApplicationLogic(mNoteGui, mNoteData, pId);
+    private void initApplicationLogic () {
+        mNoteApplicationLogic = new NoteApplicationLogic(mNoteGui, mNoteData);
     }
 
     private void initEventDispersion() {
