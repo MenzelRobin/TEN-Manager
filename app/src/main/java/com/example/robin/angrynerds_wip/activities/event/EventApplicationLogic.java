@@ -2,13 +2,11 @@ package com.example.robin.angrynerds_wip.activities.event;
 
 import android.app.AlarmManager;
 import android.app.AlertDialog;
-import android.app.DatePickerDialog;
 import android.app.DialogFragment;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -16,7 +14,6 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.robin.angrynerds_wip.R;
-import com.example.robin.angrynerds_wip.overview.overviewActivity.OverviewInit;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -53,7 +50,7 @@ public class EventApplicationLogic {
         mActivity.getSupportActionBar().setDisplayShowHomeEnabled(true);
         mActivity.getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        dataToGui();
+        updateGui();
     }
 
     private void initListener() {
@@ -76,13 +73,14 @@ public class EventApplicationLogic {
         mGui.getEditTextLocation().addTextChangedListener(new TextWatcher(this, mGui.getEditTextLocation()));
     }
 
-    public void dataToGui() {
+    public void updateGui() {
         //Fill Gui Elements with Data
         mGui.setTitle(mData.getmEvent().getTitle());
         mGui.setTime(formatTime(mData.getmEvent().getTime()));
         mGui.setDate(formatDate(mData.getmEvent().getTime()));
         mGui.setLocation(mData.getmEvent().getAddress());
         mGui.setColor(mData.getmEvent().getColor(), mData.getmEvent().getAccentColor());
+        mReminder = new Reminder();
         mReminder.setReminder(mData.getmEvent().getReminder());
         mGui.setReminder(mReminder, mData.getmEvent().getTime());
         setAlarm();
@@ -126,7 +124,7 @@ public class EventApplicationLogic {
         mData.setDate(newDate.getTime());
 
         updateReminder();
-        dataToGui();
+        updateGui();
     }
 
     //Receive Time from TimePicker and save it
@@ -141,7 +139,7 @@ public class EventApplicationLogic {
         mData.setDate(mDate.getTime());
 
         updateReminder();
-        dataToGui();
+        updateGui();
     }
 
     //If Event Time is changed, reminder have to be updated
@@ -186,7 +184,7 @@ public class EventApplicationLogic {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             mData.addReminder(mReminder.calcReminderFromLable(mReminder.getReminderLabelString()[i], mData.getmEvent().getTime()));
-                            dataToGui();
+                            updateGui();
                         }
                     }).show();
         } else {
@@ -242,7 +240,7 @@ public class EventApplicationLogic {
                 }
                 break;
         }
-        dataToGui();
+        updateGui();
     }
 
     //Toolbar menu is clicked
