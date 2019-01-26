@@ -21,6 +21,10 @@ public class Event extends TEN {
     //empty default
     public Event() {
         super();
+        this.time = new Date();
+        this.reminder = new ArrayList<>();
+        this.address = "";
+        this.recurringType = RecurringType.NONE;
     }
 
     //simple for usage

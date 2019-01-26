@@ -21,6 +21,10 @@ public class Todo extends TEN {
     //Constructors
     public Todo(){
         super();
+        this.note = "";
+        this.startDate = new Date();
+        this.endDate = new Date();
+        this.tasks = new ArrayList<>();
     }
 
     public Todo(String title){

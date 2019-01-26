@@ -23,8 +23,8 @@ public class Note extends TEN {
     //Constructors
     public Note() {
         super();
-        this.tags = new ArrayList<String>();
-        this.pictures = new ArrayList<Image>();
+        this.tags = new ArrayList<>();
+        this.pictures = new ArrayList<>();
         this.imageIDCounter = 0;
     }
 
