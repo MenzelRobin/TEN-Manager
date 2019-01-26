@@ -2,6 +2,7 @@ package com.example.robin.angrynerds_wip.overview.noteFragment;
 
 import android.os.Bundle;
 
+import com.example.robin.angrynerds_wip.data.models.utils.BundleKeys;
 import com.example.robin.angrynerds_wip.overview.superClasses.OverviewFragmentData;
 
 public class OverviewNoteData extends OverviewFragmentData {
@@ -11,7 +12,7 @@ public class OverviewNoteData extends OverviewFragmentData {
     // Adds the Note data to this Object
     public void addData(Bundle pData){
         super.addData(pData);
-        mDescription = pData.getString("Description");
+        mDescription = pData.getString(BundleKeys.keyNoteDescription);
     }
 
     // Returns the Description
