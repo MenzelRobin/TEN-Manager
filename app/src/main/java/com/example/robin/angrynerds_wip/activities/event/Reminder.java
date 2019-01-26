@@ -24,9 +24,7 @@ public class Reminder {
         mReminderLableStatic.add(3, "1 Woche vorher");
     }
 
-    public void setReminder(ArrayList<Date> pReminder){
-        mReminder = pReminder;
-    }
+    public void setReminder(ArrayList<Date> pReminder){mReminder = pReminder;}
 
     public ArrayList<Date> getReminder(){
         return mReminder;
@@ -61,7 +59,6 @@ public class Reminder {
         }else{
             label = "Error: finding Label for " + reminder;
         }
-
         return label;
     }
 

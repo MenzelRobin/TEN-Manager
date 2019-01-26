@@ -83,34 +83,14 @@ public class EventApplicationLogic {
         mGui.setDate(formatDate(mData.getmEvent().getTime()));
         mGui.setLocation(mData.getmEvent().getAddress());
         mGui.setColor(mData.getmEvent().getColor(), mData.getmEvent().getAccentColor());
-        //Reset and set Reminder in GUI
-        mGui.resetReminder();
-        mReminder = new Reminder();
-        mReminder.setReminder(mData.getmEvent().getReminder());
-        for (int i = 0; i < mReminder.getReminderSize(); i++) {
-            String label = "";
-            switch (i) {
-                case 0:
-                    label = mReminder.getLabelFromReminder(0, mData.getmEvent().getTime());
-                    mGui.setReminder1(label);
-                    mReminder.removeReminderLable(label);
-                    break;
-                case 1:
-                    label = mReminder.getLabelFromReminder(1, mData.getmEvent().getTime());
-                    mGui.setReminder2(label);
-                    mReminder.removeReminderLable(label);
-                    break;
-                case 2:
-                    label = mReminder.getLabelFromReminder(2, mData.getmEvent().getTime());
-                    mGui.setReminder3(label);
-                    mReminder.removeReminderLable(label);
-                    break;
-                case 3:
-                    label = mReminder.getLabelFromReminder(3, mData.getmEvent().getTime());
-                    mGui.setReminder4(label);
-                    mReminder.removeReminderLable(label);
-                    break;
-            }
+        mGui.setReminder(mData.getmEvent().getReminder(), mData.getmEvent().getTime());
+        setAlarm();
+    }
+
+    public void setAlarm(){
+        mData.getmEvent().getReminder();
+        for(int i = 0; i<mData.getmEvent().getReminder().size();i++){
+            startAlarm(mData.getmEvent().getReminder().get(i), i);
         }
     }
 
@@ -205,20 +185,17 @@ public class EventApplicationLogic {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             mData.addReminder(mReminder.calcReminderFromLable(mReminder.getReminderLabelString()[i], mData.getmEvent().getTime()));
-                            startAlarm(mData.getLatestReminder(), mData.getmEvent().getReminder().size() - 1);
                             dataToGui();
                         }
                     }).show();
         } else {
             new AlertDialog.Builder(mActivity)
                     .setMessage("Es ist nicht möglich, mehr als 4 Erinnerungen einzustellen.")
-                    .setOnCancelListener(
-                            new DialogInterface.OnCancelListener() {
+                    .setOnCancelListener( new DialogInterface.OnCancelListener() {
                                 @Override
                                 public void onCancel(DialogInterface dialog) {
                                     dialog.cancel();
-                                }
-                            })
+                                }})
                     .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             dialog.cancel();
@@ -276,14 +253,18 @@ public class EventApplicationLogic {
     }
 
     //AlarmManager & Notifications
-    public void startAlarm(Calendar c, int requestCode) {
-        Log.d("ALARM", "Neuer Alarm am: " + c.getTime().toString());
+    public void startAlarm(Date reminderTime, int requestCode) {
+        /*
+        Calendar c = Calendar.getInstance();
+        c.setTimeInMillis(reminderTime.getTime());*/
+
+        Log.d("ALARM", "Neuer Alarm am: " + reminderTime.toString());
         AlarmManager alarmManager = (AlarmManager) mActivity.getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(mActivity, AlertReceiver.class);
         intent.putExtra("TITLE", "Erinnerung: " + mData.getmEvent().getTitle());
         intent.putExtra("TEXT", "am " + formatDate(mData.getmEvent().getTime()) + " um " + formatTime(mData.getmEvent().getTime()) + " Uhr");
         PendingIntent pendingIntent = PendingIntent.getBroadcast(mActivity, requestCode, intent, 0);
-        alarmManager.setExact(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), pendingIntent);
+        alarmManager.setExact(AlarmManager.RTC_WAKEUP, reminderTime.getTime(), pendingIntent); //removed c.getTimeInMillis()
     }
 
     //Remove Alarm from AlarmMangager
