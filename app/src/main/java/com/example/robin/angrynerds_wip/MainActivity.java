@@ -9,7 +9,7 @@ import android.view.View;
 import com.example.robin.angrynerds_wip.activities.note.note.NoteActivity;
 import com.example.robin.angrynerds_wip.data.models.tens.TEN;
 import com.example.robin.angrynerds_wip.data.models.utils.MockData;
-import com.example.robin.angrynerds_wip.data.repository.database.DatabaseManager;
+import com.example.robin.angrynerds_wip.data.repository.database.DataContextManager;
 import com.example.robin.angrynerds_wip.data.repository.Repository;
 import com.example.robin.angrynerds_wip.data.repository.database.Queries;
 import com.example.robin.angrynerds_wip.data.services.Delete;
@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        DatabaseManager.initDatabase(this.getApplicationContext());
+        DataContextManager.initDatabase(this.getApplicationContext());
     }
 
 
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         Repository repository = new Repository();
 
 
-        if (DatabaseManager.getNumberOfDocuments() < 15) {
+        if (DataContextManager.getNumberOfDocuments() < 15) {
 
             MockData md = new MockData(this);
             ArrayList<TEN> tens = md.getMockData();
