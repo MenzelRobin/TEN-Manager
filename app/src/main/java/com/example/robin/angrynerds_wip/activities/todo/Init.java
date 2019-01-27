@@ -23,7 +23,7 @@ public class Init extends AppCompatActivity {
     @Override
     public void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initData(savedInstanceState);
+        initData(getIntent().getStringExtra("ID"));
         initGUI();
         initApplicationLogic();
     }
