@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.DialogFragment;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.example.robin.angrynerds_wip.R;
@@ -24,6 +25,7 @@ public class ApplicationLogic {
     //private Data mData;
 
     private Gui mGui;
+    private Data mData;
     private DialogFragment datePicker;
     private AppCompatActivity mActivity;
     private TasksAdapter mTaskAdapter;
@@ -54,10 +56,12 @@ public class ApplicationLogic {
 
     private void initListener() {
         ClickListener clickListener;
-
         clickListener = new ClickListener(this);
+        MenuItemClickListener menuItemClickListener;
+        menuItemClickListener = new MenuItemClickListener(this);
+
         mGui.getmToolbar().setNavigationOnClickListener(clickListener);
-        //mGui.getmToolbar().setOnMenuItemClickListener(m);
+        mGui.getmToolbar().setOnMenuItemClickListener(menuItemClickListener);
         mGui.getmStartDate().setOnClickListener(clickListener);
         mGui.getmEndDate().setOnClickListener(clickListener);
 
@@ -94,6 +98,14 @@ public class ApplicationLogic {
     public void returnToOverview() {
         mActivity.overridePendingTransition(android.R.anim.fade_in, android.R.anim.slide_out_right);
         mActivity.finish();
+    }
+
+    //Toolbar menu is clicked
+    public void onMenuItemClick(MenuItem item) {
+        if (item.getItemId() == R.id.todo_action_settings) {
+            mData.deleteTodo();
+            returnToOverview();
+        }
     }
 
     //Hier wird die Liste erzeugt

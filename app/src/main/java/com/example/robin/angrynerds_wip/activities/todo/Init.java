@@ -3,6 +3,10 @@ package com.example.robin.angrynerds_wip.activities.todo;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+
+import com.example.robin.angrynerds_wip.R;
 
 import java.util.Date;
 
@@ -19,6 +23,15 @@ public class Init extends AppCompatActivity {
         initData(savedInstanceState);
         initGUI();
         initApplicationLogic();
+    }
+
+    //Toolbar
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.todo_menu, menu);
+        return true;
     }
 
     private void initData (Bundle savedInstanceState) {
