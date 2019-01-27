@@ -39,7 +39,7 @@
         android:layout_marginTop="5dp"
         android:textSize="20dp"/>
 
-    <Button
+    <TextView
         android:id="@+id/edit_todo_startDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -50,7 +50,7 @@
         android:layout_below="@id/edit_todo_text"
         android:hint="@string/sample_activity_todo_startDate"/>
 
-    <Button
+    <TextView
         android:id="@+id/edit_todo_endDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
