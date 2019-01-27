@@ -23,9 +23,7 @@ public class Init extends AppCompatActivity {
     @Override
     public void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
-        initData("3dc9a05d-da97-4c10-88b3-2f30e84f1fbf");
+        initData(savedInstanceState);
         initGUI();
         initApplicationLogic();
     }
