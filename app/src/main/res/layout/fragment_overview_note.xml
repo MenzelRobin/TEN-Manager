@@ -7,7 +7,6 @@
     android:layout_height="wrap_content"
     android:layout_marginBottom="5dp"
     android:padding="25dp"
-    android:background="@color/bgColor2"
     tools:context=".overview.noteFragment.OverviewNoteInit">
 
 
