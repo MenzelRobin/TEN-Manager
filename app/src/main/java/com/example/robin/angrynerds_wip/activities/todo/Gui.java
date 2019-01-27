@@ -44,23 +44,6 @@ public class Gui extends AppCompatActivity{
         mCheckBox = activity.findViewById(R.id.edit_todo_task_status);
 
         //Arraylist in TodoApplicationLogic umgezogen, funktioniert
-        /*
-        // TODO: Muss an diese Klasse übergeben werden
-        ArrayList<Task> tasks = new ArrayList<Task>();
-        tasks.add(new Task("Erste Aufgabe", false));
-        tasks.add(new Task("Zweite Aufgabe", true));
-        tasks.add(new Task("Dritte Aufgabe", false));
-        tasks.add(new Task("Dritte Aufgabe", false));
-        tasks.add(new Task("Dritte Aufgabe", false));
-        tasks.add(new Task("Dritte Aufgabe", true));
-        mTasks.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-        TasksAdapter adapter =
-                new TasksAdapter(
-                        activity, // Die aktuelle Activity
-                        R.layout.rowlayout, // ID des Layouts für alle Listen-Elemente
-                        tasks); // Die Liste der Elemente
-        mTasks.setAdapter(adapter);
-        */
     }
     
 

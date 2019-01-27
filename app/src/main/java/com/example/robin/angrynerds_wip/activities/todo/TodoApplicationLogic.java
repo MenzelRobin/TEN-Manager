@@ -27,6 +27,8 @@ public class TodoApplicationLogic {
 
     private Gui mGui;
     private Data mData;
+
+    private ArrayList<Task> mTasks;
     private DialogFragment datePicker;
     private AppCompatActivity mActivity;
     private TasksAdapter mTaskAdapter;
@@ -39,6 +41,8 @@ public class TodoApplicationLogic {
         mActivity = pActivity;
         mGui = gui;
         mData = pData;
+        mTasks = mData.getmTodo().getTasks();
+        createList();
         initGui();
         initListener();
     }
@@ -116,22 +120,27 @@ public class TodoApplicationLogic {
 
     //Hier wird die Liste erzeugt
     public void createList(){
-        ArrayList<Task> tasks = new ArrayList<Task>();
-        tasks.add(new Task("Erste Aufgabe", false));
-        tasks.add(new Task("Zweite Aufgabe", true));
-        tasks.add(new Task("Dritte Aufgabe", false));
-        tasks.add(new Task("Dritte Aufgabe", false));
-        tasks.add(new Task("Dritte Aufgabe", false));
-        tasks.add(new Task("Dritte Aufgabe",true));
         mGui.setmChoiceMode();
         TasksAdapter adapter =
                 new TasksAdapter(
                         mActivity, //Die aktuelle Activity
                         R.layout.rowlayout, // ID des Layouts für ale Listen-Elemente
-                        tasks); // Die Liste der Elemente
+                        mTasks); // Die Liste der Elemente
         mGui.setmAdapter(adapter);
 
-        checkProgress(tasks);
+        checkProgress(mTasks);
+    }
+
+
+    private void addTask() {
+        mTasks.add(new Task());
+        mTaskAdapter.notifyDataSetChanged();
+        mGui.getmTasks().post(new Runnable() {
+            @Override
+            public void run() {
+                mGui.getmTasks().setSelection(mTaskAdapter.getCount() - 1);
+            }
+        });
     }
 
     public void checkProgress(ArrayList<Task> arrayList){
