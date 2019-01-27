@@ -1,7 +1,6 @@
-package com.example.robin.angrynerds_wip.activities.note.note.logic.event_handler;
+package com.example.robin.angrynerds_wip.activities.note.note.logic.listener_watcher;
 
 import android.view.View;
-import android.widget.Toast;
 
 import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.activities.note.note.logic.NoteApplicationLogic;
@@ -19,10 +18,10 @@ public class ClickListener implements View.OnClickListener  {
 
         switch ( pView.getId() ) {
             case R.id.id_note_tags:
-                mNoteApplicationLogic.onTagsClicked();
+                mNoteApplicationLogic.getNoteClickHandler().onTagsClicked();
                 return;
             case R.id.id_note_title:
-                mNoteApplicationLogic.onTitleClicked();
+                mNoteApplicationLogic.getNoteClickHandler().onTitleClicked();
                 return;
             case -1:
                 mNoteApplicationLogic.saveAndReturnToOverview();
@@ -34,7 +33,7 @@ public class ClickListener implements View.OnClickListener  {
         //Checks if image was clicked
         for(int id = 0; id<= mNoteApplicationLogic.getImageCount(); id++){
             if(pView.getId() == id){
-                mNoteApplicationLogic.onImageClicked(id);
+                mNoteApplicationLogic.getNoteClickHandler().onImageClicked(id);
                 return;
             }
         }

@@ -55,6 +55,7 @@ public class DocumentSaver {
             saveNoteImages((Note) pTen);
 
         } else if (pTen.getClass().getName().contains("Todo")) {
+
             pMutableDocument.setString(RepositoryConstants.TYPE_KEY, RepositoryConstants.TODO_TYPE);
             Log.e("todo id", pMutableDocument.getId());
         }

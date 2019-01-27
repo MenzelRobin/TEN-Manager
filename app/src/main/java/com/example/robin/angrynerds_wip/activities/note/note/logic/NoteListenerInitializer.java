@@ -1,12 +1,10 @@
 package com.example.robin.angrynerds_wip.activities.note.note.logic;
 
-import android.util.Log;
-
 import com.example.robin.angrynerds_wip.activities.note.note.gui.GraphicsContainer;
 import com.example.robin.angrynerds_wip.activities.note.note.gui.NoteGui;
-import com.example.robin.angrynerds_wip.activities.note.note.logic.event_handler.ClickListener;
-import com.example.robin.angrynerds_wip.activities.note.note.logic.event_handler.MenuItemClickListener;
-import com.example.robin.angrynerds_wip.activities.note.note.logic.event_handler.NoteTextWatcher;
+import com.example.robin.angrynerds_wip.activities.note.note.logic.listener_watcher.ClickListener;
+import com.example.robin.angrynerds_wip.activities.note.note.logic.listener_watcher.MenuItemClickListener;
+import com.example.robin.angrynerds_wip.activities.note.note.logic.listener_watcher.NoteTextWatcher;
 
 public class NoteListenerInitializer {
 

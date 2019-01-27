@@ -36,8 +36,7 @@ public class NotePreviewImageLoader {
             if (image.getBitmap() == null) {
                 mNoteDataBackend.getmNoteData().getNote().imageNotFound(image);
             } else {
-                mNoteDataBackend.getmNoteData().getNoteApplicationLogic().addAsyncPreviewImage(image);
-                mNoteDataBackend.getmNoteData().getNoteApplicationLogic().initListener();
+                mNoteDataBackend.getmNoteData().getNoteApplicationLogic().getNoteAsyncLoadingLogic().addAsyncPreviewImage(image);
             }
 
         }

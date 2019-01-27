@@ -1,4 +1,4 @@
-package com.example.robin.angrynerds_wip.activities.note.note.logic.event_handler;
+package com.example.robin.angrynerds_wip.activities.note.note.logic.listener_watcher;
 
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -15,7 +15,7 @@ public class MenuItemClickListener implements Toolbar.OnMenuItemClickListener {
 
     @Override
     public boolean onMenuItemClick(MenuItem pItem) {
-        mNoteApplicationLogic.onMenuItemClicked(pItem);
+        mNoteApplicationLogic.getNoteClickHandler().onMenuItemClicked(pItem);
         return false;
     }
 }

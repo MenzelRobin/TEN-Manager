@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -15,7 +14,7 @@ import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.activities.note.note.data.NoteData;
 import com.example.robin.angrynerds_wip.activities.note.note.gui.NoteGui;
 import com.example.robin.angrynerds_wip.activities.note.note.logic.NoteApplicationLogic;
-import com.example.robin.angrynerds_wip.activities.note.note.logic.event_handler.EventDispersion;
+import com.example.robin.angrynerds_wip.activities.note.note.logic.listener_watcher.EventDispersion;
 
 public class NoteActivity extends AppCompatActivity {
 
@@ -56,7 +55,7 @@ public class NoteActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int pRequestCode, int pResultCode, Intent pData) {
         super.onActivityResult(pRequestCode, pResultCode, pData);
-        mNoteApplicationLogic.onActivityReturned(pRequestCode, pResultCode, pData);
+        mNoteApplicationLogic.getNoteNavigationLogic().onActivityReturned(pRequestCode, pResultCode, pData);
     }
 
     @Override

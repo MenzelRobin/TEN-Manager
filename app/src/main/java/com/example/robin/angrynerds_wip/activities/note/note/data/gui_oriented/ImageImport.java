@@ -12,7 +12,7 @@ import android.util.Log;
 import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.activities.note.note.NoteActivity;
 import com.example.robin.angrynerds_wip.activities.note.note.data.NoteConstants;
-import com.example.robin.angrynerds_wip.activities.note.note.logic.event_handler.DialogClickListener;
+import com.example.robin.angrynerds_wip.activities.note.note.logic.listener_watcher.DialogClickListener;
 
 import java.io.File;
 import java.io.IOException;

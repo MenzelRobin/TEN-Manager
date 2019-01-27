@@ -27,7 +27,7 @@ public class PriorityOriginalImageLoader {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            mNoteDataBackend.getmNoteData().getNoteApplicationLogic().startLoadingSpinner();
+            mNoteDataBackend.getmNoteData().getNoteApplicationLogic().getNoteAsyncLoadingLogic().startLoadingSpinner();
         }
 
         @Override
@@ -47,8 +47,8 @@ public class PriorityOriginalImageLoader {
                 mNoteDataBackend.getmNoteData().getNote().imageNotFound(pImage);
             } else {
                 mNoteDataBackend.getmNoteData().getNote().addImage(pImage);
-                mNoteDataBackend.getmNoteData().getNoteApplicationLogic().openImagePopup(pImage.getBitmap());
-                mNoteDataBackend.getmNoteData().getNoteApplicationLogic().stopLoadingSpinner();
+                mNoteDataBackend.getmNoteData().getNoteApplicationLogic().getNoteImagePopupLogic().openImagePopup(pImage.getBitmap());
+                mNoteDataBackend.getmNoteData().getNoteApplicationLogic().getNoteAsyncLoadingLogic().stopLoadingSpinner();
             }
         }
     }
