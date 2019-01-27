@@ -1,6 +1,7 @@
 package com.example.robin.angrynerds_wip.overview.todoFragment;
 
 import android.content.Context;
+import android.support.v4.graphics.ColorUtils;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -65,6 +66,7 @@ public class OverviewTodoGui extends OverviewFragmentGui {
         // Set Status
         if(pStatus) {
             checkbox.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_check_box_white_24dp, 0, 0, 0);
+            checkbox.setTextColor(ColorUtils.setAlphaComponent(mView.getResources().getColor(R.color.colorWhite), 150));
         } else {
             checkbox.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_check_box_outline_blank_white_24dp, 0, 0, 0);
         }

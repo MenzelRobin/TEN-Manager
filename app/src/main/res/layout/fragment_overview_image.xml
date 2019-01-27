@@ -6,7 +6,6 @@
     android:layout_height="wrap_content"
     android:layout_marginBottom="5dp"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/colorPrimaryDark"
     tools:context=".overview.imageFragment.OverviewImageInit">
 
         <ImageView

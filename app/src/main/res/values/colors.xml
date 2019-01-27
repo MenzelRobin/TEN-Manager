@@ -16,7 +16,7 @@
     <color name="bgColor10">#8c234d</color>
     <color name="TextWhite">#ffffff</color>
     <color name="colorWhite">#FFFFFF</color>
-    <color name="colorGrey">#C0C0C0</color>
+    <color name="colorGrey">#EEEEEE</color>
     <color name="note_black">#000000</color>
     <color name="note_transparent">#00000000</color>
     <color name="note_darkBar">#3d3d3d</color>

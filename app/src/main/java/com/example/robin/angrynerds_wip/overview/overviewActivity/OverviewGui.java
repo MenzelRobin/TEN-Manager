@@ -1,16 +1,14 @@
 package com.example.robin.angrynerds_wip.overview.overviewActivity;
 
 import android.content.res.Configuration;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 
 import com.example.robin.angrynerds_wip.R;
-import com.example.robin.angrynerds_wip.data.models.tens.Event;
-import com.example.robin.angrynerds_wip.data.models.tens.Note;
-import com.example.robin.angrynerds_wip.data.models.tens.TEN;
-import com.example.robin.angrynerds_wip.data.models.tens.Todo;
+import com.example.robin.angrynerds_wip.data.models.tens.*;
 
 public class OverviewGui {
 
@@ -29,13 +27,23 @@ public class OverviewGui {
     OverviewGui(OverviewInit pActivity){
         mActivity = pActivity;
 
-        // Sets Layout and Containerids depending on orientation
-        if(pActivity.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
-            mActivity.setContentView(R.layout.activity_overview);
+        // Sets Layout and Containerids depending on orientation and screensize
+        DisplayMetrics metrics = new DisplayMetrics();
+        mActivity.getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        float yInches= metrics.heightPixels/metrics.ydpi;
+        float xInches= metrics.widthPixels/metrics.xdpi;
+        double diagonalInches = Math.sqrt(xInches*xInches + yInches*yInches);
+        boolean isTablet = diagonalInches>=6.5;
+        boolean isPortrait = pActivity.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT;
+        if(!isTablet && isPortrait){
+            mActivity.setContentView(R.layout.activity_overview_1col);
             mContainerIDs = new int[]{R.id.id_overview_linearLayout_container};
-        } else {
-            mActivity.setContentView(R.layout.activity_overview_landscape);
+        } else if((isTablet && isPortrait) || !isTablet){
+            mActivity.setContentView(R.layout.activity_overview_2col);
             mContainerIDs = new int[]{R.id.id_overview_linearLayout_container1, R.id.id_overview_linearLayout_container2};
+        } else if(isTablet){
+            mActivity.setContentView(R.layout.activity_overview_3col);
+            mContainerIDs = new int[]{R.id.id_overview_linearLayout_container1, R.id.id_overview_linearLayout_container2, R.id.id_overview_linearLayout_container3};
         }
         // Container
         mHeaderId = R.id.id_overview_relativeLayout_header;
@@ -49,22 +57,10 @@ public class OverviewGui {
     }
 
     public void markButton(Class pClass){
-        mShowAll.setBackgroundColor(mActivity.getResources().getColor(R.color.colorGrey));
-        mShowTodo.setBackgroundColor(mActivity.getResources().getColor(R.color.colorGrey));
-        mShowEvent.setBackgroundColor(mActivity.getResources().getColor(R.color.colorGrey));
-        mShowNote.setBackgroundColor(mActivity.getResources().getColor(R.color.colorGrey));
-        if(pClass == TEN.class){
-            mShowAll.setBackgroundColor(mActivity.getResources().getColor(R.color.colorWhite));
-        }
-        if(pClass == Todo.class){
-            mShowTodo.setBackgroundColor(mActivity.getResources().getColor(R.color.colorWhite));
-        }
-        if(pClass == Event.class){
-            mShowEvent.setBackgroundColor(mActivity.getResources().getColor(R.color.colorWhite));
-        }
-        if(pClass == Note.class){
-            mShowNote.setBackgroundColor(mActivity.getResources().getColor(R.color.colorWhite));
-        }
+        mShowAll.setBackgroundColor(mActivity.getResources().getColor(pClass == TEN.class?R.color.colorWhite:R.color.colorGrey));
+        mShowTodo.setBackgroundColor(mActivity.getResources().getColor(pClass == Todo.class?R.color.colorWhite:R.color.colorGrey));
+        mShowEvent.setBackgroundColor(mActivity.getResources().getColor(pClass == Event.class?R.color.colorWhite:R.color.colorGrey));
+        mShowNote.setBackgroundColor(mActivity.getResources().getColor(pClass == Note.class?R.color.colorWhite:R.color.colorGrey));
         mScrollView.fullScroll(View.FOCUS_UP);
     }
 
@@ -76,25 +72,15 @@ public class OverviewGui {
         mFooter.setVisibility(View.VISIBLE);
     }
 
-    public int[] getContainerIDs(){
-        return mContainerIDs;
-    }
+    public int[] getContainerIDs(){ return mContainerIDs; }
 
     public int getHeaderId() { return mHeaderId; }
 
-    public Button getShowAll() {
-        return mShowAll;
-    }
+    public Button getShowAll() { return mShowAll; }
 
-    public Button getShowTodo() {
-        return mShowTodo;
-    }
+    public Button getShowTodo() { return mShowTodo; }
 
-    public Button getShowEvent() {
-        return mShowEvent;
-    }
+    public Button getShowEvent() { return mShowEvent; }
 
-    public Button getShowNote() {
-        return mShowNote;
-    }
+    public Button getShowNote() { return mShowNote; }
 }
