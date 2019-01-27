@@ -10,6 +10,7 @@ import android.util.Log;
 
 import com.example.robin.angrynerds_wip.activities.note.note.data.NoteConstants;
 import com.example.robin.angrynerds_wip.activities.note.note.data.NoteData;
+import com.example.robin.angrynerds_wip.activities.note.note.data.gui_oriented.ImageImport;
 import com.example.robin.angrynerds_wip.activities.note.tageditor.NoteTagActivity;
 
 import java.io.IOException;
@@ -17,15 +18,14 @@ import java.io.IOException;
 public class NoteNavigationLogic {
 
     NoteApplicationLogic mNoteApplicationLogic;
-    NoteData mNoteData;
 
     public NoteNavigationLogic(NoteApplicationLogic pNoteApplicationLogic) {
         this.mNoteApplicationLogic = pNoteApplicationLogic;
-        this.mNoteData = pNoteApplicationLogic.getNoteData();
     }
 
     public void returnToOverview() {
-        mNoteData.getActivity().finish();
+        //mActivity.overridePendingTransition(android.R.anim.fade_in, android.R.anim.slide_out_right);
+        mNoteApplicationLogic.getNoteData().getActivity().finish();
     }
 
     public void onActivityReturned(int pRequestCode, int pResultCode, Intent pData) {
@@ -33,34 +33,35 @@ public class NoteNavigationLogic {
             case NoteConstants.CAMERA_IMPORT_ACTIVITY_REQUESTCODE:
                 if (pResultCode == -1) {
                     //TODO
-                    String path = mImageImport.getCurrentPhotoPath();
+                    String path = mNoteApplicationLogic.getImageImport().getCurrentPhotoPath();
                     Bitmap cameraImage = BitmapFactory.decodeFile(path);
-                    mNoteData.addImageFromCamera(cameraImage, path);
-                    refreshImages();
+                    mNoteApplicationLogic.getNoteData().addImageFromCamera(cameraImage, path);
+                    mNoteApplicationLogic.getNoteGuiRefresherLogic().refreshImages();
                 }
                 break;
             case NoteConstants.GALLERY_IMPORT_ACTIVITY_REQUESTCODE:
                 if (pResultCode == -1) {
                     Uri selectedImage = pData.getData();
                     try {
-                        Bitmap bitmap = MediaStore.Images.Media.getBitmap(mNoteData.getActivity().getContentResolver(), selectedImage);
-                        mNoteData.addImageFromGallery(bitmap);
+                        Bitmap bitmap = MediaStore.Images.Media.getBitmap(mNoteApplicationLogic.getNoteData().getActivity().getContentResolver(), selectedImage);
+                        mNoteApplicationLogic.getNoteData().addImageFromGallery(bitmap);
 
-                        refreshImages();
+                        mNoteApplicationLogic.getNoteGuiRefresherLogic().refreshImages();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                 }
                 break;
+                
             case NoteConstants.TAGEDITOR_ACTIVITY_REQUESTCODE:
                 if (pResultCode == -1) {
                     Bundle extras = pData.getExtras();
                     try {
-                        mNoteData.getNote().setTags(extras.getStringArrayList("taglist"));
-                        mNoteGui.setNoteTags(mNoteData.getNote().getTags());
+                        mNoteApplicationLogic.getNoteData().getNote().setTags(extras.getStringArrayList("taglist"));
+                        mNoteApplicationLogic.getNoteGui().setNoteTags(mNoteApplicationLogic.getNoteData().getNote().getTags());
                     } catch (NullPointerException e) {
                         Log.e("Error", e.getMessage());
-                        displayToast("Error getting TagList from NoteTagActivity.");
+                        //displayToast("Error getting TagList from NoteTagActivity.");
                     }
                 }
         }
@@ -68,7 +69,7 @@ public class NoteNavigationLogic {
 
     //NoteNavigationLogic
     public void saveAndReturnToOverview() {
-        mNoteData.executeSaveRoutine();
+        mNoteApplicationLogic.getNoteData().executeSaveRoutine();
         returnToOverview();
     }
 
@@ -77,12 +78,16 @@ public class NoteNavigationLogic {
         saveAndReturnToOverview();
     }
 
+    public void startImageImport(){
+        mNoteApplicationLogic.initImageImportObject();
+    }
+
     //NoteNavigationLogic
-    public void onTagsClicked() {
-        Intent intent = new Intent(mNoteData.getActivity(), NoteTagActivity.class);
+    public void startTagActivity() {
+        Intent intent = new Intent(mNoteApplicationLogic.getNoteData().getActivity(), NoteTagActivity.class);
         //TODO Als Konstanten irgendwo ablegen
-        intent.putExtra("taglist", mNoteData.getNote().getTags());
-        intent.putExtra("color", mNoteData.getNote().getColor());
-        mNoteData.getActivity().startActivityForResult(intent, NoteConstants.TAGEDITOR_ACTIVITY_REQUESTCODE);
+        intent.putExtra("taglist", mNoteApplicationLogic.getNoteData().getNote().getTags());
+        intent.putExtra("color", mNoteApplicationLogic.getNoteData().getNote().getColor());
+        mNoteApplicationLogic.getNoteData().getActivity().startActivityForResult(intent, NoteConstants.TAGEDITOR_ACTIVITY_REQUESTCODE);
     }
 }

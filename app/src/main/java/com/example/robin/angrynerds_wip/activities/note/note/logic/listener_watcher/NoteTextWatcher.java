@@ -1,4 +1,4 @@
-package com.example.robin.angrynerds_wip.activities.note.note.logic.event_handler;
+package com.example.robin.angrynerds_wip.activities.note.note.logic.listener_watcher;
 
 import android.text.Editable;
 import android.view.View;
@@ -17,7 +17,7 @@ public class NoteTextWatcher implements android.text.TextWatcher {
 
     @Override
     public void onTextChanged(CharSequence pCharSequence, int pStart, int pCount, int pAfter){
-        mNoteApplicationLogic.onTextChanged(pCharSequence.toString(), mView);
+        mNoteApplicationLogic.getNoteClickHandler().onTextChanged(pCharSequence.toString(), mView);
     }
 
     @Override
