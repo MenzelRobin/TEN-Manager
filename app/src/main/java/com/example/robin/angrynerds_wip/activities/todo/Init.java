@@ -15,12 +15,13 @@ import java.util.Date;
 public class Init extends AppCompatActivity {
 
     private Gui mGui;
-    private ApplicationLogic mApplicationLogic;
+    private TodoApplicationLogic mTodoApplicationLogic;
+    private Data mData;
 
     @Override
     public void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initData(savedInstanceState);
+        initData(getIntent().getStringExtra("ID"));
         initGUI();
         initApplicationLogic();
     }
@@ -34,8 +35,9 @@ public class Init extends AppCompatActivity {
         return true;
     }
 
-    private void initData (Bundle savedInstanceState) {
-        //mData = new Data(savedInstanceState, this);
+    private void initData (String todoId) {
+
+        mData = new Data(this, todoId);
     }
 
     private void initGUI () {
@@ -43,7 +45,7 @@ public class Init extends AppCompatActivity {
     }
 
     private void initApplicationLogic () {
-        mApplicationLogic = new ApplicationLogic(mGui,this);
+        mTodoApplicationLogic = new TodoApplicationLogic(mGui,this, mData);
     }
 
     @Override
@@ -55,17 +57,17 @@ public class Init extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         // super.onActivityResult(requestCode, resultCode, data);
-        mApplicationLogic.onActivityReturned(requestCode, resultCode, data);
+        mTodoApplicationLogic.onActivityReturned(requestCode, resultCode, data);
     }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();   //default action
-        //mApplicationLogic.onBackPressed();   // customized action
+        //mTodoApplicationLogic.onBackPressed();   // customized action
     }
 
     public void receiveDate(Date dp){
-        mApplicationLogic.receiveDate(dp);
+        mTodoApplicationLogic.receiveDate(dp);
     }
 
 }

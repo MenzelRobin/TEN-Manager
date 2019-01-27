@@ -20,7 +20,7 @@ import java.util.Locale;
 //import de.fhdw.bfwi316b.set.colorchooser.activities.ActivityUtilities;
 //import de.fhdw.bfwi316b.set.colorchooser.activities.Data;
 
-public class ApplicationLogic {
+public class TodoApplicationLogic {
 
     //private Data mData;
 
@@ -34,9 +34,10 @@ public class ApplicationLogic {
 
 
     //Hier muss noch Data rein
-    public ApplicationLogic(Gui gui, AppCompatActivity pActivity) {
+    public TodoApplicationLogic(Gui gui, AppCompatActivity pActivity, Data pData) {
         mActivity = pActivity;
         mGui = gui;
+        mData = pData;
         initGui();
         initListener();
     }
@@ -72,7 +73,7 @@ public class ApplicationLogic {
 
     public void dataToGui() {
         Date date = Calendar.getInstance().getTime();
-
+        //mGui.setTitle(mData.getmTodo().getTitle());
         mGui.setDate(formatDate(date), mGui.getmStartDate());
         mGui.setDate(formatDate(date), mGui.getmEndDate());
     }

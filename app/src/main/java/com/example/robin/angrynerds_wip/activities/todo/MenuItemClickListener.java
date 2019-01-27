@@ -4,15 +4,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 public class MenuItemClickListener implements Toolbar.OnMenuItemClickListener{
-    ApplicationLogic mApplicationLogic;
+    TodoApplicationLogic mTodoApplicationLogic;
 
-    public MenuItemClickListener(ApplicationLogic pApplicationLogic){
-        mApplicationLogic = pApplicationLogic;
+    public MenuItemClickListener(TodoApplicationLogic pTodoApplicationLogic){
+        mTodoApplicationLogic = pTodoApplicationLogic;
     }
 
     @Override
     public boolean onMenuItemClick(MenuItem item) {
-        mApplicationLogic.onMenuItemClick(item);
+        mTodoApplicationLogic.onMenuItemClick(item);
         return false;
     }
 }

@@ -40,7 +40,7 @@ public class Gui extends AppCompatActivity{
         mRowLayout = activity.findViewById(R.id.edit_todo_rowLayout);
         mCheckBox = activity.findViewById(R.id.edit_todo_task_status);
 
-        //Arraylist in ApplicationLogic umgezogen, funktioniert
+        //Arraylist in TodoApplicationLogic umgezogen, funktioniert
         /*
         // TODO: Muss an diese Klasse übergeben werden
         ArrayList<Task> tasks = new ArrayList<Task>();
