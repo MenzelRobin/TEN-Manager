@@ -32,7 +32,7 @@ public class Queries {
                 SelectResult.all(),
                 SelectResult.expression(Meta.id))
                 .from(DataSource.database(DataContextManager.getDatabase()))
-                .orderBy(Ordering.property(RepositoryConstants.CREATION_DATE_KEY).ascending());
+                .orderBy(Ordering.property(RepositoryConstants.CREATION_DATE_KEY).descending());
         ArrayList<TEN> resultList = new ArrayList<TEN>();
 
         try {
