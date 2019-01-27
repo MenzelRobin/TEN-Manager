@@ -12,12 +12,14 @@ import android.support.v7.widget.Toolbar;
 
 import com.example.robin.angrynerds_wip.R;
 
+import org.w3c.dom.Text;
+
 public class Gui extends AppCompatActivity{
 
     private EditText mTitle;
     private EditText mText;
-    private Button mStartDate;
-    private Button mEndDate;
+    private TextView mStartDate;
+    private TextView mEndDate;
     private TextView mProgressText;
     private ListView mTasks;
     private LinearLayout mRowLayout;
@@ -69,11 +71,11 @@ public class Gui extends AppCompatActivity{
         return mText;
     }
 
-    public Button getmStartDate() {
+    public TextView getmStartDate() {
         return mStartDate;
     }
 
-    public Button getmEndDate() { return mEndDate; }
+    public TextView getmEndDate() { return mEndDate; }
 
     public TextView getmProgressText() {
         return mProgressText;
@@ -102,7 +104,7 @@ public class Gui extends AppCompatActivity{
     }
 
     public void setDate(String s, View v) {
-        ((Button)v).setText(s);
+        ((TextView)v).setText(s);
     }
 
 }
