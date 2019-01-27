@@ -10,6 +10,7 @@ import com.example.robin.angrynerds_wip.data.models.tens.Event;
 import com.example.robin.angrynerds_wip.data.models.tens.Note;
 import com.example.robin.angrynerds_wip.data.models.tens.TEN;
 import com.example.robin.angrynerds_wip.data.models.tens.Todo;
+import com.example.robin.angrynerds_wip.data.services.Update;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -21,10 +22,13 @@ public class MockData {
 
     //Nicht-Statische Liste mit 10 todos, 10 Events und 10 Notes
     //Verwendung mit MockData.tenMockData -> Bitte Nicht
-    private ArrayList<TEN> tenMockData = new ArrayList<>();
-
+    private Activity activity;
+    
     public MockData(Activity activity) {
-
+        this.activity = activity;
+    }
+    
+    public void addMockDataToDatabase(){
         Note koalaNote = new Note("Interessantes über Koalabären", "Der Koala ist ein " +
                 "baumbewohnender Beutelsäuger in Australien. Er wurde von dem Zoologen Georg " +
                 "August Goldfuß im Jahre 1817 als Lipurus cinereus erstbeschrieben. Der Koala ist " +
@@ -38,9 +42,11 @@ public class MockData {
         koalaNote.setTags(koalaTags);
 
         koalaNote.addImage(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_koala1));
+
         koalaNote.addImage(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_koala2));
 
-        tenMockData.add(koalaNote);
+        Update.saveTEN(koalaNote);
+        koalaNote.setPictures(null);
 
         Date visitKoalaDate = new Date(1588590000000L);
         Date reminder2 = new Date(1588590000000L - (1000 * 60 * 60 * 24 * 7));
@@ -48,7 +54,7 @@ public class MockData {
         visitKoalaReminder.add(reminder2);
         String address = "Australien, Outback";
         Event koalaEvent = new Event("Koalas besuchen", visitKoalaDate, visitKoalaReminder, address);
-        tenMockData.add(koalaEvent);
+        Update.saveTEN(koalaEvent);
 
         Note delfinNote = new Note("Delfine", "Die Delfine oder Delphine gehören zu " +
                 "den Zahnwalen und sind somit Säugetiere, die im Wasser leben. Delfine sind die" +
@@ -64,7 +70,7 @@ public class MockData {
         delfinNote.addImage(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_delfin1));
         delfinNote.addImage(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_delfin2));
 
-        tenMockData.add(delfinNote);
+        Update.saveTEN(delfinNote);
 
 
         Task besuchMamaPapa1 = new Task("Küche putzen");
@@ -78,14 +84,15 @@ public class MockData {
 
         Todo besuchMamaPapa = new Todo("Besuch von Mama und Papa", "Alles muss sauber und " +
                 "aufgeräumt sein!", besuchMamaPapaTasks);
-        tenMockData.add(besuchMamaPapa);
+        besuchMamaPapa.setEndDate(new Date(1551297600000L));
+        Update.saveTEN(besuchMamaPapa);
 
         Note klausureingrenzung = new Note("Klausureingrenzung", "Es kommt die folgenden Folien vor: 24-29, 50-71, 83-101");
         ArrayList<String> klausurTags = new ArrayList<String>();
         klausurTags.add("wichtig");
         klausurTags.add("FH");
         klausureingrenzung.setTags(klausurTags);
-        tenMockData.add(klausureingrenzung);
+        Update.saveTEN(klausureingrenzung);
 
 
         Date konzertBringsDate = new Date(1638314460000L);
@@ -94,7 +101,7 @@ public class MockData {
         konzertBringsReminder.add(reminder2Brings);
         String addressBrings = "Köln, Tanzbrunnen";
         Event konzertBrings = new Event("Konzert Brings", konzertBringsDate, konzertBringsReminder, addressBrings);
-        tenMockData.add(konzertBrings);
+        Update.saveTEN(konzertBrings);
 
         Date elternBesuchDate = new Date(1550826000000L);
         Date reminder2elternBesuch = new Date(1550826000000L - (1000 * 60 * 60 * 24 * 7));
@@ -103,7 +110,7 @@ public class MockData {
         elternBesuchReminder.add(reminder2elternBesuch);
         String addressElternBesuch = "zuhause";
         Event elternBesuch = new Event("Besuch von Mama und Papa", elternBesuchDate, elternBesuchReminder, addressElternBesuch);
-        tenMockData.add(elternBesuch);
+        Update.saveTEN(elternBesuch);
 
 
         Task küchePutzen1 = new Task("Arbeitsfläche wischen");
@@ -117,7 +124,10 @@ public class MockData {
 
         Todo küchePutzen = new Todo("Küche aufräumen", "Das Backen war ein Fiasko",
                 küchePutzenTasks);
-        tenMockData.add(küchePutzen);
+
+        küchePutzen.setStartDate(new Date(1550448000000L));
+        küchePutzen.setEndDate(new Date(1551052800000L));
+        Update.saveTEN(küchePutzen);
 
 
         Task reiseVorbereitung1 = new Task("Wäsche waschen");
@@ -132,7 +142,7 @@ public class MockData {
         Todo reiseVorbereitung = new Todo("Vorbereitung auf die Australienreise",
                 "",
                 reiseVorbereitungTasks);
-        tenMockData.add(reiseVorbereitung);
+        Update.saveTEN(reiseVorbereitung);
 
         Note kaenguruNote = new Note("Kängurus","Kängurus gelten als typischer Vertreter der Fauna Australiens.");
         ArrayList<String> kaenguruTags = new ArrayList<String>();
@@ -145,7 +155,8 @@ public class MockData {
         kaenguruNote.addImage(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_kaenguru1));
         kaenguruNote.addImage(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_kaenguru2));
 
-        tenMockData.add(kaenguruNote);
+        Update.saveTEN(kaenguruNote);
+        kaenguruNote.setPictures(null);
 
         Note melbourneNote = new Note("Melbourne", "Melbourne ist die an der " +
                 "Südostküste Australiens gelegene Hauptstadt des australischen Bundesstaats " +
@@ -162,10 +173,17 @@ public class MockData {
         melbourneNote.setTags(melbourneTags);
 
         melbourneNote.addImage(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_melbourne1));
-        melbourneNote.addImage(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_melbourne2));
-        melbourneNote.addImage(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_melbourne3));
+        Update.saveTEN(melbourneNote);
+        melbourneNote.getPictures().get(0).setBitmap(null);
 
-        tenMockData.add(melbourneNote);
+        melbourneNote.addImage(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_melbourne2));
+        Update.saveTEN(melbourneNote);
+        melbourneNote.getPictures().get(1).setBitmap(null);
+
+        melbourneNote.addImage(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_melbourne3));
+        Update.saveTEN(melbourneNote);
+
+        melbourneNote.setPictures(null);
 
         Note bambusNote = new Note("Bambus", "Bambus ist eine der zwölf" +
                 " Unterfamilien aus der Familie der Süßgräser, der etwa 116 Gattungen zugerechnet" +
@@ -180,7 +198,8 @@ public class MockData {
 
         bambusNote.addImage(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_bambus1));
 
-        tenMockData.add(bambusNote);
+        Update.saveTEN(bambusNote);
+        bambusNote.setPictures(null);
 
         Date delfinDate = new Date(1588831200000L);
         Date reminder2delfin = new Date(1588831200000L - (1000 * 60 * 60 * 24 * 7));
@@ -188,7 +207,7 @@ public class MockData {
         delfinReminder.add(reminder2delfin);
         String delfinAdresse = "Tin Can Bay";
         Event delfinSchwimmen = new Event("Schwimmen mit Delfinen", delfinDate, delfinReminder, delfinAdresse);
-        tenMockData.add(delfinSchwimmen);
+        Update.saveTEN(delfinSchwimmen);
 
 
         Task klausurVorbereitung1 = new Task("24-29 lernen");
@@ -207,7 +226,7 @@ public class MockData {
         Todo klausurVorbereitung = new Todo("Vorbereitung auf die Rechnungswesenklausur",
                 "",
                 klausurVorbereitungTasks);
-        tenMockData.add(klausurVorbereitung);
+        Update.saveTEN(klausurVorbereitung);
 
 
         Task appProgrammierung1 = new Task("Anforderungen analysieren", true);
@@ -228,11 +247,6 @@ public class MockData {
         Todo appProgrammierung = new Todo("App Programmierung",
                 "Grobes Schema einer Softwareentwickung",
                 appProgrammierungTasks);
-        tenMockData.add(appProgrammierung);
+        Update.saveTEN(appProgrammierung);
     }
-
-    public ArrayList<TEN> getMockData() {
-        return this.tenMockData;
-    }
-
 }

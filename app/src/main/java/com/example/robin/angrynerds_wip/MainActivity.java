@@ -60,10 +60,7 @@ public class MainActivity extends AppCompatActivity {
         if (DataContextManager.getNumberOfDocuments() < 15) {
 
             MockData md = new MockData(this);
-            ArrayList<TEN> tens = md.getMockData();
-            for (TEN ten : tens) {
-                repository.insertTEN(ten);
-            }
+            md.addMockDataToDatabase();
         }
         Log.i("Testdata", "Database Content will be displayed as Strings");
 
