@@ -106,7 +106,6 @@ public class MockData {
         Date elternBesuchDate = new Date(1550826000000L);
         Date reminder2elternBesuch = new Date(1550826000000L - (1000 * 60 * 60 * 24 * 7));
         ArrayList<Date> elternBesuchReminder = new ArrayList<Date>();
-        elternBesuchReminder.add(elternBesuchDate);
         elternBesuchReminder.add(reminder2elternBesuch);
         String addressElternBesuch = "zuhause";
         Event elternBesuch = new Event("Besuch von Mama und Papa", elternBesuchDate, elternBesuchReminder, addressElternBesuch);
