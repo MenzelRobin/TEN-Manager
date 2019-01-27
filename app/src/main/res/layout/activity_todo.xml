@@ -4,13 +4,17 @@
     android:layout_height="match_parent"
     android:background="@color/bgColor4"
     android:orientation="horizontal"
-    android:padding="10dp"
     android:layout_alignParentLeft="true">
+
+    <include
+        android:id="@+id/id_todo_toolbar"
+        layout="@layout/toolbar_ten" />
 
     <EditText
         android:id="@+id/edit_todo_title"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:layout_below="@id/id_todo_toolbar"
         android:inputType="text"
         android:hint="@string/sample_activity_todo_title"
         android:textColorHint="@color/TextWhite"

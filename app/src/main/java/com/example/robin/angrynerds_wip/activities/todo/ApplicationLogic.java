@@ -3,6 +3,7 @@ package com.example.robin.angrynerds_wip.activities.todo;
 import android.app.Activity;
 import android.app.DialogFragment;
 import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.example.robin.angrynerds_wip.R;
@@ -24,14 +25,14 @@ public class ApplicationLogic {
 
     private Gui mGui;
     private DialogFragment datePicker;
-    private Activity mActivity;
+    private AppCompatActivity mActivity;
     private TasksAdapter mTaskAdapter;
 
     private View mActiveDatePickerButton; // der Button, mit dem der DatePicker geöffnet wurde
 
 
     //Hier muss noch Data rein
-    public ApplicationLogic(Gui gui, Activity pActivity) {
+    public ApplicationLogic(Gui gui, AppCompatActivity pActivity) {
         mActivity = pActivity;
         mGui = gui;
         initGui();
@@ -41,6 +42,12 @@ public class ApplicationLogic {
 
 
     private void initGui() {
+        //initialize Toolbar including menu and back button
+        mActivity.setSupportActionBar(mGui.getmToolbar());
+        mActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        mActivity.getSupportActionBar().setDisplayShowHomeEnabled(true);
+        mActivity.getSupportActionBar().setDisplayShowTitleEnabled(false);
+
         dataToGui();
         createList();
     }
@@ -49,6 +56,8 @@ public class ApplicationLogic {
         ClickListener clickListener;
 
         clickListener = new ClickListener(this);
+        mGui.getmToolbar().setNavigationOnClickListener(clickListener);
+        //mGui.getmToolbar().setOnMenuItemClickListener(m);
         mGui.getmStartDate().setOnClickListener(clickListener);
         mGui.getmEndDate().setOnClickListener(clickListener);
 
@@ -79,6 +88,12 @@ public class ApplicationLogic {
         datePicker = new DatePickerFragment();
         datePicker.show(mActivity.getFragmentManager(), "DatePicker");
         mActiveDatePickerButton = v;
+    }
+
+    //Return to overview if back pressed / Event deleted / toolbar navigation
+    public void returnToOverview() {
+        mActivity.overridePendingTransition(android.R.anim.fade_in, android.R.anim.slide_out_right);
+        mActivity.finish();
     }
 
     //Hier wird die Liste erzeugt

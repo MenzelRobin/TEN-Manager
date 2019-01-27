@@ -25,6 +25,9 @@ public class ClickListener implements View.OnClickListener  {
             case R.id.edit_todo_title:
                 mApplicationLogic.createList();
                 break;
+            case -1:
+                mApplicationLogic.returnToOverview();
+                break;
             default:
                 break;
         }
