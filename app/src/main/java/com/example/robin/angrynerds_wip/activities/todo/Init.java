@@ -24,8 +24,16 @@ public class Init extends AppCompatActivity {
     public void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
-        initData("3dc9a05d-da97-4c10-88b3-2f30e84f1fbf");
+        String todoId = "";
+        Bundle extras = getIntent().getExtras();
+        //Get ID from Intent
+        try{
+            todoId = extras.getString("ID");
+        }
+        catch(NullPointerException e){
+            Log.e("Error",e.getMessage());
+        }
+        initData(todoId);
         initGUI();
         initApplicationLogic();
     }

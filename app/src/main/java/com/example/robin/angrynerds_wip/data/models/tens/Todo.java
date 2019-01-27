@@ -29,11 +29,15 @@ public class Todo extends TEN {
 
     public Todo(String title){
         super(title);
+        this.startDate = new Date();
+        this.endDate = new Date();
     }
 
     public Todo(String title, String note){
         super(title);
         this.note = note;
+        this.startDate = new Date();
+        this.endDate = new Date();
     }
 
     public Todo(String title, String note, ArrayList<Task> tasks){
@@ -41,6 +45,8 @@ public class Todo extends TEN {
         this.note = note;
         this.tasks = tasks;
         this.progress = calculateProgress();
+        this.startDate = new Date();
+        this.endDate = new Date();
     }
 
     public Todo(String title, String note, ArrayList<Task> tasks, Date endDate){
@@ -48,6 +54,7 @@ public class Todo extends TEN {
         this.note = note;
         this.tasks = tasks;
         this.progress = calculateProgress();
+        this.startDate = new Date();
         this.endDate = endDate;
     }
 

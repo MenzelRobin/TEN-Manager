@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     android:background="@color/bgColor4"
     android:orientation="horizontal"
-    android:layout_alignParentLeft="true">
+    android:layout_alignParentLeft="true"
+    android:id="@+id/edit_todo_mainRelativeLayout">
 
     <include
         android:id="@+id/id_todo_toolbar"

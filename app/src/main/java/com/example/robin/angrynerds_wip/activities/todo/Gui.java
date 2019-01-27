@@ -1,5 +1,6 @@
 package com.example.robin.angrynerds_wip.activities.todo;
 
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -7,6 +8,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.support.v7.widget.Toolbar;
 
@@ -16,6 +18,7 @@ import org.w3c.dom.Text;
 
 public class Gui extends AppCompatActivity{
 
+    private RelativeLayout mRelativeLayout;
     private EditText mTitle;
     private EditText mText;
     private TextView mStartDate;
@@ -29,7 +32,7 @@ public class Gui extends AppCompatActivity{
 
     public Gui(Init activity) {
         activity.setContentView(R.layout.activity_todo);
-
+        mRelativeLayout = activity.findViewById(R.id.edit_todo_mainRelativeLayout);
         mToolbar = activity.findViewById(R.id.id_todo_toolbar);
         mTitle = activity.findViewById(R.id.edit_todo_title);
         mText = activity.findViewById(R.id.edit_todo_text);
@@ -107,4 +110,21 @@ public class Gui extends AppCompatActivity{
         ((TextView)v).setText(s);
     }
 
+    public void setmTitle(String pTitle)
+    {
+        mTitle.setText(pTitle);
+    }
+
+    public void setmText(String pText)
+    {
+        mText.setText(pText);
+    }
+
+    public void setColor(int color, int darkColor) {
+        mRelativeLayout.setBackground(new ColorDrawable(color));
+        mTasks.setBackground(new ColorDrawable(color));
+        mToolbar.setBackground(new ColorDrawable(darkColor));
+        //mSeperateView1.setBackground(new ColorDrawable(darkColor));
+        //mSeperateView1.setAlpha((float) 0.5);
+    }
 }

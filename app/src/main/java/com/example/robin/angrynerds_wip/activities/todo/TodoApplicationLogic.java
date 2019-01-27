@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.robin.angrynerds_wip.R;
+import com.example.robin.angrynerds_wip.data.models.tens.Todo;
 import com.example.robin.angrynerds_wip.data.models.utils.Task;
 
 import java.text.DateFormat;
@@ -73,9 +74,13 @@ public class TodoApplicationLogic {
 
     public void dataToGui() {
         Date date = Calendar.getInstance().getTime();
-        //mGui.setTitle(mData.getmTodo().getTitle());
-        mGui.setDate(formatDate(date), mGui.getmStartDate());
-        mGui.setDate(formatDate(date), mGui.getmEndDate());
+
+        Todo todo = mData.getmTodo();
+        mGui.setmTitle(todo.getTitle());
+        mGui.setmText(todo.getNote());
+        mGui.setColor(todo.getColor(), todo.getAccentColor());
+        mGui.setDate(formatDate(todo.getStartDate()), mGui.getmStartDate());
+        mGui.setDate(formatDate(todo.getEndDate()), mGui.getmEndDate());
     }
 
     //to receive Date from DatePicker Fragment
