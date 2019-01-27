@@ -26,6 +26,7 @@ public class WriteRepository {
     public void insertTEN(TEN pTen) {
         MutableDocument mutableTENDocument = new MutableDocument();
         pTen.setID(mutableTENDocument.getId());
+
         this.mDocumentSaver.updateCompleteDocument(pTen, mutableTENDocument);
     }
 

@@ -3,10 +3,12 @@ package com.example.robin.angrynerds_wip.activities.todo;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 
 import com.example.robin.angrynerds_wip.R;
+import com.example.robin.angrynerds_wip.data.services.Create;
 
 import java.util.Date;
 
@@ -21,7 +23,9 @@ public class Init extends AppCompatActivity {
     @Override
     public void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initData(getIntent().getStringExtra("ID"));
+
+
+        initData("3dc9a05d-da97-4c10-88b3-2f30e84f1fbf");
         initGUI();
         initApplicationLogic();
     }

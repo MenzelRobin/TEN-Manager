@@ -1,5 +1,7 @@
 package com.example.robin.angrynerds_wip.data.repository.database;
 
+import android.util.Log;
+
 import com.couchbase.lite.CouchbaseLiteException;
 import com.couchbase.lite.MutableDocument;
 import com.example.robin.angrynerds_wip.data.models.tens.Note;
@@ -54,6 +56,7 @@ public class DocumentSaver {
 
         } else if (pTen.getClass().getName().contains("Todo")) {
             pMutableDocument.setString(RepositoryConstants.TYPE_KEY, RepositoryConstants.TODO_TYPE);
+            Log.e("todo id", pMutableDocument.getId());
         }
         return pMutableDocument;
     }
