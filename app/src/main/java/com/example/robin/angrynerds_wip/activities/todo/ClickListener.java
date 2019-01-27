@@ -6,10 +6,10 @@ import com.example.robin.angrynerds_wip.R;
 
 public class ClickListener implements View.OnClickListener  {
 
-    ApplicationLogic mApplicationLogic;
+    TodoApplicationLogic mTodoApplicationLogic;
 
-    public ClickListener(ApplicationLogic applicationLogic) {
-        mApplicationLogic = applicationLogic;
+    public ClickListener(TodoApplicationLogic todoApplicationLogic) {
+        mTodoApplicationLogic = todoApplicationLogic;
     }
 
     @Override
@@ -17,16 +17,16 @@ public class ClickListener implements View.OnClickListener  {
 
         switch ( view.getId() ) {
             case R.id.edit_todo_startDate:
-                mApplicationLogic.showDatePickerDialog(view);
+                mTodoApplicationLogic.showDatePickerDialog(view);
                 break;
             case R.id.edit_todo_endDate:
-                mApplicationLogic.showDatePickerDialog(view);
+                mTodoApplicationLogic.showDatePickerDialog(view);
                 break;
             case R.id.edit_todo_title:
-                mApplicationLogic.createList();
+                mTodoApplicationLogic.createList();
                 break;
             case -1:
-                mApplicationLogic.returnToOverview();
+                mTodoApplicationLogic.returnToOverview();
                 break;
             default:
                 break;
