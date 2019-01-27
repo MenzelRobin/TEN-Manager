@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.support.v7.widget.Toolbar;
 
 import com.example.robin.angrynerds_wip.R;
 
@@ -21,11 +22,13 @@ public class Gui extends AppCompatActivity{
     private ListView mTasks;
     private LinearLayout mRowLayout;
     private CheckBox mCheckBox;
+    private Toolbar mToolbar;
 
 
     public Gui(Init activity) {
         activity.setContentView(R.layout.activity_todo);
 
+        mToolbar = activity.findViewById(R.id.id_todo_toolbar);
         mTitle = activity.findViewById(R.id.edit_todo_title);
         mText = activity.findViewById(R.id.edit_todo_text);
         mStartDate = activity.findViewById(R.id.edit_todo_startDate);
@@ -57,6 +60,7 @@ public class Gui extends AppCompatActivity{
     
 
     // getter to access views
+    public Toolbar getmToolbar() {return mToolbar;}
     public EditText getmTitle() {
         return mTitle;
     }
@@ -100,7 +104,5 @@ public class Gui extends AppCompatActivity{
     public void setDate(String s, View v) {
         ((Button)v).setText(s);
     }
-
-
 
 }
