@@ -30,11 +30,13 @@ public class ImageContainer extends GraphicsContainer {
 
     //Initiates Image in ImageView
     private void initiateView(Bitmap pScaledImage) {
-        mImageContainer.setLayoutParams(new LinearLayout.LayoutParams(NoteConstants.IMAGE_PREVIEW_CONTAINER_WIDTH, NoteConstants.IMAGE_PREVIEW_CONTAINER_HEIGHT));
+        mImageContainer.setLayoutParams(new LinearLayout.LayoutParams(NoteConstants.IMAGE_PREVIEW_CONTAINER_WIDTH,
+                NoteConstants.IMAGE_PREVIEW_CONTAINER_HEIGHT));
         mImageContainer.setGravity(Gravity.CENTER);
 
         ImageView imageView = new ImageView(mActivity.getApplicationContext());
-        imageView.setLayoutParams(new LinearLayout.LayoutParams(NoteConstants.IMAGE_PREVIEW_CONTAINER_WIDTH - 50, NoteConstants.IMAGE_PREVIEW_CONTAINER_HEIGHT - 50));
+        imageView.setLayoutParams(new LinearLayout.LayoutParams(NoteConstants.IMAGE_PREVIEW_CONTAINER_WIDTH - 50,
+                NoteConstants.IMAGE_PREVIEW_CONTAINER_HEIGHT - 50));
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         mImageView = imageView;
         imageView.setImageBitmap(pScaledImage);

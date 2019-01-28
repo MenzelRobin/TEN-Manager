@@ -5,15 +5,20 @@ import com.example.robin.angrynerds_wip.activities.note.note.gui.NoteGui;
 
 public class NoteGuiRefresherLogic {
 
-    NoteApplicationLogic mNoteApplicationLogic;
-    NoteGui mNoteGui;
-    NoteData mNoteData;
+    private NoteApplicationLogic mNoteApplicationLogic;
+
+    private NoteGui mNoteGui;
+    private NoteData mNoteData;
 
 
     public NoteGuiRefresherLogic(NoteApplicationLogic pNoteApplicationLogic){
         this.mNoteApplicationLogic = pNoteApplicationLogic;
         this.mNoteGui = pNoteApplicationLogic.getNoteGui();
         this.mNoteData = pNoteApplicationLogic.getNoteData();
+    }
+
+    public void setNoteGui(NoteGui mNoteGui) {
+        this.mNoteGui = mNoteGui;
     }
 
     public void dataToGui() {
