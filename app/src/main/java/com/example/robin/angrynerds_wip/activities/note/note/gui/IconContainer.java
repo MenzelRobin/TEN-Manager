@@ -23,11 +23,13 @@ public class IconContainer extends GraphicsContainer {
     private void initiateView(){
         if(mActivity.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
             //Portrait Mode
-            mImageContainer.setLayoutParams(new LinearLayout.LayoutParams(NoteConstants.IMAGE_PREVIEW_CONTAINER_WIDTH /2, NoteConstants.IMAGE_PREVIEW_CONTAINER_HEIGHT));
+            mImageContainer.setLayoutParams(new LinearLayout.LayoutParams(NoteConstants.IMAGE_PREVIEW_CONTAINER_WIDTH /2,
+                    NoteConstants.IMAGE_PREVIEW_CONTAINER_HEIGHT));
         }
         else{
             //Landscape Mode
-            mImageContainer.setLayoutParams(new LinearLayout.LayoutParams(NoteConstants.IMAGE_PREVIEW_CONTAINER_WIDTH, NoteConstants.IMAGE_PREVIEW_CONTAINER_HEIGHT /2));
+            mImageContainer.setLayoutParams(new LinearLayout.LayoutParams(NoteConstants.IMAGE_PREVIEW_CONTAINER_WIDTH,
+                    NoteConstants.IMAGE_PREVIEW_CONTAINER_HEIGHT /2));
         }
         mImageContainer.setGravity(Gravity.CENTER);
 
