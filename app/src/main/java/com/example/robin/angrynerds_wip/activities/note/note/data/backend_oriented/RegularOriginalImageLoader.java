@@ -4,7 +4,7 @@ import android.os.AsyncTask;
 
 import com.example.robin.angrynerds_wip.data.models.utils.Image;
 import com.example.robin.angrynerds_wip.data.services.ImageService;
-
+//TODO delete
 public class RegularOriginalImageLoader {
 
     NoteDataBackend mNoteDataBackend;

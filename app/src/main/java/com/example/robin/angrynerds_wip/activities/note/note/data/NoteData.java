@@ -81,4 +81,8 @@ public class NoteData {
     public void deleteNote() { mNoteDataBackend.deleteNote(); }
 
     public void loadNote(String pNoteId) { mNoteDataBackend.loadNote(pNoteId); }
+
+    public void resetNoteBitmaps() {
+        for(Image image: mNote.getPictures()) image.setBitmap(null);
+    }
 }
