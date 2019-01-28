@@ -170,7 +170,8 @@ public class TodoApplicationLogic {
         }
         allChecker = allChecker - 1;
         mGui.setmProgressText(Integer.toString(trueChecked) + " / " + Integer.toString(allChecker));
-        UpdateTodo();
+        //Hier lag der Fehler bei dem Wechsel der Ansichten, wollen wir uns morgen angucken
+        //UpdateTodo();
     }
 
     void onEditTextClicked() {
