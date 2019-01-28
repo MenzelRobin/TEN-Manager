@@ -1,6 +1,7 @@
 package com.example.robin.angrynerds_wip.activities.todo;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -76,6 +77,13 @@ public class Init extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();   //default action
         //mTodoApplicationLogic.onBackPressed();   // customized action
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        initGUI();
+        mTodoApplicationLogic.onConfigurationChanged(mGui);
     }
 
     public void receiveDate(Date dp){

@@ -4,13 +4,18 @@
     android:layout_height="match_parent"
     android:background="@color/bgColor4"
     android:orientation="horizontal"
-    android:padding="10dp"
-    android:layout_alignParentLeft="true">
+    android:layout_alignParentLeft="true"
+    android:id="@+id/edit_todo_mainRelativeLayout">
+
+    <include
+        android:id="@+id/id_todo_toolbar"
+        layout="@layout/toolbar_ten" />
 
     <EditText
         android:id="@+id/edit_todo_title"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:layout_below="@id/id_todo_toolbar"
         android:inputType="text"
         android:hint="@string/sample_activity_todo_title"
         android:textColorHint="@color/TextWhite"
@@ -35,28 +40,60 @@
         android:layout_marginTop="5dp"
         android:textSize="20dp"/>
 
-    <Button
-        android:id="@+id/edit_todo_startDate"
+    <RelativeLayout
+        android:id="@+id/id_todo_relativeLayout_startDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColorHint="@color/TextWhite"
-        android:textColor="@color/TextWhite"
-        android:textSize="25dp"
-        android:backgroundTint="@color/bgColor4"
         android:layout_below="@id/edit_todo_text"
-        android:hint="@string/sample_activity_todo_startDate"/>
+        android:layout_margin="16dp">
 
-    <Button
-        android:id="@+id/edit_todo_endDate"
+        <ImageView
+            android:id="@+id/id_todo_imageView_iconStartDate"
+            android:layout_width="@dimen/icon"
+            android:layout_height="@dimen/icon"
+            android:layout_centerVertical="true"
+            android:alpha=".5"
+            android:src="@drawable/ic_access_time_black_24dp" />
+
+        <TextView
+            android:id="@+id/edit_todo_startDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_toEndOf="@id/id_todo_imageView_iconStartDate"
+            android:textColorHint="@color/TextWhite"
+            android:textColor="@color/TextWhite"
+            android:textSize="25dp"
+            android:backgroundTint="@color/bgColor4"
+            android:hint="@string/sample_activity_todo_startDate"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/id_todo_relativeLayout_endDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColorHint="@color/TextWhite"
-        android:textColor="@color/TextWhite"
-        android:textSize="25dp"
-        android:backgroundTint="@color/bgColor4"
-        android:layout_below="@id/edit_todo_startDate"
-        android:hint="@string/sample_activity_todo_endDate"/>
-
+        android:layout_below="@id/id_todo_relativeLayout_startDate"
+        android:layout_margin="16dp">
+        <ImageView
+            android:id="@+id/id_todo_imageView_iconEndDate"
+            android:layout_width="@dimen/icon"
+            android:layout_height="@dimen/icon"
+            android:layout_centerVertical="true"
+            android:alpha=".5"
+            android:src="@drawable/ic_access_time_black_24dp" />
+        <TextView
+            android:id="@+id/edit_todo_endDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_toEndOf="@id/id_todo_imageView_iconEndDate"
+            android:textColorHint="@color/TextWhite"
+            android:textColor="@color/TextWhite"
+            android:textSize="25dp"
+            android:backgroundTint="@color/bgColor4"
+            android:hint="@string/sample_activity_todo_endDate"/>
+    </RelativeLayout>
     <ListView
         android:id="@+id/edit_todo_tasks"
         android:layout_width="match_parent"
@@ -64,13 +101,18 @@
         android:background="@color/bgColor4"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
-        android:layout_below="@id/edit_todo_endDate"
+        android:layout_below="@id/id_todo_relativeLayout_endDate"
         android:layout_above="@+id/edit_todo_progressText">
     </ListView>
     <TextView
         android:id="@+id/edit_todo_progressText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="@string/sample_activity_todo_progressText"
+        android:textColor="@color/TextWhite"
+        android:textColorHint="@color/TextWhite"
+        android:textAlignment="center"
+        android:textSize="25dp"
         android:layout_alignParentBottom="true"/>
 
 </RelativeLayout>
