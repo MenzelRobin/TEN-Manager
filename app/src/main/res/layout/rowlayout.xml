@@ -4,20 +4,37 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal">
-    <CheckBox
-        android:id="@+id/edit_todo_task_status"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:gravity="center_vertical"
-        android:buttonTint="@color/TextWhite"
-        />
-    <EditText
-        android:id="@+id/edit_todo_task_description"
-        android:layout_height="wrap_content"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:hint="@string/sample_activity_todo_task"
-        android:textSize="15dp"
-        android:textColor="@color/TextWhite"
-        android:gravity="center_vertical"
-        android:backgroundTint="@color/bgColor4"/>
+        android:layout_height="wrap_content"
+        android:layout_gravity="top">
+        <CheckBox
+            android:id="@+id/edit_todo_task_status"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="0.1"
+            android:buttonTint="@color/TextWhite"
+            />
+        <EditText
+            android:id="@+id/edit_todo_task_description"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:hint="@string/sample_activity_todo_task"
+            android:textSize="15dp"
+            android:textColor="@color/TextWhite"
+            android:gravity="center_vertical"
+            android:layout_weight="0.8"
+            android:backgroundTint="@color/bgColor4"/>
+        <ImageButton
+            android:id="@+id/edit_todo_task_deleteButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@color/transparent"
+            android:layout_weight="0.1"
+            android:src="@drawable/ic_clear_white_24dp" />
+    </LinearLayout>
+
 </LinearLayout>
+

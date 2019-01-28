@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.DialogFragment;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
+import android.text.method.Touch;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -27,6 +28,9 @@ public class TodoApplicationLogic {
 
     private Gui mGui;
     private Data mData;
+
+    private ClickListener mClickListener;
+    private TouchListener mTouchListener;
 
     private ArrayList<Task> mTasks;
     private DialogFragment datePicker;
@@ -61,15 +65,16 @@ public class TodoApplicationLogic {
     }
 
     private void initListener() {
-        ClickListener clickListener;
-        clickListener = new ClickListener(this);
+        mClickListener = new ClickListener(this);
+        mTouchListener = new TouchListener(this);
+
         MenuItemClickListener menuItemClickListener;
         menuItemClickListener = new MenuItemClickListener(this);
 
-        mGui.getmToolbar().setNavigationOnClickListener(clickListener);
+        mGui.getmToolbar().setNavigationOnClickListener(mClickListener);
         mGui.getmToolbar().setOnMenuItemClickListener(menuItemClickListener);
-        mGui.getmStartDate().setOnClickListener(clickListener);
-        mGui.getmEndDate().setOnClickListener(clickListener);
+        mGui.getmStartDate().setOnClickListener(mClickListener);
+        mGui.getmEndDate().setOnClickListener(mClickListener);
 
         //mGui.getmCheckBox().setOnClickListener(clickListener);
         //mGui.getmRowLayout().setOnClickListener(clickListener);
@@ -121,12 +126,13 @@ public class TodoApplicationLogic {
     //Hier wird die Liste erzeugt
     public void createList(){
         mGui.setmChoiceMode();
-        TasksAdapter adapter =
+        mTaskAdapter =
                 new TasksAdapter(
                         mActivity, //Die aktuelle Activity
                         R.layout.rowlayout, // ID des Layouts für ale Listen-Elemente
-                        mTasks); // Die Liste der Elemente
-        mGui.setmAdapter(adapter);
+                        mTasks,
+                        this); // Die Liste der Elemente
+        mGui.setmAdapter(mTaskAdapter);
 
         checkProgress(mTasks);
     }
@@ -158,12 +164,46 @@ public class TodoApplicationLogic {
         mGui.setmProgressText(Integer.toString(trueChecked) + " / " + Integer.toString(allChecker));
     }
 
+    void onEditTextClicked() {
+        addInputTagField();
+    }
+
     public void onActivityReturned(int requestCode, int resultCode, Intent data) {
+    }
+    //Remove String from TagList and notify adapter
+    void onDeleteButtonClicked(int id){
+        mTasks.remove(id);
+        mTaskAdapter.notifyDataSetChanged();
     }
 
     public void onOkButtonClicked() {}
 
     public void onBackPressed() {    }
 
+    private void addInputTagField() {
+        mTasks.add(new Task());
+        mTaskAdapter.notifyDataSetChanged();
+        mGui.getListView().post(new Runnable() {
+            @Override
+            public void run() {
+                mGui.getListView().setSelection(mTaskAdapter.getCount() - 1);
+            }
+        });
+    }
+
+    public ArrayList<Task> getmTasks()
+    {
+        return mTasks;
+    }
+
+    //Return number of Strings in TagList
+    int getTasksItemCount(){
+        return mGui.getTasksItemCount();
+    }
+
+    public ClickListener getClickListener() {
+        return mClickListener;
+    }
+    public TouchListener getTouchListener() { return mTouchListener; }
 
 }
