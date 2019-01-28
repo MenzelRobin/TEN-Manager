@@ -22,7 +22,8 @@
         </activity>
         <activity android:name=".OverviewActivity"></activity>
         <activity android:name=".activities.todo.Init"
-            android:windowSoftInputMode="adjustPan">
+            android:windowSoftInputMode="adjustPan"
+            android:configChanges="orientation|keyboardHidden|screenSize">
         </activity>
 
         <activity android:name=".activities.note.note.NoteActivity"

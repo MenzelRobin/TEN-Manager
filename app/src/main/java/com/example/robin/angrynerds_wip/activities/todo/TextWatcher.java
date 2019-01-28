@@ -15,7 +15,7 @@ public class TextWatcher implements android.text.TextWatcher {
 
     @Override
     public void onTextChanged(CharSequence c, int start, int count, int after){
-        mTodoApplicationLogic.onTaskTextChanged(c.toString(), mView);
+        mTodoApplicationLogic.onTextChanged(c.toString(), mView);
     }
 
     @Override

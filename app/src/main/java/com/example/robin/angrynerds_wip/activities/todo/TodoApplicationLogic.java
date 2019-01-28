@@ -83,6 +83,9 @@ public class TodoApplicationLogic {
         mGui.getmStartDate().setOnClickListener(mClickListener);
         mGui.getmEndDate().setOnClickListener(mClickListener);
 
+        mGui.getmTitle().addTextChangedListener(new TextWatcher(this,mGui.getmTitle()));
+        mGui.getmText().addTextChangedListener(new TextWatcher(this,mGui.getmText()));
+
         //mGui.getmCheckBox().setOnClickListener(clickListener);
         //mGui.getmRowLayout().setOnClickListener(clickListener);
     }
@@ -188,12 +191,21 @@ public class TodoApplicationLogic {
     }
 
     //Insert user input into TagList
-    void onTaskTextChanged(String s, View mView) {
-        mTasks.get(mView.getId()).setDescription(s);
-        if(mView.getId() == mTasks.size()-1){
-            addInputTagField();
+    void onTextChanged(String s, View mView) {
+
+        if (mView.getId() == R.id.edit_todo_title) {
+            mData.setTitle(s);
+        } //R.id.id_event_editText_title
+        else if (mView.getId() == R.id.edit_todo_text) {
+            mData.setText(s);
+        } //R.id.id_event_editText_title
+        else {
+            mTasks.get(mView.getId()).setDescription(s);
+            if (mView.getId() == mTasks.size() - 1) {
+                addInputTagField();
+            }
+            updateProgress();
         }
-        updateProgress();
     }
 
     public void onOkButtonClicked() { UpdateTodo(); }
@@ -237,4 +249,15 @@ public class TodoApplicationLogic {
         Update.saveTEN(todo);
     }
 
+    public void onConfigurationChanged(Gui pGui) {
+        mGui = pGui;
+        mTasks = mData.getmTodo().getTasks();
+        if (mTasks.get(mTasks.size()-1).getDescription() != "")
+        {
+            mTasks.add(new Task());
+        }
+        createList();
+        initGui();
+        initListener();
+    }
 }

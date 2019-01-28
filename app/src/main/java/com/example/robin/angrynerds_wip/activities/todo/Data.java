@@ -35,6 +35,11 @@ public class Data {
         updateTodo();
     }
 
+    public void setText(String text) {
+        mTodo.setNote(text);
+        updateTodo();
+    }
+
 
     //Getter
     public Todo getmTodo() {
