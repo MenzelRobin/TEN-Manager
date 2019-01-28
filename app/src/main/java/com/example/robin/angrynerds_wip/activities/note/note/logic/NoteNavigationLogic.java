@@ -55,9 +55,8 @@ public class NoteNavigationLogic {
                 
             case NoteConstants.TAGEDITOR_ACTIVITY_REQUESTCODE:
                 if (pResultCode == -1) {
-                    Bundle extras = pData.getExtras();
                     try {
-                        mNoteApplicationLogic.getNoteData().getNote().setTags(extras.getStringArrayList("taglist"));
+                        mNoteApplicationLogic.getNoteData().getNote().setTags(pData.getStringArrayListExtra("taglist"));
                         mNoteApplicationLogic.getNoteGui().setNoteTags(mNoteApplicationLogic.getNoteData().getNote().getTags());
                     } catch (NullPointerException e) {
                         Log.e("Error", e.getMessage());
