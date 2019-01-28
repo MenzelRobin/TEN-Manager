@@ -29,12 +29,6 @@ public class TaskManager {
         for (Image image : this.mNoteDataBackend.getmNoteData().getNote().getPictures()) {
             notePreviewImageLoader.loadPreviewImage(image);
         }
-        loadOriginalImagesRoutine();
-    }
-
-    public void loadOriginalImagesRoutine(){
-        RegularOriginalImageLoader regularOriginalImageLoader = new RegularOriginalImageLoader(mNoteDataBackend);
-        regularOriginalImageLoader.loadOriginalImage();
     }
 
     public void loadNote(String pNoteId) {

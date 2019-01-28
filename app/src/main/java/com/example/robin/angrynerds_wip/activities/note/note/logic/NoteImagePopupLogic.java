@@ -23,6 +23,10 @@ public class NoteImagePopupLogic {
             View displayMetrics = mNoteApplicationLogic.getNoteData().getActivity().getWindow().findViewById(Window.ID_ANDROID_CONTENT);
             mImageOverlay = new ImageOverlay(pBitmap, displayMetrics.getWidth(), displayMetrics.getHeight());
             mImageOverlay.display(mNoteApplicationLogic.getNoteData().getActivity());
+
+            //saving RAM
+            mNoteApplicationLogic.getNoteData().resetNoteBitmaps();
+            mImageOverlay = null;
         }
     }
     
