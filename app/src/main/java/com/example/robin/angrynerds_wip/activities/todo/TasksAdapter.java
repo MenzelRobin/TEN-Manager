@@ -48,6 +48,7 @@ public class TasksAdapter extends ArrayAdapter {
         // Populate the data into the template view using the data object
         description.setId(position);
         description.setText(task.getDescription());
+        description.addTextChangedListener(new TextWatcher(mTodoApplicationLogic, description));
         status.setId(position);
         status.setChecked(task.getStatus());
         deleteButton.setId(position);
