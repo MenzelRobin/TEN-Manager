@@ -18,7 +18,7 @@ public class Note extends TEN {
     private String description;
     private ArrayList<String> tags;
     private ArrayList<Image> pictures;
-    private int imageIDCounter;
+    public int imageIDCounter;
 
     //Constructors
     public Note() {
@@ -33,6 +33,7 @@ public class Note extends TEN {
         this.tags = new ArrayList<String>();
         this.pictures = new ArrayList<Image>();
     }
+
     public Note(String title, String description) {
         super(title);
         this.description = description;
@@ -48,7 +49,6 @@ public class Note extends TEN {
         this.pictures = pictures;
         this.imageIDCounter = imageIDCounter;
     }
-
 
     //Getter and Setter
     public String getDescription() {
@@ -69,54 +69,37 @@ public class Note extends TEN {
 
     public Image addImage(Bitmap bitmap) {
         this.imageIDCounter++;
-        String imageID = this.getID() + RepositoryConstants.IMAGE_CORE_ID+this.imageIDCounter;
-        Log.i("NoteRemake", "ImageID: " + imageID);
+        String imageID = this.getID() + RepositoryConstants.IMAGE_CORE_ID + this.imageIDCounter;
         Image image = new Image(imageID, bitmap);
         this.pictures.add(image);
-        return  image;
+        return image;
     }
 
     public void addImage(Image pImage) {
         Log.i("NoteRemake", "Pictures Size: " + pictures.size());
-        for(int i = 0; i< pictures.size(); i++){
-            if(pImage.getId().equals(pictures.get(i).getId())){
+        for (int i = 0; i < pictures.size(); i++) {
+            if (pImage.getId().equals(pictures.get(i).getId())) {
                 pictures.set(i, pImage);
             }
         }
-
     }
 
     public ArrayList<Image> getPictures() {
         return pictures;
     }
 
-    public void setPictures(ArrayList<Image> pictures) {
-        this.pictures = pictures;
-    }
-
-    public int getImageIDCounter() {
-        return imageIDCounter;
-    }
-    public String getNextImageID (){
-        this.imageIDCounter++;
-        String imageID = this.getID()+RepositoryConstants.IMAGE_CORE_ID+this.imageIDCounter;
-        return  imageID;
-    }
-
-    public void setImageIDCounter(int imageIDCounter) {
-        this.imageIDCounter = imageIDCounter;
-    }
-
     public Bundle getBundle() {
         Bundle bundle = super.getBundle();
         bundle.putString(BundleKeys.keyNoteDescription, description);
         bundle.putStringArrayList(BundleKeys.keyNoteTags, tags);
-        if(!pictures.isEmpty()) bundle.putString(BundleKeys.keyNotePictures, pictures.get(0).getId());
+        if (!pictures.isEmpty())
+            bundle.putString(BundleKeys.keyNotePictures, pictures.get(0).getId());
         return bundle;
     }
-    public void imageNotFound(Image image){
-        for(int i = 0; i < this.getPictures().size(); i++){
-            if(image.getId().equals(this.getPictures().get(i).getId())){
+
+    public void imageNotFound(Image image) {
+        for (int i = 0; i < this.getPictures().size(); i++) {
+            if (image.getId().equals(this.getPictures().get(i).getId())) {
                 this.getPictures().remove(i);
             }
         }

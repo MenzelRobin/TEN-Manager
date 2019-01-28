@@ -43,6 +43,7 @@ public class NoteNavigationLogic {
                 if (pResultCode == -1) {
                     Uri selectedImage = pData.getData();
                     try {
+                        Log.d("Kamera", "right case");
                         Bitmap bitmap = MediaStore.Images.Media.getBitmap(mNoteApplicationLogic.getNoteData().getActivity().getContentResolver(), selectedImage);
                         mNoteApplicationLogic.getNoteData().addImageFromGallery(bitmap);
 

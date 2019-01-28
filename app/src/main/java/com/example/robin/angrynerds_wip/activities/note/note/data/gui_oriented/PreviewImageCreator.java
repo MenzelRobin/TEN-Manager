@@ -1,6 +1,7 @@
 package com.example.robin.angrynerds_wip.activities.note.note.data.gui_oriented;
 
 import android.graphics.Bitmap;
+import android.util.Log;
 
 import com.example.robin.angrynerds_wip.activities.note.note.data.NoteConstants;
 
@@ -9,6 +10,7 @@ public class PreviewImageCreator {
     public PreviewImageCreator(){}
 
     public Bitmap getPreviewImage(Bitmap pOriginalBitmap){
+        Log.d("Kamera", "" + pOriginalBitmap);
         //Crop image to square
         if (pOriginalBitmap.getWidth() > pOriginalBitmap.getHeight()) {
             pOriginalBitmap = Bitmap.createBitmap(

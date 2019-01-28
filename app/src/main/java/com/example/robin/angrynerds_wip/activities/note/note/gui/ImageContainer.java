@@ -15,16 +15,11 @@ public class ImageContainer extends GraphicsContainer {
     private ImageView mImageView;
     private PreviewImageCreator mPreviewImageCreator;
 
-    public ImageContainer(NoteActivity pActivity, int pId, Image pOriginalImage) {
+    public ImageContainer(NoteActivity pActivity, int pId, Image pPreviewImage) {
         super(pActivity, pId);
         mPreviewImageCreator = new PreviewImageCreator();
 
-        Bitmap originalBitmap = pOriginalImage.getBitmap();
-        Bitmap scaledBitmap;
-
-        scaledBitmap = mPreviewImageCreator.getPreviewImage(originalBitmap);
-
-        initiateView(scaledBitmap);
+        initiateView(pPreviewImage.getBitmap());
         pActivity.registerForContextMenu(mImageContainer);
     }
 
