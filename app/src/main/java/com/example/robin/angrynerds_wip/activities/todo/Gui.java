@@ -3,9 +3,11 @@ package com.example.robin.angrynerds_wip.activities.todo;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -28,6 +30,7 @@ public class Gui extends AppCompatActivity{
     private LinearLayout mRowLayout;
     private CheckBox mCheckBox;
     private Toolbar mToolbar;
+    private ImageView mTaskDeleteButton;
 
 
     public Gui(Init activity) {
@@ -42,6 +45,7 @@ public class Gui extends AppCompatActivity{
         mTasks = activity.findViewById(R.id.edit_todo_tasks);
         mRowLayout = activity.findViewById(R.id.edit_todo_rowLayout);
         mCheckBox = activity.findViewById(R.id.edit_todo_task_status);
+        mTaskDeleteButton = activity.findViewById(R.id.edit_todo_task_deleteButton);
 
         //Arraylist in TodoApplicationLogic umgezogen, funktioniert
     }
@@ -77,6 +81,8 @@ public class Gui extends AppCompatActivity{
         return mCheckBox;
     }
 
+    public ImageView getmTaskDeleteButton() { return mTaskDeleteButton; }
+
     // methods to change view attributes
     public void setmTasks(TasksAdapter adapter){mTasks.setAdapter(adapter);}
 
@@ -109,5 +115,14 @@ public class Gui extends AppCompatActivity{
         mToolbar.setBackground(new ColorDrawable(darkColor));
         //mSeperateView1.setBackground(new ColorDrawable(darkColor));
         //mSeperateView1.setAlpha((float) 0.5);
+    }
+
+    public AdapterView getListView() {
+        return mTasks;
+    }
+
+    //Return number of Strings in TagList
+    int getTasksItemCount(){
+        return mTasks.getChildCount();
     }
 }

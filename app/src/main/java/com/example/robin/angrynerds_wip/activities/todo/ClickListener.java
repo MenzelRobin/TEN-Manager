@@ -1,5 +1,6 @@
 package com.example.robin.angrynerds_wip.activities.todo;
 
+import android.util.Log;
 import android.view.View;
 
 import com.example.robin.angrynerds_wip.R;
@@ -14,6 +15,14 @@ public class ClickListener implements View.OnClickListener  {
 
     @Override
     public void onClick(View view) {
+
+        for (int i = 0; i < mTodoApplicationLogic.getTasksItemCount(); i++)
+        {
+            if (i == view.getId())
+            {
+                mTodoApplicationLogic.onDeleteButtonClicked(i);
+            }
+        }
 
         switch ( view.getId() ) {
             case R.id.edit_todo_startDate:
