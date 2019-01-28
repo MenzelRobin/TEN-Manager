@@ -11,6 +11,7 @@ import android.view.View;
 import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.data.models.tens.Todo;
 import com.example.robin.angrynerds_wip.data.models.utils.Task;
+import com.example.robin.angrynerds_wip.data.services.Update;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -31,6 +32,7 @@ public class TodoApplicationLogic {
 
     private ClickListener mClickListener;
     private TouchListener mTouchListener;
+    private CheckedChangeListener mCheckedChangeListener;
 
     private ArrayList<Task> mTasks;
     private DialogFragment datePicker;
@@ -46,7 +48,10 @@ public class TodoApplicationLogic {
         mGui = gui;
         mData = pData;
         mTasks = mData.getmTodo().getTasks();
-        mTasks.add(new Task());
+        if (mTasks.get(mTasks.size()-1).getDescription() != "")
+        {
+            mTasks.add(new Task());
+        }
         createList();
         initGui();
         initListener();
@@ -68,6 +73,7 @@ public class TodoApplicationLogic {
     private void initListener() {
         mClickListener = new ClickListener(this);
         mTouchListener = new TouchListener(this);
+        mCheckedChangeListener = new CheckedChangeListener(this);
 
         MenuItemClickListener menuItemClickListener;
         menuItemClickListener = new MenuItemClickListener(this);
@@ -114,6 +120,7 @@ public class TodoApplicationLogic {
     public void returnToOverview() {
         mActivity.overridePendingTransition(android.R.anim.fade_in, android.R.anim.slide_out_right);
         mActivity.finish();
+        UpdateTodo();
     }
 
     //Toolbar menu is clicked
@@ -135,7 +142,7 @@ public class TodoApplicationLogic {
                         this); // Die Liste der Elemente
         mGui.setmAdapter(mTaskAdapter);
 
-        checkProgress(mTasks);
+        updateProgress();
     }
 
 
@@ -148,21 +155,22 @@ public class TodoApplicationLogic {
                 mGui.getmTasks().setSelection(mTaskAdapter.getCount() - 1);
             }
         });
+        updateProgress();
     }
 
-    public void checkProgress(ArrayList<Task> arrayList){
+    public void updateProgress(){
         int trueChecked = 0;
         int allChecker = 0;
 
-        for(Task task: arrayList){
-
+        for(Task task: mTasks){
             if(task.getStatus() == true){
                 trueChecked = trueChecked + 1;
             }
-
             allChecker = allChecker + 1;
         }
+        allChecker = allChecker - 1;
         mGui.setmProgressText(Integer.toString(trueChecked) + " / " + Integer.toString(allChecker));
+        UpdateTodo();
     }
 
     void onEditTextClicked() {
@@ -175,6 +183,7 @@ public class TodoApplicationLogic {
     void onDeleteButtonClicked(int id){
         mTasks.remove(id);
         mTaskAdapter.notifyDataSetChanged();
+        updateProgress();
     }
 
     //Insert user input into TagList
@@ -183,11 +192,12 @@ public class TodoApplicationLogic {
         if(mView.getId() == mTasks.size()-1){
             addInputTagField();
         }
+        updateProgress();
     }
 
-    public void onOkButtonClicked() {}
+    public void onOkButtonClicked() { UpdateTodo(); }
 
-    public void onBackPressed() {    }
+    public void onBackPressed() {  UpdateTodo();  }
 
     private void addInputTagField() {
         mTasks.add(new Task());
@@ -198,6 +208,7 @@ public class TodoApplicationLogic {
                 mGui.getListView().setSelection(mTaskAdapter.getCount() - 1);
             }
         });
+        updateProgress();
     }
 
     public ArrayList<Task> getmTasks()
@@ -214,5 +225,15 @@ public class TodoApplicationLogic {
         return mClickListener;
     }
     public TouchListener getTouchListener() { return mTouchListener; }
+    public CheckedChangeListener getmCheckedChangeListener() { return mCheckedChangeListener;}
+
+    public void UpdateTodo()
+    {
+        Todo todo = mData.getmTodo();
+        todo.setTitle(mGui.getmTitle().getText().toString());
+        todo.setNote(mGui.getmText().getText().toString());
+
+        Update.saveTEN(todo);
+    }
 
 }

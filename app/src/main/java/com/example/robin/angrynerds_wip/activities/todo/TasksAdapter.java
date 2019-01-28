@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.example.robin.angrynerds_wip.R;
@@ -35,10 +36,11 @@ public class TasksAdapter extends ArrayAdapter {
         // Lookup view for data population
         EditText description = (EditText) rowView.findViewById(R.id.edit_todo_task_description);
         CheckBox status = (CheckBox) rowView.findViewById(R.id.edit_todo_task_status);
-        ImageView deleteButton = (ImageView) rowView.findViewById(R.id.edit_todo_task_deleteButton);
+        ImageButton deleteButton = (ImageButton) rowView.findViewById(R.id.edit_todo_task_deleteButton);
 
         if (position == mTasks.size() - 1)
         {
+            status.setVisibility(View.INVISIBLE);
             deleteButton.setVisibility(View.INVISIBLE);
             description.setOnTouchListener(mTodoApplicationLogic.getTouchListener());
         }
@@ -49,8 +51,12 @@ public class TasksAdapter extends ArrayAdapter {
         description.setId(position);
         description.setText(task.getDescription());
         description.addTextChangedListener(new TextWatcher(mTodoApplicationLogic, description));
+
         status.setId(position);
+        status.setOnCheckedChangeListener(mTodoApplicationLogic.getmCheckedChangeListener());
         status.setChecked(task.getStatus());
+
+
         deleteButton.setId(position);
         deleteButton.setOnClickListener(mTodoApplicationLogic.getClickListener());
 

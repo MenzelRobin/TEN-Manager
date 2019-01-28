@@ -25,7 +25,7 @@
             android:textColor="@color/TextWhite"
             android:gravity="center_vertical"
             android:layout_weight="0.8"
-            android:backgroundTint="@color/bgColor4"/>
+            android:backgroundTint="@color/transparent"/>
         <ImageButton
             android:id="@+id/edit_todo_task_deleteButton"
             android:layout_width="wrap_content"
