@@ -15,17 +15,4 @@ public class NoteDataHelper {
         return pContainerIndex - 1;
     }
 
-    //TODO define ifs
-    public boolean isNoteSavable(){
-        String title = mNoteData.getNote().getTitle();
-        String description = mNoteData.getNote().getDescription();
-
-        if(title == null || description == null){
-            return false;
-        }
-        else if(title.equals("") && description.equals("")){
-            return false;
-        }
-        return  true;
-    }
 }
