@@ -46,6 +46,7 @@ public class TodoApplicationLogic {
         mGui = gui;
         mData = pData;
         mTasks = mData.getmTodo().getTasks();
+        mTasks.add(new Task());
         createList();
         initGui();
         initListener();
@@ -174,6 +175,14 @@ public class TodoApplicationLogic {
     void onDeleteButtonClicked(int id){
         mTasks.remove(id);
         mTaskAdapter.notifyDataSetChanged();
+    }
+
+    //Insert user input into TagList
+    void onTaskTextChanged(String s, View mView) {
+        mTasks.get(mView.getId()).setDescription(s);
+        if(mView.getId() == mTasks.size()-1){
+            addInputTagField();
+        }
     }
 
     public void onOkButtonClicked() {}
