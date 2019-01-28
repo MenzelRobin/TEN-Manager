@@ -23,6 +23,7 @@ public class NoteAsyncLoadingLogic {
     }
 
     public void addAsyncPreviewImage(Image pImage) {
+        mNoteData.getNoteDataGui().addPreviewImageFromOriginal(pImage);
         mNoteData.addImageContainer(pImage);
         ImageContainer imageContainer = (ImageContainer) mNoteData.getNoteImageContainers().get(mNoteData.getNoteImageContainers().size() - 2);
         mNoteGui.addSingleAnimatedImage(imageContainer);

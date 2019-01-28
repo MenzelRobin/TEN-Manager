@@ -1,5 +1,7 @@
 package com.example.robin.angrynerds_wip.data.repository;
 
+import android.util.Log;
+
 import com.couchbase.lite.Document;
 import com.example.robin.angrynerds_wip.data.models.tens.Event;
 import com.example.robin.angrynerds_wip.data.models.tens.Note;

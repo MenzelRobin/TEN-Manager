@@ -33,7 +33,6 @@ public class NoteData {
         mNoteDataBackend = new NoteDataBackend(this);
         mNoteDataGui = new NoteDataGui(this);
         try{
-            mNote = new Note();
             loadNote(pId);
         }
         catch (Exception e){
@@ -72,7 +71,10 @@ public class NoteData {
 
     public void addImageFromGallery(Bitmap image) { mNoteDataGui.addImageFromGallery(image); }
 
-    public void deleteImage(int id) { mNoteDataBackend.deleteImage(id); }
+    public void deleteImage(int id) {
+        mNoteDataBackend.deleteImage(id);
+        mNoteDataGui.deleteImage(id);
+    }
 
     public void addImageContainer(Image image) { mNoteDataGui.addImageContainer(image); }
 

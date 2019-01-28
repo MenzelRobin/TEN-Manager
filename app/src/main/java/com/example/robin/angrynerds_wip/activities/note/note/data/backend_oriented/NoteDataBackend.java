@@ -30,7 +30,7 @@ public class NoteDataBackend {
         Image image = new Image(mNoteData.getNote().getPictures().get(id - 1));
         mNoteData.getNote().getPictures().remove(id - 1);
         mImagesToBeDeleted.add(image);
-        mNoteData.getNoteDataGui().imagesToImageContainer();
+
     }
 
     public void triggerOriginalImageLoad(int pIndex) {
