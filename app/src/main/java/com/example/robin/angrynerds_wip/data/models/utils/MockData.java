@@ -3,6 +3,7 @@ package com.example.robin.angrynerds_wip.data.models.utils;
 import android.app.Activity;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.util.Log;
 //import android.support.annotation.NonNull;
 
 import com.example.robin.angrynerds_wip.R;
@@ -42,11 +43,12 @@ public class MockData {
         koalaNote.setTags(koalaTags);
 
         koalaNote.addImage(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_koala1));
-
+        Update.saveTEN(koalaNote);
+        koalaNote.getPictures().get(0).setBitmap(null);
         koalaNote.addImage(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_koala2));
 
         Update.saveTEN(koalaNote);
-        koalaNote.setPictures(null);
+        koalaNote = null;
 
         Date visitKoalaDate = new Date(1588590000000L);
         Date reminder2 = new Date(1588590000000L - (1000 * 60 * 60 * 24 * 7));
@@ -68,10 +70,13 @@ public class MockData {
         delfinNote.setTags(delfinTags);
 
         delfinNote.addImage(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_delfin1));
+        Update.saveTEN(delfinNote);
+        delfinNote.getPictures().get(0).setBitmap(null);
         delfinNote.addImage(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_delfin2));
 
-        Update.saveTEN(delfinNote);
 
+        Update.saveTEN(delfinNote);
+        delfinNote = null;
 
         Task besuchMamaPapa1 = new Task("Küche putzen");
         Task besuchMamaPapa2 = new Task("Bad putzen");
@@ -86,6 +91,7 @@ public class MockData {
                 "aufgeräumt sein!", besuchMamaPapaTasks);
         besuchMamaPapa.setEndDate(new Date(1551297600000L));
         Update.saveTEN(besuchMamaPapa);
+        besuchMamaPapa = null;
 
         Note klausureingrenzung = new Note("Klausureingrenzung", "Es kommt die folgenden Folien vor: 24-29, 50-71, 83-101");
         ArrayList<String> klausurTags = new ArrayList<String>();
@@ -93,6 +99,7 @@ public class MockData {
         klausurTags.add("FH");
         klausureingrenzung.setTags(klausurTags);
         Update.saveTEN(klausureingrenzung);
+        klausureingrenzung = null;
 
 
         Date konzertBringsDate = new Date(1638314460000L);
@@ -102,6 +109,7 @@ public class MockData {
         String addressBrings = "Köln, Tanzbrunnen";
         Event konzertBrings = new Event("Konzert Brings", konzertBringsDate, konzertBringsReminder, addressBrings);
         Update.saveTEN(konzertBrings);
+        konzertBrings = null;
 
         Date elternBesuchDate = new Date(1550826000000L);
         Date reminder2elternBesuch = new Date(1550826000000L - (1000 * 60 * 60 * 24 * 7));
@@ -110,6 +118,7 @@ public class MockData {
         String addressElternBesuch = "zuhause";
         Event elternBesuch = new Event("Besuch von Mama und Papa", elternBesuchDate, elternBesuchReminder, addressElternBesuch);
         Update.saveTEN(elternBesuch);
+        elternBesuch = null;
 
 
         Task küchePutzen1 = new Task("Arbeitsfläche wischen");
@@ -127,6 +136,7 @@ public class MockData {
         küchePutzen.setStartDate(new Date(1550448000000L));
         küchePutzen.setEndDate(new Date(1551052800000L));
         Update.saveTEN(küchePutzen);
+        küchePutzen = null;
 
 
         Task reiseVorbereitung1 = new Task("Wäsche waschen");
@@ -142,6 +152,7 @@ public class MockData {
                 "",
                 reiseVorbereitungTasks);
         Update.saveTEN(reiseVorbereitung);
+        reiseVorbereitung = null;
 
         Note kaenguruNote = new Note("Kängurus","Kängurus gelten als typischer Vertreter der Fauna Australiens.");
         ArrayList<String> kaenguruTags = new ArrayList<String>();
@@ -152,11 +163,14 @@ public class MockData {
         kaenguruNote.setTags(kaenguruTags);
 
         kaenguruNote.addImage(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_kaenguru1));
+        Update.saveTEN(kaenguruNote);
+        kaenguruNote.getPictures().get(0).setBitmap(null);
         kaenguruNote.addImage(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_kaenguru2));
 
         Update.saveTEN(kaenguruNote);
-        kaenguruNote.setPictures(null);
+        kaenguruNote=null;
 
+        Log.i("mock", "before Melbourne");
         Note melbourneNote = new Note("Melbourne", "Melbourne ist die an der " +
                 "Südostküste Australiens gelegene Hauptstadt des australischen Bundesstaats " +
                 "Victoria. Im Stadtzentrum liegt der moderne Federation-Square-Komplex mit Plätzen," +
@@ -173,16 +187,17 @@ public class MockData {
 
         melbourneNote.addImage(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_melbourne1));
         Update.saveTEN(melbourneNote);
-        melbourneNote.getPictures().get(0).setBitmap(null);
+        for (Image image: melbourneNote.getPictures()) image.setBitmap(null);
 
         melbourneNote.addImage(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_melbourne2));
         Update.saveTEN(melbourneNote);
-        melbourneNote.getPictures().get(1).setBitmap(null);
+        for (Image image: melbourneNote.getPictures()) image.setBitmap(null);
 
         melbourneNote.addImage(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_melbourne3));
         Update.saveTEN(melbourneNote);
-
-        melbourneNote.setPictures(null);
+        for (Image image: melbourneNote.getPictures()) image.setBitmap(null);
+        Log.i("mock", "afterMelbourne");
+        melbourneNote=null;
 
         Note bambusNote = new Note("Bambus", "Bambus ist eine der zwölf" +
                 " Unterfamilien aus der Familie der Süßgräser, der etwa 116 Gattungen zugerechnet" +
@@ -198,7 +213,7 @@ public class MockData {
         bambusNote.addImage(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_bambus1));
 
         Update.saveTEN(bambusNote);
-        bambusNote.setPictures(null);
+        bambusNote=null;
 
         Date delfinDate = new Date(1588831200000L);
         Date reminder2delfin = new Date(1588831200000L - (1000 * 60 * 60 * 24 * 7));
@@ -207,6 +222,7 @@ public class MockData {
         String delfinAdresse = "Tin Can Bay";
         Event delfinSchwimmen = new Event("Schwimmen mit Delfinen", delfinDate, delfinReminder, delfinAdresse);
         Update.saveTEN(delfinSchwimmen);
+        delfinSchwimmen = null;
 
 
         Task klausurVorbereitung1 = new Task("24-29 lernen");
@@ -226,6 +242,7 @@ public class MockData {
                 "",
                 klausurVorbereitungTasks);
         Update.saveTEN(klausurVorbereitung);
+        klausurVorbereitung = null;
 
 
         Task appProgrammierung1 = new Task("Anforderungen analysieren", true);
@@ -247,5 +264,6 @@ public class MockData {
                 "Grobes Schema einer Softwareentwickung",
                 appProgrammierungTasks);
         Update.saveTEN(appProgrammierung);
+        appProgrammierung = null;
     }
 }
