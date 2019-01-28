@@ -119,6 +119,8 @@ public class NoteApplicationLogic {
     //Initialises Landscape or Portrait Activity with NoteData, rescales ImageOverlay if displayed
     public void onConfigurationChanged(NoteGui pGui) {
         this.mNoteGui = pGui;
+        mNoteGuiRefresherLogic = new NoteGuiRefresherLogic(this);
+
         mNoteData.getNoteDataGui().addImageButton();
         mNoteListenerInitializer.initListener();
         mNoteGuiRefresherLogic.dataToGui();
