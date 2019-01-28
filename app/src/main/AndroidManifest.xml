@@ -3,6 +3,9 @@
     package="com.example.robin.angrynerds_wip">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA"
+        android:maxSdkVersion="22" />
+
     <uses-feature android:name="android.hardware.camera"
         android:required="true" />
     <application
