@@ -41,18 +41,18 @@ public class NoteGuiRefresherLogic {
 
         ArrayList<Image> previewImages = mNoteData.getNotePreviewImages();
         ClickListener clickListener = mNoteApplicationLogic.getNoteListenerInitializer().getClickListener();
-        LinearLayout imageLayout = new LinearLayout(mNoteData.getActivity());
+        LinearLayout noteImageContainerLayout = mNoteApplicationLogic.getNoteGui().getNoteImageContainer();
 
         for(int i = 1; i <= previewImages.size(); i++){
             ImageContainer imageContainer = new ImageContainer(mNoteData.getActivity(), i, previewImages.get(i-1));
             imageContainer.getImageContainer().setOnClickListener(clickListener);
-            imageLayout.addView(imageContainer.getImageContainer());
+            noteImageContainerLayout.addView(imageContainer.getImageContainer());
         }
 
         IconContainer iconContainer = new IconContainer(mNoteData.getActivity(), 0, ContextCompat.getDrawable(mNoteData.getActivity(), R.drawable.ic_add_a_photo_grey_24dp));
         iconContainer.getImageContainer().setOnClickListener(clickListener);
-        imageLayout.addView(iconContainer.getImageContainer());
+        noteImageContainerLayout.addView(iconContainer.getImageContainer());
 
-        mNoteApplicationLogic.getNoteGui().setNoteImageContainer(imageLayout);
+        //mNoteApplicationLogic.getNoteGui().setNoteImageContainer(noteImageContainerLayout);
     }
 }
