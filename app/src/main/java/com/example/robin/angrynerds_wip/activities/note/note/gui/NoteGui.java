@@ -124,13 +124,17 @@ public class NoteGui {
         Toast.makeText(pActivity, pText, Toast.LENGTH_SHORT).show();
     }
 
-    public void addSingleAnimatedImage(ImageContainer pImageContainer) {
+    public void addSingleAnimatedImage(NoteActivity noteActivity, Image pImage, ClickListener clickListener) {
         AlphaAnimation anim = new AlphaAnimation(0,  1);
         anim.setDuration(500);
         anim.setRepeatMode(Animation.REVERSE);
         int position = mNoteImageContainer.getChildCount()-1;
-        mNoteImageContainer.addView(pImageContainer.getImageContainer(), position);
-        pImageContainer.getImageView().startAnimation(anim);
+
+        ImageContainer imageContainer = new ImageContainer(noteActivity, position+1, pImage);
+        imageContainer.getImageContainer().setOnClickListener(clickListener);
+
+        mNoteImageContainer.addView(imageContainer.getImageContainer(), position);
+        imageContainer.getImageView().startAnimation(anim);
     }
 
     public void startLoadingSpinner(){

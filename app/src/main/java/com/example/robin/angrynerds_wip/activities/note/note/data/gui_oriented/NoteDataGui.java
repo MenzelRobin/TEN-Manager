@@ -65,6 +65,13 @@ public class NoteDataGui {
     public void refreshImages(){
         mNoteData.getNoteApplicationLogic().getNoteGuiRefresherLogic().refreshImages();
     }
+
+    public Image getLatestImage() {
+        if(mPreviewImages.size()>0){
+            return mPreviewImages.get(mPreviewImages.size()-1);
+        }
+        else return null;
+    }
     //
     //
     //

@@ -21,6 +21,9 @@ public class NoteAsyncLoadingLogic {
     }
 
     public void addAsyncPreviewImage(Image pImage) {
+        mNoteApplicationLogic.getNoteData().getNoteDataGui().addPreviewImageFromOriginal(pImage);
+        Image image = mNoteApplicationLogic.getNoteData().getNoteDataGui().getLatestImage();
+        mNoteApplicationLogic.getNoteGui().addSingleAnimatedImage(mNoteData.getActivity(), image, mNoteApplicationLogic.getNoteListenerInitializer().getClickListener());
     }
 
     //Irgendwas mit GUI und Async eventuell mit addAsyncImage in eine Klasse
