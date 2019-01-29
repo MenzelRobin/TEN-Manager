@@ -1,8 +1,10 @@
 package com.example.robin.angrynerds_wip.activities.note.note.gui;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -10,6 +12,7 @@ import android.widget.ImageView;
 
 import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.activities.note.note.data.NoteConstants;
+import com.example.robin.angrynerds_wip.activities.note.note.logic.listener_watcher.ImageOverlayListener;
 
 public class ImageOverlay {
 
@@ -19,16 +22,19 @@ public class ImageOverlay {
     private int displayHeight;
     private int frameWidth;
     private int frameHeight;
+    private ImageOverlayListener mImageOverlayListener;
 
-    public ImageOverlay(Bitmap image, int displayWidth, int displayHeight) {
-        mImage = image;
-        this.displayWidth = displayWidth;
-        this.displayHeight = displayHeight;
+    public ImageOverlay(Bitmap pImage, int pDisplayWidth, int pDisplayHeight, ImageOverlayListener pImageOverlayListener) {
+        this.mImage = pImage;
+        this.mImageOverlayListener = pImageOverlayListener;
+        this.displayWidth = pDisplayWidth;
+        this.displayHeight = pDisplayHeight;
     }
 
     //Displays the image in an AlertDialog
     public void display(Activity pActivity) {
         AlertDialog.Builder builder = new AlertDialog.Builder(pActivity, R.style.CustomDialog);
+        builder.setOnCancelListener(mImageOverlayListener);
         dialog = builder.create();
         LayoutInflater inflater = pActivity.getLayoutInflater();
         View dialogLayout = inflater.inflate(R.layout.activity_note_imageoverlay, null);
@@ -91,4 +97,5 @@ public class ImageOverlay {
         displayHeight = saveValue;
         display(pActivity);
     }
+
 }
