@@ -31,11 +31,19 @@ public class Gui extends AppCompatActivity{
     private CheckBox mCheckBox;
     private Toolbar mToolbar;
     private ImageView mTaskDeleteButton;
+    private View mSeperateView1;
+    private View mSeperateView2;
+    private View mSeperateView3;
+    private View mSeperateView4;
 
 
     public Gui(Init activity) {
         activity.setContentView(R.layout.activity_todo);
         mRelativeLayout = activity.findViewById(R.id.edit_todo_mainRelativeLayout);
+        mSeperateView1 = activity.findViewById(R.id.edit_todo_view_seperate1);
+        mSeperateView2 = activity.findViewById(R.id.edit_todo_view_seperate2);
+        mSeperateView3 = activity.findViewById(R.id.edit_todo_view_seperate3);
+        mSeperateView4 = activity.findViewById(R.id.edit_todo_view_seperate4);
         mToolbar = activity.findViewById(R.id.id_todo_toolbar);
         mTitle = activity.findViewById(R.id.edit_todo_title);
         mText = activity.findViewById(R.id.edit_todo_text);
@@ -113,6 +121,10 @@ public class Gui extends AppCompatActivity{
         mRelativeLayout.setBackground(new ColorDrawable(color));
         mTasks.setBackground(new ColorDrawable(color));
         mToolbar.setBackground(new ColorDrawable(darkColor));
+        mSeperateView1.setBackground(new ColorDrawable(darkColor));
+        mSeperateView2.setBackground(new ColorDrawable(darkColor));
+        mSeperateView3.setBackground(new ColorDrawable(darkColor));
+        mSeperateView4.setBackground(new ColorDrawable(darkColor));
         //mSeperateView1.setBackground(new ColorDrawable(darkColor));
         //mSeperateView1.setAlpha((float) 0.5);
     }
