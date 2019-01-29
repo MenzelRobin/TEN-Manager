@@ -18,14 +18,17 @@ public class TextWatcher implements android.text.TextWatcher {
         mTodoApplicationLogic.onTextChanged(c.toString(), mView);
     }
 
+
     @Override
     public void afterTextChanged(Editable s){
-        String result = s.toString().replaceAll(" ", "");
+
+        //String result = s.toString().replaceAll(" ", "");
+        String result = s.toString();
         if (!s.toString().equals(result)) {
             ((EditText)mView).setText(result);
             ((EditText)mView).setSelection(result.length());
-            // alert the user
         }
+
     }
 
     @Override
