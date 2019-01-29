@@ -5,6 +5,7 @@ import android.app.DialogFragment;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.text.method.Touch;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -14,6 +15,7 @@ import com.example.robin.angrynerds_wip.data.models.utils.Task;
 import com.example.robin.angrynerds_wip.data.services.Update;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -109,7 +111,7 @@ public class TodoApplicationLogic {
     }
 
     public String formatDate(Date date){
-        DateFormat displayFormat = new SimpleDateFormat("EEEE', ' dd. MMMM yyyy", Locale.GERMAN);
+        DateFormat displayFormat = new SimpleDateFormat("EEEE, dd. MMMM yyyy", Locale.GERMAN);
         return displayFormat.format(date);
     }
 
@@ -245,6 +247,13 @@ public class TodoApplicationLogic {
         Todo todo = mData.getmTodo();
         todo.setTitle(mGui.getmTitle().getText().toString());
         todo.setNote(mGui.getmText().getText().toString());
+        try{
+            todo.setStartDate((Date) new SimpleDateFormat("EEEE, dd. MMMM yyyy", Locale.GERMAN).parse(mGui.getmStartDate().getText().toString()));
+            todo.setEndDate((Date) new SimpleDateFormat("EEEE, dd. MMMM yyyy", Locale.GERMAN).parse(mGui.getmEndDate().getText().toString()));
+        }
+        catch (ParseException e){
+            Log.e("florian","Fehler" + mGui.getmStartDate().getText().toString());
+        }
 
         Update.saveTEN(todo);
     }
