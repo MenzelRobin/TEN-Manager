@@ -4,7 +4,7 @@
     <string name="sample_activity_todo_description">Beschreibung</string>
     <string name="sample_activity_todo_startDate">Startdatum</string>
     <string name="sample_activity_todo_endDate">Enddatum</string>
-    <string name="sample_activity_todo_task">Aufgabe...</string>
+    <string name="sample_activity_todo_task">Todo hinzufügen...</string>
     <string name="sample_activity_todo_progressText">0 / 0</string>
     <string name="sample_todo_menu_toolbarDelete">Todo löschen</string>
 

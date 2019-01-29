@@ -21,8 +21,8 @@
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:hint="@string/sample_activity_todo_task"
-            android:textSize="15dp"
             android:textColor="@color/TextWhite"
+            android:textColorHint="@color/note_hintWhite"
             android:gravity="center_vertical"
             android:layout_weight="0.8"
             android:backgroundTint="@color/transparent"/>

@@ -23,7 +23,7 @@
         android:lines="1"
         android:maxLines="1"
         android:scrollbars="horizontal"
-        android:textSize="25dp"/>
+        android:textSize="20dp"/>
 
     <EditText
         android:id="@+id/edit_todo_text"
@@ -38,7 +38,7 @@
         android:maxLines="10"
         android:scrollbars="vertical"
         android:layout_marginTop="5dp"
-        android:textSize="20dp"/>
+        android:textSize="18dp"/>
 
     <RelativeLayout
         android:id="@+id/id_todo_relativeLayout_startDate"
@@ -63,7 +63,7 @@
         android:layout_toEndOf="@id/id_todo_imageView_iconStartDate"
         android:textColorHint="@color/TextWhite"
         android:textColor="@color/TextWhite"
-        android:textSize="25dp"
+        android:textSize="16dp"
         android:backgroundTint="@color/bgColor4"
         android:hint="@string/sample_activity_todo_startDate"/>
 
@@ -90,7 +90,7 @@
         android:layout_toEndOf="@id/id_todo_imageView_iconEndDate"
         android:textColorHint="@color/TextWhite"
         android:textColor="@color/TextWhite"
-        android:textSize="25dp"
+        android:textSize="16dp"
         android:backgroundTint="@color/bgColor4"
         android:hint="@string/sample_activity_todo_endDate"/>
     </RelativeLayout>
