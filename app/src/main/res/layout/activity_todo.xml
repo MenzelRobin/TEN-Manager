@@ -12,6 +12,7 @@
         layout="@layout/toolbar_ten" />
 
     <EditText
+        android:theme="@style/editTextStyle"
         android:id="@+id/edit_todo_title"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
@@ -23,9 +24,17 @@
         android:lines="1"
         android:maxLines="1"
         android:scrollbars="horizontal"
-        android:textSize="20dp"/>
-
+        android:textSize="16dp"
+        android:layout_margin="16dp"
+        android:layout_marginStart="72dp"/>
+    <View
+        android:id="@+id/edit_todo_view_seperate1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/edit_todo_title"
+        android:background="@color/colorPrimaryDark" />
     <EditText
+        android:theme="@style/editTextStyle"
         android:id="@+id/edit_todo_text"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
@@ -38,7 +47,15 @@
         android:maxLines="10"
         android:scrollbars="vertical"
         android:layout_marginTop="5dp"
-        android:textSize="18dp"/>
+        android:textSize="16dp"
+        android:layout_margin="16dp"
+        android:layout_marginStart="72dp"/>
+    <View
+        android:id="@+id/edit_todo_view_seperate2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/edit_todo_text"
+        android:background="@color/colorPrimaryDark" />
 
     <RelativeLayout
         android:id="@+id/id_todo_relativeLayout_startDate"
@@ -69,6 +86,13 @@
 
     </RelativeLayout>
 
+    <View
+        android:id="@+id/edit_todo_view_seperate3"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/id_todo_relativeLayout_startDate"
+        android:background="@color/colorPrimaryDark" />
+
     <RelativeLayout
         android:id="@+id/id_todo_relativeLayout_endDate"
         android:layout_width="match_parent"
@@ -94,16 +118,29 @@
         android:backgroundTint="@color/bgColor4"
         android:hint="@string/sample_activity_todo_endDate"/>
     </RelativeLayout>
+
+    <View
+        android:id="@+id/edit_todo_view_seperate4"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/id_todo_relativeLayout_endDate"
+        android:background="@color/colorPrimaryDark" />
+
+    <RelativeLayout
+        android:id="@+id/id_todo_relativeLayout_tasks"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/id_todo_relativeLayout_endDate"
+        android:layout_above="@+id/edit_todo_progressText"
+        android:layout_margin="16dp">
     <ListView
         android:id="@+id/edit_todo_tasks"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/bgColor4"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_below="@id/id_todo_relativeLayout_endDate"
-        android:layout_above="@+id/edit_todo_progressText">
+        >
     </ListView>
+    </RelativeLayout>
     <TextView
         android:id="@+id/edit_todo_progressText"
         android:layout_width="match_parent"
