@@ -13,6 +13,7 @@ import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.activities.note.note.NoteActivity;
 import com.example.robin.angrynerds_wip.activities.note.note.data.NoteConstants;
 import com.example.robin.angrynerds_wip.activities.note.note.logic.listener_watcher.DialogClickListener;
+import com.example.robin.angrynerds_wip.data.services.ImageService;
 
 import java.io.File;
 import java.io.IOException;
@@ -57,7 +58,9 @@ public class ImageImport {
         if (takePictureIntent.resolveActivity(mActivity.getPackageManager()) != null) {
             File photoFile = null;
             try {
-                photoFile = createImageFile();
+                photoFile = ImageService.createImageFile(mActivity);
+                this.mCurrentPhotoPath=photoFile.getAbsolutePath();
+                //photoFile = createImageFile();
             } catch (IOException e) {
                 Log.e("Error", e.getMessage());
             }
@@ -78,7 +81,7 @@ public class ImageImport {
         mActivity.startActivityForResult(pickPhoto , NoteConstants.GALLERY_IMPORT_ACTIVITY_REQUESTCODE);
     }
 
-    //Creates the image file to pass into the camera activity
+    //TODO can be deleted if function in imageService works
     private File createImageFile() throws IOException {
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.GERMANY).format(new Date());
         String imageFileName = "JPEG_" + timeStamp + "_";

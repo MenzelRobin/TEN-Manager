@@ -12,6 +12,7 @@ import com.example.robin.angrynerds_wip.activities.note.note.data.NoteConstants;
 import com.example.robin.angrynerds_wip.activities.note.note.data.NoteData;
 import com.example.robin.angrynerds_wip.activities.note.note.data.gui_oriented.ImageImport;
 import com.example.robin.angrynerds_wip.activities.note.tageditor.NoteTagActivity;
+import com.example.robin.angrynerds_wip.data.services.ImageService;
 
 import java.io.IOException;
 
@@ -32,9 +33,8 @@ public class NoteNavigationLogic {
         switch (pRequestCode) {
             case NoteConstants.CAMERA_IMPORT_ACTIVITY_REQUESTCODE:
                 if (pResultCode == -1) {
-                    //TODO
                     String path = mNoteApplicationLogic.getImageImport().getCurrentPhotoPath();
-                    Bitmap cameraImage = BitmapFactory.decodeFile(path);
+                    Bitmap cameraImage = ImageService.correctImageRotation(path, BitmapFactory.decodeFile(path));
                     mNoteApplicationLogic.getNoteData().addImageFromCamera(cameraImage, path);
                     mNoteApplicationLogic.getNoteGuiRefresherLogic().refreshImages();
                 }
