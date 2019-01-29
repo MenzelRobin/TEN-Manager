@@ -1,10 +1,13 @@
 package com.example.robin.angrynerds_wip.activities.todo;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
 import com.example.robin.angrynerds_wip.data.models.tens.Todo;
+import com.example.robin.angrynerds_wip.data.services.Create;
 import com.example.robin.angrynerds_wip.data.services.Delete;
 import com.example.robin.angrynerds_wip.data.services.Read;
 import com.example.robin.angrynerds_wip.data.services.Update;
@@ -15,7 +18,12 @@ public class Data {
 
     Data(Init pActivity, String todoId) {
         mActivity = pActivity;
-        mTodo = Read.getTodoByID(todoId);
+
+        if(todoId == null){
+            mTodo = Create.newTodo();
+        }else{
+            mTodo = Read.getTodoByID(todoId);
+        }
     }
     public void deleteTodo() {
         Delete.deleteTEN(mTodo.getID());
