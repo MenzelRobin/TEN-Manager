@@ -57,13 +57,11 @@ public class NoteData {
         this.mNoteApplicationLogic = pNoteApplicationLogic;
     }
 
-    public ArrayList<GraphicsContainer> getNoteImageContainers() { return mNoteDataGui.getNoteImageContainers(); }
+    public ArrayList<Image> getNotePreviewImages() { return mNoteDataGui.getPreviewImages(); }
 
     public NoteActivity getActivity() { return mActivity; }
 
     public Bitmap getImage(int pId) { return mNoteDataGui.getOriginalImage(pId); }
-
-    public boolean checkImageID(int id) { return mNoteDataGui.checkImageListForId(id); }
 
     public void addImageFromCamera(Bitmap image, String formerPath) {
         mNoteDataGui.addImageFromCamera(image, formerPath);
@@ -75,8 +73,6 @@ public class NoteData {
         mNoteDataBackend.deleteImage(id);
         mNoteDataGui.deleteImage(id);
     }
-
-    public void addImageContainer(Image image) { mNoteDataGui.addImageContainer(image); }
 
     public void executeSaveRoutine() { mNoteDataBackend.executeSaveRoutine(); }
 

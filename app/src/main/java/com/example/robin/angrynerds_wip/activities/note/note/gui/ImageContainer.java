@@ -13,11 +13,9 @@ import com.example.robin.angrynerds_wip.data.models.utils.Image;
 public class ImageContainer extends GraphicsContainer {
 
     private ImageView mImageView;
-    private PreviewImageCreator mPreviewImageCreator;
 
     public ImageContainer(NoteActivity pActivity, int pId, Image pPreviewImage) {
         super(pActivity, pId);
-        mPreviewImageCreator = new PreviewImageCreator();
 
         initiateView(pPreviewImage.getBitmap());
         pActivity.registerForContextMenu(mImageContainer);

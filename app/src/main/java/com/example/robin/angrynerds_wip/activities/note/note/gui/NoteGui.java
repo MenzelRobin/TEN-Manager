@@ -3,6 +3,7 @@ package com.example.robin.angrynerds_wip.activities.note.note.gui;
 import android.app.Activity;
 import android.content.res.Configuration;
 import android.graphics.drawable.ColorDrawable;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
@@ -17,6 +18,8 @@ import android.widget.Toast;
 
 import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.activities.note.note.NoteActivity;
+import com.example.robin.angrynerds_wip.activities.note.note.logic.listener_watcher.ClickListener;
+import com.example.robin.angrynerds_wip.data.models.utils.Image;
 
 import java.util.ArrayList;
 
@@ -85,11 +88,8 @@ public class NoteGui {
     public void setNoteDescription(String pNoteDescription) { this.mNoteDescription.setText(pNoteDescription); }
     public void setNoteTags(ArrayList<String> pNoteTags) { this.mNoteTags.setText(formatTags(pNoteTags)); }
 
-    public void setNoteImageContainer(ArrayList<GraphicsContainer> pImageContainers) {
-        //Adds ImageViews to NoteData
-        for(GraphicsContainer mImage : pImageContainers){
-            mNoteImageContainer.addView(mImage.getImageContainer());
-        }
+    public void setNoteImageContainer(LinearLayout pLinearLayout) {
+        this.mNoteImageContainer = pLinearLayout;
     }
 
     public void setColors(int pColor, int pAccentColor){
