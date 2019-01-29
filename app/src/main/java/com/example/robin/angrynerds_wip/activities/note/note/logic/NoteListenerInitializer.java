@@ -16,6 +16,10 @@ public class NoteListenerInitializer {
         mClickListener = new ClickListener(pNoteApplicationLogic);
     }
 
+    public ClickListener getClickListener(){
+        return mClickListener;
+    }
+
     //Listener Manager Klasse
     public void initListener() {
 
@@ -25,14 +29,14 @@ public class NoteListenerInitializer {
         mNoteGui.getNoteTitle().setOnClickListener(mClickListener);
         mNoteGui.getNoteImageContainer().setOnClickListener(mClickListener);
         mNoteGui.getNoteTags().setOnClickListener(mClickListener);
-        setAllImageListeners();
+        //setAllImageListeners();
         mNoteGui.getNoteTitle().addTextChangedListener(new NoteTextWatcher(mNoteApplicationLogic, mNoteGui.getNoteTitle()));
         mNoteGui.getNoteDescription().addTextChangedListener(new NoteTextWatcher(mNoteApplicationLogic, mNoteGui.getNoteDescription()));
         mNoteGui.getToolbar().setNavigationOnClickListener(mClickListener);
         mNoteGui.getToolbar().setOnMenuItemClickListener(menuItemClickListener);
     }
 
-    //Listener Manager Klasse
+    /*/Listener Manager Klasse
     public void setAllImageListeners() {
         for (GraphicsContainer mImage : mNoteApplicationLogic.getNoteData().getNoteImageContainers()) {
             setImageClickListener(mImage);
@@ -42,5 +46,5 @@ public class NoteListenerInitializer {
     //Sets ClickListener on mImageContainer
     private void setImageClickListener(GraphicsContainer pImageContainer) {
         pImageContainer.getImageContainer().setOnClickListener(mClickListener);
-    }
+    }*/
 }

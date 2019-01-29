@@ -17,56 +17,22 @@ import java.util.ArrayList;
 public class NoteDataGui {
 
     private NoteData mNoteData;
-    private ArrayList<GraphicsContainer> mNoteImageContainers;
     private ArrayList<Image> mPreviewImages;
 
     public NoteDataGui(NoteData pNoteData) {
         mNoteData = pNoteData;
         mPreviewImages = new ArrayList<>();
-        mNoteImageContainers = new ArrayList<>();
-        addImageButton();
     }
 
     public ArrayList<Image> getPreviewImages() {
         return this.mPreviewImages;
     }
 
-    public ArrayList<GraphicsContainer> getNoteImageContainers() {
-        return mNoteImageContainers;
-    }
-
-    public void imagesToImageContainer() {
-        mNoteImageContainers = new ArrayList<>();
-        int i = 1;
-        for (Image image : mPreviewImages) {
-            Log.d("Kamera", "itic: " + image.getId());
-            mNoteImageContainers.add(new ImageContainer(mNoteData.getActivity(), i++, image));
-        }
-        addImageButton();
-    }
-
-    public void addImageButton() {
-        if (mNoteImageContainers.size() > 0) {
-            if (mNoteImageContainers.get(mNoteImageContainers.size() - 1) instanceof IconContainer)
-                mNoteImageContainers.remove(mNoteImageContainers.size() - 1);
-        }
-        Drawable drawable = ContextCompat.getDrawable(mNoteData.getActivity(), R.drawable.ic_add_a_photo_grey_24dp);
-        mNoteImageContainers.add(new IconContainer(mNoteData.getActivity(), 0, drawable));
-    }
-
-    public boolean checkImageListForId(int pId) {
-        for (GraphicsContainer mImage : mNoteImageContainers) {
-            if (mImage.getImageContainer().getId() == pId)
-                return true;
-        }
-        return false;
-    }
-
     public void addImageFromGallery(Bitmap pImage) {
         Image originalImage = mNoteData.getNote().addImage(pImage);
         Log.i("cool", originalImage.getId());
         addPreviewImageFromOriginal(originalImage);
-        imagesToImageContainer();
+        refreshImages();
         mNoteData.getNoteDataBackend().saveImage(originalImage);
     }
 
@@ -74,19 +40,13 @@ public class NoteDataGui {
         PreviewImageCreator previewImageCreator = new PreviewImageCreator();
         Image previewImage = new Image(pOriginalImage.getId());
         previewImage.setBitmap(previewImageCreator.getPreviewImage(pOriginalImage.getBitmap()));
-
         mPreviewImages.add(previewImage);
     }
 
     public void addImageFromCamera(Bitmap image, String pFormerPath) {
         addImageFromGallery(image);
+        refreshImages();
         mNoteData.getNoteDataBackend().deleteImageFromDisk(pFormerPath);
-    }
-
-    public void addImageContainer(Image pImage) {
-        int newImageContainerID = mNoteImageContainers.size();
-        ImageContainer imageContainer = new ImageContainer(mNoteData.getActivity(), newImageContainerID, pImage);
-        mNoteImageContainers.add(mNoteImageContainers.size() - 1, imageContainer);
     }
 
     public Bitmap getOriginalImage(int pId) {
@@ -99,7 +59,11 @@ public class NoteDataGui {
 
     public void deleteImage(int id) {
         mPreviewImages.remove(id - 1);
-        imagesToImageContainer();
+        refreshImages();
+    }
+
+    public void refreshImages(){
+        mNoteData.getNoteApplicationLogic().getNoteGuiRefresherLogic().refreshImages();
     }
     //
     //

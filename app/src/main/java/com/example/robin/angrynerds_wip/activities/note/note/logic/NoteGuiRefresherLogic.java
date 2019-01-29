@@ -1,7 +1,17 @@
 package com.example.robin.angrynerds_wip.activities.note.note.logic;
 
+import android.support.v4.content.ContextCompat;
+import android.widget.LinearLayout;
+
+import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.activities.note.note.data.NoteData;
+import com.example.robin.angrynerds_wip.activities.note.note.gui.IconContainer;
+import com.example.robin.angrynerds_wip.activities.note.note.gui.ImageContainer;
 import com.example.robin.angrynerds_wip.activities.note.note.gui.NoteGui;
+import com.example.robin.angrynerds_wip.activities.note.note.logic.listener_watcher.ClickListener;
+import com.example.robin.angrynerds_wip.data.models.utils.Image;
+
+import java.util.ArrayList;
 
 public class NoteGuiRefresherLogic {
 
@@ -28,7 +38,21 @@ public class NoteGuiRefresherLogic {
 
     public void refreshImages() {
         mNoteApplicationLogic.getNoteGui().getNoteImageContainer().removeAllViews();
-        mNoteApplicationLogic.getNoteGui().setNoteImageContainer(mNoteData.getNoteImageContainers());
-        mNoteApplicationLogic.getNoteListenerInitializer().setAllImageListeners();
+
+        ArrayList<Image> previewImages = mNoteData.getNotePreviewImages();
+        ClickListener clickListener = mNoteApplicationLogic.getNoteListenerInitializer().getClickListener();
+        LinearLayout imageLayout = new LinearLayout(mNoteData.getActivity());
+
+        for(int i = 1; i <= previewImages.size(); i++){
+            ImageContainer imageContainer = new ImageContainer(mNoteData.getActivity(), i, previewImages.get(i-1));
+            imageContainer.getImageContainer().setOnClickListener(clickListener);
+            imageLayout.addView(imageContainer.getImageContainer());
+        }
+
+        IconContainer iconContainer = new IconContainer(mNoteData.getActivity(), 0, ContextCompat.getDrawable(mNoteData.getActivity(), R.drawable.ic_add_a_photo_grey_24dp));
+        iconContainer.getImageContainer().setOnClickListener(clickListener);
+        imageLayout.addView(iconContainer.getImageContainer());
+
+        mNoteApplicationLogic.getNoteGui().setNoteImageContainer(imageLayout);
     }
 }

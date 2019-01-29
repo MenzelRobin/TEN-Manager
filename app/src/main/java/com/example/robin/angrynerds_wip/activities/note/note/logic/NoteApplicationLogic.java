@@ -78,13 +78,13 @@ public class NoteApplicationLogic {
 
     //Return Number of ImageContainers in NoteData
     public int getImageCount() {
-        return mNoteData.getNoteImageContainers().size();
+        return mNoteData.getNotePreviewImages().size();
     }
 
     //Checks ImageContainer for specific ID
-    public boolean checkImageID(int pId) {
+    /*/public boolean checkImageID(int pId) {
         return mNoteData.checkImageID(pId);
-    }
+    }*/
 
     //Deletes Image from NoteData
     public void deleteImage(int pId) {
@@ -111,7 +111,6 @@ public class NoteApplicationLogic {
     //Initialises Landscape or Portrait Activity with NoteData, rescales ImageOverlay if displayed
     public void onConfigurationChanged(NoteGui pGui) {
         this.mNoteGui = pGui;
-        mNoteData.getNoteDataGui().addImageButton();
         mNoteListenerInitializer.initListener();
         mNoteGuiRefresherLogic.dataToGui();
         mNoteImagePopupLogic.changeConfiguration();
