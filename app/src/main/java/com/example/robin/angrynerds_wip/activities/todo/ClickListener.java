@@ -37,9 +37,6 @@ public class ClickListener implements View.OnClickListener  {
             case -1:
                 mTodoApplicationLogic.returnToOverview();
                 break;
-            case -1:
-                mApplicationLogic.returnToOverview();
-                break;
             default:
                 break;
         }
