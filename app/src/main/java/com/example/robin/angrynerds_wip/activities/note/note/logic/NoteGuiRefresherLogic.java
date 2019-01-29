@@ -7,34 +7,28 @@ public class NoteGuiRefresherLogic {
 
     private NoteApplicationLogic mNoteApplicationLogic;
 
-    private NoteGui mNoteGui;
     private NoteData mNoteData;
 
 
     public NoteGuiRefresherLogic(NoteApplicationLogic pNoteApplicationLogic){
         this.mNoteApplicationLogic = pNoteApplicationLogic;
-        this.mNoteGui = pNoteApplicationLogic.getNoteGui();
         this.mNoteData = pNoteApplicationLogic.getNoteData();
-    }
-
-    public void setNoteGui(NoteGui mNoteGui) {
-        this.mNoteGui = mNoteGui;
     }
 
     public void dataToGui() {
         //Set colors
-        mNoteGui.setColors(mNoteData.getNote().getColor(), mNoteData.getNote().getAccentColor());
+        mNoteApplicationLogic.getNoteGui().setColors(mNoteData.getNote().getColor(), mNoteData.getNote().getAccentColor());
         //Set content
-        mNoteGui.setNoteTitle(mNoteData.getNote().getTitle());
-        mNoteGui.setNoteDescription(mNoteData.getNote().getDescription());
-        mNoteGui.setNoteTags(mNoteData.getNote().getTags());
+        mNoteApplicationLogic.getNoteGui().setNoteTitle(mNoteData.getNote().getTitle());
+        mNoteApplicationLogic.getNoteGui().setNoteDescription(mNoteData.getNote().getDescription());
+        mNoteApplicationLogic.getNoteGui().setNoteTags(mNoteData.getNote().getTags());
 
         refreshImages();
     }
 
     public void refreshImages() {
-        mNoteGui.getNoteImageContainer().removeAllViews();
-        mNoteGui.setNoteImageContainer(mNoteData.getNoteImageContainers());
+        mNoteApplicationLogic.getNoteGui().getNoteImageContainer().removeAllViews();
+        mNoteApplicationLogic.getNoteGui().setNoteImageContainer(mNoteData.getNoteImageContainers());
         mNoteApplicationLogic.getNoteListenerInitializer().setAllImageListeners();
     }
 }
