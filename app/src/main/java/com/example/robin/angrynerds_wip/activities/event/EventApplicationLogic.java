@@ -87,9 +87,13 @@ public class EventApplicationLogic {
     }
 
     public void setAlarm(){
-        mData.getmEvent().getReminder();
-        for(int i = 0; i<mData.getmEvent().getReminder().size();i++){
-            startAlarm(mData.getmEvent().getReminder().get(i), i);
+        //Set alarm if reminder is in the future
+        Calendar actualTime = Calendar.getInstance();
+        for (int i = 0; i < mData.getmEvent().getReminder().size(); i++) {
+            if (mData.getmEvent().getReminder().get(i).after(actualTime.getTime())) {
+                Log.d("LOGTAG", "Start Alarm");
+                startAlarm(mData.getmEvent().getReminder().get(i), i);
+            }
         }
     }
 
