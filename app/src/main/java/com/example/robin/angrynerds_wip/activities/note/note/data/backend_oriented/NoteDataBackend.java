@@ -59,7 +59,9 @@ public class NoteDataBackend {
     }
 
     public void deleteNote() {
-        Delete.deleteTEN(mNoteData.getNote().getID());
+        if(mNoteData.getNote().getID() != null){
+            Delete.deleteTEN(mNoteData.getNote().getID());
+        }
     }
 
     public void loadNote(String pNoteId) {
