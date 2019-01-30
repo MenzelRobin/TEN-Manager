@@ -14,7 +14,7 @@
     </style>
 
     <style name="editTextStyle" parent="Widget.AppCompat.EditText">
-        <item name="colorControlNormal">#ffffff</item>
+        <item name="colorControlNormal">#00000000</item>
         <item name="colorControlActivated">#ffffff</item>
     </style>
 
