@@ -5,7 +5,7 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">#ffffff</item>
     </style>
 
     <style name="CustomDialog" parent="android:Theme.Dialog">
@@ -14,7 +14,7 @@
     </style>
 
     <style name="editTextStyle" parent="Widget.AppCompat.EditText">
-        <item name="colorControlNormal">#ffffff</item>
+        <item name="colorControlNormal">#00000000</item>
         <item name="colorControlActivated">#ffffff</item>
     </style>
 
