@@ -30,8 +30,6 @@ public class EventApplicationLogic {
     private Reminder mReminder;
     private NotificationManagerCompat mNotificationManager;
 
-    private NotificationHelper mNotificationHelper;
-
     public EventApplicationLogic(Gui pGui, AppCompatActivity pActivity, Data pData) {
         mGui = pGui;
         mActivity = pActivity;
@@ -43,8 +41,8 @@ public class EventApplicationLogic {
         mNotificationManager = NotificationManagerCompat.from(mActivity);
     }
 
+    //initialize Toolbar including menu and back button
     private void initGui() {
-        //initialize Toolbar including menu and back button
         mActivity.setSupportActionBar(mGui.getToolbar());
         mActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mActivity.getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -53,8 +51,8 @@ public class EventApplicationLogic {
         updateGui();
     }
 
+    //Gui + Toolbar Clicklistener
     private void initListener() {
-        //Gui + Toolbar Clicklistener
         ClickListener clickListener;
         clickListener = new ClickListener(this);
         MenuItemClickListener menuItemClickListener;
@@ -73,8 +71,8 @@ public class EventApplicationLogic {
         mGui.getEditTextLocation().addTextChangedListener(new TextWatcher(this, mGui.getEditTextLocation()));
     }
 
+    //Fill Gui Elements with Data
     public void updateGui() {
-        //Fill Gui Elements with Data
         mGui.setTitle(mData.getmEvent().getTitle());
         mGui.setTime(formatTime(mData.getmEvent().getTime()));
         mGui.setDate(formatDate(mData.getmEvent().getTime()));
@@ -86,8 +84,14 @@ public class EventApplicationLogic {
         setAlarm();
     }
 
+    //Return to overview if back pressed / Event deleted / toolbar navigation
+    public void returnToOverview() {
+        mActivity.overridePendingTransition(android.R.anim.fade_in, android.R.anim.slide_out_right);
+        mActivity.finish();
+    }
+
+    //Set alarm if reminder is in the future
     public void setAlarm(){
-        //Set alarm if reminder is in the future
         Calendar actualTime = Calendar.getInstance();
         for (int i = 0; i < mData.getmEvent().getReminder().size(); i++) {
             if (mData.getmEvent().getReminder().get(i).after(actualTime.getTime())) {
@@ -109,11 +113,6 @@ public class EventApplicationLogic {
         return displayFormat.format(date);
     }
 
-    //Return to overview if back pressed / Event deleted / toolbar navigation
-    public void returnToOverview() {
-        mActivity.overridePendingTransition(android.R.anim.fade_in, android.R.anim.slide_out_right);
-        mActivity.finish();
-    }
 
     //Receive Date from DatePicker and save it
     public void receiveDate(Date dt) {
@@ -151,7 +150,7 @@ public class EventApplicationLogic {
         ArrayList<Date> eventReminder = new ArrayList<Date>();
         mReminder.setReminder(mData.getmEvent().getReminder());
 
-        if (mGui.getEditTextReminder1().length() != 0) {
+        if (mGui.getEditTextReminder1().length() > 0) {
             eventReminder.add(mReminder.calcReminderFromLable(mGui.getEditTextReminder1().getText().toString(), mData.getmEvent().getTime()));
         }
         if (mGui.getEditTextReminder2().length() > 0) {
@@ -163,7 +162,6 @@ public class EventApplicationLogic {
         if (mGui.getEditTextReminder4().length() > 0) {
             eventReminder.add(mReminder.calcReminderFromLable(mGui.getEditTextReminder4().getText().toString(), mData.getmEvent().getTime()));
         }
-
         mData.addReminderList(eventReminder);
     }
 
@@ -209,11 +207,8 @@ public class EventApplicationLogic {
 
     //Save Text from editText, when Text changed
     public void onTextChanged(String text, View view) {
-        if (view.getId() == R.id.id_event_editText_title) {
-            mData.setTitle(text);
-        } else if (view.getId() == R.id.id_event_editText_location) {
-            mData.setLocation(text);
-        }
+        if (view.getId() == R.id.id_event_editText_title) {mData.setTitle(text);}
+        else if (view.getId() == R.id.id_event_editText_location) {mData.setLocation(text);}
     }
 
     //Remove Reminder when close icon is clicked
@@ -257,22 +252,17 @@ public class EventApplicationLogic {
 
     //AlarmManager & Notifications
     public void startAlarm(Date reminderTime, int requestCode) {
-        /*
-        Calendar c = Calendar.getInstance();
-        c.setTimeInMillis(reminderTime.getTime());*/
-
-        Log.d("ALARM", "Neuer Alarm am: " + reminderTime.toString());
         AlarmManager alarmManager = (AlarmManager) mActivity.getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(mActivity, AlertReceiver.class);
         intent.putExtra("TITLE", "Erinnerung: " + mData.getmEvent().getTitle());
         intent.putExtra("TEXT", "am " + formatDate(mData.getmEvent().getTime()) + " um " + formatTime(mData.getmEvent().getTime()) + " Uhr");
         PendingIntent pendingIntent = PendingIntent.getBroadcast(mActivity, requestCode, intent, 0);
-        alarmManager.setExact(AlarmManager.RTC_WAKEUP, reminderTime.getTime(), pendingIntent); //removed c.getTimeInMillis()
+
+        alarmManager.setExact(AlarmManager.RTC_WAKEUP, reminderTime.getTime(), pendingIntent);
     }
 
     //Remove Alarm from AlarmMangager
     public void cancelAlarm(int requestCode) {
-        Log.d("ALARM","Stopped Alarm!");
         AlarmManager alarmManager = (AlarmManager) mActivity.getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(mActivity, AlertReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(mActivity, requestCode, intent, 0);

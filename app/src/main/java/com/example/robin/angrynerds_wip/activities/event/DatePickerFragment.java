@@ -1,13 +1,10 @@
 package com.example.robin.angrynerds_wip.activities.event;
 
-import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.DatePicker;
-import android.widget.Toast;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -23,7 +20,7 @@ public class DatePickerFragment extends DialogFragment
         int day;
 
         if (mTime == null){
-            // Use the current date as the default date in the picker
+            // Current date as the default date in the picker
             final Calendar c = Calendar.getInstance();
             year = c.get(Calendar.YEAR);
             month = c.get(Calendar.MONTH);

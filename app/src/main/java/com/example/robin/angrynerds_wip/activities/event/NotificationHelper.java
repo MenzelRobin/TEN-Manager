@@ -52,13 +52,6 @@ public class NotificationHelper extends ContextWrapper {
                 .setSmallIcon(R.drawable.ic_notifications_black_24dp);
     }
 
-    public NotificationCompat.Builder getChannel2Notification(String title, String msg){
-        return new NotificationCompat.Builder(getApplicationContext(), CHANNEL_2_ID)
-                .setContentTitle(title)
-                .setContentText(msg)
-                .setSmallIcon(R.drawable.ic_notifications_black_24dp);
-    }
-
     public NotificationManager getManager(){
         if(mNotificationManager==null){
             mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
