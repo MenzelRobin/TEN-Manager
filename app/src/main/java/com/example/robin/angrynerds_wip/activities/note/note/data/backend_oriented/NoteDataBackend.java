@@ -48,7 +48,6 @@ public class NoteDataBackend {
 
     public void executeSaveRoutine() {
         finallyDeleteImages();
-        NoteDataHelper noteDataHelper = new NoteDataHelper(this.mNoteData);
         Update.saveTEN(mNoteData.getNote());
     }
 

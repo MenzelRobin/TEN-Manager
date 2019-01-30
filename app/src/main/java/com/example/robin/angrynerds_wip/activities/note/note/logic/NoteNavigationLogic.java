@@ -43,8 +43,9 @@ public class NoteNavigationLogic {
                 if (pResultCode == -1) {
                     Uri selectedImage = pData.getData();
                     try {
-                        Log.d("Kamera", "right case");
-                        Bitmap bitmap = MediaStore.Images.Media.getBitmap(mNoteApplicationLogic.getNoteData().getActivity().getContentResolver(), selectedImage);
+                        Log.d("Kamera", "Pfad: " +selectedImage.getPath());
+                        //Bitmap bitmap = MediaStore.Images.Media.getBitmap(mNoteApplicationLogic.getNoteData().getActivity().getContentResolver(), selectedImage);
+                        Bitmap bitmap = ImageService.correctImageRotation(selectedImage.getPath(), MediaStore.Images.Media.getBitmap(mNoteApplicationLogic.getNoteData().getActivity().getContentResolver(), selectedImage));
                         mNoteApplicationLogic.getNoteData().addImageFromGallery(bitmap);
 
                         mNoteApplicationLogic.getNoteGuiRefresherLogic().refreshImages();

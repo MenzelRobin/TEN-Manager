@@ -1,5 +1,7 @@
 package com.example.robin.angrynerds_wip.activities.note.note.data.backend_oriented;
 
+import android.util.Log;
+
 import com.example.robin.angrynerds_wip.data.models.utils.Image;
 
 public class TaskManager {
@@ -20,7 +22,9 @@ public class TaskManager {
     }
 
     public void saveImage(Image originalImage) {
-        ImageSaver imageSaver = new ImageSaver();
+        ImageSaver imageSaver = new ImageSaver(mNoteDataBackend);
+        Log.i("cool", "tm: " + originalImage.getBitmap());
+        Log.i("cool", "tm: " + originalImage.getId());
         imageSaver.saveImage(originalImage);
     }
 
