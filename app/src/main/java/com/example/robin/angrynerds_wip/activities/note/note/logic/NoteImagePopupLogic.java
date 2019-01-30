@@ -21,7 +21,6 @@ public class NoteImagePopupLogic {
 
 
     public void openImagePopup(Bitmap pBitmap) {
-        Log.i("NoteRemake", "Activity: " + mNoteApplicationLogic.getNoteData().getActivity());
         if (mNoteApplicationLogic.getNoteData().getActivity().isActive()) {
             View displayMetrics = mNoteApplicationLogic.getNoteData().getActivity().getWindow().findViewById(Window.ID_ANDROID_CONTENT);
             mImageOverlay = new ImageOverlay(pBitmap, displayMetrics.getWidth(), displayMetrics.getHeight(), mImageOverlayListener);

@@ -62,7 +62,6 @@ public class ImageImport {
                 this.mCurrentPhotoPath=photoFile.getAbsolutePath();
                 //photoFile = createImageFile();
             } catch (IOException e) {
-                Log.e("Error", e.getMessage());
             }
             if (photoFile != null) {
                 Uri photoURI = FileProvider.getUriForFile(mActivity,
