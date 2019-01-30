@@ -3,7 +3,6 @@ package com.example.robin.angrynerds_wip.activities.note.note.gui;
 import android.app.Activity;
 import android.content.res.Configuration;
 import android.graphics.drawable.ColorDrawable;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
@@ -87,10 +86,6 @@ public class NoteGui {
     public void setNoteTitle(String pNoteTitle) { this.mNoteTitle.setText(pNoteTitle); }
     public void setNoteDescription(String pNoteDescription) { this.mNoteDescription.setText(pNoteDescription); }
     public void setNoteTags(ArrayList<String> pNoteTags) { this.mNoteTags.setText(formatTags(pNoteTags)); }
-
-    public void setNoteImageContainer(LinearLayout pLinearLayout) {
-        this.mNoteImageContainer = pLinearLayout;
-    }
 
     public void setColors(int pColor, int pAccentColor){
         mBackground.setBackgroundColor(pColor);

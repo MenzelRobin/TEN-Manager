@@ -39,8 +39,6 @@ public class NoteGalleryImportLogic {
     public void importImageFromGallery(Intent pData){
         Uri selectedImage = pData.getData();
         try {
-            Log.d("Kamera", "Pfad: " +selectedImage.getPath());
-            //Bitmap bitmap = MediaStore.Images.Media.getBitmap(mNoteApplicationLogic.getNoteData().getActivity().getContentResolver(), selectedImage);
             Bitmap bitmap = ImageService.correctImageRotation(getPath(mNoteApplicationLogic.getNoteData().getActivity().getApplicationContext() ,selectedImage), MediaStore.Images.Media.getBitmap(mNoteApplicationLogic.getNoteData().getActivity().getContentResolver(), selectedImage));
 
             mNoteApplicationLogic.getNoteData().addImageFromGallery(bitmap);

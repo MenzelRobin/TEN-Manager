@@ -10,7 +10,6 @@ public class PreviewImageCreator {
     public PreviewImageCreator(){}
 
     public Bitmap getPreviewImage(Bitmap pOriginalBitmap){
-        Log.d("Kamera", "" + pOriginalBitmap);
         //Crop image to square
         if (pOriginalBitmap.getWidth() > pOriginalBitmap.getHeight()) {
             pOriginalBitmap = Bitmap.createBitmap(

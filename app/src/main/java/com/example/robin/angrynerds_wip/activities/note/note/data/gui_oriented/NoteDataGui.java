@@ -30,8 +30,6 @@ public class NoteDataGui {
 
     public void addImageFromGallery(Bitmap pImage) {
         Image originalImage = mNoteData.getNote().addImage(pImage);
-        Log.i("cool", "" +  mNoteData.getNote().getPictures().size());
-        Log.i("cool", "" +  mNoteData.getNote().getID());
         mNoteData.getNoteDataBackend().saveImage(originalImage);
         addPreviewImageFromOriginal(originalImage);
         refreshImages();

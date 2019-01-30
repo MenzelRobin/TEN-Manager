@@ -23,8 +23,6 @@ public class TaskManager {
 
     public void saveImage(Image originalImage) {
         ImageSaver imageSaver = new ImageSaver(mNoteDataBackend);
-        Log.i("cool", "tm: " + originalImage.getBitmap());
-        Log.i("cool", "tm: " + originalImage.getId());
         imageSaver.saveImage(originalImage);
     }
 
