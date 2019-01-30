@@ -3,18 +3,11 @@ package com.example.robin.angrynerds_wip.activities.note.note.logic;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
-import android.os.Bundle;
-import android.provider.MediaStore;
 import android.util.Log;
 
 import com.example.robin.angrynerds_wip.activities.note.note.data.NoteConstants;
-import com.example.robin.angrynerds_wip.activities.note.note.data.NoteData;
-import com.example.robin.angrynerds_wip.activities.note.note.data.gui_oriented.ImageImport;
 import com.example.robin.angrynerds_wip.activities.note.tageditor.NoteTagActivity;
 import com.example.robin.angrynerds_wip.data.services.ImageService;
-
-import java.io.IOException;
 
 public class NoteNavigationLogic {
 
@@ -41,17 +34,8 @@ public class NoteNavigationLogic {
                 break;
             case NoteConstants.GALLERY_IMPORT_ACTIVITY_REQUESTCODE:
                 if (pResultCode == -1) {
-                    Uri selectedImage = pData.getData();
-                    try {
-                        Log.d("Kamera", "Pfad: " +selectedImage.getPath());
-                        //Bitmap bitmap = MediaStore.Images.Media.getBitmap(mNoteApplicationLogic.getNoteData().getActivity().getContentResolver(), selectedImage);
-                        Bitmap bitmap = ImageService.correctImageRotation(selectedImage.getPath(), MediaStore.Images.Media.getBitmap(mNoteApplicationLogic.getNoteData().getActivity().getContentResolver(), selectedImage));
-                        mNoteApplicationLogic.getNoteData().addImageFromGallery(bitmap);
-
-                        mNoteApplicationLogic.getNoteGuiRefresherLogic().refreshImages();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    NoteGalleryImportLogic noteGalleryImportLogic = new NoteGalleryImportLogic(mNoteApplicationLogic);
+                    noteGalleryImportLogic.importImageFromGallery(pData);
                 }
                 break;
                 

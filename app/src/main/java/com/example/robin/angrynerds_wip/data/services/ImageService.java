@@ -71,6 +71,7 @@ public class ImageService {
             Bitmap rotatedBitmap;
             int orientation = mExifInterface.getAttributeInt(ExifInterface.TAG_ORIENTATION,
                     ExifInterface.ORIENTATION_UNDEFINED);
+            Log.d("Kamera", "orientation: " + orientation);
             switch(orientation) {
                 case ExifInterface.ORIENTATION_ROTATE_90:
                     rotatedBitmap = rotateImage(pImage, 90);
