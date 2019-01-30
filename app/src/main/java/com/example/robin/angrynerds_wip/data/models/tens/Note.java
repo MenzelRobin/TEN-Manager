@@ -71,6 +71,7 @@ public class Note extends TEN {
         this.imageIDCounter++;
         String imageID = this.getID() + RepositoryConstants.IMAGE_CORE_ID + this.imageIDCounter;
         Image image = new Image(imageID, bitmap);
+        Log.i("cool", image.getId());
         this.pictures.add(image);
         return image;
     }

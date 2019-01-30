@@ -1,13 +1,17 @@
 package com.example.robin.angrynerds_wip.activities.note.note.data.backend_oriented;
 
 import android.os.AsyncTask;
-import android.util.Log;
 
+import com.example.robin.angrynerds_wip.activities.note.note.data.NoteData;
 import com.example.robin.angrynerds_wip.data.models.utils.Image;
 import com.example.robin.angrynerds_wip.data.services.ImageService;
 
 public class ImageSaver {
-    public ImageSaver() {
+
+    NoteData mNoteData;
+
+    public ImageSaver(NoteDataBackend pNoteDataBackend) {
+        this.mNoteData = pNoteDataBackend.getmNoteData();
     }
 
     public void saveImage(Image pImage) {
@@ -22,5 +26,11 @@ public class ImageSaver {
             ImageService.saveImage(pImages[0]);
             return true;
         }
+
+        @Override
+        protected void onPostExecute(Boolean boole) {
+            mNoteData.resetNoteBitmaps();
+        }
+
     }
 }

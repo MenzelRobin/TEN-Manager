@@ -10,6 +10,7 @@ import com.example.robin.angrynerds_wip.activities.note.note.data.gui_oriented.N
 import com.example.robin.angrynerds_wip.activities.note.note.logic.NoteApplicationLogic;
 import com.example.robin.angrynerds_wip.data.models.tens.Note;
 import com.example.robin.angrynerds_wip.data.models.utils.Image;
+import com.example.robin.angrynerds_wip.data.services.Update;
 
 import java.util.ArrayList;
 
@@ -24,6 +25,7 @@ public class NoteData {
     public NoteData(NoteActivity activity) {
         mActivity = activity;
         mNote = new Note();
+        Update.saveTEN(mNote);
         mNoteDataBackend = new NoteDataBackend(this);
         mNoteDataGui = new NoteDataGui(this);
     }
