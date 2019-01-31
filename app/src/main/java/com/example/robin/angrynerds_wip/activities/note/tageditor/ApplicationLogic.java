@@ -41,7 +41,7 @@ class ApplicationLogic {
 
     private void initListener() {
         mClickListener = new ClickListener(this);
-        mTouchListener = new TouchListener(this);
+        mTouchListener = new TouchListener(mActivity, this);
     }
 
     void onActivityReturned(int requestCode, int resultCode, Intent data) { }
