@@ -22,6 +22,7 @@ public class Gui {
     private ImageView mIconCloseReminder2;
     private ImageView mIconCloseReminder3;
     private ImageView mIconCloseReminder4;
+    private ImageView mIconNavigation;
     private EditText mEditTextNewReminder;
     private EditText mEditTextReminder1;
     private EditText mEditTextReminder2;
@@ -52,6 +53,7 @@ public class Gui {
         mSeperateView1 = activity.findViewById(R.id.id_event_view_seperate1);
         mSeperateView2 = activity.findViewById(R.id.id_event_view_seperate2);
         mSeperateView3 = activity.findViewById(R.id.id_event_view_seperate3);
+        mIconNavigation = activity.findViewById(R.id.id_event_imageView_gmaps);
     }
 
     // getter to access views
@@ -69,12 +71,14 @@ public class Gui {
     public ImageView getIconCloseReminder2() {return mIconCloseReminder2;}
     public ImageView getIconCloseReminder3() {return mIconCloseReminder3;}
     public ImageView getIconCloseReminder4() {return mIconCloseReminder4;}
+    public ImageView getIconNavigation() {return mIconNavigation;}
 
     // methods to change view attributes
     public void setTitle(String text) {mEditTextTitle.setText(text);}
     public void setDate(String text) {mEditTextDate.setText(text);}
     public void setTime(String text) {mEditTextTime.setText(text);}
     public void setLocation(String text) {mEditTextLocation.setText(text);}
+    public void setNavigationVisible(boolean b) {if(b){mIconNavigation.setAlpha((float) 1);}else{mIconNavigation.setAlpha((float) 0.5);};}
     public void setColor(int color, int darkColor) {
         mRelativeLayoutMain.setBackground(new ColorDrawable(color));
         mToolbar.setBackground(new ColorDrawable(darkColor));

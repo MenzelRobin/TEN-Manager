@@ -105,13 +105,24 @@
                     android:id="@+id/id_event_editText_location"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_toRightOf="@id/id_event_imageView_iconLocation"
+                    android:layout_marginStart="16dp"
+                    android:layout_toEndOf="@id/id_event_imageView_iconLocation"
+                    android:layout_toStartOf="@id/id_event_imageView_gmaps"
                     android:backgroundTint="#00000000"
                     android:hint="Ort hinzufügen"
                     android:text=""
                     android:textColor="#FFFF"
                     android:textColorHint="#80FFFFFF" />
+
+                <ImageView
+                    android:id="@+id/id_event_imageView_gmaps"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_margin="12dp"
+                    android:alpha="0.5"
+                    android:src="@drawable/ic_navigation_white_24dp"/>
             </RelativeLayout>
 
             <View
@@ -140,7 +151,7 @@
                     android:layout_width="450dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
-                    android:layout_toRightOf="@id/id_event_imageView_iconBell"
+                    android:layout_toEndOf="@id/id_event_imageView_iconBell"
                     android:orientation="vertical">
 
                     <EditText
