@@ -38,6 +38,8 @@ public class ClickListener implements View.OnClickListener {
             case R.id.id_event_imageView_iconCloseReminder4:
                 mEventApplicationLogic.onCloseReminderClicked(4);
                 break;
+            case R.id.id_event_imageView_gmaps:
+                mEventApplicationLogic.onNavigationClicked();
             case -1:
                 mEventApplicationLogic.returnToOverview();
                 break;
