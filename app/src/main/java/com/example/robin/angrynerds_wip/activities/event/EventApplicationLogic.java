@@ -264,7 +264,7 @@ public class EventApplicationLogic {
             shareIntent.setType("text/plain");
             String shareEventSubject = mData.getmEvent().getTitle(); //Subject eg for Mails
             String shareEventText = "Event: " + mData.getmEvent().getTitle() + " \n"
-                    + formatDate(mData.getmEvent().getTime()) + " um " + formatTime(mData.getmEvent().getTime()) + "Uhr \n"
+                    + formatDate(mData.getmEvent().getTime()) + " um " + formatTime(mData.getmEvent().getTime()) + " Uhr \n"
                     + "Adresse: " + mData.getmEvent().getAddress(); //Message Body or E-Mail Text
             shareIntent.putExtra(Intent.EXTRA_SUBJECT, shareEventSubject);
             shareIntent.putExtra(Intent.EXTRA_TEXT, shareEventText);
