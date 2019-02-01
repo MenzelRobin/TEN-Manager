@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ShareActionProvider;
 
 import com.example.robin.angrynerds_wip.R;
 
@@ -30,6 +31,7 @@ public class EventApplicationLogic {
     private Data mData;
     private Reminder mReminder;
     private NotificationManagerCompat mNotificationManager;
+    private ShareActionProvider mShareActionProvider;
 
     public EventApplicationLogic(Gui pGui, AppCompatActivity pActivity, Data pData) {
         mGui = pGui;
@@ -254,9 +256,19 @@ public class EventApplicationLogic {
 
     //Toolbar menu is clicked
     public void onMenuItemClick(MenuItem item) {
-        if (item.getItemId() == R.id.event_action_settings) {
+        if (item.getItemId() == R.id.event_action_settings_delete) {
             mData.deleteEvent();
             returnToOverview();
+        }else if (item.getItemId() == R.id.event_action_settings_share){
+            Intent shareIntent = new Intent(Intent.ACTION_SEND);
+            shareIntent.setType("text/plain");
+            String shareEventSubject = mData.getmEvent().getTitle(); //Subject eg for Mails
+            String shareEventText = "Event: " + mData.getmEvent().getTitle() + " \n"
+                    + formatDate(mData.getmEvent().getTime()) + " um " + formatTime(mData.getmEvent().getTime()) + "Uhr \n"
+                    + "Adresse: " + mData.getmEvent().getAddress(); //Message Body or E-Mail Text
+            shareIntent.putExtra(Intent.EXTRA_SUBJECT, shareEventSubject);
+            shareIntent.putExtra(Intent.EXTRA_TEXT, shareEventText);
+            mActivity.startActivity(Intent.createChooser(shareIntent, "Teilen mit"));
         }
     }
 

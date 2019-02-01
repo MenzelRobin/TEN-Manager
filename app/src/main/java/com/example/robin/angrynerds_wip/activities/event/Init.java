@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.ShareActionProvider;
 
 import com.example.robin.angrynerds_wip.R;
 
@@ -64,8 +66,7 @@ public class Init extends AppCompatActivity {
     //Toolbar
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.event_menu, menu);
+        getMenuInflater().inflate(R.menu.event_menu, menu);
         return true;
     }
 }
