@@ -78,6 +78,7 @@ public class Gui {
     public void setDate(String text) {mEditTextDate.setText(text);}
     public void setTime(String text) {mEditTextTime.setText(text);}
     public void setLocation(String text) {mEditTextLocation.setText(text);}
+    public void setNavigationVisible(boolean b) {if(b){mIconNavigation.setAlpha((float) 1);}else{mIconNavigation.setAlpha((float) 0.5);};}
     public void setColor(int color, int darkColor) {
         mRelativeLayoutMain.setBackground(new ColorDrawable(color));
         mToolbar.setBackground(new ColorDrawable(darkColor));

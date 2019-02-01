@@ -83,6 +83,7 @@ public class EventApplicationLogic {
         mReminder = new Reminder();
         mReminder.setReminder(mData.getmEvent().getReminder());
         mGui.setReminder(mReminder, mData.getmEvent().getTime());
+        if(mData.getmEvent().getAddress().length()>5){mGui.setNavigationVisible(true);};
         setAlarm();
     }
 
@@ -210,7 +211,14 @@ public class EventApplicationLogic {
     //Save Text from editText, when Text changed
     public void onTextChanged(String text, View view) {
         if (view.getId() == R.id.id_event_editText_title) {mData.setTitle(text);}
-        else if (view.getId() == R.id.id_event_editText_location) {mData.setLocation(text);}
+        else if (view.getId() == R.id.id_event_editText_location) {
+            mData.setLocation(text);
+            if(mData.getmEvent().getAddress().length()>5){
+                mGui.setNavigationVisible(true);
+            }else {
+                mGui.setNavigationVisible(false);
+            }
+            }
     }
 
     //Remove Reminder when close icon is clicked
@@ -273,7 +281,9 @@ public class EventApplicationLogic {
     }
 
     public void onNavigationClicked() {
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("google.navigation:q="+mData.getmEvent().getAddress()));
-        mActivity.startActivity(intent);
+        if(mData.getmEvent().getAddress()!="") {
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("google.navigation:q=" + mData.getmEvent().getAddress()));
+            mActivity.startActivity(intent);
+        }
     }
 }
