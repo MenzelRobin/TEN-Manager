@@ -10,4 +10,7 @@
     <item
         android:id="@+id/event_action_settings_share"
         android:title="Event teilen"/>
+    <item
+        android:id="@+id/event_action_settings_calendar"
+        android:title="Event in den Kalender"/>
 </menu>

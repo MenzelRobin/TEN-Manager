@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
+import android.provider.CalendarContract;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -269,6 +270,15 @@ public class EventApplicationLogic {
             shareIntent.putExtra(Intent.EXTRA_SUBJECT, shareEventSubject);
             shareIntent.putExtra(Intent.EXTRA_TEXT, shareEventText);
             mActivity.startActivity(Intent.createChooser(shareIntent, "Teilen mit"));
+        }else if(item.getItemId() == R.id.event_action_settings_calendar){
+            Intent calendarIntent = new Intent(Intent.ACTION_EDIT);
+            calendarIntent.setType("vnd.android.cursor.item/event");
+            calendarIntent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, mData.getmEvent().getTime().getTime());
+            calendarIntent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, mData.getmEvent().getTime().getTime() + 60*60*1000);
+            calendarIntent.putExtra(CalendarContract.Events.TITLE, mData.getmEvent().getTitle());
+            calendarIntent.putExtra(CalendarContract.Events.EVENT_LOCATION, mData.getmEvent().getAddress());
+            calendarIntent.putExtra(CalendarContract.Events.DESCRIPTION, "Importiert aus dem AngryNerds TEN-Manager");
+            mActivity.startActivity(calendarIntent);
         }
     }
 
