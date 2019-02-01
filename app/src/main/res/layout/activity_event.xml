@@ -18,7 +18,8 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:focusableInTouchMode="true">
 
             <EditText
                 android:theme="@style/editTextStyle"
@@ -27,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
                 android:layout_marginStart="72dp"
-                android:hint="Titel eingeben"
+                android:hint="@string/sample_event_title"
                 android:inputType="text"
                 android:textColor="#FFFF"
                 android:textColorHint="#80FFFFFF"/>
@@ -108,8 +109,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_toEndOf="@id/id_event_imageView_iconLocation"
                     android:layout_toStartOf="@id/id_event_imageView_gmaps"
-                    android:backgroundTint="#00000000"
-                    android:hint="Ort hinzufügen"
+                    android:hint="@string/sample_event_address"
                     android:text=""
                     android:textColor="#FFFF"
                     android:textColorHint="#80FFFFFF" />
@@ -150,7 +150,7 @@
                     android:id="@+id/id_event_linearLayout_reminder"
                     android:layout_width="450dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
+                    android:layout_marginStart="16dp"
                     android:layout_toEndOf="@id/id_event_imageView_iconBell"
                     android:orientation="vertical">
 
@@ -160,11 +160,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:alpha="0.5"
-                        android:backgroundTint="#00000000"
                         android:clickable="true"
                         android:focusable="false"
                         android:inputType="none"
-                        android:text="Benachrichtigungen hinzufügen"
+                        android:text="@string/sample_event_addreminder"
                         android:textColor="#FFFF" />
 
                     <EditText
@@ -172,8 +171,6 @@
                         android:id="@+id/id_event_editText_reminder1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="#00000000"
-                        android:clickable="true"
                         android:focusable="false"
                         android:inputType="none"
                         android:text=""
@@ -184,8 +181,6 @@
                         android:id="@+id/id_event_editText_reminder2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="#00000000"
-                        android:clickable="true"
                         android:focusable="false"
                         android:inputType="none"
                         android:text=""
@@ -196,8 +191,6 @@
                         android:id="@+id/id_event_editText_reminder3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="#00000000"
-                        android:clickable="true"
                         android:focusable="false"
                         android:inputType="none"
                         android:text=""
@@ -208,8 +201,6 @@
                         android:id="@+id/id_event_editText_reminder4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="#00000000"
-                        android:clickable="true"
                         android:focusable="false"
                         android:inputType="none"
                         android:text=""
@@ -220,14 +211,13 @@
                     android:id="@+id/id_event_linearLayout_closeReminderIcons"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
                     android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/id_event_imageView_iconCloseReminder"
                         android:layout_width="@dimen/icon"
                         android:layout_height="@dimen/icon"
-                        android:layout_alignParentEnd="true"
                         android:layout_margin="12dp"
                         android:alpha="0.5" />
 
@@ -235,7 +225,6 @@
                         android:id="@+id/id_event_imageView_iconCloseReminder1"
                         android:layout_width="@dimen/icon"
                         android:layout_height="@dimen/icon"
-                        android:layout_alignParentEnd="true"
                         android:layout_margin="12dp"
                         android:alpha="0.0"
                         android:src="@drawable/ic_clear_black_24dp" />
@@ -244,7 +233,6 @@
                         android:id="@+id/id_event_imageView_iconCloseReminder2"
                         android:layout_width="@dimen/icon"
                         android:layout_height="@dimen/icon"
-                        android:layout_alignParentEnd="true"
                         android:layout_margin="12dp"
                         android:alpha="0.0"
                         android:src="@drawable/ic_clear_black_24dp" />
@@ -253,7 +241,6 @@
                         android:id="@+id/id_event_imageView_iconCloseReminder3"
                         android:layout_width="@dimen/icon"
                         android:layout_height="@dimen/icon"
-                        android:layout_alignParentEnd="true"
                         android:layout_margin="12dp"
                         android:alpha="0.0"
                         android:src="@drawable/ic_clear_black_24dp" />
@@ -262,7 +249,6 @@
                         android:id="@+id/id_event_imageView_iconCloseReminder4"
                         android:layout_width="@dimen/icon"
                         android:layout_height="@dimen/icon"
-                        android:layout_alignParentEnd="true"
                         android:layout_margin="12dp"
                         android:alpha="0.0"
                         android:src="@drawable/ic_clear_black_24dp" />

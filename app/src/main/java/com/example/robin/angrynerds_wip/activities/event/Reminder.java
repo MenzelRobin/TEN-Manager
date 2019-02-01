@@ -1,5 +1,9 @@
 package com.example.robin.angrynerds_wip.activities.event;
 
+import android.app.Activity;
+
+import com.example.robin.angrynerds_wip.R;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -9,17 +13,18 @@ public class Reminder {
     private ArrayList<String> mReminderLableStatic;
     private ArrayList<Date> mReminder;
 
-    public Reminder() {
+    public Reminder(Activity activity) {
         mReminderLable = new ArrayList<String>();
-        mReminderLable.add(0, "1 Stunde vorher");
-        mReminderLable.add(1, "6 Stunden vorher");
-        mReminderLable.add(2, "1 Tag vorher");
-        mReminderLable.add(3, "1 Woche vorher");
+
+        mReminderLable.add(0, activity.getString(R.string.event_reminder1));
+        mReminderLable.add(1, activity.getString(R.string.event_reminder2));
+        mReminderLable.add(2, activity.getString(R.string.event_reminder3));
+        mReminderLable.add(3, activity.getString(R.string.event_reminder4));
         mReminderLableStatic = new ArrayList<>();
-        mReminderLableStatic.add(0, "1 Stunde vorher");
-        mReminderLableStatic.add(1, "6 Stunden vorher");
-        mReminderLableStatic.add(2, "1 Tag vorher");
-        mReminderLableStatic.add(3, "1 Woche vorher");
+        mReminderLableStatic.add(0, activity.getString(R.string.event_reminder1));
+        mReminderLableStatic.add(1, activity.getString(R.string.event_reminder2));
+        mReminderLableStatic.add(2, activity.getString(R.string.event_reminder3));
+        mReminderLableStatic.add(3, activity.getString(R.string.event_reminder4));
     }
 
     public void setReminder(ArrayList<Date> pReminder) {

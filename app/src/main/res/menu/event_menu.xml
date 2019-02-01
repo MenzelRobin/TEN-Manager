@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".activities.event.Init">
 
     <item
-        android:id="@+id/event_action_settings"
-        android:title="Event Löschen">
-    </item>
+        android:id="@+id/event_action_settings_share"
+        android:title="@string/event_menu_share"/>
+    <item
+        android:id="@+id/event_action_settings_calendar"
+        android:title="@string/event_menu_calendar"/>
+    <item
+        android:id="@+id/event_action_settings_delete"
+        android:title="@string/event_menu_delete"/>
 </menu>

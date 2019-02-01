@@ -13,25 +13,12 @@ import java.util.Date;
 
 public class Gui {
 
-    private EditText mEditTextTitle;
     private RelativeLayout mRelativeLayoutMain;
-    private EditText mEditTextDate;
-    private EditText mEditTextTime;
-    private EditText mEditTextLocation;
-    private ImageView mIconCloseReminder1;
-    private ImageView mIconCloseReminder2;
-    private ImageView mIconCloseReminder3;
-    private ImageView mIconCloseReminder4;
-    private ImageView mIconNavigation;
-    private EditText mEditTextNewReminder;
-    private EditText mEditTextReminder1;
-    private EditText mEditTextReminder2;
-    private EditText mEditTextReminder3;
-    private EditText mEditTextReminder4;
+    private EditText mEditTextTitle, mEditTextDate, mEditTextTime,mEditTextLocation;
+    private ImageView mIconCloseReminder1, mIconCloseReminder2, mIconCloseReminder3, mIconCloseReminder4, mIconNavigation;
+    private EditText mEditTextNewReminder, mEditTextReminder1, mEditTextReminder2, mEditTextReminder3, mEditTextReminder4;
     private Toolbar mToolbar;
-    private View mSeperateView1;
-    private View mSeperateView2;
-    private View mSeperateView3;
+    private View mSeperateView1, mSeperateView2, mSeperateView3;
 
     public Gui(Init activity) {
         activity.setContentView(R.layout.activity_event);

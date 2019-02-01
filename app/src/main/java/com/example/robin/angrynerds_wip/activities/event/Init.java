@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.ShareActionProvider;
 
 import com.example.robin.angrynerds_wip.R;
 
@@ -53,19 +55,18 @@ public class Init extends AppCompatActivity {
         mEventApplicationLogic.returnToOverview();
     }
 
-    public void receiveDate(Date date) {
-        mEventApplicationLogic.receiveDate(date);
+    public void receiveDate(int year, int month, int day) {
+        mEventApplicationLogic.receiveDate(year, month, day);
     }
 
-    public void receiveTime(Date date) {
-        mEventApplicationLogic.receiveTime(date);
+    public void receiveTime(int hour, int minute) {
+        mEventApplicationLogic.receiveTime(hour, minute);
     }
 
     //Toolbar
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.event_menu, menu);
+        getMenuInflater().inflate(R.menu.event_menu, menu);
         return true;
     }
 }
