@@ -3,7 +3,9 @@ package com.example.robin.angrynerds_wip.activities.event;
 import android.app.TimePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TimePicker;
 import android.text.format.DateFormat;
 

@@ -38,7 +38,7 @@ public class EventApplicationLogic {
         mGui = pGui;
         mActivity = pActivity;
         mData = pData;
-        mReminder = new Reminder();
+        mReminder = new Reminder(mActivity);
         initGui();
         initListener();
 
@@ -83,7 +83,7 @@ public class EventApplicationLogic {
         mGui.setDate(formatDate(mData.getmEvent().getTime()));
         mGui.setLocation(mData.getmEvent().getAddress());
         mGui.setColor(mData.getmEvent().getColor(), mData.getmEvent().getAccentColor());
-        mReminder = new Reminder();
+        mReminder = new Reminder(mActivity);
         mReminder.setReminder(mData.getmEvent().getReminder());
         mGui.setReminder(mReminder, mData.getmEvent().getTime());
         if(mData.getmEvent().getAddress().length()>1){mGui.setNavigationVisible(true);};
@@ -101,7 +101,6 @@ public class EventApplicationLogic {
         Calendar actualTime = Calendar.getInstance();
         for (int i = 0; i < mData.getmEvent().getReminder().size(); i++) {
             if (mData.getmEvent().getReminder().get(i).after(actualTime.getTime())) {
-                Log.d("LOGTAG", "Start Alarm");
                 startAlarm(mData.getmEvent().getReminder().get(i), i);
             }
         }
@@ -263,12 +262,14 @@ public class EventApplicationLogic {
         }else if (item.getItemId() == R.id.event_action_settings_share){
             Intent shareIntent = new Intent(Intent.ACTION_SEND);
             shareIntent.setType("text/plain");
-            String shareEventSubject = mData.getmEvent().getTitle(); //Subject eg for Mails
-            String shareEventText = "Event: " + mData.getmEvent().getTitle() + " \n"
-                    + formatDate(mData.getmEvent().getTime()) + " um " + formatTime(mData.getmEvent().getTime()) + " Uhr \n"
-                    + "Adresse: " + mData.getmEvent().getAddress(); //Message Body or E-Mail Text
-            shareIntent.putExtra(Intent.EXTRA_SUBJECT, shareEventSubject);
-            shareIntent.putExtra(Intent.EXTRA_TEXT, shareEventText);
+            String eventSbj = mData.getmEvent().getTitle(); //Subject eg for Mails
+            String eventTxt = mActivity.getString(R.string.event_share_text);
+            eventTxt = eventTxt.replace("TITLE", mData.getmEvent().getTitle());
+            eventTxt = eventTxt.replace("DATE", formatDate(mData.getmEvent().getTime()));
+            eventTxt = eventTxt.replace("TIME", formatTime(mData.getmEvent().getTime()));
+            eventTxt = eventTxt.replace("LOCATION", mData.getmEvent().getAddress());
+            shareIntent.putExtra(Intent.EXTRA_SUBJECT, eventSbj);
+            shareIntent.putExtra(Intent.EXTRA_TEXT, eventTxt);
             mActivity.startActivity(Intent.createChooser(shareIntent, "Teilen mit"));
         }else if(item.getItemId() == R.id.event_action_settings_calendar){
             Intent calendarIntent = new Intent(Intent.ACTION_EDIT);
@@ -277,7 +278,7 @@ public class EventApplicationLogic {
             calendarIntent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, mData.getmEvent().getTime().getTime() + 60*60*1000);
             calendarIntent.putExtra(CalendarContract.Events.TITLE, mData.getmEvent().getTitle());
             calendarIntent.putExtra(CalendarContract.Events.EVENT_LOCATION, mData.getmEvent().getAddress());
-            calendarIntent.putExtra(CalendarContract.Events.DESCRIPTION, "Importiert aus dem AngryNerds TEN-Manager");
+            calendarIntent.putExtra(CalendarContract.Events.DESCRIPTION, mActivity.getString(R.string.event_calendar_description));
             mActivity.startActivity(calendarIntent);
         }
     }

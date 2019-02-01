@@ -8,6 +8,20 @@
     <string name="sample_activity_todo_progressText">0 / 0</string>
     <string name="sample_todo_menu_toolbarDelete">Todo löschen</string>
 
+    <!-- Event Layout Strings -->
+    <string name="sample_event_title">Titel eingeben</string>
+    <string name="sample_event_address">Ort hinzufügen</string>
+    <string name="sample_event_addreminder">Benachrichtigung hinzufügen</string>
+    <string name="event_reminder1">1 Stunde vorher</string>
+    <string name="event_reminder2">6 Stunden vorher</string>
+    <string name="event_reminder3">1 Tag vorher</string>
+    <string name="event_reminder4">1 Woche vorher</string>
+    <string name="event_menu_share">Event teilen</string>
+    <string name="event_menu_calendar">Event in den Kalender</string>
+    <string name="event_menu_delete">Event löschen</string>
+    <string name="event_share_text">Event: TITLE \nDATE um TIME Uhr \nAdresse: LOCATION</string>
+    <string name="event_calendar_description">Importiert aus dem AngryNerds TEN-Manager</string>
+
     <!-- Note Layout Strings -->
     <string name="sample_note_title">Titel</string>
     <string name="sample_note_description">Beschreibung</string>

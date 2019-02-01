@@ -5,12 +5,12 @@
     tools:context=".activities.event.Init">
 
     <item
-        android:id="@+id/event_action_settings_delete"
-        android:title="Event löschen"/>
-    <item
         android:id="@+id/event_action_settings_share"
-        android:title="Event teilen"/>
+        android:title="@string/event_menu_share"/>
     <item
         android:id="@+id/event_action_settings_calendar"
-        android:title="Event in den Kalender"/>
+        android:title="@string/event_menu_calendar"/>
+    <item
+        android:id="@+id/event_action_settings_delete"
+        android:title="@string/event_menu_delete"/>
 </menu>
