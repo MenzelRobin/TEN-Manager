@@ -7,6 +7,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -66,6 +67,7 @@ public class EventApplicationLogic {
         mGui.getIconCloseReminder2().setOnClickListener(clickListener);
         mGui.getIconCloseReminder3().setOnClickListener(clickListener);
         mGui.getIconCloseReminder4().setOnClickListener(clickListener);
+        mGui.getIconNavigation().setOnClickListener(clickListener);
         //Textwatcher
         mGui.getEditTextTitle().addTextChangedListener(new TextWatcher(this, mGui.getEditTextTitle()));
         mGui.getEditTextLocation().addTextChangedListener(new TextWatcher(this, mGui.getEditTextLocation()));
@@ -268,5 +270,10 @@ public class EventApplicationLogic {
         PendingIntent pendingIntent = PendingIntent.getBroadcast(mActivity, requestCode, intent, 0);
 
         alarmManager.cancel(pendingIntent);
+    }
+
+    public void onNavigationClicked() {
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("google.navigation:q="+mData.getmEvent().getAddress()));
+        mActivity.startActivity(intent);
     }
 }
