@@ -55,12 +55,12 @@ public class Init extends AppCompatActivity {
         mEventApplicationLogic.returnToOverview();
     }
 
-    public void receiveDate(Date date) {
-        mEventApplicationLogic.receiveDate(date);
+    public void receiveDate(int year, int month, int day) {
+        mEventApplicationLogic.receiveDate(year, month, day);
     }
 
-    public void receiveTime(Date date) {
-        mEventApplicationLogic.receiveTime(date);
+    public void receiveTime(int hour, int minute) {
+        mEventApplicationLogic.receiveTime(hour, minute);
     }
 
     //Toolbar

@@ -21,6 +21,8 @@
     <string name="event_menu_delete">Event löschen</string>
     <string name="event_share_text">Event: TITLE \nDATE um TIME Uhr \nAdresse: LOCATION</string>
     <string name="event_calendar_description">Importiert aus dem AngryNerds TEN-Manager</string>
+    <string name="event_reminder_title">Erinnerung: TITLE</string>
+    <string name="event_reminder_text">am DATE um TIME Uhr.</string>
 
     <!-- Note Layout Strings -->
     <string name="sample_note_title">Titel</string>

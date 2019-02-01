@@ -34,7 +34,7 @@ public class Data {
     }
 
     public void setDate(Date date) {
-        //mTodo.setTime(date);
+        //mTodo.setDate(date);
         updateTodo();
     }
 
