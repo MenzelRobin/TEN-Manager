@@ -22,7 +22,7 @@ public class ImageService {
     public static void saveImage(Image image) {
         try {
             FileManager fileManager = new FileManager();
-            fileManager.saveImageToDirectory(image);
+            fileManager.saveImagePersistent(image);
         } catch (IOException e) {
             Log.e("ImageService", e.getMessage());
         }

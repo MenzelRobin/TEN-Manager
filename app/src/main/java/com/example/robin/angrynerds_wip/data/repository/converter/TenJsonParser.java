@@ -1,31 +1,22 @@
 package com.example.robin.angrynerds_wip.data.repository.converter;
 
-import com.couchbase.lite.Document;
 import com.example.robin.angrynerds_wip.data.models.tens.Event;
 import com.example.robin.angrynerds_wip.data.models.tens.Note;
-import com.example.robin.angrynerds_wip.data.models.tens.TEN;
 import com.example.robin.angrynerds_wip.data.models.tens.Todo;
-import com.example.robin.angrynerds_wip.data.repository.RepositoryConstants;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
-
-public class SpecificTENConverter {
+//Class, that parses the JSON into a TEN Object
+//Author: Jan Beilfu0
+public class TenJsonParser {
 
     private ObjectMapper mObjectMapper;
 
-    public SpecificTENConverter() {
+    public TenJsonParser() {
         this.mObjectMapper = new ObjectMapper();
     }
 
-    public TEN addTENPropertiesFromDocument(TEN pTen, Document pDocument) {
-        pTen.setID(pDocument.getId());
-        pTen.setColor(pDocument.getInt(RepositoryConstants.COLOR_KEY));
-        pTen.setAccentColor(pDocument.getInt(RepositoryConstants.ACCENT_COLOR_KEY));
-        pTen.setDateOfCreation(pDocument.getDate(RepositoryConstants.CREATION_DATE_KEY));
-        return pTen;
-    }
-
+    //parses To-do
     public Todo stringToTodo(String pJson) {
         try {
             Todo todo = this.mObjectMapper.readValue(pJson, Todo.class);
@@ -35,6 +26,7 @@ public class SpecificTENConverter {
         }
     }
 
+    //parses Event
     public Event stringToEvent(String pJson) {
         try {
             Event event = this.mObjectMapper.readValue(pJson, Event.class);
@@ -44,6 +36,7 @@ public class SpecificTENConverter {
         }
     }
 
+    //parses Note
     public Note stringToNote(String pJson) {
         try {
             Note note = this.mObjectMapper.readValue(pJson, Note.class);

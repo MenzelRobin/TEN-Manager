@@ -1,5 +1,6 @@
 package com.example.robin.angrynerds_wip.data.repository;
 
+//Author: Jan Beilfuß
 public class RepositoryConstants {
     public static final String DATABASENAME = "TENDB";
 
@@ -8,6 +9,7 @@ public class RepositoryConstants {
     public static final String CREATION_DATE_KEY = "CreationDateKey";
     public static final String COLOR_KEY = "ColorKey";
     public static final String ACCENT_COLOR_KEY = "AccentColorKey";
+    public static final String COUCHBASE_ID_KEY = "id";
 
     public static final String EVENT_TYPE = "Event";
     public static final String NOTE_TYPE = "Note";

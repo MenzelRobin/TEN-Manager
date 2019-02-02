@@ -1,6 +1,6 @@
 package com.example.robin.angrynerds_wip.data.services;
 
-import com.example.robin.angrynerds_wip.data.repository.Repository;
+import com.example.robin.angrynerds_wip.data.repository.DatabaseRepository;
 
 import java.util.ArrayList;
 
@@ -10,14 +10,14 @@ public class Delete {
     */
 
     public static void deleteTEN(String tenID) {
-        Repository repository = new Repository();
-        repository.deleteTEN(tenID);
+        DatabaseRepository databaseRepository = new DatabaseRepository();
+        databaseRepository.deleteTEN(tenID);
     }
 
     public static void deleteMultipleTENs(ArrayList<String> tenIDs) {
-        Repository repository = new Repository();
+        DatabaseRepository databaseRepository = new DatabaseRepository();
         for (String tenID : tenIDs) {
-            repository.deleteTEN(tenID);
+            databaseRepository.deleteTEN(tenID);
         }
     }
 }

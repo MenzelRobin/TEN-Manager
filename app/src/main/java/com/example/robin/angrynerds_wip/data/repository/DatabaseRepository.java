@@ -4,14 +4,18 @@ import com.example.robin.angrynerds_wip.data.models.tens.Event;
 import com.example.robin.angrynerds_wip.data.models.tens.Note;
 import com.example.robin.angrynerds_wip.data.models.tens.TEN;
 import com.example.robin.angrynerds_wip.data.models.tens.Todo;
+import com.example.robin.angrynerds_wip.data.repository.sub_repositories.read.ReadRepository;
+import com.example.robin.angrynerds_wip.data.repository.sub_repositories.write.WriteRepository;
 
 import java.util.ArrayList;
 
-public class Repository {
+//Class that manages All Requests to the Database
+//Author: Jan Beilfuß
+public class DatabaseRepository {
     ReadRepository mReadRepository;
     WriteRepository mWriteRepository;
 
-    public Repository() {
+    public DatabaseRepository() {
         this.mReadRepository = new ReadRepository();
         this.mWriteRepository = new WriteRepository();
     }
