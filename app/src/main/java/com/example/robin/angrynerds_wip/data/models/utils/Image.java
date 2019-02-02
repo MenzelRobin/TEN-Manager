@@ -27,7 +27,9 @@ public class Image {
 
     public Image (Image image){
         this.id = "" + image.getId();
-        this.bitmap = null;
+        if(image.getBitmap()!=null){
+            this.bitmap = Bitmap.createBitmap(image.getBitmap());
+        }
     }
 
     //Getter and Setter

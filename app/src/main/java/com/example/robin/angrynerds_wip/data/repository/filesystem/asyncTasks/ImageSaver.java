@@ -28,8 +28,10 @@ public class ImageSaver {
     }
 
     public void execute(Image image) throws IOException {
+        Image copy = new Image(image);
+        image.setBitmap(null);
         SaveImageTask saveImageTask = new SaveImageTask();
-        saveImageTask.execute(image);
+        saveImageTask.execute(copy);
     }
 
     private class SaveImageTask extends AsyncTask<Image, Integer, Void> {
@@ -68,6 +70,7 @@ public class ImageSaver {
                     }
                 }
             }
+            images[0].setBitmap(null);
             return null;
         }
     }
