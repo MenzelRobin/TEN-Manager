@@ -88,11 +88,13 @@ public class NoteData {
         String shareText = mNote.getTitle();
         shareText = shareText + "\n\n" + mNote.getDescription();
 
-        String tags = "";
-        for(String tag : mNote.getTags())
-            tags = tags + "#" + tag + " ";
+        if(!mNote.getTags().isEmpty()){
+            String tags = "";
+            for(String tag : mNote.getTags())
+                tags = tags + "#" + tag + " ";
+            shareText = shareText + "\n\n" + tags;
+        }
 
-        shareText = shareText + "\n\n" + tags;
         shareIntent.putExtra(Intent.EXTRA_TEXT, shareText);
         mActivity.startActivity(Intent.createChooser(shareIntent, "Teilen mit"));
     }

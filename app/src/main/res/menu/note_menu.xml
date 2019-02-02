@@ -12,5 +12,5 @@
         android:id="@+id/note_action_delete"
         android:title="@string/note_menu_toolbarDelete">
     </item>
-    
+
 </menu>
