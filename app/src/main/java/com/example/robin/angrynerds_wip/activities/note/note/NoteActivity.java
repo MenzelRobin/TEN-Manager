@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Layout;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -17,7 +16,7 @@ import com.example.robin.angrynerds_wip.activities.note.note.data.NoteData;
 import com.example.robin.angrynerds_wip.activities.note.note.gui.NoteGui;
 import com.example.robin.angrynerds_wip.activities.note.note.logic.NoteApplicationLogic;
 import com.example.robin.angrynerds_wip.activities.note.note.logic.listener_watcher.EventDispersion;
-import com.example.robin.angrynerds_wip.data.repository.database.DataContextManager;
+import com.example.robin.angrynerds_wip.data.repository.DataContextManager;
 
 public class NoteActivity extends AppCompatActivity {
 

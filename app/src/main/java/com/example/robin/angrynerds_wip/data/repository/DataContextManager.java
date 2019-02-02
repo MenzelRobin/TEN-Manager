@@ -1,4 +1,4 @@
-package com.example.robin.angrynerds_wip.data.repository.database;
+package com.example.robin.angrynerds_wip.data.repository;
 
 import android.content.Context;
 import android.widget.Toast;
@@ -12,20 +12,21 @@ import com.couchbase.lite.Query;
 import com.couchbase.lite.QueryBuilder;
 import com.couchbase.lite.ResultSet;
 import com.couchbase.lite.SelectResult;
-import com.example.robin.angrynerds_wip.data.repository.RepositoryConstants;
 
+//Class that provides the database to the DatabaseRepository-Classes and Functions
+//Author: Jan Beilfuß
 public class DataContextManager {
 
     public static Database database = null;
     public static Context context = null;
 
-
+    //Gets Database from Context if it is not set
     public static void initDatabase(Context pContext) {
         DataContextManager.context = pContext;
         try {
-            if(DataContextManager.getDatabase() == null){
-            DatabaseConfiguration config = new DatabaseConfiguration(pContext.getApplicationContext());
-            DataContextManager.database = new Database(RepositoryConstants.DATABASENAME, config);
+            if (DataContextManager.getDatabase() == null) {
+                DatabaseConfiguration config = new DatabaseConfiguration(pContext.getApplicationContext());
+                DataContextManager.database = new Database(RepositoryConstants.DATABASENAME, config);
             }
 
         } catch (CouchbaseLiteException e) {
@@ -34,13 +35,14 @@ public class DataContextManager {
 
     }
 
-    public static void resetDatabase() {
-        try{
-        DataContextManager.getDatabase().compact();
-        }catch (CouchbaseLiteException e){}
+    //Compacts the Database = Cleans all Empty Entries (they are just flagged on Delete)
+    public static void compactDatabase() {
+        try {
+            DataContextManager.getDatabase().compact();
+        } catch (CouchbaseLiteException e) {}
     }
 
-    //TODO delete after Debug
+    //returns the number of Documents in the Database. ONLY needed when using Mockdata
     public static int getNumberOfDocuments() {
         Query query = QueryBuilder.select(SelectResult.expression(Meta.id)).from(DataSource.database(DataContextManager.getDatabase()));
         try {

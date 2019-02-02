@@ -1,38 +1,45 @@
 package com.example.robin.angrynerds_wip.data.repository.converter;
 
 import com.couchbase.lite.Dictionary;
-import com.example.robin.angrynerds_wip.data.models.tens.Event;
-import com.example.robin.angrynerds_wip.data.models.tens.Note;
+import com.couchbase.lite.Result;
 import com.example.robin.angrynerds_wip.data.models.tens.TEN;
-import com.example.robin.angrynerds_wip.data.models.tens.Todo;
 import com.example.robin.angrynerds_wip.data.repository.RepositoryConstants;
 
+//class that manages the Conversion from Query Result to TEN Java Object
+//Author: Jan Beilfuß
 public class GenericTENConverter {
 
-    private SpecificTENConverter mSpecificTenConverter;
+    private TenJsonParser mTenJsonParser;
+    private SeparateAttributesConverter mSeparateAttributesConverter;
 
     public GenericTENConverter() {
-        this.mSpecificTenConverter = new SpecificTENConverter();
+        this.mTenJsonParser = new TenJsonParser();
     }
 
-    public TEN createTENFromResult(Dictionary pDictionary) {
-        String type = pDictionary.getString(RepositoryConstants.TYPE_KEY);
-        String objectJSON = pDictionary.getString(RepositoryConstants.OBJECT_KEY);
+    //Method that maps the Dictionary of a Query Result To a TEN-Object
+    //Object only contains Information from the JSON, but non of the ones stored in the document
+    public TEN createTENFromResult(Result pResult) {
 
+        Dictionary dictionary = pResult.getDictionary(RepositoryConstants.DATABASENAME);
+        String type = dictionary.getString(RepositoryConstants.TYPE_KEY);
+        String objectJSON = dictionary.getString(RepositoryConstants.OBJECT_KEY);
+
+        TEN resultTEN = null;
         switch (type) {
             case RepositoryConstants.EVENT_TYPE:
-                Event event = mSpecificTenConverter.stringToEvent(objectJSON);
-                return event;
+                resultTEN = mTenJsonParser.stringToEvent(objectJSON);
+                break;
             case RepositoryConstants.NOTE_TYPE:
-                Note note = mSpecificTenConverter.stringToNote(objectJSON);
-                return note;
+            resultTEN = mTenJsonParser.stringToNote(objectJSON);
+                break;
             case RepositoryConstants.TODO_TYPE:
-                Todo todo = mSpecificTenConverter.stringToTodo(objectJSON);
-                return todo;
+            resultTEN = mTenJsonParser.stringToTodo(objectJSON);
+                break;
             default:
-                return null;
         }
+        if (resultTEN != null) {
+            resultTEN = this.mSeparateAttributesConverter.addTENPropertiesFromResult(resultTEN, pResult);
+        }
+        return resultTEN;
     }
-
-
 }

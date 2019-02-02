@@ -9,13 +9,11 @@ import android.view.View;
 import com.example.robin.angrynerds_wip.activities.note.note.NoteActivity;
 import com.example.robin.angrynerds_wip.data.models.tens.TEN;
 import com.example.robin.angrynerds_wip.data.models.utils.MockData;
-import com.example.robin.angrynerds_wip.data.repository.database.DataContextManager;
-import com.example.robin.angrynerds_wip.data.repository.Repository;
-import com.example.robin.angrynerds_wip.data.repository.database.Queries;
+import com.example.robin.angrynerds_wip.data.repository.DatabaseRepository;
+import com.example.robin.angrynerds_wip.data.repository.DataContextManager;
+import com.example.robin.angrynerds_wip.data.repository.sub_repositories.read.GetAllTensQuery;
 import com.example.robin.angrynerds_wip.data.services.Delete;
 import com.example.robin.angrynerds_wip.overview.overviewActivity.OverviewInit;
-
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -54,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onAddTestDataToDatabase(View view) {
         Log.i("Testdata", "Testdata will be added to DB (clicked)");
-        Repository repository = new Repository();
+        DatabaseRepository databaseRepository = new DatabaseRepository();
 
 
         if (DataContextManager.getNumberOfDocuments() < 15) {
@@ -64,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         }
         Log.i("Testdata", "Database Content will be displayed as Strings");
 
-        repository.getAllTENs();
+        databaseRepository.getAllTENs();
 
         Log.i("Testdata", "Adding of Testdata is finalized.");
 
@@ -72,8 +70,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickResetDatabase(View view) {
         Log.i("Testdata", "All Documents will be removed from the Database (clicked)");
-        Queries queries = new Queries();
-        for(TEN ten : queries.getAllTENs()){
+        GetAllTensQuery getAllTensQuery = new GetAllTensQuery();
+        for(TEN ten : getAllTensQuery.getAllTENs()){
             Delete.deleteTEN(ten.getID());
         }
         Log.i("Testdata", "Removal finished.");
