@@ -1,5 +1,6 @@
 package com.example.robin.angrynerds_wip.activities.note.note.logic;
 
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.util.Log;
 import android.view.View;
@@ -29,9 +30,19 @@ public class NoteImagePopupLogic {
         }
     }
     
-    public void changeConfiguration(){
+    public void changeConfiguration(Configuration pConfiguration){
+        float dpRatio = this.mNoteApplicationLogic
+                .getNoteData().
+                        getActivity()
+                .getApplicationContext()
+                .getResources()
+                .getDisplayMetrics()
+                .density;
+        int displayHeight = (int)(pConfiguration.screenHeightDp*dpRatio)+1;
+        int displayWidth = (int)(pConfiguration.screenWidthDp*dpRatio)+1;
+
         if (mImageOverlay != null && mImageOverlay.isDisplayed()) {
-            mImageOverlay.changeOrientation((mNoteApplicationLogic.getNoteData().getActivity()));
+            mImageOverlay.changeOrientation(mNoteApplicationLogic.getNoteData().getActivity() ,displayWidth, displayHeight);
         }
     }
 

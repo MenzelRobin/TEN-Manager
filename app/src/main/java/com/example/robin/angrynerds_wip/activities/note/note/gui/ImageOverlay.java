@@ -88,11 +88,10 @@ public class ImageOverlay {
     }
 
     //Rescales AlertDialog on Orientation change
-    public void changeOrientation(Activity pActivity) {
+    public void changeOrientation(Activity pActivity, int pDisplayWidth, int pDisplayHeight) {
         dialog.dismiss();
-        int saveValue = displayWidth;
-        displayWidth = displayHeight;
-        displayHeight = saveValue;
+        this.displayWidth = pDisplayWidth;
+        this.displayHeight = pDisplayHeight;
         display(pActivity);
     }
 
