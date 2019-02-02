@@ -14,6 +14,7 @@ public class GenericTENConverter {
 
     public GenericTENConverter() {
         this.mTenJsonParser = new TenJsonParser();
+        this.mSeparateAttributesConverter = new SeparateAttributesConverter();
     }
 
     //Method that maps the Dictionary of a Query Result To a TEN-Object
