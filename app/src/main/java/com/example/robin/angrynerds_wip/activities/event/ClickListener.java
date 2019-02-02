@@ -23,6 +23,9 @@ public class ClickListener implements View.OnClickListener {
             case R.id.id_event_editText_time:
                 mEventApplicationLogic.showTimePickerDialog(view);
                 break;
+            case R.id.id_event_editText_recurringType:
+                mEventApplicationLogic.onRecurringTypeClicked();
+                break;
             case R.id.id_event_editText_newReminder:
                 mEventApplicationLogic.onNewReminderClicked();
                 break;
