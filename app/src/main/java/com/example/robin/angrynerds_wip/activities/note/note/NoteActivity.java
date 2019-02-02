@@ -4,17 +4,20 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Layout;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 
 import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.activities.note.note.data.NoteData;
 import com.example.robin.angrynerds_wip.activities.note.note.gui.NoteGui;
 import com.example.robin.angrynerds_wip.activities.note.note.logic.NoteApplicationLogic;
 import com.example.robin.angrynerds_wip.activities.note.note.logic.listener_watcher.EventDispersion;
+import com.example.robin.angrynerds_wip.data.repository.database.DataContextManager;
 
 public class NoteActivity extends AppCompatActivity {
 
@@ -29,19 +32,23 @@ public class NoteActivity extends AppCompatActivity {
         super.onCreate(pSavedInstanceState);
 
         String id = getIntent().getStringExtra("ID");
-
-        if(id==null)
+        DataContextManager.initDatabase(this.getApplicationContext());
+        if(id==null) {
             mNoteData = new NoteData(this);
+            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+            initGUI(true);
+        }
         else{
             mNoteData = new NoteData(this, getIntent().getStringExtra("ID"));
+            initGUI(false);
         }
-        initGUI();
         initApplicationLogic();
         initEventDispersion();
     }
 
-    private void initGUI () {
-        mNoteGui = new NoteGui(this);
+    private void initGUI (boolean pNewNote) {
+        mNoteGui = new NoteGui(this, pNewNote);
     }
 
     private void initApplicationLogic () {
@@ -81,7 +88,7 @@ public class NoteActivity extends AppCompatActivity {
     public void onConfigurationChanged(Configuration pNewConfig) {
         super.onConfigurationChanged(pNewConfig);
         mNoteGui.getNoteImageContainer().removeAllViews();
-        initGUI();
+        initGUI(false);
         mNoteApplicationLogic.onConfigurationChanged(mNoteGui);
     }
 
