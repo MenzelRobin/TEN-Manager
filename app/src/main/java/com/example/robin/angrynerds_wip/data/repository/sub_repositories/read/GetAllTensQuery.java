@@ -11,7 +11,7 @@ import com.couchbase.lite.ResultSet;
 import com.couchbase.lite.SelectResult;
 import com.example.robin.angrynerds_wip.data.models.tens.TEN;
 import com.example.robin.angrynerds_wip.data.repository.RepositoryConstants;
-import com.example.robin.angrynerds_wip.data.repository.converter.GenericTENConverter;
+import com.example.robin.angrynerds_wip.data.repository.converter.QueriedTenConverter;
 import com.example.robin.angrynerds_wip.data.repository.DataContextManager;
 
 import java.util.ArrayList;
@@ -21,9 +21,9 @@ import java.util.List;
 //Author: Jan Beilfuß
 public class GetAllTensQuery {
 
-    private GenericTENConverter mGenericTENConverter;
+    private QueriedTenConverter mQueriedTenConverter;
 
-    public GetAllTensQuery() { this.mGenericTENConverter = new GenericTENConverter(); }
+    public GetAllTensQuery() { this.mQueriedTenConverter = new QueriedTenConverter(); }
 
     public ArrayList<TEN> getAllTENs() {
         Query query = QueryBuilder.select(
@@ -38,7 +38,7 @@ public class GetAllTensQuery {
 
             List<Result> allResults = rs.allResults();
             for (Result result : allResults) {
-                TEN tenObject = this.mGenericTENConverter.createTENFromResult(result);
+                TEN tenObject = this.mQueriedTenConverter.createTENFromResult(result);
                 resultList.add(tenObject);
             }
             return resultList;
