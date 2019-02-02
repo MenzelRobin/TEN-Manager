@@ -1,7 +1,6 @@
-package com.example.robin.angrynerds_wip.activities.note.note.data.backend_oriented;
+package com.example.robin.angrynerds_wip.activities.note.note.data.backend_oriented.async_tasks;
 
 import android.os.AsyncTask;
-import android.util.Log;
 
 import com.example.robin.angrynerds_wip.data.models.tens.Note;
 import com.example.robin.angrynerds_wip.data.services.Read;
