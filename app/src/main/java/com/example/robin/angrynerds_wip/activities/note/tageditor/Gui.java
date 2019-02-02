@@ -1,6 +1,7 @@
 package com.example.robin.angrynerds_wip.activities.note.tageditor;
 
 import android.app.Activity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -14,12 +15,18 @@ class Gui {
 
     private RelativeLayout mBackground;
     private ListView mListView;
+    private Button mAddButton;
+    private View mSeparator;
+    private Toolbar mToolbar;
 
-    Gui(NoteTagActivity activity) {
-        activity.setContentView(R.layout.activity_note_tagoverview);
+    Gui(NoteTagActivity pActivity) {
+        pActivity.setContentView(R.layout.activity_note_tagoverview);
 
-        mBackground = activity.findViewById(R.id.id_note_tagOverview_background);
-        mListView = activity.findViewById(R.id.id_note_tagOverview_listView);
+        mBackground = pActivity.findViewById(R.id.id_note_tagOverview_background);
+        mListView = pActivity.findViewById(R.id.id_note_tagOverview_listView);
+        mAddButton = pActivity.findViewById(R.id.id_note_tagOverview_addButton);
+        mSeparator = pActivity.findViewById(R.id.id_note_tagOverview_separator);
+        mToolbar = pActivity.findViewById(R.id.id_note_tagOverview_toolbar);
     }
 
     //Getter
@@ -29,6 +36,9 @@ class Gui {
     ListView getListView() {
         return mListView;
     }
+    Button getAddButton() { return mAddButton; }
+    View getSeparator(){ return mSeparator; }
+    Toolbar getToolbar() { return mToolbar; }
 
     //Sets adapter to ListView
     void initiateListView(RowViewAdapter adapter){

@@ -5,7 +5,6 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.robin.angrynerds_wip.R;
-import com.example.robin.angrynerds_wip.activities.note.note.data.gui_oriented.ImageImport;
 
 public class NoteClickHandler {
 
@@ -46,7 +45,7 @@ public class NoteClickHandler {
     }
 
     public void onMenuItemClicked(MenuItem pItem) {
-        if (pItem.getItemId() == R.id.note_action_settings) {
+        if (pItem.getItemId() == R.id.note_action_delete) {
             mNoteApplicationLogic.getNoteData().deleteNote();
             mNoteApplicationLogic.getNoteNavigationLogic().returnToOverview();
         }

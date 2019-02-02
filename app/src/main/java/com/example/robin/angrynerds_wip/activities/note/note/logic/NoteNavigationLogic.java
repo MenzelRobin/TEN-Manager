@@ -46,7 +46,7 @@ public class NoteNavigationLogic {
                         mNoteApplicationLogic.getNoteGui().setNoteTags(mNoteApplicationLogic.getNoteData().getNote().getTags());
                     } catch (NullPointerException e) {
                         Log.e("Error", e.getMessage());
-                        //displayToast("Error getting TagList from NoteTagActivity.");
+                        mNoteApplicationLogic.getNoteGui().displayToast(mNoteApplicationLogic.getNoteData().getActivity(),"Stichworte konnten nicht übertragen werden");
                     }
                 }
         }
@@ -70,9 +70,9 @@ public class NoteNavigationLogic {
     //NoteNavigationLogic
     public void startTagActivity() {
         Intent intent = new Intent(mNoteApplicationLogic.getNoteData().getActivity(), NoteTagActivity.class);
-        //TODO Als Konstanten irgendwo ablegen
-        intent.putExtra("taglist", mNoteApplicationLogic.getNoteData().getNote().getTags());
-        intent.putExtra("color", mNoteApplicationLogic.getNoteData().getNote().getColor());
+        intent.putExtra(NoteConstants.INTENT_ID_TAGLIST, mNoteApplicationLogic.getNoteData().getNote().getTags());
+        intent.putExtra(NoteConstants.INTENT_ID_COLOR, mNoteApplicationLogic.getNoteData().getNote().getColor());
+        intent.putExtra(NoteConstants.INTENT_ID_ACCENTCOLOR, mNoteApplicationLogic.getNoteData().getNote().getAccentColor());
         mNoteApplicationLogic.getNoteData().getActivity().startActivityForResult(intent, NoteConstants.TAGEDITOR_ACTIVITY_REQUESTCODE);
     }
 }

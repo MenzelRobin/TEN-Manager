@@ -30,7 +30,6 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.8"
         android:hint="@string/sample_note_listtag"
-        android:imeOptions="actionDone"
         android:inputType="text"
         android:lines="1"
         android:maxLines="1"

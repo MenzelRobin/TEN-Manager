@@ -31,7 +31,6 @@
         android:layout_weight="0.8"
         android:hint="@string/sample_note_listtag"
         android:inputType="text"
-        android:imeOptions="actionDone"
         android:lines="1"
         android:maxLines="1"
         android:textColor="@color/TextWhite"

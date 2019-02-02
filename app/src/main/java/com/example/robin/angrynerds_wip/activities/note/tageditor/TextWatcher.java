@@ -24,7 +24,6 @@ class TextWatcher implements android.text.TextWatcher {
         if (!s.toString().equals(result)) {
             ((EditText)mView).setText(result);
             ((EditText)mView).setSelection(result.length());
-            // alert the user
         }
     }
 

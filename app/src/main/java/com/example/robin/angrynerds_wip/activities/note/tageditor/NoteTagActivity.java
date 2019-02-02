@@ -5,8 +5,11 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
 
 import com.example.robin.angrynerds_wip.R;
+import com.example.robin.angrynerds_wip.activities.note.note.data.NoteConstants;
+import com.example.robin.angrynerds_wip.data.models.utils.Colors;
 
 import java.util.ArrayList;
 
@@ -23,14 +26,15 @@ public class NoteTagActivity extends AppCompatActivity {
 
         //Get TagList from Intent
         try{
-        initApplicationLogic(extras.getStringArrayList("taglist"), extras.getInt("color"));
+        initApplicationLogic(extras.getStringArrayList(NoteConstants.INTENT_ID_TAGLIST),
+                extras.getInt(NoteConstants.INTENT_ID_COLOR), extras.getInt(NoteConstants.INTENT_ID_ACCENTCOLOR));
         }
         catch(NullPointerException e){
             Log.e("Error",e.getMessage());
             ArrayList<String> taglist = new ArrayList<>();
             taglist.add("");
-            initApplicationLogic(taglist, this.getResources().getColor(R.color.bgColor1));
-            mGui.displayToast(this, "Error getting TagList from NoteActivity.");
+            initApplicationLogic(taglist, Colors.COLORS[0], Colors.DARKER_ACCENT_COLORS[0]);
+            mGui.displayToast(this, "Die Liste konnte nicht geladen werden.");
         }
     }
 
@@ -39,8 +43,8 @@ public class NoteTagActivity extends AppCompatActivity {
         mGui = new Gui(this);
     }
 
-    private void initApplicationLogic (ArrayList<String> tagList, int color) {
-        mApplicationLogic = new ApplicationLogic(tagList, mGui, this, color);
+    private void initApplicationLogic (ArrayList<String> tagList, int color, int accentColor) {
+        mApplicationLogic = new ApplicationLogic(tagList, mGui, this, color, accentColor);
     }
 
     @Override
@@ -70,5 +74,11 @@ public class NoteTagActivity extends AppCompatActivity {
     public void onBackPressed() {
         mApplicationLogic.onBackPressed();
         super.onBackPressed();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.note_tagoverview_menu, menu);
+        return true;
     }
 }

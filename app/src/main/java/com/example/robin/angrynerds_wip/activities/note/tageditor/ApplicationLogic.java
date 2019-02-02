@@ -2,8 +2,13 @@ package com.example.robin.angrynerds_wip.activities.note.tageditor;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
+import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+
+import com.example.robin.angrynerds_wip.R;
 
 import java.util.ArrayList;
 
@@ -11,20 +16,23 @@ import java.util.ArrayList;
 class ApplicationLogic {
 
     private int mColor;
+    private int mAccentColor;
     private ArrayList<String> mTagList;
     private Gui mGui;
     private RowViewAdapter mAdapter;
     private ClickListener mClickListener;
-    private TouchListener mTouchListener;
-    private Activity mActivity;
+    private NoteTagActivity mActivity;
 
-    ApplicationLogic(ArrayList<String> tagList, Gui gui, Activity activity, int color) {
+    ApplicationLogic(ArrayList<String> tagList, Gui gui, NoteTagActivity activity, int color, int accentColor) {
         mTagList = tagList;
-        mTagList.add("");
+        if(mTagList.isEmpty())
+            mTagList.add("");
+
         mGui = gui;
         mActivity = activity;
         mAdapter = new RowViewAdapter(activity,mTagList, this);
         mColor = color;
+        mAccentColor = accentColor;
         initGui();
         initListener();
     }
@@ -32,22 +40,43 @@ class ApplicationLogic {
     ClickListener getClickListener() {
         return mClickListener;
     }
-    TouchListener getTouchListener() { return mTouchListener; }
 
     private void initGui(){
-        mGui.getBackground().setBackgroundColor(mColor);
         mGui.initiateListView(mAdapter);
+        initToolbar();
+        initColors();
+    }
+
+    private void initToolbar() {
+        mActivity.setSupportActionBar(mGui.getToolbar());
+        mActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        mActivity.getSupportActionBar().setDisplayShowHomeEnabled(true);
+        mActivity.getSupportActionBar().setDisplayShowTitleEnabled(false);
+    }
+
+    private void initColors(){
+        mGui.getBackground().setBackgroundColor(mColor);
+        mGui.getToolbar().setBackground(new ColorDrawable(mAccentColor));
+        mGui.getSeparator().setBackground(new ColorDrawable(mAccentColor));
+        mGui.getSeparator().setAlpha((float)0.5);
     }
 
     private void initListener() {
         mClickListener = new ClickListener(this);
-        mTouchListener = new TouchListener(mActivity, this);
+        mGui.getAddButton().setOnClickListener(mClickListener);
+
+        mGui.getToolbar().setNavigationOnClickListener(mClickListener);
+        mGui.getToolbar().setOnMenuItemClickListener(new MenuItemClickListener(this));
     }
 
     void onActivityReturned(int requestCode, int resultCode, Intent data) { }
 
     //Return TagList to NoteActivity
     void onBackPressed() {
+        returnToNoteActivity();
+    }
+
+    void returnToNoteActivity() {
         Intent resultIntent = new Intent();
         for(int i = 0; i<mTagList.size();i++){
             if(mTagList.get(i).equals("")){
@@ -56,6 +85,7 @@ class ApplicationLogic {
         }
         resultIntent.putExtra("taglist", mTagList);
         mActivity.setResult(Activity.RESULT_OK, resultIntent);
+        mGui.hideKeyboard(mActivity);
         mActivity.finish();
     }
 
@@ -66,10 +96,6 @@ class ApplicationLogic {
         mGui.hideKeyboard(mActivity);
     }
 
-    void onTagTextClicked() {
-        addInputTagField();
-    }
-
     //Return number of Strings in TagList
     int getListViewItemCount(){
         return mGui.getListViewItemCount();
@@ -78,19 +104,21 @@ class ApplicationLogic {
     //Insert user input into TagList
     void onTextChanged(String s, View mView) {
         mTagList.set(mView.getId(),s);
-        if(mView.getId() == mTagList.size()-1){
-            addInputTagField();
-        }
     }
 
     private void addInputTagField() {
         mTagList.add("");
         mAdapter.notifyDataSetChanged();
-        mGui.getListView().post(new Runnable() {
-            @Override
-            public void run() {
-                mGui.getListView().setSelection(mAdapter.getCount() - 1);
-            }
-        });
+    }
+
+    void OnAddButtonClicked() {
+        addInputTagField();
+    }
+
+    void onMenuItemClick(MenuItem item) {
+        if (item.getItemId() == R.id.note_tagOverview_action_delete) {
+            mTagList.clear();
+            returnToNoteActivity();
+        }
     }
 }
