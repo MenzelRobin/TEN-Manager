@@ -36,7 +36,7 @@ public class NoteGui {
     private View mViewSeparator2;
     private View mViewSeparator3;
 
-    public NoteGui(NoteActivity pActivity) {
+    public NoteGui(NoteActivity pActivity, boolean pNewNote) {
 
         pActivity.setContentView(R.layout.activity_note);
 
@@ -46,6 +46,9 @@ public class NoteGui {
         mNoteTags = pActivity.findViewById(R.id.id_note_tags);
         mNoteTags.setMovementMethod(new ScrollingMovementMethod());
         mProgressBarHolder = pActivity.findViewById(R.id.noteProgressBarHolder);
+
+        if(pNewNote)
+            mNoteTitle.setCursorVisible(true);
 
         initiateToolbar(pActivity);
         initiateOrientationDependentViews(pActivity);
