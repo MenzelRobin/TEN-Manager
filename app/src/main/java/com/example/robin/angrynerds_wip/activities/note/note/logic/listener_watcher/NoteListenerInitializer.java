@@ -1,7 +1,8 @@
-package com.example.robin.angrynerds_wip.activities.note.note.logic;
+package com.example.robin.angrynerds_wip.activities.note.note.logic.listener_watcher;
 
 import com.example.robin.angrynerds_wip.activities.note.note.gui.GraphicsContainer;
 import com.example.robin.angrynerds_wip.activities.note.note.gui.NoteGui;
+import com.example.robin.angrynerds_wip.activities.note.note.logic.NoteApplicationLogic;
 import com.example.robin.angrynerds_wip.activities.note.note.logic.listener_watcher.ClickListener;
 import com.example.robin.angrynerds_wip.activities.note.note.logic.listener_watcher.MenuItemClickListener;
 import com.example.robin.angrynerds_wip.activities.note.note.logic.listener_watcher.NoteTextWatcher;
@@ -29,22 +30,9 @@ public class NoteListenerInitializer {
         mNoteGui.getNoteTitle().setOnClickListener(mClickListener);
         mNoteGui.getNoteImageContainer().setOnClickListener(mClickListener);
         mNoteGui.getNoteTags().setOnClickListener(mClickListener);
-        //setAllImageListeners();
         mNoteGui.getNoteTitle().addTextChangedListener(new NoteTextWatcher(mNoteApplicationLogic, mNoteGui.getNoteTitle()));
         mNoteGui.getNoteDescription().addTextChangedListener(new NoteTextWatcher(mNoteApplicationLogic, mNoteGui.getNoteDescription()));
         mNoteGui.getToolbar().setNavigationOnClickListener(mClickListener);
         mNoteGui.getToolbar().setOnMenuItemClickListener(menuItemClickListener);
     }
-
-    /*/Listener Manager Klasse
-    public void setAllImageListeners() {
-        for (GraphicsContainer mImage : mNoteApplicationLogic.getNoteData().getNoteImageContainers()) {
-            setImageClickListener(mImage);
-        }
-    }
-
-    //Sets ClickListener on mImageContainer
-    private void setImageClickListener(GraphicsContainer pImageContainer) {
-        pImageContainer.getImageContainer().setOnClickListener(mClickListener);
-    }*/
 }
