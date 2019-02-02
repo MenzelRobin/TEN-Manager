@@ -1,7 +1,7 @@
 package com.example.robin.angrynerds_wip.activities.note.note.data.backend_oriented;
 
 import com.example.robin.angrynerds_wip.activities.note.note.data.NoteData;
-import com.example.robin.angrynerds_wip.activities.note.note.data.NoteDataHelper;
+import com.example.robin.angrynerds_wip.activities.note.note.data.backend_oriented.async_tasks.TaskManager;
 import com.example.robin.angrynerds_wip.data.models.tens.Note;
 import com.example.robin.angrynerds_wip.data.models.utils.Image;
 import com.example.robin.angrynerds_wip.data.services.Delete;
@@ -72,6 +72,6 @@ public class NoteDataBackend {
     }
 
     public void saveImage(Image pOriginalImage) {
-        mTaskManager.saveImage(pOriginalImage);
+        ImageService.saveImage(pOriginalImage);
     }
 }

@@ -1,6 +1,6 @@
 package com.example.robin.angrynerds_wip.data.services;
 
-import com.example.robin.angrynerds_wip.data.repository.Repository;
+import com.example.robin.angrynerds_wip.data.repository.DatabaseRepository;
 import com.example.robin.angrynerds_wip.data.models.tens.TEN;
 
 public class Update {
@@ -13,9 +13,9 @@ public class Update {
      --------------------------------------------------*/
 
     public static void saveTEN(TEN newTen) {
-        Repository repository = new Repository();
+        DatabaseRepository databaseRepository = new DatabaseRepository();
         if (newTen.getID() == null) {
-            repository.insertTEN(newTen);
-        } else repository.updateTEN(newTen);
+            databaseRepository.insertTEN(newTen);
+        } else databaseRepository.updateTEN(newTen);
     }
 }
