@@ -1,8 +1,10 @@
 package com.example.robin.angrynerds_wip.activities.note.note.data.gui_oriented;
 
+import android.content.ClipData;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.content.FileProvider;
@@ -68,6 +70,10 @@ public class ImageImport {
                         "com.example.robin.fileprovider",
                         photoFile);
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
+                if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.LOLLIPOP) {
+                    takePictureIntent.setClipData(ClipData.newRawUri("", photoURI));
+                    takePictureIntent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION|Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                }
                 mActivity.startActivityForResult(takePictureIntent, NoteConstants.CAMERA_IMPORT_ACTIVITY_REQUESTCODE);
             }
         }
