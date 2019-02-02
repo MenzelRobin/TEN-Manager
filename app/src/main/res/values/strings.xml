@@ -30,8 +30,8 @@
 
 
     <!-- Note Layout Strings -->
-    <string name="sample_note_title">Titel</string>
-    <string name="sample_note_description">Beschreibung</string>
+    <string name="sample_note_title">Titel eingeben</string>
+    <string name="sample_note_description">Beschreibung eingeben</string>
     <string name="sample_note_tag">#Stichwort</string>
     <string name="sample_note_hashtag">#</string>
     <string name="sample_note_listtag">Stichwort</string>
