@@ -35,6 +35,7 @@
     <string name="sample_note_tag">#Stichwort</string>
     <string name="sample_note_hashtag">#</string>
     <string name="sample_note_listtag">Stichwort</string>
+    <string name="note_menu_toolbarShare">Notiz teilen</string>
     <string name="note_menu_toolbarDelete">Notiz löschen</string>
     <string name="note_tagOverview_menu_toolbarDelete">Alle Stichworte löschen</string>
     <string name="note_tagOverview_addButton">Stichwort hinzufügen</string>

@@ -1,8 +1,10 @@
 package com.example.robin.angrynerds_wip.activities.note.note.data;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.util.Log;
 
+import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.activities.note.note.NoteActivity;
 import com.example.robin.angrynerds_wip.activities.note.note.data.backend_oriented.NoteDataBackend;
 import com.example.robin.angrynerds_wip.activities.note.note.gui.GraphicsContainer;
@@ -79,6 +81,21 @@ public class NoteData {
     public void executeSaveRoutine() { mNoteDataBackend.executeSaveRoutine(); }
 
     public void deleteNote() { mNoteDataBackend.deleteNote(); }
+
+    public void shareNote() {
+        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+        shareIntent.setType("text/plain");
+        String shareText = mNote.getTitle();
+        shareText = shareText + "\n\n" + mNote.getDescription();
+
+        String tags = "";
+        for(String tag : mNote.getTags())
+            tags = tags + "#" + tag + " ";
+
+        shareText = shareText + "\n\n" + tags;
+        shareIntent.putExtra(Intent.EXTRA_TEXT, shareText);
+        mActivity.startActivity(Intent.createChooser(shareIntent, "Teilen mit"));
+    }
 
     public void loadNote(String pNoteId) { mNoteDataBackend.loadNote(pNoteId); }
 

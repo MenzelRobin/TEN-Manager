@@ -49,5 +49,8 @@ public class NoteClickHandler {
             mNoteApplicationLogic.getNoteData().deleteNote();
             mNoteApplicationLogic.getNoteNavigationLogic().returnToOverview();
         }
+        else if (pItem.getItemId() == R.id.note_action_share){
+            mNoteApplicationLogic.getNoteData().shareNote();
+        }
     }
 }
