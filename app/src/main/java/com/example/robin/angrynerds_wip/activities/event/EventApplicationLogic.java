@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.robin.angrynerds_wip.R;
+import com.example.robin.angrynerds_wip.data.models.utils.RecurringType;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -22,6 +23,7 @@ public class EventApplicationLogic {
     private Data mData;
     private Reminder mReminder;
     private AlarmManagerHelper mAlarmManagerhelper;
+    private RecurringTypeHelper mRecurringTypeHelper;
     private NotificationManagerCompat mNotificationManager;
 
     public EventApplicationLogic(Gui pGui, AppCompatActivity pActivity, Data pData) {
@@ -29,6 +31,7 @@ public class EventApplicationLogic {
         mActivity = pActivity;
         mData = pData;
         mReminder = new Reminder(mActivity);
+        mRecurringTypeHelper = new RecurringTypeHelper(mActivity);
         mAlarmManagerhelper = new AlarmManagerHelper();
         initGui();
         initListener();
@@ -59,6 +62,7 @@ public class EventApplicationLogic {
         mGui.getToolbar().setOnMenuItemClickListener(menuItemClickListener);
         mGui.getEditTextDate().setOnClickListener(clickListener);
         mGui.getEditTextTime().setOnClickListener(clickListener);
+        mGui.getEditTextRecurringType().setOnClickListener(clickListener);
         mGui.getEditTextNewReminder().setOnClickListener(clickListener);
         mGui.getIconCloseReminder1().setOnClickListener(clickListener);
         mGui.getIconCloseReminder2().setOnClickListener(clickListener);
@@ -77,6 +81,7 @@ public class EventApplicationLogic {
         mGui.setDate(mData.getFormatedDate());
         mGui.setLocation(mData.getEvent().getAddress());
         mGui.setColor(mData.getEvent().getColor(), mData.getEvent().getAccentColor());
+        mGui.setRecurringType(mRecurringTypeHelper.getRecurringTypeString(mData.getEvent().getRecurringType()));
         mReminder = new Reminder(mActivity);
         mReminder.setReminder(mData.getEvent().getReminder());
         mGui.setReminder(mReminder, mData.getEvent().getTime());
@@ -245,5 +250,16 @@ public class EventApplicationLogic {
 
             mActivity.startActivity(mapIntent);
         }
+    }
+
+    public void onRecurringTypeClicked() {
+        new AlertDialog.Builder(mActivity)
+            .setItems(mRecurringTypeHelper.getRecurringTypeStrings(), new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    mData.setRecurringType(i);
+                    updateGui();
+                }
+            }).show();
     }
 }

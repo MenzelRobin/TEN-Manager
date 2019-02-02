@@ -12,6 +12,7 @@ import java.util.Locale;
 
 import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.data.models.tens.Event;
+import com.example.robin.angrynerds_wip.data.models.utils.RecurringType;
 import com.example.robin.angrynerds_wip.data.services.Create;
 import com.example.robin.angrynerds_wip.data.services.Delete;
 import com.example.robin.angrynerds_wip.data.services.Read;
@@ -70,6 +71,22 @@ public class Data {
     public void setLocation(String location) {
         mEvent.setAddress(location);
         updateEvent();
+    }
+
+    public void setRecurringType(int i){
+        switch (i){
+            case 0:
+                mEvent.setRecurringType(RecurringType.NONE);
+                break;
+            case 1:
+                mEvent.setRecurringType(RecurringType.DAILY);
+                break;
+            case 2:
+                mEvent.setRecurringType(RecurringType.WEEKLY);
+                break;
+            case 3:
+                mEvent.setRecurringType(RecurringType.YEARLY);
+        }
     }
 
     public void addReminderList(ArrayList<Date> newReminder) {

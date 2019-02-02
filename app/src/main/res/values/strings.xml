@@ -23,6 +23,11 @@
     <string name="event_calendar_description">Importiert aus dem AngryNerds TEN-Manager</string>
     <string name="event_reminder_title">Erinnerung: TITLE</string>
     <string name="event_reminder_text">am DATE um TIME Uhr.</string>
+    <string name="event_reminder_recurringType_none">Einmalig</string>
+    <string name="event_reminder_recurringType_daily">Täglich</string>
+    <string name="event_reminder_recurringType_weekly">Wöchentlich</string>
+    <string name="event_reminder_recurringType_yearly">Jährlich</string>
+
 
     <!-- Note Layout Strings -->
     <string name="sample_note_title">Titel</string>
