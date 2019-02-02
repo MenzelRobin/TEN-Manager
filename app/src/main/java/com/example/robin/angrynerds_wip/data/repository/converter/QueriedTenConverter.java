@@ -7,12 +7,12 @@ import com.example.robin.angrynerds_wip.data.repository.RepositoryConstants;
 
 //class that manages the Conversion from Query Result to TEN Java Object
 //Author: Jan Beilfuß
-public class GenericTENConverter {
+public class QueriedTenConverter {
 
     private TenJsonParser mTenJsonParser;
     private SeparateAttributesConverter mSeparateAttributesConverter;
 
-    public GenericTENConverter() {
+    public QueriedTenConverter() {
         this.mTenJsonParser = new TenJsonParser();
         this.mSeparateAttributesConverter = new SeparateAttributesConverter();
     }
