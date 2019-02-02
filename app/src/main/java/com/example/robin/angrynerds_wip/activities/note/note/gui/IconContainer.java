@@ -36,7 +36,8 @@ public class IconContainer extends GraphicsContainer {
         ImageView imageView = new ImageView(mActivity.getApplicationContext());
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         imageView.setImageDrawable(mDrawable);
-        imageView.setLayoutParams(new LinearLayout.LayoutParams(300, 300));
+        imageView.setLayoutParams(new LinearLayout.LayoutParams(NoteConstants.IMAGE_PREVIEW_CONTAINER_WIDTH/3,
+                NoteConstants.IMAGE_PREVIEW_CONTAINER_HEIGHT/3));
         mImageContainer.addView(imageView);
     }
 }

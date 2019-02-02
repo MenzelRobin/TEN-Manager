@@ -25,8 +25,7 @@
         android:maxLines="1"
         android:scrollbars="horizontal"
         android:textColor="@color/TextWhite"
-        android:textColorHint="@color/note_hintWhite"
-        android:textStyle="bold" />
+        android:textColorHint="@color/note_hintWhite"/>
 
     <View
         android:id="@+id/id_note_separate_portrait_1"
@@ -46,6 +45,7 @@
         android:layout_margin="10dp"
         android:hint="@string/sample_note_description"
         android:inputType="textMultiLine"
+        android:gravity="top"
         android:scrollbars="vertical"
         android:textColor="@color/TextWhite"
         android:textColorHint="@color/note_hintWhite" />

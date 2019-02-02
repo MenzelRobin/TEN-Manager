@@ -21,7 +21,7 @@ public class TouchListener implements View.OnTouchListener {
         if(MotionEvent.ACTION_UP == event.getAction())
             mApplicationLogic.onTagTextClicked();
         mActivity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
-        view.performClick();
+        //view.performClick();
         return false;
     }
 }
