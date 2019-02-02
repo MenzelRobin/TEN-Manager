@@ -1,7 +1,9 @@
-package com.example.robin.angrynerds_wip.activities.note.note.data.backend_oriented;
+package com.example.robin.angrynerds_wip.activities.note.note.data.backend_oriented.async_tasks;
 
-import android.util.Log;
-
+import com.example.robin.angrynerds_wip.activities.note.note.data.backend_oriented.NoteDataBackend;
+import com.example.robin.angrynerds_wip.activities.note.note.data.backend_oriented.async_tasks.NoteLoader;
+import com.example.robin.angrynerds_wip.activities.note.note.data.backend_oriented.async_tasks.NotePreviewImageLoader;
+import com.example.robin.angrynerds_wip.activities.note.note.data.backend_oriented.async_tasks.PriorityOriginalImageLoader;
 import com.example.robin.angrynerds_wip.data.models.utils.Image;
 
 public class TaskManager {
@@ -19,11 +21,6 @@ public class TaskManager {
     public void triggerOriginalImagePriorityLoad(int pIndex) {
         PriorityOriginalImageLoader priorityOriginalImageLoader = new PriorityOriginalImageLoader(mNoteDataBackend);
         priorityOriginalImageLoader.loadOriginalImage(pIndex);
-    }
-
-    public void saveImage(Image originalImage) {
-        ImageSaver imageSaver = new ImageSaver(mNoteDataBackend);
-        imageSaver.saveImage(originalImage);
     }
 
     public void loadPreviewImages() {
