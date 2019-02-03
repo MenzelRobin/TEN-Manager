@@ -6,7 +6,7 @@ public class Colors {
     public static final int[] COLORS = {
 
             0xFF0288D1, //light blue
-            0xFFD32F2F, //red
+            0xFFEF5350, //red
             0xFFAFB42B, //lime
             0xFF388E3C, //green
             0xFFFB8C00, //Orange
