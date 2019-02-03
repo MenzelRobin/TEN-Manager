@@ -108,7 +108,7 @@ public class NoteApplicationLogic {
 
     //NoteNavigationLogic
     public void onBackPressed() {
-        mNoteNavigationLogic.saveAndReturnToOverview();
+        saveAndReturnToOverview();
     }
 
     //Initialises Landscape or Portrait Activity with NoteData, rescales ImageOverlay if displayed

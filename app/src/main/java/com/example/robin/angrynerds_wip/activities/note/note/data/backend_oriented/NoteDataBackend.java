@@ -1,6 +1,9 @@
 package com.example.robin.angrynerds_wip.activities.note.note.data.backend_oriented;
 
+import android.util.Log;
+
 import com.example.robin.angrynerds_wip.activities.note.note.data.NoteData;
+import com.example.robin.angrynerds_wip.activities.note.note.data.NoteDataHelper;
 import com.example.robin.angrynerds_wip.activities.note.note.data.backend_oriented.async_tasks.TaskManager;
 import com.example.robin.angrynerds_wip.data.models.tens.Note;
 import com.example.robin.angrynerds_wip.data.models.utils.Image;
@@ -15,11 +18,13 @@ public class NoteDataBackend {
     private ArrayList<Image> mImagesToBeDeleted;
     private NoteData mNoteData;
     private TaskManager mTaskManager;
+    private NoteDataHelper mNoteDataHelper;
 
     public NoteDataBackend(NoteData pNoteData) {
         mImagesToBeDeleted = new ArrayList<>();
         this.mNoteData = pNoteData;
         this.mTaskManager = new TaskManager(this);
+        this.mNoteDataHelper = new NoteDataHelper(mNoteData);
     }
 
     public NoteData getmNoteData() {
@@ -48,7 +53,7 @@ public class NoteDataBackend {
 
     public void executeSaveRoutine() {
         finallyDeleteImages();
-        Update.saveTEN(mNoteData.getNote());
+        if(this.mNoteDataHelper.isSaveable()) Update.saveTEN(mNoteData.getNote());
     }
 
     public void finallyDeleteImages() {
@@ -58,7 +63,7 @@ public class NoteDataBackend {
     }
 
     public void deleteNote() {
-        if(mNoteData.getNote().getID() != null){
+        if (mNoteData.getNote().getID() != null) {
             Delete.deleteTEN(mNoteData.getNote().getID());
         }
     }
@@ -71,7 +76,5 @@ public class NoteDataBackend {
         ImageService.deleteImage(pFormerPath);
     }
 
-    public void saveImage(Image pOriginalImage) {
-        ImageService.saveImage(pOriginalImage);
-    }
+    public void saveImage(Image pOriginalImage) { ImageService.saveImage(pOriginalImage); }
 }
