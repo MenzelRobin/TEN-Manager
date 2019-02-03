@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/note_black"
+    android:focusableInTouchMode="true"
     android:orientation="horizontal">
 
     <include
@@ -23,7 +24,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:cursorVisible="false"
             android:hint="@string/sample_note_title"
             android:inputType="text"
             android:lines="1"

@@ -28,10 +28,6 @@ public class NoteListenerHandler {
         }
     }
 
-    public void onTitleClicked() {
-        mNoteApplicationLogic.getNoteGui().getNoteTitle().setCursorVisible(true);
-    }
-
     public void onTagsClicked() {
         mNoteApplicationLogic.getNoteNavigationLogic().startTagActivity();
     }

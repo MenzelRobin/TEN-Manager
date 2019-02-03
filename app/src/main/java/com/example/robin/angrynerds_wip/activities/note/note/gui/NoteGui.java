@@ -47,8 +47,10 @@ public class NoteGui {
         mNoteTags.setMovementMethod(new ScrollingMovementMethod());
         mProgressBarHolder = pActivity.findViewById(R.id.noteProgressBarHolder);
 
-        if(pNewNote)
-            mNoteTitle.setCursorVisible(true);
+        if(pNewNote) {
+            mNoteTitle.requestFocus();
+            mBackground.setFocusableInTouchMode(false);
+        }
 
         initiateToolbar(pActivity);
         initiateOrientationDependentViews(pActivity);
