@@ -11,12 +11,17 @@
         android:id="@+id/id_todo_toolbar"
         layout="@layout/toolbar_ten" />
 
+    <RelativeLayout
+        android:id="@+id/edit_todo_leftContainer"
+        android:layout_width="640px"
+        android:layout_height="match_parent"
+        android:layout_above="@id/edit_todo_progressText"
+        android:layout_below="@id/id_todo_toolbar">
     <EditText
         android:theme="@style/editTextStyle"
         android:id="@+id/edit_todo_title"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:layout_below="@id/id_todo_toolbar"
         android:inputType="text"
         android:hint="@string/sample_activity_todo_title"
         android:textColorHint="@color/TextWhite"
@@ -125,13 +130,15 @@
         android:layout_height="1dp"
         android:layout_below="@id/id_todo_relativeLayout_endDate"
         android:background="@color/colorPrimaryDark" />
+    </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/id_todo_relativeLayout_tasks"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/id_todo_relativeLayout_endDate"
+        android:layout_below="@id/id_todo_toolbar"
         android:layout_above="@+id/edit_todo_progressText"
+        android:layout_toRightOf="@id/edit_todo_leftContainer"
         android:layout_margin="16dp">
         <ListView
             android:id="@+id/edit_todo_tasks"
