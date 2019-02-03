@@ -27,7 +27,6 @@ public class NoteListenerInitializer {
         MenuItemClickListener menuItemClickListener = new MenuItemClickListener(mNoteApplicationLogic);
         NoteGui mNoteGui = mNoteApplicationLogic.getNoteGui();
 
-        mNoteGui.getNoteTitle().setOnClickListener(mClickListener);
         mNoteGui.getNoteImageContainer().setOnClickListener(mClickListener);
         mNoteGui.getNoteTags().setOnClickListener(mClickListener);
         mNoteGui.getNoteTitle().addTextChangedListener(new NoteTextWatcher(mNoteApplicationLogic, mNoteGui.getNoteTitle()));

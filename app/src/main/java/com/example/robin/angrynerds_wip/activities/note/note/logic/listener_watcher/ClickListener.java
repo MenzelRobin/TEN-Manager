@@ -20,9 +20,6 @@ public class ClickListener implements View.OnClickListener  {
             case R.id.id_note_tags:
                 mNoteApplicationLogic.getNoteClickHandler().onTagsClicked();
                 return;
-            case R.id.id_note_title:
-                mNoteApplicationLogic.getNoteClickHandler().onTitleClicked();
-                return;
             case -1:
                 mNoteApplicationLogic.saveAndReturnToOverview();
                 return;
