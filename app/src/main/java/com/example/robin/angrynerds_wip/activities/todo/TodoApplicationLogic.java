@@ -94,6 +94,8 @@ public class TodoApplicationLogic {
 
 
     public void dataToGui() {
+        mGui.setFocusableInTouchmode(!mData.getmIsNew());
+
         Date date = Calendar.getInstance().getTime();
 
         Todo todo = mData.getmTodo();
@@ -170,17 +172,13 @@ public class TodoApplicationLogic {
     }
 
     public void updateProgress(){
-        int trueChecked = 0;
-        int allChecker = 0;
 
-        for(Task task: mTasks){
-            if(task.getStatus() == true){
-                trueChecked = trueChecked + 1;
-            }
-            allChecker = allChecker + 1;
-        }
-        allChecker = allChecker - 1;
-        mGui.setmProgressText(Integer.toString(trueChecked) + " / " + Integer.toString(allChecker));
+        mData.getmTodo().getTasks().remove(mData.getmTodo().getTasks().size() - 1);
+        mData.getmTodo().setTasks(mTasks);
+
+        mGui.setmProgressText((int) (mData.getmTodo().getProgress() * 100) + " %");
+        mData.getmTodo().getTasks().add(new Task());
+
         //Hier lag der Fehler bei dem Wechsel der Ansichten, wollen wir uns morgen angucken
         //UpdateTodo();
     }

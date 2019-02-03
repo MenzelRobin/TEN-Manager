@@ -129,6 +129,11 @@ public class Gui extends AppCompatActivity{
         //mSeperateView1.setAlpha((float) 0.5);
     }
 
+    public void setFocusableInTouchmode(boolean value)
+    {
+        mRelativeLayout.setFocusableInTouchMode(value);
+    }
+
     public AdapterView getListView() {
         return mTasks;
     }
