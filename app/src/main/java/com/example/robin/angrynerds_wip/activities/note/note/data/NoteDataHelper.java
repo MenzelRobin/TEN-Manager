@@ -1,5 +1,10 @@
 package com.example.robin.angrynerds_wip.activities.note.note.data;
 
+import android.util.Log;
+
+import com.example.robin.angrynerds_wip.data.models.tens.Note;
+import com.example.robin.angrynerds_wip.data.services.Delete;
+
 public class NoteDataHelper {
 
     private NoteData mNoteData;
@@ -8,11 +13,18 @@ public class NoteDataHelper {
         mNoteData = pNoteData;
     }
 
-    public NoteDataHelper(){
+    public boolean isSaveable() {
+        Note note = mNoteData.getNote();
+        if(note.getTitle() == ""){
+            if (note.getDescription() == ""){
+                if(note.getPictures().size() == 0){
+                    if (note.getTags().size() == 0){
+                        Delete.deleteTEN(note.getID());
+                        return false;
+                    }
+                }
+            }
+        }
+        return  true;
     }
-
-    public int getNoteImageIndexFromContainerIndex(int pContainerIndex){
-        return pContainerIndex - 1;
-    }
-
 }
