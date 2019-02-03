@@ -3,7 +3,6 @@ package com.example.robin.angrynerds_wip.activities.note.note.logic;
 import android.content.res.Configuration;
 
 import com.example.robin.angrynerds_wip.activities.note.note.data.NoteData;
-import com.example.robin.angrynerds_wip.activities.note.note.data.gui_oriented.ImageImport;
 import com.example.robin.angrynerds_wip.activities.note.note.gui.NoteGui;
 import com.example.robin.angrynerds_wip.activities.note.note.logic.listener_watcher.NoteListenerHandler;
 import com.example.robin.angrynerds_wip.activities.note.note.logic.listener_watcher.NoteListenerInitializer;

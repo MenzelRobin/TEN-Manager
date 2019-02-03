@@ -1,4 +1,4 @@
-package com.example.robin.angrynerds_wip.activities.note.note.data.gui_oriented;
+package com.example.robin.angrynerds_wip.activities.note.note.logic;
 
 import android.content.ClipData;
 import android.content.Intent;
@@ -62,7 +62,6 @@ public class ImageImport {
             try {
                 photoFile = ImageService.createImageFile(mActivity);
                 this.mCurrentPhotoPath=photoFile.getAbsolutePath();
-                //photoFile = createImageFile();
             } catch (IOException e) {
             }
             if (photoFile != null) {
@@ -84,15 +83,5 @@ public class ImageImport {
         Intent pickPhoto = new Intent(Intent.ACTION_PICK,
                 android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         mActivity.startActivityForResult(pickPhoto , NoteConstants.GALLERY_IMPORT_ACTIVITY_REQUESTCODE);
-    }
-
-    //TODO can be deleted if function in imageService works
-    private File createImageFile() throws IOException {
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.GERMANY).format(new Date());
-        String imageFileName = "JPEG_" + timeStamp + "_";
-        File storageDir = mActivity.getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-        File image = File.createTempFile(imageFileName, ".jpg", storageDir);
-        mCurrentPhotoPath = image.getAbsolutePath();
-        return image;
     }
 }
