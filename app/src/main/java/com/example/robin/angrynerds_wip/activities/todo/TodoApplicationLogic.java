@@ -255,7 +255,9 @@ public class TodoApplicationLogic {
             Log.e("florian","Fehler" + mGui.getmStartDate().getText().toString());
         }
 
+        todo.getTasks().remove(todo.getTasks().size() - 1);
         Update.saveTEN(todo);
+        todo.getTasks().add(new Task());
     }
 
     public void onConfigurationChanged(Gui pGui) {
