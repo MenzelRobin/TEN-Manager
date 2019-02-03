@@ -125,7 +125,13 @@ public class TodoApplicationLogic {
     public void returnToOverview() {
         mActivity.overridePendingTransition(android.R.anim.fade_in, android.R.anim.slide_out_right);
         mActivity.finish();
-        UpdateTodo();
+
+        try {
+            UpdateTodo();
+        }
+        catch(Exception e){
+
+        }
     }
 
     //Toolbar menu is clicked

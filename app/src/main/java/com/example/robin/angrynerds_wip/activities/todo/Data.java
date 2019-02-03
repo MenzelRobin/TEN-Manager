@@ -21,6 +21,7 @@ public class Data {
 
         if(todoId == null){
             mTodo = Create.newTodo();
+            Update.saveTEN(mTodo);
         }else{
             mTodo = Read.getTodoByID(todoId);
         }
