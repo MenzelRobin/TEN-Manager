@@ -70,6 +70,11 @@ public class Todo extends TEN {
         this.endDate = endDate;
     }
 
+    /*@Override
+    public boolean isFound(String pSearchString) {
+        return super.isFound(pSearchString)?super.isFound(pSearchString):note.contains(pSearchString);
+    }*/
+
     public Bundle getBundle(){
         Bundle bundle = super.getBundle();
         bundle.putString(BundleKeys.keyTodoNote, note);

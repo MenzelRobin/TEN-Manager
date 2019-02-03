@@ -18,6 +18,7 @@ public class OverviewHeaderCreateFragment extends Fragment {
         view.findViewById(R.id.id_overview_header_create_button_todo).setOnClickListener(clickListener);
         view.findViewById(R.id.id_overview_header_create_button_event).setOnClickListener(clickListener);
         view.findViewById(R.id.id_overview_header_create_textView_note).setOnClickListener(clickListener);
+        view.findViewById(R.id.id_overview_header_create_button_search).setOnClickListener(clickListener);
         return view;
     }
 }
