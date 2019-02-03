@@ -13,6 +13,7 @@ import com.example.robin.angrynerds_wip.activities.note.note.logic.NoteApplicati
 import com.example.robin.angrynerds_wip.data.models.tens.Note;
 import com.example.robin.angrynerds_wip.data.models.utils.Image;
 import com.example.robin.angrynerds_wip.data.services.Update;
+import com.example.robin.angrynerds_wip.modules.share.ShareModule;
 
 import java.util.ArrayList;
 
@@ -83,20 +84,7 @@ public class NoteData {
     public void deleteNote() { mNoteDataBackend.deleteNote(); }
 
     public void shareNote() {
-        Intent shareIntent = new Intent(Intent.ACTION_SEND);
-        shareIntent.setType("text/plain");
-        String shareText = mNote.getTitle();
-        shareText = shareText + "\n\n" + mNote.getDescription();
-
-        if(!mNote.getTags().isEmpty()){
-            String tags = "";
-            for(String tag : mNote.getTags())
-                tags = tags + "#" + tag + " ";
-            shareText = shareText + "\n\n" + tags;
-        }
-
-        shareIntent.putExtra(Intent.EXTRA_TEXT, shareText);
-        mActivity.startActivity(Intent.createChooser(shareIntent, "Teilen mit"));
+        ShareModule.shareNote(mActivity, mNote);
     }
 
     public void loadNote(String pNoteId) { mNoteDataBackend.loadNote(pNoteId); }
