@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:background="@color/bgColor4"
     android:orientation="horizontal"
+    android:focusableInTouchMode="true"
     android:layout_alignParentLeft="true"
     android:id="@+id/edit_todo_mainRelativeLayout">
 

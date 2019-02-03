@@ -15,6 +15,7 @@ import com.example.robin.angrynerds_wip.data.services.Update;
 public class Data {
     private Init mActivity;
     private Todo mTodo;
+    private boolean mIsNew;
 
     Data(Init pActivity, String todoId) {
         mActivity = pActivity;
@@ -22,8 +23,11 @@ public class Data {
         if(todoId == null){
             mTodo = Create.newTodo();
             Update.saveTEN(mTodo);
+            mIsNew = true;
+
         }else{
             mTodo = Read.getTodoByID(todoId);
+            mIsNew = false;
         }
     }
     public void deleteTodo() {
@@ -48,6 +52,8 @@ public class Data {
         mTodo.setNote(text);
         updateTodo();
     }
+
+    public boolean getmIsNew() { return mIsNew; }
 
 
     //Getter
