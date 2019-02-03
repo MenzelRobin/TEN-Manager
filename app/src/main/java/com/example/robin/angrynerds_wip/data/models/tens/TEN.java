@@ -3,6 +3,7 @@ package com.example.robin.angrynerds_wip.data.models.tens;
 import android.os.Bundle;
 import android.support.annotation.ColorInt;
 import android.support.annotation.ColorLong;
+import android.util.Log;
 
 import com.example.robin.angrynerds_wip.data.models.utils.BundleKeys;
 import com.example.robin.angrynerds_wip.data.models.utils.Colors;
@@ -51,6 +52,11 @@ public class TEN {
         this.title = title;
         this.ID = ID;
         this.dateOfCreation = dateOfCreation;
+    }
+
+    public boolean isFound(String pSearchString){
+        Log.d("LOGTAG", ID + ", " + title);
+        return title!=null?title.contains(pSearchString):false;
     }
 
     public Bundle getBundle() {

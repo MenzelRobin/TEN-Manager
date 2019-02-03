@@ -1,6 +1,7 @@
 package com.example.robin.angrynerds_wip.overview.overviewActivity;
 
 import android.support.v4.app.Fragment;
+import android.util.Log;
 
 import com.example.robin.angrynerds_wip.data.models.tens.TEN;
 import com.example.robin.angrynerds_wip.data.services.Delete;
@@ -47,6 +48,11 @@ public class OverviewController {
         mNewClickHandler.newTEN(pClass);
     }
 
+    public void activateSearch(){
+        mFragmentInserter.replaceFragment(mGui.getHeaderId(), mFragmentFactory.createHeaderSearchFragment(), "HEADER_FRAGMENT");
+        mGui.hideFooter();
+    }
+
     // Activates the Deletionmode
     public void longClick(){
         mDeleteHandler.longClick();
@@ -59,6 +65,9 @@ public class OverviewController {
         mDeleteHandler.back();
         mFragmentInserter.replaceFragment(mGui.getHeaderId(), mFragmentFactory.createHeaderCreateFragment(), "HEADER_FRAGMENT");
         mGui.showFooter();
+        //Todo: Fix Interaction between delete and search
+        //Todo: Add correct Cursor placement
+        //Todo: Hide keyboard on search
     }
 
     // Deletes selected Items and goes back to normal State
@@ -68,6 +77,12 @@ public class OverviewController {
         refreshFragments();
         mFragmentInserter.replaceFragment(mGui.getHeaderId(), mFragmentFactory.createHeaderCreateFragment(), "HEADER_FRAGMENT");
         mGui.showFooter();
+    }
+
+    // Searches for all Items
+    public void search(String pSearchString){
+        mData.search(pSearchString);
+        refreshFragments();
     }
 
     // Shows TENs depending on selection

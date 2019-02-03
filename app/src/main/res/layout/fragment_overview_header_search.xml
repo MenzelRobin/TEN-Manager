@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="overview.overviewActivity.OverviewInit">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorGrey"
+        android:paddingTop="5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingBottom="0dp"
+        android:id="@+id/id_overview_header_search_relativeLayout_header">
+
+
+        <Button
+            android:id="@+id/id_overview_header_search_button_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/container_rounded_edges_left"
+            android:drawableTop="@drawable/ic_arrow_back_black_24dp"
+            android:padding="5dp"
+            android:text="Zurück"
+            android:textSize="10dp" />
+
+        <EditText
+            android:theme="@style/editTextSearchStyle"
+            android:id="@+id/id_overview_header_search_view_searchText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toStartOf="@id/id_overview_header_search_button_search"
+            android:layout_toEndOf="@id/id_overview_header_search_button_back"
+            android:layout_alignBottom= "@id/id_overview_header_search_button_back"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:hint="Suchen..."
+            android:inputType="text"
+            android:textColor="#000000"
+            android:textColorHint="@color/colorGrey"
+            android:background="@color/colorWhite"/>
+
+        <Button
+            android:id="@+id/id_overview_header_search_button_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/container_rounded_edges_right"
+            android:drawableTop="@drawable/ic_search_black_24dp"
+            android:padding="5dp"
+            android:text="Suchen"
+            android:textSize="10dp" />
+
+
+    </RelativeLayout>
+
+</RelativeLayout>
