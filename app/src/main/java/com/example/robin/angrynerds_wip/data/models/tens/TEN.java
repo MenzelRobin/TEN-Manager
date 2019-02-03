@@ -53,7 +53,7 @@ public class TEN {
         this.color = color;
         this.accentColor = accentColor;
         this.dateOfCreation = dateOfCreation;
-    }g9it
+    }
 
     public boolean isFound(String pSearchString){
         return title!=null?title.toLowerCase().contains(pSearchString.toLowerCase()):false;
