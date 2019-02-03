@@ -32,6 +32,7 @@ public class Todo extends TEN {
         super(title);
         this.startDate = new Date();
         this.endDate = new Date();
+        this.tasks = new ArrayList<>();
         tasks.add(new Task());
     }
 
@@ -40,6 +41,7 @@ public class Todo extends TEN {
         this.note = note;
         this.startDate = new Date();
         this.endDate = new Date();
+        this.tasks = new ArrayList<>();
         tasks.add(new Task());
     }
 
