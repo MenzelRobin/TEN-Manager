@@ -187,17 +187,20 @@ public class MockData {
 
 
 
+        try{
+            Thread.sleep(2000);
+        } catch(Exception e){}
         melbourneNote.addImage(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_melbourne1));
         Update.saveTEN(melbourneNote);
         for (Image image: melbourneNote.getPictures()) image.setBitmap(null);
         try{
-            Thread.sleep(1000);
+            Thread.sleep(2000);
         } catch(Exception e){}
         melbourneNote.addImage(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_melbourne2));
         Update.saveTEN(melbourneNote);
         for (Image image: melbourneNote.getPictures()) image.setBitmap(null);
         try{
-            Thread.sleep(1000);
+            Thread.sleep(2000);
         } catch(Exception e){}
         melbourneNote.addImage(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_melbourne3));
         Update.saveTEN(melbourneNote);
