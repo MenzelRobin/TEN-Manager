@@ -32,6 +32,7 @@ public class Todo extends TEN {
         super(title);
         this.startDate = new Date();
         this.endDate = new Date();
+        this.tasks = new ArrayList<>();
         tasks.add(new Task());
     }
 
@@ -40,6 +41,7 @@ public class Todo extends TEN {
         this.note = note;
         this.startDate = new Date();
         this.endDate = new Date();
+        this.tasks = new ArrayList<>();
         tasks.add(new Task());
     }
 
@@ -50,7 +52,6 @@ public class Todo extends TEN {
         this.progress = calculateProgress();
         this.startDate = new Date();
         this.endDate = new Date();
-        tasks.add(new Task());
     }
 
     public Todo(String title, String note, ArrayList<Task> tasks, Date endDate){
@@ -60,7 +61,6 @@ public class Todo extends TEN {
         this.progress = calculateProgress();
         this.startDate = new Date();
         this.endDate = endDate;
-        tasks.add(new Task());
     }
 
     public Todo(String title, String note, ArrayList<Task> tasks, Date startDate, Date endDate){
@@ -70,7 +70,6 @@ public class Todo extends TEN {
         this.progress = calculateProgress();
         this.startDate = startDate;
         this.endDate = endDate;
-        tasks.add(new Task());
     }
 
     //all Attributes for complete reconstruction
@@ -81,7 +80,6 @@ public class Todo extends TEN {
         this.progress = calculateProgress();
         this.startDate = startDate;
         this.endDate = endDate;
-        tasks.add(new Task());
     }
 
     /*@Override

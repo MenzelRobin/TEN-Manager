@@ -94,6 +94,8 @@ public class TodoApplicationLogic {
 
 
     public void dataToGui() {
+        mGui.setFocusableInTouchmode(!mData.getmIsNew());
+
         Date date = Calendar.getInstance().getTime();
 
         Todo todo = mData.getmTodo();
@@ -125,7 +127,13 @@ public class TodoApplicationLogic {
     public void returnToOverview() {
         mActivity.overridePendingTransition(android.R.anim.fade_in, android.R.anim.slide_out_right);
         mActivity.finish();
-        UpdateTodo();
+
+        try {
+            UpdateTodo();
+        }
+        catch(Exception e){
+
+        }
     }
 
     //Toolbar menu is clicked
@@ -164,17 +172,13 @@ public class TodoApplicationLogic {
     }
 
     public void updateProgress(){
-        int trueChecked = 0;
-        int allChecker = 0;
 
-        for(Task task: mTasks){
-            if(task.getStatus() == true){
-                trueChecked = trueChecked + 1;
-            }
-            allChecker = allChecker + 1;
-        }
-        allChecker = allChecker - 1;
-        mGui.setmProgressText(Integer.toString(trueChecked) + " / " + Integer.toString(allChecker));
+        mData.getmTodo().getTasks().remove(mData.getmTodo().getTasks().size() - 1);
+        mData.getmTodo().setTasks(mTasks);
+
+        mGui.setmProgressText((int) (mData.getmTodo().getProgress() * 100) + " %");
+        mData.getmTodo().getTasks().add(new Task());
+
         //Hier lag der Fehler bei dem Wechsel der Ansichten, wollen wir uns morgen angucken
         //UpdateTodo();
     }
@@ -255,7 +259,9 @@ public class TodoApplicationLogic {
             Log.e("florian","Fehler" + mGui.getmStartDate().getText().toString());
         }
 
+        todo.getTasks().remove(todo.getTasks().size() - 1);
         Update.saveTEN(todo);
+        todo.getTasks().add(new Task());
     }
 
     public void onConfigurationChanged(Gui pGui) {

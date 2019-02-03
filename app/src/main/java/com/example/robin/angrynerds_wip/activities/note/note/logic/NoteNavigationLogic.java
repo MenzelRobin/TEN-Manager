@@ -7,6 +7,7 @@ import android.util.Log;
 
 import com.example.robin.angrynerds_wip.activities.note.note.data.NoteConstants;
 import com.example.robin.angrynerds_wip.activities.note.tageditor.NoteTagActivity;
+import com.example.robin.angrynerds_wip.data.services.ImageRotationCorrectionService;
 import com.example.robin.angrynerds_wip.data.services.ImageService;
 
 public class NoteNavigationLogic {
@@ -27,7 +28,7 @@ public class NoteNavigationLogic {
             case NoteConstants.CAMERA_IMPORT_ACTIVITY_REQUESTCODE:
                 if (pResultCode == -1) {
                     String path = mNoteApplicationLogic.getImageImport().getCurrentPhotoPath();
-                    Bitmap cameraImage = ImageService.correctImageRotation(path, BitmapFactory.decodeFile(path));
+                    Bitmap cameraImage = ImageRotationCorrectionService.correctImageRotation(path, BitmapFactory.decodeFile(path));
                     mNoteApplicationLogic.getNoteData().addImageFromCamera(cameraImage, path);
                     mNoteApplicationLogic.getNoteGuiRefresherLogic().refreshImages();
                 }
