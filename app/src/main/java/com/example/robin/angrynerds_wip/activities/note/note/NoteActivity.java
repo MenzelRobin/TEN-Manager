@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -90,7 +89,6 @@ public class NoteActivity extends AppCompatActivity {
         mNoteGui.getNoteImageContainer().removeAllViews();
         initGUI(false);
         mNoteApplicationLogic.onConfigurationChanged(mNoteGui, pNewConfig);
-        Log.d("display", "Konfig: " + (int)(pNewConfig.screenHeightDp*getApplicationContext().getResources().getDisplayMetrics().density) + " " + (int)(pNewConfig.screenWidthDp*getApplicationContext().getResources().getDisplayMetrics().density));
     }
 
     @Override
@@ -101,8 +99,8 @@ public class NoteActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        mNoteApplicationLogic.onBackPressed();
         super.onBackPressed();
+        mNoteApplicationLogic.onBackPressed();
     }
 
     @Override

@@ -1,5 +1,7 @@
 package com.example.robin.angrynerds_wip.data.repository.sub_repositories.write;
 
+import android.util.Log;
+
 import com.couchbase.lite.CouchbaseLiteException;
 import com.couchbase.lite.Document;
 import com.couchbase.lite.MutableDocument;
@@ -40,10 +42,14 @@ public class WriteRepository {
 
     public boolean deleteTEN(String pTenId) {
         Document document = DataContextManager.getDatabase().getDocument(pTenId);
+        Log.d("NoteS", "Doc: " + document);
         deleteNoteImages(document);
         try {
-            DataContextManager.getDatabase().delete(document);
-            return true;
+            if(document != null){
+                DataContextManager.getDatabase().delete(document);
+                return true;
+            }
+            return false;
         } catch (CouchbaseLiteException e) {
             return false;
         }
