@@ -19,7 +19,7 @@ public class OverviewData {
     // Gets all TENs from the Database
     public void refresh(){
         mData = Read.getAllTENs();
-        filter();
+        mCurrentData = filterData();
     }
 
     // returns all current TENs
@@ -33,17 +33,28 @@ public class OverviewData {
     }
 
     // Filters for the selected Class
-    public void filter(){
-        mCurrentData = new ArrayList();
+    public ArrayList<TEN> filterData(){
+        ArrayList <TEN> filteredData = new ArrayList();
         if(mCurrentClass == TEN.class){
             for(TEN ten : mData){
-                mCurrentData.add(ten);
+                filteredData.add(ten);
             }
         } else {
             for(TEN ten : mData){
                 if(ten.getClass() == mCurrentClass){
-                    mCurrentData.add(ten);
+                    filteredData.add(ten);
                 }
+            }
+        }
+        return filteredData;
+    }
+
+    public void search(String pSearchString){
+        mCurrentData = new ArrayList<TEN>();
+        ArrayList<TEN> filteredData = filterData();
+        for(TEN ten : filteredData){
+            if(ten.isFound(pSearchString)){
+                mCurrentData.add(ten);
             }
         }
     }

@@ -1,8 +1,11 @@
 package com.example.robin.angrynerds_wip.activities.note.note.logic;
 
+import android.content.res.Configuration;
+
 import com.example.robin.angrynerds_wip.activities.note.note.data.NoteData;
 import com.example.robin.angrynerds_wip.activities.note.note.data.gui_oriented.ImageImport;
 import com.example.robin.angrynerds_wip.activities.note.note.gui.NoteGui;
+import com.example.robin.angrynerds_wip.activities.note.note.logic.listener_watcher.NoteListenerInitializer;
 
 public class NoteApplicationLogic {
 
@@ -109,12 +112,12 @@ public class NoteApplicationLogic {
     }
 
     //Initialises Landscape or Portrait Activity with NoteData, rescales ImageOverlay if displayed
-    public void onConfigurationChanged(NoteGui pGui) {
+    public void onConfigurationChanged(NoteGui pGui, Configuration pConfiguration) {
         this.mNoteGui = pGui;
         //mNoteData.getNoteDataGui().addImageButton();
         mNoteListenerInitializer.initListener();
         mNoteGuiRefresherLogic.dataToGui();
-        mNoteImagePopupLogic.changeConfiguration();
+        mNoteImagePopupLogic.changeConfiguration(pConfiguration);
     }
 
     public void initImageImportObject() {

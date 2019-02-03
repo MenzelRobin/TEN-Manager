@@ -1,15 +1,13 @@
-package com.example.robin.angrynerds_wip.overview.overviewActivity;
+package com.example.robin.angrynerds_wip.overview.overviewActivity.fragmentManager;
 
 import android.support.v4.app.Fragment;
 import android.util.Log;
 
-import com.example.robin.angrynerds_wip.data.models.tens.Event;
-import com.example.robin.angrynerds_wip.data.models.tens.Note;
-import com.example.robin.angrynerds_wip.data.models.tens.TEN;
-import com.example.robin.angrynerds_wip.data.models.tens.Todo;
+import com.example.robin.angrynerds_wip.data.models.tens.*;
 import com.example.robin.angrynerds_wip.overview.eventFragment.OverviewEventInit;
 import com.example.robin.angrynerds_wip.overview.header.createFragment.OverviewHeaderCreateFragment;
 import com.example.robin.angrynerds_wip.overview.header.deleteFragment.OverviewHeaderDeleteFragment;
+import com.example.robin.angrynerds_wip.overview.header.searchFragment.OverviewHeaderSearchFragment;
 import com.example.robin.angrynerds_wip.overview.imageFragment.OverviewImageInit;
 import com.example.robin.angrynerds_wip.overview.noteFragment.OverviewNoteInit;
 import com.example.robin.angrynerds_wip.overview.todoFragment.OverviewTodoInit;
@@ -23,6 +21,10 @@ public class OverviewFragmentFactory {
     }
 
     public Fragment createHeaderDeleteFragment() { return new OverviewHeaderDeleteFragment(); }
+
+    public Fragment createHeaderSearchFragment() {
+        return new OverviewHeaderSearchFragment();
+    }
 
     // Generates Fragments from a List of TENs
     public ArrayList<Fragment> createTENFragments(ArrayList<TEN> pTENs){

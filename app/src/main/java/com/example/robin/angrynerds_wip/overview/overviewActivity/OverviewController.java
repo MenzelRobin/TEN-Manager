@@ -1,13 +1,6 @@
 package com.example.robin.angrynerds_wip.overview.overviewActivity;
 
-import android.support.v4.app.Fragment;
-
-import com.example.robin.angrynerds_wip.data.models.tens.TEN;
-import com.example.robin.angrynerds_wip.data.services.Delete;
-import com.example.robin.angrynerds_wip.overview.superClasses.OverviewFragmentInit;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.example.robin.angrynerds_wip.overview.overviewActivity.fragmentManager.*;
 
 public class OverviewController {
 
@@ -30,7 +23,7 @@ public class OverviewController {
         initHeader();
         new OverviewClickListener(this, mGui);
         refreshFragments();
-        mGui.markButton(TEN.class);
+        mGui.markButton();
     }
 
     // Inserts the Headerfragment
@@ -47,6 +40,11 @@ public class OverviewController {
         mNewClickHandler.newTEN(pClass);
     }
 
+    public void activateSearch(){
+        mFragmentInserter.replaceFragment(mGui.getHeaderId(), mFragmentFactory.createHeaderSearchFragment(), "HEADER_FRAGMENT");
+        mGui.hideFooter();
+    }
+
     // Activates the Deletionmode
     public void longClick(){
         mDeleteHandler.longClick();
@@ -54,9 +52,17 @@ public class OverviewController {
         mGui.hideFooter();
     }
 
-    // Goes back to normal State
-    public void back(){
+    // Goes back to normal State From Deletion
+    public void backDelete(){
         mDeleteHandler.back();
+        mFragmentInserter.replaceFragment(mGui.getHeaderId(), mFragmentFactory.createHeaderCreateFragment(), "HEADER_FRAGMENT");
+        mGui.showFooter();
+    }
+
+    // Goes back to normal Sate from Search
+    public void backSearch(){
+        mData.refresh();
+        refreshFragments();
         mFragmentInserter.replaceFragment(mGui.getHeaderId(), mFragmentFactory.createHeaderCreateFragment(), "HEADER_FRAGMENT");
         mGui.showFooter();
     }
@@ -68,6 +74,12 @@ public class OverviewController {
         refreshFragments();
         mFragmentInserter.replaceFragment(mGui.getHeaderId(), mFragmentFactory.createHeaderCreateFragment(), "HEADER_FRAGMENT");
         mGui.showFooter();
+    }
+
+    // Searches for all Items
+    public void search(String pSearchString){
+        mData.search(pSearchString);
+        refreshFragments();
     }
 
     // Shows TENs depending on selection

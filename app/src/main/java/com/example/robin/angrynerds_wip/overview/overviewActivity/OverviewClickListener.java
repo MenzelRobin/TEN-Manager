@@ -3,10 +3,7 @@ package com.example.robin.angrynerds_wip.overview.overviewActivity;
 import android.view.View;
 
 import com.example.robin.angrynerds_wip.R;
-import com.example.robin.angrynerds_wip.data.models.tens.Event;
-import com.example.robin.angrynerds_wip.data.models.tens.Note;
-import com.example.robin.angrynerds_wip.data.models.tens.TEN;
-import com.example.robin.angrynerds_wip.data.models.tens.Todo;
+import com.example.robin.angrynerds_wip.data.models.tens.*;
 
 public class OverviewClickListener implements View.OnClickListener {
 

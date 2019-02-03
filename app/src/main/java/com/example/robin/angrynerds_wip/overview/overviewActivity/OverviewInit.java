@@ -1,12 +1,8 @@
 package com.example.robin.angrynerds_wip.overview.overviewActivity;
 
 import android.content.res.Configuration;
-import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-
-import com.example.robin.angrynerds_wip.R;
 
 public class OverviewInit extends AppCompatActivity {
 

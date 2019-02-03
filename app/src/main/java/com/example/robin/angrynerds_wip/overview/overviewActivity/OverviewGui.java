@@ -56,11 +56,15 @@ public class OverviewGui {
         mShowNote = mActivity.findViewById(R.id.id_overview_button_note);
     }
 
+    public void markButton(){
+        markButton(TEN.class);
+    }
+
     public void markButton(Class pClass){
-        mShowAll.setBackgroundColor(mActivity.getResources().getColor(pClass == TEN.class?R.color.colorWhite:R.color.colorGrey));
-        mShowTodo.setBackgroundColor(mActivity.getResources().getColor(pClass == Todo.class?R.color.colorWhite:R.color.colorGrey));
-        mShowEvent.setBackgroundColor(mActivity.getResources().getColor(pClass == Event.class?R.color.colorWhite:R.color.colorGrey));
-        mShowNote.setBackgroundColor(mActivity.getResources().getColor(pClass == Note.class?R.color.colorWhite:R.color.colorGrey));
+        mShowAll.setBackgroundColor(mActivity.getResources().getColor(pClass == TEN.class?R.color.colorGrey:R.color.colorWhite));
+        mShowTodo.setBackgroundColor(mActivity.getResources().getColor(pClass == Todo.class?R.color.colorGrey:R.color.colorWhite));
+        mShowEvent.setBackgroundColor(mActivity.getResources().getColor(pClass == Event.class?R.color.colorGrey:R.color.colorWhite));
+        mShowNote.setBackgroundColor(mActivity.getResources().getColor(pClass == Note.class?R.color.colorGrey:R.color.colorWhite));
         mScrollView.fullScroll(View.FOCUS_UP);
     }
 
