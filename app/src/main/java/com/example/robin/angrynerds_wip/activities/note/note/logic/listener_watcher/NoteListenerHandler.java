@@ -1,16 +1,17 @@
-package com.example.robin.angrynerds_wip.activities.note.note.logic;
+package com.example.robin.angrynerds_wip.activities.note.note.logic.listener_watcher;
 
 import android.graphics.Bitmap;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.example.robin.angrynerds_wip.R;
+import com.example.robin.angrynerds_wip.activities.note.note.logic.NoteApplicationLogic;
 
-public class NoteClickHandler {
+public class NoteListenerHandler {
 
     NoteApplicationLogic mNoteApplicationLogic;
 
-    public NoteClickHandler(NoteApplicationLogic pNoteApplicationLogic) {
+    public NoteListenerHandler(NoteApplicationLogic pNoteApplicationLogic) {
         this.mNoteApplicationLogic = pNoteApplicationLogic;
     }
 

@@ -5,6 +5,7 @@ import android.content.res.Configuration;
 import com.example.robin.angrynerds_wip.activities.note.note.data.NoteData;
 import com.example.robin.angrynerds_wip.activities.note.note.data.gui_oriented.ImageImport;
 import com.example.robin.angrynerds_wip.activities.note.note.gui.NoteGui;
+import com.example.robin.angrynerds_wip.activities.note.note.logic.listener_watcher.NoteListenerHandler;
 import com.example.robin.angrynerds_wip.activities.note.note.logic.listener_watcher.NoteListenerInitializer;
 
 public class NoteApplicationLogic {
@@ -16,7 +17,7 @@ public class NoteApplicationLogic {
     private NoteAsyncLoadingLogic mNoteAsyncLoadingLogic;
     private NoteListenerInitializer mNoteListenerInitializer;
     private NoteGuiRefresherLogic mNoteGuiRefresherLogic;
-    private NoteClickHandler mNoteClickHandler;
+    private NoteListenerHandler mNoteClickHandler;
     private NoteImagePopupLogic mNoteImagePopupLogic;
 
 
@@ -28,7 +29,7 @@ public class NoteApplicationLogic {
         mNoteNavigationLogic = new NoteNavigationLogic(this);
         mNoteAsyncLoadingLogic = new NoteAsyncLoadingLogic(this);
         mNoteListenerInitializer = new NoteListenerInitializer(this);
-        mNoteClickHandler = new NoteClickHandler(this);
+        mNoteClickHandler = new NoteListenerHandler(this);
         mNoteImagePopupLogic = new NoteImagePopupLogic(this);
         initGui();
 
@@ -67,7 +68,7 @@ public class NoteApplicationLogic {
         return mNoteGuiRefresherLogic;
     }
 
-    public NoteClickHandler getNoteClickHandler() {
+    public NoteListenerHandler getNoteClickHandler() {
         return mNoteClickHandler;
     }
 
