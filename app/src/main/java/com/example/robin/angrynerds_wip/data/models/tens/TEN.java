@@ -28,31 +28,32 @@ public class TEN {
 
     //empty default
     public TEN() {
+        this.ID = null;
+        this.title = "";
         int colorIndex = Colors.getRandomColorIndex();
         this.color = Colors.COLORS[colorIndex];
         this.accentColor = Colors.DARKER_ACCENT_COLORS[colorIndex];
-        this.ID = null;
         this.dateOfCreation = new Date();
     }
 
     //simple for usage
     public TEN(String title) {
+        this.ID = null;
+        this.title = title;
         int colorIndex = Colors.getRandomColorIndex();
         this.color = Colors.COLORS[colorIndex];
         this.accentColor = Colors.DARKER_ACCENT_COLORS[colorIndex];
-        this.ID = null;
-        this.title = title;
         this.dateOfCreation = new Date();
     }
 
     //complete Object must be reconstructed
     public TEN(String title, String ID, int color, int accentColor, Date dateOfCreation) {
+        this.ID = ID;
+        this.title = title;
         this.color = color;
         this.accentColor = accentColor;
-        this.title = title;
-        this.ID = ID;
         this.dateOfCreation = dateOfCreation;
-    }
+    }g9it
 
     public boolean isFound(String pSearchString){
         return title!=null?title.toLowerCase().contains(pSearchString.toLowerCase()):false;
