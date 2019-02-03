@@ -6,6 +6,9 @@ import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.data.models.tens.*;
 
 public class OverviewClickListener implements View.OnClickListener {
+    /* Fabia Schmid
+    Handles Clicks on the Activityelements. (Doesnt include the Header)
+     */
 
     private OverviewController mController;
 

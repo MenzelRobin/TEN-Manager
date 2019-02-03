@@ -6,6 +6,9 @@ import com.example.robin.angrynerds_wip.data.services.Read;
 import java.util.ArrayList;
 
 public class OverviewData {
+    /* Yannick-Luca Rüttgers
+    Manages Data for OverviewActivity
+     */
 
     private ArrayList<TEN> mData = new ArrayList();
     private ArrayList<TEN> mCurrentData = new ArrayList();
