@@ -20,7 +20,7 @@
 
     <style name="editTextSearchStyle" parent="Widget.AppCompat.EditText">
         <item name="colorControlNormal">#00000000</item>
-        <item name="colorControlActivated">#000000</item>
+        <item name="colorControlActivated">#616161</item>
     </style>
 
 </resources>

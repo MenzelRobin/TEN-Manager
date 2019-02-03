@@ -1,14 +1,6 @@
 package com.example.robin.angrynerds_wip.overview.overviewActivity;
 
-import android.support.v4.app.Fragment;
-import android.util.Log;
-
-import com.example.robin.angrynerds_wip.data.models.tens.TEN;
-import com.example.robin.angrynerds_wip.data.services.Delete;
-import com.example.robin.angrynerds_wip.overview.superClasses.OverviewFragmentInit;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.example.robin.angrynerds_wip.overview.overviewActivity.fragmentManager.*;
 
 public class OverviewController {
 
@@ -31,7 +23,7 @@ public class OverviewController {
         initHeader();
         new OverviewClickListener(this, mGui);
         refreshFragments();
-        mGui.markButton(TEN.class);
+        mGui.markButton();
     }
 
     // Inserts the Headerfragment
@@ -60,14 +52,19 @@ public class OverviewController {
         mGui.hideFooter();
     }
 
-    // Goes back to normal State
-    public void back(){
+    // Goes back to normal State From Deletion
+    public void backDelete(){
         mDeleteHandler.back();
         mFragmentInserter.replaceFragment(mGui.getHeaderId(), mFragmentFactory.createHeaderCreateFragment(), "HEADER_FRAGMENT");
         mGui.showFooter();
-        //Todo: Fix Interaction between delete and search
-        //Todo: Add correct Cursor placement
-        //Todo: Hide keyboard on search
+    }
+
+    // Goes back to normal Sate from Search
+    public void backSearch(){
+        mData.refresh();
+        refreshFragments();
+        mFragmentInserter.replaceFragment(mGui.getHeaderId(), mFragmentFactory.createHeaderCreateFragment(), "HEADER_FRAGMENT");
+        mGui.showFooter();
     }
 
     // Deletes selected Items and goes back to normal State

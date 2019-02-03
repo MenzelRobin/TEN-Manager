@@ -45,7 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/id_overview_event_textView_title"
         android:text="@string/sample_overview_event_time"
-        android:textSize="45dp"
+        android:textSize="40dp"
         android:layout_marginTop="20dp"
         android:textColor="@color/colorWhite"
         />
