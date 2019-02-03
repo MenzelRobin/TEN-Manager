@@ -40,6 +40,8 @@
             android:layout_alignBottom= "@id/id_overview_header_search_button_back"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
             android:hint="Suchen..."
             android:inputType="text"
             android:textColor="#000000"

@@ -43,14 +43,14 @@ public class OverviewHeaderClickListener implements View.OnClickListener {
                 break;
             // HeaderDelete
             case R.id.id_overview_header_delete_button_back:
-                mController.back();
+                mController.backDelete();
                 break;
             case R.id.id_overview_header_delete_button_delete:
                 mController.delete();
                 break;
             // HeaderSearch
             case R.id.id_overview_header_search_button_back:
-                mController.back();
+                mController.backSearch();
                 break;
             case R.id.id_overview_header_search_button_search:
                 mController.search(((TextView)(mView.findViewById(R.id.id_overview_header_search_view_searchText))).getText().toString());

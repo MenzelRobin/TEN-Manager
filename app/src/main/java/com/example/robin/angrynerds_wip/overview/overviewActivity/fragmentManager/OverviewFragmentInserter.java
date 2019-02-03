@@ -1,4 +1,4 @@
-package com.example.robin.angrynerds_wip.overview.overviewActivity;
+package com.example.robin.angrynerds_wip.overview.overviewActivity.fragmentManager;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

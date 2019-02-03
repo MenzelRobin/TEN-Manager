@@ -1,12 +1,9 @@
 package com.example.robin.angrynerds_wip.overview.overviewActivity;
 
 import android.content.Intent;
-import android.util.Log;
 
 import com.example.robin.angrynerds_wip.activities.note.note.NoteActivity;
-import com.example.robin.angrynerds_wip.data.models.tens.Event;
-import com.example.robin.angrynerds_wip.data.models.tens.Note;
-import com.example.robin.angrynerds_wip.data.models.tens.Todo;
+import com.example.robin.angrynerds_wip.data.models.tens.*;
 
 public class OverviewNewClickHandler {
     OverviewInit mActivity;

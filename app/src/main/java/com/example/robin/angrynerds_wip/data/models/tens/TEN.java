@@ -55,8 +55,7 @@ public class TEN {
     }
 
     public boolean isFound(String pSearchString){
-        Log.d("LOGTAG", ID + ", " + title);
-        return title!=null?title.contains(pSearchString):false;
+        return title!=null?title.toLowerCase().contains(pSearchString.toLowerCase()):false;
     }
 
     public Bundle getBundle() {
