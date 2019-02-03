@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.util.Log;
 
+import com.example.robin.angrynerds_wip.data.services.ImageRotationCorrectionService;
 import com.example.robin.angrynerds_wip.data.services.ImageService;
 
 import java.io.IOException;
@@ -39,7 +40,7 @@ public class NoteGalleryImportLogic {
     public void importImageFromGallery(Intent pData){
         Uri selectedImage = pData.getData();
         try {
-            Bitmap bitmap = ImageService.correctImageRotation(getPath(mNoteApplicationLogic.getNoteData().getActivity().getApplicationContext() ,selectedImage), MediaStore.Images.Media.getBitmap(mNoteApplicationLogic.getNoteData().getActivity().getContentResolver(), selectedImage));
+            Bitmap bitmap = ImageRotationCorrectionService.correctImageRotation(getPath(mNoteApplicationLogic.getNoteData().getActivity().getApplicationContext() ,selectedImage), MediaStore.Images.Media.getBitmap(mNoteApplicationLogic.getNoteData().getActivity().getContentResolver(), selectedImage));
 
             mNoteApplicationLogic.getNoteData().addImageFromGallery(bitmap);
 
