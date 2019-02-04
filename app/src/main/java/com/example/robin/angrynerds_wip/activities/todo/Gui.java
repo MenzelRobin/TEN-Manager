@@ -123,7 +123,7 @@ public class Gui extends AppCompatActivity{
         mToolbar.setBackground(new ColorDrawable(darkColor));
         mSeperateView1.setBackground(new ColorDrawable(darkColor));
         mSeperateView2.setBackground(new ColorDrawable(darkColor));
-        mSeperateView3.setBackground(new ColorDrawable(darkColor));
+        mSeperateView3.setBackground(new ColorDrawable(color));
         mSeperateView4.setBackground(new ColorDrawable(darkColor));
         //mSeperateView1.setBackground(new ColorDrawable(darkColor));
         //mSeperateView1.setAlpha((float) 0.5);
