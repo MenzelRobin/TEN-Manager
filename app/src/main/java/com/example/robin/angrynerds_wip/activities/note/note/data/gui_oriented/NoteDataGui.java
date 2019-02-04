@@ -35,6 +35,7 @@ public class NoteDataGui {
         refreshImages();
     }
 
+    //Create smaller sized preview image
     public void addPreviewImageFromOriginal(Image pOriginalImage) {
         PreviewImageCreator previewImageCreator = new PreviewImageCreator();
         Image previewImage = new Image(pOriginalImage.getId());

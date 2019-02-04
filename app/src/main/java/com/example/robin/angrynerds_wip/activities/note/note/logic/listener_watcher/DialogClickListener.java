@@ -15,6 +15,7 @@ public class DialogClickListener implements DialogInterface.OnClickListener{
     @Override
     public void onClick(DialogInterface pDialog, int pOption) {
 
+        //Checks for image import decision of user
         switch ( pOption ) {
             case 0:
                 mImageImport.importImageFromGallery();

@@ -17,10 +17,12 @@ public class NoteNavigationLogic {
         this.mNoteApplicationLogic = pNoteApplicationLogic;
     }
 
+    //Returns to overview activity
     public void returnToOverview() {
         mNoteApplicationLogic.getNoteData().getActivity().finish();
     }
 
+    //Called when activity is returned, e.g. Image Import or NoteTagActivity results
     public void onActivityReturned(int pRequestCode, int pResultCode, Intent pData) {
         switch (pRequestCode) {
             case NoteConstants.CAMERA_IMPORT_ACTIVITY_REQUESTCODE:
@@ -51,11 +53,13 @@ public class NoteNavigationLogic {
         }
     }
 
+    //Saves Note and returns to overview activity
     public void saveAndReturnToOverview() {
         mNoteApplicationLogic.getNoteData().executeSaveRoutine();
         returnToOverview();
     }
 
+    //Starts NoteTagActivity with tagList
     public void startTagActivity() {
         Intent intent = new Intent(mNoteApplicationLogic.getNoteData().getActivity(), NoteTagActivity.class);
         intent.putExtra(NoteConstants.INTENT_ID_TAGLIST, mNoteApplicationLogic.getNoteData().getNote().getTags());

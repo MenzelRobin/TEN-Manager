@@ -20,8 +20,6 @@ public class NoteImagePopupLogic {
         this.mImageOverlayListener = new ImageOverlayListener(pNoteApplicationLogic);
     }
 
-
-
     public void openImagePopup(Bitmap pBitmap, int pId) {
         if (mNoteApplicationLogic.getNoteData().getActivity().isActive()) {
             View displayMetrics = mNoteApplicationLogic.getNoteData().getActivity().getWindow().findViewById(Window.ID_ANDROID_CONTENT);
@@ -29,7 +27,8 @@ public class NoteImagePopupLogic {
             mImageOverlay.display();
         }
     }
-    
+
+    //Called when configuration changes and ImageOverlay is displayed
     public void changeConfiguration(Configuration pConfiguration){
         float dpRatio = this.mNoteApplicationLogic
                 .getNoteData().
@@ -50,6 +49,7 @@ public class NoteImagePopupLogic {
         this.mImageOverlay = null;
     }
 
+    //Displays the next image if feasible
     public void displayNextImage(int pCurrentImageId){
         if(++pCurrentImageId <= mNoteApplicationLogic.getNoteData().getNotePreviewImages().size())
         {
@@ -57,6 +57,7 @@ public class NoteImagePopupLogic {
         }
     }
 
+    //Displays the previous image if feasible
     public void displayPreviousImage(int pCurrentImageId){
         if(--pCurrentImageId >= 1){
             displayNewImage(pCurrentImageId);

@@ -16,6 +16,7 @@ public class MotionListener implements View.OnTouchListener {
         mNoteApplicationLogic = pNoteApplicationLogic;
     }
 
+    //TouchListener for ImageOverlay swipe gesture (next image / previous image)
     @Override
     public boolean onTouch(View pView, MotionEvent pEvent) {
 

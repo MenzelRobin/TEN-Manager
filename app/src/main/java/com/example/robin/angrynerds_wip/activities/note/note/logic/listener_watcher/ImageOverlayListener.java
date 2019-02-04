@@ -13,6 +13,7 @@ public class ImageOverlayListener implements DialogInterface.OnCancelListener {
         this.mNoteApplicationLogic = mNoteApplicationLogic;
     }
 
+    //Deletes image on cancellation of ImageOverlay for RAM optimization
     @Override
     public void onCancel(DialogInterface pDialog) {
         this.mNoteApplicationLogic.getNoteData().resetNoteBitmaps();

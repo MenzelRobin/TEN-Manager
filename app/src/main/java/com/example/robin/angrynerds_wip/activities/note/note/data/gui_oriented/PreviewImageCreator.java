@@ -10,7 +10,7 @@ public class PreviewImageCreator {
     public PreviewImageCreator(){}
 
     public Bitmap getPreviewImage(Bitmap pOriginalBitmap){
-        //Crop image to square
+        //Crop image to square (center crop)
         if (pOriginalBitmap.getWidth() > pOriginalBitmap.getHeight()) {
             pOriginalBitmap = Bitmap.createBitmap(
                     pOriginalBitmap,

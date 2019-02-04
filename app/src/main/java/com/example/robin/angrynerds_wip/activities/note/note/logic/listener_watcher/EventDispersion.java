@@ -19,11 +19,13 @@ public class EventDispersion {
         mNoteApplicationLogic = pNoteApplicationLogic;
     }
 
+    //Creates context menu and saves image ID
     public void onCreateContextMenu(ContextMenu pMenu, View pView, ContextMenu.ContextMenuInfo pMenuInfo) {
         pMenu.add(MENUGROUPTOP, MENUITEMDELETEIMAGE, Menu.NONE, "Bild löschen");
         mId = pView.getId();
     }
 
+    //executes image deletion if option was clicked by user
     public boolean onContextItemSelected(MenuItem pMenuItem) {
         boolean result = false;
 

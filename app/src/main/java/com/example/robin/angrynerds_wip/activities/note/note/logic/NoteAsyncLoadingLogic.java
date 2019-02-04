@@ -5,8 +5,8 @@ import com.example.robin.angrynerds_wip.data.models.utils.Image;
 
 public class NoteAsyncLoadingLogic {
 
-    NoteApplicationLogic mNoteApplicationLogic;
-    NoteData mNoteData;
+    private NoteApplicationLogic mNoteApplicationLogic;
+    private NoteData mNoteData;
 
     public NoteAsyncLoadingLogic(NoteApplicationLogic pNoteApplicationLogic) {
         this.mNoteApplicationLogic = pNoteApplicationLogic;

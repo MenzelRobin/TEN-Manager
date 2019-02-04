@@ -5,8 +5,8 @@ import com.example.robin.angrynerds_wip.activities.note.note.logic.NoteApplicati
 
 public class NoteListenerInitializer {
 
-    NoteApplicationLogic mNoteApplicationLogic;
-    ClickListener mClickListener;
+    private NoteApplicationLogic mNoteApplicationLogic;
+    private ClickListener mClickListener;
 
     public NoteListenerInitializer(NoteApplicationLogic pNoteApplicationLogic) {
         this.mNoteApplicationLogic = pNoteApplicationLogic;
@@ -17,7 +17,6 @@ public class NoteListenerInitializer {
         return mClickListener;
     }
 
-    //Listener Manager Klasse
     public void initListener() {
 
         MenuItemClickListener menuItemClickListener = new MenuItemClickListener(mNoteApplicationLogic);

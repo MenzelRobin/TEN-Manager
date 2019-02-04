@@ -31,15 +31,16 @@ public class NoteActivity extends AppCompatActivity {
         super.onCreate(pSavedInstanceState);
         DataContextManager.initDatabase(this.getApplicationContext());
 
-        String id = getIntent().getStringExtra("ID");
+        String id = getIntent().getStringExtra("ID"); //get NoteID from Intent
         if(id==null) {
+            //Create new Note
             mNoteData = new NoteData(this);
             getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
             getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
             initGUI(true);
         }
         else{
-            mNoteData = new NoteData(this, getIntent().getStringExtra("ID"));
+            mNoteData = new NoteData(this, id);
             initGUI(false);
         }
         initApplicationLogic();
@@ -58,6 +59,7 @@ public class NoteActivity extends AppCompatActivity {
         mEventDispersion = new EventDispersion(mNoteApplicationLogic);
     }
 
+    //Gets the result from previously started Activity
     @Override
     protected void onActivityResult(int pRequestCode, int pResultCode, Intent pData) {
         super.onActivityResult(pRequestCode, pResultCode, pData);
@@ -70,17 +72,17 @@ public class NoteActivity extends AppCompatActivity {
         mEventDispersion.onCreateContextMenu(pMenu, pView, pMenuInfo);
     }
 
+    @Override
+    public boolean onContextItemSelected(MenuItem pItem) {
+        return mEventDispersion.onContextItemSelected(pItem);
+    }
+
     //Toolbar Context Menu
     @Override
     public boolean onCreateOptionsMenu(Menu pMenu){
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.note_menu, pMenu);
         return true;
-    }
-
-    @Override
-    public boolean onContextItemSelected(MenuItem pItem) {
-        return mEventDispersion.onContextItemSelected(pItem);
     }
 
     @Override
