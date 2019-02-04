@@ -4,8 +4,8 @@ import android.os.AsyncTask;
 import android.os.Environment;
 
 import com.example.robin.angrynerds_wip.data.models.utils.Image;
-import com.example.robin.angrynerds_wip.data.repository.RepositoryConstants;
 import com.example.robin.angrynerds_wip.data.repository.filesystem.FileRepository;
+import com.example.robin.angrynerds_wip.data.repository.filesystem.FileSystemConstants;
 
 import java.io.File;
 
@@ -28,7 +28,7 @@ public class ImageDeleter {
 
         @Override
         protected Void doInBackground(Image... images) {
-            String[] folders = {RepositoryConstants.IMAGE_ORIGINAL_FOLDER, RepositoryConstants.IMAGE_PREVIEW_FOLDER};
+            String[] folders = {FileSystemConstants.IMAGE_ORIGINAL_FOLDER, FileSystemConstants.IMAGE_PREVIEW_FOLDER};
 
             for (String folder : folders) {
                 String directoryPath = mFileRepository.getContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES).getAbsolutePath() + "/" + folder + "/";

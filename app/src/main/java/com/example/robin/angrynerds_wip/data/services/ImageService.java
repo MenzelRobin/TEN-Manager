@@ -5,8 +5,8 @@ import android.os.Environment;
 import android.util.Log;
 
 import com.example.robin.angrynerds_wip.data.models.utils.Image;
-import com.example.robin.angrynerds_wip.data.repository.RepositoryConstants;
 import com.example.robin.angrynerds_wip.data.repository.filesystem.FileRepository;
+import com.example.robin.angrynerds_wip.data.repository.filesystem.FileSystemConstants;
 
 import java.io.File;
 import java.io.IOException;
@@ -27,13 +27,13 @@ public class ImageService {
 
     public static Image getImage(Image image) {
         FileRepository fileRepository = new FileRepository();
-        Image result = fileRepository.readImageFromDirectory(image, RepositoryConstants.IMAGE_ORIGINAL_FOLDER);
+        Image result = fileRepository.readImageFromDirectory(image, FileSystemConstants.IMAGE_ORIGINAL_FOLDER);
         return result;
     }
 
     public static Image getPreviewImage(Image image) {
         FileRepository fileRepository = new FileRepository();
-        Image result = fileRepository.readImageFromDirectory(image, RepositoryConstants.IMAGE_PREVIEW_FOLDER);
+        Image result = fileRepository.readImageFromDirectory(image, FileSystemConstants.IMAGE_PREVIEW_FOLDER);
         return result;
     }
 
