@@ -6,6 +6,9 @@ import android.view.View;
 
 
 public abstract class OverviewFragmentInit extends Fragment {
+    /* Yannick-Luca Rüttgers
+    Superclass for [Fragment]Init classes
+    */
 
     protected OverviewFragmentData mData;
     protected OverviewFragmentGui mGui;
