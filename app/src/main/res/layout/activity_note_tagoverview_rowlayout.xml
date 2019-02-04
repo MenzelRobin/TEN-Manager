@@ -29,7 +29,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="0.8"
-        android:theme="@style/editTextStyle"
+        android:theme="@style/editTextListViewStyle"
         android:hint="@string/sample_note_listtag"
         android:inputType="text"
         android:lines="1"

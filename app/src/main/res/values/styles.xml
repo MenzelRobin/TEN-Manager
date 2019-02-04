@@ -23,4 +23,9 @@
         <item name="colorControlActivated">#616161</item>
     </style>
 
+    <style name="editTextListViewStyle" parent="Widget.AppCompat.EditText">
+        <item name="colorControlNormal">#40FFFFFF</item>
+        <item name="colorControlActivated">#ffffff</item>
+    </style>
+
 </resources>
