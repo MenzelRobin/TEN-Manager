@@ -66,5 +66,6 @@ public class NoteImagePopupLogic {
         mImageOverlay.dismiss();
         mNoteApplicationLogic.getNoteData().resetNoteBitmaps();
         mNoteApplicationLogic.getNoteClickHandler().onImageClicked(pCurrentImageId);
+        closePopup();
     }
 }
