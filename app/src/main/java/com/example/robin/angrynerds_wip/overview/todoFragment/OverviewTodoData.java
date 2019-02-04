@@ -7,7 +7,9 @@ import com.example.robin.angrynerds_wip.data.models.utils.BundleKeys;
 import com.example.robin.angrynerds_wip.overview.superClasses.OverviewFragmentData;
 
 public class OverviewTodoData extends OverviewFragmentData {
-
+    /* Yannick-Luca Rüttgers
+    Manages Data for the Todofragment
+    */
     String mNote;
     String[] mDescription;
     boolean[] mStatus;
