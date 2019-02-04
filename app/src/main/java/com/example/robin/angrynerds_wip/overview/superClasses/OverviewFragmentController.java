@@ -7,6 +7,9 @@ import android.view.View;
 import com.example.robin.angrynerds_wip.overview.overviewActivity.OverviewInit;
 
 public abstract class OverviewFragmentController {
+    /* Yannick-Luca Rüttgers
+    Superclass for [Fragment]Controller. Mainly responsible for delete Sate
+    */
 
     protected boolean mDeleteState;
     protected boolean mMarked;
@@ -42,6 +45,7 @@ public abstract class OverviewFragmentController {
         return new OverviewFragmentLongClickListener(this);
     }
 
+    // Start Deletionprocess
     public void longClicked(){
         if(mDeleteState) {
             toggleMark();
@@ -51,11 +55,13 @@ public abstract class OverviewFragmentController {
         }
     }
 
+    // Toggle Marked for Deletion
     public void toggleMark(){
         mMarked = !mMarked;
         mGui.applyMarked(mMarked);
     }
 
+    // Set Deletestate to a specific state
     public void setDeleteState(boolean pDeleteState){
         mDeleteState = pDeleteState;
         if(mDeleteState){
