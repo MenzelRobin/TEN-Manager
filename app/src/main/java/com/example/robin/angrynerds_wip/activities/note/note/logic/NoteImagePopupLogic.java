@@ -50,7 +50,7 @@ public class NoteImagePopupLogic {
     }
 
     public void displayNextImage(int pCurrentImageId){
-        if(++pCurrentImageId < mNoteApplicationLogic.getNoteData().getNotePreviewImages().size())
+        if(++pCurrentImageId <= mNoteApplicationLogic.getNoteData().getNotePreviewImages().size())
         {
             mImageOverlay.dismiss();
             mNoteApplicationLogic.getNoteClickHandler().onImageClicked(pCurrentImageId);
