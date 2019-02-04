@@ -89,7 +89,7 @@ public class Todo extends TEN {
 
     public Bundle getBundle(){
         Bundle bundle = super.getBundle();
-        bundle.putString(BundleKeys.keyTodoNote, note);
+        bundle.putString(BundleKeys.KEY_TODO_NOTE, note);
         boolean[] status = new boolean[tasks.size()];
         String[] description = new String[tasks.size()];
         int index = 0;
@@ -98,8 +98,8 @@ public class Todo extends TEN {
             status[index] = task.getStatus();
             index++;
         }
-        bundle.putBooleanArray(BundleKeys.keyTodoStatus, status);
-        bundle.putStringArray(BundleKeys.keyTodoDescription, description);
+        bundle.putBooleanArray(BundleKeys.KEY_TODO_STATUS, status);
+        bundle.putStringArray(BundleKeys.KEY_TODO_DESCRIPTION, description);
         return bundle;
     }
 

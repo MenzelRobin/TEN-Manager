@@ -19,7 +19,7 @@ public class OverviewImageData extends OverviewFragmentData {
     // Adds the Note data to this Object
     public void addData(Bundle pData){
         super.addData(pData);
-        mPreviewImage = getPreviewImage(new Image(pData.getString(BundleKeys.keyNotePictures))).getBitmap();
+        mPreviewImage = getPreviewImage(new Image(pData.getString(BundleKeys.KEY_NOTE_PICTURES))).getBitmap();
     }
 
     // Returns the Image

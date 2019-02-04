@@ -107,8 +107,8 @@ public class Event extends TEN {
 
     public Bundle getBundle() {
         Bundle bundle = super.getBundle();
-        bundle.putLong(BundleKeys.keyEventTime, time.getTime());
-        bundle.putString(BundleKeys.keyEventAddress, address);
+        bundle.putLong(BundleKeys.KEY_EVENT_TIME, time.getTime());
+        bundle.putString(BundleKeys.KEY_EVENT_ADDRESS, address);
         return bundle;
     }
 }
