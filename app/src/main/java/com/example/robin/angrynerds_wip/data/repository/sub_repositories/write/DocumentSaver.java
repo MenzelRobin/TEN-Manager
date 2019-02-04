@@ -1,7 +1,5 @@
 package com.example.robin.angrynerds_wip.data.repository.sub_repositories.write;
 
-import android.util.Log;
-
 import com.couchbase.lite.CouchbaseLiteException;
 import com.couchbase.lite.MutableDocument;
 import com.example.robin.angrynerds_wip.data.models.tens.Note;
@@ -34,7 +32,6 @@ public class DocumentSaver {
             pMutableTENDocument.setString(RepositoryConstants.OBJECT_KEY, this.mObjectMapper.writeValueAsString(pTen));
             try {
                 DataContextManager.getDatabase().save(pMutableTENDocument);
-                Log.d("NoteS", "saved");
                 return true;
             } catch (CouchbaseLiteException e) {
                 return false;
