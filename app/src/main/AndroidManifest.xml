@@ -31,7 +31,7 @@
             android:configChanges="orientation|keyboardHidden|screenSize">
         </activity>
 
-        <activity android:name=".activities.note.tageditor.NoteTagActivity"
+        <activity android:name=".activities.note.notetags.NoteTagActivity"
             android:windowSoftInputMode="adjustResize"
             android:configChanges="orientation|keyboardHidden|screenSize">
         </activity>

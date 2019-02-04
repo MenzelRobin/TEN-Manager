@@ -1,4 +1,4 @@
-package com.example.robin.angrynerds_wip.activities.note.tageditor;
+package com.example.robin.angrynerds_wip.activities.note.notetags;
 
 import android.content.Intent;
 import android.content.res.Configuration;

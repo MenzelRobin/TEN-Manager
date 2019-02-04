@@ -1,4 +1,4 @@
-package com.example.robin.angrynerds_wip.activities.note.tageditor;
+package com.example.robin.angrynerds_wip.activities.note.notetags;
 
 import android.app.Activity;
 import android.support.v7.widget.Toolbar;
