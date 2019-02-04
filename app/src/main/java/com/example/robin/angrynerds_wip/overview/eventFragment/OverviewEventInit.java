@@ -9,6 +9,9 @@ import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.overview.superClasses.OverviewFragmentInit;
 
 public class OverviewEventInit extends OverviewFragmentInit {
+    /* Yannick-Luca Rüttgers
+    Initiates all necessary components for the Eventfragment
+     */
 
     public OverviewEventInit(){
         super();

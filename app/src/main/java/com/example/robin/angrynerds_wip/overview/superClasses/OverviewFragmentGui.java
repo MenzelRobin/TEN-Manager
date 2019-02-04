@@ -5,7 +5,7 @@ import android.widget.ImageView;
 
 public abstract class OverviewFragmentGui {
     /* Yannick-Luca Rüttgers
-    Superclass for [Fragment]Gui. Applies markedstate to checkbox during deletion process.
+    Superclass for [Fragment]Gui Classes. Applies markedstate to checkbox during deletion process.
     */
 
     protected View mView;

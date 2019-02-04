@@ -8,6 +8,9 @@ import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.overview.superClasses.OverviewFragmentGui;
 
 public class OverviewEventGui extends OverviewFragmentGui {
+    /* Yannick-Luca Rüttgers
+    Manages the GUI for the Eventfragment
+     */
 
     private RelativeLayout mOverviewEvent;
     private TextView mTitle;

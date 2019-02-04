@@ -3,6 +3,9 @@ package com.example.robin.angrynerds_wip.overview.superClasses;
 import android.view.View;
 
 public class OverviewFragmentClickListener implements View.OnClickListener{
+    /* Fabia Schmid
+    Handles Clicks on Fragments
+     */
 
     private OverviewFragmentController mController;
 

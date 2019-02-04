@@ -8,7 +8,7 @@ import com.example.robin.angrynerds_wip.overview.overviewActivity.OverviewInit;
 
 public abstract class OverviewFragmentController {
     /* Yannick-Luca Rüttgers
-    Superclass for [Fragment]Controller. Mainly responsible for delete Sate
+    Superclass for [Fragment]Controller Classes. Mainly responsible for delete Sate
     */
 
     protected boolean mDeleteState;

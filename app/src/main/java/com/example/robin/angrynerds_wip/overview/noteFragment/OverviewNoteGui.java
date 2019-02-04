@@ -8,6 +8,9 @@ import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.overview.superClasses.OverviewFragmentGui;
 
 public class OverviewNoteGui extends OverviewFragmentGui {
+    /* Yannick-Luca Rüttgers
+    Manages the GUI for the Note Fragment
+     */
 
     private RelativeLayout mOverviewNote;
     private TextView mTitle;

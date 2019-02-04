@@ -10,6 +10,9 @@ import com.example.robin.angrynerds_wip.overview.superClasses.OverviewFragmentGu
 import com.example.robin.angrynerds_wip.overview.superClasses.OverviewFragmentInit;
 
 public class OverviewEventController extends OverviewFragmentController {
+    /* Yannick-Luca Rüttgers
+    Contains the Applicationlogic for the Event Fragment
+     */
 
     // Calls the superconstructor
     public OverviewEventController(OverviewFragmentInit pFragment, OverviewFragmentData pData, OverviewFragmentGui pGui){
