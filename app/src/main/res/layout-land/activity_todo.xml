@@ -144,7 +144,9 @@
             android:id="@+id/edit_todo_tasks"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/bgColor4"
+            android:background="@color/transparent"
+            android:divider="@null"
+            android:dividerHeight="0dp"
             >
         </ListView>
     </RelativeLayout>
