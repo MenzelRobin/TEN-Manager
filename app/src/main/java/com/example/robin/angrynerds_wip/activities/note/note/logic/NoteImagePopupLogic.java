@@ -46,6 +46,11 @@ public class NoteImagePopupLogic {
     }
 
     public void closePopup() {
+        mImageOverlay.dismiss();
+        resetImageOverlay();
+    }
+
+    public void resetImageOverlay(){
         this.mImageOverlay = null;
     }
 
@@ -65,9 +70,8 @@ public class NoteImagePopupLogic {
     }
 
     private void displayNewImage(int pCurrentImageId) {
-        mImageOverlay.dismiss();
+        closePopup();
         mNoteApplicationLogic.getNoteData().resetNoteBitmaps();
         mNoteApplicationLogic.getNoteClickHandler().onImageClicked(pCurrentImageId);
-        closePopup();
     }
 }

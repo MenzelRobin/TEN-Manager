@@ -11,6 +11,8 @@ public class MotionListener implements View.OnTouchListener {
     private NoteApplicationLogic mNoteApplicationLogic;
     private float mXPositionDown;
     private float mXPositionUp;
+    private float mYPositionDown;
+    private float mYPositionUp;
 
     public MotionListener(NoteApplicationLogic pNoteApplicationLogic) {
         mNoteApplicationLogic = pNoteApplicationLogic;
@@ -23,11 +25,16 @@ public class MotionListener implements View.OnTouchListener {
         switch(pEvent.getAction())
         {
             case MotionEvent.ACTION_DOWN:
-                mXPositionDown = pEvent.getX();  //Save first touch position
+                //Save first touch position
+                mXPositionDown = pEvent.getX();
+                mYPositionDown = pEvent.getY();
                 break;
             case MotionEvent.ACTION_UP:
-                mXPositionUp = pEvent.getX();  //Save release position
+                //Save release position
+                mXPositionUp = pEvent.getX();
+                mYPositionUp = pEvent.getY();
                 float deltaX = mXPositionUp - mXPositionDown;
+                float deltaY = mYPositionUp - mYPositionDown;
 
                 if (Math.abs(deltaX) > NoteConstants.MINIMUM_SWIPE_DISTANCE)
                 {
@@ -37,10 +44,13 @@ public class MotionListener implements View.OnTouchListener {
                         mNoteApplicationLogic.getNoteImagePopupLogic().displayPreviousImage(pView.getId());
                     }
                     // Right to Left (next)
-                    else
-                    {
+                    else{
                         mNoteApplicationLogic.getNoteImagePopupLogic().displayNextImage(pView.getId());
                     }
+                }
+                else if(Math.abs(deltaY) > NoteConstants.MINIMUM_SWIPE_DISTANCE){
+                    //Top to Bottom or opposite direction
+                    mNoteApplicationLogic.getNoteImagePopupLogic().closePopup();
                 }
                 break;
         }

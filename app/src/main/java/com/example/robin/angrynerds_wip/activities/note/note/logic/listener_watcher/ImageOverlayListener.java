@@ -16,6 +16,6 @@ public class ImageOverlayListener implements DialogInterface.OnCancelListener {
     @Override
     public void onCancel(DialogInterface pDialog) {
         this.mNoteApplicationLogic.getNoteData().resetNoteBitmaps();
-        this.mNoteApplicationLogic.getNoteImagePopupLogic().closePopup();
+        this.mNoteApplicationLogic.getNoteImagePopupLogic().resetImageOverlay();
     }
 }
