@@ -21,12 +21,11 @@ public class NoteImagePopupLogic {
 
 
 
-    public void openImagePopup(Bitmap pBitmap) {
+    public void openImagePopup(Bitmap pBitmap, int pId) {
         if (mNoteApplicationLogic.getNoteData().getActivity().isActive()) {
             View displayMetrics = mNoteApplicationLogic.getNoteData().getActivity().getWindow().findViewById(Window.ID_ANDROID_CONTENT);
-            mImageOverlay = new ImageOverlay(pBitmap, displayMetrics.getWidth(), displayMetrics.getHeight(), mImageOverlayListener);
-            mImageOverlay.display(mNoteApplicationLogic.getNoteData().getActivity());
-
+            mImageOverlay = new ImageOverlay(pBitmap, displayMetrics.getWidth(), displayMetrics.getHeight(), mImageOverlayListener, mNoteApplicationLogic, pId);
+            mImageOverlay.display();
         }
     }
     
@@ -42,11 +41,27 @@ public class NoteImagePopupLogic {
         int displayWidth = (int)(pConfiguration.screenWidthDp*dpRatio)+1;
 
         if (mImageOverlay != null && mImageOverlay.isDisplayed()) {
-            mImageOverlay.changeOrientation(mNoteApplicationLogic.getNoteData().getActivity() ,displayWidth, displayHeight);
+            mImageOverlay.changeOrientation(displayWidth, displayHeight);
         }
     }
 
     public void closePopup() {
         this.mImageOverlay = null;
     }
+
+    public void displayNextImage(int pCurrentImageId){
+        if(++pCurrentImageId < mNoteApplicationLogic.getNoteData().getNotePreviewImages().size())
+        {
+            mImageOverlay.dismiss();
+            mNoteApplicationLogic.getNoteClickHandler().onImageClicked(pCurrentImageId);
+        }
+    }
+
+    public void displayPreviousImage(int pCurrentImageId){
+        if(--pCurrentImageId >= 1){
+            mImageOverlay.dismiss();
+            mNoteApplicationLogic.getNoteClickHandler().onImageClicked(pCurrentImageId);
+        }
+    }
+
 }

@@ -21,7 +21,7 @@ public class NoteListenerHandler {
         } else {
             Bitmap bitmap = mNoteApplicationLogic.getNoteData().getImage(pId);
             if (bitmap != null) {
-                mNoteApplicationLogic.getNoteImagePopupLogic().openImagePopup(bitmap);
+                mNoteApplicationLogic.getNoteImagePopupLogic().openImagePopup(bitmap, pId);
             } else {
                 mNoteApplicationLogic.getNoteData();
             }

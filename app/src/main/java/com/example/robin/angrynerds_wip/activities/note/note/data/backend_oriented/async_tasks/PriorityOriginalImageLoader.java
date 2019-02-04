@@ -17,6 +17,7 @@ public class PriorityOriginalImageLoader {
     }
 
     public void loadOriginalImage(int pIndex) {
+        mIndexToBeLoaded = pIndex;
         if (this.mNoteDataBackend.getmNoteData().getNote().getPictures().size() > pIndex) {
             LoadOriginalImageTask loadOriginalImageTask = new LoadOriginalImageTask();
             loadOriginalImageTask.execute(pIndex);
@@ -48,7 +49,7 @@ public class PriorityOriginalImageLoader {
                 mNoteDataBackend.getmNoteData().getNote().imageNotFound(pImage);
             } else {
                 mNoteDataBackend.getmNoteData().getNote().addImage(pImage);
-                mNoteDataBackend.getmNoteData().getNoteApplicationLogic().getNoteImagePopupLogic().openImagePopup(pImage.getBitmap());
+                mNoteDataBackend.getmNoteData().getNoteApplicationLogic().getNoteImagePopupLogic().openImagePopup(pImage.getBitmap(), mIndexToBeLoaded + 1);
                 mNoteDataBackend.getmNoteData().getNoteApplicationLogic().getNoteAsyncLoadingLogic().stopLoadingSpinner();
             }
         }
