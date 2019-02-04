@@ -41,7 +41,7 @@ class Gui {
     Toolbar getToolbar() { return mToolbar; }
 
     //Sets adapter to ListView
-    void initiateListView(RowViewAdapter adapter){
+    void initiateListView(ListViewAdapter adapter){
         mListView.setAdapter(adapter);
     }
 

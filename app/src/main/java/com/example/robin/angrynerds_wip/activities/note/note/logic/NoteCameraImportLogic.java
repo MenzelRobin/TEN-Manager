@@ -5,11 +5,9 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AlertDialog;
-import android.util.Log;
 
 import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.activities.note.note.NoteActivity;
@@ -19,16 +17,13 @@ import com.example.robin.angrynerds_wip.data.services.ImageService;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
 
-public class ImageImport {
+public class NoteCameraImportLogic {
 
     private NoteActivity mActivity;
     private String mCurrentPhotoPath;
 
-    public ImageImport(NoteActivity pActivity) {
+    public NoteCameraImportLogic(NoteActivity pActivity) {
         this.mActivity = pActivity;
         requestImageSource();
     }
@@ -38,20 +33,20 @@ public class ImageImport {
 
     //Shows AlertDialog to request image source
     private void requestImageSource(){
-        DialogClickListener clickListener = new DialogClickListener(this);
-        String[] options;
 
         //Checks if device has a camera
-        if (mActivity.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA))
-            options = new String[]{"Galerie", "Kamera"};
-        else
-            options = new String[]{"Galerie"};
+        if (mActivity.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA)){
+            DialogClickListener clickListener = new DialogClickListener(this);
+            String[] options = new String[]{"Galerie", "Kamera"};
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
-        builder.setTitle("Bildquelle auswählen");
-        builder.setIcon(R.drawable.ic_add_a_photo_darkgrey_24dp);
-        builder.setItems(options, clickListener);
-        builder.show();
+            AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
+            builder.setTitle("Bildquelle auswählen");
+            builder.setIcon(R.drawable.ic_add_a_photo_darkgrey_24dp);
+            builder.setItems(options, clickListener);
+            builder.show();
+        }
+        else
+            importImageFromGallery();
     }
 
     //Starts Camera activity

@@ -15,14 +15,14 @@ import com.example.robin.angrynerds_wip.R;
 
 import java.util.ArrayList;
 
-public class RowViewAdapter extends ArrayAdapter<String>{
+public class ListViewAdapter extends ArrayAdapter<String>{
 
     private final Context context;
     private ApplicationLogic applicationLogic;
     private final ArrayList<String> values;
 
     //Custom Adapter for tagoverview_rowlayout
-    RowViewAdapter(Context context, ArrayList<String> values, ApplicationLogic applicationLogic) {
+    ListViewAdapter(Context context, ArrayList<String> values, ApplicationLogic applicationLogic) {
         super(context, -1, values);
         this.context = context;
         this.values = values;

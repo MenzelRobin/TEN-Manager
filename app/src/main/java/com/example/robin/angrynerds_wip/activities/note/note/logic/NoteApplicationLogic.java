@@ -11,7 +11,7 @@ public class NoteApplicationLogic {
 
     private NoteGui mNoteGui;
     private NoteData mNoteData;
-    private ImageImport mImageImport;
+    private NoteCameraImportLogic mImageImport;
     private NoteNavigationLogic mNoteNavigationLogic;
     private NoteAsyncLoadingLogic mNoteAsyncLoadingLogic;
     private NoteListenerInitializer mNoteListenerInitializer;
@@ -55,7 +55,7 @@ public class NoteApplicationLogic {
         return mNoteData;
     }
 
-    public ImageImport getImageImport() {
+    public NoteCameraImportLogic getImageImport() {
         return mImageImport;
     }
 
@@ -121,6 +121,6 @@ public class NoteApplicationLogic {
     }
 
     public void initImageImportObject() {
-        mImageImport = new ImageImport(mNoteData.getActivity());
+        mImageImport = new NoteCameraImportLogic(mNoteData.getActivity());
     }
 }

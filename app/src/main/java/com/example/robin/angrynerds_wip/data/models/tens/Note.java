@@ -107,4 +107,16 @@ public class Note extends TEN {
             }
         }
     }
+
+    @Override
+    public boolean isFound(String pSearchString){
+        if(super.isFound(pSearchString))
+            return true;
+
+        for(String tag : tags) {
+            if (tag.toLowerCase().contains(pSearchString.toLowerCase()))
+                return true;
+        }
+        return false;
+    }
 }

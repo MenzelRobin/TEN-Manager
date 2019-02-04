@@ -3,10 +3,8 @@ package com.example.robin.angrynerds_wip.activities.note.tageditor;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 
 import com.example.robin.angrynerds_wip.R;
 
@@ -19,7 +17,7 @@ class ApplicationLogic {
     private int mAccentColor;
     private ArrayList<String> mTagList;
     private Gui mGui;
-    private RowViewAdapter mAdapter;
+    private ListViewAdapter mAdapter;
     private ClickListener mClickListener;
     private NoteTagActivity mActivity;
 
@@ -30,7 +28,7 @@ class ApplicationLogic {
 
         mGui = gui;
         mActivity = activity;
-        mAdapter = new RowViewAdapter(activity,mTagList, this);
+        mAdapter = new ListViewAdapter(activity,mTagList, this);
         mColor = color;
         mAccentColor = accentColor;
         initGui();
