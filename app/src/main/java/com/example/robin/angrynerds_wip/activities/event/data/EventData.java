@@ -75,8 +75,8 @@ public class EventData {
         updateEvent();
     }
 
-    public void setRecurringType(int i){
-        switch (i){
+    public void setRecurringType(int i) {
+        switch (i) {
             case 0:
                 mEvent.setRecurringType(RecurringType.NONE);
                 break;

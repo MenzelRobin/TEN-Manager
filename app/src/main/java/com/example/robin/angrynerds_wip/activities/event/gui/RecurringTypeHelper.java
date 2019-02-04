@@ -17,13 +17,22 @@ public class RecurringTypeHelper {
         mRecurringTypeStrings[3] = pActivity.getString(R.string.event_reminder_recurringType_yearly);
     }
 
-    public String[] getRecurringTypeStrings(){return mRecurringTypeStrings;}
-    public String getRecurringTypeString(RecurringType rt){
-        int i = 0;
-        if(rt == RecurringType.NONE){i = 0;}
-        else if(rt == RecurringType.DAILY) {i = 1;}
-        else if(rt == RecurringType.WEEKLY) {i = 2;}
-        else if(rt == RecurringType.MONTHLY) {i = 3;}
+    public String[] getRecurringTypeStrings() {
+        return mRecurringTypeStrings;
+    }
 
-        return mRecurringTypeStrings[i];}
+    public String getRecurringTypeString(RecurringType rt) {
+        int i = 0;
+        if (rt == RecurringType.NONE) {
+            i = 0;
+        } else if (rt == RecurringType.DAILY) {
+            i = 1;
+        } else if (rt == RecurringType.WEEKLY) {
+            i = 2;
+        } else if (rt == RecurringType.MONTHLY) {
+            i = 3;
+        }
+
+        return mRecurringTypeStrings[i];
+    }
 }
