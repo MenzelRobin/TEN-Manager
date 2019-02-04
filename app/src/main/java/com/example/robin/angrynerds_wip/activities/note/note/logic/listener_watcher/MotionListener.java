@@ -21,10 +21,10 @@ public class MotionListener implements View.OnTouchListener {
         switch(event.getAction())
         {
             case MotionEvent.ACTION_DOWN:
-                x1 = event.getX();
+                x1 = event.getX();  //Save first touch position
                 break;
             case MotionEvent.ACTION_UP:
-                x2 = event.getX();
+                x2 = event.getX();  //Save release position
                 float deltaX = x2 - x1;
 
                 if (Math.abs(deltaX) > NoteConstants.MINIMUM_SWIPE_DISTANCE)
@@ -32,13 +32,11 @@ public class MotionListener implements View.OnTouchListener {
                     // Left to Right (previous)
                     if (x2 > x1)
                     {
-                        mNoteApplicationLogic.getNoteGui().displayToast(mNoteApplicationLogic.getNoteData().getActivity(), "Wisch nach rechts");
                         mNoteApplicationLogic.getNoteImagePopupLogic().displayPreviousImage(view.getId());
                     }
                     // Right to Left (next)
                     else
                     {
-                        mNoteApplicationLogic.getNoteGui().displayToast(mNoteApplicationLogic.getNoteData().getActivity(), "Wisch nach links");
                         mNoteApplicationLogic.getNoteImagePopupLogic().displayNextImage(view.getId());
                     }
                 }
