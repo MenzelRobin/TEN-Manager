@@ -2,6 +2,7 @@ package com.example.robin.angrynerds_wip.overview.overviewActivity;
 
 import android.content.Intent;
 
+import com.example.robin.angrynerds_wip.activities.event.EventActivity;
 import com.example.robin.angrynerds_wip.activities.note.note.NoteActivity;
 import com.example.robin.angrynerds_wip.data.models.tens.*;
 
@@ -18,7 +19,7 @@ public class OverviewNewClickHandler {
             mActivity.startActivity(intent);
         }
         if(pClass == Event.class){
-            Intent intent = new Intent(mActivity, com.example.robin.angrynerds_wip.activities.event.Init.class);
+            Intent intent = new Intent(mActivity, EventActivity.class);
             mActivity.startActivity(intent);
         }
         if(pClass == Note.class){

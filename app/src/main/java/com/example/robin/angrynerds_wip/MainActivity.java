@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import com.example.robin.angrynerds_wip.activities.event.EventActivity;
 import com.example.robin.angrynerds_wip.activities.note.note.NoteActivity;
 import com.example.robin.angrynerds_wip.data.models.tens.TEN;
 import com.example.robin.angrynerds_wip.data.models.utils.MockData;
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickEvent(View view) {
-        Intent intent = new Intent(this, com.example.robin.angrynerds_wip.activities.event.Init.class);
+        Intent intent = new Intent(this, EventActivity.class);
 
         intent.putExtra("ID", "7e08f7b4-1afc-4562-9b70-21c1c6ccbb01"); // Hier können eigene Parameter hinzugefügt werden.
         this.startActivity(intent); // Activity Starten

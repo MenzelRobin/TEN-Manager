@@ -4,20 +4,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.widget.ShareActionProvider;
 
 import com.example.robin.angrynerds_wip.R;
+import com.example.robin.angrynerds_wip.activities.event.data.EventData;
+import com.example.robin.angrynerds_wip.activities.event.gui.EventGui;
+import com.example.robin.angrynerds_wip.activities.event.logic.EventApplicationLogic;
 
-import java.util.Date;
 
+public class EventActivity extends AppCompatActivity {
 
-public class Init extends AppCompatActivity {
-
-    private Gui mGui;
+    private EventGui mGui;
     private EventApplicationLogic mEventApplicationLogic;
-    private Data mData;
+    private EventData mData;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -29,11 +27,11 @@ public class Init extends AppCompatActivity {
     }
 
     private void initData(String eventId) {
-        mData = new Data(this, eventId);
+        mData = new EventData(this, eventId);
     }
 
     private void initGUI() {
-        mGui = new Gui(this);
+        mGui = new EventGui(this);
     }
 
     private void initApplicationLogic() {

@@ -1,7 +1,9 @@
-package com.example.robin.angrynerds_wip.activities.event;
+package com.example.robin.angrynerds_wip.activities.event.logic.listener;
 
 import android.text.Editable;
 import android.view.View;
+
+import com.example.robin.angrynerds_wip.activities.event.logic.EventApplicationLogic;
 
 public class TextWatcher implements android.text.TextWatcher {
     private EventApplicationLogic mEventApplicationLogic;

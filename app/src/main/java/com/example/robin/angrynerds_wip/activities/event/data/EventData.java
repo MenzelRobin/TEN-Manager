@@ -1,4 +1,4 @@
-package com.example.robin.angrynerds_wip.activities.event;
+package com.example.robin.angrynerds_wip.activities.event.data;
 
 import android.content.Intent;
 import android.provider.CalendarContract;
@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.Locale;
 
 import com.example.robin.angrynerds_wip.R;
+import com.example.robin.angrynerds_wip.activities.event.EventActivity;
 import com.example.robin.angrynerds_wip.data.models.tens.Event;
 import com.example.robin.angrynerds_wip.data.models.utils.RecurringType;
 import com.example.robin.angrynerds_wip.data.services.Create;
@@ -19,11 +20,11 @@ import com.example.robin.angrynerds_wip.data.services.Read;
 import com.example.robin.angrynerds_wip.data.services.Update;
 import com.example.robin.angrynerds_wip.modules.share.ShareModule;
 
-public class Data {
-    private Init mActivity;
+public class EventData {
+    private EventActivity mActivity;
     private Event mEvent;
 
-    Data(Init pActivity, String eventId) {
+    public EventData(EventActivity pActivity, String eventId) {
         mActivity = pActivity;
 
         //Create new event if eventId is empty

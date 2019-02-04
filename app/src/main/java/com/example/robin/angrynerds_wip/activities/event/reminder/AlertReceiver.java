@@ -1,4 +1,4 @@
-package com.example.robin.angrynerds_wip.activities.event;
+package com.example.robin.angrynerds_wip.activities.event.reminder;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

@@ -1,4 +1,4 @@
-package com.example.robin.angrynerds_wip.activities.event;
+package com.example.robin.angrynerds_wip.activities.event.gui;
 
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.widget.Toolbar;
@@ -8,10 +8,12 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.example.robin.angrynerds_wip.R;
+import com.example.robin.angrynerds_wip.activities.event.EventActivity;
+import com.example.robin.angrynerds_wip.activities.event.reminder.Reminder;
 
 import java.util.Date;
 
-public class Gui {
+public class EventGui {
 
     private RelativeLayout mRelativeLayoutMain;
     private EditText mEditTextTitle, mEditTextDate, mEditTextTime,mEditTextLocation, mEditTextRecurringType;
@@ -20,7 +22,7 @@ public class Gui {
     private Toolbar mToolbar;
     private View mSeperateView1, mSeperateView2, mSeperateView3, mSeperateView4;
 
-    public Gui(Init activity) {
+    public EventGui(EventActivity activity) {
         activity.setContentView(R.layout.activity_event);
         mToolbar = activity.findViewById(R.id.id_event_toolbar);
         mRelativeLayoutMain = activity.findViewById(R.id.id_relativeLayout_main);

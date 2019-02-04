@@ -1,4 +1,4 @@
-package com.example.robin.angrynerds_wip.activities.event;
+package com.example.robin.angrynerds_wip.activities.event.reminder;
 import android.app.Application;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;

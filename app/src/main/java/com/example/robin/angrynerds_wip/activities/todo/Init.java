@@ -13,7 +13,7 @@ import com.example.robin.angrynerds_wip.data.services.Create;
 
 import java.util.Date;
 
-//import com.example.robin.angrynerds_wip.activities.Data;
+//import com.example.robin.angrynerds_wip.activities.EventData;
 
 public class Init extends AppCompatActivity {
 
@@ -55,7 +55,7 @@ public class Init extends AppCompatActivity {
 
     @Override
     protected void onSaveInstanceState (Bundle outState) {
-        //Data.saveDataInBundle(outState);
+        //EventData.saveDataInBundle(outState);
         super.onSaveInstanceState(outState);
     }
 

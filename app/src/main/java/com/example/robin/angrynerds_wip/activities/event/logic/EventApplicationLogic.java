@@ -1,4 +1,4 @@
-package com.example.robin.angrynerds_wip.activities.event;
+package com.example.robin.angrynerds_wip.activities.event.logic;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -10,7 +10,16 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.robin.angrynerds_wip.R;
-import com.example.robin.angrynerds_wip.data.models.utils.RecurringType;
+import com.example.robin.angrynerds_wip.activities.event.data.EventData;
+import com.example.robin.angrynerds_wip.activities.event.logic.listener.EventClickListener;
+import com.example.robin.angrynerds_wip.activities.event.gui.RecurringTypeHelper;
+import com.example.robin.angrynerds_wip.activities.event.gui.DatePickerFragment;
+import com.example.robin.angrynerds_wip.activities.event.gui.EventGui;
+import com.example.robin.angrynerds_wip.activities.event.logic.listener.EventMenuItemClickListener;
+import com.example.robin.angrynerds_wip.activities.event.logic.listener.TextWatcher;
+import com.example.robin.angrynerds_wip.activities.event.gui.TimePickerFragment;
+import com.example.robin.angrynerds_wip.activities.event.reminder.AlarmManagerHelper;
+import com.example.robin.angrynerds_wip.activities.event.reminder.Reminder;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -18,15 +27,15 @@ import java.util.Date;
 
 public class EventApplicationLogic {
 
-    private Gui mGui;
+    private EventGui mGui;
     private AppCompatActivity mActivity;
-    private Data mData;
+    private EventData mData;
     private Reminder mReminder;
     private AlarmManagerHelper mAlarmManagerhelper;
     private RecurringTypeHelper mRecurringTypeHelper;
     private NotificationManagerCompat mNotificationManager;
 
-    public EventApplicationLogic(Gui pGui, AppCompatActivity pActivity, Data pData) {
+    public EventApplicationLogic(EventGui pGui, AppCompatActivity pActivity, EventData pData) {
         mGui = pGui;
         mActivity = pActivity;
         mData = pData;
@@ -52,12 +61,12 @@ public class EventApplicationLogic {
         updateGui();
     }
 
-    //Gui + Toolbar Clicklistener
+    //EventGui + Toolbar Clicklistener
     private void initListener() {
-        ClickListener clickListener;
-        clickListener = new ClickListener(this);
-        MenuItemClickListener menuItemClickListener;
-        menuItemClickListener = new MenuItemClickListener(this);
+        EventClickListener clickListener;
+        clickListener = new EventClickListener(this);
+        EventMenuItemClickListener menuItemClickListener;
+        menuItemClickListener = new EventMenuItemClickListener(this);
         mGui.getToolbar().setNavigationOnClickListener(clickListener);
         mGui.getToolbar().setOnMenuItemClickListener(menuItemClickListener);
         mGui.getEditTextDate().setOnClickListener(clickListener);
@@ -74,7 +83,7 @@ public class EventApplicationLogic {
         mGui.getEditTextLocation().addTextChangedListener(new TextWatcher(this, mGui.getEditTextLocation()));
     }
 
-    //Fill Gui Elements with Data
+    //Fill EventGui Elements with EventData
     public void updateGui() {
         mGui.setTitle(mData.getEvent().getTitle());
         mGui.setTime(mData.getFormatedTime());
@@ -88,7 +97,6 @@ public class EventApplicationLogic {
         if (mData.getEvent().getAddress().length() > 1) {
             mGui.setNavigationVisible(true);
         }
-        ;
         setAlarm();
     }
 
@@ -166,7 +174,15 @@ public class EventApplicationLogic {
                             mData.addReminder(mReminder.calcReminderFromLable(mReminder.getReminderLabelString()[i], mData.getEvent().getTime()));
                             updateGui();
                         }
-                    }).show();
+                    })
+                    .setOnCancelListener(new DialogInterface.OnCancelListener() {
+                        @Override
+                        public void onCancel(DialogInterface dialog) {
+                            dialog.dismiss();
+                            dialog.cancel();
+                        }
+                    })
+                    .show();
         } else {
             new AlertDialog.Builder(mActivity)
                     .setMessage("Es ist nicht möglich, mehr als 4 Erinnerungen einzustellen.")

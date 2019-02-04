@@ -1,10 +1,12 @@
-package com.example.robin.angrynerds_wip.activities.event;
+package com.example.robin.angrynerds_wip.activities.event.gui;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.os.Bundle;
 import android.widget.DatePicker;
+
+import com.example.robin.angrynerds_wip.activities.event.EventActivity;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -33,7 +35,7 @@ public class DatePickerFragment extends DialogFragment
 
     public void onDateSet(DatePicker view, int year, int month, int day) {
         //Return Date to Activity
-        ((Init)getActivity()).receiveDate(year, month, day);
+        ((EventActivity)getActivity()).receiveDate(year, month, day);
     }
 
     public void setDate(Date pTime ){

@@ -1,11 +1,11 @@
-package com.example.robin.angrynerds_wip.activities.event;
+package com.example.robin.angrynerds_wip.activities.event.gui;
 
 import android.app.Activity;
 
 import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.data.models.utils.RecurringType;
 
-class RecurringTypeHelper {
+public class RecurringTypeHelper {
 
     private String[] mRecurringTypeStrings;
 
