@@ -13,4 +13,6 @@ public class NoteConstants {
     public static final String INTENT_ID_COLOR = "color";
     public static final String INTENT_ID_ACCENTCOLOR = "accentColor";
     public static final String INTENT_ID_TAGLIST = "tagList";
+
+    public static final int MINIMUM_SWIPE_DISTANCE = 200;
 }

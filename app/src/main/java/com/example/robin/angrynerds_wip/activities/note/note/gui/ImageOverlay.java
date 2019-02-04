@@ -1,6 +1,5 @@
 package com.example.robin.angrynerds_wip.activities.note.note.gui;
 
-import android.app.Activity;
 import android.graphics.Bitmap;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
@@ -10,7 +9,9 @@ import android.widget.ImageView;
 
 import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.activities.note.note.data.NoteConstants;
+import com.example.robin.angrynerds_wip.activities.note.note.logic.NoteApplicationLogic;
 import com.example.robin.angrynerds_wip.activities.note.note.logic.listener_watcher.ImageOverlayListener;
+import com.example.robin.angrynerds_wip.activities.note.note.logic.listener_watcher.MotionListener;
 
 public class ImageOverlay {
 
@@ -21,22 +22,28 @@ public class ImageOverlay {
     private int frameWidth;
     private int frameHeight;
     private ImageOverlayListener mImageOverlayListener;
+    private NoteApplicationLogic mNoteApplicationLogic;
+    private int mImageID;
 
-    public ImageOverlay(Bitmap pImage, int pDisplayWidth, int pDisplayHeight, ImageOverlayListener pImageOverlayListener) {
+    public ImageOverlay(Bitmap pImage, int pDisplayWidth, int pDisplayHeight, ImageOverlayListener pImageOverlayListener, NoteApplicationLogic pNoteApplicationLogic, int pId) {
         this.mImage = pImage;
         this.mImageOverlayListener = pImageOverlayListener;
         this.displayWidth = pDisplayWidth;
         this.displayHeight = pDisplayHeight;
+        this.mNoteApplicationLogic = pNoteApplicationLogic;
+        this.mImageID = pId;
     }
 
     //Displays the image in an AlertDialog
-    public void display(Activity pActivity) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(pActivity, R.style.CustomDialog);
+    public void display() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(mNoteApplicationLogic.getNoteData().getActivity(), R.style.CustomDialog);
         builder.setOnCancelListener(mImageOverlayListener);
         dialog = builder.create();
-        LayoutInflater inflater = pActivity.getLayoutInflater();
+        LayoutInflater inflater = mNoteApplicationLogic.getNoteData().getActivity().getLayoutInflater();
         View dialogLayout = inflater.inflate(R.layout.activity_note_imageoverlay, null);
         ImageView imageView = dialogLayout.findViewById(R.id.id_note_imageOverlay_imageContainer);
+        imageView.setId(mImageID);
+        imageView.setOnTouchListener(new MotionListener(mNoteApplicationLogic));
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         if(calculateSize()) {
             imageView.setImageBitmap(Bitmap.createScaledBitmap(mImage, (int) (frameWidth * NoteConstants.IMAGE_OVERLAY_FILL_FACTOR),
@@ -88,11 +95,14 @@ public class ImageOverlay {
     }
 
     //Rescales AlertDialog on Orientation change
-    public void changeOrientation(Activity pActivity, int pDisplayWidth, int pDisplayHeight) {
+    public void changeOrientation(int pDisplayWidth, int pDisplayHeight) {
         dialog.dismiss();
         this.displayWidth = pDisplayWidth;
         this.displayHeight = pDisplayHeight;
-        display(pActivity);
+        display();
     }
 
+    public void dismiss(){
+        dialog.dismiss();
+    }
 }
