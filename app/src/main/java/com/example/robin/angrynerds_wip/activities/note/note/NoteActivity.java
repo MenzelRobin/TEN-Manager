@@ -29,9 +29,9 @@ public class NoteActivity extends AppCompatActivity {
     @Override
     public void onCreate (Bundle pSavedInstanceState) {
         super.onCreate(pSavedInstanceState);
+        DataContextManager.initDatabase(this.getApplicationContext());
 
         String id = getIntent().getStringExtra("ID");
-        DataContextManager.initDatabase(this.getApplicationContext());
         if(id==null) {
             mNoteData = new NoteData(this);
             getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);

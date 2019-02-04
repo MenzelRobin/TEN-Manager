@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 
 import com.example.robin.angrynerds_wip.R;
+import com.example.robin.angrynerds_wip.data.repository.DataContextManager;
 import com.example.robin.angrynerds_wip.data.services.Create;
 
 import java.util.Date;
@@ -24,6 +25,7 @@ public class Init extends AppCompatActivity {
     @Override
     public void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        DataContextManager.initDatabase(getApplicationContext());
 
         String todoId = getIntent().getStringExtra("ID");
         initData(todoId);

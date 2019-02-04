@@ -10,6 +10,7 @@ import android.view.Menu;
 import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.activities.note.note.data.NoteConstants;
 import com.example.robin.angrynerds_wip.data.models.utils.Colors;
+import com.example.robin.angrynerds_wip.data.repository.DataContextManager;
 
 import java.util.ArrayList;
 
@@ -21,6 +22,8 @@ public class NoteTagActivity extends AppCompatActivity {
     @Override
     public void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        DataContextManager.initDatabase(getApplicationContext());
+
         Bundle extras = getIntent().getExtras();
         initGUI();
 

@@ -9,6 +9,7 @@ import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.activities.event.data.EventData;
 import com.example.robin.angrynerds_wip.activities.event.gui.EventGui;
 import com.example.robin.angrynerds_wip.activities.event.logic.EventApplicationLogic;
+import com.example.robin.angrynerds_wip.data.repository.DataContextManager;
 
 
 public class EventActivity extends AppCompatActivity {
@@ -20,6 +21,7 @@ public class EventActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        DataContextManager.initDatabase(getApplicationContext());
 
         initData(getIntent().getStringExtra("ID"));
         initGUI();

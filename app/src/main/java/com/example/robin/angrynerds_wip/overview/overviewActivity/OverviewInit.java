@@ -4,6 +4,8 @@ import android.content.res.Configuration;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.example.robin.angrynerds_wip.data.repository.DataContextManager;
+
 public class OverviewInit extends AppCompatActivity {
     /* Yannick-Luca Rüttgers
     Initiates all necessary Activitycomponents
@@ -17,6 +19,8 @@ public class OverviewInit extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        DataContextManager.initDatabase(getApplicationContext());
+
         initData();
         initGui();
         initController();
