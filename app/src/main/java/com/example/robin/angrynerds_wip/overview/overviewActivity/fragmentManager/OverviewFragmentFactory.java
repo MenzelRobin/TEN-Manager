@@ -15,12 +15,17 @@ import com.example.robin.angrynerds_wip.overview.todoFragment.OverviewTodoInit;
 import java.util.ArrayList;
 
 public class OverviewFragmentFactory {
+    /* Yannick-Luca Rüttgers
+    Creates different Type of Fragments for later use.
+     */
 
     public Fragment createHeaderCreateFragment(){
         return new OverviewHeaderCreateFragment();
     }
 
-    public Fragment createHeaderDeleteFragment() { return new OverviewHeaderDeleteFragment(); }
+    public Fragment createHeaderDeleteFragment() {
+        return new OverviewHeaderDeleteFragment();
+    }
 
     public Fragment createHeaderSearchFragment() {
         return new OverviewHeaderSearchFragment();

@@ -12,6 +12,9 @@ import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.overview.superClasses.OverviewFragmentGui;
 
 public class OverviewTodoGui extends OverviewFragmentGui {
+    /* Yannick-Luca Rüttgers
+    Manages the GUI for TodoFragment
+    */
 
     private RelativeLayout mOverviewTodo;
     private TextView mTitle;
@@ -57,6 +60,7 @@ public class OverviewTodoGui extends OverviewFragmentGui {
         mOverviewTodo.setBackgroundColor(pColor);
     }
 
+    // Generates a Todocheckbox
     public void addCheckbox(boolean pStatus, String pDescription){
         // Set Layout
         Context context = mView.getContext();

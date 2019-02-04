@@ -10,6 +10,9 @@ import com.example.robin.angrynerds_wip.overview.superClasses.OverviewFragmentGu
 import com.example.robin.angrynerds_wip.overview.superClasses.OverviewFragmentInit;
 
 public class OverviewNoteController extends OverviewFragmentController {
+    /* Yannick-Luca Rüttgers
+    Contains the Applicationlogic for the Note Fragment
+     */
 
     // Calls the superconstructor
     public OverviewNoteController(OverviewFragmentInit pFragment, OverviewFragmentData pData, OverviewFragmentGui pGui){

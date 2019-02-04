@@ -11,6 +11,9 @@ import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.data.models.tens.*;
 
 public class OverviewGui {
+    /* Yannick-Luca Rüttgers
+    Manages the GUI for OverviewActivity
+     */
 
     private OverviewInit mActivity;
 
@@ -56,10 +59,12 @@ public class OverviewGui {
         mShowNote = mActivity.findViewById(R.id.id_overview_button_note);
     }
 
+    // Overloads markButton
     public void markButton(){
         markButton(TEN.class);
     }
 
+    // Highlights the selected Button
     public void markButton(Class pClass){
         mShowAll.setBackgroundColor(mActivity.getResources().getColor(pClass == TEN.class?R.color.colorGrey:R.color.colorWhite));
         mShowTodo.setBackgroundColor(mActivity.getResources().getColor(pClass == Todo.class?R.color.colorGrey:R.color.colorWhite));
@@ -68,10 +73,12 @@ public class OverviewGui {
         mScrollView.fullScroll(View.FOCUS_UP);
     }
 
+    // Hides the Footer
     public void hideFooter(){
         mFooter.setVisibility(View.GONE);
     }
 
+    // Shows the Footer
     public void showFooter(){
         mFooter.setVisibility(View.VISIBLE);
     }

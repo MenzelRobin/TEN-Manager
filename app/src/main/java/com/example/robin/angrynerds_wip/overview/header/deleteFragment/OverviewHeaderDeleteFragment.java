@@ -11,6 +11,9 @@ import com.example.robin.angrynerds_wip.overview.header.OverviewHeaderClickListe
 import com.example.robin.angrynerds_wip.overview.overviewActivity.OverviewInit;
 
 public class OverviewHeaderDeleteFragment extends Fragment {
+    /* Yannick-Luca Rüttgers
+    Header Fragment for the deletionprocess
+     */
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_overview_header_delete, container, false);
         // Set OnClickListeners

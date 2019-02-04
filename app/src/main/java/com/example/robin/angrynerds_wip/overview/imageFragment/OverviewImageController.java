@@ -10,6 +10,9 @@ import com.example.robin.angrynerds_wip.overview.superClasses.OverviewFragmentGu
 import com.example.robin.angrynerds_wip.overview.superClasses.OverviewFragmentInit;
 
 public class OverviewImageController extends OverviewFragmentController {
+    /* Yannick-Luca Rüttgers
+    Contains the Applicationlogic for the Image Fragment
+     */
 
     // Calls the superconstructor
     public OverviewImageController(OverviewFragmentInit pFragment, OverviewFragmentData pData, OverviewFragmentGui pGui){
@@ -20,7 +23,6 @@ public class OverviewImageController extends OverviewFragmentController {
     public void applyData(){
         ((OverviewImageGui)mGui).setTitle(mData.getTitle());
         ((OverviewImageGui)mGui).setColor(mData.getColor());
-        // Todo: Async loading
         ((OverviewImageGui)mGui).setImage(((OverviewImageData)mData).getImage());
     }
 

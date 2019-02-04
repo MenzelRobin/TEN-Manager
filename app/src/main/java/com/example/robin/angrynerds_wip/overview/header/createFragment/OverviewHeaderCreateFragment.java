@@ -11,6 +11,9 @@ import com.example.robin.angrynerds_wip.overview.header.OverviewHeaderClickListe
 import com.example.robin.angrynerds_wip.overview.overviewActivity.OverviewInit;
 
 public class OverviewHeaderCreateFragment extends Fragment {
+    /* Yannick-Luca Rüttgers
+    Headerfragment for the creation of TENs.
+     */
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_overview_header_create, container, false);
         // Set OnClickListeners

@@ -4,6 +4,9 @@ import android.view.View;
 import android.widget.ImageView;
 
 public abstract class OverviewFragmentGui {
+    /* Yannick-Luca Rüttgers
+    Superclass for [Fragment]Gui Classes. Applies markedstate to checkbox during deletion process.
+    */
 
     protected View mView;
     protected ImageView mChecked;

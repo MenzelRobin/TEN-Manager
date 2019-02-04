@@ -7,12 +7,16 @@ import com.example.robin.angrynerds_wip.activities.note.note.NoteActivity;
 import com.example.robin.angrynerds_wip.data.models.tens.*;
 
 public class OverviewNewClickHandler {
+    /* Yannick-Luca Rüttgers
+    Handles the actions for new TENs.
+     */
     OverviewInit mActivity;
 
     public OverviewNewClickHandler(OverviewInit pActivity){
         mActivity = pActivity;
     }
 
+    // Starts a new Activity depending on the kind of TEN
     public void newTEN(Class pClass){
         if(pClass == Todo.class){
             Intent intent = new Intent(mActivity, com.example.robin.angrynerds_wip.activities.todo.Init.class);

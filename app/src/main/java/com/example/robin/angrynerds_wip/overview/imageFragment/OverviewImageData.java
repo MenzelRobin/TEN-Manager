@@ -10,6 +10,9 @@ import com.example.robin.angrynerds_wip.overview.superClasses.OverviewFragmentDa
 import static com.example.robin.angrynerds_wip.data.services.ImageService.getPreviewImage;
 
 public class OverviewImageData extends OverviewFragmentData {
+    /* Yannick-Luca Rüttgers
+    Contains the Data for the Image Fragment. Loads the Previewimage.
+     */
 
     Bitmap mPreviewImage;
 

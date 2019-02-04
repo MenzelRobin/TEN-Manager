@@ -11,6 +11,9 @@ import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.overview.superClasses.OverviewFragmentGui;
 
 public class OverviewImageGui extends OverviewFragmentGui {
+    /* Yannick-Luca Rüttgers
+    Manages the GUI for the Imagefragment.
+     */
 
     private RelativeLayout mOverviewImage;
     private TextView mTitle;

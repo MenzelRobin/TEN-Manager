@@ -9,6 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OverviewDeleteHandler {
+    /* Yannick-Luca Rüttgers
+    Handles the Deletionprocess
+     */
 
     OverviewInit mActivity;
 
@@ -16,6 +19,7 @@ public class OverviewDeleteHandler {
         mActivity = pActivity;
     }
 
+    // Starts Deletionprocess for all Fragments
     public void longClick(){
         List<Fragment> fragments = mActivity.getSupportFragmentManager().getFragments();
         for(Fragment fragment : fragments){
@@ -23,6 +27,7 @@ public class OverviewDeleteHandler {
         }
     }
 
+    // Ends Deletionprocess for all Fragments
     public void back(){
         List<Fragment> fragments = mActivity.getSupportFragmentManager().getFragments();
         for(Fragment fragment : fragments){
@@ -30,6 +35,7 @@ public class OverviewDeleteHandler {
         }
     }
 
+    // Deletes all Marked Fragments and ends Deletionprocess for all other fragments
     public void delete(){
         ArrayList<String> toDelete = new ArrayList();
         List<Fragment> fragments = mActivity.getSupportFragmentManager().getFragments();

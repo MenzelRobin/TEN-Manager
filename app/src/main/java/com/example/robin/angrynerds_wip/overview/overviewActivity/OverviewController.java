@@ -3,6 +3,9 @@ package com.example.robin.angrynerds_wip.overview.overviewActivity;
 import com.example.robin.angrynerds_wip.overview.overviewActivity.fragmentManager.*;
 
 public class OverviewController {
+    /* Yannick-Luca Rüttgers
+    Logic of the Activity, Manages Helperclasses
+     */
 
     private OverviewInit mActivity;
     private OverviewData mData;

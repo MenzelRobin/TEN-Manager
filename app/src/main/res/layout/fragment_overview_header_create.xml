@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_toStartOf="@id/id_overview_header_create_button_search"
             android:background="@color/colorWhite"
-            android:drawableTop="@drawable/ic_event_note_black_24dp"
+            android:drawableTop="@drawable/ic_check_box_black_24dp"
             android:padding="5dp"
             android:text="Neues Todo"
             android:textSize="10dp" />

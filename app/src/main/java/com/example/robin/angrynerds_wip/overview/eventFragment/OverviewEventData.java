@@ -9,6 +9,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class OverviewEventData extends OverviewFragmentData {
+    /* Yannick-Luca Rüttgers
+    Contains the Data for the Eventfragment. Modeled after Event-Object. Splits up Time into different formats
+     */
 
     String mTime;
     String mDate;

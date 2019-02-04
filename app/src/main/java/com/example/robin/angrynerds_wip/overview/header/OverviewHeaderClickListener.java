@@ -11,6 +11,9 @@ import com.example.robin.angrynerds_wip.overview.header.searchFragment.OverviewH
 import com.example.robin.angrynerds_wip.overview.overviewActivity.OverviewController;
 
 public class OverviewHeaderClickListener implements View.OnClickListener {
+    /* Fabia Schmid
+    Manages the Clickevents from the Headerfragments
+     */
 
     OverviewController mController;
     View mView;
