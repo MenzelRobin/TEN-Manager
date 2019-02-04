@@ -2,8 +2,6 @@ package com.example.robin.angrynerds_wip.data.models.tens;
 
 import android.os.Bundle;
 import android.support.annotation.ColorInt;
-import android.support.annotation.ColorLong;
-import android.util.Log;
 
 import com.example.robin.angrynerds_wip.data.models.utils.BundleKeys;
 import com.example.robin.angrynerds_wip.data.models.utils.Colors;
@@ -61,11 +59,11 @@ public class TEN {
 
     public Bundle getBundle() {
         Bundle bundle = new Bundle();
-        bundle.putString(BundleKeys.keyTENID, ID);
-        bundle.putString(BundleKeys.keyTENTitle, title);
-        bundle.putInt(BundleKeys.keyTENColor, color);
-        bundle.putInt(BundleKeys.keyTENAccentColor, accentColor);
-        bundle.putLong(BundleKeys.keyTENDateOfCreation, this.dateOfCreation.getTime());
+        bundle.putString(BundleKeys.KEY_TEN_ID, ID);
+        bundle.putString(BundleKeys.KEY_TEN_TITLE, title);
+        bundle.putInt(BundleKeys.KEY_TEN_COLOR, color);
+        bundle.putInt(BundleKeys.KEY_TEN_ACCENT_COLOR, accentColor);
+        bundle.putLong(BundleKeys.KEY_TEN_DATE_OF_CREATION, this.dateOfCreation.getTime());
         return bundle;
     }
 

@@ -7,6 +7,7 @@ import android.util.Log;
 import com.example.robin.angrynerds_wip.data.models.utils.BundleKeys;
 import com.example.robin.angrynerds_wip.data.models.utils.Image;
 import com.example.robin.angrynerds_wip.data.repository.RepositoryConstants;
+import com.example.robin.angrynerds_wip.data.repository.filesystem.FileSystemConstants;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.util.ArrayList;
@@ -71,7 +72,7 @@ public class Note extends TEN {
 
     public Image addImage(Bitmap bitmap) {
         this.imageIDCounter++;
-        String imageID = this.getID() + RepositoryConstants.IMAGE_CORE_ID + this.imageIDCounter;
+        String imageID = this.getID() + FileSystemConstants.IMAGE_CORE_ID + this.imageIDCounter;
         Image image = new Image(imageID, bitmap);
         Log.i("cool", image.getId());
         this.pictures.add(image);
@@ -93,10 +94,10 @@ public class Note extends TEN {
 
     public Bundle getBundle() {
         Bundle bundle = super.getBundle();
-        bundle.putString(BundleKeys.keyNoteDescription, description);
-        bundle.putStringArrayList(BundleKeys.keyNoteTags, tags);
+        bundle.putString(BundleKeys.KEY_NOTE_DESCRIPTION, description);
+        bundle.putStringArrayList(BundleKeys.KEY_NOTE_TAGS, tags);
         if (!pictures.isEmpty())
-            bundle.putString(BundleKeys.keyNotePictures, pictures.get(0).getId());
+            bundle.putString(BundleKeys.KEY_NOTE_PICTURES, pictures.get(0).getId());
         return bundle;
     }
 

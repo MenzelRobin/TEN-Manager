@@ -1,7 +1,6 @@
 package com.example.robin.angrynerds_wip.overview.todoFragment;
 
 import android.os.Bundle;
-import android.util.Log;
 
 import com.example.robin.angrynerds_wip.data.models.utils.BundleKeys;
 import com.example.robin.angrynerds_wip.overview.superClasses.OverviewFragmentData;
@@ -17,9 +16,9 @@ public class OverviewTodoData extends OverviewFragmentData {
     // Adds the Note data to this Object
     public void addData(Bundle pData){
         super.addData(pData);
-        mNote = pData.getString(BundleKeys.keyTodoNote);
-        mDescription = pData.getStringArray(BundleKeys.keyTodoDescription);
-        mStatus = pData.getBooleanArray(BundleKeys.keyTodoStatus);
+        mNote = pData.getString(BundleKeys.KEY_TODO_NOTE);
+        mDescription = pData.getStringArray(BundleKeys.KEY_TODO_DESCRIPTION);
+        mStatus = pData.getBooleanArray(BundleKeys.KEY_TODO_STATUS);
     }
 
     // Returns the Description

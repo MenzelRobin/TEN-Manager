@@ -10,6 +10,7 @@ import android.util.Log;
 
 import com.example.robin.angrynerds_wip.data.services.ImageRotationCorrectionService;
 import com.example.robin.angrynerds_wip.data.services.ImageService;
+import com.example.robin.angrynerds_wip.modules.image_compression.ImageCompressionModule;
 
 import java.io.IOException;
 
@@ -40,14 +41,12 @@ public class NoteGalleryImportLogic {
 
     public void importImageFromGallery(Intent pData){
         Uri selectedImage = pData.getData();
-        try {
-            Bitmap bitmap = ImageRotationCorrectionService.correctImageRotation(getPath(mNoteApplicationLogic.getNoteData().getActivity().getApplicationContext() ,selectedImage), MediaStore.Images.Media.getBitmap(mNoteApplicationLogic.getNoteData().getActivity().getContentResolver(), selectedImage));
+        String path = getPath(mNoteApplicationLogic.getNoteData().getActivity().getApplicationContext() ,selectedImage);
+            Bitmap bitmap = ImageCompressionModule.importCompressedImage(path);
+            bitmap = ImageRotationCorrectionService.correctImageRotation(path, bitmap);
 
             mNoteApplicationLogic.getNoteData().addImageFromGallery(bitmap);
 
             mNoteApplicationLogic.getNoteGuiRefresherLogic().refreshImages();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }

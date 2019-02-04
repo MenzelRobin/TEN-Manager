@@ -22,11 +22,12 @@ public class DataContextManager {
 
     //Gets Database from Context if it is not set
     public static void initDatabase(Context pContext) {
-        DataContextManager.context = pContext;
         if (DataContextManager.getDatabase() == null) {
+            DataContextManager.context = pContext;
             try {
                 DatabaseConfiguration config = new DatabaseConfiguration(pContext.getApplicationContext());
                 DataContextManager.database = new Database(RepositoryConstants.DATABASENAME, config);
+                compactDatabase();
             } catch (CouchbaseLiteException e) {
                 Toast.makeText(pContext, "Fehler bei der Datenbankerstellung", Toast.LENGTH_LONG);
             }
