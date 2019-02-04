@@ -9,7 +9,7 @@ import android.widget.RelativeLayout;
 
 import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.activities.event.EventActivity;
-import com.example.robin.angrynerds_wip.activities.event.reminder.Reminder;
+import com.example.robin.angrynerds_wip.activities.event.data.Reminder;
 
 import java.util.Date;
 

@@ -19,7 +19,7 @@ import com.example.robin.angrynerds_wip.activities.event.logic.listener.EventMen
 import com.example.robin.angrynerds_wip.activities.event.logic.listener.TextWatcher;
 import com.example.robin.angrynerds_wip.activities.event.gui.TimePickerFragment;
 import com.example.robin.angrynerds_wip.activities.event.reminder.AlarmManagerHelper;
-import com.example.robin.angrynerds_wip.activities.event.reminder.Reminder;
+import com.example.robin.angrynerds_wip.activities.event.data.Reminder;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -111,7 +111,7 @@ public class EventApplicationLogic {
         Calendar actualTime = Calendar.getInstance();
         for (int i = 0; i < mData.getEvent().getReminder().size(); i++) {
             if (mData.getEvent().getReminder().get(i).after(actualTime.getTime())) {
-                startAlarm(mData.getEvent().getReminder().get(i), i);
+                mAlarmManagerhelper.startAlarm(mActivity, mData, mData.getEvent().getReminder().get(i), i);
             }
         }
     }
@@ -134,16 +134,16 @@ public class EventApplicationLogic {
         mReminder.setReminder(mData.getEvent().getReminder());
 
         if (mGui.getEditTextReminder1().length() > 0) {
-            eventReminder.add(mReminder.calcReminderFromLable(mGui.getEditTextReminder1().getText().toString(), mData.getEvent().getTime()));
+            eventReminder.add(mReminder.getReminderFromLable(mGui.getEditTextReminder1().getText().toString(), mData.getEvent().getTime()));
         }
         if (mGui.getEditTextReminder2().length() > 0) {
-            eventReminder.add(mReminder.calcReminderFromLable(mGui.getEditTextReminder2().getText().toString(), mData.getEvent().getTime()));
+            eventReminder.add(mReminder.getReminderFromLable(mGui.getEditTextReminder2().getText().toString(), mData.getEvent().getTime()));
         }
         if (mGui.getEditTextReminder3().length() > 0) {
-            eventReminder.add(mReminder.calcReminderFromLable(mGui.getEditTextReminder3().getText().toString(), mData.getEvent().getTime()));
+            eventReminder.add(mReminder.getReminderFromLable(mGui.getEditTextReminder3().getText().toString(), mData.getEvent().getTime()));
         }
         if (mGui.getEditTextReminder4().length() > 0) {
-            eventReminder.add(mReminder.calcReminderFromLable(mGui.getEditTextReminder4().getText().toString(), mData.getEvent().getTime()));
+            eventReminder.add(mReminder.getReminderFromLable(mGui.getEditTextReminder4().getText().toString(), mData.getEvent().getTime()));
         }
         mData.addReminderList(eventReminder);
         updateGui();
@@ -171,7 +171,7 @@ public class EventApplicationLogic {
                     .setItems(mReminder.getReminderLabelString(), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            mData.addReminder(mReminder.calcReminderFromLable(mReminder.getReminderLabelString()[i], mData.getEvent().getTime()));
+                            mData.addReminder(mReminder.getReminderFromLable(mReminder.getReminderLabelString()[i], mData.getEvent().getTime()));
                             updateGui();
                         }
                     })
@@ -206,11 +206,8 @@ public class EventApplicationLogic {
             mData.setTitle(text);
         } else if (view.getId() == R.id.id_event_editText_location) {
             mData.setLocation(text);
-            if (mData.getEvent().getAddress().length() > 1) {
-                mGui.setNavigationVisible(true);
-            } else {
-                mGui.setNavigationVisible(false);
-            }
+            if (mData.getEvent().getAddress().length() > 1) {mGui.setNavigationVisible(true);}
+            else {mGui.setNavigationVisible(false);}
         }
     }
 
@@ -218,16 +215,16 @@ public class EventApplicationLogic {
     public void onCloseReminderClicked(int i) {
         if (i == 1 && mGui.getIconCloseReminder1().getAlpha() == (float) 0.5) {
             mData.removeReminder(i);
-            cancelAlarm(0);
+            mAlarmManagerhelper.cancelAlarm(mActivity, mData, 0);
         } else if (i == 2 && mGui.getIconCloseReminder2().getAlpha() == (float) 0.5) {
             mData.removeReminder(i);
-            cancelAlarm(1);
+            mAlarmManagerhelper.cancelAlarm(mActivity, mData, 1);
         } else if (i == 3 && mGui.getIconCloseReminder3().getAlpha() == (float) 0.5) {
             mData.removeReminder(i);
-            cancelAlarm(2);
+            mAlarmManagerhelper.cancelAlarm(mActivity, mData, 2);
         } else if (i == 4 && mGui.getIconCloseReminder4().getAlpha() == (float) 0.5) {
             mData.removeReminder(i);
-            cancelAlarm(3);
+            mAlarmManagerhelper.cancelAlarm(mActivity, mData, 3);
         }
         updateGui();
     }
@@ -244,22 +241,12 @@ public class EventApplicationLogic {
         }
     }
 
-    //AlarmManager & Notifications
-    public void startAlarm(Date reminderTime, int requestCode) {
-        mAlarmManagerhelper.startAlarm(mActivity, mData, reminderTime, requestCode);
-    }
-
-    //Remove Alarm from AlarmMangager
-    public void cancelAlarm(int requestCode) {
-        mAlarmManagerhelper.cancelAlarm(mActivity, mData, requestCode);
-    }
-
     public void onNavigationClicked() {
         if (mData.getEvent().getAddress() != "") {
             Uri gmmIntentUri = Uri.parse("geo:0,0?q=" + mData.getEvent().getAddress());
             Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
 
-            //If gMaps is installed, use gMaps!
+            //If GMaps is installed, use GMaps!
             if (mapIntent.resolveActivity(mActivity.getPackageManager()) != null) {
                 mapIntent.setPackage("com.google.android.apps.maps");
             }

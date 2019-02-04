@@ -20,7 +20,9 @@ public class DatePickerFragment extends DialogFragment
         final Calendar c = Calendar.getInstance();
         int year, month, day;
 
-        if (mTime != null){ c.setTime(mTime); }
+        if (mTime != null) {
+            c.setTime(mTime);
+        }
 
         year = c.get(Calendar.YEAR);
         month = c.get(Calendar.MONTH);
@@ -35,10 +37,10 @@ public class DatePickerFragment extends DialogFragment
 
     public void onDateSet(DatePicker view, int year, int month, int day) {
         //Return Date to Activity
-        ((EventActivity)getActivity()).receiveDate(year, month, day);
+        ((EventActivity) getActivity()).receiveDate(year, month, day);
     }
 
-    public void setDate(Date pTime ){
+    public void setDate(Date pTime) {
         mTime = pTime;
     }
 

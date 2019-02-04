@@ -1,4 +1,4 @@
-package com.example.robin.angrynerds_wip.activities.event.reminder;
+package com.example.robin.angrynerds_wip.activities.event.data;
 
 import android.app.Activity;
 
@@ -55,7 +55,7 @@ public class Reminder {
     }
 
     //Get appropriate Reminder by Lable
-    public Date calcReminderFromLable(String lable, Date eventDate) {
+    public Date getReminderFromLable(String lable, Date eventDate) {
         Calendar reminderDate = Calendar.getInstance();
         reminderDate.setTime(eventDate);
 
