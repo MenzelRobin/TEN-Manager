@@ -13,7 +13,7 @@ public class ImageCompressionModule {
             BitmapFactory.decodeFile(pPath, options);
 
             // Calculate inSampleSize
-            options.inSampleSize = calculateInSampleSize(options, 1500, 1500);
+            options.inSampleSize = calculateInSampleSize(options, 1000, 1000);
 
             // Decode bitmap with inSampleSize set
             options.inJustDecodeBounds = false;
