@@ -19,7 +19,7 @@ import com.example.robin.angrynerds_wip.activities.event.logic.listener.EventMen
 import com.example.robin.angrynerds_wip.activities.event.logic.listener.TextWatcher;
 import com.example.robin.angrynerds_wip.activities.event.gui.TimePickerFragment;
 import com.example.robin.angrynerds_wip.activities.event.reminder.AlarmManagerHelper;
-import com.example.robin.angrynerds_wip.activities.event.reminder.Reminder;
+import com.example.robin.angrynerds_wip.activities.event.data.Reminder;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -134,16 +134,16 @@ public class EventApplicationLogic {
         mReminder.setReminder(mData.getEvent().getReminder());
 
         if (mGui.getEditTextReminder1().length() > 0) {
-            eventReminder.add(mReminder.calcReminderFromLable(mGui.getEditTextReminder1().getText().toString(), mData.getEvent().getTime()));
+            eventReminder.add(mReminder.getReminderFromLable(mGui.getEditTextReminder1().getText().toString(), mData.getEvent().getTime()));
         }
         if (mGui.getEditTextReminder2().length() > 0) {
-            eventReminder.add(mReminder.calcReminderFromLable(mGui.getEditTextReminder2().getText().toString(), mData.getEvent().getTime()));
+            eventReminder.add(mReminder.getReminderFromLable(mGui.getEditTextReminder2().getText().toString(), mData.getEvent().getTime()));
         }
         if (mGui.getEditTextReminder3().length() > 0) {
-            eventReminder.add(mReminder.calcReminderFromLable(mGui.getEditTextReminder3().getText().toString(), mData.getEvent().getTime()));
+            eventReminder.add(mReminder.getReminderFromLable(mGui.getEditTextReminder3().getText().toString(), mData.getEvent().getTime()));
         }
         if (mGui.getEditTextReminder4().length() > 0) {
-            eventReminder.add(mReminder.calcReminderFromLable(mGui.getEditTextReminder4().getText().toString(), mData.getEvent().getTime()));
+            eventReminder.add(mReminder.getReminderFromLable(mGui.getEditTextReminder4().getText().toString(), mData.getEvent().getTime()));
         }
         mData.addReminderList(eventReminder);
         updateGui();
@@ -171,7 +171,7 @@ public class EventApplicationLogic {
                     .setItems(mReminder.getReminderLabelString(), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            mData.addReminder(mReminder.calcReminderFromLable(mReminder.getReminderLabelString()[i], mData.getEvent().getTime()));
+                            mData.addReminder(mReminder.getReminderFromLable(mReminder.getReminderLabelString()[i], mData.getEvent().getTime()));
                             updateGui();
                         }
                     })
