@@ -13,6 +13,9 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class OverviewTodoController extends OverviewFragmentController {
+    /* Yannick-Luca Rüttgers
+    Contains the Logic for Todofragment.
+    */
 
     // Calls the superconstructor
     public OverviewTodoController(OverviewFragmentInit pFragment, OverviewFragmentData pData, OverviewFragmentGui pGui){
