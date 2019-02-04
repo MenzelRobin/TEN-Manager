@@ -32,11 +32,13 @@ public class MotionListener implements View.OnTouchListener {
                     // Left to Right (previous)
                     if (x2 > x1)
                     {
+                        mNoteApplicationLogic.getNoteGui().displayToast(mNoteApplicationLogic.getNoteData().getActivity(), "Wisch nach rechts");
                         mNoteApplicationLogic.getNoteImagePopupLogic().displayPreviousImage(view.getId());
                     }
                     // Right to Left (next)
                     else
                     {
+                        mNoteApplicationLogic.getNoteGui().displayToast(mNoteApplicationLogic.getNoteData().getActivity(), "Wisch nach links");
                         mNoteApplicationLogic.getNoteImagePopupLogic().displayNextImage(view.getId());
                     }
                 }
