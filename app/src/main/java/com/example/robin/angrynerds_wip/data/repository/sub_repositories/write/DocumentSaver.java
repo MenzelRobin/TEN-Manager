@@ -9,7 +9,7 @@ import com.example.robin.angrynerds_wip.data.models.tens.TEN;
 import com.example.robin.angrynerds_wip.data.models.utils.Image;
 import com.example.robin.angrynerds_wip.data.repository.DataContextManager;
 import com.example.robin.angrynerds_wip.data.repository.RepositoryConstants;
-import com.example.robin.angrynerds_wip.data.repository.filesystem.FileManager;
+import com.example.robin.angrynerds_wip.data.repository.filesystem.FileRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -20,11 +20,11 @@ import java.io.IOException;
 public class DocumentSaver {
 
     ObjectMapper mObjectMapper;
-    FileManager mFileManager;
+    FileRepository mFileRepository;
 
     public DocumentSaver() {
         this.mObjectMapper = new ObjectMapper();
-        this.mFileManager = new FileManager();
+        this.mFileRepository = new FileRepository();
     }
 
     public boolean updateCompleteDocument(TEN pTen, MutableDocument pMutableTENDocument) {
@@ -72,7 +72,7 @@ public class DocumentSaver {
         for(Image image: pNote.getPictures()){
             image.setId(image.getId().replaceAll("null", pNote.getID()));
             try{
-                mFileManager.saveImagePersistent(image);
+                mFileRepository.saveImagePersistent(image);
             } catch (IOException e){
 
             }
