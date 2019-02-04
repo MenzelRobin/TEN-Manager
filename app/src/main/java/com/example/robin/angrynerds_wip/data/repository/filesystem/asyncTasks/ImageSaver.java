@@ -9,7 +9,7 @@ import com.example.robin.angrynerds_wip.activities.note.note.data.gui_oriented.P
 import com.example.robin.angrynerds_wip.data.models.utils.Image;
 import com.example.robin.angrynerds_wip.data.repository.DataContextManager;
 import com.example.robin.angrynerds_wip.data.repository.RepositoryConstants;
-import com.example.robin.angrynerds_wip.data.repository.filesystem.FileManager;
+import com.example.robin.angrynerds_wip.data.repository.filesystem.FileRepository;
 import com.example.robin.angrynerds_wip.data.repository.filesystem.FileSystemConstants;
 
 import java.io.File;
@@ -19,12 +19,12 @@ import java.io.IOException;
 
 public class ImageSaver {
 
-    FileManager mFileManager;
+    FileRepository mFileRepository;
 
     //Class that creates async Task to save Images to the filesystem
     //Author: Jan Beilfuß
-    public ImageSaver(FileManager pFileManager) {
-        this.mFileManager = pFileManager;
+    public ImageSaver(FileRepository pFileRepository) {
+        this.mFileRepository = pFileRepository;
     }
 
     public void execute(Image image) throws IOException {

@@ -11,7 +11,7 @@ import com.example.robin.angrynerds_wip.data.models.utils.Image;
 import com.example.robin.angrynerds_wip.data.repository.RepositoryConstants;
 import com.example.robin.angrynerds_wip.data.repository.converter.TenJsonParser;
 import com.example.robin.angrynerds_wip.data.repository.DataContextManager;
-import com.example.robin.angrynerds_wip.data.repository.filesystem.FileManager;
+import com.example.robin.angrynerds_wip.data.repository.filesystem.FileRepository;
 
 //Class that handles all writing accesses to the database
 //Author: Jan Beilfuß
@@ -19,12 +19,12 @@ public class WriteRepository {
 
     private DocumentSaver mDocumentSaver;
     private TenJsonParser mTenJsonParser;
-    private FileManager mFileManager;
+    private FileRepository mFileRepository;
 
     public WriteRepository(){
         this.mDocumentSaver = new DocumentSaver();
         this.mTenJsonParser = new TenJsonParser();
-        this.mFileManager = new FileManager();
+        this.mFileRepository = new FileRepository();
     }
 
     //new TEN to the Database
@@ -61,7 +61,7 @@ public class WriteRepository {
             String json = pDocument.getString(RepositoryConstants.OBJECT_KEY);
             Note note = mTenJsonParser.stringToNote(json);
             for(Image image: note.getPictures()){
-                mFileManager.deleteImageFromDirectory(image.getId());
+                mFileRepository.deleteImageFromDirectory(image.getId());
             }
         }
     }

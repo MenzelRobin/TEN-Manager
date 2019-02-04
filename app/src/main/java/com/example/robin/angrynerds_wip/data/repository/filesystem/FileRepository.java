@@ -15,7 +15,7 @@ import java.io.IOException;
 
 //Class that handles everything regarding persistent Images
 //Author: Jan Beilfuß
-public class FileManager {
+public class FileRepository {
     public Context getContext() {
         return DataContextManager.context;
     }
