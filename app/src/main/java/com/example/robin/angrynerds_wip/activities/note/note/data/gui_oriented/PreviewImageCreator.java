@@ -34,5 +34,4 @@ public class PreviewImageCreator {
         return Bitmap.createScaledBitmap(pOriginalBitmap, NoteConstants.IMAGE_PREVIEW_CONTAINER_WIDTH - 50,
                 NoteConstants.IMAGE_PREVIEW_CONTAINER_HEIGHT - 50, true);
     }
-
 }

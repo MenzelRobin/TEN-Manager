@@ -17,6 +17,7 @@ import com.example.robin.angrynerds_wip.data.services.Create;
 import com.example.robin.angrynerds_wip.data.services.Delete;
 import com.example.robin.angrynerds_wip.data.services.Read;
 import com.example.robin.angrynerds_wip.data.services.Update;
+import com.example.robin.angrynerds_wip.modules.share.ShareModule;
 
 public class Data {
     private Init mActivity;
@@ -110,16 +111,7 @@ public class Data {
     }
 
     public void shareEvent() {
-        Intent shareIntent = new Intent(Intent.ACTION_SEND);
-        shareIntent.setType("text/plain");
-        String eventSbj = mEvent.getTitle(); //Subject eg for Mails
-        String eventTxt = mActivity.getString(R.string.event_share_text).replace("TITLE", mEvent.getTitle());
-        eventTxt = eventTxt.replace("DATE", getFormatedDate());
-        eventTxt = eventTxt.replace("TIME", getFormatedTime());
-        eventTxt = eventTxt.replace("LOCATION", mEvent.getAddress());
-        shareIntent.putExtra(Intent.EXTRA_SUBJECT, eventSbj);
-        shareIntent.putExtra(Intent.EXTRA_TEXT, eventTxt);
-        mActivity.startActivity(Intent.createChooser(shareIntent, "Teilen mit"));
+        ShareModule.shareEvent(mActivity, mEvent, getFormatedDate(), getFormatedTime());
     }
 
     //Getter
