@@ -93,10 +93,10 @@ public class Note extends TEN {
 
     public Bundle getBundle() {
         Bundle bundle = super.getBundle();
-        bundle.putString(BundleKeys.keyNoteDescription, description);
-        bundle.putStringArrayList(BundleKeys.keyNoteTags, tags);
+        bundle.putString(BundleKeys.KEY_NOTE_DESCRIPTION, description);
+        bundle.putStringArrayList(BundleKeys.KEY_NOTE_TAGS, tags);
         if (!pictures.isEmpty())
-            bundle.putString(BundleKeys.keyNotePictures, pictures.get(0).getId());
+            bundle.putString(BundleKeys.KEY_NOTE_PICTURES, pictures.get(0).getId());
         return bundle;
     }
 
