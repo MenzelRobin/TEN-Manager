@@ -27,6 +27,7 @@ public class DataContextManager {
             try {
                 DatabaseConfiguration config = new DatabaseConfiguration(pContext.getApplicationContext());
                 DataContextManager.database = new Database(RepositoryConstants.DATABASENAME, config);
+                compactDatabase();
             } catch (CouchbaseLiteException e) {
                 Toast.makeText(pContext, "Fehler bei der Datenbankerstellung", Toast.LENGTH_LONG);
             }
