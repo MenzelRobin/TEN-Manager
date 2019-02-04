@@ -70,7 +70,7 @@ public class NoteActivity extends AppCompatActivity {
         mEventDispersion.onCreateContextMenu(pMenu, pView, pMenuInfo);
     }
 
-    //Toolbar
+    //Toolbar Context Menu
     @Override
     public boolean onCreateOptionsMenu(Menu pMenu){
         MenuInflater inflater = getMenuInflater();
@@ -94,7 +94,6 @@ public class NoteActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        //mNoteApplicationLogic.onPause();
     }
 
     @Override

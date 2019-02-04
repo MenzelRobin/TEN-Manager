@@ -1,11 +1,7 @@
 package com.example.robin.angrynerds_wip.activities.note.note.logic.listener_watcher;
 
-import com.example.robin.angrynerds_wip.activities.note.note.gui.GraphicsContainer;
 import com.example.robin.angrynerds_wip.activities.note.note.gui.NoteGui;
 import com.example.robin.angrynerds_wip.activities.note.note.logic.NoteApplicationLogic;
-import com.example.robin.angrynerds_wip.activities.note.note.logic.listener_watcher.ClickListener;
-import com.example.robin.angrynerds_wip.activities.note.note.logic.listener_watcher.MenuItemClickListener;
-import com.example.robin.angrynerds_wip.activities.note.note.logic.listener_watcher.NoteTextWatcher;
 
 public class NoteListenerInitializer {
 

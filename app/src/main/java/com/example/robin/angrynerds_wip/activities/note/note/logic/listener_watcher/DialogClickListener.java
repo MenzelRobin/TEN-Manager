@@ -2,20 +2,20 @@ package com.example.robin.angrynerds_wip.activities.note.note.logic.listener_wat
 
 import android.content.DialogInterface;
 
-import com.example.robin.angrynerds_wip.activities.note.note.logic.NoteCameraImportLogic;
+import com.example.robin.angrynerds_wip.activities.note.note.logic.NoteImageImportLogic;
 
 public class DialogClickListener implements DialogInterface.OnClickListener{
 
-    private NoteCameraImportLogic mImageImport;
+    private NoteImageImportLogic mImageImport;
 
-    public DialogClickListener(NoteCameraImportLogic pImageImport) {
+    public DialogClickListener(NoteImageImportLogic pImageImport) {
         this.mImageImport = pImageImport;
     }
 
     @Override
-    public void onClick(DialogInterface dialog, int option) {
+    public void onClick(DialogInterface pDialog, int pOption) {
 
-        switch ( option ) {
+        switch ( pOption ) {
             case 0:
                 mImageImport.importImageFromGallery();
                 break;

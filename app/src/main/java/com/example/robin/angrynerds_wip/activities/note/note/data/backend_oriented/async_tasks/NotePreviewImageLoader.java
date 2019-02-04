@@ -8,7 +8,7 @@ import com.example.robin.angrynerds_wip.data.services.ImageService;
 
 public class NotePreviewImageLoader {
 
-    NoteDataBackend mNoteDataBackend;
+    private NoteDataBackend mNoteDataBackend;
 
     public NotePreviewImageLoader(NoteDataBackend pNoteDataBackend) {
         this.mNoteDataBackend = pNoteDataBackend;

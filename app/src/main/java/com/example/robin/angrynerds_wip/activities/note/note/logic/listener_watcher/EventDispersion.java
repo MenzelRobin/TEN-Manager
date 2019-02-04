@@ -20,10 +20,8 @@ public class EventDispersion {
     }
 
     public void onCreateContextMenu(ContextMenu pMenu, View pView, ContextMenu.ContextMenuInfo pMenuInfo) {
-        //if ( mNoteApplicationLogic.checkImageID(pView.getId()) ) {
-            pMenu.add(MENUGROUPTOP, MENUITEMDELETEIMAGE, Menu.NONE, "Bild löschen");
-            mId = pView.getId();
-        //}
+        pMenu.add(MENUGROUPTOP, MENUITEMDELETEIMAGE, Menu.NONE, "Bild löschen");
+        mId = pView.getId();
     }
 
     public boolean onContextItemSelected(MenuItem pMenuItem) {

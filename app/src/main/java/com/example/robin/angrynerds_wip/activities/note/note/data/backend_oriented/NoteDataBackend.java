@@ -1,7 +1,5 @@
 package com.example.robin.angrynerds_wip.activities.note.note.data.backend_oriented;
 
-import android.util.Log;
-
 import com.example.robin.angrynerds_wip.activities.note.note.data.NoteData;
 import com.example.robin.angrynerds_wip.activities.note.note.data.NoteDataHelper;
 import com.example.robin.angrynerds_wip.activities.note.note.data.backend_oriented.async_tasks.TaskManager;
@@ -31,9 +29,9 @@ public class NoteDataBackend {
         return mNoteData;
     }
 
-    public void deleteImage(int id) {
-        Image image = new Image(mNoteData.getNote().getPictures().get(id - 1));
-        mNoteData.getNote().getPictures().remove(id - 1);
+    public void deleteImage(int pId) {
+        Image image = new Image(mNoteData.getNote().getPictures().get(pId - 1));
+        mNoteData.getNote().getPictures().remove(pId - 1);
         mImagesToBeDeleted.add(image);
     }
 

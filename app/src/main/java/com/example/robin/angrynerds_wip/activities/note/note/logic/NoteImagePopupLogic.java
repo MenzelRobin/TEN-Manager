@@ -10,6 +10,7 @@ import com.example.robin.angrynerds_wip.activities.note.note.gui.ImageOverlay;
 import com.example.robin.angrynerds_wip.activities.note.note.logic.listener_watcher.ImageOverlayListener;
 
 public class NoteImagePopupLogic {
+
     NoteApplicationLogic mNoteApplicationLogic;
     ImageOverlay mImageOverlay;
     ImageOverlayListener mImageOverlayListener;

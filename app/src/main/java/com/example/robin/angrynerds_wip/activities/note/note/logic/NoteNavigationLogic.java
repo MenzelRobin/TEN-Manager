@@ -18,7 +18,6 @@ public class NoteNavigationLogic {
     }
 
     public void returnToOverview() {
-        //mActivity.overridePendingTransition(android.R.anim.fade_in, android.R.anim.slide_out_right);
         mNoteApplicationLogic.getNoteData().getActivity().finish();
     }
 
@@ -52,22 +51,11 @@ public class NoteNavigationLogic {
         }
     }
 
-    //NoteNavigationLogic
     public void saveAndReturnToOverview() {
         mNoteApplicationLogic.getNoteData().executeSaveRoutine();
         returnToOverview();
     }
 
-    //NoteNavigationLogic
-    public void onBackPressed() {
-        saveAndReturnToOverview();
-    }
-
-    public void startImageImport(){
-        mNoteApplicationLogic.initImageImportObject();
-    }
-
-    //NoteNavigationLogic
     public void startTagActivity() {
         Intent intent = new Intent(mNoteApplicationLogic.getNoteData().getActivity(), NoteTagActivity.class);
         intent.putExtra(NoteConstants.INTENT_ID_TAGLIST, mNoteApplicationLogic.getNoteData().getNote().getTags());
