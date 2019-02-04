@@ -20,7 +20,6 @@ public class OverviewImageController extends OverviewFragmentController {
     public void applyData(){
         ((OverviewImageGui)mGui).setTitle(mData.getTitle());
         ((OverviewImageGui)mGui).setColor(mData.getColor());
-        // Todo: Async loading
         ((OverviewImageGui)mGui).setImage(((OverviewImageData)mData).getImage());
     }
 
