@@ -1,4 +1,4 @@
-package com.example.robin.angrynerds_wip.activities.note.tageditor;
+package com.example.robin.angrynerds_wip.activities.note.notetags;
 
 import android.text.Editable;
 import android.view.View;

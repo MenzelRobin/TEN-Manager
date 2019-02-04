@@ -1,15 +1,12 @@
-package com.example.robin.angrynerds_wip.activities.note.tageditor;
+package com.example.robin.angrynerds_wip.activities.note.notetags;
 
 import android.content.Context;
-import android.text.InputType;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.TextView;
 
 import com.example.robin.angrynerds_wip.R;
 

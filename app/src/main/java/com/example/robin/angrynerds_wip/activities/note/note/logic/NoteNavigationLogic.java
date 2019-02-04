@@ -6,9 +6,8 @@ import android.graphics.BitmapFactory;
 import android.util.Log;
 
 import com.example.robin.angrynerds_wip.activities.note.note.data.NoteConstants;
-import com.example.robin.angrynerds_wip.activities.note.tageditor.NoteTagActivity;
+import com.example.robin.angrynerds_wip.activities.note.notetags.NoteTagActivity;
 import com.example.robin.angrynerds_wip.data.services.ImageRotationCorrectionService;
-import com.example.robin.angrynerds_wip.data.services.ImageService;
 
 public class NoteNavigationLogic {
 
