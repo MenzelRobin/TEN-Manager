@@ -52,16 +52,19 @@ public class NoteImagePopupLogic {
     public void displayNextImage(int pCurrentImageId){
         if(++pCurrentImageId <= mNoteApplicationLogic.getNoteData().getNotePreviewImages().size())
         {
-            mImageOverlay.dismiss();
-            mNoteApplicationLogic.getNoteClickHandler().onImageClicked(pCurrentImageId);
+            displayNewImage(pCurrentImageId);
         }
     }
 
     public void displayPreviousImage(int pCurrentImageId){
         if(--pCurrentImageId >= 1){
-            mImageOverlay.dismiss();
-            mNoteApplicationLogic.getNoteClickHandler().onImageClicked(pCurrentImageId);
+            displayNewImage(pCurrentImageId);
         }
     }
 
+    private void displayNewImage(int pCurrentImageId) {
+        mImageOverlay.dismiss();
+        mNoteApplicationLogic.getNoteData().resetNoteBitmaps();
+        mNoteApplicationLogic.getNoteClickHandler().onImageClicked(pCurrentImageId);
+    }
 }
