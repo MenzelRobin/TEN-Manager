@@ -4,13 +4,13 @@ import android.app.Activity;
 import android.content.Intent;
 
 import com.example.robin.angrynerds_wip.R;
-import com.example.robin.angrynerds_wip.activities.event.Init;
+import com.example.robin.angrynerds_wip.activities.event.EventActivity;
 import com.example.robin.angrynerds_wip.data.models.tens.Event;
 import com.example.robin.angrynerds_wip.data.models.tens.Note;
 
 public class ShareModule {
 
-    public static void shareEvent(Init pActivity, Event pEvent, String pDate, String pTime) {
+    public static void shareEvent(EventActivity pActivity, Event pEvent, String pDate, String pTime) {
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
         shareIntent.setType("text/plain");
         String eventSbj = pEvent.getTitle(); //Subject eg for Mails

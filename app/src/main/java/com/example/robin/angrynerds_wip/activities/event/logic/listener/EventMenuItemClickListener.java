@@ -1,14 +1,14 @@
-package com.example.robin.angrynerds_wip.activities.event;
+package com.example.robin.angrynerds_wip.activities.event.logic.listener;
 
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-import com.example.robin.angrynerds_wip.R;
+import com.example.robin.angrynerds_wip.activities.event.logic.EventApplicationLogic;
 
-public class MenuItemClickListener implements Toolbar.OnMenuItemClickListener {
+public class EventMenuItemClickListener implements Toolbar.OnMenuItemClickListener {
     EventApplicationLogic mEventApplicationLogic;
 
-    public MenuItemClickListener(EventApplicationLogic pEventApplicationLogic){
+    public EventMenuItemClickListener(EventApplicationLogic pEventApplicationLogic){
         mEventApplicationLogic = pEventApplicationLogic;
     }
 

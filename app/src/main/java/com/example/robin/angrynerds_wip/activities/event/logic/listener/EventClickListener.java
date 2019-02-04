@@ -1,15 +1,16 @@
-package com.example.robin.angrynerds_wip.activities.event;
+package com.example.robin.angrynerds_wip.activities.event.logic.listener;
 
 import android.util.Log;
 import android.view.View;
 
 import com.example.robin.angrynerds_wip.R;
+import com.example.robin.angrynerds_wip.activities.event.logic.EventApplicationLogic;
 
-public class ClickListener implements View.OnClickListener {
+public class EventClickListener implements View.OnClickListener {
 
     EventApplicationLogic mEventApplicationLogic;
 
-    public ClickListener(EventApplicationLogic eventApplicationLogic) {
+    public EventClickListener(EventApplicationLogic eventApplicationLogic) {
         mEventApplicationLogic = eventApplicationLogic;
     }
 

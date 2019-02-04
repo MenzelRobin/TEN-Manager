@@ -23,11 +23,11 @@ import java.util.Date;
 import java.util.Locale;
 
 //import de.fhdw.bfwi316b.set.colorchooser.activities.ActivityUtilities;
-//import de.fhdw.bfwi316b.set.colorchooser.activities.Data;
+//import de.fhdw.bfwi316b.set.colorchooser.activities.EventData;
 
 public class TodoApplicationLogic {
 
-    //private Data mData;
+    //private EventData mData;
 
     private Gui mGui;
     private Data mData;
@@ -44,7 +44,7 @@ public class TodoApplicationLogic {
     private View mActiveDatePickerButton; // der Button, mit dem der DatePicker geöffnet wurde
 
 
-    //Hier muss noch Data rein
+    //Hier muss noch EventData rein
     public TodoApplicationLogic(Gui gui, AppCompatActivity pActivity, Data pData) {
         mActivity = pActivity;
         mGui = gui;
