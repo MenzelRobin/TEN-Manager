@@ -14,7 +14,8 @@ import com.example.robin.angrynerds_wip.data.services.ImageService;
 import java.io.IOException;
 
 public class NoteGalleryImportLogic {
-    NoteApplicationLogic mNoteApplicationLogic;
+
+    private NoteApplicationLogic mNoteApplicationLogic;
 
     public NoteGalleryImportLogic(NoteApplicationLogic pNoteApplicationLogic) {
         this.mNoteApplicationLogic = pNoteApplicationLogic;

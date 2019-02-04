@@ -36,6 +36,7 @@ public class NoteGuiRefresherLogic {
         refreshImages();
     }
 
+    //Refreshes the scrollable image gallery
     public void refreshImages() {
         mNoteApplicationLogic.getNoteGui().getNoteImageContainer().removeAllViews();
 
@@ -43,16 +44,16 @@ public class NoteGuiRefresherLogic {
         ClickListener clickListener = mNoteApplicationLogic.getNoteListenerInitializer().getClickListener();
         LinearLayout noteImageContainerLayout = mNoteApplicationLogic.getNoteGui().getNoteImageContainer();
 
+        //Images
         for(int i = 1; i <= previewImages.size(); i++){
             ImageContainer imageContainer = new ImageContainer(mNoteData.getActivity(), i, previewImages.get(i-1));
             imageContainer.getImageContainer().setOnClickListener(clickListener);
             noteImageContainerLayout.addView(imageContainer.getImageContainer());
         }
 
+        //Button to add images
         IconContainer iconContainer = new IconContainer(mNoteData.getActivity(), 0, ContextCompat.getDrawable(mNoteData.getActivity(), R.drawable.ic_add_a_photo_grey_24dp));
         iconContainer.getImageContainer().setOnClickListener(clickListener);
         noteImageContainerLayout.addView(iconContainer.getImageContainer());
-
-        //mNoteApplicationLogic.getNoteGui().setNoteImageContainer(noteImageContainerLayout);
     }
 }

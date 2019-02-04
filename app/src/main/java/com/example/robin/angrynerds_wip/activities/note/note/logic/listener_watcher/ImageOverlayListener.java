@@ -7,14 +7,15 @@ import com.example.robin.angrynerds_wip.activities.note.note.logic.NoteApplicati
 
 public class ImageOverlayListener implements DialogInterface.OnCancelListener {
 
-    NoteApplicationLogic mNoteApplicationLogic;
+    private NoteApplicationLogic mNoteApplicationLogic;
 
     public ImageOverlayListener(NoteApplicationLogic mNoteApplicationLogic) {
         this.mNoteApplicationLogic = mNoteApplicationLogic;
     }
 
+    //Deletes image on cancellation of ImageOverlay for RAM optimization
     @Override
-    public void onCancel(DialogInterface dialog) {
+    public void onCancel(DialogInterface pDialog) {
         this.mNoteApplicationLogic.getNoteData().resetNoteBitmaps();
         this.mNoteApplicationLogic.getNoteImagePopupLogic().closePopup();
     }

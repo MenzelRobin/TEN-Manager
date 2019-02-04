@@ -1,7 +1,5 @@
 package com.example.robin.angrynerds_wip.activities.note.note.data;
 
-import android.util.Log;
-
 import com.example.robin.angrynerds_wip.data.models.tens.Note;
 import com.example.robin.angrynerds_wip.data.services.Delete;
 

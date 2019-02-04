@@ -1,16 +1,12 @@
 package com.example.robin.angrynerds_wip.activities.note.note.logic.listener_watcher;
 
-import com.example.robin.angrynerds_wip.activities.note.note.gui.GraphicsContainer;
 import com.example.robin.angrynerds_wip.activities.note.note.gui.NoteGui;
 import com.example.robin.angrynerds_wip.activities.note.note.logic.NoteApplicationLogic;
-import com.example.robin.angrynerds_wip.activities.note.note.logic.listener_watcher.ClickListener;
-import com.example.robin.angrynerds_wip.activities.note.note.logic.listener_watcher.MenuItemClickListener;
-import com.example.robin.angrynerds_wip.activities.note.note.logic.listener_watcher.NoteTextWatcher;
 
 public class NoteListenerInitializer {
 
-    NoteApplicationLogic mNoteApplicationLogic;
-    ClickListener mClickListener;
+    private NoteApplicationLogic mNoteApplicationLogic;
+    private ClickListener mClickListener;
 
     public NoteListenerInitializer(NoteApplicationLogic pNoteApplicationLogic) {
         this.mNoteApplicationLogic = pNoteApplicationLogic;
@@ -21,7 +17,6 @@ public class NoteListenerInitializer {
         return mClickListener;
     }
 
-    //Listener Manager Klasse
     public void initListener() {
 
         MenuItemClickListener menuItemClickListener = new MenuItemClickListener(mNoteApplicationLogic);

@@ -1,19 +1,12 @@
 package com.example.robin.angrynerds_wip.activities.note.note.logic;
 
-import android.graphics.Bitmap;
-import android.view.View;
-import android.view.Window;
-
 import com.example.robin.angrynerds_wip.activities.note.note.data.NoteData;
-import com.example.robin.angrynerds_wip.activities.note.note.gui.ImageContainer;
-import com.example.robin.angrynerds_wip.activities.note.note.gui.ImageOverlay;
-import com.example.robin.angrynerds_wip.activities.note.note.gui.NoteGui;
 import com.example.robin.angrynerds_wip.data.models.utils.Image;
 
 public class NoteAsyncLoadingLogic {
 
-    NoteApplicationLogic mNoteApplicationLogic;
-    NoteData mNoteData;
+    private NoteApplicationLogic mNoteApplicationLogic;
+    private NoteData mNoteData;
 
     public NoteAsyncLoadingLogic(NoteApplicationLogic pNoteApplicationLogic) {
         this.mNoteApplicationLogic = pNoteApplicationLogic;
@@ -26,7 +19,6 @@ public class NoteAsyncLoadingLogic {
         mNoteApplicationLogic.getNoteGui().addSingleAnimatedImage(mNoteData.getActivity(), image, mNoteApplicationLogic.getNoteListenerInitializer().getClickListener());
     }
 
-    //Irgendwas mit GUI und Async eventuell mit addAsyncImage in eine Klasse
     public void startLoadingSpinner() {
         mNoteApplicationLogic.getNoteGui().disableAll();
         mNoteApplicationLogic.getNoteGui().startLoadingSpinner();

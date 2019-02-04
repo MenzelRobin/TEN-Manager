@@ -11,7 +11,7 @@ public class NoteApplicationLogic {
 
     private NoteGui mNoteGui;
     private NoteData mNoteData;
-    private NoteCameraImportLogic mImageImport;
+    private NoteImageImportLogic mImageImport;
     private NoteNavigationLogic mNoteNavigationLogic;
     private NoteAsyncLoadingLogic mNoteAsyncLoadingLogic;
     private NoteListenerInitializer mNoteListenerInitializer;
@@ -55,7 +55,7 @@ public class NoteApplicationLogic {
         return mNoteData;
     }
 
-    public NoteCameraImportLogic getImageImport() {
+    public NoteImageImportLogic getImageImport() {
         return mImageImport;
     }
 
@@ -84,11 +84,6 @@ public class NoteApplicationLogic {
         return mNoteData.getNotePreviewImages().size();
     }
 
-    //Checks ImageContainer for specific ID
-    /*/public boolean checkImageID(int pId) {
-        return mNoteData.checkImageID(pId);
-    }*/
-
     //Deletes Image from NoteData
     public void deleteImage(int pId) {
         mNoteData.deleteImage(pId);
@@ -101,12 +96,10 @@ public class NoteApplicationLogic {
         mNoteGuiRefresherLogic.dataToGui();
     }
 
-    //NoteNavigationLogic
     public void saveAndReturnToOverview() {
         mNoteNavigationLogic.saveAndReturnToOverview();
     }
 
-    //NoteNavigationLogic
     public void onBackPressed() {
         saveAndReturnToOverview();
     }
@@ -114,13 +107,12 @@ public class NoteApplicationLogic {
     //Initialises Landscape or Portrait Activity with NoteData, rescales ImageOverlay if displayed
     public void onConfigurationChanged(NoteGui pGui, Configuration pConfiguration) {
         this.mNoteGui = pGui;
-        //mNoteData.getNoteDataGui().addImageButton();
         mNoteListenerInitializer.initListener();
         mNoteGuiRefresherLogic.dataToGui();
         mNoteImagePopupLogic.changeConfiguration(pConfiguration);
     }
 
     public void initImageImportObject() {
-        mImageImport = new NoteCameraImportLogic(mNoteData.getActivity());
+        mImageImport = new NoteImageImportLogic(mNoteData.getActivity());
     }
 }

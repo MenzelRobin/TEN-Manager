@@ -17,11 +17,12 @@ public class NoteNavigationLogic {
         this.mNoteApplicationLogic = pNoteApplicationLogic;
     }
 
+    //Returns to overview activity
     public void returnToOverview() {
-        //mActivity.overridePendingTransition(android.R.anim.fade_in, android.R.anim.slide_out_right);
         mNoteApplicationLogic.getNoteData().getActivity().finish();
     }
 
+    //Called when activity is returned, e.g. Image Import or NoteTagActivity results
     public void onActivityReturned(int pRequestCode, int pResultCode, Intent pData) {
         switch (pRequestCode) {
             case NoteConstants.CAMERA_IMPORT_ACTIVITY_REQUESTCODE:
@@ -52,22 +53,13 @@ public class NoteNavigationLogic {
         }
     }
 
-    //NoteNavigationLogic
+    //Saves Note and returns to overview activity
     public void saveAndReturnToOverview() {
         mNoteApplicationLogic.getNoteData().executeSaveRoutine();
         returnToOverview();
     }
 
-    //NoteNavigationLogic
-    public void onBackPressed() {
-        saveAndReturnToOverview();
-    }
-
-    public void startImageImport(){
-        mNoteApplicationLogic.initImageImportObject();
-    }
-
-    //NoteNavigationLogic
+    //Starts NoteTagActivity with tagList
     public void startTagActivity() {
         Intent intent = new Intent(mNoteApplicationLogic.getNoteData().getActivity(), NoteTagActivity.class);
         intent.putExtra(NoteConstants.INTENT_ID_TAGLIST, mNoteApplicationLogic.getNoteData().getNote().getTags());

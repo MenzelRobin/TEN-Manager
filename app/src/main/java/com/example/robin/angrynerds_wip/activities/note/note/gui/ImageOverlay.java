@@ -16,11 +16,11 @@ import com.example.robin.angrynerds_wip.activities.note.note.logic.listener_watc
 public class ImageOverlay {
 
     private Bitmap mImage;
-    private AlertDialog dialog;
-    private int displayWidth;
-    private int displayHeight;
-    private int frameWidth;
-    private int frameHeight;
+    private AlertDialog mDialog;
+    private int mDisplayWidth;
+    private int mDisplayHeight;
+    private int mFrameWidth;
+    private int mFrameHeight;
     private ImageOverlayListener mImageOverlayListener;
     private NoteApplicationLogic mNoteApplicationLogic;
     private int mImageID;
@@ -28,8 +28,8 @@ public class ImageOverlay {
     public ImageOverlay(Bitmap pImage, int pDisplayWidth, int pDisplayHeight, ImageOverlayListener pImageOverlayListener, NoteApplicationLogic pNoteApplicationLogic, int pId) {
         this.mImage = pImage;
         this.mImageOverlayListener = pImageOverlayListener;
-        this.displayWidth = pDisplayWidth;
-        this.displayHeight = pDisplayHeight;
+        this.mDisplayWidth = pDisplayWidth;
+        this.mDisplayHeight = pDisplayHeight;
         this.mNoteApplicationLogic = pNoteApplicationLogic;
         this.mImageID = pId;
     }
@@ -38,21 +38,21 @@ public class ImageOverlay {
     public void display() {
         AlertDialog.Builder builder = new AlertDialog.Builder(mNoteApplicationLogic.getNoteData().getActivity(), R.style.CustomDialog);
         builder.setOnCancelListener(mImageOverlayListener);
-        dialog = builder.create();
+        mDialog = builder.create();
         LayoutInflater inflater = mNoteApplicationLogic.getNoteData().getActivity().getLayoutInflater();
         View dialogLayout = inflater.inflate(R.layout.activity_note_imageoverlay, null);
         ImageView imageView = dialogLayout.findViewById(R.id.id_note_imageOverlay_imageContainer);
         imageView.setId(mImageID);
         imageView.setOnTouchListener(new MotionListener(mNoteApplicationLogic));
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         if(calculateSize()) {
-            imageView.setImageBitmap(Bitmap.createScaledBitmap(mImage, (int) (frameWidth * NoteConstants.IMAGE_OVERLAY_FILL_FACTOR),
-                    (int) (frameHeight * NoteConstants.IMAGE_OVERLAY_FILL_FACTOR), true));
+            imageView.setImageBitmap(Bitmap.createScaledBitmap(mImage, (int) (mFrameWidth * NoteConstants.IMAGE_OVERLAY_FILL_FACTOR),
+                    (int) (mFrameHeight * NoteConstants.IMAGE_OVERLAY_FILL_FACTOR), true));
         }
         else
             imageView.setImageBitmap(mImage);
-        dialog.setView(dialogLayout);
-        dialog.show();
+        mDialog.setView(dialogLayout);
+        mDialog.show();
     }
 
     //Calculates size of frame according to display metrics
@@ -60,49 +60,49 @@ public class ImageOverlay {
         int imageWidth = mImage.getWidth();
         int imageHeight = mImage.getHeight();
         double imageAspectRatio = (double) imageWidth / imageHeight;
-        double displayAspectRatio = (double) displayWidth / displayHeight;
+        double displayAspectRatio = (double) mDisplayWidth / mDisplayHeight;
 
         //Checks if image is smaller than display * edgeFactor
-        if(imageWidth <= displayWidth*NoteConstants.IMAGE_OVERLAY_FILL_FACTOR && imageHeight <= displayHeight*NoteConstants.IMAGE_OVERLAY_FILL_FACTOR){
+        if(imageWidth <= mDisplayWidth *NoteConstants.IMAGE_OVERLAY_FILL_FACTOR && imageHeight <= mDisplayHeight *NoteConstants.IMAGE_OVERLAY_FILL_FACTOR){
             return false;
         }
         //Checks if image is a square
         else if (imageWidth == imageHeight) {
-            if (displayHeight > displayWidth) {
-                frameWidth = displayWidth;
-                frameHeight = displayWidth;
+            if (mDisplayHeight > mDisplayWidth) {
+                mFrameWidth = mDisplayWidth;
+                mFrameHeight = mDisplayWidth;
             } else {
-                frameWidth = displayHeight;
-                frameHeight = displayHeight;
+                mFrameWidth = mDisplayHeight;
+                mFrameHeight = mDisplayHeight;
             }
         }
         //Checks if image exceeds display in width
         else if (imageAspectRatio > displayAspectRatio) {
-            frameWidth = displayWidth;
-            frameHeight = (int) ((double) frameWidth / imageAspectRatio);
+            mFrameWidth = mDisplayWidth;
+            mFrameHeight = (int) ((double) mFrameWidth / imageAspectRatio);
         }
         //Checks if image exceeds display in height
         else {
-            frameHeight = displayHeight;
-            frameWidth = (int) ((double) frameHeight * imageAspectRatio);
+            mFrameHeight = mDisplayHeight;
+            mFrameWidth = (int) ((double) mFrameHeight * imageAspectRatio);
         }
         return true;
     }
 
     //returns whether AlertDialog is displayed or not
     public boolean  isDisplayed() {
-        return dialog.isShowing();
+        return mDialog.isShowing();
     }
 
     //Rescales AlertDialog on Orientation change
     public void changeOrientation(int pDisplayWidth, int pDisplayHeight) {
-        dialog.dismiss();
-        this.displayWidth = pDisplayWidth;
-        this.displayHeight = pDisplayHeight;
+        mDialog.dismiss();
+        this.mDisplayWidth = pDisplayWidth;
+        this.mDisplayHeight = pDisplayHeight;
         display();
     }
 
     public void dismiss(){
-        dialog.dismiss();
+        mDialog.dismiss();
     }
 }

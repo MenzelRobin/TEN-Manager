@@ -18,12 +18,12 @@ import com.example.robin.angrynerds_wip.data.services.ImageService;
 import java.io.File;
 import java.io.IOException;
 
-public class NoteCameraImportLogic {
+public class NoteImageImportLogic {
 
     private NoteActivity mActivity;
     private String mCurrentPhotoPath;
 
-    public NoteCameraImportLogic(NoteActivity pActivity) {
+    public NoteImageImportLogic(NoteActivity pActivity) {
         this.mActivity = pActivity;
         requestImageSource();
     }

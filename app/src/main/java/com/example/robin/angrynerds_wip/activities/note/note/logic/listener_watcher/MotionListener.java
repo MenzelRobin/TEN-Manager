@@ -9,35 +9,37 @@ import com.example.robin.angrynerds_wip.activities.note.note.logic.NoteApplicati
 public class MotionListener implements View.OnTouchListener {
 
     private NoteApplicationLogic mNoteApplicationLogic;
-    private float x1,x2;
+    private float mXPositionDown;
+    private float mXPositionUp;
 
     public MotionListener(NoteApplicationLogic pNoteApplicationLogic) {
         mNoteApplicationLogic = pNoteApplicationLogic;
     }
 
+    //TouchListener for ImageOverlay swipe gesture (next image / previous image)
     @Override
-    public boolean onTouch(View view, MotionEvent event) {
+    public boolean onTouch(View pView, MotionEvent pEvent) {
 
-        switch(event.getAction())
+        switch(pEvent.getAction())
         {
             case MotionEvent.ACTION_DOWN:
-                x1 = event.getX();  //Save first touch position
+                mXPositionDown = pEvent.getX();  //Save first touch position
                 break;
             case MotionEvent.ACTION_UP:
-                x2 = event.getX();  //Save release position
-                float deltaX = x2 - x1;
+                mXPositionUp = pEvent.getX();  //Save release position
+                float deltaX = mXPositionUp - mXPositionDown;
 
                 if (Math.abs(deltaX) > NoteConstants.MINIMUM_SWIPE_DISTANCE)
                 {
                     // Left to Right (previous)
-                    if (x2 > x1)
+                    if (mXPositionUp > mXPositionDown)
                     {
-                        mNoteApplicationLogic.getNoteImagePopupLogic().displayPreviousImage(view.getId());
+                        mNoteApplicationLogic.getNoteImagePopupLogic().displayPreviousImage(pView.getId());
                     }
                     // Right to Left (next)
                     else
                     {
-                        mNoteApplicationLogic.getNoteImagePopupLogic().displayNextImage(view.getId());
+                        mNoteApplicationLogic.getNoteImagePopupLogic().displayNextImage(pView.getId());
                     }
                 }
                 break;

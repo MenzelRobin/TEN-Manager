@@ -13,6 +13,7 @@ public class MenuItemClickListener implements Toolbar.OnMenuItemClickListener {
         mNoteApplicationLogic = pNoteApplicationLogic;
     }
 
+    //Click listener option for toolbar menu
     @Override
     public boolean onMenuItemClick(MenuItem pItem) {
         mNoteApplicationLogic.getNoteClickHandler().onMenuItemClicked(pItem);

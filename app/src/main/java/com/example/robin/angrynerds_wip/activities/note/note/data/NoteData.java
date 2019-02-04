@@ -1,13 +1,10 @@
 package com.example.robin.angrynerds_wip.activities.note.note.data;
 
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.util.Log;
 
-import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.activities.note.note.NoteActivity;
 import com.example.robin.angrynerds_wip.activities.note.note.data.backend_oriented.NoteDataBackend;
-import com.example.robin.angrynerds_wip.activities.note.note.gui.GraphicsContainer;
 import com.example.robin.angrynerds_wip.activities.note.note.data.gui_oriented.NoteDataGui;
 import com.example.robin.angrynerds_wip.activities.note.note.logic.NoteApplicationLogic;
 import com.example.robin.angrynerds_wip.data.models.tens.Note;
@@ -33,8 +30,8 @@ public class NoteData {
         mNoteDataGui = new NoteDataGui(this);
     }
 
-    public NoteData(NoteActivity activity, String pId) {
-        mActivity = activity;
+    public NoteData(NoteActivity pActivity, String pId) {
+        mActivity = pActivity;
         mNoteDataBackend = new NoteDataBackend(this);
         mNoteDataGui = new NoteDataGui(this);
         try{
@@ -50,7 +47,7 @@ public class NoteData {
 
     public NoteDataGui getNoteDataGui() { return mNoteDataGui; }
 
-    public void setNote(Note note) { mNote = note; }
+    public void setNote(Note pNote) { mNote = pNote; }
 
     public Note getNote() { return mNote; }
 
@@ -68,15 +65,15 @@ public class NoteData {
 
     public Bitmap getImage(int pId) { return mNoteDataGui.getOriginalImage(pId); }
 
-    public void addImageFromCamera(Bitmap image, String formerPath) {
-        mNoteDataGui.addImageFromCamera(image, formerPath);
+    public void addImageFromCamera(Bitmap pImage, String pFormerPath) {
+        mNoteDataGui.addImageFromCamera(pImage, pFormerPath);
     }
 
-    public void addImageFromGallery(Bitmap image) { mNoteDataGui.addImageFromGallery(image); }
+    public void addImageFromGallery(Bitmap pImage) { mNoteDataGui.addImageFromGallery(pImage); }
 
-    public void deleteImage(int id) {
-        mNoteDataBackend.deleteImage(id);
-        mNoteDataGui.deleteImage(id);
+    public void deleteImage(int pId) {
+        mNoteDataBackend.deleteImage(pId);
+        mNoteDataGui.deleteImage(pId);
     }
 
     public void executeSaveRoutine() { mNoteDataBackend.executeSaveRoutine(); }

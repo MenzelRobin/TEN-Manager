@@ -8,8 +8,8 @@ import com.example.robin.angrynerds_wip.data.services.ImageService;
 
 public class PriorityOriginalImageLoader {
 
-    NoteDataBackend mNoteDataBackend;
-    int mIndexToBeLoaded;
+    private NoteDataBackend mNoteDataBackend;
+    private int mIndexToBeLoaded;
 
     public PriorityOriginalImageLoader(NoteDataBackend pNoteDataBackend) {
         this.mNoteDataBackend = pNoteDataBackend;
