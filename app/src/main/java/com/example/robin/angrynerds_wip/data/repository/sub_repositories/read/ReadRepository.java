@@ -25,7 +25,6 @@ public class ReadRepository {
         this.mGetAllTensQuery = new GetAllTensQuery();
     }
 
-    //returns To-Do with given ID
     public Todo getTodoByID(String pId) {
         Document todoDocument = DataContextManager.getDatabase().getDocument(pId);
         String json = todoDocument.getString(RepositoryConstants.OBJECT_KEY);
@@ -34,7 +33,6 @@ public class ReadRepository {
         return finalTodo;
     }
 
-    //returns Event with given ID
     public Event getEventByID(String pId) {
         Document eventDocument = DataContextManager.getDatabase().getDocument(pId);
         String json = eventDocument.getString(RepositoryConstants.OBJECT_KEY);
@@ -43,7 +41,6 @@ public class ReadRepository {
         return finalEvent;
     }
 
-    //returns Note with given ID
     public Note getNoteByID(String pId) {
         Document noteDocument = DataContextManager.getDatabase().getDocument(pId);
         String json = noteDocument.getString(RepositoryConstants.OBJECT_KEY);
@@ -52,7 +49,6 @@ public class ReadRepository {
         return finalNote;
     }
 
-    //returns all saved TEN-Objects
     public ArrayList<TEN> getAllTENs() {
         return mGetAllTensQuery.getAllTENs();
     }
