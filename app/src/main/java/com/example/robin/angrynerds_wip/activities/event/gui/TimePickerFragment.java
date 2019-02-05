@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.widget.TimePicker;
 import android.text.format.DateFormat;
 
+import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.activities.event.EventActivity;
 
 import java.util.Calendar;
@@ -32,7 +33,7 @@ public class TimePickerFragment extends DialogFragment implements TimePickerDial
         hour = c.get(Calendar.HOUR_OF_DAY);
         minute = c.get(Calendar.MINUTE);
         // Create a new instance of TimePickerDialog and return it
-        return new TimePickerDialog(getActivity(), this, hour, minute,
+        return new TimePickerDialog(getActivity(), R.style.Theme_AppCompat_Light_Dialog, this, hour, minute,
                 DateFormat.is24HourFormat(getActivity()));
     }
 
