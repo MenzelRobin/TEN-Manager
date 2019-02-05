@@ -26,7 +26,6 @@ public class ImageDeleter {
 
     private class DeleteImageTask extends AsyncTask<Image, Integer, Void> {
 
-        //Deletes Image in preview and original folder
         @Override
         protected Void doInBackground(Image... images) {
             String[] folders = {FileSystemConstants.IMAGE_ORIGINAL_FOLDER, FileSystemConstants.IMAGE_PREVIEW_FOLDER};
