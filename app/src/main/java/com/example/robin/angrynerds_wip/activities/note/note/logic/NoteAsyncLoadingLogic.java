@@ -15,9 +15,8 @@ public class NoteAsyncLoadingLogic {
     }
 
     public void addAsyncPreviewImage(Image pImage) {
-        mNoteApplicationLogic.getNoteData().getNoteDataGui().addPreviewImageFromOriginal(pImage);
-        Image image = mNoteApplicationLogic.getNoteData().getNoteDataGui().getLatestImage();
-        mNoteApplicationLogic.getNoteGui().addSingleAnimatedImage(mNoteData.getActivity(), image, mNoteApplicationLogic.getNoteListenerInitializer().getClickListener());
+        mNoteApplicationLogic.getNoteData().getNoteDataGui().getPreviewImages().add(pImage);
+        mNoteApplicationLogic.getNoteGui().addSingleAnimatedImage(mNoteData.getActivity(), pImage, mNoteApplicationLogic.getNoteListenerInitializer().getClickListener());
     }
 
     public void startLoadingSpinner() {

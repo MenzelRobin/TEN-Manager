@@ -46,7 +46,6 @@ public class NoteDataGui {
 
     public void addImageFromCamera(Bitmap image, String pFormerPath) {
         addImageFromGallery(image);
-        refreshImages();
         mNoteData.getNoteDataBackend().deleteImageFromDisk(pFormerPath);
     }
 
