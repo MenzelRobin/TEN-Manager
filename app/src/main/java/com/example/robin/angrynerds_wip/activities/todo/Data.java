@@ -45,9 +45,9 @@ public class Data {
         Update.saveTEN(mTodo);
     }
 
-    public void shareTodo()
+    public void shareTodo(String pStartDate, String pEndDate)
     {
-        ShareModule.shareTodo(mActivity, mTodo);
+        ShareModule.shareTodo(mActivity, mTodo, pStartDate, pEndDate);
     }
 
     public void setDate(Date date) {

@@ -135,6 +135,12 @@ public class TodoApplicationLogic {
 
         try {
             UpdateTodo();
+
+            Todo todo = mData.getmTodo();
+            if (todo.getTitle().isEmpty() && todo.getTasks().size() <= 1 && todo.getNote().isEmpty())
+            {
+                mData.deleteTodo();
+            }
         }
         catch(Exception e){
 
@@ -149,7 +155,7 @@ public class TodoApplicationLogic {
             returnToOverview();
         }
         else if(item.getItemId() == R.id.todo_action_share){
-            mData.shareTodo();
+            mData.shareTodo(formatDate(mData.getmTodo().getStartDate()), formatDate(mData.getmTodo().getEndDate()));
         }
     }
     //Author: Sertan Soner Cetin
@@ -226,10 +232,6 @@ public class TodoApplicationLogic {
             updateProgress();
         }
     }
-
-    public void onOkButtonClicked() { UpdateTodo(); }
-
-    public void onBackPressed() {  UpdateTodo();  }
 
     //Author: Sertan Soner Cetin
     private void addInputTaskField() {

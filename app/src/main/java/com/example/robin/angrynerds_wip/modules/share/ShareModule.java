@@ -24,32 +24,32 @@ public class ShareModule {
         pActivity.startActivity(Intent.createChooser(shareIntent, "Teilen mit"));
     }
 
-    public static void shareTodo(Activity pActivity, Todo pTodo)
+    public static void shareTodo(Activity pActivity, Todo pTodo, String pStartDate, String pEndDate)
     {
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
         shareIntent.setType("text/plain");
-        String shareText = pTodo.getTitle() + "\n\n" + pTodo.getNote() + "\n\n" + pTodo.getStartDate() + " bis " + pTodo.getEndDate() + "\n\n";
+        String shareText = pTodo.getTitle() + "\n\n" + pTodo.getNote() + "\n\n" + pStartDate + "\n bis " + pEndDate + "\n";
 
 
-        if (!pTodo.getTasks().isEmpty())
+        String tasks = (int)(pTodo.getProgress() * 100) + "% erledigt:";
+        for (int i = 0; i < pTodo.getTasks().size() - 1; i++)
         {
-            for (int i = 0; i < pTodo.getTasks().size(); i++)
+            // falls True (X), falls False ( ) in den String schreiben
+            if (pTodo.getTasks().get(i).getStatus())
             {
-                String task = "";
-
-                task += pTodo.getTasks().get(i).getDescription() + " ";
-
-                // falls True (X), falls False ( ) in den String schreiben
-                if (pTodo.getTasks().get(i).getStatus())
-                {
-                    task += "(X)\n\n";
-                }
-                else
-                {
-                    task += "( )\n\n";
-                }
+                tasks += "\n\n(X) ";
             }
+            else
+            {
+                tasks += "\n\n(  ) ";
+            }
+
+            tasks += pTodo.getTasks().get(i).getDescription() + " ";
+
         }
+
+        shareText += tasks + "\n\n Geteilt vom geilsten TEN-Manager by Angry Nerds.";
+
         shareIntent.putExtra(Intent.EXTRA_TEXT, shareText);
         pActivity.startActivity(Intent.createChooser(shareIntent, "Teilen mit"));
     }
