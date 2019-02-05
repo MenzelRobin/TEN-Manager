@@ -1,4 +1,4 @@
-package com.example.robin.angrynerds_wip.modules.image;
+package com.example.robin.angrynerds_wip.modules.image_compression;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -8,7 +8,7 @@ import android.graphics.BitmapFactory;
 public class ImageCompressionModule {
 
     //Imports Image from File, with Sizecheck
-    public Bitmap importCompressedImage(String pPath){
+    public static Bitmap importCompressedImage(String pPath){
             final BitmapFactory.Options options = new BitmapFactory.Options();
             options.inJustDecodeBounds = true;
             BitmapFactory.decodeFile(pPath, options);
@@ -22,7 +22,7 @@ public class ImageCompressionModule {
     }
 
     //calculates factor that scales the image down
-    private int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
+    public static int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
         // Raw height and width of image
         final int height = options.outHeight;
         final int width = options.outWidth;

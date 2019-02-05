@@ -1,4 +1,4 @@
-package com.example.robin.angrynerds_wip.modules.image;
+package com.example.robin.angrynerds_wip.data.services;
 
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
@@ -7,9 +7,9 @@ import android.util.Log;
 
 import java.io.IOException;
 
-public class ImageRotationCorrectionModule {
+public class ImageRotationCorrectionService {
 
-    public Bitmap correctImageRotation(String pPhotoPath, Bitmap pImage){
+    public static Bitmap correctImageRotation(String pPhotoPath, Bitmap pImage){
         ExifInterface mExifInterface = null;
 
         try {
@@ -23,6 +23,7 @@ public class ImageRotationCorrectionModule {
             Bitmap rotatedBitmap;
             int orientation = mExifInterface.getAttributeInt(ExifInterface.TAG_ORIENTATION,
                     ExifInterface.ORIENTATION_UNDEFINED);
+            Log.d("Kamera", "orientation: " + orientation);
             switch(orientation) {
                 case ExifInterface.ORIENTATION_ROTATE_90:
                     rotatedBitmap = rotateImage(pImage, 90);
@@ -46,7 +47,7 @@ public class ImageRotationCorrectionModule {
             return pImage;
     }
 
-    private Bitmap rotateImage(Bitmap source, float angle) {
+    private static Bitmap rotateImage(Bitmap source, float angle) {
         Matrix matrix = new Matrix();
         matrix.postRotate(angle);
         return Bitmap.createBitmap(source, 0, 0, source.getWidth(), source.getHeight(),
