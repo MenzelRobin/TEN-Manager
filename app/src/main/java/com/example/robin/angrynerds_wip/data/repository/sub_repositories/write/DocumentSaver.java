@@ -56,10 +56,23 @@ public class DocumentSaver {
 
         } else if (pTen.getClass().getName().contains("Note")) {
             pMutableDocument.setString(RepositoryConstants.TYPE_KEY, RepositoryConstants.NOTE_TYPE);
+            saveNoteImages((Note) pTen);
 
         } else if (pTen.getClass().getName().contains("Todo")) {
             pMutableDocument.setString(RepositoryConstants.TYPE_KEY, RepositoryConstants.TODO_TYPE);
         }
         return pMutableDocument;
+    }
+
+    private void saveNoteImages(Note pNote) {
+
+        for(Image image: pNote.getPictures()){
+            image.setId(image.getId().replaceAll("null", pNote.getID()));
+            try{
+                mFileRepository.saveImagePersistent(image);
+            } catch (IOException e){
+
+            }
+        }
     }
 }
