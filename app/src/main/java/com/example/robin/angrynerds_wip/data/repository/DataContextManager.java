@@ -23,7 +23,6 @@ public class DataContextManager {
     //Gets Database from Context if it is not set
     public static void initDatabase(Context pContext) {
         if (DataContextManager.getDatabase() == null) {
-            DataContextManager.context = null;
             DataContextManager.context = pContext;
             try {
                 DatabaseConfiguration config = new DatabaseConfiguration(pContext.getApplicationContext());
