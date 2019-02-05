@@ -1,6 +1,7 @@
 package com.example.robin.angrynerds_wip.activities.note.note;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.view.WindowManager;
 
 import com.example.robin.angrynerds_wip.R;
+import com.example.robin.angrynerds_wip.activities.note.note.data.NoteConstants;
 import com.example.robin.angrynerds_wip.activities.note.note.data.NoteData;
 import com.example.robin.angrynerds_wip.activities.note.note.gui.NoteGui;
 import com.example.robin.angrynerds_wip.activities.note.note.logic.NoteApplicationLogic;
@@ -65,6 +67,13 @@ public class NoteActivity extends AppCompatActivity {
     protected void onActivityResult(int pRequestCode, int pResultCode, Intent pData) {
         super.onActivityResult(pRequestCode, pResultCode, pData);
         mNoteApplicationLogic.getNoteNavigationLogic().onActivityReturned(pRequestCode, pResultCode, pData);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        if (requestCode == NoteConstants.WRITE_EXTERNAL_STORAGE_PERMISSION_REQUESTCODE && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            this.mNoteApplicationLogic.getImageImport().importImageFromGallery();
+        }
     }
 
     @Override

@@ -1,11 +1,13 @@
 package com.example.robin.angrynerds_wip.activities.note.note.logic;
 
+import android.Manifest;
 import android.content.ClipData;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.MediaStore;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AlertDialog;
 
@@ -76,8 +78,13 @@ public class NoteImageImportLogic {
 
     //Starts Gallery activity to pick an image
     public void importImageFromGallery(){
-        Intent pickPhoto = new Intent(Intent.ACTION_PICK,
-                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        mActivity.startActivityForResult(pickPhoto , NoteConstants.GALLERY_IMPORT_ACTIVITY_REQUESTCODE);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && ContextCompat.checkSelfPermission(mActivity, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+                mActivity.requestPermissions(new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, NoteConstants.WRITE_EXTERNAL_STORAGE_PERMISSION_REQUESTCODE);
+            }
+            else {
+                Intent pickPhoto = new Intent(Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                mActivity.startActivityForResult(pickPhoto, NoteConstants.GALLERY_IMPORT_ACTIVITY_REQUESTCODE);
+            }
     }
 }
