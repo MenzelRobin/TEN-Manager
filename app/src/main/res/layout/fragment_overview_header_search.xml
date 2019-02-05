@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-
+<!-- Fabia Schmid -->
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context="overview.overviewActivity.OverviewInit">
+    tools:context=".activities.overview.overviewActivity.OverviewInit">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -45,7 +45,7 @@
             android:hint="Suchen..."
             android:inputType="text"
             android:textColor="#000000"
-            android:textColorHint="@color/colorGrey"
+            android:textColorHint="#757575"
             android:background="@color/colorWhite"/>
 
         <Button

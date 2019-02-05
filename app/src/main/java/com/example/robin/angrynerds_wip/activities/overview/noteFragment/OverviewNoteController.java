@@ -1,0 +1,48 @@
+package com.example.robin.angrynerds_wip.activities.overview.noteFragment;
+
+import android.content.Intent;
+
+import com.example.robin.angrynerds_wip.activities.note.note.NoteActivity;
+import com.example.robin.angrynerds_wip.activities.overview.superClasses.OverviewFragmentController;
+import com.example.robin.angrynerds_wip.activities.overview.superClasses.OverviewFragmentData;
+import com.example.robin.angrynerds_wip.activities.overview.superClasses.OverviewFragmentGui;
+import com.example.robin.angrynerds_wip.activities.overview.superClasses.OverviewFragmentInit;
+
+public class OverviewNoteController extends OverviewFragmentController {
+    /* Yannick-Luca Rüttgers
+    Contains the Applicationlogic for the Note Fragment
+     */
+
+    // Calls the superconstructor
+    public OverviewNoteController(OverviewFragmentInit pFragment, OverviewFragmentData pData, OverviewFragmentGui pGui){
+        super(pFragment, pData, pGui);
+    }
+
+    // Applies saved Data to the Gui
+    public void applyData(){
+        ((OverviewNoteGui)mGui).setTitle(mData.getTitle());
+        ((OverviewNoteGui)mGui).setColor(mData.getColor());
+        ((OverviewNoteGui)mGui).setDescription(((OverviewNoteData)mData).getDescription());
+    }
+
+    // Adds an OnClickListener to the Fragment
+    public void addOnClickListener(){
+        ((OverviewNoteGui)mGui).getOverviewNote().setOnClickListener(super.getOnClickListener());
+    }
+
+    // Adds an OnLongClickListener to the Fragment
+    public void addOnLongClickListener(){
+        ((OverviewNoteGui)mGui).getOverviewNote().setOnLongClickListener(super.getOnLongClickListener());
+    }
+
+    // Called by the OnClickListener, starts a new Activity
+    public void clicked(){
+        if(mDeleteState) {
+            toggleMark();
+        } else {
+            Intent intent = new Intent(mFragment.getActivity(), NoteActivity.class);
+            intent.putExtra("ID", mData.getID());
+            mFragment.startActivity(intent);
+        }
+    }
+}
