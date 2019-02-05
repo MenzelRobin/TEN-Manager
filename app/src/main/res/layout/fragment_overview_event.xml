@@ -1,3 +1,5 @@
+<!-- Fabia Schmid -->
+
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     android:id="@+id/id_overview_event"
