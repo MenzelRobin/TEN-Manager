@@ -4,9 +4,10 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
 //Compresses Images that are too big for the RAM of the Tablet
-// Author: Jan Beilfuß, StackOverflow: https://stackoverflow.com/questions/477572/strange-out-of-memory-issue-while-loading-an-image-to-a-bitmap-object
+// Author: Jan Beilfuß
 public class ImageCompressionModule {
 
+    //Imports Image from File, with Sizecheck
     public static Bitmap importCompressedImage(String pPath){
             final BitmapFactory.Options options = new BitmapFactory.Options();
             options.inJustDecodeBounds = true;
@@ -20,6 +21,7 @@ public class ImageCompressionModule {
             return BitmapFactory.decodeFile(pPath, options);
     }
 
+    //calculates factor that scales the image down
     public static int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
         // Raw height and width of image
         final int height = options.outHeight;
