@@ -20,11 +20,13 @@ public class FileRepository {
         return DataContextManager.context;
     }
 
+    //creates ImageSaver to save Images to the Filesystem
     public void saveImagePersistent(Image pImage) throws IOException {
         ImageSaver imageSaver = new ImageSaver(this);
         imageSaver.execute(pImage);
     }
 
+    //reads and decodes Image from the Filesystem
     public Image readImageFromDirectory(Image image, String directory) {
         Context context = DataContextManager.context;
         String directoryPath = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES).getAbsolutePath() + "/" + directory + "/";
@@ -34,12 +36,14 @@ public class FileRepository {
         return result;
     }
 
-    public void deleteImageFromDirectory(String path) {
+    //deletes single file at given path
+    public void deleteImageFromDirectories(String path) {
         File file = new File(path);
         if(file.exists()) file.delete();
     }
 
-    public void deleteImageFromDirectory(Image image) {
+    //creates ImageDeleter to delete Files from orignal and preview folder
+    public void deleteImageFromDirectories(Image image) {
         ImageDeleter imageDeleter = new ImageDeleter(this);
         imageDeleter.execute(image);
     }
