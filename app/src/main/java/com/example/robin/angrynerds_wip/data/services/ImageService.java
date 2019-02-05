@@ -39,12 +39,12 @@ public class ImageService {
 
     public static void deleteImage(Image image) {
         FileRepository fileRepository = new FileRepository();
-        fileRepository.deleteImageFromDirectory(image);
+        fileRepository.deleteImageFromDirectories(image);
     }
 
     public static void deleteImage(String path) {
         FileRepository fileRepository = new FileRepository();
-        fileRepository.deleteImageFromDirectory(path);
+        fileRepository.deleteImageFromDirectories(path);
     }
 
     public static File createImageFile(Activity pActivity) throws IOException {
