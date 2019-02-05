@@ -28,39 +28,12 @@ public class Event extends TEN {
     }
 
     //simple for usage
-    public Event(String title, Date time, ArrayList<Date> reminder) {
-        super(title);
-        this.time = time;
-        this.reminder = reminder;
-        this.address = null;
-        this.recurringType = RecurringType.NONE;
-    }
-
-    //simple for usage
     public Event(String title, Date time, ArrayList<Date> reminder, String address) {
         super(title);
         this.time = time;
         this.reminder = reminder;
         this.address = address;
         this.recurringType = RecurringType.NONE;
-    }
-
-    //simple for usage
-    public Event(String title, Date time, ArrayList<Date> reminder, String address, RecurringType recurringType) {
-        super(title);
-        this.time = time;
-        this.reminder = reminder;
-        this.address = address;
-        this.recurringType = recurringType;
-    }
-
-    //simple for usage
-    public Event(String title, Date time, ArrayList<Date> reminder, RecurringType recurringType) {
-        super(title);
-        this.time = time;
-        this.reminder = reminder;
-        this.address = null;
-        this.recurringType = recurringType;
     }
 
     //all Attributes for reconstruction of complete Object

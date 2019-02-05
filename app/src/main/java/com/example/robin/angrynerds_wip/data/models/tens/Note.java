@@ -30,13 +30,6 @@ public class Note extends TEN {
         this.imageIDCounter = 0;
     }
 
-    public Note(String title) {
-        super(title);
-        this.description = "";
-        this.tags = new ArrayList<String>();
-        this.pictures = new ArrayList<Image>();
-    }
-
     public Note(String title, String description) {
         super(title);
         this.description = description;
