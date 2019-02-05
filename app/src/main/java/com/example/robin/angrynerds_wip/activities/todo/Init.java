@@ -68,8 +68,7 @@ public class Init extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();   //default action
-        //mTodoApplicationLogic.onBackPressed();   // customized action
+        mTodoApplicationLogic.returnToOverview();
     }
 
     @Override
