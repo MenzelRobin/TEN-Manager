@@ -35,6 +35,7 @@ public class ImageSaver {
 
     private class SaveImageTask extends AsyncTask<Image, Integer, Void> {
 
+        //saves Image to preview and original folder
         @Override
         protected Void doInBackground(Image... images) {
             PreviewImageCreator previewImageCreator = new PreviewImageCreator();
