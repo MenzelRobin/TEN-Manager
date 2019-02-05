@@ -144,9 +144,12 @@ public class TodoApplicationLogic {
     //Author: Florian Rath
     //Toolbar menu is clicked
     public void onMenuItemClick(MenuItem item) {
-        if (item.getItemId() == R.id.todo_action_settings) {
+        if (item.getItemId() == R.id.todo_action_delete) {
             mData.deleteTodo();
             returnToOverview();
+        }
+        else if(item.getItemId() == R.id.todo_action_share){
+            mData.shareTodo();
         }
     }
     //Author: Sertan Soner Cetin

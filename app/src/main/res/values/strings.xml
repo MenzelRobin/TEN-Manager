@@ -7,6 +7,8 @@
     <string name="sample_activity_todo_task">Todo hinzufügen...</string>
     <string name="sample_activity_todo_progressText">0 / 0</string>
     <string name="sample_todo_menu_toolbarDelete">Todo löschen</string>
+    <string name="sample_todo_menu_toolbarShare">Todo teilen</string>
+
 
     <!-- Event Layout Strings -->
     <!-- Robin Menzel -->
