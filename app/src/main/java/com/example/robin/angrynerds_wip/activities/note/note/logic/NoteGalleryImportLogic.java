@@ -6,10 +6,13 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.util.Log;
 
-import com.example.robin.angrynerds_wip.modules.image.ImageRotationCorrectionModule;
-import com.example.robin.angrynerds_wip.modules.image.ImageCompressionModule;
-import com.example.robin.angrynerds_wip.modules.image.ImageToolsModule;
+import com.example.robin.angrynerds_wip.data.services.ImageRotationCorrectionService;
+import com.example.robin.angrynerds_wip.data.services.ImageService;
+import com.example.robin.angrynerds_wip.modules.image_compression.ImageCompressionModule;
+
+import java.io.IOException;
 
 // Authored by Jan Beilfuss
 public class NoteGalleryImportLogic {
@@ -38,12 +41,10 @@ public class NoteGalleryImportLogic {
     }
 
     public void importImageFromGallery(Intent pData){
-        ImageToolsModule imageToolsModule = new ImageToolsModule();
-
         Uri selectedImage = pData.getData();
         String path = getPath(mNoteApplicationLogic.getNoteData().getActivity().getApplicationContext() ,selectedImage);
-            Bitmap bitmap = imageToolsModule.importCompressedImage(path);
-            bitmap = imageToolsModule.correctImageRotation(path, bitmap);
+            Bitmap bitmap = ImageCompressionModule.importCompressedImage(path);
+            bitmap = ImageRotationCorrectionService.correctImageRotation(path, bitmap);
 
             mNoteApplicationLogic.getNoteData().addImageFromGallery(bitmap);
 
