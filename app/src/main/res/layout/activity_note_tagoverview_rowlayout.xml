@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Authored by Joscha Nassenstein -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/id_note_tagOverview_rowLayout"
@@ -29,8 +30,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="0.8"
+        android:theme="@style/editTextListViewStyle"
         android:hint="@string/sample_note_listtag"
-        android:imeOptions="actionDone"
         android:inputType="text"
         android:lines="1"
         android:maxLines="1"

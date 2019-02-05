@@ -6,9 +6,11 @@ import android.graphics.BitmapFactory;
 import android.util.Log;
 
 import com.example.robin.angrynerds_wip.activities.note.note.data.NoteConstants;
-import com.example.robin.angrynerds_wip.activities.note.tageditor.NoteTagActivity;
-import com.example.robin.angrynerds_wip.data.services.ImageService;
+import com.example.robin.angrynerds_wip.activities.note.notetags.NoteTagActivity;
+import com.example.robin.angrynerds_wip.modules.image.ImageRotationCorrectionModule;
+import com.example.robin.angrynerds_wip.modules.image.ImageToolsModule;
 
+// Authored by Joscha Nassenstein
 public class NoteNavigationLogic {
 
     NoteApplicationLogic mNoteApplicationLogic;
@@ -17,17 +19,20 @@ public class NoteNavigationLogic {
         this.mNoteApplicationLogic = pNoteApplicationLogic;
     }
 
+    //Returns to overview activity
     public void returnToOverview() {
-        //mActivity.overridePendingTransition(android.R.anim.fade_in, android.R.anim.slide_out_right);
         mNoteApplicationLogic.getNoteData().getActivity().finish();
     }
 
+    //Called when activity is returned, e.g. Image Import or NoteTagActivity results
     public void onActivityReturned(int pRequestCode, int pResultCode, Intent pData) {
+        ImageToolsModule imageToolsModule = new ImageToolsModule();
+
         switch (pRequestCode) {
             case NoteConstants.CAMERA_IMPORT_ACTIVITY_REQUESTCODE:
                 if (pResultCode == -1) {
                     String path = mNoteApplicationLogic.getImageImport().getCurrentPhotoPath();
-                    Bitmap cameraImage = ImageService.correctImageRotation(path, BitmapFactory.decodeFile(path));
+                    Bitmap cameraImage = imageToolsModule.correctImageRotation(path, BitmapFactory.decodeFile(path));
                     mNoteApplicationLogic.getNoteData().addImageFromCamera(cameraImage, path);
                     mNoteApplicationLogic.getNoteGuiRefresherLogic().refreshImages();
                 }
@@ -46,33 +51,24 @@ public class NoteNavigationLogic {
                         mNoteApplicationLogic.getNoteGui().setNoteTags(mNoteApplicationLogic.getNoteData().getNote().getTags());
                     } catch (NullPointerException e) {
                         Log.e("Error", e.getMessage());
-                        //displayToast("Error getting TagList from NoteTagActivity.");
+                        mNoteApplicationLogic.getNoteGui().displayToast(mNoteApplicationLogic.getNoteData().getActivity(),"Stichworte konnten nicht übertragen werden");
                     }
                 }
         }
     }
 
-    //NoteNavigationLogic
+    //Saves Note and returns to overview activity
     public void saveAndReturnToOverview() {
         mNoteApplicationLogic.getNoteData().executeSaveRoutine();
         returnToOverview();
     }
 
-    //NoteNavigationLogic
-    public void onBackPressed() {
-        saveAndReturnToOverview();
-    }
-
-    public void startImageImport(){
-        mNoteApplicationLogic.initImageImportObject();
-    }
-
-    //NoteNavigationLogic
+    //Starts NoteTagActivity with tagList
     public void startTagActivity() {
         Intent intent = new Intent(mNoteApplicationLogic.getNoteData().getActivity(), NoteTagActivity.class);
-        //TODO Als Konstanten irgendwo ablegen
-        intent.putExtra("taglist", mNoteApplicationLogic.getNoteData().getNote().getTags());
-        intent.putExtra("color", mNoteApplicationLogic.getNoteData().getNote().getColor());
+        intent.putExtra(NoteConstants.INTENT_ID_TAGLIST, mNoteApplicationLogic.getNoteData().getNote().getTags());
+        intent.putExtra(NoteConstants.INTENT_ID_COLOR, mNoteApplicationLogic.getNoteData().getNote().getColor());
+        intent.putExtra(NoteConstants.INTENT_ID_ACCENTCOLOR, mNoteApplicationLogic.getNoteData().getNote().getAccentColor());
         mNoteApplicationLogic.getNoteData().getActivity().startActivityForResult(intent, NoteConstants.TAGEDITOR_ACTIVITY_REQUESTCODE);
     }
 }

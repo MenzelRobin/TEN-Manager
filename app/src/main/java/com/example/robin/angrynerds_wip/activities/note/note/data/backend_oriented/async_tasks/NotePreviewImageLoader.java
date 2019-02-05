@@ -6,9 +6,10 @@ import com.example.robin.angrynerds_wip.activities.note.note.data.backend_orient
 import com.example.robin.angrynerds_wip.data.models.utils.Image;
 import com.example.robin.angrynerds_wip.data.services.ImageService;
 
+// Authored by Jan Beilfuss
 public class NotePreviewImageLoader {
 
-    NoteDataBackend mNoteDataBackend;
+    private NoteDataBackend mNoteDataBackend;
 
     public NotePreviewImageLoader(NoteDataBackend pNoteDataBackend) {
         this.mNoteDataBackend = pNoteDataBackend;

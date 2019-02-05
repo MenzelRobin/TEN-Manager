@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -19,6 +18,7 @@ import com.example.robin.angrynerds_wip.activities.note.note.logic.NoteApplicati
 import com.example.robin.angrynerds_wip.activities.note.note.logic.listener_watcher.EventDispersion;
 import com.example.robin.angrynerds_wip.data.repository.DataContextManager;
 
+// Authored by Joscha Nassenstein
 public class NoteActivity extends AppCompatActivity {
 
     private NoteData mNoteData;
@@ -30,17 +30,18 @@ public class NoteActivity extends AppCompatActivity {
     @Override
     public void onCreate (Bundle pSavedInstanceState) {
         super.onCreate(pSavedInstanceState);
-
-        String id = getIntent().getStringExtra("ID");
         DataContextManager.initDatabase(this.getApplicationContext());
+
+        String id = getIntent().getStringExtra("ID"); //get NoteID from Intent
         if(id==null) {
+            //Create new Note
             mNoteData = new NoteData(this);
             getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
             getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
             initGUI(true);
         }
         else{
-            mNoteData = new NoteData(this, getIntent().getStringExtra("ID"));
+            mNoteData = new NoteData(this, id);
             initGUI(false);
         }
         initApplicationLogic();
@@ -59,6 +60,7 @@ public class NoteActivity extends AppCompatActivity {
         mEventDispersion = new EventDispersion(mNoteApplicationLogic);
     }
 
+    //Gets the result from previously started Activity
     @Override
     protected void onActivityResult(int pRequestCode, int pResultCode, Intent pData) {
         super.onActivityResult(pRequestCode, pResultCode, pData);
@@ -71,7 +73,12 @@ public class NoteActivity extends AppCompatActivity {
         mEventDispersion.onCreateContextMenu(pMenu, pView, pMenuInfo);
     }
 
-    //Toolbar
+    @Override
+    public boolean onContextItemSelected(MenuItem pItem) {
+        return mEventDispersion.onContextItemSelected(pItem);
+    }
+
+    //Toolbar Context Menu
     @Override
     public boolean onCreateOptionsMenu(Menu pMenu){
         MenuInflater inflater = getMenuInflater();
@@ -80,29 +87,22 @@ public class NoteActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onContextItemSelected(MenuItem pItem) {
-        return mEventDispersion.onContextItemSelected(pItem);
-    }
-
-    @Override
     public void onConfigurationChanged(Configuration pNewConfig) {
         super.onConfigurationChanged(pNewConfig);
         mNoteGui.getNoteImageContainer().removeAllViews();
         initGUI(false);
         mNoteApplicationLogic.onConfigurationChanged(mNoteGui, pNewConfig);
-        Log.d("display", "Konfig: " + (int)(pNewConfig.screenHeightDp*getApplicationContext().getResources().getDisplayMetrics().density) + " " + (int)(pNewConfig.screenWidthDp*getApplicationContext().getResources().getDisplayMetrics().density));
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        //mNoteApplicationLogic.onPause();
     }
 
     @Override
     public void onBackPressed() {
-        mNoteApplicationLogic.onBackPressed();
         super.onBackPressed();
+        mNoteApplicationLogic.onBackPressed();
     }
 
     @Override

@@ -4,7 +4,12 @@
     tools:context=".activities.todo.Init">
 
     <item
-        android:id="@+id/todo_action_settings"
+        android:id="@+id/todo_action_share"
+        android:title="@string/sample_todo_menu_toolbarShare">
+    </item>
+
+    <item
+        android:id="@+id/todo_action_delete"
         android:title="@string/sample_todo_menu_toolbarDelete">
     </item>
 </menu>

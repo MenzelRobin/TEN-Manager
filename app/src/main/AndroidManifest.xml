@@ -21,7 +21,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".OverviewActivity"></activity>
         <activity android:name=".activities.todo.Init"
             android:windowSoftInputMode="adjustPan"
             android:configChanges="orientation|keyboardHidden|screenSize">
@@ -32,12 +31,12 @@
             android:configChanges="orientation|keyboardHidden|screenSize">
         </activity>
 
-        <activity android:name=".activities.note.tageditor.NoteTagActivity"
+        <activity android:name=".activities.note.notetags.NoteTagActivity"
             android:windowSoftInputMode="adjustResize"
             android:configChanges="orientation|keyboardHidden|screenSize">
         </activity>
 
-        <activity android:name=".activities.event.Init"></activity>
+        <activity android:name=".activities.event.EventActivity"></activity>
 
         <activity android:name=".activities.overview.overviewActivity.OverviewInit"
             android:configChanges="orientation"></activity>
@@ -52,7 +51,7 @@
                 android:resource="@xml/file_paths"></meta-data>
         </provider>
 
-        <receiver android:name=".activities.event.AlertReceiver"/>
+        <receiver android:name=".activities.event.reminder.AlertReceiver"/>
     </application>
 
 </manifest>

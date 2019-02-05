@@ -5,7 +5,10 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">#ffffff</item>
+        <item name="colorAccent">#FFFFFF</item>
+    </style>
+
+    <style name="DialogPicker" parent="Theme.AppCompat.Light.Dialog">
     </style>
 
     <style name="CustomDialog" parent="android:Theme.Dialog">
@@ -21,6 +24,11 @@
     <style name="editTextSearchStyle" parent="Widget.AppCompat.EditText">
         <item name="colorControlNormal">#00000000</item>
         <item name="colorControlActivated">#616161</item>
+    </style>
+
+    <style name="editTextListViewStyle" parent="Widget.AppCompat.EditText">
+        <item name="colorControlNormal">#40FFFFFF</item>
+        <item name="colorControlActivated">#ffffff</item>
     </style>
 
 </resources>

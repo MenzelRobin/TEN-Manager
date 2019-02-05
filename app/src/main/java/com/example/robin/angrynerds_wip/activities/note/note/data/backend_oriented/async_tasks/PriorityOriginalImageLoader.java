@@ -6,10 +6,11 @@ import com.example.robin.angrynerds_wip.activities.note.note.data.backend_orient
 import com.example.robin.angrynerds_wip.data.models.utils.Image;
 import com.example.robin.angrynerds_wip.data.services.ImageService;
 
+// Authored by Jan Beilfuss
 public class PriorityOriginalImageLoader {
 
-    NoteDataBackend mNoteDataBackend;
-    int mIndexToBeLoaded;
+    private NoteDataBackend mNoteDataBackend;
+    private int mIndexToBeLoaded;
 
     public PriorityOriginalImageLoader(NoteDataBackend pNoteDataBackend) {
         this.mNoteDataBackend = pNoteDataBackend;
@@ -17,6 +18,7 @@ public class PriorityOriginalImageLoader {
     }
 
     public void loadOriginalImage(int pIndex) {
+        mIndexToBeLoaded = pIndex;
         if (this.mNoteDataBackend.getmNoteData().getNote().getPictures().size() > pIndex) {
             LoadOriginalImageTask loadOriginalImageTask = new LoadOriginalImageTask();
             loadOriginalImageTask.execute(pIndex);
@@ -48,7 +50,7 @@ public class PriorityOriginalImageLoader {
                 mNoteDataBackend.getmNoteData().getNote().imageNotFound(pImage);
             } else {
                 mNoteDataBackend.getmNoteData().getNote().addImage(pImage);
-                mNoteDataBackend.getmNoteData().getNoteApplicationLogic().getNoteImagePopupLogic().openImagePopup(pImage.getBitmap());
+                mNoteDataBackend.getmNoteData().getNoteApplicationLogic().getNoteImagePopupLogic().openImagePopup(pImage.getBitmap(), mIndexToBeLoaded + 1);
                 mNoteDataBackend.getmNoteData().getNoteApplicationLogic().getNoteAsyncLoadingLogic().stopLoadingSpinner();
             }
         }

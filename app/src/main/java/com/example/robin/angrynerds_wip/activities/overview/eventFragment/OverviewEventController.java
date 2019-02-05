@@ -2,10 +2,8 @@ package com.example.robin.angrynerds_wip.activities.overview.eventFragment;
 
 import android.content.Intent;
 
-import com.example.robin.angrynerds_wip.activities.overview.superClasses.OverviewFragmentController;
-import com.example.robin.angrynerds_wip.activities.overview.superClasses.OverviewFragmentData;
-import com.example.robin.angrynerds_wip.activities.overview.superClasses.OverviewFragmentGui;
-import com.example.robin.angrynerds_wip.activities.overview.superClasses.OverviewFragmentInit;
+import com.example.robin.angrynerds_wip.activities.overview.superClasses.*;
+import com.example.robin.angrynerds_wip.activities.event.EventActivity;
 
 public class OverviewEventController extends OverviewFragmentController {
     /* Yannick-Luca Rüttgers
@@ -17,7 +15,7 @@ public class OverviewEventController extends OverviewFragmentController {
         super(pFragment, pData, pGui);
     }
 
-    // Applies saved Data to the Gui
+    // Applies saved EventData to the EventGui
     public void applyData(){
         ((OverviewEventGui)mGui).setTitle(mData.getTitle());
         ((OverviewEventGui)mGui).setColor(mData.getColor());
@@ -42,7 +40,7 @@ public class OverviewEventController extends OverviewFragmentController {
         if(mDeleteState) {
             toggleMark();
         } else {
-            Intent intent = new Intent(mFragment.getActivity(), com.example.robin.angrynerds_wip.activities.event.Init.class);
+            Intent intent = new Intent(mFragment.getActivity(), EventActivity.class);
             intent.putExtra("ID", mData.getID());
             mFragment.startActivity(intent);
         }

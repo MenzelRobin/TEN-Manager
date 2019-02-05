@@ -94,7 +94,7 @@ public class OverviewController {
         mGui.markButton(pClass);
     }
 
-    // Populates the Containers with the existing Data
+    // Populates the Containers with the existing EventData
     public void refreshFragments(){
         mFragmentInserter.insertFragments(mGui.getContainerIDs(), mFragmentFactory.createTENFragments(mData.getData()));
     }

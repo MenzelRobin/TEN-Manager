@@ -8,8 +8,7 @@ import android.os.Environment;
 import com.example.robin.angrynerds_wip.activities.note.note.data.gui_oriented.PreviewImageCreator;
 import com.example.robin.angrynerds_wip.data.models.utils.Image;
 import com.example.robin.angrynerds_wip.data.repository.DataContextManager;
-import com.example.robin.angrynerds_wip.data.repository.RepositoryConstants;
-import com.example.robin.angrynerds_wip.data.repository.filesystem.FileManager;
+import com.example.robin.angrynerds_wip.data.repository.filesystem.FileRepository;
 import com.example.robin.angrynerds_wip.data.repository.filesystem.FileSystemConstants;
 
 import java.io.File;
@@ -19,12 +18,12 @@ import java.io.IOException;
 
 public class ImageSaver {
 
-    FileManager mFileManager;
+    FileRepository mFileRepository;
 
     //Class that creates async Task to save Images to the filesystem
     //Author: Jan Beilfuß
-    public ImageSaver(FileManager pFileManager) {
-        this.mFileManager = pFileManager;
+    public ImageSaver(FileRepository pFileRepository) {
+        this.mFileRepository = pFileRepository;
     }
 
     public void execute(Image image) throws IOException {
@@ -36,11 +35,12 @@ public class ImageSaver {
 
     private class SaveImageTask extends AsyncTask<Image, Integer, Void> {
 
+        //saves Image to preview and original folder
         @Override
         protected Void doInBackground(Image... images) {
             PreviewImageCreator previewImageCreator = new PreviewImageCreator();
             Context context = DataContextManager.context;
-            String[] folders = {RepositoryConstants.IMAGE_ORIGINAL_FOLDER, RepositoryConstants.IMAGE_PREVIEW_FOLDER};
+            String[] folders = {FileSystemConstants.IMAGE_ORIGINAL_FOLDER, FileSystemConstants.IMAGE_PREVIEW_FOLDER};
 
             for (String folder : folders) {
                 String folderPath = Environment.DIRECTORY_PICTURES + "/" + folder;
@@ -53,7 +53,7 @@ public class ImageSaver {
 
                 if (!image.exists()) {
                     if (bitmap != null) {
-                        if (folder.equals(RepositoryConstants.IMAGE_PREVIEW_FOLDER)) {
+                        if (folder.equals(FileSystemConstants.IMAGE_PREVIEW_FOLDER)) {
                             bitmap = previewImageCreator.getPreviewImage(bitmap);
                         }
                         try {

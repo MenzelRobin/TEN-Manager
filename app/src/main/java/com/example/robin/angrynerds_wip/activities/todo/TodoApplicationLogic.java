@@ -23,11 +23,12 @@ import java.util.Date;
 import java.util.Locale;
 
 //import de.fhdw.bfwi316b.set.colorchooser.activities.ActivityUtilities;
-//import de.fhdw.bfwi316b.set.colorchooser.activities.Data;
+//import de.fhdw.bfwi316b.set.colorchooser.activities.EventData;
 
+//Authors: Sertan Soner Cetin, Florian Rath
 public class TodoApplicationLogic {
 
-    //private Data mData;
+    //private EventData mData;
 
     private Gui mGui;
     private Data mData;
@@ -44,7 +45,7 @@ public class TodoApplicationLogic {
     private View mActiveDatePickerButton; // der Button, mit dem der DatePicker geöffnet wurde
 
 
-    //Hier muss noch Data rein
+    //Hier muss noch EventData rein
     public TodoApplicationLogic(Gui gui, AppCompatActivity pActivity, Data pData) {
         mActivity = pActivity;
         mGui = gui;
@@ -61,6 +62,7 @@ public class TodoApplicationLogic {
 
 
 
+    //Author: Florian Rath
     private void initGui() {
         //initialize Toolbar including menu and back button
         mActivity.setSupportActionBar(mGui.getmToolbar());
@@ -72,6 +74,7 @@ public class TodoApplicationLogic {
         createList();
     }
 
+    //Author: Florian Rath
     private void initListener() {
         mClickListener = new ClickListener(this);
         mTouchListener = new TouchListener(this);
@@ -92,8 +95,10 @@ public class TodoApplicationLogic {
         //mGui.getmRowLayout().setOnClickListener(clickListener);
     }
 
-
+    //Author: Florian Rath
     public void dataToGui() {
+        mGui.setFocusableInTouchmode(!mData.getmIsNew());
+
         Date date = Calendar.getInstance().getTime();
 
         Todo todo = mData.getmTodo();
@@ -104,38 +109,57 @@ public class TodoApplicationLogic {
         mGui.setDate(formatDate(todo.getEndDate()), mGui.getmEndDate());
     }
 
+    //Author: Florian Rath
     //to receive Date from DatePicker Fragment
     public void receiveDate(Date date) {
         //mGui.setDate(datePicker.getDayOfMonth() + "." + (datePicker.getMonth() + 1) + "." + datePicker.getYear(), mActiveDatePickerButton);
         mGui.setDate(formatDate(date), mActiveDatePickerButton);
+        UpdateTodo();
     }
-
+    //Author: Florian Rath
     public String formatDate(Date date){
         DateFormat displayFormat = new SimpleDateFormat("EEEE, dd. MMMM yyyy", Locale.GERMAN);
         return displayFormat.format(date);
     }
-
+    //Author: Florian Rath
     public void showDatePickerDialog(View v){
         datePicker = new DatePickerFragment();
         datePicker.show(mActivity.getFragmentManager(), "DatePicker");
         mActiveDatePickerButton = v;
     }
 
+    //Author: Florian Rath
     //Return to overview if back pressed / Event deleted / toolbar navigation
     public void returnToOverview() {
         mActivity.overridePendingTransition(android.R.anim.fade_in, android.R.anim.slide_out_right);
         mActivity.finish();
-        UpdateTodo();
-    }
 
-    //Toolbar menu is clicked
-    public void onMenuItemClick(MenuItem item) {
-        if (item.getItemId() == R.id.todo_action_settings) {
-            mData.deleteTodo();
-            returnToOverview();
+        try {
+            UpdateTodo();
+
+            Todo todo = mData.getmTodo();
+            if (todo.getTitle().isEmpty() && todo.getTasks().size() <= 1 && todo.getNote().isEmpty())
+            {
+                mData.deleteTodo();
+            }
+        }
+        catch(Exception e){
+
         }
     }
 
+    //Author: Florian Rath
+    //Toolbar menu is clicked
+    public void onMenuItemClick(MenuItem item) {
+        if (item.getItemId() == R.id.todo_action_delete) {
+            mData.deleteTodo();
+            returnToOverview();
+        }
+        else if(item.getItemId() == R.id.todo_action_share){
+            mData.shareTodo(formatDate(mData.getmTodo().getStartDate()), formatDate(mData.getmTodo().getEndDate()));
+        }
+    }
+    //Author: Sertan Soner Cetin
     //Hier wird die Liste erzeugt
     public void createList(){
         mGui.setmChoiceMode();
@@ -151,6 +175,7 @@ public class TodoApplicationLogic {
     }
 
 
+    //Author: Sertan Soner Cetin
     private void addTask() {
         mTasks.add(new Task());
         mTaskAdapter.notifyDataSetChanged();
@@ -163,28 +188,27 @@ public class TodoApplicationLogic {
         updateProgress();
     }
 
+    //Author: Sertan Soner Cetin
     public void updateProgress(){
-        int trueChecked = 0;
-        int allChecker = 0;
 
-        for(Task task: mTasks){
-            if(task.getStatus() == true){
-                trueChecked = trueChecked + 1;
-            }
-            allChecker = allChecker + 1;
-        }
-        allChecker = allChecker - 1;
-        mGui.setmProgressText(Integer.toString(trueChecked) + " / " + Integer.toString(allChecker));
+        mData.getmTodo().getTasks().remove(mData.getmTodo().getTasks().size() - 1);
+        mData.getmTodo().setTasks(mTasks);
+
+        mGui.setmProgressText((int) (mData.getmTodo().getProgress() * 100) + " %");
+        mData.getmTodo().getTasks().add(new Task());
+
         //Hier lag der Fehler bei dem Wechsel der Ansichten, wollen wir uns morgen angucken
         //UpdateTodo();
     }
 
+    //Author: Sertan Soner Cetin
     void onEditTextClicked() {
-        addInputTagField();
+        addInputTaskField();
     }
 
     public void onActivityReturned(int requestCode, int resultCode, Intent data) {
     }
+    //Author: Sertan Soner Cetin
     //Remove String from TagList and notify adapter
     void onDeleteButtonClicked(int id){
         mTasks.remove(id);
@@ -204,17 +228,14 @@ public class TodoApplicationLogic {
         else {
             mTasks.get(mView.getId()).setDescription(s);
             if (mView.getId() == mTasks.size() - 1) {
-                addInputTagField();
+                addInputTaskField();
             }
             updateProgress();
         }
     }
 
-    public void onOkButtonClicked() { UpdateTodo(); }
-
-    public void onBackPressed() {  UpdateTodo();  }
-
-    private void addInputTagField() {
+    //Author: Sertan Soner Cetin
+    private void addInputTaskField() {
         mTasks.add(new Task());
         mTaskAdapter.notifyDataSetChanged();
         mGui.getListView().post(new Runnable() {
@@ -226,11 +247,13 @@ public class TodoApplicationLogic {
         updateProgress();
     }
 
+    //Author: Sertan Soner Cetin
     public ArrayList<Task> getmTasks()
     {
         return mTasks;
     }
 
+    //Author: Sertan Soner Cetin
     //Return number of Strings in TagList
     int getTasksItemCount(){
         return mGui.getTasksItemCount();
@@ -242,6 +265,7 @@ public class TodoApplicationLogic {
     public TouchListener getTouchListener() { return mTouchListener; }
     public CheckedChangeListener getmCheckedChangeListener() { return mCheckedChangeListener;}
 
+    //Author: Sertan Soner Cetin
     public void UpdateTodo()
     {
         Todo todo = mData.getmTodo();
@@ -255,9 +279,12 @@ public class TodoApplicationLogic {
             Log.e("florian","Fehler" + mGui.getmStartDate().getText().toString());
         }
 
-        Update.saveTEN(todo);
+        todo.getTasks().remove(todo.getTasks().size() - 1);
+        mData.updateTodo();
+        todo.getTasks().add(new Task());
     }
 
+    //Author: Sertan Soner Cetin
     public void onConfigurationChanged(Gui pGui) {
         mGui = pGui;
         mTasks = mData.getmTodo().getTasks();

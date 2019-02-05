@@ -2,20 +2,22 @@ package com.example.robin.angrynerds_wip.activities.note.note.logic.listener_wat
 
 import android.content.DialogInterface;
 
-import com.example.robin.angrynerds_wip.activities.note.note.data.gui_oriented.ImageImport;
+import com.example.robin.angrynerds_wip.activities.note.note.logic.NoteImageImportLogic;
 
+// Authored by Joscha Nassenstein
 public class DialogClickListener implements DialogInterface.OnClickListener{
 
-    private ImageImport mImageImport;
+    private NoteImageImportLogic mImageImport;
 
-    public DialogClickListener(ImageImport pImageImport) {
+    public DialogClickListener(NoteImageImportLogic pImageImport) {
         this.mImageImport = pImageImport;
     }
 
     @Override
-    public void onClick(DialogInterface dialog, int option) {
+    public void onClick(DialogInterface pDialog, int pOption) {
 
-        switch ( option ) {
+        //Checks for image import decision of user
+        switch ( pOption ) {
             case 0:
                 mImageImport.importImageFromGallery();
                 break;

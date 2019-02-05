@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".activities.note.note.NoteActivity">
+
+    <item
+        android:id="@+id/note_tagOverview_action_delete"
+        android:title="@string/note_tagOverview_menu_toolbarDelete">
+    </item>
+</menu>

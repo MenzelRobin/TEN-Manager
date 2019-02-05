@@ -3,20 +3,21 @@ package com.example.robin.angrynerds_wip.activities.note.note.logic;
 import android.content.res.Configuration;
 
 import com.example.robin.angrynerds_wip.activities.note.note.data.NoteData;
-import com.example.robin.angrynerds_wip.activities.note.note.data.gui_oriented.ImageImport;
 import com.example.robin.angrynerds_wip.activities.note.note.gui.NoteGui;
+import com.example.robin.angrynerds_wip.activities.note.note.logic.listener_watcher.NoteListenerHandler;
 import com.example.robin.angrynerds_wip.activities.note.note.logic.listener_watcher.NoteListenerInitializer;
 
+// Authored by Joscha Nassenstein
 public class NoteApplicationLogic {
 
     private NoteGui mNoteGui;
     private NoteData mNoteData;
-    private ImageImport mImageImport;
+    private NoteImageImportLogic mImageImport;
     private NoteNavigationLogic mNoteNavigationLogic;
     private NoteAsyncLoadingLogic mNoteAsyncLoadingLogic;
     private NoteListenerInitializer mNoteListenerInitializer;
     private NoteGuiRefresherLogic mNoteGuiRefresherLogic;
-    private NoteClickHandler mNoteClickHandler;
+    private NoteListenerHandler mNoteClickHandler;
     private NoteImagePopupLogic mNoteImagePopupLogic;
 
 
@@ -28,7 +29,7 @@ public class NoteApplicationLogic {
         mNoteNavigationLogic = new NoteNavigationLogic(this);
         mNoteAsyncLoadingLogic = new NoteAsyncLoadingLogic(this);
         mNoteListenerInitializer = new NoteListenerInitializer(this);
-        mNoteClickHandler = new NoteClickHandler(this);
+        mNoteClickHandler = new NoteListenerHandler(this);
         mNoteImagePopupLogic = new NoteImagePopupLogic(this);
         initGui();
 
@@ -55,7 +56,7 @@ public class NoteApplicationLogic {
         return mNoteData;
     }
 
-    public ImageImport getImageImport() {
+    public NoteImageImportLogic getImageImport() {
         return mImageImport;
     }
 
@@ -67,7 +68,7 @@ public class NoteApplicationLogic {
         return mNoteGuiRefresherLogic;
     }
 
-    public NoteClickHandler getNoteClickHandler() {
+    public NoteListenerHandler getNoteClickHandler() {
         return mNoteClickHandler;
     }
 
@@ -84,11 +85,6 @@ public class NoteApplicationLogic {
         return mNoteData.getNotePreviewImages().size();
     }
 
-    //Checks ImageContainer for specific ID
-    /*/public boolean checkImageID(int pId) {
-        return mNoteData.checkImageID(pId);
-    }*/
-
     //Deletes Image from NoteData
     public void deleteImage(int pId) {
         mNoteData.deleteImage(pId);
@@ -101,26 +97,23 @@ public class NoteApplicationLogic {
         mNoteGuiRefresherLogic.dataToGui();
     }
 
-    //NoteNavigationLogic
     public void saveAndReturnToOverview() {
         mNoteNavigationLogic.saveAndReturnToOverview();
     }
 
-    //NoteNavigationLogic
     public void onBackPressed() {
-        mNoteNavigationLogic.saveAndReturnToOverview();
+        saveAndReturnToOverview();
     }
 
     //Initialises Landscape or Portrait Activity with NoteData, rescales ImageOverlay if displayed
     public void onConfigurationChanged(NoteGui pGui, Configuration pConfiguration) {
         this.mNoteGui = pGui;
-        //mNoteData.getNoteDataGui().addImageButton();
         mNoteListenerInitializer.initListener();
         mNoteGuiRefresherLogic.dataToGui();
         mNoteImagePopupLogic.changeConfiguration(pConfiguration);
     }
 
     public void initImageImportObject() {
-        mImageImport = new ImageImport(mNoteData.getActivity());
+        mImageImport = new NoteImageImportLogic(mNoteData.getActivity());
     }
 }

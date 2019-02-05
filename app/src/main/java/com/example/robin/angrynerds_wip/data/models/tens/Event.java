@@ -28,39 +28,12 @@ public class Event extends TEN {
     }
 
     //simple for usage
-    public Event(String title, Date time, ArrayList<Date> reminder) {
-        super(title);
-        this.time = time;
-        this.reminder = reminder;
-        this.address = null;
-        this.recurringType = RecurringType.NONE;
-    }
-
-    //simple for usage
     public Event(String title, Date time, ArrayList<Date> reminder, String address) {
         super(title);
         this.time = time;
         this.reminder = reminder;
         this.address = address;
         this.recurringType = RecurringType.NONE;
-    }
-
-    //simple for usage
-    public Event(String title, Date time, ArrayList<Date> reminder, String address, RecurringType recurringType) {
-        super(title);
-        this.time = time;
-        this.reminder = reminder;
-        this.address = address;
-        this.recurringType = recurringType;
-    }
-
-    //simple for usage
-    public Event(String title, Date time, ArrayList<Date> reminder, RecurringType recurringType) {
-        super(title);
-        this.time = time;
-        this.reminder = reminder;
-        this.address = null;
-        this.recurringType = recurringType;
     }
 
     //all Attributes for reconstruction of complete Object
@@ -107,8 +80,8 @@ public class Event extends TEN {
 
     public Bundle getBundle() {
         Bundle bundle = super.getBundle();
-        bundle.putLong(BundleKeys.keyEventTime, time.getTime());
-        bundle.putString(BundleKeys.keyEventAddress, address);
+        bundle.putLong(BundleKeys.KEY_EVENT_TIME, time.getTime());
+        bundle.putString(BundleKeys.KEY_EVENT_ADDRESS, address);
         return bundle;
     }
 }

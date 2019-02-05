@@ -22,24 +22,25 @@ public class DataContextManager {
 
     //Gets Database from Context if it is not set
     public static void initDatabase(Context pContext) {
-        DataContextManager.context = pContext;
-        try {
-            if (DataContextManager.getDatabase() == null) {
+        if (DataContextManager.getDatabase() == null) {
+            DataContextManager.context = null;
+            DataContextManager.context = pContext;
+            try {
                 DatabaseConfiguration config = new DatabaseConfiguration(pContext.getApplicationContext());
                 DataContextManager.database = new Database(RepositoryConstants.DATABASENAME, config);
+                compactDatabase();
+            } catch (CouchbaseLiteException e) {
+                Toast.makeText(pContext, "Fehler bei der Datenbankerstellung", Toast.LENGTH_LONG);
             }
-
-        } catch (CouchbaseLiteException e) {
-            Toast.makeText(pContext, "Fehler bei der Datenbankerstellung", Toast.LENGTH_LONG);
         }
-
     }
 
     //Compacts the Database = Cleans all Empty Entries (they are just flagged on Delete)
     public static void compactDatabase() {
         try {
             DataContextManager.getDatabase().compact();
-        } catch (CouchbaseLiteException e) {}
+        } catch (CouchbaseLiteException e) {
+        }
     }
 
     //returns the number of Documents in the Database. ONLY needed when using Mockdata

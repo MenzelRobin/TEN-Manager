@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Authored by Joscha Nassenstein -->
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/id_note_background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/note_black"
+    android:focusableInTouchMode="true"
     android:orientation="horizontal">
 
     <include
@@ -22,8 +25,7 @@
             android:background="@android:color/transparent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:cursorVisible="false"
+            android:layout_margin="16dp"
             android:hint="@string/sample_note_title"
             android:inputType="text"
             android:lines="1"
@@ -47,7 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_above="@id/id_note_separate_landscape_2"
             android:layout_below="@+id/id_note_separate_landscape_1"
-            android:layout_margin="10dp"
+            android:layout_margin="16dp"
             android:hint="@string/sample_note_description"
             android:gravity="top"
             android:inputType="textMultiLine"
@@ -80,13 +82,6 @@
 
     </RelativeLayout>
 
-    <!--View
-        android:id="@+id/id_note_separate_landscape_3"
-        android:layout_width="1dp"
-        android:layout_height="match_parent"
-        android:layout_toStartOf="@id/id_note_ImageScrollView_Vertical"
-        android:background="@color/colorPrimaryDark" /-->
-
     <ScrollView
         android:id="@+id/id_note_ImageScrollView_Vertical"
         android:layout_width="wrap_content"
@@ -107,7 +102,7 @@
         android:id="@+id/noteProgressBarHolder"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:alpha="0.8"
+        android:alpha="0.5"
         android:animateLayoutChanges="true"
         android:background="#000000"
         android:visibility="gone">

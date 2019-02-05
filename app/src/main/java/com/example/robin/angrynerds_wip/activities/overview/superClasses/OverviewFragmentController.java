@@ -23,12 +23,12 @@ public abstract class OverviewFragmentController {
         mDeleteState = false;
     }
 
-    // Passes Data to Dataobject
+    // Passes EventData to Dataobject
     public void addData(Bundle pData){
         mData.addData(pData);
     }
 
-    // Adds View to GUI Object and applies Data
+    // Adds View to GUI Object and applies EventData
     public void addView(View pView){
         mGui.addView(pView);
         applyData();

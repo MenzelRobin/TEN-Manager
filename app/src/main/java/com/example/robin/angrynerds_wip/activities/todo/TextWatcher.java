@@ -4,6 +4,7 @@ import android.text.Editable;
 import android.view.View;
 import android.widget.EditText;
 
+// Author: Florian Rath
 public class TextWatcher implements android.text.TextWatcher {
     private TodoApplicationLogic mTodoApplicationLogic;
     private View mView;

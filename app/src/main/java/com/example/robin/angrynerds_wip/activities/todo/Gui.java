@@ -18,6 +18,7 @@ import com.example.robin.angrynerds_wip.R;
 
 import org.w3c.dom.Text;
 
+// Author: Florian Rath
 public class Gui extends AppCompatActivity{
 
     private RelativeLayout mRelativeLayout;
@@ -123,10 +124,15 @@ public class Gui extends AppCompatActivity{
         mToolbar.setBackground(new ColorDrawable(darkColor));
         mSeperateView1.setBackground(new ColorDrawable(darkColor));
         mSeperateView2.setBackground(new ColorDrawable(darkColor));
-        mSeperateView3.setBackground(new ColorDrawable(darkColor));
+        mSeperateView3.setBackground(new ColorDrawable(color));
         mSeperateView4.setBackground(new ColorDrawable(darkColor));
         //mSeperateView1.setBackground(new ColorDrawable(darkColor));
         //mSeperateView1.setAlpha((float) 0.5);
+    }
+
+    public void setFocusableInTouchmode(boolean value)
+    {
+        mRelativeLayout.setFocusableInTouchMode(value);
     }
 
     public AdapterView getListView() {

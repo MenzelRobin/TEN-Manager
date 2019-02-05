@@ -16,9 +16,9 @@ public class OverviewTodoData extends OverviewFragmentData {
     // Adds the Note data to this Object
     public void addData(Bundle pData){
         super.addData(pData);
-        mNote = pData.getString(BundleKeys.keyTodoNote);
-        mDescription = pData.getStringArray(BundleKeys.keyTodoDescription);
-        mStatus = pData.getBooleanArray(BundleKeys.keyTodoStatus);
+        mNote = pData.getString(BundleKeys.KEY_TODO_NOTE);
+        mDescription = pData.getStringArray(BundleKeys.KEY_TODO_DESCRIPTION);
+        mStatus = pData.getBooleanArray(BundleKeys.KEY_TODO_STATUS);
     }
 
     // Returns the Description

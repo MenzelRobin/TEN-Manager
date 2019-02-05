@@ -13,9 +13,9 @@ public abstract class OverviewFragmentData {
     int mColor;
 
     public void addData(Bundle pData){
-        mID = pData.getString(BundleKeys.keyTENID);
-        mTitle = pData.getString(BundleKeys.keyTENTitle);
-        mColor = pData.getInt(BundleKeys.keyTENColor);
+        mID = pData.getString(BundleKeys.KEY_TEN_ID);
+        mTitle = pData.getString(BundleKeys.KEY_TEN_TITLE);
+        mColor = pData.getInt(BundleKeys.KEY_TEN_COLOR);
     }
 
     public String getID(){

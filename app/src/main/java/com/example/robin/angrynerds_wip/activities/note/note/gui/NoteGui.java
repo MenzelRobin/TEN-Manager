@@ -22,6 +22,7 @@ import com.example.robin.angrynerds_wip.data.models.utils.Image;
 
 import java.util.ArrayList;
 
+// Authored by Joscha Nassenstein
 public class NoteGui {
 
     private RelativeLayout mBackground;
@@ -47,8 +48,10 @@ public class NoteGui {
         mNoteTags.setMovementMethod(new ScrollingMovementMethod());
         mProgressBarHolder = pActivity.findViewById(R.id.noteProgressBarHolder);
 
-        if(pNewNote)
-            mNoteTitle.setCursorVisible(true);
+        if(pNewNote) {
+            mNoteTitle.requestFocus();
+            mBackground.setFocusableInTouchMode(false);
+        }
 
         initiateToolbar(pActivity);
         initiateOrientationDependentViews(pActivity);

@@ -6,8 +6,11 @@ import android.os.Bundle;
 import android.app.DialogFragment;
 import android.widget.DatePicker;
 
+import com.example.robin.angrynerds_wip.R;
+
 import java.util.Calendar;
 
+// Author: Florian Rath in cooperation with Robin Menzel
 public class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener{
 
     @Override
@@ -19,7 +22,7 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
         int day = c.get(Calendar.DAY_OF_MONTH);
 
         // Create a new instance of DatePickerDialog and return it
-        return new DatePickerDialog(getActivity(), this, year, month, day);
+        return new DatePickerDialog(getActivity(), R.style.Theme_AppCompat_Light_Dialog, this, year, month, day);
     }
 
     public void onDateSet(DatePicker view, int year, int month, int day) {

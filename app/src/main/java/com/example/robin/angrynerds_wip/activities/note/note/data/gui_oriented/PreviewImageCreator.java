@@ -5,12 +5,13 @@ import android.util.Log;
 
 import com.example.robin.angrynerds_wip.activities.note.note.data.NoteConstants;
 
+// Authored by Joscha Nassenstein
 public class PreviewImageCreator {
 
     public PreviewImageCreator(){}
 
     public Bitmap getPreviewImage(Bitmap pOriginalBitmap){
-        //Crop image to square
+        //Crop image to square (center crop)
         if (pOriginalBitmap.getWidth() > pOriginalBitmap.getHeight()) {
             pOriginalBitmap = Bitmap.createBitmap(
                     pOriginalBitmap,
@@ -34,5 +35,4 @@ public class PreviewImageCreator {
         return Bitmap.createScaledBitmap(pOriginalBitmap, NoteConstants.IMAGE_PREVIEW_CONTAINER_WIDTH - 50,
                 NoteConstants.IMAGE_PREVIEW_CONTAINER_HEIGHT - 50, true);
     }
-
 }

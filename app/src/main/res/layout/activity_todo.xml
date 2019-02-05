@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--Sertan Soner Cetin & Florian Rath -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bgColor4"
     android:orientation="horizontal"
+    android:focusableInTouchMode="true"
     android:layout_alignParentLeft="true"
     android:id="@+id/edit_todo_mainRelativeLayout">
 
+    <!--Florian Rath -->
     <include
         android:id="@+id/id_todo_toolbar"
         layout="@layout/toolbar_ten" />
@@ -19,7 +22,7 @@
         android:layout_below="@id/id_todo_toolbar"
         android:inputType="text"
         android:hint="@string/sample_activity_todo_title"
-        android:textColorHint="@color/TextWhite"
+        android:textColorHint="#80FFFFFF"
         android:textColor="@color/TextWhite"
         android:lines="1"
         android:maxLines="1"
@@ -41,7 +44,7 @@
         android:layout_below="@+id/edit_todo_title"
         android:inputType="text"
         android:hint="@string/sample_activity_todo_description"
-        android:textColorHint="@color/TextWhite"
+        android:textColorHint="#80FFFFFF"
         android:textColor="@color/TextWhite"
         android:lines="10"
         android:maxLines="10"
@@ -78,7 +81,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_toEndOf="@id/id_todo_imageView_iconStartDate"
-        android:textColorHint="@color/TextWhite"
+        android:textColorHint="#80FFFFFF"
         android:textColor="@color/TextWhite"
         android:textSize="16dp"
         android:backgroundTint="@color/bgColor4"
@@ -104,7 +107,7 @@
             android:layout_width="@dimen/icon"
             android:layout_height="@dimen/icon"
             android:layout_centerVertical="true"
-            android:alpha=".5"
+            android:alpha="0"
             android:src="@drawable/ic_access_time_black_24dp" />
     <TextView
         android:id="@+id/edit_todo_endDate"
@@ -112,7 +115,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_toEndOf="@id/id_todo_imageView_iconEndDate"
-        android:textColorHint="@color/TextWhite"
+        android:textColorHint="#80FFFFFF"
         android:textColor="@color/TextWhite"
         android:textSize="16dp"
         android:backgroundTint="@color/bgColor4"
@@ -126,6 +129,7 @@
         android:layout_below="@id/id_todo_relativeLayout_endDate"
         android:background="@color/colorPrimaryDark" />
 
+    <!--Sertan Soner Cetin -->
     <RelativeLayout
         android:id="@+id/id_todo_relativeLayout_tasks"
         android:layout_width="match_parent"
@@ -137,7 +141,9 @@
         android:id="@+id/edit_todo_tasks"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/bgColor4"
+        android:background="@color/transparent"
+        android:divider="@null"
+        android:dividerHeight="0dp"
         >
     </ListView>
     </RelativeLayout>

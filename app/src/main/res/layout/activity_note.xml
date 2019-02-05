@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Authored by Joscha Nassenstein -->
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/id_note_background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/note_black"
+    android:focusableInTouchMode="true"
     android:orientation="horizontal">
 
     <include
@@ -17,8 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/id_note_toolbar"
-        android:layout_margin="10dp"
-        android:cursorVisible="false"
+        android:layout_margin="16dp"
         android:hint="@string/sample_note_title"
         android:inputType="text"
         android:lines="1"
@@ -42,7 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/id_note_separate_portrait_2"
         android:layout_below="@+id/id_note_separate_portrait_1"
-        android:layout_margin="10dp"
+        android:layout_margin="16dp"
         android:hint="@string/sample_note_description"
         android:inputType="textMultiLine"
         android:gravity="top"
@@ -91,6 +93,7 @@
         android:layout_marginBottom="10dp"
         android:hint="@string/sample_note_tag"
         android:lineSpacingExtra="5dp"
+        android:minLines="2"
         android:maxLines="3"
         android:scrollbars="vertical"
         android:textColor="@color/TextWhite"
@@ -100,7 +103,7 @@
         android:id="@+id/noteProgressBarHolder"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:alpha="0.8"
+        android:alpha="0.5"
         android:animateLayoutChanges="true"
         android:background="#000000"
         android:visibility="gone">

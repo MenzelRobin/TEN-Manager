@@ -17,7 +17,7 @@ public class OverviewTodoController extends OverviewFragmentController {
         super(pFragment, pData, pGui);
     }
 
-    // Applies saved Data to the Gui
+    // Applies saved EventData to the EventGui
     public void applyData(){
         ((OverviewTodoGui)mGui).setTitle(mData.getTitle());
         ((OverviewTodoGui)mGui).setColor(mData.getColor());

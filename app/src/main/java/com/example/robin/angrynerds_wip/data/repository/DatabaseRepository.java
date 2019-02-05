@@ -32,8 +32,10 @@ public class DatabaseRepository {
         return mReadRepository.getNoteByID(pId);
     }
 
+    //for new TEN-Objects
     public void insertTEN(TEN pTen) { mWriteRepository.insertTEN(pTen); }
 
+    //for already saved TEN-Objects
     public void updateTEN(TEN pTen) {
         mWriteRepository.updateTEN(pTen);
     }
@@ -46,6 +48,7 @@ public class DatabaseRepository {
         return mWriteRepository.deleteTEN(pTenId);
     }
 
+    //returns main and accent color for given TEN-Object-ID
     public int[] getTENColors(String pTenId) {
         return mReadRepository.getTENColors(pTenId);
     }

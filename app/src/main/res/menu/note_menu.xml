@@ -4,7 +4,13 @@
     tools:context=".activities.note.note.NoteActivity">
 
     <item
-        android:id="@+id/note_action_settings"
+        android:id="@+id/note_action_share"
+        android:title="@string/note_menu_toolbarShare">
+    </item>
+
+    <item
+        android:id="@+id/note_action_delete"
         android:title="@string/note_menu_toolbarDelete">
     </item>
+
 </menu>

@@ -5,6 +5,7 @@ import android.view.View;
 import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.activities.note.note.logic.NoteApplicationLogic;
 
+// Authored by Joscha Nassenstein
 public class ClickListener implements View.OnClickListener  {
 
     private NoteApplicationLogic mNoteApplicationLogic;
@@ -19,9 +20,6 @@ public class ClickListener implements View.OnClickListener  {
         switch ( pView.getId() ) {
             case R.id.id_note_tags:
                 mNoteApplicationLogic.getNoteClickHandler().onTagsClicked();
-                return;
-            case R.id.id_note_title:
-                mNoteApplicationLogic.getNoteClickHandler().onTitleClicked();
                 return;
             case -1:
                 mNoteApplicationLogic.saveAndReturnToOverview();

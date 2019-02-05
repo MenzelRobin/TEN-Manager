@@ -18,7 +18,7 @@ public class OverviewNoteController extends OverviewFragmentController {
         super(pFragment, pData, pGui);
     }
 
-    // Applies saved Data to the Gui
+    // Applies saved EventData to the EventGui
     public void applyData(){
         ((OverviewNoteGui)mGui).setTitle(mData.getTitle());
         ((OverviewNoteGui)mGui).setColor(mData.getColor());

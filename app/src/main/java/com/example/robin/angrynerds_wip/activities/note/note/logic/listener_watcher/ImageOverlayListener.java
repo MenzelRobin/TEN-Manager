@@ -1,21 +1,22 @@
 package com.example.robin.angrynerds_wip.activities.note.note.logic.listener_watcher;
 
 import android.content.DialogInterface;
-import android.util.Log;
 
 import com.example.robin.angrynerds_wip.activities.note.note.logic.NoteApplicationLogic;
 
+// Authored by Jan Beilfuss
 public class ImageOverlayListener implements DialogInterface.OnCancelListener {
 
-    NoteApplicationLogic mNoteApplicationLogic;
+    private NoteApplicationLogic mNoteApplicationLogic;
 
     public ImageOverlayListener(NoteApplicationLogic mNoteApplicationLogic) {
         this.mNoteApplicationLogic = mNoteApplicationLogic;
     }
 
+    //Deletes image on cancellation of ImageOverlay for RAM optimization
     @Override
-    public void onCancel(DialogInterface dialog) {
+    public void onCancel(DialogInterface pDialog) {
         this.mNoteApplicationLogic.getNoteData().resetNoteBitmaps();
-        this.mNoteApplicationLogic.getNoteImagePopupLogic().closePopup();
+        this.mNoteApplicationLogic.getNoteImagePopupLogic().resetImageOverlay();
     }
 }

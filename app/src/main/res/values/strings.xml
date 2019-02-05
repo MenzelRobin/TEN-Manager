@@ -7,8 +7,11 @@
     <string name="sample_activity_todo_task">Todo hinzufügen...</string>
     <string name="sample_activity_todo_progressText">0 / 0</string>
     <string name="sample_todo_menu_toolbarDelete">Todo löschen</string>
+    <string name="sample_todo_menu_toolbarShare">Todo teilen</string>
+
 
     <!-- Event Layout Strings -->
+    <!-- Robin Menzel -->
     <string name="sample_event_title">Titel eingeben</string>
     <string name="sample_event_address">Ort hinzufügen</string>
     <string name="sample_event_addreminder">Benachrichtigung hinzufügen</string>
@@ -30,13 +33,15 @@
 
 
     <!-- Note Layout Strings -->
-    <string name="sample_note_title">Titel</string>
-    <string name="sample_note_description">Beschreibung</string>
+    <string name="sample_note_title">Titel eingeben</string>
+    <string name="sample_note_description">Beschreibung eingeben</string>
     <string name="sample_note_tag">#Stichwort</string>
     <string name="sample_note_hashtag">#</string>
     <string name="sample_note_listtag">Stichwort</string>
+    <string name="note_menu_toolbarShare">Notiz teilen</string>
     <string name="note_menu_toolbarDelete">Notiz löschen</string>
-    <string name="note_tagoverview_addButton">Stichwort hinzufügen</string>
+    <string name="note_tagOverview_menu_toolbarDelete">Alle Stichworte löschen</string>
+    <string name="note_tagOverview_addButton">Stichwort hinzufügen</string>
 
     <!-- Fragment Example Strings -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
