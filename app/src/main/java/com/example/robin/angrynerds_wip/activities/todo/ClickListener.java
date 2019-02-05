@@ -6,6 +6,7 @@ import android.widget.ImageButton;
 
 import com.example.robin.angrynerds_wip.R;
 
+// Authors: Florian Rath, Sertan Soner Cetin
 public class ClickListener implements View.OnClickListener  {
 
     TodoApplicationLogic mTodoApplicationLogic;
@@ -16,6 +17,8 @@ public class ClickListener implements View.OnClickListener  {
 
     @Override
     public void onClick(View view) {
+
+        // Author: Sertan Soner Cetin
         for (int i = 0; i < mTodoApplicationLogic.getTasksItemCount(); i++)
         {
             if (i == view.getId())
@@ -24,6 +27,7 @@ public class ClickListener implements View.OnClickListener  {
             }
         }
 
+        // Author: Florian Rath
         switch (view.getId()) {
             case R.id.edit_todo_startDate:
                 mTodoApplicationLogic.showDatePickerDialog(view);

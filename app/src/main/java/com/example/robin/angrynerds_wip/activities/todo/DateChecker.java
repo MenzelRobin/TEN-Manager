@@ -2,6 +2,7 @@ package com.example.robin.angrynerds_wip.activities.todo;
 
 import java.util.Date;
 
+// Author: Florian Rath
 public class DateChecker {
 
     //date verification
