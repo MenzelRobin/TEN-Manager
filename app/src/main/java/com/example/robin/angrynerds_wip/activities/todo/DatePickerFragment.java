@@ -8,6 +8,7 @@ import android.widget.DatePicker;
 
 import java.util.Calendar;
 
+// Author: Florian Rath in cooperation with Robin Menzel
 public class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener{
 
     @Override

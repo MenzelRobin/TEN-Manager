@@ -18,6 +18,7 @@ import com.example.robin.angrynerds_wip.R;
 
 import org.w3c.dom.Text;
 
+// Author: Florian Rath
 public class Gui extends AppCompatActivity{
 
     private RelativeLayout mRelativeLayout;

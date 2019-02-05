@@ -13,6 +13,7 @@ import com.example.robin.angrynerds_wip.data.services.Delete;
 import com.example.robin.angrynerds_wip.data.services.Read;
 import com.example.robin.angrynerds_wip.data.services.Update;
 
+// Author: Sertan Soner Cetin
 public class Data {
     private Init mActivity;
     private Todo mTodo;

@@ -15,6 +15,7 @@ import com.example.robin.angrynerds_wip.data.models.utils.Task;
 
 import java.util.ArrayList;
 
+// Author: Sertan Soner Cetin
 public class TasksAdapter extends ArrayAdapter {
 
     private final Context mContext;

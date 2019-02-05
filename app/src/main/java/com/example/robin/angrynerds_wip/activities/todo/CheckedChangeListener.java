@@ -7,6 +7,7 @@ import android.widget.CompoundButton;
 import com.example.robin.angrynerds_wip.data.models.tens.TEN;
 import com.example.robin.angrynerds_wip.data.services.Update;
 
+// Author Sertan Soner Cetin
 public class CheckedChangeListener implements CheckBox.OnCheckedChangeListener {
 
     TodoApplicationLogic mTodoApplicationLogic;

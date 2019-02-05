@@ -14,8 +14,7 @@ import com.example.robin.angrynerds_wip.data.services.Create;
 
 import java.util.Date;
 
-//import com.example.robin.angrynerds_wip.activities.EventData;
-
+// Author: Sertan Soner Cetin
 public class Init extends AppCompatActivity {
 
     private Gui mGui;
