@@ -7,6 +7,7 @@ import com.example.robin.angrynerds_wip.activities.note.note.gui.NoteGui;
 import com.example.robin.angrynerds_wip.activities.note.note.logic.listener_watcher.NoteListenerHandler;
 import com.example.robin.angrynerds_wip.activities.note.note.logic.listener_watcher.NoteListenerInitializer;
 
+// Authored by Joscha Nassenstein
 public class NoteApplicationLogic {
 
     private NoteGui mNoteGui;

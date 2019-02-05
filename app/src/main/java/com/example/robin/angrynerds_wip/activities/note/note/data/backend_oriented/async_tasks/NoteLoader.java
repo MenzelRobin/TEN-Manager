@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import com.example.robin.angrynerds_wip.data.models.tens.Note;
 import com.example.robin.angrynerds_wip.data.services.Read;
 
+// Authored by Jan Beilfuss
 public class NoteLoader {
 
     TaskManager mTaskmanager;

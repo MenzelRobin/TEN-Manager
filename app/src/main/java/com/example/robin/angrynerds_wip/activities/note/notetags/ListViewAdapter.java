@@ -12,7 +12,8 @@ import com.example.robin.angrynerds_wip.R;
 
 import java.util.ArrayList;
 
-public class ListViewAdapter extends ArrayAdapter<String>{
+// Authored by Joscha Nassenstein
+class ListViewAdapter extends ArrayAdapter<String>{
 
     private final Context context;
     private ApplicationLogic applicationLogic;

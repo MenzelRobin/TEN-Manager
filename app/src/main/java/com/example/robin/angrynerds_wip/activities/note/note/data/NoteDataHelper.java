@@ -3,6 +3,7 @@ package com.example.robin.angrynerds_wip.activities.note.note.data;
 import com.example.robin.angrynerds_wip.data.models.tens.Note;
 import com.example.robin.angrynerds_wip.data.services.Delete;
 
+// Authored by Jan Beilfuss
 public class NoteDataHelper {
 
     private NoteData mNoteData;

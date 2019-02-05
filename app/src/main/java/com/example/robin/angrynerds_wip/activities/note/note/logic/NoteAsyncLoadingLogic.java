@@ -3,6 +3,7 @@ package com.example.robin.angrynerds_wip.activities.note.note.logic;
 import com.example.robin.angrynerds_wip.activities.note.note.data.NoteData;
 import com.example.robin.angrynerds_wip.data.models.utils.Image;
 
+// Authored by Jan Beilfuss
 public class NoteAsyncLoadingLogic {
 
     private NoteApplicationLogic mNoteApplicationLogic;

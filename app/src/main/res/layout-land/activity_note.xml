@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Authored by Joscha Nassenstein -->
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/id_note_background"
     android:layout_width="match_parent"
@@ -80,13 +82,6 @@
 
     </RelativeLayout>
 
-    <!--View
-        android:id="@+id/id_note_separate_landscape_3"
-        android:layout_width="1dp"
-        android:layout_height="match_parent"
-        android:layout_toStartOf="@id/id_note_ImageScrollView_Vertical"
-        android:background="@color/colorPrimaryDark" /-->
-
     <ScrollView
         android:id="@+id/id_note_ImageScrollView_Vertical"
         android:layout_width="wrap_content"
@@ -107,7 +102,7 @@
         android:id="@+id/noteProgressBarHolder"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:alpha="0.8"
+        android:alpha="0.5"
         android:animateLayoutChanges="true"
         android:background="#000000"
         android:visibility="gone">

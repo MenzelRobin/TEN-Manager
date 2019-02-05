@@ -14,6 +14,7 @@ import com.example.robin.angrynerds_wip.modules.image_compression.ImageCompressi
 
 import java.io.IOException;
 
+// Authored by Jan Beilfuss
 public class NoteGalleryImportLogic {
 
     private NoteApplicationLogic mNoteApplicationLogic;

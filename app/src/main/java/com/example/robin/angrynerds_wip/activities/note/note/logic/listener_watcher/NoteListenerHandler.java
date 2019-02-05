@@ -7,6 +7,7 @@ import android.view.View;
 import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.activities.note.note.logic.NoteApplicationLogic;
 
+// Authored by Joscha Nassenstein
 public class NoteListenerHandler {
 
     private NoteApplicationLogic mNoteApplicationLogic;

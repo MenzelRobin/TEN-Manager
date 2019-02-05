@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 
 import com.example.robin.angrynerds_wip.activities.note.note.logic.NoteApplicationLogic;
 
+// Authored by Jan Beilfuss
 public class ImageOverlayListener implements DialogInterface.OnCancelListener {
 
     private NoteApplicationLogic mNoteApplicationLogic;

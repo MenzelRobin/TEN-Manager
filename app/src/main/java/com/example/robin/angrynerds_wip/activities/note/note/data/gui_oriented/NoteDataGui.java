@@ -14,6 +14,7 @@ import com.example.robin.angrynerds_wip.data.models.utils.Image;
 
 import java.util.ArrayList;
 
+// Authored by Jan Beilfuss
 public class NoteDataGui {
 
     private NoteData mNoteData;

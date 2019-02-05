@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.example.robin.angrynerds_wip.R;
 
+// Authored by Joscha Nassenstein
 class Gui {
 
     private RelativeLayout mBackground;

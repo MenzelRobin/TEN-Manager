@@ -9,6 +9,7 @@ import com.example.robin.angrynerds_wip.activities.note.note.data.NoteConstants;
 import com.example.robin.angrynerds_wip.activities.note.notetags.NoteTagActivity;
 import com.example.robin.angrynerds_wip.data.services.ImageRotationCorrectionService;
 
+// Authored by Joscha Nassenstein
 public class NoteNavigationLogic {
 
     NoteApplicationLogic mNoteApplicationLogic;

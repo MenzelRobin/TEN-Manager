@@ -5,6 +5,7 @@ import android.view.View;
 import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.activities.note.note.logic.NoteApplicationLogic;
 
+// Authored by Joscha Nassenstein
 public class ClickListener implements View.OnClickListener  {
 
     private NoteApplicationLogic mNoteApplicationLogic;
