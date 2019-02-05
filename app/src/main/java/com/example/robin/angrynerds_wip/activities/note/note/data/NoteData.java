@@ -14,6 +14,7 @@ import com.example.robin.angrynerds_wip.modules.share.ShareModule;
 
 import java.util.ArrayList;
 
+// Authored by Joscha Nassenstein
 public class NoteData {
 
     private NoteDataGui mNoteDataGui;

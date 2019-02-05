@@ -18,6 +18,7 @@ import com.example.robin.angrynerds_wip.activities.note.note.logic.NoteApplicati
 import com.example.robin.angrynerds_wip.activities.note.note.logic.listener_watcher.EventDispersion;
 import com.example.robin.angrynerds_wip.data.repository.DataContextManager;
 
+// Authored by Joscha Nassenstein
 public class NoteActivity extends AppCompatActivity {
 
     private NoteData mNoteData;

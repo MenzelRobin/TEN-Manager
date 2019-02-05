@@ -10,6 +10,7 @@ import com.example.robin.angrynerds_wip.activities.note.note.data.NoteConstants;
 import com.example.robin.angrynerds_wip.activities.note.note.data.gui_oriented.PreviewImageCreator;
 import com.example.robin.angrynerds_wip.data.models.utils.Image;
 
+// Authored by Joscha Nassenstein
 public class ImageContainer extends GraphicsContainer {
 
     private ImageView mImageView;

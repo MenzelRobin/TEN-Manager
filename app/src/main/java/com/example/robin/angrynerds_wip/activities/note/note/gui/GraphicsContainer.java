@@ -3,7 +3,7 @@ package com.example.robin.angrynerds_wip.activities.note.note.gui;
 import android.app.Activity;
 import android.widget.LinearLayout;
 
-
+// Authored by Joscha Nassenstein
 public class GraphicsContainer {
 
     protected Activity mActivity;

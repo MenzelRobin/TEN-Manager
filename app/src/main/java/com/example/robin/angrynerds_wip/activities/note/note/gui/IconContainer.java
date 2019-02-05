@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import com.example.robin.angrynerds_wip.activities.note.note.NoteActivity;
 import com.example.robin.angrynerds_wip.activities.note.note.data.NoteConstants;
 
+// Authored by Joscha Nassenstein
 public class IconContainer extends GraphicsContainer {
 
     private Drawable mDrawable;

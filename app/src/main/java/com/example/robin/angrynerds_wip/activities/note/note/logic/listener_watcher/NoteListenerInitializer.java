@@ -3,6 +3,7 @@ package com.example.robin.angrynerds_wip.activities.note.note.logic.listener_wat
 import com.example.robin.angrynerds_wip.activities.note.note.gui.NoteGui;
 import com.example.robin.angrynerds_wip.activities.note.note.logic.NoteApplicationLogic;
 
+// Authored by Joscha Nassenstein
 public class NoteListenerInitializer {
 
     private NoteApplicationLogic mNoteApplicationLogic;

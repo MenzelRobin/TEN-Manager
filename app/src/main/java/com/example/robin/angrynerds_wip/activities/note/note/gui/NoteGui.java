@@ -22,6 +22,7 @@ import com.example.robin.angrynerds_wip.data.models.utils.Image;
 
 import java.util.ArrayList;
 
+// Authored by Joscha Nassenstein
 public class NoteGui {
 
     private RelativeLayout mBackground;

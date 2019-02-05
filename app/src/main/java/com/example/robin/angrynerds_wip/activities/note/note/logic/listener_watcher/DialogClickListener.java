@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 
 import com.example.robin.angrynerds_wip.activities.note.note.logic.NoteImageImportLogic;
 
+// Authored by Joscha Nassenstein
 public class DialogClickListener implements DialogInterface.OnClickListener{
 
     private NoteImageImportLogic mImageImport;

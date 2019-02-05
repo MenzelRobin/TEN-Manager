@@ -13,6 +13,7 @@ import com.example.robin.angrynerds_wip.activities.note.note.logic.NoteApplicati
 import com.example.robin.angrynerds_wip.activities.note.note.logic.listener_watcher.ImageOverlayListener;
 import com.example.robin.angrynerds_wip.activities.note.note.logic.listener_watcher.MotionListener;
 
+// Authored by Joscha Nassenstein
 public class ImageOverlay {
 
     private Bitmap mImage;

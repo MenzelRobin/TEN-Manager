@@ -6,6 +6,7 @@ import android.view.View;
 import com.example.robin.angrynerds_wip.activities.note.note.data.NoteConstants;
 import com.example.robin.angrynerds_wip.activities.note.note.logic.NoteApplicationLogic;
 
+// Authored by Joscha Nassenstein
 public class MotionListener implements View.OnTouchListener {
 
     private NoteApplicationLogic mNoteApplicationLogic;

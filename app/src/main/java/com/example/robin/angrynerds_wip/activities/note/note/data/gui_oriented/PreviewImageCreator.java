@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.example.robin.angrynerds_wip.activities.note.note.data.NoteConstants;
 
+// Authored by Joscha Nassenstein
 public class PreviewImageCreator {
 
     public PreviewImageCreator(){}
