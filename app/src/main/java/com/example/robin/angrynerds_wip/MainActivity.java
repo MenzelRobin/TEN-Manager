@@ -14,7 +14,7 @@ import com.example.robin.angrynerds_wip.data.repository.DatabaseRepository;
 import com.example.robin.angrynerds_wip.data.repository.DataContextManager;
 import com.example.robin.angrynerds_wip.data.repository.sub_repositories.read.GetAllTensQuery;
 import com.example.robin.angrynerds_wip.data.services.Delete;
-import com.example.robin.angrynerds_wip.overview.overviewActivity.OverviewInit;
+import com.example.robin.angrynerds_wip.activities.overview.overviewActivity.OverviewInit;
 
 public class MainActivity extends AppCompatActivity {
 

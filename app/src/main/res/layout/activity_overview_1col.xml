@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
+<!-- Fabia Schmid -->
 <RelativeLayout
-    tools:context="overview.overviewActivity.OverviewInit"
+    tools:context=".activities.overview.overviewActivity.OverviewInit"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -20,7 +20,7 @@
     <ScrollView
         android:id="@+id/id_overview_scrollView_center"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_below="@id/id_overview_relativeLayout_header"
         android:layout_above="@id/id_overview_linearLayout_footer"
         android:layout_marginTop="0dp"
