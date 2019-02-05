@@ -28,8 +28,7 @@ public class ShareModule {
     {
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
         shareIntent.setType("text/plain");
-        String shareText = pTodo.getTitle() + "\n\n" + pTodo.getNote() + "\n\n" + pStartDate + "\n bis " + pEndDate + "\n";
-
+        String shareText = pTodo.getTitle() + "\n\n" + pTodo.getNote() + "\n\n" + pStartDate + "\nbis " + pEndDate + "\n\n";
 
         String tasks = (int)(pTodo.getProgress() * 100) + "% erledigt:";
         for (int i = 0; i < pTodo.getTasks().size() - 1; i++)

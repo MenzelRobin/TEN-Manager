@@ -114,6 +114,7 @@ public class TodoApplicationLogic {
     public void receiveDate(Date date) {
         //mGui.setDate(datePicker.getDayOfMonth() + "." + (datePicker.getMonth() + 1) + "." + datePicker.getYear(), mActiveDatePickerButton);
         mGui.setDate(formatDate(date), mActiveDatePickerButton);
+        UpdateTodo();
     }
     //Author: Florian Rath
     public String formatDate(Date date){
@@ -279,7 +280,7 @@ public class TodoApplicationLogic {
         }
 
         todo.getTasks().remove(todo.getTasks().size() - 1);
-        Update.saveTEN(todo);
+        mData.updateTodo();
         todo.getTasks().add(new Task());
     }
 
