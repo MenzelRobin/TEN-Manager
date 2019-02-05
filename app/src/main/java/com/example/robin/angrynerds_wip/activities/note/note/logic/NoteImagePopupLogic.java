@@ -34,8 +34,8 @@ public class NoteImagePopupLogic {
     //Called when configuration changes and ImageOverlay is displayed
     public void changeConfiguration(Configuration pConfiguration){
         float dpRatio = this.mNoteApplicationLogic
-                .getNoteData().
-                        getActivity()
+                .getNoteData()
+                .getActivity()
                 .getApplicationContext()
                 .getResources()
                 .getDisplayMetrics()
