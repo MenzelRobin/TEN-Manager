@@ -4,6 +4,7 @@ import android.view.View;
 
 import com.example.robin.angrynerds_wip.R;
 
+// Authored by Joscha Nassenstein
 class ClickListener implements View.OnClickListener  {
 
     private ApplicationLogic mApplicationLogic;

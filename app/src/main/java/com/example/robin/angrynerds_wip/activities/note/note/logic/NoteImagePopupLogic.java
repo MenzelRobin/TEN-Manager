@@ -9,6 +9,7 @@ import android.view.Window;
 import com.example.robin.angrynerds_wip.activities.note.note.gui.ImageOverlay;
 import com.example.robin.angrynerds_wip.activities.note.note.logic.listener_watcher.ImageOverlayListener;
 
+// Authored by Jan Beilfuss and Joscha Nassenstein
 public class NoteImagePopupLogic {
 
     NoteApplicationLogic mNoteApplicationLogic;
@@ -20,6 +21,7 @@ public class NoteImagePopupLogic {
         this.mImageOverlayListener = new ImageOverlayListener(pNoteApplicationLogic);
     }
 
+    // Authored by Joscha Nassenstein
     public void openImagePopup(Bitmap pBitmap, int pId) {
         if (mNoteApplicationLogic.getNoteData().getActivity().isActive()) {
             View displayMetrics = mNoteApplicationLogic.getNoteData().getActivity().getWindow().findViewById(Window.ID_ANDROID_CONTENT);
@@ -28,6 +30,7 @@ public class NoteImagePopupLogic {
         }
     }
 
+    // Authored by Jan Beilfuss
     //Called when configuration changes and ImageOverlay is displayed
     public void changeConfiguration(Configuration pConfiguration){
         float dpRatio = this.mNoteApplicationLogic

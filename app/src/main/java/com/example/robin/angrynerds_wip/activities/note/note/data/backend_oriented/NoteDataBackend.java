@@ -12,6 +12,7 @@ import com.example.robin.angrynerds_wip.data.services.Update;
 
 import java.util.ArrayList;
 
+// Authored by Jan Beilfuss
 public class NoteDataBackend {
     private ArrayList<Image> mImagesToBeDeleted;
     private NoteData mNoteData;

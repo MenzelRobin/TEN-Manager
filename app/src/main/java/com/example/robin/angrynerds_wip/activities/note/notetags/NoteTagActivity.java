@@ -14,6 +14,7 @@ import com.example.robin.angrynerds_wip.data.repository.DataContextManager;
 
 import java.util.ArrayList;
 
+// Authored by Joscha Nassenstein
 public class NoteTagActivity extends AppCompatActivity {
 
     private Gui mGui;

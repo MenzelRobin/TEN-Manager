@@ -6,6 +6,7 @@ import com.example.robin.angrynerds_wip.activities.note.note.data.backend_orient
 import com.example.robin.angrynerds_wip.activities.note.note.data.backend_oriented.async_tasks.PriorityOriginalImageLoader;
 import com.example.robin.angrynerds_wip.data.models.utils.Image;
 
+// Authored by Jan Beilfuss
 public class TaskManager {
 
     private NoteDataBackend mNoteDataBackend;

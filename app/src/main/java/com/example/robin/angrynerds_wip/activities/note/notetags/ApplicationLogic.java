@@ -10,7 +10,7 @@ import com.example.robin.angrynerds_wip.R;
 
 import java.util.ArrayList;
 
-
+// Authored by Joscha Nassenstein
 class ApplicationLogic {
 
     private int mColor;

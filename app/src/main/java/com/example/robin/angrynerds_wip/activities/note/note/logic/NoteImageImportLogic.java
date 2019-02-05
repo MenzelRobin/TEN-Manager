@@ -18,6 +18,7 @@ import com.example.robin.angrynerds_wip.data.services.ImageService;
 import java.io.File;
 import java.io.IOException;
 
+// Authored by Joscha Nassenstein
 public class NoteImageImportLogic {
 
     private NoteActivity mActivity;
