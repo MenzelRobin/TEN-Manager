@@ -7,6 +7,10 @@ import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.activities.event.logic.EventApplicationLogic;
 
 public class EventClickListener implements View.OnClickListener {
+    /* Robin Menzel
+    Handles Clicks on the Activityelements. (Doesnt include the options menu)
+     */
+
 
     EventApplicationLogic mEventApplicationLogic;
 

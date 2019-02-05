@@ -12,6 +12,9 @@ import com.example.robin.angrynerds_wip.activities.event.data.EventData;
 import java.util.Date;
 
 public class AlarmManagerHelper {
+    /* Robin Menzel
+    Schedules Remidner Push Notifications.
+    */
     public AlarmManagerHelper() {
     }
 

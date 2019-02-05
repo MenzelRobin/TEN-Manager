@@ -14,6 +14,9 @@ import com.example.robin.angrynerds_wip.activities.event.data.Reminder;
 import java.util.Date;
 
 public class EventGui {
+    /* Robin Menzel
+    Manages the GUI for Event Gui.
+    */
 
     private RelativeLayout mRelativeLayoutMain;
     private EditText mEditTextTitle, mEditTextDate, mEditTextTime,mEditTextLocation, mEditTextRecurringType;

@@ -6,13 +6,16 @@ import android.app.DialogFragment;
 import android.os.Bundle;
 import android.widget.DatePicker;
 
+import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.activities.event.EventActivity;
 
 import java.util.Calendar;
 import java.util.Date;
 
-public class DatePickerFragment extends DialogFragment
-        implements DatePickerDialog.OnDateSetListener {
+public class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
+    /* Robin Menzel
+    Contains the DatePicker Fragment to choose the Date.
+    */
     public Date mTime;
 
     @Override
@@ -32,7 +35,7 @@ public class DatePickerFragment extends DialogFragment
         dp.setCancelable(true);
 
         // Create a new instance of DatePickerDialog and return it
-        return new DatePickerDialog(getActivity(), this, year, month, day);
+        return new DatePickerDialog(getActivity(), R.style.Theme_AppCompat_Light_Dialog, this, year, month, day);
     }
 
     public void onDateSet(DatePicker view, int year, int month, int day) {

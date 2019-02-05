@@ -5,7 +5,10 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">#DD2C00</item>
+        <item name="colorAccent">#FFFFFF</item>
+    </style>
+
+    <style name="DialogPicker" parent="Theme.AppCompat.Light.Dialog">
     </style>
 
     <style name="CustomDialog" parent="android:Theme.Dialog">

@@ -13,6 +13,8 @@ import com.example.robin.angrynerds_wip.data.repository.DataContextManager;
 
 
 public class EventActivity extends AppCompatActivity {
+    /*Robin Menzel
+    */
 
     private EventGui mGui;
     private EventApplicationLogic mEventApplicationLogic;

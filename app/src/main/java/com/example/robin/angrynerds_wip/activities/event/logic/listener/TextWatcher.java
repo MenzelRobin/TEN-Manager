@@ -6,6 +6,10 @@ import android.view.View;
 import com.example.robin.angrynerds_wip.activities.event.logic.EventApplicationLogic;
 
 public class TextWatcher implements android.text.TextWatcher {
+    /* Robin Menzel
+     handels changes on any EditText Object
+     */
+
     private EventApplicationLogic mEventApplicationLogic;
     private View mView;
 

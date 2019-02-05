@@ -6,6 +6,9 @@ import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.data.models.utils.RecurringType;
 
 public class RecurringTypeHelper {
+    /* Robin Menzel
+    Helps to give Labels to appropriate recurring types.
+    */
 
     private String[] mRecurringTypeStrings;
 
