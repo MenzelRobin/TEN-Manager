@@ -11,6 +11,7 @@ import com.example.robin.angrynerds_wip.data.models.tens.Event;
 import com.example.robin.angrynerds_wip.data.models.tens.Note;
 import com.example.robin.angrynerds_wip.data.models.tens.TEN;
 import com.example.robin.angrynerds_wip.data.models.tens.Todo;
+import com.example.robin.angrynerds_wip.data.services.ImageService;
 import com.example.robin.angrynerds_wip.data.services.Update;
 
 import java.lang.reflect.Array;
@@ -42,11 +43,13 @@ public class MockData {
         koalaTags.add("Australien");
         koalaNote.setTags(koalaTags);
 
-        koalaNote.addImage(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_koala1));
         Update.saveTEN(koalaNote);
+        koalaNote.addImage(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_koala1));
+        ImageService.saveImage(koalaNote.getPictures().get(0));
         koalaNote.getPictures().get(0).setBitmap(null);
-        koalaNote.addImage(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_koala2));
 
+        koalaNote.addImage(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_koala2));
+        ImageService.saveImage(koalaNote.getPictures().get(1));
         Update.saveTEN(koalaNote);
         koalaNote = null;
 
@@ -69,10 +72,15 @@ public class MockData {
         koalaTags.add("Meer");
         delfinNote.setTags(delfinTags);
 
-        delfinNote.addImage(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_delfin1));
+
         Update.saveTEN(delfinNote);
+        delfinNote.addImage(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_delfin1));
+        ImageService.saveImage(delfinNote.getPictures().get(0));
+
         delfinNote.getPictures().get(0).setBitmap(null);
+
         delfinNote.addImage(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_delfin2));
+        ImageService.saveImage(delfinNote.getPictures().get(1));
 
 
         Update.saveTEN(delfinNote);
@@ -162,15 +170,18 @@ public class MockData {
         kaenguruTags.add("Australien");
         kaenguruNote.setTags(kaenguruTags);
 
-        kaenguruNote.addImage(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_kaenguru1));
         Update.saveTEN(kaenguruNote);
+        kaenguruNote.addImage(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_kaenguru1));
+        ImageService.saveImage(kaenguruNote.getPictures().get(0));
         kaenguruNote.getPictures().get(0).setBitmap(null);
+
         kaenguruNote.addImage(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_kaenguru2));
+        ImageService.saveImage(kaenguruNote.getPictures().get(1));
+        kaenguruNote.getPictures().get(1).setBitmap(null);
 
         Update.saveTEN(kaenguruNote);
         kaenguruNote=null;
 
-        Log.i("mock", "before Melbourne");
         Note melbourneNote = new Note("Melbourne", "Melbourne ist die an der " +
                 "Südostküste Australiens gelegene Hauptstadt des australischen Bundesstaats " +
                 "Victoria. Im Stadtzentrum liegt der moderne Federation-Square-Komplex mit Plätzen," +
@@ -186,26 +197,27 @@ public class MockData {
         melbourneNote.setTags(melbourneTags);
 
 
-
+        Update.saveTEN(melbourneNote);
         try{
             Thread.sleep(2000);
         } catch(Exception e){}
         melbourneNote.addImage(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_melbourne1));
-        Update.saveTEN(melbourneNote);
+        ImageService.saveImage(melbourneNote.getPictures().get(0));
         for (Image image: melbourneNote.getPictures()) image.setBitmap(null);
         try{
             Thread.sleep(2000);
         } catch(Exception e){}
         melbourneNote.addImage(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_melbourne2));
-        Update.saveTEN(melbourneNote);
+        ImageService.saveImage(melbourneNote.getPictures().get(1));
         for (Image image: melbourneNote.getPictures()) image.setBitmap(null);
         try{
             Thread.sleep(2000);
         } catch(Exception e){}
         melbourneNote.addImage(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_melbourne3));
-        Update.saveTEN(melbourneNote);
+        ImageService.saveImage(melbourneNote.getPictures().get(2));
         for (Image image: melbourneNote.getPictures()) image.setBitmap(null);
-        Log.i("mock", "afterMelbourne");
+
+        Update.saveTEN(melbourneNote);
         melbourneNote=null;
 
         Note bambusNote = new Note("Bambus", "Bambus ist eine der zwölf" +
@@ -219,8 +231,9 @@ public class MockData {
         bambusTags.add("Australien");
         bambusNote.setTags(bambusTags);
 
+        Update.saveTEN(bambusNote);
         bambusNote.addImage(BitmapFactory.decodeResource(activity.getResources(), R.drawable.sample_image_bambus1));
-
+        ImageService.saveImage(bambusNote.getPictures().get(0));
         Update.saveTEN(bambusNote);
         bambusNote=null;
 
