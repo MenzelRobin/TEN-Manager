@@ -42,7 +42,6 @@ public class EventData {
     public void updateEvent() {
         Update.saveTEN(mEvent);
     }
-
     public void setDate(Date date) {
         mEvent.setTime(date);
         updateEvent();

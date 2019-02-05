@@ -54,7 +54,7 @@ public class EventApplicationLogic {
         mActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mActivity.getSupportActionBar().setDisplayShowHomeEnabled(true);
         mActivity.getSupportActionBar().setDisplayShowTitleEnabled(false);
-        if (mData.getEvent().getTitle() == null) {
+        if (mData.getEvent().getTitle() == "") {
             mGui.getEditTextTitle().setFocusableInTouchMode(true);
             mGui.getEditTextTitle().requestFocus();
         }
