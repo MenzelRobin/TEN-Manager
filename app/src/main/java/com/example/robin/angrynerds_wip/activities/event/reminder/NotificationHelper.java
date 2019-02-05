@@ -11,6 +11,9 @@ import com.example.robin.angrynerds_wip.R;
 
 
 public class NotificationHelper extends ContextWrapper {
+    /* Robin Menzel
+    Helps to manage Notifications.
+    */
     public static final String CHANNEL_1_ID = "channel1";
     public static final String CHANNEL_2_ID = "channel2";
     private NotificationManager mNotificationManager;

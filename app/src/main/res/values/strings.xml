@@ -9,6 +9,7 @@
     <string name="sample_todo_menu_toolbarDelete">Todo löschen</string>
 
     <!-- Event Layout Strings -->
+    <!-- Robin Menzel -->
     <string name="sample_event_title">Titel eingeben</string>
     <string name="sample_event_address">Ort hinzufügen</string>
     <string name="sample_event_addreminder">Benachrichtigung hinzufügen</string>

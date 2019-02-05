@@ -12,8 +12,10 @@ import com.example.robin.angrynerds_wip.activities.event.EventActivity;
 import java.util.Calendar;
 import java.util.Date;
 
-public class TimePickerFragment extends DialogFragment
-        implements TimePickerDialog.OnTimeSetListener {
+public class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
+    /* Robin Menzel
+    Contains the TimePicker Fragment to choose the hour and minutes.
+    */
     private Date mTime;
 
     @Override

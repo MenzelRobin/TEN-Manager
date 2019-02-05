@@ -26,6 +26,10 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class EventApplicationLogic {
+    /* Robin Menzel
+    logic of the activity.
+    */
+
 
     private EventGui mGui;
     private AppCompatActivity mActivity;

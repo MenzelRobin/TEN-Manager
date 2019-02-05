@@ -11,8 +11,10 @@ import com.example.robin.angrynerds_wip.activities.event.EventActivity;
 import java.util.Calendar;
 import java.util.Date;
 
-public class DatePickerFragment extends DialogFragment
-        implements DatePickerDialog.OnDateSetListener {
+public class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
+    /* Robin Menzel
+    Contains the DatePicker Fragment to choose the Date.
+    */
     public Date mTime;
 
     @Override

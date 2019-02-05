@@ -21,6 +21,9 @@ import com.example.robin.angrynerds_wip.data.services.Update;
 import com.example.robin.angrynerds_wip.modules.share.ShareModule;
 
 public class EventData {
+    /* Robin Menzel
+    Contains the data retention for Events.
+    */
     private EventActivity mActivity;
     private Event mEvent;
 

@@ -9,6 +9,9 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class Reminder {
+    /* Robin Menzel
+    Helps to give Labels to appropriate reminder.
+    */
     private ArrayList<String> mReminderLable;
     private ArrayList<String> mReminderLableStatic;
     private ArrayList<Date> mReminder;
