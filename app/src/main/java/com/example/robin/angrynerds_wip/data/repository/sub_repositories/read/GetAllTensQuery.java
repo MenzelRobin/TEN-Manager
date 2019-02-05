@@ -25,6 +25,7 @@ public class GetAllTensQuery {
 
     public GetAllTensQuery() { this.mQueriedTenConverter = new QueriedTenConverter(); }
 
+    //Creates Query for all Saved TENs and returns converted java objects
     public ArrayList<TEN> getAllTENs() {
         Query query = QueryBuilder.select(
                 SelectResult.all(),
