@@ -12,6 +12,7 @@ import com.example.robin.angrynerds_wip.data.services.Create;
 import com.example.robin.angrynerds_wip.data.services.Delete;
 import com.example.robin.angrynerds_wip.data.services.Read;
 import com.example.robin.angrynerds_wip.data.services.Update;
+import com.example.robin.angrynerds_wip.modules.share.ShareModule;
 
 // Author: Sertan Soner Cetin
 public class Data {
@@ -42,6 +43,11 @@ public class Data {
 
     public void updateTodo() {
         Update.saveTEN(mTodo);
+    }
+
+    public void shareTodo()
+    {
+        ShareModule.shareTodo(mActivity, mTodo);
     }
 
     public void setDate(Date date) {
