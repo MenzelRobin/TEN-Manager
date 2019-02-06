@@ -37,6 +37,7 @@ public class ClickListener implements View.OnClickListener  {
                 break;
             case R.id.id_todo_addButton:
                 mTodoApplicationLogic.addButtonClicked();
+                break;
             case -1:
                 mTodoApplicationLogic.returnToOverview();
                 break;
