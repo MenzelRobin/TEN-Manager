@@ -1,5 +1,6 @@
 package com.example.robin.angrynerds_wip.activities.todo;
 
+import android.app.Activity;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.support.v7.widget.Toolbar;
+import android.widget.Toast;
 
 import com.example.robin.angrynerds_wip.R;
 
@@ -136,6 +138,10 @@ public class Gui extends AppCompatActivity{
         mSeperateView4.setAlpha((float) 0.5);
         //mSeperateView1.setBackground(new ColorDrawable(darkColor));
         //mSeperateView1.setAlpha((float) 0.5);
+    }
+
+    public void displayToast(Activity pActivity, String pText) {
+        Toast.makeText(pActivity, pText, Toast.LENGTH_SHORT).show();
     }
 
     public void setFocusableInTouchmode(boolean value)
