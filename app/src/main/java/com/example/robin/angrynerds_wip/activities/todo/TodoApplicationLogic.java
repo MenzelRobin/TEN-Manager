@@ -225,9 +225,9 @@ public class TodoApplicationLogic {
         } //R.id.id_event_editText_title
         else {
             mTasks.get(mView.getId()).setDescription(s);
-            if (mView.getId() == mTasks.size() - 1) {
+            /*if (mView.getId() == mTasks.size() - 1) {
                 addInputTaskField();
-            }
+            }*/
             updateProgress();
         }
     }
