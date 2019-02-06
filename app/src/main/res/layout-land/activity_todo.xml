@@ -175,8 +175,7 @@
                 android:id="@+id/id_todo_relativeLayout_tasks"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_above="@+id/edit_todo_progressText"
-                android:layout_margin="16dp"
+                android:layout_marginTop="10dp"
                 android:layout_weight="0.3">
 
                 <ListView
@@ -185,8 +184,28 @@
                     android:layout_height="wrap_content"
                     android:background="@color/transparent"
                     android:divider="@null"
-                    android:dividerHeight="0dp"></ListView>
+                    android:dividerHeight="0dp"
+                    android:layout_above="@id/edit_todo_view_seperate5"/>
+
+                <View
+                    android:id="@+id/edit_todo_view_seperate5"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_above="@id/id_todo_addButton"
+                    android:background="@color/colorPrimaryDark" />
+
+                <Button
+                    android:id="@+id/id_todo_addButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/todo_addButton"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="@color/TextWhite"
+                    android:background="@color/note_transparent"/>
+
             </RelativeLayout>
+
 
         </LinearLayout>
 
