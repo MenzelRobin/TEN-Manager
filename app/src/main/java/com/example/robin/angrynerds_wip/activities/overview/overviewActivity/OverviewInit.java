@@ -7,7 +7,7 @@ import android.os.Bundle;
 import com.example.robin.angrynerds_wip.data.repository.DataContextManager;
 
 public class OverviewInit extends AppCompatActivity {
-    /* Yannick-Luca Rüttgers
+    /* Yannick-Luca Ruettgers
     Initiates all necessary Activitycomponents
      */
 
@@ -19,8 +19,11 @@ public class OverviewInit extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        DataContextManager.initDatabase(getApplicationContext());
+        initAll();
+    }
 
+    public void initAll(){
+        DataContextManager.initDatabase(getApplicationContext());
         initData();
         initGui();
         initController();
@@ -41,9 +44,7 @@ public class OverviewInit extends AppCompatActivity {
         if(mController != null) {
             mController.onResume();
         } else {
-            initData();
-            initGui();
-            initController();
+            initAll();
         }
     }
 

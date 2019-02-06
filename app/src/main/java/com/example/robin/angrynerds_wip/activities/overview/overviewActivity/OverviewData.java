@@ -6,7 +6,7 @@ import com.example.robin.angrynerds_wip.data.services.Read;
 import java.util.ArrayList;
 
 public class OverviewData {
-    /* Yannick-Luca Rüttgers
+    /* Yannick-Luca Ruettgers
     Manages Data for OverviewActivity
      */
 

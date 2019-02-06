@@ -5,7 +5,7 @@ import android.os.Bundle;
 import com.example.robin.angrynerds_wip.data.models.utils.BundleKeys;
 
 public abstract class OverviewFragmentData {
-    /* Yannick-Luca Rüttgers
+    /* Yannick-Luca Ruettgers
     Superclass for [Fragment]Data Classes. Mirrors the TEN Class.
     */
     String mID;

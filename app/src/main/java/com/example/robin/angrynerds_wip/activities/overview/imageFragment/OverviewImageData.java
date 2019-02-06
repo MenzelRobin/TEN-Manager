@@ -10,7 +10,7 @@ import com.example.robin.angrynerds_wip.activities.overview.superClasses.Overvie
 import static com.example.robin.angrynerds_wip.data.services.ImageService.getPreviewImage;
 
 public class OverviewImageData extends OverviewFragmentData {
-    /* Yannick-Luca Rüttgers
+    /* Yannick-Luca Ruettgers
     Contains the Data for the Image Fragment. Loads the Previewimage.
      */
 

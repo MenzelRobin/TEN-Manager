@@ -6,7 +6,7 @@ import android.view.View;
 
 
 public abstract class OverviewFragmentInit extends Fragment {
-    /* Yannick-Luca Rüttgers
+    /* Yannick-Luca Ruettgers
     Superclass for [Fragment]Init Classes
     */
 

@@ -12,7 +12,7 @@ import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.activities.overview.superClasses.OverviewFragmentGui;
 
 public class OverviewTodoGui extends OverviewFragmentGui {
-    /* Yannick-Luca Rüttgers
+    /* Yannick-Luca Ruettgers
     Manages the GUI for TodoFragment
     */
 

@@ -9,7 +9,7 @@ import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.activities.overview.superClasses.OverviewFragmentInit;
 
 public class OverviewImageInit extends OverviewFragmentInit {
-    /* Yannick-Luca Rüttgers
+    /* Yannick-Luca Ruettgers
     Initiates all necessary components for the Image Fragment
      */
 

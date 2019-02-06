@@ -6,7 +6,7 @@ import com.example.robin.angrynerds_wip.data.models.utils.BundleKeys;
 import com.example.robin.angrynerds_wip.activities.overview.superClasses.OverviewFragmentData;
 
 public class OverviewNoteData extends OverviewFragmentData {
-    /* Yannick-Luca Rüttgers
+    /* Yannick-Luca Ruettgers
     Contains the Data for the Note Fragment
      */
 

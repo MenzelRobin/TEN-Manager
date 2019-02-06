@@ -9,7 +9,7 @@ import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.activities.overview.superClasses.OverviewFragmentInit;
 
 public class OverviewTodoInit extends OverviewFragmentInit {
-    /* Yannick-Luca Rüttgers
+    /* Yannick-Luca Ruettgers
     Initiates all necessary Components for TodoFragment
     */
     public OverviewTodoInit(){

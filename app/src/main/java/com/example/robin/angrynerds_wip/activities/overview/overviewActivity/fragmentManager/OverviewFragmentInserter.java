@@ -7,7 +7,7 @@ import android.support.v4.app.FragmentTransaction;
 import java.util.ArrayList;
 
 public class OverviewFragmentInserter {
-    /* Yannick-Luca Rüttgers
+    /* Yannick-Luca Ruettgers
     Inserts Fragments into the GUI using a FragmentManager
      */
 

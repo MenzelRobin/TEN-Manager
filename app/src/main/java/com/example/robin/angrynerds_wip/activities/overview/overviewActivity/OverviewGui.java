@@ -11,7 +11,7 @@ import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.data.models.tens.*;
 
 public class OverviewGui {
-    /* Yannick-Luca Rüttgers
+    /* Yannick-Luca Ruettgers
     Manages the GUI for OverviewActivity
      */
 

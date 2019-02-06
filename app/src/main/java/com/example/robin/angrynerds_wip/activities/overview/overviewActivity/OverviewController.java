@@ -3,7 +3,7 @@ package com.example.robin.angrynerds_wip.activities.overview.overviewActivity;
 import com.example.robin.angrynerds_wip.activities.overview.overviewActivity.fragmentManager.*;
 
 public class OverviewController {
-    /* Yannick-Luca Rüttgers
+    /* Yannick-Luca Ruettgers
     Logic of the Activity, Manages Helperclasses
      */
 

@@ -6,7 +6,7 @@ import android.view.View;
 import com.example.robin.angrynerds_wip.activities.overview.overviewActivity.OverviewInit;
 
 public abstract class OverviewFragmentController {
-    /* Yannick-Luca Rüttgers
+    /* Yannick-Luca Ruettgers
     Superclass for [Fragment]Controller Classes. Mainly responsible for delete Sate
     */
 

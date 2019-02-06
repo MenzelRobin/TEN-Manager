@@ -11,7 +11,7 @@ import com.example.robin.angrynerds_wip.activities.overview.header.OverviewHeade
 import com.example.robin.angrynerds_wip.activities.overview.overviewActivity.OverviewInit;
 
 public class OverviewHeaderSearchFragment  extends Fragment {
-    /* Yannick-Luca Rüttgers
+    /* Yannick-Luca Ruettgers
     Headerfragment for the Searchprocess
      */
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

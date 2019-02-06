@@ -7,7 +7,7 @@ import com.example.robin.angrynerds_wip.activities.note.note.NoteActivity;
 import com.example.robin.angrynerds_wip.data.models.tens.*;
 
 public class OverviewNewClickHandler {
-    /* Yannick-Luca Rüttgers
+    /* Yannick-Luca Ruettgers
     Handles the actions for new TENs.
      */
     OverviewInit mActivity;

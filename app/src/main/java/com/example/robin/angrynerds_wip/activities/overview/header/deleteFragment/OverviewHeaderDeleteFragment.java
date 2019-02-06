@@ -11,7 +11,7 @@ import com.example.robin.angrynerds_wip.activities.overview.header.OverviewHeade
 import com.example.robin.angrynerds_wip.activities.overview.overviewActivity.OverviewInit;
 
 public class OverviewHeaderDeleteFragment extends Fragment {
-    /* Yannick-Luca Rüttgers
+    /* Yannick-Luca Ruettgers
     Header Fragment for the deletionprocess
      */
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

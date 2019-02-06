@@ -6,7 +6,7 @@ import com.example.robin.angrynerds_wip.data.models.utils.BundleKeys;
 import com.example.robin.angrynerds_wip.activities.overview.superClasses.OverviewFragmentData;
 
 public class OverviewTodoData extends OverviewFragmentData {
-    /* Yannick-Luca Rüttgers
+    /* Yannick-Luca Ruettgers
     Manages Data for the Todofragment
     */
     String mNote;

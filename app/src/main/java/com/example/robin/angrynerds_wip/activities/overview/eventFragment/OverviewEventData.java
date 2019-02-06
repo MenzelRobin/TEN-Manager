@@ -9,7 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class OverviewEventData extends OverviewFragmentData {
-    /* Yannick-Luca Rüttgers
+    /* Yannick-Luca Ruettgers
     Contains the Data for the Eventfragment. Modeled after Event-Object. Splits up Time into different formats
      */
 

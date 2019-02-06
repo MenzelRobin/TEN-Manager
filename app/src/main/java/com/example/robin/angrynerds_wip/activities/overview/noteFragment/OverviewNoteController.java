@@ -9,7 +9,7 @@ import com.example.robin.angrynerds_wip.activities.overview.superClasses.Overvie
 import com.example.robin.angrynerds_wip.activities.overview.superClasses.OverviewFragmentInit;
 
 public class OverviewNoteController extends OverviewFragmentController {
-    /* Yannick-Luca Rüttgers
+    /* Yannick-Luca Ruettgers
     Contains the Applicationlogic for the Note Fragment
      */
 

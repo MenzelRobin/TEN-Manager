@@ -15,7 +15,7 @@ import com.example.robin.angrynerds_wip.activities.overview.todoFragment.Overvie
 import java.util.ArrayList;
 
 public class OverviewFragmentFactory {
-    /* Yannick-Luca Rüttgers
+    /* Yannick-Luca Ruettgers
     Creates different Type of Fragments for later use.
      */
 
@@ -46,7 +46,6 @@ public class OverviewFragmentFactory {
                 fragments.add(fragment);
             }
             if(ten.getClass() == Note.class) {
-                Log.d("LOGTAG",((Note)ten).getPictures().size() + "");
                 if(((Note)ten).getPictures().isEmpty()) {
                     OverviewNoteInit fragment = new OverviewNoteInit();
                     fragment.setArguments(ten.getBundle());

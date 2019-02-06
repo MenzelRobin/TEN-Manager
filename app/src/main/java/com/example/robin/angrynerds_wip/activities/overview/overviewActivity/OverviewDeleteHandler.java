@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OverviewDeleteHandler {
-    /* Yannick-Luca Rüttgers
+    /* Yannick-Luca Ruettgers
     Handles the Deletionprocess
      */
 

@@ -6,7 +6,7 @@ import com.example.robin.angrynerds_wip.activities.overview.superClasses.*;
 import com.example.robin.angrynerds_wip.activities.event.EventActivity;
 
 public class OverviewEventController extends OverviewFragmentController {
-    /* Yannick-Luca Rüttgers
+    /* Yannick-Luca Ruettgers
     Contains the Applicationlogic for the Event Fragment
      */
 
