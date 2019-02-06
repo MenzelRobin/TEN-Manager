@@ -147,6 +147,7 @@
         >
     </ListView>
     </RelativeLayout>
+
     <TextView
         android:id="@+id/edit_todo_progressText"
         android:layout_width="match_parent"
@@ -156,6 +157,24 @@
         android:textColorHint="@color/TextWhite"
         android:textAlignment="center"
         android:textSize="25dp"
-        android:layout_alignParentBottom="true"/>
+        android:layout_above="@id/edit_todo_view_seperate5"/>
+
+    <View
+        android:id="@+id/edit_todo_view_seperate5"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_above="@id/id_todo_addButton"
+        android:background="@color/colorPrimaryDark" />
+
+    <Button
+        android:id="@+id/id_todo_addButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/todo_addButton"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/TextWhite"
+        android:background="@color/note_transparent"
+        android:layout_margin="10dp"/>
 
 </RelativeLayout>

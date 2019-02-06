@@ -8,6 +8,7 @@
     <string name="sample_activity_todo_progressText">10%</string>
     <string name="sample_todo_menu_toolbarDelete">Todo löschen</string>
     <string name="sample_todo_menu_toolbarShare">Todo teilen</string>
+    <string name="todo_addButton">Aufgabe hinzufügen</string>
 
 
     <!-- Event Layout Strings -->
