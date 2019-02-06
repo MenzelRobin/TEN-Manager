@@ -181,7 +181,7 @@
                     android:layout_alignParentTop="true"
                     android:layout_above="@id/edit_todo_view_seperate4"
                     android:transcriptMode="alwaysScroll"
-                    android:stackFromBottom="true"/>
+                    />
 
                 <View
                     android:id="@+id/edit_todo_view_seperate4"
