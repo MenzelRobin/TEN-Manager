@@ -37,7 +37,7 @@ public class FileRepository {
     }
 
     //deletes single file at given path
-    public void deleteImageFromDirectories(String path) {
+    public void deleteImageFromDirectory(String path) {
         File file = new File(path);
         if(file.exists()) file.delete();
     }
