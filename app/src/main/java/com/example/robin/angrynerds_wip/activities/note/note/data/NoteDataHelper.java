@@ -14,8 +14,8 @@ public class NoteDataHelper {
 
     public boolean isSaveable() {
         Note note = mNoteData.getNote();
-        if(note.getTitle() == ""){
-            if (note.getDescription() == ""){
+        if(note.getTitle().equals("")){
+            if (note.getDescription().equals("")){
                 if(note.getPictures().size() == 0){
                     if (note.getTags().size() == 0){
                         Delete.deleteTEN(note.getID());

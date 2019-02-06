@@ -44,7 +44,7 @@ public class ImageService {
 
     public static void deleteImage(String path) {
         FileRepository fileRepository = new FileRepository();
-        fileRepository.deleteImageFromDirectories(path);
+        fileRepository.deleteImageFromDirectory(path);
     }
 
     public static File createImageFile(Activity pActivity) throws IOException {

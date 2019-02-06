@@ -58,7 +58,7 @@ public class WriteRepository {
             String json = pDocument.getString(RepositoryConstants.OBJECT_KEY);
             Note note = mTenJsonParser.stringToNote(json);
             for(Image image: note.getPictures()){
-                mFileRepository.deleteImageFromDirectories(image.getId());
+                mFileRepository.deleteImageFromDirectories(image);
             }
         }
     }
