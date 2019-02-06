@@ -24,10 +24,10 @@
         android:hint="@string/sample_activity_todo_title"
         android:textColorHint="#80FFFFFF"
         android:textColor="@color/TextWhite"
+        android:background="@color/transparent"
         android:lines="1"
         android:maxLines="1"
         android:scrollbars="horizontal"
-        android:textSize="16dp"
         android:layout_margin="16dp"
         android:layout_marginStart="72dp"/>
     <View
@@ -42,15 +42,15 @@
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:layout_below="@+id/edit_todo_title"
-        android:inputType="text"
+        android:inputType="textMultiLine"
+        android:background="@color/transparent"
         android:hint="@string/sample_activity_todo_description"
         android:textColorHint="#80FFFFFF"
         android:textColor="@color/TextWhite"
-        android:lines="10"
-        android:maxLines="10"
+        android:minLines="4"
+        android:gravity="top"
         android:scrollbars="vertical"
         android:layout_marginTop="5dp"
-        android:textSize="16dp"
         android:layout_margin="16dp"
         android:layout_marginStart="72dp"/>
     <View
