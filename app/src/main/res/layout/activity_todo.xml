@@ -137,6 +137,8 @@
         android:background="@color/transparent"
         android:divider="@null"
         android:dividerHeight="0dp"
+        android:transcriptMode="alwaysScroll"
+        android:stackFromBottom="true"
         >
     </ListView>
     </RelativeLayout>

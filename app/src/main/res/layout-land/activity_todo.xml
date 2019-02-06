@@ -178,7 +178,9 @@
                     android:background="@color/transparent"
                     android:divider="@null"
                     android:dividerHeight="0dp"
-                    android:layout_above="@id/edit_todo_view_seperate4"/>
+                    android:layout_above="@id/edit_todo_view_seperate4"
+                    android:transcriptMode="alwaysScroll"
+                    android:stackFromBottom="true"/>
 
                 <View
                     android:id="@+id/edit_todo_view_seperate4"

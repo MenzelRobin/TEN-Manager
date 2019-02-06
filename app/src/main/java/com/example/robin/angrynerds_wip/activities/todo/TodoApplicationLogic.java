@@ -206,12 +206,6 @@ public class TodoApplicationLogic {
     private void addInputTaskField() {
         mTasks.add(new Task());
         mTaskAdapter.notifyDataSetChanged();
-        mGui.getListView().post(new Runnable() {
-            @Override
-            public void run() {
-                mGui.getListView().setSelection(mTaskAdapter.getCount() - 1);
-            }
-        });
         updateProgress();
     }
 
