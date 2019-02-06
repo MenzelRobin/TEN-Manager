@@ -181,7 +181,7 @@
                     android:layout_above="@id/edit_todo_view_seperate4"/>
 
                 <View
-                    android:id="@+id/edit_todo_view_seperate5"
+                    android:id="@+id/edit_todo_view_seperate4"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_above="@id/id_todo_addButton"
