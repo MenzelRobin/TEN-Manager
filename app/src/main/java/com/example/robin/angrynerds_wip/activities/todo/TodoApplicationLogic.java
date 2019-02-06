@@ -105,7 +105,34 @@ public class TodoApplicationLogic {
     //to receive Date from DatePicker Fragment
     public void receiveDate(Date date) {
         //mGui.setDate(datePicker.getDayOfMonth() + "." + (datePicker.getMonth() + 1) + "." + datePicker.getYear(), mActiveDatePickerButton);
-        mGui.setDate(formatDate(date), mActiveDatePickerButton);
+        if(mActiveDatePickerButton.getId() == R.id.edit_todo_startDate){
+            try{
+                int compare = date.compareTo(new SimpleDateFormat("EEEE, dd. MMMM yyyy", Locale.GERMAN).parse(mGui.getmEndDate().getText().toString()));
+                if(compare > 0){
+                    mGui.displayToast(mActivity, "Das Startdatum kann nicht nach dem Enddatum liegen");
+                }else{
+                    mGui.setDate(formatDate(date), mActiveDatePickerButton);
+                }
+            }catch(java.text.ParseException e){
+                Log.e("ParseError", e.getMessage());
+            }
+
+        }
+        else if(mActiveDatePickerButton.getId() == R.id.edit_todo_endDate){
+            try{
+                int compare = date.compareTo(new SimpleDateFormat("EEEE, dd. MMMM yyyy", Locale.GERMAN).parse(mGui.getmStartDate().getText().toString()));
+                if(compare < 0){
+                    mGui.displayToast(mActivity, "Das Enddatum kann nicht vor dem Startdatum liegen");
+
+                }else{
+                    mGui.setDate(formatDate(date), mActiveDatePickerButton);
+                }
+            }catch(java.text.ParseException e){
+                Log.e("ParseError", e.getMessage());
+            }
+
+        }
+
         UpdateTodo();
     }
     //Author: Florian Rath
