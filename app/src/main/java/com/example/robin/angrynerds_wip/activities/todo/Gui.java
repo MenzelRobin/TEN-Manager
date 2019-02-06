@@ -36,6 +36,7 @@ public class Gui extends AppCompatActivity{
     private View mSeperateView2;
     private View mSeperateView3;
     private View mSeperateView4;
+    private View mSeperateView5;
 
 
     public Gui(Init activity) {
@@ -45,6 +46,7 @@ public class Gui extends AppCompatActivity{
         mSeperateView2 = activity.findViewById(R.id.edit_todo_view_seperate2);
         mSeperateView3 = activity.findViewById(R.id.edit_todo_view_seperate3);
         mSeperateView4 = activity.findViewById(R.id.edit_todo_view_seperate4);
+        mSeperateView5 = activity.findViewById(R.id.edit_todo_view_seperate5);
         mToolbar = activity.findViewById(R.id.id_todo_toolbar);
         mTitle = activity.findViewById(R.id.edit_todo_title);
         mText = activity.findViewById(R.id.edit_todo_text);
@@ -124,8 +126,14 @@ public class Gui extends AppCompatActivity{
         mToolbar.setBackground(new ColorDrawable(darkColor));
         mSeperateView1.setBackground(new ColorDrawable(darkColor));
         mSeperateView2.setBackground(new ColorDrawable(darkColor));
-        mSeperateView3.setBackground(new ColorDrawable(color));
+        mSeperateView3.setBackground(new ColorDrawable(darkColor));
         mSeperateView4.setBackground(new ColorDrawable(darkColor));
+        mSeperateView5.setBackground(new ColorDrawable(darkColor));
+        mSeperateView1.setAlpha((float) 0.5);
+        mSeperateView2.setAlpha((float) 0.5);
+        mSeperateView3.setAlpha((float) 0.5);
+        mSeperateView4.setAlpha((float) 0.5);
+        mSeperateView5.setAlpha((float) 0.5);
         //mSeperateView1.setBackground(new ColorDrawable(darkColor));
         //mSeperateView1.setAlpha((float) 0.5);
     }
