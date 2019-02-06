@@ -127,11 +127,9 @@
         android:id="@+id/id_todo_relativeLayout_tasks"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/id_todo_relativeLayout_endDate"
+        android:layout_below="@id/edit_todo_view_seperate3"
         android:layout_above="@+id/edit_todo_progressText"
-        android:layout_marginStart="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginEnd="10dp">
+        android:layout_margin="10dp">
     <ListView
         android:id="@+id/edit_todo_tasks"
         android:layout_width="match_parent"
