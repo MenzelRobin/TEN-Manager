@@ -36,6 +36,7 @@ public class Gui extends AppCompatActivity{
     private View mSeperateView2;
     private View mSeperateView3;
     private View mSeperateView4;
+    private View mButton;
 
 
     public Gui(Init activity) {
@@ -55,6 +56,7 @@ public class Gui extends AppCompatActivity{
         mRowLayout = activity.findViewById(R.id.edit_todo_rowLayout);
         mCheckBox = activity.findViewById(R.id.edit_todo_task_status);
         mTaskDeleteButton = activity.findViewById(R.id.edit_todo_task_deleteButton);
+        mButton = activity.findViewById(R.id.id_todo_addButton);
 
         //Arraylist in TodoApplicationLogic umgezogen, funktioniert
     }
@@ -91,6 +93,8 @@ public class Gui extends AppCompatActivity{
     }
 
     public ImageView getmTaskDeleteButton() { return mTaskDeleteButton; }
+
+    public View getmButton() {return mButton;}
 
     // methods to change view attributes
     public void setmTasks(TasksAdapter adapter){mTasks.setAdapter(adapter);}
@@ -147,4 +151,5 @@ public class Gui extends AppCompatActivity{
     int getTasksItemCount(){
         return mTasks.getChildCount();
     }
+
 }

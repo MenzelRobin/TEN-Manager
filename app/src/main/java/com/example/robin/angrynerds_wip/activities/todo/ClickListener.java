@@ -35,9 +35,6 @@ public class ClickListener implements View.OnClickListener  {
             case R.id.edit_todo_endDate:
                 mTodoApplicationLogic.showDatePickerDialog(view);
                 break;
-            case R.id.edit_todo_title:
-                mTodoApplicationLogic.createList();
-                break;
             case -1:
                 mTodoApplicationLogic.returnToOverview();
                 break;
