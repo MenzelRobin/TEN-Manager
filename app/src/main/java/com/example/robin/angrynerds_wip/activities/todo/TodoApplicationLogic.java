@@ -251,10 +251,6 @@ public class TodoApplicationLogic {
     public void onConfigurationChanged(Gui pGui) {
         mGui = pGui;
         mTasks = mData.getmTodo().getTasks();
-        /*if (mTasks.get(mTasks.size()-1).getDescription() != "")
-        {
-            mTasks.add(new Task());
-        }*/
         createList();
         initGui();
         initListener();
