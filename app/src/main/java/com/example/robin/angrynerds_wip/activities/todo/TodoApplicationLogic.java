@@ -1,10 +1,8 @@
 package com.example.robin.angrynerds_wip.activities.todo;
 
-import android.app.Activity;
 import android.app.DialogFragment;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
-import android.text.method.Touch;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,7 +10,6 @@ import android.view.View;
 import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.data.models.tens.Todo;
 import com.example.robin.angrynerds_wip.data.models.utils.Task;
-import com.example.robin.angrynerds_wip.data.services.Update;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -50,10 +47,6 @@ public class TodoApplicationLogic {
         mGui = gui;
         mData = pData;
         mTasks = mData.getmTodo().getTasks();
-        /*if (mTasks.get(mTasks.size()-1).getDescription() != "")
-        {
-            mTasks.add(new Task());
-        }*/
         createList();
         initGui();
         initListener();
@@ -172,36 +165,15 @@ public class TodoApplicationLogic {
         updateProgress();
     }
 
-
-    //Author: Sertan Soner Cetin
-    private void addTask() {
-        mTasks.add(new Task());
-        mTaskAdapter.notifyDataSetChanged();
-        mGui.getmTasks().post(new Runnable() {
-            @Override
-            public void run() {
-                mGui.getmTasks().setSelection(mTaskAdapter.getCount() - 1);
-            }
-        });
-        updateProgress();
-    }
-
     //Author: Sertan Soner Cetin
     public void updateProgress(){
 
-        mData.getmTodo().getTasks().remove(mData.getmTodo().getTasks().size() - 1);
         mData.getmTodo().setTasks(mTasks);
 
         mGui.setmProgressText((int) (mData.getmTodo().getProgress() * 100) + " %");
-        mData.getmTodo().getTasks().add(new Task());
 
         //Hier lag der Fehler bei dem Wechsel der Ansichten, wollen wir uns morgen angucken
         //UpdateTodo();
-    }
-
-    //Author: Sertan Soner Cetin
-    void onEditTextClicked() {
-        addInputTaskField();
     }
 
     public void onActivityReturned(int requestCode, int resultCode, Intent data) {
@@ -225,9 +197,6 @@ public class TodoApplicationLogic {
         } //R.id.id_event_editText_title
         else {
             mTasks.get(mView.getId()).setDescription(s);
-            /*if (mView.getId() == mTasks.size() - 1) {
-                addInputTaskField();
-            }*/
             updateProgress();
         }
     }
@@ -275,20 +244,17 @@ public class TodoApplicationLogic {
         catch (ParseException e){
             Log.e("florian","Fehler" + mGui.getmStartDate().getText().toString());
         }
-
-        todo.getTasks().remove(todo.getTasks().size() - 1);
         mData.updateTodo();
-        todo.getTasks().add(new Task());
     }
 
     //Author: Sertan Soner Cetin
     public void onConfigurationChanged(Gui pGui) {
         mGui = pGui;
         mTasks = mData.getmTodo().getTasks();
-        if (mTasks.get(mTasks.size()-1).getDescription() != "")
+        /*if (mTasks.get(mTasks.size()-1).getDescription() != "")
         {
             mTasks.add(new Task());
-        }
+        }*/
         createList();
         initGui();
         initListener();
