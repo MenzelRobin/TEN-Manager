@@ -24,10 +24,10 @@
         android:hint="@string/sample_activity_todo_title"
         android:textColorHint="#80FFFFFF"
         android:textColor="@color/TextWhite"
+        android:background="@color/transparent"
         android:lines="1"
         android:maxLines="1"
         android:scrollbars="horizontal"
-        android:textSize="16dp"
         android:layout_margin="16dp"
         android:layout_marginStart="72dp"/>
     <View
@@ -42,15 +42,16 @@
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:layout_below="@+id/edit_todo_title"
-        android:inputType="text"
+        android:inputType="textMultiLine"
+        android:background="@color/transparent"
         android:hint="@string/sample_activity_todo_description"
         android:textColorHint="#80FFFFFF"
         android:textColor="@color/TextWhite"
-        android:lines="10"
-        android:maxLines="10"
+        android:minLines="4"
+        android:maxLines="4"
+        android:gravity="top"
         android:scrollbars="vertical"
         android:layout_marginTop="5dp"
-        android:textSize="16dp"
         android:layout_margin="16dp"
         android:layout_marginStart="72dp"/>
     <View
@@ -84,17 +85,9 @@
         android:textColorHint="#80FFFFFF"
         android:textColor="@color/TextWhite"
         android:textSize="16dp"
-        android:backgroundTint="@color/bgColor4"
         android:hint="@string/sample_activity_todo_startDate"/>
 
     </RelativeLayout>
-
-    <View
-        android:id="@+id/edit_todo_view_seperate3"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@id/id_todo_relativeLayout_startDate"
-        android:background="@color/colorPrimaryDark" />
 
     <RelativeLayout
         android:id="@+id/id_todo_relativeLayout_endDate"
@@ -123,7 +116,7 @@
     </RelativeLayout>
 
     <View
-        android:id="@+id/edit_todo_view_seperate4"
+        android:id="@+id/edit_todo_view_seperate3"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@id/id_todo_relativeLayout_endDate"
@@ -134,9 +127,9 @@
         android:id="@+id/id_todo_relativeLayout_tasks"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/id_todo_relativeLayout_endDate"
+        android:layout_below="@id/edit_todo_view_seperate3"
         android:layout_above="@+id/edit_todo_progressText"
-        android:layout_margin="16dp">
+        android:layout_margin="10dp">
     <ListView
         android:id="@+id/edit_todo_tasks"
         android:layout_width="match_parent"
@@ -144,9 +137,12 @@
         android:background="@color/transparent"
         android:divider="@null"
         android:dividerHeight="0dp"
+        android:transcriptMode="alwaysScroll"
+        android:stackFromBottom="true"
         >
     </ListView>
     </RelativeLayout>
+
     <TextView
         android:id="@+id/edit_todo_progressText"
         android:layout_width="match_parent"
@@ -156,6 +152,24 @@
         android:textColorHint="@color/TextWhite"
         android:textAlignment="center"
         android:textSize="25dp"
-        android:layout_alignParentBottom="true"/>
+        android:layout_above="@id/edit_todo_view_seperate4"/>
+
+    <View
+        android:id="@+id/edit_todo_view_seperate4"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_above="@id/id_todo_addButton"
+        android:background="@color/colorPrimaryDark" />
+
+    <Button
+        android:id="@+id/id_todo_addButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/todo_addButton"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/TextWhite"
+        android:background="@color/note_transparent"
+        android:layout_margin="10dp"/>
 
 </RelativeLayout>

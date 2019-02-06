@@ -1,5 +1,6 @@
 package com.example.robin.angrynerds_wip.activities.todo;
 
+import android.app.Activity;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.support.v7.widget.Toolbar;
+import android.widget.Toast;
 
 import com.example.robin.angrynerds_wip.R;
 
@@ -36,6 +38,7 @@ public class Gui extends AppCompatActivity{
     private View mSeperateView2;
     private View mSeperateView3;
     private View mSeperateView4;
+    private View mButton;
 
 
     public Gui(Init activity) {
@@ -55,6 +58,7 @@ public class Gui extends AppCompatActivity{
         mRowLayout = activity.findViewById(R.id.edit_todo_rowLayout);
         mCheckBox = activity.findViewById(R.id.edit_todo_task_status);
         mTaskDeleteButton = activity.findViewById(R.id.edit_todo_task_deleteButton);
+        mButton = activity.findViewById(R.id.id_todo_addButton);
 
         //Arraylist in TodoApplicationLogic umgezogen, funktioniert
     }
@@ -92,6 +96,8 @@ public class Gui extends AppCompatActivity{
 
     public ImageView getmTaskDeleteButton() { return mTaskDeleteButton; }
 
+    public View getmButton() {return mButton;}
+
     // methods to change view attributes
     public void setmTasks(TasksAdapter adapter){mTasks.setAdapter(adapter);}
 
@@ -124,10 +130,18 @@ public class Gui extends AppCompatActivity{
         mToolbar.setBackground(new ColorDrawable(darkColor));
         mSeperateView1.setBackground(new ColorDrawable(darkColor));
         mSeperateView2.setBackground(new ColorDrawable(darkColor));
-        mSeperateView3.setBackground(new ColorDrawable(color));
+        mSeperateView3.setBackground(new ColorDrawable(darkColor));
         mSeperateView4.setBackground(new ColorDrawable(darkColor));
+        mSeperateView1.setAlpha((float) 0.5);
+        mSeperateView2.setAlpha((float) 0.5);
+        mSeperateView3.setAlpha((float) 0.5);
+        mSeperateView4.setAlpha((float) 0.5);
         //mSeperateView1.setBackground(new ColorDrawable(darkColor));
         //mSeperateView1.setAlpha((float) 0.5);
+    }
+
+    public void displayToast(Activity pActivity, String pText) {
+        Toast.makeText(pActivity, pText, Toast.LENGTH_SHORT).show();
     }
 
     public void setFocusableInTouchmode(boolean value)
@@ -143,4 +157,5 @@ public class Gui extends AppCompatActivity{
     int getTasksItemCount(){
         return mTasks.getChildCount();
     }
+
 }
