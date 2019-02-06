@@ -103,7 +103,7 @@
                     android:id="@+id/id_todo_relativeLayout_startDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_above="@id/edit_todo_view_seperate3"
+                    android:layout_above="@id/id_todo_relativeLayout_endDate"
                     android:layout_margin="16dp">
 
                     <ImageView
@@ -126,13 +126,6 @@
                         android:textColorHint="@color/TextWhite" />
 
                 </RelativeLayout>
-
-                <View
-                    android:id="@+id/edit_todo_view_seperate3"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_above="@id/id_todo_relativeLayout_endDate"
-                    android:background="@color/colorPrimaryDark" />
 
                 <RelativeLayout
                     android:id="@+id/id_todo_relativeLayout_endDate"
@@ -170,7 +163,7 @@
                 android:layout_weight="0.3">
 
                 <View
-                    android:id="@+id/edit_todo_view_seperate4"
+                    android:id="@+id/edit_todo_view_seperate3"
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
                     android:background="@color/colorPrimaryDark" />
@@ -185,7 +178,7 @@
                     android:background="@color/transparent"
                     android:divider="@null"
                     android:dividerHeight="0dp"
-                    android:layout_above="@id/edit_todo_view_seperate5"/>
+                    android:layout_above="@id/edit_todo_view_seperate4"/>
 
                 <View
                     android:id="@+id/edit_todo_view_seperate5"

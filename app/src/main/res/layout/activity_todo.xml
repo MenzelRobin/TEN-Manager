@@ -89,13 +89,6 @@
 
     </RelativeLayout>
 
-    <View
-        android:id="@+id/edit_todo_view_seperate3"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@id/id_todo_relativeLayout_startDate"
-        android:background="@color/colorPrimaryDark" />
-
     <RelativeLayout
         android:id="@+id/id_todo_relativeLayout_endDate"
         android:layout_width="match_parent"
@@ -123,7 +116,7 @@
     </RelativeLayout>
 
     <View
-        android:id="@+id/edit_todo_view_seperate4"
+        android:id="@+id/edit_todo_view_seperate3"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@id/id_todo_relativeLayout_endDate"
@@ -157,7 +150,7 @@
         android:textColorHint="@color/TextWhite"
         android:textAlignment="center"
         android:textSize="25dp"
-        android:layout_above="@id/edit_todo_view_seperate5"/>
+        android:layout_above="@id/edit_todo_view_seperate4"/>
 
     <View
         android:id="@+id/edit_todo_view_seperate5"
