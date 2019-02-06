@@ -159,7 +159,7 @@
             <RelativeLayout
                 android:id="@+id/id_todo_relativeLayout_tasks"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="0.3">
 
                 <View
