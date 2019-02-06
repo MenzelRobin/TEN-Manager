@@ -121,6 +121,7 @@
                         android:layout_marginStart="16dp"
                         android:layout_toEndOf="@id/id_todo_imageView_iconStartDate"
                         android:hint="@string/sample_activity_todo_startDate"
+                        android:textSize="16dp"
                         android:textColor="@color/TextWhite"
                         android:textColorHint="@color/TextWhite" />
 
@@ -153,6 +154,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
+                        android:textSize="16dp"
                         android:layout_toEndOf="@id/id_todo_imageView_iconEndDate"
                         android:hint="@string/sample_activity_todo_endDate"
                         android:textColor="@color/TextWhite"

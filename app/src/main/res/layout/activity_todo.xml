@@ -48,6 +48,7 @@
         android:textColorHint="#80FFFFFF"
         android:textColor="@color/TextWhite"
         android:minLines="4"
+        android:maxLines="4"
         android:gravity="top"
         android:scrollbars="vertical"
         android:layout_marginTop="5dp"
@@ -84,7 +85,6 @@
         android:textColorHint="#80FFFFFF"
         android:textColor="@color/TextWhite"
         android:textSize="16dp"
-        android:backgroundTint="@color/bgColor4"
         android:hint="@string/sample_activity_todo_startDate"/>
 
     </RelativeLayout>
