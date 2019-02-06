@@ -34,7 +34,6 @@ public class TodoApplicationLogic {
     private Data mData;
 
     private ClickListener mClickListener;
-    private TouchListener mTouchListener;
     private CheckedChangeListener mCheckedChangeListener;
 
     private ArrayList<Task> mTasks;
@@ -51,10 +50,10 @@ public class TodoApplicationLogic {
         mGui = gui;
         mData = pData;
         mTasks = mData.getmTodo().getTasks();
-        if (mTasks.get(mTasks.size()-1).getDescription() != "")
+        /*if (mTasks.get(mTasks.size()-1).getDescription() != "")
         {
             mTasks.add(new Task());
-        }
+        }*/
         createList();
         initGui();
         initListener();
@@ -77,7 +76,6 @@ public class TodoApplicationLogic {
     //Author: Florian Rath
     private void initListener() {
         mClickListener = new ClickListener(this);
-        mTouchListener = new TouchListener(this);
         mCheckedChangeListener = new CheckedChangeListener(this);
 
         MenuItemClickListener menuItemClickListener;
@@ -262,7 +260,6 @@ public class TodoApplicationLogic {
     public ClickListener getClickListener() {
         return mClickListener;
     }
-    public TouchListener getTouchListener() { return mTouchListener; }
     public CheckedChangeListener getmCheckedChangeListener() { return mCheckedChangeListener;}
 
     //Author: Sertan Soner Cetin
@@ -295,5 +292,9 @@ public class TodoApplicationLogic {
         createList();
         initGui();
         initListener();
+    }
+
+    public void addButtonClicked() {
+        addInputTaskField();
     }
 }

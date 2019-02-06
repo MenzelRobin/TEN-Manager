@@ -51,7 +51,6 @@ public class Data {
     }
 
     public void setDate(Date date) {
-        //mTodo.setDate(date);
         updateTodo();
     }
 

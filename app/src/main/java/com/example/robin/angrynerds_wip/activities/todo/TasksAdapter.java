@@ -39,13 +39,6 @@ public class TasksAdapter extends ArrayAdapter {
         CheckBox status = (CheckBox) rowView.findViewById(R.id.edit_todo_task_status);
         ImageButton deleteButton = (ImageButton) rowView.findViewById(R.id.edit_todo_task_deleteButton);
 
-        if (position == mTasks.size() - 1)
-        {
-            status.setVisibility(View.INVISIBLE);
-            deleteButton.setVisibility(View.INVISIBLE);
-            description.setOnTouchListener(mTodoApplicationLogic.getTouchListener());
-        }
-
         // Get the data item for this position
         Task task = (Task)mTasks.get(position);
         // Populate the data into the template view using the data object
