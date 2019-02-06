@@ -78,6 +78,7 @@ public class TodoApplicationLogic {
         mGui.getmToolbar().setOnMenuItemClickListener(menuItemClickListener);
         mGui.getmStartDate().setOnClickListener(mClickListener);
         mGui.getmEndDate().setOnClickListener(mClickListener);
+        mGui.getmButton().setOnClickListener(mClickListener);
 
         mGui.getmTitle().addTextChangedListener(new TextWatcher(this,mGui.getmTitle()));
         mGui.getmText().addTextChangedListener(new TextWatcher(this,mGui.getmText()));
