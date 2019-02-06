@@ -123,8 +123,11 @@ public class TodoApplicationLogic {
     //Author: Florian Rath
     //Return to overview if back pressed / Event deleted / toolbar navigation
     public void returnToOverview() {
-        mActivity.overridePendingTransition(android.R.anim.fade_in, android.R.anim.slide_out_right);
-        mActivity.finish();
+        //mActivity.overridePendingTransition(android.R.anim.fade_in, android.R.anim.slide_out_right);
+        for(int i = 0; i < mTasks.size();i++) {
+            if (mTasks.get(i).getDescription() == null || mTasks.get(i).getDescription().equals(""))
+                mTasks.remove(i--);
+        }
 
         try {
             UpdateTodo();
@@ -138,6 +141,8 @@ public class TodoApplicationLogic {
         catch(Exception e){
 
         }
+
+        mActivity.finish();
     }
 
     //Author: Florian Rath
