@@ -97,12 +97,12 @@ public class NoteApplicationLogic {
         mNoteGuiRefresherLogic.dataToGui();
     }
 
-    public void saveAndReturnToOverview() {
-        mNoteNavigationLogic.saveAndReturnToOverview();
+    public void returnToOverview() {
+        mNoteNavigationLogic.returnToOverview();
     }
 
     public void onBackPressed() {
-        saveAndReturnToOverview();
+        returnToOverview();
     }
 
     public void onPause() {
