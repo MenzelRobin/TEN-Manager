@@ -97,17 +97,14 @@ public class NoteApplicationLogic {
         mNoteGuiRefresherLogic.dataToGui();
     }
 
-    public void returnToOverview() {
-        mNoteNavigationLogic.returnToOverview();
+    public void saveAndReturnToOverview() {
+        mNoteNavigationLogic.saveAndReturnToOverview();
     }
 
     public void onBackPressed() {
-        returnToOverview();
+        saveAndReturnToOverview();
     }
 
-    public void onPause() {
-        mNoteData.executeSaveRoutine();
-    }
 
     //Initialises Landscape or Portrait Activity with NoteData, rescales ImageOverlay if displayed
     public void onConfigurationChanged(NoteGui pGui, Configuration pConfiguration) {

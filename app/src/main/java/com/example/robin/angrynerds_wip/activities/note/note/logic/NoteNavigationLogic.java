@@ -24,6 +24,13 @@ public class NoteNavigationLogic {
         mNoteApplicationLogic.getNoteData().getActivity().finish();
     }
 
+    //Saves Note and returns to overview activity
+    public void saveAndReturnToOverview() {
+        mNoteApplicationLogic.getNoteData().executeSaveRoutine();
+        returnToOverview();
+    }
+
+
     //Called when activity is returned, e.g. Image Import or NoteTagActivity results
     public void onActivityReturned(int pRequestCode, int pResultCode, Intent pData) {
         ImageToolsModule imageToolsModule = new ImageToolsModule();
