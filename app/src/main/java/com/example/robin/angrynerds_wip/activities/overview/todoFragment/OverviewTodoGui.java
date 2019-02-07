@@ -87,6 +87,7 @@ public class OverviewTodoGui extends OverviewFragmentGui {
     }
 
     public void setCounter(){
-        mCounter.setText(mCountChecked + "/" + mCountAll);
+        mCounter.setText((mCountChecked*100)/mCountAll + "%");
+        //mCounter.setText(mCountChecked + "/" + mCountAll);
     }
 }

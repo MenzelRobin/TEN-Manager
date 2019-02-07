@@ -109,7 +109,7 @@ public class TodoApplicationLogic {
             try{
                 int compare = date.compareTo(new SimpleDateFormat("EEEE, dd. MMMM yyyy", Locale.GERMAN).parse(mGui.getmEndDate().getText().toString()));
                 if(compare > 0){
-                    mGui.displayToast(mActivity, "Das Startdatum kann nicht nach dem Enddatum liegen");
+                    mGui.displayToast(mActivity, "Das Startdatum kann nicht hinter dem Enddatum liegen");
                 }else{
                     mGui.setDate(formatDate(date), mActiveDatePickerButton);
                 }
