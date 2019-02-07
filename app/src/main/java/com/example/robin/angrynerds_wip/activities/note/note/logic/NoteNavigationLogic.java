@@ -57,12 +57,6 @@ public class NoteNavigationLogic {
         }
     }
 
-    //Saves Note and returns to overview activity
-    public void saveAndReturnToOverview() {
-        mNoteApplicationLogic.getNoteData().executeSaveRoutine();
-        returnToOverview();
-    }
-
     //Starts NoteTagActivity with tagList
     public void startTagActivity() {
         Intent intent = new Intent(mNoteApplicationLogic.getNoteData().getActivity(), NoteTagActivity.class);

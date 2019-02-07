@@ -18,28 +18,33 @@
         <activity android:name=".MainActivity" android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".activities.todo.Init"
+            android:launchMode = "singleTop"
             android:windowSoftInputMode="adjustPan"
             android:configChanges="orientation|keyboardHidden|screenSize">
         </activity>
 
         <activity android:name=".activities.note.note.NoteActivity"
+            android:launchMode = "singleTop"
             android:windowSoftInputMode="adjustPan|stateHidden"
             android:configChanges="orientation|keyboardHidden|screenSize">
         </activity>
 
         <activity android:name=".activities.note.notetags.NoteTagActivity"
+            android:launchMode = "singleTop"
             android:windowSoftInputMode="adjustResize"
             android:configChanges="orientation|keyboardHidden|screenSize">
         </activity>
 
-        <activity android:name=".activities.event.EventActivity"></activity>
+        <activity android:name=".activities.event.EventActivity"
+            android:launchMode = "singleTop">
+        </activity>
 
         <activity android:name=".activities.overview.overviewActivity.OverviewInit"
+            android:launchMode = "singleTop"
             android:configChanges="orientation"></activity>
 
         <provider
