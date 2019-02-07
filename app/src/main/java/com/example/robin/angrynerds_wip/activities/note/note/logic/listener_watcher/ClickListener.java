@@ -22,7 +22,7 @@ public class ClickListener implements View.OnClickListener  {
                 mNoteApplicationLogic.getNoteClickHandler().onTagsClicked();
                 return;
             case -1:
-                mNoteApplicationLogic.returnToOverview();
+                mNoteApplicationLogic.saveAndReturnToOverview();
                 return;
             default:
                 break;

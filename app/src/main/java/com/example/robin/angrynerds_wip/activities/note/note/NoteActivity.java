@@ -106,7 +106,6 @@ public class NoteActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        mNoteApplicationLogic.onPause();
     }
 
     @Override
