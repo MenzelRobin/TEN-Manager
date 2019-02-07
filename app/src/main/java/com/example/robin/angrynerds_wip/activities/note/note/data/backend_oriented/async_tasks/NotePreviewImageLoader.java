@@ -37,6 +37,8 @@ public class NotePreviewImageLoader {
         protected void onPostExecute(Image image) {
             if (image.getBitmap() == null) {
                 mNoteDataBackend.getmNoteData().getNote().imageNotFound(image);
+                ImageService.deleteImage(image);
+
             } else {
                 mNoteDataBackend.getmNoteData().getNoteApplicationLogic().getNoteAsyncLoadingLogic().addAsyncPreviewImage(image);
             }

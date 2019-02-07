@@ -1,7 +1,10 @@
 package com.example.robin.angrynerds_wip.activities.note.note.logic;
 
+import android.widget.Toast;
+
 import com.example.robin.angrynerds_wip.activities.note.note.data.NoteData;
 import com.example.robin.angrynerds_wip.data.models.utils.Image;
+import com.example.robin.angrynerds_wip.data.services.ImageService;
 
 // Authored by Jan Beilfuss
 public class NoteAsyncLoadingLogic {
@@ -27,5 +30,15 @@ public class NoteAsyncLoadingLogic {
     public void stopLoadingSpinner() {
         mNoteApplicationLogic.getNoteGui().stopLoadingSpinner();
         mNoteApplicationLogic.getNoteGui().enableAll();
+    }
+
+    public void onOriginalImageLoadFailed(Image pImage, int mIndexToBeLoaded) {
+        mNoteApplicationLogic.getNoteData().getNote().imageNotFound(pImage);
+        ImageService.deleteImage(pImage);
+        mNoteApplicationLogic.getNoteAsyncLoadingLogic().stopLoadingSpinner();
+        Toast.makeText(mNoteApplicationLogic.getNoteData().getActivity().getApplicationContext(), "Fehler beim Laden des Bildes", Toast.LENGTH_LONG).show();
+    }
+
+    public void afterOriginalImageLoad(Image pImage, int mIndexToBeLoaded) {
     }
 }
