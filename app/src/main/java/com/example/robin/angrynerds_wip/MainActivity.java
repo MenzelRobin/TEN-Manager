@@ -1,6 +1,7 @@
 package com.example.robin.angrynerds_wip;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,18 +22,30 @@ public class MainActivity extends AppCompatActivity {
     Initiates Application, Only for Development.
      */
 
+    boolean mLoading = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setColor();
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable(){
+            @Override
+            public void run() {
+                if(!mLoading) startOverview();
+            }
+        }, 2000);
+
     }
 
     public void onClickSkip(View view){
+        mLoading = true;
         startOverview();
     }
 
     public void onClickReset(View view){
+        mLoading = true;
         Toast.makeText(getApplicationContext(), "Resetting Data...", Toast.LENGTH_SHORT).show();
         DataContextManager.initDatabase(getApplicationContext());
         resetDatabase();
