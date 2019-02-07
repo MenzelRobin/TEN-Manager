@@ -1,7 +1,6 @@
 package com.example.robin.angrynerds_wip.activities.note.note.data.backend_oriented.async_tasks;
 
 import android.os.AsyncTask;
-import android.widget.Toast;
 
 import com.example.robin.angrynerds_wip.activities.note.note.data.backend_oriented.NoteDataBackend;
 import com.example.robin.angrynerds_wip.data.models.utils.Image;
@@ -48,10 +47,15 @@ public class PriorityOriginalImageLoader {
         protected void onPostExecute(Image pImage) {
 
             if (pImage.getBitmap() == null) {
-                mNoteDataBackend.getmNoteData().getNoteApplicationLogic().getNoteAsyncLoadingLogic().onOriginalImageLoadFailed(pImage, mIndexToBeLoaded);
+                ImageService.deleteImage(pImage);
+                mNoteDataBackend.getmNoteData().deleteImage(mIndexToBeLoaded+1);
+                mNoteDataBackend.getmNoteData().getNoteApplicationLogic().getNoteAsyncLoadingLogic().stopLoadingSpinner();
+                Toast.makeText(mNoteDataBackend.getmNoteData().getNoteApplicationLogic().getNoteData().getActivity().getApplicationContext(), "Fehler beim Laden des Bildes", Toast.LENGTH_LONG).show();
 
             } else {
-                mNoteDataBackend.getmNoteData().getNoteApplicationLogic().getNoteAsyncLoadingLogic().afterOriginalImageLoad(pImage, mIndexToBeLoaded);
+                mNoteDataBackend.getmNoteData().getNoteApplicationLogic().getNoteData().getNote().addImage(pImage);
+                mNoteDataBackend.getmNoteData().getNoteApplicationLogic().getNoteImagePopupLogic().openImagePopup(pImage.getBitmap(), mIndexToBeLoaded + 1);
+                mNoteDataBackend.getmNoteData().getNoteApplicationLogic().getNoteAsyncLoadingLogic().stopLoadingSpinner();
 
             }
         }
