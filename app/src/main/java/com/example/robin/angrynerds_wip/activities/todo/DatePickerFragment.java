@@ -10,14 +10,21 @@ import android.widget.DatePicker;
 import com.example.robin.angrynerds_wip.R;
 
 import java.util.Calendar;
+import java.util.Date;
 
 // Author: Florian Rath in cooperation with Robin Menzel
 public class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener{
+    private Date mTime;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         // Use the current date as the default date in the picker
         final Calendar c = Calendar.getInstance();
+
+        if (mTime != null) {
+            c.setTime(mTime);
+        }
+
         int year = c.get(Calendar.YEAR);
         int month = c.get(Calendar.MONTH);
         int day = c.get(Calendar.DAY_OF_MONTH);
@@ -36,5 +43,9 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
         cal.set(Calendar.MONTH, month);
         cal.set(Calendar.DAY_OF_MONTH, day);
         ((Init)getActivity()).receiveDate(cal.getTime());
+    }
+
+    public void setDate(Date pTime) {
+        mTime = pTime;
     }
 }
