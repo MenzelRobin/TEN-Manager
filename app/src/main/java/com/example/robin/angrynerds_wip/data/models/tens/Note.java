@@ -2,11 +2,9 @@ package com.example.robin.angrynerds_wip.data.models.tens;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.util.Log;
 
 import com.example.robin.angrynerds_wip.data.models.utils.BundleKeys;
 import com.example.robin.angrynerds_wip.data.models.utils.Image;
-import com.example.robin.angrynerds_wip.data.repository.RepositoryConstants;
 import com.example.robin.angrynerds_wip.data.repository.filesystem.FileSystemConstants;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -67,13 +65,11 @@ public class Note extends TEN {
         this.imageIDCounter++;
         String imageID = this.getID() + FileSystemConstants.IMAGE_CORE_ID + this.imageIDCounter;
         Image image = new Image(imageID, bitmap);
-        Log.i("cool", image.getId());
         this.pictures.add(image);
         return image;
     }
 
     public void addImage(Image pImage) {
-        Log.i("NoteRemake", "Pictures Size: " + pictures.size());
         for (int i = 0; i < pictures.size(); i++) {
             if (pImage.getId().equals(pictures.get(i).getId())) {
                 pictures.set(i, pImage);

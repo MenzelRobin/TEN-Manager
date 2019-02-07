@@ -1,7 +1,6 @@
 package com.example.robin.angrynerds_wip.activities.note.note.data.gui_oriented;
 
 import android.graphics.Bitmap;
-import android.util.Log;
 
 import com.example.robin.angrynerds_wip.activities.note.note.data.NoteConstants;
 
