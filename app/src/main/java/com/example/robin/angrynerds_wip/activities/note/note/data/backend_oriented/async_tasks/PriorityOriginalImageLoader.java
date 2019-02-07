@@ -1,6 +1,7 @@
 package com.example.robin.angrynerds_wip.activities.note.note.data.backend_oriented.async_tasks;
 
 import android.os.AsyncTask;
+import android.widget.Toast;
 
 import com.example.robin.angrynerds_wip.activities.note.note.data.backend_oriented.NoteDataBackend;
 import com.example.robin.angrynerds_wip.data.models.utils.Image;
