@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">AngryNerds</string>
-    <string name="sample_activity_todo_title">Titel</string>
-    <string name="sample_activity_todo_description">Beschreibung</string>
+    <string name="sample_activity_todo_title">Titel eingeben</string>
+    <string name="sample_activity_todo_description">Beschreibung eingeben</string>
     <string name="sample_activity_todo_startDate">Startdatum</string>
     <string name="sample_activity_todo_endDate">Enddatum</string>
-    <string name="sample_activity_todo_task">Todo hinzufügen...</string>
+    <string name="sample_activity_todo_task">Aufgabe eingeben</string>
     <string name="sample_activity_todo_progressText">10%</string>
     <string name="sample_todo_menu_toolbarDelete">Todo löschen</string>
     <string name="sample_todo_menu_toolbarShare">Todo teilen</string>
@@ -34,11 +34,12 @@
 
 
     <!-- Note Layout Strings -->
+    <!-- Joscha Nassenstein -->
     <string name="sample_note_title">Titel eingeben</string>
     <string name="sample_note_description">Beschreibung eingeben</string>
     <string name="sample_note_tag">#Stichwort</string>
     <string name="sample_note_hashtag">#</string>
-    <string name="sample_note_listtag">Stichwort</string>
+    <string name="sample_note_listtag">Stichwort eingeben</string>
     <string name="note_menu_toolbarShare">Notiz teilen</string>
     <string name="note_menu_toolbarDelete">Notiz löschen</string>
     <string name="note_tagOverview_menu_toolbarDelete">Alle Stichworte löschen</string>

@@ -105,6 +105,10 @@ public class NoteApplicationLogic {
         saveAndReturnToOverview();
     }
 
+    public void onPause() {
+        mNoteData.executeSaveRoutine();
+    }
+
     //Initialises Landscape or Portrait Activity with NoteData, rescales ImageOverlay if displayed
     public void onConfigurationChanged(NoteGui pGui, Configuration pConfiguration) {
         this.mNoteGui = pGui;
