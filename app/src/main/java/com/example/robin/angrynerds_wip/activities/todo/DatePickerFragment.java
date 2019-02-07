@@ -2,6 +2,7 @@ package com.example.robin.angrynerds_wip.activities.todo;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.os.Build;
 import android.os.Bundle;
 import android.app.DialogFragment;
 import android.widget.DatePicker;
@@ -22,7 +23,11 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
         int day = c.get(Calendar.DAY_OF_MONTH);
 
         // Create a new instance of DatePickerDialog and return it
-        return new DatePickerDialog(getActivity(), R.style.Theme_AppCompat_Light_Dialog, this, year, month, day);
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP){
+            return new DatePickerDialog(getActivity(), R.style.Theme_AppCompat_Light_Dialog, this, year, month, day);
+        }else{
+            return new DatePickerDialog(getActivity(), this, year, month, day);
+        }
     }
 
     public void onDateSet(DatePicker view, int year, int month, int day) {

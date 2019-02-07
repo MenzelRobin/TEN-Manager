@@ -3,6 +3,7 @@ package com.example.robin.angrynerds_wip.activities.event.gui;
 import android.app.TimePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.os.Build;
 import android.os.Bundle;
 import android.widget.TimePicker;
 import android.text.format.DateFormat;
@@ -33,7 +34,11 @@ public class TimePickerFragment extends DialogFragment implements TimePickerDial
         hour = c.get(Calendar.HOUR_OF_DAY);
         minute = c.get(Calendar.MINUTE);
         // Create a new instance of TimePickerDialog and return it
-        return new TimePickerDialog(getActivity(), R.style.Theme_AppCompat_Light_Dialog, this, hour, minute, DateFormat.is24HourFormat(getActivity()));
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP){
+            return new TimePickerDialog(getActivity(), R.style.Theme_AppCompat_Light_Dialog, this, hour, minute, DateFormat.is24HourFormat(getActivity()));
+        }else{
+            return new TimePickerDialog(getActivity(), this, hour, minute, DateFormat.is24HourFormat(getActivity()));
+        }
     }
 
     public void onTimeSet(TimePicker view, int hour, int minute) {
