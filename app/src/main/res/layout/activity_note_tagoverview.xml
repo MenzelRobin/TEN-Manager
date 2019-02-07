@@ -40,7 +40,7 @@
 
     <Button
         android:id="@+id/id_note_tagOverview_addButton"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/note_tagOverview_addButton"
         android:layout_alignParentBottom="true"
