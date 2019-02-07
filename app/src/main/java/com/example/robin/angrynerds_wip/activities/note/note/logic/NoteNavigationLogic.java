@@ -7,7 +7,6 @@ import android.util.Log;
 
 import com.example.robin.angrynerds_wip.activities.note.note.data.NoteConstants;
 import com.example.robin.angrynerds_wip.activities.note.notetags.NoteTagActivity;
-import com.example.robin.angrynerds_wip.modules.image.ImageRotationCorrectionModule;
 import com.example.robin.angrynerds_wip.modules.image.ImageToolsModule;
 
 // Authored by Joscha Nassenstein

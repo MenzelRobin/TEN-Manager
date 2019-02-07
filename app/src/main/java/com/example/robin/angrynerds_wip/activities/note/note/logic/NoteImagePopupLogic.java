@@ -2,7 +2,6 @@ package com.example.robin.angrynerds_wip.activities.note.note.logic;
 
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 

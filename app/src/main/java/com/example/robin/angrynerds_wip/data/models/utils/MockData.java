@@ -2,23 +2,18 @@ package com.example.robin.angrynerds_wip.data.models.utils;
 
 import android.app.Activity;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.util.Log;
-//import android.support.annotation.NonNull;
 
 import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.data.models.tens.Event;
 import com.example.robin.angrynerds_wip.data.models.tens.Note;
-import com.example.robin.angrynerds_wip.data.models.tens.TEN;
 import com.example.robin.angrynerds_wip.data.models.tens.Todo;
 import com.example.robin.angrynerds_wip.data.services.ImageService;
 import com.example.robin.angrynerds_wip.data.services.Update;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
+
+//import android.support.annotation.NonNull;
 
 public class MockData {
 
