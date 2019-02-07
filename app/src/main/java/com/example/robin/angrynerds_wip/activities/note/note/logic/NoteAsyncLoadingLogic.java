@@ -31,14 +31,4 @@ public class NoteAsyncLoadingLogic {
         mNoteApplicationLogic.getNoteGui().stopLoadingSpinner();
         mNoteApplicationLogic.getNoteGui().enableAll();
     }
-
-    public void onOriginalImageLoadFailed(Image pImage, int mIndexToBeLoaded) {
-        mNoteApplicationLogic.getNoteData().getNote().imageNotFound(pImage);
-        ImageService.deleteImage(pImage);
-        mNoteApplicationLogic.getNoteAsyncLoadingLogic().stopLoadingSpinner();
-        Toast.makeText(mNoteApplicationLogic.getNoteData().getActivity().getApplicationContext(), "Fehler beim Laden des Bildes", Toast.LENGTH_LONG).show();
-    }
-
-    public void afterOriginalImageLoad(Image pImage, int mIndexToBeLoaded) {
-    }
 }
