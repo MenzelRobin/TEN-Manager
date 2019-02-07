@@ -107,8 +107,7 @@ public class TodoApplicationLogic {
         //mGui.setDate(datePicker.getDayOfMonth() + "." + (datePicker.getMonth() + 1) + "." + datePicker.getYear(), mActiveDatePickerButton);
         if(mActiveDatePickerButton.getId() == R.id.edit_todo_startDate){
             try{
-                int compare = date.compareTo(new SimpleDateFormat("EEEE, dd. MMMM yyyy", Locale.GERMAN).parse(mGui.getmEndDate().getText().toString()));
-                if(compare > 0){
+                if(date.after(new SimpleDateFormat("EEEE, dd. MMMM yyyy", Locale.GERMAN).parse(mGui.getmEndDate().getText().toString()))){
                     mGui.displayToast(mActivity, "Das Startdatum kann nicht hinter dem Enddatum liegen");
                 }else{
                     mGui.setDate(formatDate(date), mActiveDatePickerButton);
@@ -116,12 +115,10 @@ public class TodoApplicationLogic {
             }catch(java.text.ParseException e){
                 Log.e("ParseError", e.getMessage());
             }
-
         }
         else if(mActiveDatePickerButton.getId() == R.id.edit_todo_endDate){
             try{
-                int compare = date.compareTo(new SimpleDateFormat("EEEE, dd. MMMM yyyy", Locale.GERMAN).parse(mGui.getmStartDate().getText().toString()));
-                if(compare < 0){
+                if(date.before(new SimpleDateFormat("EEEE, dd. MMMM yyyy", Locale.GERMAN).parse(mGui.getmStartDate().getText().toString()))){
                     mGui.displayToast(mActivity, "Das Enddatum kann nicht vor dem Startdatum liegen");
 
                 }else{
@@ -130,7 +127,6 @@ public class TodoApplicationLogic {
             }catch(java.text.ParseException e){
                 Log.e("ParseError", e.getMessage());
             }
-
         }
 
         UpdateTodo();
