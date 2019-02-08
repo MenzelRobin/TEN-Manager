@@ -139,6 +139,8 @@ public class TodoApplicationLogic {
     //Author: Florian Rath
     public void showDatePickerDialog(View v){
         datePicker = new DatePickerFragment();
+        if(v.getId() == R.id.edit_todo_startDate){((DatePickerFragment) datePicker).setDate(mData.getmTodo().getStartDate());}
+        else if(v.getId() == R.id.edit_todo_endDate){((DatePickerFragment)datePicker).setDate(mData.getmTodo().getEndDate());}
         datePicker.show(mActivity.getFragmentManager(), "DatePicker");
         mActiveDatePickerButton = v;
     }

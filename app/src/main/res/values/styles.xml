@@ -11,7 +11,7 @@
     <style name="DialogPicker" parent="Theme.AppCompat.Light.Dialog">
     </style>
 
-    <style name="CustomDialog" parent="android:Theme.Dialog">
+    <style name="CustomDialog" parent="@style/Theme.AppCompat.Dialog">
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowBackground">@android:color/transparent</item>
     </style>
