@@ -24,6 +24,7 @@ public class DialogClickListener implements DialogInterface.OnClickListener{
             case 1:
                 mImageImport.importImageFromCamera();
                 break;
+            case 2: mImageImport.importImageFromWeb();
             default:
                 break;
         }

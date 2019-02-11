@@ -47,6 +47,9 @@
             android:launchMode = "singleTop"
             android:configChanges="orientation"></activity>
 
+        <activity android:name=".activities.web_image_import.WebImportActivity"
+            android:launchMode="singleTop"></activity>
+
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="com.example.robin.fileprovider"
