@@ -15,6 +15,7 @@ import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.activities.note.note.NoteActivity;
 import com.example.robin.angrynerds_wip.activities.note.note.data.NoteConstants;
 import com.example.robin.angrynerds_wip.activities.note.note.logic.listener_watcher.DialogClickListener;
+import com.example.robin.angrynerds_wip.activities.web_image_import.WebImportActivity;
 import com.example.robin.angrynerds_wip.data.services.ImageService;
 
 import java.io.File;
@@ -40,7 +41,7 @@ public class NoteImageImportLogic {
         //Checks if device has a camera
         if (mActivity.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA)){
             DialogClickListener clickListener = new DialogClickListener(this);
-            String[] options = new String[]{"Galerie", "Kamera"};
+            String[] options = new String[]{"Galerie", "Kamera", "Web"};
 
             AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
             builder.setTitle("Bildquelle auswählen");
@@ -86,5 +87,10 @@ public class NoteImageImportLogic {
                         android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 mActivity.startActivityForResult(pickPhoto, NoteConstants.GALLERY_IMPORT_ACTIVITY_REQUESTCODE);
             }
+    }
+
+    public void importImageFromWeb(){
+        Intent loadImage = new Intent(this.mActivity ,WebImportActivity.class);
+        this.mActivity.startActivity(loadImage);
     }
 }
