@@ -23,18 +23,20 @@ import com.example.robin.angrynerds_wip.data.repository.DataContextManager;
 // Authored by Jan Beilfuß
 public class WebImportActivity extends AppCompatActivity {
 
-    private EventDispersion mEventDispersion;
+    private WebImportGui mWebImportGui;
     private boolean mIsActive;
 
     @Override
     public void onCreate (Bundle pSavedInstanceState) {
         super.onCreate(pSavedInstanceState);
+        setContentView(R.layout.activity_web_image_import);
         DataContextManager.initDatabase(this.getApplicationContext());
-
+        this.initGUI();
 
     }
 
     private void initGUI () {
+        this.mWebImportGui = new WebImportGui(this);
     }
 
     private void initApplicationLogic () {
@@ -61,12 +63,13 @@ public class WebImportActivity extends AppCompatActivity {
     @Override
     public void onCreateContextMenu(ContextMenu pMenu, View pView, ContextMenu.ContextMenuInfo pMenuInfo) {
         super.onCreateContextMenu(pMenu, pView, pMenuInfo);
-        mEventDispersion.onCreateContextMenu(pMenu, pView, pMenuInfo);
+        // mEventDispersion.onCreateContextMenu(pMenu, pView, pMenuInfo);
     }
 
     @Override
     public boolean onContextItemSelected(MenuItem pItem) {
-        return mEventDispersion.onContextItemSelected(pItem);
+        // return mEventDispersion.onContextItemSelected(pItem);
+        return true;
     }
 
     //Toolbar Context Menu
