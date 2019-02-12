@@ -2,6 +2,7 @@ package com.example.robin.angrynerds_wip.activities.overview.todoFragment;
 
 import android.content.Intent;
 
+import com.example.robin.angrynerds_wip.activities.NavigationParameterConstants;
 import com.example.robin.angrynerds_wip.activities.overview.superClasses.OverviewFragmentController;
 import com.example.robin.angrynerds_wip.activities.overview.superClasses.OverviewFragmentData;
 import com.example.robin.angrynerds_wip.activities.overview.superClasses.OverviewFragmentGui;
@@ -50,7 +51,7 @@ public class OverviewTodoController extends OverviewFragmentController {
             toggleMark();
         } else {
             Intent intent = new Intent(mFragment.getActivity(), com.example.robin.angrynerds_wip.activities.todo.Init.class);
-            intent.putExtra("ID", mData.getID());
+            intent.putExtra(NavigationParameterConstants.TEN_ID, mData.getID());
             mFragment.startActivity(intent);
         }
     }

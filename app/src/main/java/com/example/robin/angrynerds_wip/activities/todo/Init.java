@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 
 import com.example.robin.angrynerds_wip.R;
+import com.example.robin.angrynerds_wip.activities.NavigationParameterConstants;
 import com.example.robin.angrynerds_wip.data.repository.DataContextManager;
 import com.example.robin.angrynerds_wip.data.services.Create;
 
@@ -26,7 +27,7 @@ public class Init extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         DataContextManager.initDatabase(getApplicationContext());
 
-        String todoId = getIntent().getStringExtra("ID");
+        String todoId = getIntent().getStringExtra(NavigationParameterConstants.TEN_ID);
         initData(todoId);
         initGUI();
         initApplicationLogic();

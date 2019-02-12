@@ -2,6 +2,7 @@ package com.example.robin.angrynerds_wip.activities.overview.eventFragment;
 
 import android.content.Intent;
 
+import com.example.robin.angrynerds_wip.activities.NavigationParameterConstants;
 import com.example.robin.angrynerds_wip.activities.overview.superClasses.*;
 import com.example.robin.angrynerds_wip.activities.event.EventActivity;
 
@@ -41,7 +42,7 @@ public class OverviewEventController extends OverviewFragmentController {
             toggleMark();
         } else {
             Intent intent = new Intent(mFragment.getActivity(), EventActivity.class);
-            intent.putExtra("ID", mData.getID());
+            intent.putExtra(NavigationParameterConstants.TEN_ID, mData.getID());
             mFragment.startActivity(intent);
         }
     }

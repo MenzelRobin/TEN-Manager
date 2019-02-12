@@ -2,6 +2,7 @@ package com.example.robin.angrynerds_wip.activities.overview.imageFragment;
 
 import android.content.Intent;
 
+import com.example.robin.angrynerds_wip.activities.NavigationParameterConstants;
 import com.example.robin.angrynerds_wip.activities.note.note.NoteActivity;
 import com.example.robin.angrynerds_wip.activities.overview.superClasses.OverviewFragmentController;
 import com.example.robin.angrynerds_wip.activities.overview.superClasses.OverviewFragmentData;
@@ -41,7 +42,7 @@ public class OverviewImageController extends OverviewFragmentController {
             toggleMark();
         } else {
             Intent intent = new Intent(mFragment.getActivity(), NoteActivity.class);
-            intent.putExtra("ID", mData.getID());
+            intent.putExtra(NavigationParameterConstants.TEN_ID, mData.getID());
             mFragment.startActivity(intent);
         }
     }

@@ -115,6 +115,6 @@ public class NoteApplicationLogic {
     }
 
     public void initImageImportObject() {
-        mImageImport = new NoteImageImportLogic(mNoteData.getActivity());
+        mImageImport = new NoteImageImportLogic(mNoteData.getActivity(), this);
     }
 }
