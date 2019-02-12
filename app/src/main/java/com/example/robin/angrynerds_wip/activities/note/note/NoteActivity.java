@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.WindowManager;
 
 import com.example.robin.angrynerds_wip.R;
+import com.example.robin.angrynerds_wip.activities.NavigationParameterConstants;
 import com.example.robin.angrynerds_wip.activities.note.note.data.NoteConstants;
 import com.example.robin.angrynerds_wip.activities.note.note.data.NoteData;
 import com.example.robin.angrynerds_wip.activities.note.note.gui.NoteGui;
@@ -34,7 +35,7 @@ public class NoteActivity extends AppCompatActivity {
         super.onCreate(pSavedInstanceState);
         DataContextManager.initDatabase(this.getApplicationContext());
 
-        String id = getIntent().getStringExtra("ID"); //get NoteID from Intent
+        String id = getIntent().getStringExtra(NavigationParameterConstants.TEN_ID); //get NoteID from Intent
         if(id==null) {
             //Create new Note
             mNoteData = new NoteData(this);

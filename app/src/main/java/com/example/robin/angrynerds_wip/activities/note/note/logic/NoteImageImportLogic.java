@@ -12,6 +12,7 @@ import android.support.v4.content.FileProvider;
 import android.support.v7.app.AlertDialog;
 
 import com.example.robin.angrynerds_wip.R;
+import com.example.robin.angrynerds_wip.activities.NavigationParameterConstants;
 import com.example.robin.angrynerds_wip.activities.note.note.NoteActivity;
 import com.example.robin.angrynerds_wip.activities.note.note.data.NoteConstants;
 import com.example.robin.angrynerds_wip.activities.note.note.logic.listener_watcher.DialogClickListener;
@@ -26,9 +27,11 @@ public class NoteImageImportLogic {
 
     private NoteActivity mActivity;
     private String mCurrentPhotoPath;
+    private NoteApplicationLogic mNoteApplicationLogic;
 
-    public NoteImageImportLogic(NoteActivity pActivity) {
+    public NoteImageImportLogic(NoteActivity pActivity, NoteApplicationLogic pNoteApplicationLogic) {
         this.mActivity = pActivity;
+        this.mNoteApplicationLogic = pNoteApplicationLogic;
         requestImageSource();
     }
 
@@ -91,6 +94,7 @@ public class NoteImageImportLogic {
 
     public void importImageFromWeb(){
         Intent loadImage = new Intent(this.mActivity ,WebImportActivity.class);
+        loadImage.putExtra(NavigationParameterConstants.SEARCHTERM, mNoteApplicationLogic.getNoteData().getNote().getTitle());
         this.mActivity.startActivity(loadImage);
     }
 }

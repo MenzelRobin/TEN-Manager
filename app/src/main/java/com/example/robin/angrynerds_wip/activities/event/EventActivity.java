@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 
 import com.example.robin.angrynerds_wip.R;
+import com.example.robin.angrynerds_wip.activities.NavigationParameterConstants;
 import com.example.robin.angrynerds_wip.activities.event.data.EventData;
 import com.example.robin.angrynerds_wip.activities.event.gui.EventGui;
 import com.example.robin.angrynerds_wip.activities.event.logic.EventApplicationLogic;
@@ -25,7 +26,7 @@ public class EventActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         DataContextManager.initDatabase(getApplicationContext());
 
-        initData(getIntent().getStringExtra("ID"));
+        initData(getIntent().getStringExtra(NavigationParameterConstants.TEN_ID));
         initGUI();
         initApplicationLogic();
     }
