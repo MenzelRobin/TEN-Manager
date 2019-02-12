@@ -10,10 +10,38 @@
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
 
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/id_web_import_relative_layout_topbar"
+    >
 
     <android.support.v7.widget.AppCompatEditText
         android:id="@+id/id_web_import_search_term"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/id_web_import_search_button"
+        android:layout_alignBottom="@id/id_web_import_search_button"
+        android:layout_alignParentLeft="true"
+        android:layout_toStartOf="@id/id_web_import_search_button"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp"
+        />
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/id_web_import_search_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:drawableTop="@drawable/ic_search_black_24dp"
+        android:padding="5dp"
+        android:text="Suchen"
+        android:textSize="10dp"
+        android:background="@color/transparent"
+        android:shadowRadius="0.0"/>
+
+</RelativeLayout>
+
+
 
 </android.support.v7.widget.Toolbar>

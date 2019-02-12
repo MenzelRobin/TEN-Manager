@@ -5,7 +5,7 @@
     android:id="@+id/id_note_background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/note_darkBar"
+    android:background="@color/note_hintWhite"
     android:focusableInTouchMode="true"
     android:orientation="horizontal">
 
