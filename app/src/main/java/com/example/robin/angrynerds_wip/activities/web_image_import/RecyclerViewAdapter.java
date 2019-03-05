@@ -23,17 +23,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private static final String TAG = "RecyclerViewAdapter";
 
     private ArrayList<String> mImages1 = new ArrayList<>();
-    private ArrayList<String> mImages2 = new ArrayList<>();
-    private ArrayList<String> mImages3 = new ArrayList<>();
-    private ArrayList<String> mImages4 = new ArrayList<>();
-
+    int mCounter = 1;
     private Context mContext;
 
-    public RecyclerViewAdapter(ArrayList<String> mImages1, ArrayList<String> mImages2, ArrayList<String> mImages3, ArrayList<String> mImages4, Context mContext) {
+    public RecyclerViewAdapter(ArrayList<String> mImages1, Context mContext) {
         this.mImages1 = mImages1;
-        this.mImages2 = mImages2;
-        this.mImages3 = mImages3;
-        this.mImages4 = mImages4;
         this.mContext = mContext;
     }
 
@@ -48,31 +42,51 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
         Log.d(TAG, "onBindViewHolder: called.");
-        final PreviewImageCreator previewImageCreator = new PreviewImageCreator();
 
-        loadFromGlide(mImages1, position, holder.mImageView1);
-        loadFromGlide(mImages2, position, holder.mImageView2);
-        loadFromGlide(mImages3, position, holder.mImageView3);
-        loadFromGlide(mImages4, position, holder.mImageView4);
+        ImageView target = holder.mImageView1;
 
-        holder.mLinearLayoutCompat.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                Log.d(TAG, "onClick: clicked on: " + position);
+        int baseIndex = position * 4;
+        for (int i = 0; i < 4; i++) {
+            if (baseIndex + i < mImages1.size()) {
+                switch (i) {
+                    case 0:
+                        target = holder.mImageView1;
+                        break;
+                    case 1:
+                        target = holder.mImageView2;
+                        break;
+                    case 2:
+                        target = holder.mImageView3;
+                        break;
+                    case 3:
+                        target = holder.mImageView4;
+                        break;
+                }
+                loadFromGlide(mImages1, baseIndex+i, target);
+
+                holder.mLinearLayoutCompat.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Log.d("imageClick", "onClick: clicked on: " + position);
+                    }
+                });
             }
-        });
+        }
+
+
+
     }
 
     @Override
     public int getItemCount() {
-        return mImages1.size();
+        return mImages1.size()/4;
     }
 
-    private void loadFromGlide(ArrayList<String> url, int position, final ImageView target){
+    private void loadFromGlide(ArrayList<String> url, int index, final ImageView target) {
         final PreviewImageCreator previewImageCreator = new PreviewImageCreator();
         Glide.with(mContext)
                 .asBitmap()
-                .load(url.get(position))
+                .load(url.get(index))
                 .into(new SimpleTarget<Bitmap>() {
                     @Override
                     public void onResourceReady(Bitmap resource, Transition<? super Bitmap> transition) {
