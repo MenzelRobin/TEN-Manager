@@ -24,6 +24,7 @@ public class WebImportClickListener implements View.OnClickListener  {
                 mWebApplicationLogic.searchImages();
                 break;
             case -1:
+                mWebApplicationLogic.closeActivity();
                 break;
             default:
                 break;

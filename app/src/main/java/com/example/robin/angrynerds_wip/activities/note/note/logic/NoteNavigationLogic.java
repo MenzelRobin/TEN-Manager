@@ -60,6 +60,12 @@ public class NoteNavigationLogic {
                         mNoteApplicationLogic.getNoteGui().displayToast(mNoteApplicationLogic.getNoteData().getActivity(),"Stichworte konnten nicht übertragen werden");
                     }
                 }
+                break;
+            case NoteConstants.WEB_IMPORT_ACTIVITY_REQUESTCODE:
+                if(pResultCode == mNoteApplicationLogic.getNoteData().getActivity().RESULT_OK){
+                    String url = pData.getExtras().getString("url");
+                    this.mNoteApplicationLogic.getImageImport().loadImageFromWeb(url);
+                }
         }
     }
 
