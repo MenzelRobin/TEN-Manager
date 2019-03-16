@@ -23,12 +23,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private static final String TAG = "RecyclerViewAdapter";
 
     private ArrayList<String> mImages1 = new ArrayList<>();
-    int mCounter = 1;
     private Context mContext;
+    private WebImportActivity webImportActivity;
 
-    public RecyclerViewAdapter(ArrayList<String> mImages1, Context mContext) {
+    public RecyclerViewAdapter(ArrayList<String> mImages1, Context mContext, WebImportActivity webImportActivity) {
         this.mImages1 = mImages1;
         this.mContext = mContext;
+        this.webImportActivity = webImportActivity;
     }
 
     @NonNull
@@ -51,25 +52,24 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 switch (i) {
                     case 0:
                         target = holder.mImageView1;
+                        target.setId(baseIndex+i);
                         break;
                     case 1:
                         target = holder.mImageView2;
+                        target.setId(baseIndex+i);
                         break;
                     case 2:
                         target = holder.mImageView3;
+                        target.setId(baseIndex+i);
                         break;
                     case 3:
                         target = holder.mImageView4;
+                        target.setId(baseIndex+i);
                         break;
                 }
                 loadFromGlide(mImages1, baseIndex+i, target);
 
-                holder.mLinearLayoutCompat.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Log.d("imageClick", "onClick: clicked on: " + position);
-                    }
-                });
+                target.setOnClickListener(new WebImportImageClickListener(this.webImportActivity.getmWebImportLogic()));
             }
         }
 

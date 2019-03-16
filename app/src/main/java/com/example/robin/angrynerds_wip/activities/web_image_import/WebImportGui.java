@@ -16,9 +16,10 @@ public class WebImportGui {
     private AppCompatEditText mSearchtermEditText;
     private AppCompatButton mSearchTriggerButton;
     private ArrayList<String> mImageUrls1 = new ArrayList<>();
-
+    private WebImportActivity mWebImportActivity;
 
     public WebImportGui(WebImportActivity pWebImportActivity) {
+        this.mWebImportActivity = pWebImportActivity;
         pWebImportActivity.setContentView(R.layout.activity_web_image_import);
         this.mSearchtermEditText = pWebImportActivity.findViewById(R.id.id_web_import_search_term);
         this.mSearchTriggerButton = pWebImportActivity.findViewById(R.id.id_web_import_search_button);
@@ -29,7 +30,7 @@ public class WebImportGui {
 
     public void initRecyclerView(WebImportActivity pWebImportActivity) {
         RecyclerView recyclerView = pWebImportActivity.findViewById(R.id.id_web_import_recycler_view);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(mImageUrls1, pWebImportActivity.getApplicationContext());
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(mImageUrls1, pWebImportActivity.getApplicationContext(), this.mWebImportActivity);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(pWebImportActivity.getApplicationContext()));
     }
@@ -78,5 +79,13 @@ public class WebImportGui {
 
     public void resetURLs() {
         mImageUrls1 = new ArrayList<String>();
+    }
+
+    public Toolbar getToolbar() {
+        return mToolbar;
+    }
+
+    public void setTopBarColor(int color) {
+        this.mToolbar.setBackgroundColor(color);
     }
 }

@@ -6,12 +6,17 @@ import android.content.Context;
 public class WebImportData {
     WebImportActivity mAcitivity;
     String mSearchterm;
+    int color;
 
-    public WebImportData(WebImportActivity pWebImportActivity, String mSearchterm){
+    public WebImportData(WebImportActivity pWebImportActivity, String mSearchterm, int color){
         this.mAcitivity = pWebImportActivity;
         this.mSearchterm = mSearchterm;
+        this.color = color;
     }
 
+    public int getColor() {
+        return color;
+    }
 
     public String getSearchterm() {
         return this.mSearchterm;

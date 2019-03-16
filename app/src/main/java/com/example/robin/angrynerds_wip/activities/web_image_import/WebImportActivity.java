@@ -43,13 +43,18 @@ public class WebImportActivity extends AppCompatActivity {
         this.mWebImportGui = new WebImportGui(this);
     }
 
+    public WebImportLogic getmWebImportLogic() {
+        return mWebImportLogic;
+    }
+
     private void initApplicationLogic () {
         this.mWebImportLogic = new WebImportLogic(mWebImportData, mWebImportGui);
     }
 
     private void initData(){
+        int color = getIntent().getExtras().getInt(NavigationParameterConstants.COLOR);
         String searchtTerm = getIntent().getStringExtra(NavigationParameterConstants.SEARCHTERM);
-        this.mWebImportData = new WebImportData(this, searchtTerm);
+        this.mWebImportData = new WebImportData(this, searchtTerm, color);
     }
 
     @Override

@@ -4,13 +4,18 @@ import android.Manifest;
 import android.content.ClipData;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.MediaStore;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.transition.Transition;
 import com.example.robin.angrynerds_wip.R;
 import com.example.robin.angrynerds_wip.activities.NavigationParameterConstants;
 import com.example.robin.angrynerds_wip.activities.note.note.NoteActivity;
@@ -95,6 +100,21 @@ public class NoteImageImportLogic {
     public void importImageFromWeb(){
         Intent loadImage = new Intent(this.mActivity ,WebImportActivity.class);
         loadImage.putExtra(NavigationParameterConstants.SEARCHTERM, mNoteApplicationLogic.getNoteData().getNote().getTitle());
-        this.mActivity.startActivity(loadImage);
+        loadImage.putExtra(NavigationParameterConstants.COLOR, mNoteApplicationLogic.getNoteData().getNote().getAccentColor());
+        this.mActivity.startActivityForResult(loadImage, NoteConstants.WEB_IMPORT_ACTIVITY_REQUESTCODE);
+    }
+
+    public void loadImageFromWeb(String url) {
+        Glide.with(this.mActivity)
+                .asBitmap()
+                .load(url)
+                .into(new SimpleTarget<Bitmap>() {
+                    @Override
+                    public void onResourceReady(Bitmap resource, Transition<? super Bitmap> transition) {
+                        Log.d("imageClick", "Bild wurde geladen: " + resource);
+                        mNoteApplicationLogic.getNoteData().addImageFromGallery(resource);
+                    }
+                });
+        mNoteApplicationLogic.dataToGui();
     }
 }
