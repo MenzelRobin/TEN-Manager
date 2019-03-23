@@ -53,10 +53,11 @@ public class WebImportLogic {
     public void searchImages() {
         String searchTerm = mWebImportGui.getSearchTermBar().getText().toString();
         mWebImportGui.resetURLs();
+        this.originalUrls = new ArrayList<String>();
 
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this.mWebImportData.getActivity().getApplicationContext());
-        String url = "https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=" + searchTerm + "&count=32";
+        String url = "https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=" + searchTerm + "&count=64";
 
 // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
